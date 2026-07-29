@@ -13,5 +13,5 @@ If you are taking the time to mention a problem, even a seemingly minor one, it 
 <!-- References -->
 
 <!-- Local -->
-[GitHubIssues]: <https://github.com/deploymentheory/Template/issues>
+[GitHubIssues]: <https://github.com/deploymenttheory/go-bindings-microsoft-ui-xaml/issues>
 [Contributing]: CONTRIBUTING.md

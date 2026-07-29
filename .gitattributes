@@ -1,7 +1,26 @@
-# .gitattributes snippet to force users to use same line endings for project.
-# 
-# Handle line endings automatically for files detected as text
-# and leave all files detected as binary untouched.
+# Normalize line endings so the repository is byte-identical across OSes.
+# Text is stored as LF; binaries are left untouched.
+#
+# This matters more here than in an ordinary repository: CI regenerates the
+# bindings and fails if a single byte differs from what is committed. A
+# checkout that rewrote line endings would fail that check on Windows for
+# reasons that look nothing like the real cause.
 * text=auto
 
+*.go   text eol=lf
+*.mod  text eol=lf
+*.sum  text eol=lf
+*.tmpl text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
 *.json text eol=lf
+*.txt  text eol=lf
+
+# Windows metadata and the Windows App SDK bootstrapper are binary. Without
+# these, `text=auto` above is one misdetection away from corrupting a 1.6 MB
+# winmd.
+*.winmd binary
+*.dll   binary
+*.lib   binary
+*.syso  binary

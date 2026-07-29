@@ -16,35 +16,31 @@
 *.log
 *.bak
 
-# Windows-specific 
-*.winfile eol=crlf
-
-# Go development
+# Go
 *.test
 /vendor/
 /bin/
 /dist/
-/pkg/
 coverage.out
 coverage.html
 
-# Python virtual environments
-scripts/python/venv/
-
-# Python cache and compiled files
-__pycache__/
-*.py[cod]
-*$py.class
-*.pyo
-.pytest_cache/
-*.egg-info/
-
-# AI instructions
+# AI instructions (CLAUDE.md at the repo root is tracked; the tooling
+# directory beside it is not, matching the sibling repos)
 .claude
 .cursor
 
-# Binaries and executables
+# Binaries and executables.
+#
+# The Windows App SDK bootstrapper (Microsoft.WindowsAppRuntime.Bootstrap.dll)
+# is fetched, never committed: `go run ./cmd/generate fetch-bootstrap` puts it
+# beside the executable that needs it. It does not ship in the installed
+# framework package, only in the NuGet package, so it has to be redistributed
+# with the app rather than found on the machine.
 *.dll
 *.exe
 *.dylib
 *.so
+
+# Fetched, not committed: the bootstrapper DLL and the SDK headers the version
+# constants are read from.
+/metadata/bootstrap/

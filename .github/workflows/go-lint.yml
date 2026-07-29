@@ -17,7 +17,9 @@ permissions:
 jobs:
   golint:
     name: '✨ Run golangci-lint'
-    runs-on: ubuntu-24.04-arm
+    # Every file in this repository carries `//go:build windows && amd64`, so
+    # a Linux runner would lint nothing at all and pass silently.
+    runs-on: windows-latest
 
     steps:
       - name: Harden Runner
@@ -33,10 +35,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
         with:
+          # go-version-file wins over go-version; setting both is contradictory,
+          # so the version comes from go.mod alone.
           go-version-file: 'go.mod'
-          cache-dependency-path: 'go.sum'
           cache: true
-          go-version: stable
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
