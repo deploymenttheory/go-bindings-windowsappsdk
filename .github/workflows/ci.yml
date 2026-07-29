@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Build & test
+    # Windows only. Every file carries `//go:build windows && amd64`, so a
+    # Linux runner would compile nothing and pass without checking anything.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Build
+        run: go build ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      # super-linter cannot check formatting here: it runs on Linux, where the
+      # build tags exclude every file. So it is checked on Windows instead.
+      - name: gofmt
+        shell: bash
+        run: |
+          unformatted=$(gofmt -l .)
+          if [ -n "$unformatted" ]; then
+            echo "::error::gofmt needed on:"
+            echo "$unformatted"
+            exit 1
+          fi
+
+      # These make real WinRT calls. They are what proves this module composes
+      # with the pinned go-bindings-winrt and go-bindings-win32 at runtime and
+      # not merely at compile time.
+      - name: Tests
+        run: go test ./...
+
+      # arm64 is deliberately excluded rather than generated for: Go's
+      # asm_windows_arm64.s never loads the V registers, so floats and
+      # all-float structs crossing syscall.SyscallN would be silently
+      # corrupted. Assert the constraint holds, because a wildcard
+      # `GOARCH=arm64 go build` would pass by building nothing at all.
+      - name: Assert amd64-only build constraints
+        shell: bash
+        run: |
+          if git grep -lE 'go:build.*(arm64|386)' -- '*.go'; then
+            echo "::error::a file claims an architecture this module excludes"
+            exit 1
+          fi
