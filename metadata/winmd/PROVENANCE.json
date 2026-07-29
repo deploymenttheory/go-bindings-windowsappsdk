@@ -1,0 +1,290 @@
+[
+  {
+    "package": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+    "version": "2.1.3",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.interactiveexperiences/2.1.3/microsoft.windowsappsdk.interactiveexperiences.2.1.3.nupkg",
+    "file": "metadata/10.0.18362.0/Microsoft.Foundation.winmd",
+    "sha256": "35e4c26a848e9647451aa1e1dd9e8a4ce733af73f3f51a11c5eb6d9dfc7c7bf8",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+    "version": "2.1.3",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.interactiveexperiences/2.1.3/microsoft.windowsappsdk.interactiveexperiences.2.1.3.nupkg",
+    "file": "metadata/10.0.18362.0/Microsoft.Graphics.winmd",
+    "sha256": "7f012e29259684e8c4a6a7405dd0d9c6b5660d4ef9a9531c141dd8c75ab0ad25",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+    "version": "2.1.3",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.interactiveexperiences/2.1.3/microsoft.windowsappsdk.interactiveexperiences.2.1.3.nupkg",
+    "file": "metadata/10.0.18362.0/Microsoft.UI.winmd",
+    "sha256": "94a5a1f4fdaa80ac6aba4cd7f442e1424f83b73011ad8c5644dad3355b2f5de3",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Graphics.Imaging.winmd",
+    "sha256": "b065914d02bc222e2916302c133596ccb94f2d78a7a09c599c3dfd38360760f3",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Security.Authentication.OAuth.winmd",
+    "sha256": "637bf532196b9c7aff95d26b8d625d17beae847ca74d9319c7ec4f5c77baaffa",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.WinUI",
+    "version": "2.3.0",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.winui/2.3.0/microsoft.windowsappsdk.winui.2.3.0.nupkg",
+    "file": "metadata/Microsoft.UI.Text.winmd",
+    "sha256": "9b769b8b5cf8463757b7eac1a00cc041ca50f8f0122ef6e5eb84aac4f49fe19b",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.WinUI",
+    "version": "2.3.0",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.winui/2.3.0/microsoft.windowsappsdk.winui.2.3.0.nupkg",
+    "file": "metadata/Microsoft.UI.Xaml.winmd",
+    "sha256": "8564c79cff9ef5def928d634456f31943ad84ab1ba9536baa3c4a207c0e670a7",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.AI.ContentSafety.winmd",
+    "sha256": "8f1b2dd7136938c4ae04038b5c0c98137040b69ccd24c77b346ef204f4bbf6ce",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.AI.Foundation.winmd",
+    "sha256": "3020b038f62f30ac8ae9ec5e345d896d0c9cdafdbee60af5fca56822963a9300",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.AI.Imaging.winmd",
+    "sha256": "18f1777901e7a148f4412cf88d0ad550009f31e5d4abb91c3f15120726ebe102",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.AI.Text.winmd",
+    "sha256": "99fabe56715a02d7cddb6295ea59eec376895656aae954cccc84629d2d15dc5f",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.AI.Video.winmd",
+    "sha256": "0b42ed72c39dd851c6ee3532dc80f9b5fb7d99f63c30abb1199dade05eab8af9",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.AI.winmd",
+    "sha256": "0213b80d98517aec2da5d77a72224dad130a745f7737464d60e062d3a1d2e655",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.AppLifecycle.winmd",
+    "sha256": "528c5a5b2f57f66310b290cea2ef4651bcc524712458f547d66eb83648e45db4",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.AppNotifications.Builder.winmd",
+    "sha256": "03251167676312236e23cd339f965fe0a8886a19f05a5bda76c1e168bd0459c9",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.AppNotifications.winmd",
+    "sha256": "89187348bb321bd678f7256196c04e74cc519b05bf81b52f444307e9b6f7191e",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.winmd",
+    "sha256": "164dedec9de1140cf056367b0d7d579109d4183a87e4ba0a5e151f19638e6068",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.ApplicationModel.Background.winmd",
+    "sha256": "9dddde4cc0c52852e091d8186052b881e50833060294cc8b387dbe852c383e17",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.ApplicationModel.DynamicDependency.winmd",
+    "sha256": "809b3ad03804dbe4205e89605b6478d871132e2182e71e8ef8be4426ca9207d0",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.ApplicationModel.Resources.winmd",
+    "sha256": "837f1891565fde26d3eecaf2adac1fbc74ca3006204cfbde133c56e72740b524",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.ApplicationModel.WindowsAppRuntime.winmd",
+    "sha256": "4dce9b3c1668c3d173775dcecb2ece530e4fcde354f9930cc02797d16268ab45",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.BadgeNotifications.winmd",
+    "sha256": "6eb511e2e5cf233be56944edc13f4e311a8134d353d4dada101c7647fc26dbec",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Foundation.winmd",
+    "sha256": "2c6624f561bcefedb72a6da24029193a3176ce94fee275604edfb9b2cfe31e8a",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Globalization.winmd",
+    "sha256": "7001b8d0025436529f0806b26cba772d4bc8598370c78433aef1e3e8bc5cff42",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Management.Deployment.winmd",
+    "sha256": "ef4d5a22d6af70a56d46133d63d68ff754b294cdf841888ee1a54896f1fdcc6d",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Media.Capture.winmd",
+    "sha256": "8495123c84de6a797a5b79503ade1c3a27e31e0c55dc035ba5f727fd877365ea",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.PushNotifications.winmd",
+    "sha256": "1a3292e91f091f0a1baf7c18e5d5691d609e2e820f8e2069e36158d397468694",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Security.AccessControl.winmd",
+    "sha256": "b86aa77cef6363384c8b7125e35f63eb83caa63d043f5105d71b519922bbe3fb",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.SemanticSearch.winmd",
+    "sha256": "b0799ddfad2b8a262175fd7c1c09f1839c6a5e5bf176c9ce53255ee02b9780f4",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Storage.Pickers.winmd",
+    "sha256": "823d9229eaa2047092821ea101346fbe0d79ae2b1a8127e266547582d3b0e3a4",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Storage.winmd",
+    "sha256": "0ec6284b03a0f64f3bb69909fbfa1fa8891a1eb70d499e25cc32e21ca65c37b5",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.System.Power.winmd",
+    "sha256": "09f05891b50afa4c3907220d3edc2ea0c8a4b4f000b1c521e2954456c0c636b1",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Foundation",
+    "version": "2.3.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/2.3.5/microsoft.windowsappsdk.foundation.2.3.5.nupkg",
+    "file": "metadata/Microsoft.Windows.System.winmd",
+    "sha256": "e1394ecd6a8dd01bbe4ef038b46ad06a38766bb5d2b89d9dbc5d5fbeaa1c3bb2",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.Vision.winmd",
+    "sha256": "ea0f99cc231071cb8575bc60eb1c5b4baed09d37cc32affd1c121705b1d41c3c",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.Widgets",
+    "version": "2.0.5",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.widgets/2.0.5/microsoft.windowsappsdk.widgets.2.0.5.nupkg",
+    "file": "metadata/Microsoft.Windows.Widgets.winmd",
+    "sha256": "f3b410a5772de1ef0945719bb4d9cd24e78a21928ecd0f6703c2a9996cd88bca",
+    "fetched": "2026-07-29"
+  },
+  {
+    "package": "Microsoft.WindowsAppSDK.AI",
+    "version": "2.3.4",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/2.3.4/microsoft.windowsappsdk.ai.2.3.4.nupkg",
+    "file": "metadata/Microsoft.Windows.Workloads.winmd",
+    "sha256": "0157f4416e4e7b9c3013e3a6f070312303d620aec7602062200f0d2b64643b9e",
+    "fetched": "2026-07-29"
+  }
+]
