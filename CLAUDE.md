@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code) working in this repository.
 
 ## What this is
 
-`go-bindings-microsoft-ui-xaml` provides Go bindings for the **Windows App
+`go-bindings-windowsappsdk` provides Go bindings for the **Windows App
 SDK** — the `Microsoft.*` namespaces, of which WinUI 3
 (`Microsoft.UI.Xaml.*`) is the reason the repository exists. It is the fifth
 member of the deploymenttheory Windows bindings family and sits on top of

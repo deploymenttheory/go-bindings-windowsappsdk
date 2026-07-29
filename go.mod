@@ -1,4 +1,4 @@
-module github.com/deploymenttheory/go-bindings-microsoft-ui-xaml
+module github.com/deploymenttheory/go-bindings-windowsappsdk
 
 go 1.25.0
 
