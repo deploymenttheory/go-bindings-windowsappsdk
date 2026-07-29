@@ -31,6 +31,7 @@ func main() {
 	namespaces := flag.Bool("namespaces", false, "list namespaces and how many types each holds")
 	typeName := flag.String("type", "", "print one type: its IID and its methods with vtable slots")
 	search := flag.String("search", "", "list types whose full name contains this")
+	refs := flag.Bool("refs", false, "list namespaces referenced but not defined here")
 	flag.Parse()
 
 	if *file == "" && *dir == "" {
@@ -47,6 +48,8 @@ func main() {
 		err = printType(paths, *typeName)
 	case *search != "":
 		err = printSearch(paths, *search)
+	case *refs:
+		err = printRefs(paths)
 	case *namespaces:
 		err = printNamespaces(paths)
 	default:
@@ -149,6 +152,69 @@ func printNamespaces(paths []string) error {
 		fmt.Printf("%-60s %6d  %s\n", name, counts[name], source[name])
 	}
 	fmt.Printf("\n%d namespaces\n", len(names))
+	return nil
+}
+
+// printRefs lists the namespaces these files reference but do not define.
+//
+// This is the external dependency set the projection has to resolve: anything
+// under Windows.* has to map onto go-bindings-winrt's already-generated
+// packages, and anything under neither Windows.* nor Microsoft.* has no Go
+// equivalent at all and its users must be skipped deliberately.
+func printRefs(paths []string) error {
+	defined := map[string]bool{}
+	referenced := map[string]int{}
+
+	for _, path := range paths {
+		file, err := winmd.Open(path)
+		if err != nil {
+			return fmt.Errorf("%s: %w", filepath.Base(path), err)
+		}
+		for i := range file.Tables.TypeDefs {
+			if namespace := file.Tables.TypeDefs[i].Namespace; namespace != "" {
+				defined[namespace] = true
+			}
+		}
+	}
+	for _, path := range paths {
+		file, err := winmd.Open(path)
+		if err != nil {
+			return fmt.Errorf("%s: %w", filepath.Base(path), err)
+		}
+		for i := range file.Tables.TypeRefs {
+			namespace := file.Tables.TypeRefs[i].Namespace
+			if namespace == "" || defined[namespace] {
+				continue
+			}
+			referenced[namespace]++
+		}
+	}
+
+	names := make([]string, 0, len(referenced))
+	for name := range referenced {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+
+	var windows, system, other int
+	fmt.Printf("%-56s %6s  %s\n", "REFERENCED NAMESPACE", "REFS", "RESOLVES TO")
+	for _, name := range names {
+		var resolution string
+		switch {
+		case name == "System" || strings.HasPrefix(name, "System."):
+			resolution = "metadata plumbing (not projected)"
+			system++
+		case strings.HasPrefix(name, "Windows."):
+			resolution = "go-bindings-winrt"
+			windows++
+		default:
+			resolution = "NO GO EQUIVALENT"
+			other++
+		}
+		fmt.Printf("%-56s %6d  %s\n", name, referenced[name], resolution)
+	}
+	fmt.Printf("\n%d external namespaces: %d Windows.* (go-bindings-winrt), %d System.*, %d unresolved\n",
+		len(names), windows, system, other)
 	return nil
 }
 
