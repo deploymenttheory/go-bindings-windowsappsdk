@@ -25,13 +25,13 @@ This repository serves as a **Default Template Repository** according official [
 
 ## Status
 
-[![Super Linter](<https://github.com/segraef/Template/actions/workflows/linter.yml/badge.svg>)](<https://github.com/segraef/Template/actions/workflows/linter.yml>)
+[![Super Linter](<https://github.com/deploymentheory/Template/actions/workflows/linter.yml/badge.svg>)](<https://github.com/deploymentheory/Template/actions/workflows/linter.yml>)
 
-[![Sample Workflow](<https://github.com/segraef/Template/actions/workflows/workflow.yml/badge.svg>)](<https://github.com/segraef/Template/actions/workflows/workflow.yml>)
+[![Sample Workflow](<https://github.com/deploymentheory/Template/actions/workflows/workflow.yml/badge.svg>)](<https://github.com/deploymentheory/Template/actions/workflows/workflow.yml>)
 
 ## Creating a repository from a template
 
-You can [generate](https://github.com/segraef/Template/generate) a new repository with the same directory structure and files as an existing repository. More details can be found [here][CreateFromTemplate].
+You can [generate](https://github.com/deploymentheory/Template/generate) a new repository with the same directory structure and files as an existing repository. More details can be found [here][CreateFromTemplate].
 
 ## Reporting Issues and Feedback
 
@@ -62,7 +62,7 @@ If you would like to become an active contributor to this repository or project,
 [CreateFromTemplate]: <https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template>
 [GitHubDocs]: <https://docs.github.com/>
 [AzureDevOpsDocs]: <https://docs.microsoft.com/en-us/azure/devops/?view=azure-devops>
-[GitHubIssues]: <https://github.com/segraef/Template/issues>
+[GitHubIssues]: <https://github.com/deploymentheory/Template/issues>
 [Contributing]: CONTRIBUTING.md
 
 <!-- External -->
