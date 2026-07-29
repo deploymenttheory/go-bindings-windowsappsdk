@@ -1,4 +1,4 @@
-# go-bindings-microsoft-ui-xaml
+# go-bindings-windowsappsdk
 
 Go bindings for **WinUI 3** and the rest of the [Windows App
 SDK](https://learn.microsoft.com/windows/apps/windows-app-sdk/) — the
