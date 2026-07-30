@@ -1,13 +1,14 @@
 //go:build windows && amd64
 
 // Package app is the ergonomic layer over the generated bindings: the startup
-// sequence a WinUI application needs, in the one order that works, with the two
-// traps that are not discoverable from the API surface already handled.
+// sequence a WinUI application needs, in the one order that works.
 //
 // Everything here could be written by hand against bindings/winui. It is here
-// because getting it wrong produces symptoms that point somewhere else entirely —
-// an unstyled window, a parser error inside XamlReader, a cross-apartment call that
-// looks like a slow one.
+// because getting the order wrong produces symptoms that point somewhere else
+// entirely — an E_UNEXPECTED that looks like a broken binding, a message loop that
+// hangs instead of reporting an error, a cross-apartment call that looks like a slow
+// one. Each of those was hit while writing this, and each is now impossible to hit
+// through Run.
 package app
 
 import (
@@ -27,38 +28,62 @@ type Options struct {
 	// The zero value requests the line this repository targets.
 	Bootstrap *winui.BootstrapOptions
 
-	// ControlsResources asks for XamlControlsResources to be merged into the
+	// SkipControlsResources suppresses merging XamlControlsResources into the
 	// application's resources.
 	//
-	// It is opt-in, and it currently FAILS — see AddControlsResources. It is
-	// off by default because the failure is not recoverable from here and a
-	// library should not begin by returning an error nobody can act on.
+	// Merging is attempted by default because it is what a WinUI application
+	// wants: without those resources controls render unstyled. It does not
+	// currently succeed — see AddControlsResources for what is known and what
+	// is not — so the failure is reported through OnControlsResourcesError
+	// rather than aborting startup.
+	SkipControlsResources bool
+
+	// OnControlsResourcesError observes a failed XamlControlsResources merge.
 	//
-	// Turning it on is how you find out whether a newer Windows App SDK, or the
-	// derived-application path, has changed that.
-	ControlsResources bool
+	// It exists because the failure is real but not fatal: an application still
+	// runs, with unstyled controls. A nil hook ignores it, which is the right
+	// default for a caller who cannot act on it, and a test or a diagnostic
+	// build can supply one.
+	OnControlsResourcesError func(error)
 }
 
-// ErrNoApplication reports that Application.Current was nil inside the
-// initialization callback, which should not happen: Application.Start creates the
-// application before invoking it.
-var ErrNoApplication = errors.New("app: Application.Current is nil inside the initialization callback")
+// Ready is what Run hands the caller once startup is complete: an application, and
+// its first window.
+//
+// The window is created by Run rather than by the caller because the order matters
+// and is not discoverable. Application.Resources is unavailable until the XAML core
+// is up, and creating the first Window is what brings it up — so resources can only
+// be merged after a window exists. Handing the window over removes the chance of
+// getting that wrong.
+type Ready struct {
+	// Application is Application.Current. It is a borrowed reference owned by the
+	// application's own lifetime; do not Release it.
+	Application *uixaml.IApplication
 
-// Run enters the UI thread, starts the application, and calls onReady on the UI
-// thread once the application exists and its resources are in place.
+	// Window is the application's first window, created but NOT activated: set its
+	// content first, then call Activate.
+	Window *uixaml.Window
+}
+
+// ErrNoApplication reports that Application.Current was nil after the initialization
+// callback constructed an application, which should not happen.
+var ErrNoApplication = errors.New("app: Application.Current is nil after constructing an Application")
+
+// Run enters the UI thread, starts the application, creates its first window, and
+// calls onReady on the UI thread with both.
 //
 // It blocks until the application exits, which is what Application.Start does — so
-// onReady should create a window, activate it, and return. Anything that needs to
-// happen later belongs in an event handler or on the DispatcherQueue.
+// onReady should set the window's content, activate it, and return. Anything that
+// needs to happen later belongs in an event handler or on the DispatcherQueue.
 //
 // Application.Start creates the DispatcherQueueController itself. Do not call
-// CreateDispatcherQueueController by hand: a second controller on the same thread
-// is an error, and the symptom appears much later.
+// CreateDispatcherQueueController by hand: a second controller on the same thread is
+// an error, and the symptom appears much later.
 //
 // The error returned from onReady is surfaced here after the application exits, not
 // instead of running it: by the time onReady is called the message loop is already
 // the thing in charge.
-func Run(onReady func(application *uixaml.IApplication) error, options Options) error {
+func Run(onReady func(ready *Ready) error, options Options) error {
 	bootstrap := winui.DefaultBootstrap()
 	if options.Bootstrap != nil {
 		bootstrap = *options.Bootstrap
@@ -116,9 +141,13 @@ func Run(onReady func(application *uixaml.IApplication) error, options Options) 
 //
 // It does not have to be a DERIVED application, which is the useful discovery here:
 // a plain Microsoft.UI.Xaml.Application is enough to get a working Current, so
-// Go-side derivation (which would need COM aggregation support that does not exist)
-// is not on the critical path for building a UI at all.
-func initialize(statics *uixaml.IApplicationStatics, onReady func(*uixaml.IApplication) error, options Options) error {
+// Go-side derivation is not on the critical path for building a UI at all.
+//
+// The window is created here rather than by the caller, and that is the ordering
+// this function exists to own: Application.Resources is unavailable until the XAML
+// core is up, and the first Window is what brings it up. Merging resources before
+// then fails with E_UNEXPECTED, which reads as a defect and is not one.
+func initialize(statics *uixaml.IApplicationStatics, onReady func(*Ready) error, options Options) error {
 	created, err := uixaml.NewApplication()
 	if err != nil {
 		return fmt.Errorf("app: constructing the Application: %w", err)
@@ -138,15 +167,22 @@ func initialize(statics *uixaml.IApplicationStatics, onReady func(*uixaml.IAppli
 	// Current is a borrowed reference from the application's own lifetime, not a new
 	// one to release: releasing it here would drop the application's count.
 
-	if options.ControlsResources {
-		if err := AddControlsResources(application); err != nil {
-			return err
+	window, err := uixaml.NewWindow()
+	if err != nil {
+		return fmt.Errorf("app: creating the first Window: %w", err)
+	}
+
+	// Only now are resources reachable. A failure here is reported, not fatal: the
+	// application still runs, with unstyled controls.
+	if !options.SkipControlsResources {
+		if err := AddControlsResources(application); err != nil && options.OnControlsResourcesError != nil {
+			options.OnControlsResourcesError(err)
 		}
 	}
 	if onReady == nil {
 		return nil
 	}
-	return onReady(application)
+	return onReady(&Ready{Application: application, Window: window})
 }
 
 // AddControlsResources merges XamlControlsResources into the application's
@@ -157,30 +193,28 @@ func initialize(statics *uixaml.IApplicationStatics, onReady func(*uixaml.IAppli
 // not work in WinUI 3" almost always turns out to be — a resources problem wearing a
 // parser's clothes.
 //
-// Why it does not work yet. Against a Windows App SDK 2.3 runtime this returns
-// E_UNEXPECTED (0x8000FFFF) from the very first call, Application.Resources, on an
-// application created the only way this module can currently create one: through
-// IApplicationFactory.CreateInstance with a NULL controlling outer.
+// Ordering. Application.Resources is unavailable until the XAML core is up, and
+// creating the first Window is what brings it up. Called before then it returns
+// E_UNEXPECTED (0x8000FFFF), which reads like a defect and is not one — it is the
+// framework saying "too early". Run creates the window first for exactly this
+// reason; a caller invoking this directly must do the same.
+// TestResourcesRequireTheXamlCore pins both halves of that transition.
 //
-// That is not a projection bug, and it is worth being precise about why, because
-// "catastrophic failure" invites the assumption that it is:
+// What still does not work, and what is not known about it. With the ordering
+// correct, Resources succeeds and the next call fails instead: activating
+// XamlControlsResources returns E_FAIL (0x80004005), at every point tried — before
+// Application.Start, inside the callback, after the first Window, after Activate.
 //
-//   - get_Resources is slot 6 on IApplication, which internal/verify pins against
-//     the committed winmd, and the generated call dispatches slot 6.
-//   - Every other call on the same interface pointer works — Exit ends the message
-//     loop, and Current returned this pointer in the first place.
-//   - Window, Button, content, activation, the DispatcherQueue and a Go delegate
-//     invoked by the framework all work on the same application.
+// The cause is NOT established. The leading suspicion is that a Go application
+// cannot answer QueryInterface for Microsoft.UI.Xaml.Markup.IXamlMetadataProvider —
+// TestApplicationHasNoXamlMetadataProvider pins that it returns E_NOINTERFACE, where
+// a compiled C# or C++ application's App class implements it — and that without a
+// metadata provider the resource dictionary cannot resolve the XAML types it names.
+// That is inference from one observation, not a demonstrated chain, and it should not
+// be repeated as fact until something tests it.
 //
-// What is left is the composition shape. Application is designed to be derived
-// from: the outer object is the application, and the inner is its base. Created
-// with a null outer there is no derived instance for the framework to hang
-// application-level state on, and the resource dictionary is application-level
-// state. Deriving needs COM aggregation support that go-bindings-winrt does not
-// have yet — which is exactly the milestone this repository already has for it.
-//
-// TestApplicationResourcesNeedADerivedApplication pins the failure so that a newer
-// SDK, or the derived path landing, shows up as a test that has started passing.
+// The observable consequence either way: a Button in an activated window has a nil
+// Template and measures 0x0. It is in the tree and invisible.
 func AddControlsResources(application *uixaml.IApplication) error {
 	resources, err := application.Resources()
 	if err != nil {

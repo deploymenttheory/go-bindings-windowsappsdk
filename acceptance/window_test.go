@@ -11,7 +11,6 @@ package acceptance
 
 import (
 	"errors"
-	"strings"
 	"testing"
 	"unsafe"
 
@@ -22,6 +21,7 @@ import (
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	uixamlprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
+	uixamlmarkup "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/markup"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -58,6 +58,9 @@ func skipIfUnavailable(t *testing.T, err error) {
 // a cross-apartment call is not an option — so the exit has to come from a callback
 // the framework itself invokes. That the test returns at all is therefore part of
 // what it proves.
+//
+// The Button is untemplated and measures 0x0; see
+// TestApplicationHasNoXamlMetadataProvider. It is in the tree and invisible.
 func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 	var (
 		readyRan       bool
@@ -67,18 +70,16 @@ func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 		title          string
 	)
 
-	err := app.Run(func(application *uixaml.IApplication) error {
+	err := app.Run(func(ready *app.Ready) error {
 		readyRan = true
+		window := ready.Window
 
-		window, err := uixaml.NewWindow()
-		if err != nil {
-			return err
-		}
 		if err := window.SetTitle("go-bindings-windowsappsdk acceptance"); err != nil {
 			return err
 		}
 		// Read it back through a separate vtable slot: a get/put pair that agrees is
 		// evidence the HSTRING lowering round-trips, which no metadata check covers.
+		var err error
 		if title, err = window.Title(); err != nil {
 			return err
 		}
@@ -111,7 +112,10 @@ func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 			return err
 		}
 
-		// Click is on Primitives.IButtonBase, two classes above Button.
+		// Click is on Primitives.IButtonBase, two classes above Button. Controls and
+		// Controls.Primitives reference each other, so one import direction is
+		// severed and there is no generated AsButtonBase — but a consuming package
+		// closes no cycle, so the generic QueryInterface reaches it.
 		base, err := winrt.QueryInterface[uixamlprimitives.IButtonBase](
 			unsafe.Pointer(button), &uixamlprimitives.IID_IButtonBase)
 		if err != nil {
@@ -160,7 +164,7 @@ func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 		exit, err := uidispatching.NewDispatcherQueueHandler(func() {
 			dispatcherRan = true
 			dispatcherOnUI = winrt.CurrentThreadID() == winui.UIThreadID()
-			_ = application.Exit()
+			_ = ready.Application.Exit()
 		})
 		if err != nil {
 			return err
@@ -198,54 +202,194 @@ func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 	if !dispatcherOnUI {
 		t.Error("the enqueued handler did not run on the UI thread; SetInlineThread is not in effect")
 	}
+
 }
 
-// TestApplicationResourcesNeedADerivedApplication pins a platform limit, so that
-// the day it stops being one is visible.
+// TestResourcesRequireTheXamlCore is the evidence for why app.Run creates the window
+// itself, and it replaces an earlier test that asserted the wrong cause.
 //
-// Application.Resources returns E_UNEXPECTED on an application created the only way
-// this module can currently create one: IApplicationFactory.CreateInstance with a
-// NULL controlling outer. Everything else on the same interface pointer works, and
-// the slot is pinned against the winmd in internal/verify — so what is missing is
-// the derived instance the framework would hang application-level state on, and a
-// resource dictionary is application-level state.
+// Application.Resources is unavailable until the XAML core is up, and creating the
+// first Window is what brings it up. Called before then it returns E_UNEXPECTED,
+// which reads like a broken binding and is not one.
 //
-// The test asserts the failure. If a newer Windows App SDK, or the derived-application
-// path, makes it succeed, this fails and says so — which is the point. Do not
-// "fix" it by loosening the assertion.
-func TestApplicationResourcesNeedADerivedApplication(t *testing.T) {
+// Both halves are asserted, because only the TRANSITION distinguishes "too early"
+// from "broken". A test that observed the failure alone would have supported any
+// explanation at all — which is exactly how the wrong one came to be written down.
+//
+// It drives the raw startup path rather than app.Run, because app.Run deliberately
+// makes the "before" state unreachable. Adding a hook to Options just to observe it
+// would be test-only API weakening the guarantee being tested.
+func TestResourcesRequireTheXamlCore(t *testing.T) {
+	release, err := winui.EnterUIThread()
+	skipIfUnavailable(t, err)
+	if err != nil {
+		t.Fatalf("EnterUIThread: %v", err)
+	}
+	defer release()
+
+	statics, err := uixaml.ApplicationStatics()
+	if err != nil {
+		t.Fatalf("ApplicationStatics: %v", err)
+	}
+	defer statics.Release()
+
+	var beforeErr, afterErr error
+	var ran bool
+	callback, err := uixaml.NewApplicationInitializationCallback(
+		func(_ *uixaml.IApplicationInitializationCallbackParams) {
+			ran = true
+			if _, err := uixaml.NewApplication(); err != nil {
+				t.Errorf("NewApplication: %v", err)
+				return
+			}
+			application, err := statics.Current()
+			if err != nil || application == nil {
+				t.Errorf("Application.Current: %v", err)
+				return
+			}
+
+			_, beforeErr = application.Resources()
+
+			if _, err := uixaml.NewWindow(); err != nil {
+				t.Errorf("NewWindow: %v", err)
+			}
+			_, afterErr = application.Resources()
+
+			_ = application.Exit()
+		})
+	if err != nil {
+		t.Fatalf("NewApplicationInitializationCallback: %v", err)
+	}
+	defer callback.Close()
+
+	if err := statics.Start(callback); err != nil {
+		t.Fatalf("Application.Start: %v", err)
+	}
+	if !ran {
+		t.Fatal("the initialization callback never ran")
+	}
+	if beforeErr == nil {
+		t.Error("Application.Resources succeeded BEFORE the first Window: the ordering " +
+			"constraint app.Run is built around no longer holds, and Run could be simplified")
+	}
+	if afterErr != nil {
+		t.Errorf("Application.Resources failed AFTER the first Window: %v", afterErr)
+	}
+}
+
+// TestRunSequencesResourcesAfterTheWindow is the other half: that app.Run actually
+// satisfies the constraint above. By the time onReady is called, Resources works.
+func TestRunSequencesResourcesAfterTheWindow(t *testing.T) {
 	var resourcesErr error
-	err := app.Run(func(application *uixaml.IApplication) error {
-		_, resourcesErr = application.Resources()
-		return application.Exit()
+	err := app.Run(func(ready *app.Ready) error {
+		if ready.Window == nil {
+			return errors.New("Run did not create a Window")
+		}
+		_, resourcesErr = ready.Application.Resources()
+		return ready.Application.Exit()
 	}, app.Options{})
 
 	skipIfUnavailable(t, err)
 	if err != nil {
 		t.Fatalf("app.Run: %v", err)
 	}
-	if resourcesErr == nil {
-		t.Error("Application.Resources now succeeds on a null-outer application: " +
-			"XamlControlsResources can be merged by default, and app.Options.ControlsResources " +
-			"should become the default rather than an opt-in")
-	} else {
-		t.Logf("Application.Resources fails as expected without a derived application: %v", resourcesErr)
+	if resourcesErr != nil {
+		t.Errorf("Application.Resources failed inside onReady: %v — Run's ordering is wrong", resourcesErr)
 	}
 }
 
-// TestControlsResourcesReportsTheSameLimit checks that the opt-in path surfaces the
-// cause rather than a bare HRESULT, since a caller who turns it on is precisely the
-// person who needs to know why it did not work.
-func TestControlsResourcesReportsTheSameLimit(t *testing.T) {
-	err := app.Run(func(application *uixaml.IApplication) error {
-		return application.Exit()
-	}, app.Options{ControlsResources: true})
+// TestApplicationHasNoXamlMetadataProvider records what actually does not work, as an
+// observation rather than an explanation.
+//
+// A compiled C# or C++ application's App class implements IXamlMetadataProvider —
+// that is what App.xaml.g.cs generates — and the framework QueryInterfaces the
+// application for it to resolve XAML types by name. A Go application cannot answer,
+// because answering means the framework calling into our object, which needs COM
+// aggregation.
+//
+// Whether that is what makes XamlControlsResources fail to activate is NOT
+// established. This test asserts only what was observed: the QI fails, and a Button
+// in an activated window ends up with no template and no size. The explanation is
+// deliberately absent — a previous version of this file stated one confidently and it
+// was wrong.
+func TestApplicationHasNoXamlMetadataProvider(t *testing.T) {
+	var (
+		providerErr   error
+		templateIsNil bool
+		width, height float64
+		measured      bool
+	)
+
+	err := app.Run(func(ready *app.Ready) error {
+		_, providerErr = winrt.QueryInterface[uixamlmarkup.IXamlMetadataProvider](
+			unsafe.Pointer(ready.Application), &uixamlmarkup.IID_IXamlMetadataProvider)
+
+		button, err := uixamlcontrols.NewButton()
+		if err != nil {
+			return err
+		}
+		element, err := button.AsUIElement()
+		if err != nil {
+			return err
+		}
+		defer element.Release()
+		if err := ready.Window.SetContent(element); err != nil {
+			return err
+		}
+		if err := ready.Window.Activate(); err != nil {
+			return err
+		}
+
+		// Measure after a layout pass, not at construction: a template is applied at
+		// measure time, so a nil template before then would prove nothing.
+		queue, err := ready.Window.DispatcherQueue()
+		if err != nil {
+			return err
+		}
+		defer queue.Release()
+		done, err := uidispatching.NewDispatcherQueueHandler(func() {
+			measured = true
+			if control, err := button.AsControl(); err == nil {
+				template, _ := control.Template()
+				templateIsNil = template == nil
+				if template != nil {
+					template.Release()
+				}
+				control.Release()
+			}
+			if frameworkElement, err := button.AsFrameworkElement(); err == nil {
+				width, _ = frameworkElement.ActualWidth()
+				height, _ = frameworkElement.ActualHeight()
+				frameworkElement.Release()
+			}
+			_ = ready.Application.Exit()
+		})
+		if err != nil {
+			return err
+		}
+		defer done.Close()
+		if enqueued, err := queue.TryEnqueue(done); err != nil || !enqueued {
+			return errors.New("TryEnqueue failed; the application would never exit")
+		}
+		return nil
+	}, app.Options{})
 
 	skipIfUnavailable(t, err)
-	if err == nil {
-		t.Skip("XamlControlsResources merged successfully; see TestApplicationResourcesNeedADerivedApplication")
+	if err != nil {
+		t.Fatalf("app.Run: %v", err)
 	}
-	if !strings.Contains(err.Error(), "Application.Resources") {
-		t.Errorf("error = %v, want it to name the call that failed", err)
+	if providerErr == nil {
+		t.Error("the Application now answers IXamlMetadataProvider: aggregation has landed, " +
+			"or the framework no longer needs it — re-test whether XamlControlsResources activates")
+	}
+	if !measured {
+		t.Fatal("the layout pass never ran")
+	}
+	if !templateIsNil || width != 0 || height != 0 {
+		t.Errorf("Button now has a template (nil=%v) and measures %.1fx%.1f: controls are being "+
+			"styled, so the resources problem is solved and this test should be replaced by one "+
+			"asserting that", templateIsNil, width, height)
+	} else {
+		t.Logf("Button is untemplated and measures %.1fx%.1f — in the tree and invisible", width, height)
 	}
 }

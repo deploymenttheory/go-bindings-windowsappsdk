@@ -29,12 +29,13 @@ generated for it.
 
 M6. The winmds are committed (36 files, 77 namespaces, 4,374 API types), ingest
 projects them into committed JSON with every reference resolved, the emitter
-produces **77 Go packages / 384 files** that compile, and `acceptance/` puts a
-**real WinUI 3 window on screen** from Go — a `Button` with content, activated, with
-the framework calling a Go handler back on the UI thread.
+produces **77 Go packages / 384 files** that compile, and `acceptance/` puts a real
+WinUI 3 window on screen from Go, with the framework calling a Go handler back on the
+UI thread.
 
-What is not done is M7: deriving from a WinRT class. It has one concrete
-consequence today, recorded below.
+The controls in it are **invisible** — untemplated, measuring 0×0 — because
+`XamlControlsResources` cannot be activated. Why is not established; see below. That
+is the honest headline, and the one open question worth answering next.
 
 `README.md` has the milestone order; the detail below describes the design being
 built toward, and is written down now so it does not have to be rediscovered.
@@ -159,11 +160,17 @@ RoInitialize(single-threaded apartment)   ← before anything is activated
 winrt.SetInlineThread(current thread)
 MddBootstrapInitialize2(...)              ← COM must already be initialized
 Application.Start(callback)               ← blocks
-    └── inside the callback: create the Application, then the Window
+    └── inside the callback: create the Application,
+        then the Window,          ← brings the XAML core up
+        then merge resources      ← unavailable before the Window exists
 ```
 
 `Application.Start` creates the `DispatcherQueueController` itself;
 `CreateDispatcherQueueController` should not be called by hand.
+
+The last two steps are why `app.Run` creates the window rather than letting the
+caller do it: the ordering is invisible in the API and its violation looks like a
+broken binding.
 
 ### What the live tests established
 
@@ -187,14 +194,33 @@ is not an option — so `app.Run` calls `Exit` from inside the callback before
 returning into the framework. Without that, a startup error hangs the process
 instead of reporting itself.
 
-**`XamlControlsResources` cannot be merged yet, and the reason is composition.**
-`Application.Resources` returns `E_UNEXPECTED` on a null-outer application. Not a
-projection bug: `get_Resources` is slot 6, `internal/verify` pins that against the
-winmd, the generated call dispatches slot 6, and every other member of the same
-interface pointer works. What is missing is a derived instance for the framework to
-hang application-level state on — so this is the first concrete thing that needs
-M7. It is opt-in (`app.Options.ControlsResources`) and the failure is pinned by a
-test that will break when it starts working.
+**`Application.Resources` needs the first `Window` to exist.** It returns
+`E_UNEXPECTED` before then and succeeds after: the resource dictionary is not
+available until the XAML core is up, and creating the first `Window` is what brings
+it up. `app.Run` therefore creates the window itself and hands it to the callback,
+which is the only reason `Ready` carries one.
+
+`TestResourcesRequireTheXamlCore` asserts **both** halves of that transition, and
+that is not padding. An earlier version of this file explained the same failure as a
+consequence of null-outer composition — confidently, with a citation to a pin in
+`internal/verify` that did not exist — and it was simply wrong. Only the transition
+distinguishes "too early" from "broken"; a test that saw the failure alone would have
+supported the wrong story just as well.
+
+**What still does not work: activating `XamlControlsResources`.** With the ordering
+correct, `Resources` succeeds and the next call fails instead — `E_FAIL`, at every
+point tried. **The cause is not established.** The leading suspicion is that a Go
+application cannot answer `QueryInterface` for
+`Microsoft.UI.Xaml.Markup.IXamlMetadataProvider`, which
+`TestApplicationHasNoXamlMetadataProvider` pins as `E_NOINTERFACE` — a compiled C# or
+C++ app's `App` class implements it — and that a resource dictionary cannot resolve
+the XAML types it names without one. That is inference from one observation, not a
+demonstrated chain. Do not repeat it as fact until something tests it.
+
+The observable consequence: a `Button` in an activated window has a nil `Template`
+and measures 0×0. It is in the tree and **invisible**. So the window is real and the
+controls are not, which is worth stating plainly rather than rounding up to "a window
+with a Button on screen".
 
 That matters because of what the resources are for: without them controls render
 unstyled and every `{ThemeResource}` lookup fails while parsing, which is the usual
