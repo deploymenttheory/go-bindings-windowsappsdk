@@ -62,11 +62,19 @@ func (g *Generator) buildClassType(meta *wasdkmeta.NamespaceMeta, name, fullName
 		}
 		return view.ClassModel{FullName: fullName}, false
 	}
-	if class.DefaultInterface.Kind != "ApiRef" {
-		g.diag("class-default-generic-skipped", "%s (default %s)", fullName, refDisplay(class.DefaultInterface))
-		return view.ClassModel{FullName: fullName}, false
-	}
-
+	// A generic instantiation is a perfectly good default interface, and for XAML's
+	// collection classes it is the ONLY one: UIElementCollection's default is
+	// IVector`1<UIElement>, TransitionCollection's is IVector`1<Transition>, and
+	// thirty classes follow that shape. Refusing them cost far more than the classes
+	// themselves — Panel.Children, Grid.RowDefinitions, TextBlock.Inlines,
+	// ItemsControl.Items and Storyboard.Children all return one, so every one of those
+	// properties degraded to IInspectable, silently, because a property that resolves
+	// to an un-emitted class is not itself a diagnostic.
+	//
+	// GoType below resolves the instantiation through the same demand-driven seam a
+	// member would, which registers it for emission into this package; iidRef then
+	// names its derived IID var. Order matters: resolve before asking for the IID, or
+	// the IID names a type nothing queued.
 	context := g.resolveContext(meta.Namespace)
 	scratch := typemap.ImportSet{}
 	resolvedDefault := g.mapper.GoType(class.DefaultInterface, context, scratch)
@@ -180,7 +188,7 @@ func (g *Generator) addQueryMethod(model *view.ClassModel, target *wasdkmeta.Typ
 		return
 	}
 	if methodNames[asName] {
-		// Silent for an inherited duplicate: a class re-declaring an interface its
+		// Silent for an inherited duplicate: a class that declares an interface its
 		// base already declares is ordinary, and the derived one already won.
 		if inheritedFrom == "" {
 			g.diag("name-collision-skipped", "%s", memberPath)

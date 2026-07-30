@@ -25,9 +25,18 @@ type IAsyncOperationOfVideoScaler struct {
 // IID_IAsyncOperationOfVideoScaler is the interface identifier for IAsyncOperationOfVideoScaler.
 var IID_IAsyncOperationOfVideoScaler = win32.GUID{Data1: 0x8ac5952e, Data2: 0xf02d, Data3: 0x5708, Data4: [8]byte{0x96, 0x59, 0xf1, 0x78, 0x59, 0xe5, 0xe3, 0x1f}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfVideoScaler's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfVideoScaler) SetCompleted(handler *AsyncOperationCompletedHandlerOfVideoScaler) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfVideoScaler's vtable slot 8.
 func (self *IAsyncOperationOfVideoScaler) GetResults() (*IVideoScaler, error) {
@@ -48,11 +57,20 @@ var IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble = win32.GUID{
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfAIFeatureReadyResultAndDouble) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) GetResults() (*windowsai.IAIFeatureReadyResult, error) {

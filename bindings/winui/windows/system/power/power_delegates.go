@@ -10,7 +10,43 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
+
+// AsyncOperationCompletedHandlerOfEffectivePowerMode is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<Microsoft.Windows.System.Power.EffectivePowerMode>.
+// IID: 897713ea-1f95-5c1b-a24b-9341aabc743a
+type AsyncOperationCompletedHandlerOfEffectivePowerMode struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfEffectivePowerMode is the delegate identifier for AsyncOperationCompletedHandlerOfEffectivePowerMode.
+var IID_AsyncOperationCompletedHandlerOfEffectivePowerMode = win32.GUID{Data1: 0x897713ea, Data2: 0x1f95, Data3: 0x5c1b, Data4: [8]byte{0xa2, 0x4b, 0x93, 0x41, 0xaa, 0xbc, 0x74, 0x3a}}
+
+// NewAsyncOperationCompletedHandlerOfEffectivePowerMode wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<Microsoft.Windows.System.Power.EffectivePowerMode>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfEffectivePowerMode(fn func(asyncInfo *IAsyncOperationOfEffectivePowerMode, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfEffectivePowerMode, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfEffectivePowerMode, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfEffectivePowerMode)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfEffectivePowerMode{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfEffectivePowerMode) Ptr() uintptr { return h.delegate.Ptr() }
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfEffectivePowerMode) Close() { h.delegate.Release() }
 
 // EventHandlerOfObject is a Go-implemented handler for the WinRT delegate
 // Windows.Foundation.EventHandler`1<Object>.

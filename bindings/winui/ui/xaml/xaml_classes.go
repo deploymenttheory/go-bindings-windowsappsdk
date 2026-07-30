@@ -480,6 +480,57 @@ func NewDependencyObject() (*DependencyObject, error) {
 	return (*DependencyObject)(unsafe.Pointer(instance)), nil
 }
 
+// DependencyObjectCollection is the Microsoft.UI.Xaml.DependencyObjectCollection runtime class, surfaced through its
+// default interface IObservableVectorOfDependencyObject. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type DependencyObjectCollection struct {
+	IObservableVectorOfDependencyObject
+}
+
+// AsVectorOfDependencyObject queries the instance's IVectorOfDependencyObject interface.
+// The returned reference is owned by the caller.
+func (self *DependencyObjectCollection) AsVectorOfDependencyObject() (*IVectorOfDependencyObject, error) {
+	return winrt.QueryInterface[IVectorOfDependencyObject](unsafe.Pointer(self), &IID_IVectorOfDependencyObject)
+}
+
+// AsIterableOfDependencyObject queries the instance's IIterableOfDependencyObject interface.
+// The returned reference is owned by the caller.
+func (self *DependencyObjectCollection) AsIterableOfDependencyObject() (*IIterableOfDependencyObject, error) {
+	return winrt.QueryInterface[IIterableOfDependencyObject](unsafe.Pointer(self), &IID_IIterableOfDependencyObject)
+}
+
+// AsDependencyObject queries the instance's IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DependencyObjectCollection) AsDependencyObject() (*IDependencyObject, error) {
+	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
+}
+
+// NewDependencyObjectCollection constructs a Microsoft.UI.Xaml.DependencyObjectCollection instance through
+// Microsoft.UI.Xaml.IDependencyObjectCollectionFactory.CreateInstance with a NULL controlling outer: the
+// class is created as itself, not derived from (instantiate-only
+// composition). The activation factory is fetched per call (a factory cache
+// is a future optimization).
+func NewDependencyObjectCollection() (*DependencyObjectCollection, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.DependencyObjectCollection", &IID_IDependencyObjectCollectionFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IDependencyObjectCollectionFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	inner := new(*syswinrt.IInspectable)
+	instance, err := factory.CreateInstance(nil, inner)
+	if err != nil {
+		return nil, err
+	}
+	if *inner != nil {
+		// Under null-outer composition the inner is a SECOND reference to
+		// the same object instance carries: drop it.
+		(*inner).Release()
+	}
+	return (*DependencyObjectCollection)(unsafe.Pointer(instance)), nil
+}
+
 // DependencyProperty is the Microsoft.UI.Xaml.DependencyProperty runtime class, surfaced through its
 // default interface IDependencyProperty. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1589,6 +1640,30 @@ func (self *TriggerAction) AsDependencyObject() (*IDependencyObject, error) {
 	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
 }
 
+// TriggerActionCollection is the Microsoft.UI.Xaml.TriggerActionCollection runtime class, surfaced through its
+// default interface IVectorOfTriggerAction. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type TriggerActionCollection struct {
+	IVectorOfTriggerAction
+}
+
+// NewTriggerActionCollection activates Microsoft.UI.Xaml.TriggerActionCollection through its default
+// constructor.
+func NewTriggerActionCollection() (*TriggerActionCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.TriggerActionCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[TriggerActionCollection](unsafe.Pointer(instance), &IID_IVectorOfTriggerAction)
+}
+
+// AsIterableOfTriggerAction queries the instance's IIterableOfTriggerAction interface.
+// The returned reference is owned by the caller.
+func (self *TriggerActionCollection) AsIterableOfTriggerAction() (*IIterableOfTriggerAction, error) {
+	return winrt.QueryInterface[IIterableOfTriggerAction](unsafe.Pointer(self), &IID_IIterableOfTriggerAction)
+}
+
 // TriggerBase is the Microsoft.UI.Xaml.TriggerBase runtime class, surfaced through its
 // default interface ITriggerBase. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1601,6 +1676,19 @@ type TriggerBase struct {
 // The returned reference is owned by the caller.
 func (self *TriggerBase) AsDependencyObject() (*IDependencyObject, error) {
 	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
+}
+
+// TriggerCollection is the Microsoft.UI.Xaml.TriggerCollection runtime class, surfaced through its
+// default interface IVectorOfTriggerBase. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type TriggerCollection struct {
+	IVectorOfTriggerBase
+}
+
+// AsIterableOfTriggerBase queries the instance's IIterableOfTriggerBase interface.
+// The returned reference is owned by the caller.
+func (self *TriggerCollection) AsIterableOfTriggerBase() (*IIterableOfTriggerBase, error) {
+	return winrt.QueryInterface[IIterableOfTriggerBase](unsafe.Pointer(self), &IID_IIterableOfTriggerBase)
 }
 
 // UIElement is the Microsoft.UI.Xaml.UIElement runtime class, surfaced through its
@@ -1657,6 +1745,44 @@ func UIElementStatics() (*IUIElementStatics, error) {
 		return nil, err
 	}
 	return (*IUIElementStatics)(unsafe.Pointer(factory)), nil
+}
+
+// UIElementWeakCollection is the Microsoft.UI.Xaml.UIElementWeakCollection runtime class, surfaced through its
+// default interface IVectorOfUIElement. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type UIElementWeakCollection struct {
+	IVectorOfUIElement
+}
+
+// AsIterableOfUIElement queries the instance's IIterableOfUIElement interface.
+// The returned reference is owned by the caller.
+func (self *UIElementWeakCollection) AsIterableOfUIElement() (*IIterableOfUIElement, error) {
+	return winrt.QueryInterface[IIterableOfUIElement](unsafe.Pointer(self), &IID_IIterableOfUIElement)
+}
+
+// NewUIElementWeakCollection constructs a Microsoft.UI.Xaml.UIElementWeakCollection instance through
+// Microsoft.UI.Xaml.IUIElementWeakCollectionFactory.CreateInstance with a NULL controlling outer: the
+// class is created as itself, not derived from (instantiate-only
+// composition). The activation factory is fetched per call (a factory cache
+// is a future optimization).
+func NewUIElementWeakCollection() (*UIElementWeakCollection, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.UIElementWeakCollection", &IID_IUIElementWeakCollectionFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IUIElementWeakCollectionFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	inner := new(*syswinrt.IInspectable)
+	instance, err := factory.CreateInstance(nil, inner)
+	if err != nil {
+		return nil, err
+	}
+	if *inner != nil {
+		// Under null-outer composition the inner is a SECOND reference to
+		// the same object instance carries: drop it.
+		(*inner).Release()
+	}
+	return (*UIElementWeakCollection)(unsafe.Pointer(instance)), nil
 }
 
 // UnhandledExceptionEventArgs is the Microsoft.UI.Xaml.UnhandledExceptionEventArgs runtime class, surfaced through its
@@ -13746,6 +13872,19 @@ func ColumnDefinitionStatics() (*IColumnDefinitionStatics, error) {
 	return (*IColumnDefinitionStatics)(unsafe.Pointer(factory)), nil
 }
 
+// ColumnDefinitionCollection is the Microsoft.UI.Xaml.Controls.ColumnDefinitionCollection runtime class, surfaced through its
+// default interface IVectorOfColumnDefinition. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type ColumnDefinitionCollection struct {
+	IVectorOfColumnDefinition
+}
+
+// AsIterableOfColumnDefinition queries the instance's IIterableOfColumnDefinition interface.
+// The returned reference is owned by the caller.
+func (self *ColumnDefinitionCollection) AsIterableOfColumnDefinition() (*IIterableOfColumnDefinition, error) {
+	return winrt.QueryInterface[IIterableOfColumnDefinition](unsafe.Pointer(self), &IID_IIterableOfColumnDefinition)
+}
+
 // ComboBox is the Microsoft.UI.Xaml.Controls.ComboBox runtime class, surfaced through its
 // default interface IComboBox. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -17858,6 +17997,19 @@ func NewHubSection() (*HubSection, error) {
 	return (*HubSection)(unsafe.Pointer(instance)), nil
 }
 
+// HubSectionCollection is the Microsoft.UI.Xaml.Controls.HubSectionCollection runtime class, surfaced through its
+// default interface IVectorOfHubSection. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type HubSectionCollection struct {
+	IVectorOfHubSection
+}
+
+// AsIterableOfHubSection queries the instance's IIterableOfHubSection interface.
+// The returned reference is owned by the caller.
+func (self *HubSectionCollection) AsIterableOfHubSection() (*IIterableOfHubSection, error) {
+	return winrt.QueryInterface[IIterableOfHubSection](unsafe.Pointer(self), &IID_IIterableOfHubSection)
+}
+
 // HubSectionHeaderClickEventArgs is the Microsoft.UI.Xaml.Controls.HubSectionHeaderClickEventArgs runtime class, surfaced through its
 // default interface IHubSectionHeaderClickEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -18976,6 +19128,25 @@ func NewItemClickEventArgs() (*ItemClickEventArgs, error) {
 // The returned reference is owned by the caller.
 func (self *ItemClickEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error) {
 	return winrt.QueryInterface[IRoutedEventArgs](unsafe.Pointer(self), &IID_IRoutedEventArgs)
+}
+
+// ItemCollection is the Microsoft.UI.Xaml.Controls.ItemCollection runtime class, surfaced through its
+// default interface IObservableVectorOfObject. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type ItemCollection struct {
+	IObservableVectorOfObject
+}
+
+// AsVectorOfObject queries the instance's IVectorOfObject interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollection) AsVectorOfObject() (*IVectorOfObject, error) {
+	return winrt.QueryInterface[IVectorOfObject](unsafe.Pointer(self), &IID_IVectorOfObject)
+}
+
+// AsIterableOfObject queries the instance's IIterableOfObject interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollection) AsIterableOfObject() (*IIterableOfObject, error) {
+	return winrt.QueryInterface[IIterableOfObject](unsafe.Pointer(self), &IID_IIterableOfObject)
 }
 
 // ItemCollectionTransition is the Microsoft.UI.Xaml.Controls.ItemCollectionTransition runtime class, surfaced through its
@@ -28131,6 +28302,19 @@ func RowDefinitionStatics() (*IRowDefinitionStatics, error) {
 	return (*IRowDefinitionStatics)(unsafe.Pointer(factory)), nil
 }
 
+// RowDefinitionCollection is the Microsoft.UI.Xaml.Controls.RowDefinitionCollection runtime class, surfaced through its
+// default interface IVectorOfRowDefinition. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type RowDefinitionCollection struct {
+	IVectorOfRowDefinition
+}
+
+// AsIterableOfRowDefinition queries the instance's IIterableOfRowDefinition interface.
+// The returned reference is owned by the caller.
+func (self *RowDefinitionCollection) AsIterableOfRowDefinition() (*IIterableOfRowDefinition, error) {
+	return winrt.QueryInterface[IIterableOfRowDefinition](unsafe.Pointer(self), &IID_IIterableOfRowDefinition)
+}
+
 // ScrollContentPresenter is the Microsoft.UI.Xaml.Controls.ScrollContentPresenter runtime class, surfaced through its
 // default interface IScrollContentPresenter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -33962,6 +34146,25 @@ func NewTwoPaneView() (*TwoPaneView, error) {
 		(*inner).Release()
 	}
 	return (*TwoPaneView)(unsafe.Pointer(instance)), nil
+}
+
+// UIElementCollection is the Microsoft.UI.Xaml.Controls.UIElementCollection runtime class, surfaced through its
+// default interface IVectorOfUIElement. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type UIElementCollection struct {
+	IVectorOfUIElement
+}
+
+// AsUIElementCollection queries the instance's IUIElementCollection interface.
+// The returned reference is owned by the caller.
+func (self *UIElementCollection) AsUIElementCollection() (*IUIElementCollection, error) {
+	return winrt.QueryInterface[IUIElementCollection](unsafe.Pointer(self), &IID_IUIElementCollection)
+}
+
+// AsIterableOfUIElement queries the instance's IIterableOfUIElement interface.
+// The returned reference is owned by the caller.
+func (self *UIElementCollection) AsIterableOfUIElement() (*IIterableOfUIElement, error) {
+	return winrt.QueryInterface[IIterableOfUIElement](unsafe.Pointer(self), &IID_IIterableOfUIElement)
 }
 
 // UniformGridLayout is the Microsoft.UI.Xaml.Controls.UniformGridLayout runtime class, surfaced through its
@@ -40627,6 +40830,19 @@ func NewBlock() (*Block, error) {
 	return (*Block)(unsafe.Pointer(instance)), nil
 }
 
+// BlockCollection is the Microsoft.UI.Xaml.Documents.BlockCollection runtime class, surfaced through its
+// default interface IVectorOfBlock. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type BlockCollection struct {
+	IVectorOfBlock
+}
+
+// AsIterableOfBlock queries the instance's IIterableOfBlock interface.
+// The returned reference is owned by the caller.
+func (self *BlockCollection) AsIterableOfBlock() (*IIterableOfBlock, error) {
+	return winrt.QueryInterface[IIterableOfBlock](unsafe.Pointer(self), &IID_IIterableOfBlock)
+}
+
 // Bold is the Microsoft.UI.Xaml.Documents.Bold runtime class, surfaced through its
 // default interface IBold. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -40910,6 +41126,19 @@ func NewInline() (*Inline, error) {
 		(*inner).Release()
 	}
 	return (*Inline)(unsafe.Pointer(instance)), nil
+}
+
+// InlineCollection is the Microsoft.UI.Xaml.Documents.InlineCollection runtime class, surfaced through its
+// default interface IVectorOfInline. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type InlineCollection struct {
+	IVectorOfInline
+}
+
+// AsIterableOfInline queries the instance's IIterableOfInline interface.
+// The returned reference is owned by the caller.
+func (self *InlineCollection) AsIterableOfInline() (*IIterableOfInline, error) {
+	return winrt.QueryInterface[IIterableOfInline](unsafe.Pointer(self), &IID_IIterableOfInline)
 }
 
 // InlineUIContainer is the Microsoft.UI.Xaml.Documents.InlineUIContainer runtime class, surfaced through its
@@ -42543,6 +42772,30 @@ func NewBrush() (*Brush, error) {
 	return (*Brush)(unsafe.Pointer(instance)), nil
 }
 
+// BrushCollection is the Microsoft.UI.Xaml.Media.BrushCollection runtime class, surfaced through its
+// default interface IVectorOfBrush. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type BrushCollection struct {
+	IVectorOfBrush
+}
+
+// NewBrushCollection activates Microsoft.UI.Xaml.Media.BrushCollection through its default
+// constructor.
+func NewBrushCollection() (*BrushCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.BrushCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[BrushCollection](unsafe.Pointer(instance), &IID_IVectorOfBrush)
+}
+
+// AsIterableOfBrush queries the instance's IIterableOfBrush interface.
+// The returned reference is owned by the caller.
+func (self *BrushCollection) AsIterableOfBrush() (*IIterableOfBrush, error) {
+	return winrt.QueryInterface[IIterableOfBrush](unsafe.Pointer(self), &IID_IIterableOfBrush)
+}
+
 // CacheMode is the Microsoft.UI.Xaml.Media.CacheMode runtime class, surfaced through its
 // default interface ICacheMode. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -42712,6 +42965,30 @@ func NewDesktopAcrylicBackdrop() (*DesktopAcrylicBackdrop, error) {
 	return (*DesktopAcrylicBackdrop)(unsafe.Pointer(instance)), nil
 }
 
+// DoubleCollection is the Microsoft.UI.Xaml.Media.DoubleCollection runtime class, surfaced through its
+// default interface IVectorOfDouble. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type DoubleCollection struct {
+	IVectorOfDouble
+}
+
+// NewDoubleCollection activates Microsoft.UI.Xaml.Media.DoubleCollection through its default
+// constructor.
+func NewDoubleCollection() (*DoubleCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.DoubleCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[DoubleCollection](unsafe.Pointer(instance), &IID_IVectorOfDouble)
+}
+
+// AsIterableOfDouble queries the instance's IIterableOfDouble interface.
+// The returned reference is owned by the caller.
+func (self *DoubleCollection) AsIterableOfDouble() (*IIterableOfDouble, error) {
+	return winrt.QueryInterface[IIterableOfDouble](unsafe.Pointer(self), &IID_IIterableOfDouble)
+}
+
 // EllipseGeometry is the Microsoft.UI.Xaml.Media.EllipseGeometry runtime class, surfaced through its
 // default interface IEllipseGeometry. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -42871,6 +43148,30 @@ func GeometryStatics() (*IGeometryStatics, error) {
 	return (*IGeometryStatics)(unsafe.Pointer(factory)), nil
 }
 
+// GeometryCollection is the Microsoft.UI.Xaml.Media.GeometryCollection runtime class, surfaced through its
+// default interface IVectorOfGeometry. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type GeometryCollection struct {
+	IVectorOfGeometry
+}
+
+// NewGeometryCollection activates Microsoft.UI.Xaml.Media.GeometryCollection through its default
+// constructor.
+func NewGeometryCollection() (*GeometryCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.GeometryCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[GeometryCollection](unsafe.Pointer(instance), &IID_IVectorOfGeometry)
+}
+
+// AsIterableOfGeometry queries the instance's IIterableOfGeometry interface.
+// The returned reference is owned by the caller.
+func (self *GeometryCollection) AsIterableOfGeometry() (*IIterableOfGeometry, error) {
+	return winrt.QueryInterface[IIterableOfGeometry](unsafe.Pointer(self), &IID_IIterableOfGeometry)
+}
+
 // GeometryGroup is the Microsoft.UI.Xaml.Media.GeometryGroup runtime class, surfaced through its
 // default interface IGeometryGroup. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -43022,6 +43323,30 @@ func GradientStopStatics() (*IGradientStopStatics, error) {
 		return nil, err
 	}
 	return (*IGradientStopStatics)(unsafe.Pointer(factory)), nil
+}
+
+// GradientStopCollection is the Microsoft.UI.Xaml.Media.GradientStopCollection runtime class, surfaced through its
+// default interface IVectorOfGradientStop. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type GradientStopCollection struct {
+	IVectorOfGradientStop
+}
+
+// NewGradientStopCollection activates Microsoft.UI.Xaml.Media.GradientStopCollection through its default
+// constructor.
+func NewGradientStopCollection() (*GradientStopCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.GradientStopCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[GradientStopCollection](unsafe.Pointer(instance), &IID_IVectorOfGradientStop)
+}
+
+// AsIterableOfGradientStop queries the instance's IIterableOfGradientStop interface.
+// The returned reference is owned by the caller.
+func (self *GradientStopCollection) AsIterableOfGradientStop() (*IIterableOfGradientStop, error) {
+	return winrt.QueryInterface[IIterableOfGradientStop](unsafe.Pointer(self), &IID_IIterableOfGradientStop)
 }
 
 // ImageBrush is the Microsoft.UI.Xaml.Media.ImageBrush runtime class, surfaced through its
@@ -43259,7 +43584,7 @@ func LinearGradientBrushStatics() (*ILinearGradientBrushStatics, error) {
 // CreateInstanceWithGradientStopCollectionAndAngle constructs a Microsoft.UI.Xaml.Media.LinearGradientBrush instance through
 // Microsoft.UI.Xaml.Media.ILinearGradientBrushFactory.CreateInstanceWithGradientStopCollectionAndAngle. The activation factory is fetched
 // per call (a factory cache is a future optimization).
-func CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection *syswinrt.IInspectable, angle float64) (*LinearGradientBrush, error) {
+func CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection *IVectorOfGradientStop, angle float64) (*LinearGradientBrush, error) {
 	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.Media.LinearGradientBrush", &IID_ILinearGradientBrushFactory)
 	if err != nil {
 		return nil, err
@@ -43541,6 +43866,30 @@ func PathFigureStatics() (*IPathFigureStatics, error) {
 	return (*IPathFigureStatics)(unsafe.Pointer(factory)), nil
 }
 
+// PathFigureCollection is the Microsoft.UI.Xaml.Media.PathFigureCollection runtime class, surfaced through its
+// default interface IVectorOfPathFigure. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type PathFigureCollection struct {
+	IVectorOfPathFigure
+}
+
+// NewPathFigureCollection activates Microsoft.UI.Xaml.Media.PathFigureCollection through its default
+// constructor.
+func NewPathFigureCollection() (*PathFigureCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.PathFigureCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[PathFigureCollection](unsafe.Pointer(instance), &IID_IVectorOfPathFigure)
+}
+
+// AsIterableOfPathFigure queries the instance's IIterableOfPathFigure interface.
+// The returned reference is owned by the caller.
+func (self *PathFigureCollection) AsIterableOfPathFigure() (*IIterableOfPathFigure, error) {
+	return winrt.QueryInterface[IIterableOfPathFigure](unsafe.Pointer(self), &IID_IIterableOfPathFigure)
+}
+
 // PathGeometry is the Microsoft.UI.Xaml.Media.PathGeometry runtime class, surfaced through its
 // default interface IPathGeometry. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -43599,6 +43948,30 @@ func (self *PathSegment) AsDependencyObject() (*IDependencyObject, error) {
 	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
 }
 
+// PathSegmentCollection is the Microsoft.UI.Xaml.Media.PathSegmentCollection runtime class, surfaced through its
+// default interface IVectorOfPathSegment. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type PathSegmentCollection struct {
+	IVectorOfPathSegment
+}
+
+// NewPathSegmentCollection activates Microsoft.UI.Xaml.Media.PathSegmentCollection through its default
+// constructor.
+func NewPathSegmentCollection() (*PathSegmentCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.PathSegmentCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[PathSegmentCollection](unsafe.Pointer(instance), &IID_IVectorOfPathSegment)
+}
+
+// AsIterableOfPathSegment queries the instance's IIterableOfPathSegment interface.
+// The returned reference is owned by the caller.
+func (self *PathSegmentCollection) AsIterableOfPathSegment() (*IIterableOfPathSegment, error) {
+	return winrt.QueryInterface[IIterableOfPathSegment](unsafe.Pointer(self), &IID_IIterableOfPathSegment)
+}
+
 // PlaneProjection is the Microsoft.UI.Xaml.Media.PlaneProjection runtime class, surfaced through its
 // default interface IPlaneProjection. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -43641,6 +44014,30 @@ func PlaneProjectionStatics() (*IPlaneProjectionStatics, error) {
 		return nil, err
 	}
 	return (*IPlaneProjectionStatics)(unsafe.Pointer(factory)), nil
+}
+
+// PointCollection is the Microsoft.UI.Xaml.Media.PointCollection runtime class, surfaced through its
+// default interface IVectorOfPoint. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type PointCollection struct {
+	IVectorOfPoint
+}
+
+// NewPointCollection activates Microsoft.UI.Xaml.Media.PointCollection through its default
+// constructor.
+func NewPointCollection() (*PointCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.PointCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[PointCollection](unsafe.Pointer(instance), &IID_IVectorOfPoint)
+}
+
+// AsIterableOfPoint queries the instance's IIterableOfPoint interface.
+// The returned reference is owned by the caller.
+func (self *PointCollection) AsIterableOfPoint() (*IIterableOfPoint, error) {
+	return winrt.QueryInterface[IIterableOfPoint](unsafe.Pointer(self), &IID_IIterableOfPoint)
 }
 
 // PolyBezierSegment is the Microsoft.UI.Xaml.Media.PolyBezierSegment runtime class, surfaced through its
@@ -44463,6 +44860,30 @@ func (self *Transform) AsDependencyObject() (*IDependencyObject, error) {
 	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
 }
 
+// TransformCollection is the Microsoft.UI.Xaml.Media.TransformCollection runtime class, surfaced through its
+// default interface IVectorOfTransform. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type TransformCollection struct {
+	IVectorOfTransform
+}
+
+// NewTransformCollection activates Microsoft.UI.Xaml.Media.TransformCollection through its default
+// constructor.
+func NewTransformCollection() (*TransformCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.TransformCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[TransformCollection](unsafe.Pointer(instance), &IID_IVectorOfTransform)
+}
+
+// AsIterableOfTransform queries the instance's IIterableOfTransform interface.
+// The returned reference is owned by the caller.
+func (self *TransformCollection) AsIterableOfTransform() (*IIterableOfTransform, error) {
+	return winrt.QueryInterface[IIterableOfTransform](unsafe.Pointer(self), &IID_IIterableOfTransform)
+}
+
 // TransformGroup is the Microsoft.UI.Xaml.Media.TransformGroup runtime class, surfaced through its
 // default interface ITransformGroup. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -45119,6 +45540,30 @@ func NewColorKeyFrame() (*ColorKeyFrame, error) {
 	return (*ColorKeyFrame)(unsafe.Pointer(instance)), nil
 }
 
+// ColorKeyFrameCollection is the Microsoft.UI.Xaml.Media.Animation.ColorKeyFrameCollection runtime class, surfaced through its
+// default interface IVectorOfColorKeyFrame. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type ColorKeyFrameCollection struct {
+	IVectorOfColorKeyFrame
+}
+
+// NewColorKeyFrameCollection activates Microsoft.UI.Xaml.Media.Animation.ColorKeyFrameCollection through its default
+// constructor.
+func NewColorKeyFrameCollection() (*ColorKeyFrameCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.Animation.ColorKeyFrameCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[ColorKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfColorKeyFrame)
+}
+
+// AsIterableOfColorKeyFrame queries the instance's IIterableOfColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *ColorKeyFrameCollection) AsIterableOfColorKeyFrame() (*IIterableOfColorKeyFrame, error) {
+	return winrt.QueryInterface[IIterableOfColorKeyFrame](unsafe.Pointer(self), &IID_IIterableOfColorKeyFrame)
+}
+
 // CommonNavigationTransitionInfo is the Microsoft.UI.Xaml.Media.Animation.CommonNavigationTransitionInfo runtime class, surfaced through its
 // default interface ICommonNavigationTransitionInfo. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -45634,6 +46079,30 @@ func NewDoubleKeyFrame() (*DoubleKeyFrame, error) {
 		(*inner).Release()
 	}
 	return (*DoubleKeyFrame)(unsafe.Pointer(instance)), nil
+}
+
+// DoubleKeyFrameCollection is the Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrameCollection runtime class, surfaced through its
+// default interface IVectorOfDoubleKeyFrame. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type DoubleKeyFrameCollection struct {
+	IVectorOfDoubleKeyFrame
+}
+
+// NewDoubleKeyFrameCollection activates Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrameCollection through its default
+// constructor.
+func NewDoubleKeyFrameCollection() (*DoubleKeyFrameCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrameCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[DoubleKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfDoubleKeyFrame)
+}
+
+// AsIterableOfDoubleKeyFrame queries the instance's IIterableOfDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DoubleKeyFrameCollection) AsIterableOfDoubleKeyFrame() (*IIterableOfDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IIterableOfDoubleKeyFrame](unsafe.Pointer(self), &IID_IIterableOfDoubleKeyFrame)
 }
 
 // DragItemThemeAnimation is the Microsoft.UI.Xaml.Media.Animation.DragItemThemeAnimation runtime class, surfaced through its
@@ -46731,6 +47200,30 @@ func NewObjectKeyFrame() (*ObjectKeyFrame, error) {
 	return (*ObjectKeyFrame)(unsafe.Pointer(instance)), nil
 }
 
+// ObjectKeyFrameCollection is the Microsoft.UI.Xaml.Media.Animation.ObjectKeyFrameCollection runtime class, surfaced through its
+// default interface IVectorOfObjectKeyFrame. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type ObjectKeyFrameCollection struct {
+	IVectorOfObjectKeyFrame
+}
+
+// NewObjectKeyFrameCollection activates Microsoft.UI.Xaml.Media.Animation.ObjectKeyFrameCollection through its default
+// constructor.
+func NewObjectKeyFrameCollection() (*ObjectKeyFrameCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.Animation.ObjectKeyFrameCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[ObjectKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfObjectKeyFrame)
+}
+
+// AsIterableOfObjectKeyFrame queries the instance's IIterableOfObjectKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *ObjectKeyFrameCollection) AsIterableOfObjectKeyFrame() (*IIterableOfObjectKeyFrame, error) {
+	return winrt.QueryInterface[IIterableOfObjectKeyFrame](unsafe.Pointer(self), &IID_IIterableOfObjectKeyFrame)
+}
+
 // PaneThemeTransition is the Microsoft.UI.Xaml.Media.Animation.PaneThemeTransition runtime class, surfaced through its
 // default interface IPaneThemeTransition. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -46912,6 +47405,30 @@ func NewPointKeyFrame() (*PointKeyFrame, error) {
 		(*inner).Release()
 	}
 	return (*PointKeyFrame)(unsafe.Pointer(instance)), nil
+}
+
+// PointKeyFrameCollection is the Microsoft.UI.Xaml.Media.Animation.PointKeyFrameCollection runtime class, surfaced through its
+// default interface IVectorOfPointKeyFrame. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type PointKeyFrameCollection struct {
+	IVectorOfPointKeyFrame
+}
+
+// NewPointKeyFrameCollection activates Microsoft.UI.Xaml.Media.Animation.PointKeyFrameCollection through its default
+// constructor.
+func NewPointKeyFrameCollection() (*PointKeyFrameCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.Animation.PointKeyFrameCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[PointKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfPointKeyFrame)
+}
+
+// AsIterableOfPointKeyFrame queries the instance's IIterableOfPointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *PointKeyFrameCollection) AsIterableOfPointKeyFrame() (*IIterableOfPointKeyFrame, error) {
+	return winrt.QueryInterface[IIterableOfPointKeyFrame](unsafe.Pointer(self), &IID_IIterableOfPointKeyFrame)
 }
 
 // PointerDownThemeAnimation is the Microsoft.UI.Xaml.Media.Animation.PointerDownThemeAnimation runtime class, surfaced through its
@@ -47938,6 +48455,30 @@ func NewTimeline() (*Timeline, error) {
 	return (*Timeline)(unsafe.Pointer(instance)), nil
 }
 
+// TimelineCollection is the Microsoft.UI.Xaml.Media.Animation.TimelineCollection runtime class, surfaced through its
+// default interface IVectorOfTimeline. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type TimelineCollection struct {
+	IVectorOfTimeline
+}
+
+// NewTimelineCollection activates Microsoft.UI.Xaml.Media.Animation.TimelineCollection through its default
+// constructor.
+func NewTimelineCollection() (*TimelineCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.Animation.TimelineCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[TimelineCollection](unsafe.Pointer(instance), &IID_IVectorOfTimeline)
+}
+
+// AsIterableOfTimeline queries the instance's IIterableOfTimeline interface.
+// The returned reference is owned by the caller.
+func (self *TimelineCollection) AsIterableOfTimeline() (*IIterableOfTimeline, error) {
+	return winrt.QueryInterface[IIterableOfTimeline](unsafe.Pointer(self), &IID_IIterableOfTimeline)
+}
+
 // Transition is the Microsoft.UI.Xaml.Media.Animation.Transition runtime class, surfaced through its
 // default interface ITransition. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -47950,6 +48491,30 @@ type Transition struct {
 // The returned reference is owned by the caller.
 func (self *Transition) AsDependencyObject() (*IDependencyObject, error) {
 	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
+}
+
+// TransitionCollection is the Microsoft.UI.Xaml.Media.Animation.TransitionCollection runtime class, surfaced through its
+// default interface IVectorOfTransition. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type TransitionCollection struct {
+	IVectorOfTransition
+}
+
+// NewTransitionCollection activates Microsoft.UI.Xaml.Media.Animation.TransitionCollection through its default
+// constructor.
+func NewTransitionCollection() (*TransitionCollection, error) {
+	instance, err := winrt.ActivateInstance("Microsoft.UI.Xaml.Media.Animation.TransitionCollection")
+	if err != nil {
+		return nil, err
+	}
+	defer instance.Release()
+	return winrt.QueryInterface[TransitionCollection](unsafe.Pointer(instance), &IID_IVectorOfTransition)
+}
+
+// AsIterableOfTransition queries the instance's IIterableOfTransition interface.
+// The returned reference is owned by the caller.
+func (self *TransitionCollection) AsIterableOfTransition() (*IIterableOfTransition, error) {
+	return winrt.QueryInterface[IIterableOfTransition](unsafe.Pointer(self), &IID_IIterableOfTransition)
 }
 
 // BitmapImage is the Microsoft.UI.Xaml.Media.Imaging.BitmapImage runtime class, surfaced through its

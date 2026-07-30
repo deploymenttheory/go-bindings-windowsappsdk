@@ -22,12 +22,10 @@ package main
 import (
 	"fmt"
 	"os"
-	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
@@ -198,14 +196,11 @@ func setButtonText(button *uixaml.Button, text string) error {
 
 // addChildren appends elements to a Panel's Children collection.
 //
-// IPanel.Children is still typed IInspectable rather than IVector<UIElement>: a
-// PROPERTY's type resolves before the emitter's generic-instantiation seam is wired, so
-// the instantiation degraded. The vector is there at the ABI, and the monomorphized
-// IVectorOfUIElement in this same package names it, so one QueryInterface recovers the
-// typed collection.
-//
-// This is the remaining ergonomic wart, and the clearest candidate for the next round:
-// nothing about it is fundamental, unlike the import cycles that used to sit here.
+// Children comes back as *IVectorOfUIElement — the monomorphized
+// IVector<UIElement> — so Append is called directly. UIElementCollection's only
+// interface IS that instantiation, and until the emitter resolved a generic default
+// interface this property handed back a bare IInspectable that needed a
+// hand-written QueryInterface.
 func addChildren(panel *uixaml.StackPanel, elements ...interface {
 	AsUIElement() (*uixaml.IUIElement, error)
 }) error {
@@ -217,14 +212,7 @@ func addChildren(panel *uixaml.StackPanel, elements ...interface {
 	}
 	defer asPanel.Release()
 
-	raw, err := asPanel.Children()
-	if err != nil {
-		return err
-	}
-	defer raw.Release()
-
-	children, err := winrt.QueryInterface[uixaml.IVectorOfUIElement](
-		unsafe.Pointer(raw), &uixaml.IID_IVectorOfUIElement)
+	children, err := asPanel.Children()
 	if err != nil {
 		return err
 	}

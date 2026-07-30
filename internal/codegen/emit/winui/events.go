@@ -25,7 +25,6 @@ package emitwinui
 
 import (
 	"fmt"
-	"reflect"
 	"strings"
 
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/codegen/emit/winui/view"
@@ -200,9 +199,9 @@ func (g *Generator) requestEventDelegate(meta *wasdkmeta.NamespaceMeta, ref *was
 	if existing, seen := g.pdelByName[handlerName]; seen {
 		// The same handler name must mean the same delegate. Mangled names drop
 		// namespaces, so two same-named references could otherwise alias two
-		// distinct IIDs onto one Go type.
-		clone := cloneRef(ref)
-		if !reflect.DeepEqual(*existing, clone) {
+		// distinct IIDs onto one Go type. Compared by identity rather than by
+		// reflect.DeepEqual — see sameType for why the External flag is not identity.
+		if !sameType(existing, ref) {
 			return "", eventUnloweable("handler name %s is already bound to a different delegate", handlerName)
 		}
 		return handlerName, nil

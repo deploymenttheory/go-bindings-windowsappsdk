@@ -25,9 +25,18 @@ type IAsyncOperationOfLanguageModel struct {
 // IID_IAsyncOperationOfLanguageModel is the interface identifier for IAsyncOperationOfLanguageModel.
 var IID_IAsyncOperationOfLanguageModel = win32.GUID{Data1: 0x172f62b5, Data2: 0x1d49, Data3: 0x535f, Data4: [8]byte{0x8c, 0x07, 0x4d, 0xdd, 0x02, 0x06, 0x6f, 0x36}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfLanguageModel's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfLanguageModel) SetCompleted(handler *AsyncOperationCompletedHandlerOfLanguageModel) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfLanguageModel's vtable slot 8.
 func (self *IAsyncOperationOfLanguageModel) GetResults() (*ILanguageModel, error) {
@@ -48,11 +57,20 @@ var IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble = win32.GUID{
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfAIFeatureReadyResultAndDouble) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) GetResults() (*windowsai.IAIFeatureReadyResult, error) {
@@ -71,13 +89,31 @@ type IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString 
 // IID_IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString is the interface identifier for IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString.
 var IID_IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString = win32.GUID{Data1: 0x4da8cd88, Data2: 0x9419, Data3: 0x5edc, Data4: [8]byte{0x9f, 0x71, 0x03, 0x60, 0x6f, 0xa2, 0x87, 0xa0}}
 
-// slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfGenerateStructuredJsonResponseResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfGenerateStructuredJsonResponseResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString) GetResults() (*IGenerateStructuredJsonResponseResult, error) {
@@ -96,13 +132,31 @@ type IAsyncOperationWithProgressOfLanguageModelResponseResultAndString struct {
 // IID_IAsyncOperationWithProgressOfLanguageModelResponseResultAndString is the interface identifier for IAsyncOperationWithProgressOfLanguageModelResponseResultAndString.
 var IID_IAsyncOperationWithProgressOfLanguageModelResponseResultAndString = win32.GUID{Data1: 0x5aec37a6, Data2: 0xa5fa, Data3: 0x5c0d, Data4: [8]byte{0x9d, 0xa7, 0x76, 0x14, 0xe0, 0xb4, 0xed, 0x76}}
 
-// slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfLanguageModelResponseResultAndString's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfLanguageModelResponseResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfLanguageModelResponseResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfLanguageModelResponseResultAndString's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfLanguageModelResponseResultAndString) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfLanguageModelResponseResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfLanguageModelResponseResultAndString's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfLanguageModelResponseResultAndString) GetResults() (*ILanguageModelResponseResult, error) {
@@ -121,13 +175,31 @@ type IAsyncOperationWithProgressOfTextToTableResponseResultAndString struct {
 // IID_IAsyncOperationWithProgressOfTextToTableResponseResultAndString is the interface identifier for IAsyncOperationWithProgressOfTextToTableResponseResultAndString.
 var IID_IAsyncOperationWithProgressOfTextToTableResponseResultAndString = win32.GUID{Data1: 0xcff503d4, Data2: 0x0ecb, Data3: 0x5924, Data4: [8]byte{0xac, 0xbf, 0x79, 0x6c, 0xa6, 0xc7, 0xd3, 0x73}}
 
-// slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfTextToTableResponseResultAndString's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfTextToTableResponseResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfTextToTableResponseResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfTextToTableResponseResultAndString's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfTextToTableResponseResultAndString) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfTextToTableResponseResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfTextToTableResponseResultAndString's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfTextToTableResponseResultAndString) GetResults() (*ITextToTableResponseResult, error) {

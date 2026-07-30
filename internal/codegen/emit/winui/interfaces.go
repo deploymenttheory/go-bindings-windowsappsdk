@@ -248,7 +248,11 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 	// Parameters may ground a delegate reference into a package-local handler
 	// type. Returns resolve WITHOUT that seam, so a method RETURNING a delegate
 	// keeps degrading — handing a native delegate back to Go has no useful
-	// meaning here, since there is no Go callback behind it to call.
+	// meaning here, since there is no Go callback behind it to call. The return
+	// context says so explicitly, so the degradation is reported as the policy it is
+	// (delegate-return-skipped) rather than as a missing generics capability.
+	returnContext := context
+	returnContext.IsReturn = true
 	paramContext := context
 	paramContext.RequestDelegate = g.delegateRequester(meta)
 
@@ -260,7 +264,7 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 	// return to short-circuit with.
 	errReturn := "return err"
 	if method.Return != nil {
-		resolved := g.mapper.GoType(method.Return, context, scratch)
+		resolved := g.mapper.GoType(method.Return, returnContext, scratch)
 		switch resolved.Kind {
 		case typemap.KindUnsupported:
 			s := splitReason(resolved.Reason)

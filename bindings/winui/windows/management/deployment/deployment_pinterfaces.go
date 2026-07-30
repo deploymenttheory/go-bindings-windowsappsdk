@@ -24,9 +24,18 @@ type IAsyncOperationOfPackageVolume struct {
 // IID_IAsyncOperationOfPackageVolume is the interface identifier for IAsyncOperationOfPackageVolume.
 var IID_IAsyncOperationOfPackageVolume = win32.GUID{Data1: 0x4ceb2537, Data2: 0x3c9c, Data3: 0x5007, Data4: [8]byte{0x8c, 0x51, 0x60, 0x85, 0xfc, 0x59, 0x65, 0xb2}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfPackageVolume's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfPackageVolume) SetCompleted(handler *AsyncOperationCompletedHandlerOfPackageVolume) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfPackageVolume's vtable slot 8.
 func (self *IAsyncOperationOfPackageVolume) GetResults() (*IPackageVolume, error) {
@@ -45,9 +54,18 @@ type IAsyncOperationOfUInt64 struct {
 // IID_IAsyncOperationOfUInt64 is the interface identifier for IAsyncOperationOfUInt64.
 var IID_IAsyncOperationOfUInt64 = win32.GUID{Data1: 0x2a70d630, Data2: 0x0767, Data3: 0x5f0a, Data4: [8]byte{0xa1, 0xc2, 0xde, 0xb0, 0x81, 0x26, 0xe2, 0x6e}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfUInt64's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfUInt64) SetCompleted(handler *AsyncOperationCompletedHandlerOfUInt64) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfUInt64's vtable slot 8.
 func (self *IAsyncOperationOfUInt64) GetResults() (uint64, error) {
@@ -68,11 +86,20 @@ var IID_IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeployment
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress) GetResults() (*IPackageDeploymentResult, error) {
@@ -177,7 +204,11 @@ func (self *IMapViewOfUriAndPackageValidationEventSource) HasKey(key *wrtfoundat
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: Split skipped: parameterized type Windows.Foundation.Collections.IMapView`2
+// Split dispatches through IMapViewOfUriAndPackageValidationEventSource's vtable slot 9.
+func (self *IMapViewOfUriAndPackageValidationEventSource) Split(first **IMapViewOfUriAndPackageValidationEventSource, second **IMapViewOfUriAndPackageValidationEventSource) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IMapViewOfUriAndString is the WinRT interface Windows.Foundation.Collections.IMapView`2<Windows.Foundation.Uri, String>.
 // IID: 87530605-8bd4-5f0a-85f1-751e8bd20446

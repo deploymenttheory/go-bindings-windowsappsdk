@@ -23,9 +23,18 @@ type IAsyncOperationOfIVectorViewOfPickFileResult struct {
 // IID_IAsyncOperationOfIVectorViewOfPickFileResult is the interface identifier for IAsyncOperationOfIVectorViewOfPickFileResult.
 var IID_IAsyncOperationOfIVectorViewOfPickFileResult = win32.GUID{Data1: 0xf8cde12a, Data2: 0x675a, Data3: 0x5291, Data4: [8]byte{0xb0, 0x48, 0x58, 0x6c, 0x26, 0x25, 0xae, 0x3e}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIVectorViewOfPickFileResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfIVectorViewOfPickFileResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfIVectorViewOfPickFileResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfIVectorViewOfPickFileResult's vtable slot 8.
 func (self *IAsyncOperationOfIVectorViewOfPickFileResult) GetResults() (*IVectorViewOfPickFileResult, error) {
@@ -44,9 +53,18 @@ type IAsyncOperationOfIVectorViewOfPickFolderResult struct {
 // IID_IAsyncOperationOfIVectorViewOfPickFolderResult is the interface identifier for IAsyncOperationOfIVectorViewOfPickFolderResult.
 var IID_IAsyncOperationOfIVectorViewOfPickFolderResult = win32.GUID{Data1: 0xfa45e594, Data2: 0x2bfb, Data3: 0x58dd, Data4: [8]byte{0xb1, 0x8f, 0x99, 0x0b, 0x0c, 0x1c, 0x6f, 0x2b}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIVectorViewOfPickFolderResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfIVectorViewOfPickFolderResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfIVectorViewOfPickFolderResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfIVectorViewOfPickFolderResult's vtable slot 8.
 func (self *IAsyncOperationOfIVectorViewOfPickFolderResult) GetResults() (*IVectorViewOfPickFolderResult, error) {
@@ -65,9 +83,18 @@ type IAsyncOperationOfPickFileResult struct {
 // IID_IAsyncOperationOfPickFileResult is the interface identifier for IAsyncOperationOfPickFileResult.
 var IID_IAsyncOperationOfPickFileResult = win32.GUID{Data1: 0x98316bd9, Data2: 0x5a80, Data3: 0x5c8a, Data4: [8]byte{0x8f, 0x99, 0x2e, 0xfb, 0xe1, 0xe7, 0x02, 0x33}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfPickFileResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfPickFileResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfPickFileResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfPickFileResult's vtable slot 8.
 func (self *IAsyncOperationOfPickFileResult) GetResults() (*IPickFileResult, error) {
@@ -86,9 +113,18 @@ type IAsyncOperationOfPickFolderResult struct {
 // IID_IAsyncOperationOfPickFolderResult is the interface identifier for IAsyncOperationOfPickFolderResult.
 var IID_IAsyncOperationOfPickFolderResult = win32.GUID{Data1: 0xf5ef0362, Data2: 0xd68a, Data3: 0x5d05, Data4: [8]byte{0xa1, 0x66, 0xfe, 0x60, 0x8b, 0x68, 0xc2, 0x78}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfPickFolderResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfPickFolderResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfPickFolderResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfPickFolderResult's vtable slot 8.
 func (self *IAsyncOperationOfPickFolderResult) GetResults() (*IPickFolderResult, error) {

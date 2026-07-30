@@ -57,4 +57,8 @@ func (self *IMapViewOfStringAndString) HasKey(key string) (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: Split skipped: parameterized type Windows.Foundation.Collections.IMapView`2
+// Split dispatches through IMapViewOfStringAndString's vtable slot 9.
+func (self *IMapViewOfStringAndString) Split(first **IMapViewOfStringAndString, second **IMapViewOfStringAndString) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
+	return win32.ErrIfFailed(int32(r1))
+}

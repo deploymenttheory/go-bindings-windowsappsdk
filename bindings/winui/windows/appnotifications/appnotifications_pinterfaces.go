@@ -23,9 +23,18 @@ type IAsyncOperationOfAppNotificationProgressResult struct {
 // IID_IAsyncOperationOfAppNotificationProgressResult is the interface identifier for IAsyncOperationOfAppNotificationProgressResult.
 var IID_IAsyncOperationOfAppNotificationProgressResult = win32.GUID{Data1: 0xaa739d3f, Data2: 0xd458, Data3: 0x5d30, Data4: [8]byte{0xb2, 0x92, 0xde, 0x6d, 0x52, 0x97, 0x9e, 0xb4}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfAppNotificationProgressResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfAppNotificationProgressResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfAppNotificationProgressResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfAppNotificationProgressResult's vtable slot 8.
 func (self *IAsyncOperationOfAppNotificationProgressResult) GetResults() (AppNotificationProgressResult, error) {
@@ -44,9 +53,18 @@ type IAsyncOperationOfIVectorOfAppNotification struct {
 // IID_IAsyncOperationOfIVectorOfAppNotification is the interface identifier for IAsyncOperationOfIVectorOfAppNotification.
 var IID_IAsyncOperationOfIVectorOfAppNotification = win32.GUID{Data1: 0x704700c2, Data2: 0xf4a1, Data3: 0x5edd, Data4: [8]byte{0x87, 0x1a, 0xd0, 0xba, 0x8b, 0x9b, 0x4c, 0x59}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIVectorOfAppNotification's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfIVectorOfAppNotification) SetCompleted(handler *AsyncOperationCompletedHandlerOfIVectorOfAppNotification) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfIVectorOfAppNotification's vtable slot 8.
 func (self *IAsyncOperationOfIVectorOfAppNotification) GetResults() (*IVectorOfAppNotification, error) {

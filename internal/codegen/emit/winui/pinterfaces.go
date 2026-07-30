@@ -24,7 +24,6 @@ package emitwinui
 
 import (
 	"fmt"
-	"reflect"
 	"sort"
 	"strings"
 
@@ -115,6 +114,46 @@ func cloneRef(ref *wasdkmeta.TypeRef) wasdkmeta.TypeRef {
 	return out
 }
 
+// sameType reports whether two type references name the same type.
+//
+// Deliberately NOT reflect.DeepEqual. Two fields on a TypeRef record where a
+// definition was found rather than which type it is:
+//
+//   - External says whether the definition lives in go-bindings-winrt, and its value
+//     depends on WHOSE metadata the reference was read from. The same
+//     IAsyncOperation`1<Bool> is External:true read from this module's JSON and
+//     External:false when it surfaces through go-bindings-winrt's own IR for
+//     AsyncOperationCompletedHandler`1.Invoke, because from inside that module
+//     Windows.Foundation is local.
+//   - TargetKind says whether the target is an interface, class or delegate, which
+//     for a fixed namespace and name cannot differ.
+//
+// Neither can distinguish two different types, so comparing them rejects
+// instantiations that are in fact identical. That is what the dedupe guard did: it
+// refused 72 collection and async instantiations, and every member naming one
+// degraded. Identity is the kind, the namespace, the name, the array element and the
+// generic arguments, compared the same way all the way down.
+func sameType(a, b *wasdkmeta.TypeRef) bool {
+	if a.Kind != b.Kind || a.Namespace != b.Namespace || a.Name != b.Name || a.Index != b.Index {
+		return false
+	}
+	if (a.Elem == nil) != (b.Elem == nil) {
+		return false
+	}
+	if a.Elem != nil && !sameType(a.Elem, b.Elem) {
+		return false
+	}
+	if len(a.Args) != len(b.Args) {
+		return false
+	}
+	for i := range a.Args {
+		if !sameType(&a.Args[i], &b.Args[i]) {
+			return false
+		}
+	}
+	return true
+}
+
 // substituteRef deep-copies ref with every GenericParamRef of index i replaced by
 // args[i]. Substitution recurses through nested instantiation arguments and array
 // elements, so arity-2 and nested-generic shapes ground correctly.
@@ -197,8 +236,9 @@ func (g *Generator) requestInstantiation(ref *wasdkmeta.TypeRef) (string, bool) 
 		// drop their namespaces, so two same-named arguments from different
 		// namespaces would otherwise silently alias two distinct IIDs onto one Go
 		// type — which compiles, and then fails at QueryInterface.
-		clone := cloneRef(ref)
-		if !reflect.DeepEqual(*existing, clone) {
+		if !sameType(existing, ref) {
+			g.diag("instantiation-name-aliased", "%s and %s both mangle to %s",
+				refDisplay(existing), refDisplay(ref), mangled)
 			return "", false
 		}
 		return mangled, true

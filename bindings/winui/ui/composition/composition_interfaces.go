@@ -659,9 +659,8 @@ type ICompositionAnimation3 struct {
 var IID_ICompositionAnimation3 = win32.GUID{Data1: 0x60063f53, Data2: 0x4167, Data3: 0x5914, Data4: [8]byte{0xa2, 0xf1, 0x9e, 0xfc, 0xc2, 0xf8, 0x6c, 0x76}}
 
 // InitialValueExpressions (propget get_InitialValueExpressions) dispatches through ICompositionAnimation3's vtable slot 6.
-// The return value's class Microsoft.UI.Composition.InitialValueExpressionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ICompositionAnimation3) InitialValueExpressions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ICompositionAnimation3) InitialValueExpressions() (*IMapOfStringAndString, error) {
+	result := new(*IMapOfStringAndString)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -1088,9 +1087,8 @@ type ICompositionContainerShape struct {
 var IID_ICompositionContainerShape = win32.GUID{Data1: 0x064aabd5, Data2: 0x2dab, Data3: 0x52d3, Data4: [8]byte{0x82, 0x4b, 0xc7, 0x24, 0x56, 0x54, 0x0f, 0x29}}
 
 // Shapes (propget get_Shapes) dispatches through ICompositionContainerShape's vtable slot 6.
-// The return value's class Microsoft.UI.Composition.CompositionShapeCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ICompositionContainerShape) Shapes() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ICompositionContainerShape) Shapes() (*IVectorOfCompositionShape, error) {
+	result := new(*IVectorOfCompositionShape)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -3361,9 +3359,8 @@ func (self *ICompositionSpriteShape) SetStrokeBrush(value *ICompositionBrush) er
 }
 
 // StrokeDashArray (propget get_StrokeDashArray) dispatches through ICompositionSpriteShape's vtable slot 14.
-// The return value's class Microsoft.UI.Composition.CompositionStrokeDashArray is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ICompositionSpriteShape) StrokeDashArray() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ICompositionSpriteShape) StrokeDashArray() (*IVectorOfSingle, error) {
+	result := new(*IVectorOfSingle)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -5757,9 +5754,8 @@ type IShapeVisual struct {
 var IID_IShapeVisual = win32.GUID{Data1: 0xa911c80b, Data2: 0xa5a5, Data3: 0x5aca, Data4: [8]byte{0xb8, 0xff, 0xc4, 0x3f, 0x08, 0xf0, 0x61, 0x43}}
 
 // Shapes (propget get_Shapes) dispatches through IShapeVisual's vtable slot 6.
-// The return value's class Microsoft.UI.Composition.CompositionShapeCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IShapeVisual) Shapes() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IShapeVisual) Shapes() (*IVectorOfCompositionShape, error) {
+	result := new(*IVectorOfCompositionShape)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }

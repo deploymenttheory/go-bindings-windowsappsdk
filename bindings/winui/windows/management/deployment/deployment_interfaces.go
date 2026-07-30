@@ -1264,7 +1264,7 @@ type IPackageValidationHandler struct {
 // IID_IPackageValidationHandler is the interface identifier for IPackageValidationHandler.
 var IID_IPackageValidationHandler = win32.GUID{Data1: 0x1b82b55d, Data2: 0x525f, Data3: 0x5153, Data4: [8]byte{0xb7, 0x6d, 0x22, 0xce, 0x50, 0x9d, 0xe9, 0x6f}}
 
-// slot 6: get_Handler skipped: parameterized type Windows.Foundation.TypedEventHandler`2
+// slot 6: get_Handler skipped: Windows.Foundation.TypedEventHandler`2 is returned, not passed
 
 // IPackageValidationHandlerFactory is the WinRT interface Microsoft.Windows.Management.Deployment.IPackageValidationHandlerFactory.
 // IID: ff589117-a855-57eb-9bae-060f76f01c7c

@@ -1465,9 +1465,8 @@ type IDependencyObjectCollectionFactory struct {
 var IID_IDependencyObjectCollectionFactory = win32.GUID{Data1: 0x2a74ee43, Data2: 0x90fd, Data3: 0x5d61, Data4: [8]byte{0x93, 0x83, 0x58, 0x4e, 0xa8, 0x42, 0x2b, 0x39}}
 
 // CreateInstance dispatches through IDependencyObjectCollectionFactory's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.DependencyObjectCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IDependencyObjectCollectionFactory) CreateInstance(baseInterface *syswinrt.IInspectable, innerInterface **syswinrt.IInspectable) (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IDependencyObjectCollectionFactory) CreateInstance(baseInterface *syswinrt.IInspectable, innerInterface **syswinrt.IInspectable) (*IObservableVectorOfDependencyObject, error) {
+	result := new(*IObservableVectorOfDependencyObject)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(baseInterface)), uintptr(winrt.OutParam(unsafe.Pointer(innerInterface))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -2314,9 +2313,8 @@ func (self *IEventTrigger) SetRoutedEvent(value *IRoutedEvent) error {
 }
 
 // Actions (propget get_Actions) dispatches through IEventTrigger's vtable slot 8.
-// The return value's class Microsoft.UI.Xaml.TriggerActionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IEventTrigger) Actions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IEventTrigger) Actions() (*IVectorOfTriggerAction, error) {
+	result := new(*IVectorOfTriggerAction)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -2362,9 +2360,8 @@ type IFrameworkElement struct {
 var IID_IFrameworkElement = win32.GUID{Data1: 0xfe08f13d, Data2: 0xdc6a, Data3: 0x5495, Data4: [8]byte{0xad, 0x44, 0xc2, 0xd8, 0xd2, 0x18, 0x63, 0xb0}}
 
 // Triggers (propget get_Triggers) dispatches through IFrameworkElement's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.TriggerCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IFrameworkElement) Triggers() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IFrameworkElement) Triggers() (*IVectorOfTriggerBase, error) {
+	result := new(*IVectorOfTriggerBase)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -3396,7 +3393,7 @@ func (self *IPropertyMetadata) DefaultValue() (*syswinrt.IInspectable, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: get_CreateDefaultValueCallback skipped: delegate Microsoft.UI.Xaml.CreateDefaultValueCallback
+// slot 7: get_CreateDefaultValueCallback skipped: Microsoft.UI.Xaml.CreateDefaultValueCallback is returned, not passed
 
 // IPropertyMetadataFactory is the WinRT interface Microsoft.UI.Xaml.IPropertyMetadataFactory.
 // IID: 9f420906-111a-5465-91ee-bed14b3e7fec
@@ -4447,16 +4444,14 @@ func (self *IUIElement) SetUseLayoutRounding(value bool) error {
 }
 
 // Transitions (propget get_Transitions) dispatches through IUIElement's vtable slot 28.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IUIElement) Transitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IUIElement) Transitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[28], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetTransitions (propput put_Transitions) dispatches through IUIElement's vtable slot 29.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IUIElement) SetTransitions(value *syswinrt.IInspectable) error {
+func (self *IUIElement) SetTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[29], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -6624,9 +6619,8 @@ type IUIElementWeakCollectionFactory struct {
 var IID_IUIElementWeakCollectionFactory = win32.GUID{Data1: 0xb4d69f09, Data2: 0xd494, Data3: 0x5bc8, Data4: [8]byte{0xae, 0x68, 0xb6, 0x30, 0x7d, 0x84, 0x50, 0x49}}
 
 // CreateInstance dispatches through IUIElementWeakCollectionFactory's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.UIElementWeakCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IUIElementWeakCollectionFactory) CreateInstance(baseInterface *syswinrt.IInspectable, innerInterface **syswinrt.IInspectable) (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IUIElementWeakCollectionFactory) CreateInstance(baseInterface *syswinrt.IInspectable, innerInterface **syswinrt.IInspectable) (*IVectorOfUIElement, error) {
+	result := new(*IVectorOfUIElement)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(baseInterface)), uintptr(winrt.OutParam(unsafe.Pointer(innerInterface))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -17123,16 +17117,14 @@ func (self *IBorder) SetChild(value *IUIElement) error {
 }
 
 // ChildTransitions (propget get_ChildTransitions) dispatches through IBorder's vtable slot 20.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IBorder) ChildTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IBorder) ChildTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetChildTransitions (propput put_ChildTransitions) dispatches through IBorder's vtable slot 21.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IBorder) SetChildTransitions(value *syswinrt.IInspectable) error {
+func (self *IBorder) SetChildTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[21], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -21558,16 +21550,14 @@ func (self *IContentControl) SetContentTemplateSelector(value *IDataTemplateSele
 }
 
 // ContentTransitions (propget get_ContentTransitions) dispatches through IContentControl's vtable slot 12.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IContentControl) ContentTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IContentControl) ContentTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetContentTransitions (propput put_ContentTransitions) dispatches through IContentControl's vtable slot 13.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IContentControl) SetContentTransitions(value *syswinrt.IInspectable) error {
+func (self *IContentControl) SetContentTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -22395,16 +22385,14 @@ func (self *IContentPresenter) SetContentTemplateSelector(value *IDataTemplateSe
 }
 
 // ContentTransitions (propget get_ContentTransitions) dispatches through IContentPresenter's vtable slot 12.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IContentPresenter) ContentTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IContentPresenter) ContentTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetContentTransitions (propput put_ContentTransitions) dispatches through IContentPresenter's vtable slot 13.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IContentPresenter) SetContentTransitions(value *syswinrt.IInspectable) error {
+func (self *IContentPresenter) SetContentTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -26163,17 +26151,15 @@ type IGrid struct {
 var IID_IGrid = win32.GUID{Data1: 0xc4496219, Data2: 0x9014, Data3: 0x58a1, Data4: [8]byte{0xb4, 0xad, 0xc5, 0x04, 0x49, 0x13, 0xa5, 0xbb}}
 
 // RowDefinitions (propget get_RowDefinitions) dispatches through IGrid's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Controls.RowDefinitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IGrid) RowDefinitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IGrid) RowDefinitions() (*IVectorOfRowDefinition, error) {
+	result := new(*IVectorOfRowDefinition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // ColumnDefinitions (propget get_ColumnDefinitions) dispatches through IGrid's vtable slot 7.
-// The return value's class Microsoft.UI.Xaml.Controls.ColumnDefinitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IGrid) ColumnDefinitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IGrid) ColumnDefinitions() (*IVectorOfColumnDefinition, error) {
+	result := new(*IVectorOfColumnDefinition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -28726,9 +28712,8 @@ func (self *IItemsControl) SetItemsSource(value *syswinrt.IInspectable) error {
 }
 
 // Items (propget get_Items) dispatches through IItemsControl's vtable slot 8.
-// The return value's class Microsoft.UI.Xaml.Controls.ItemCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsControl) Items() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IItemsControl) Items() (*IObservableVectorOfObject, error) {
+	result := new(*IObservableVectorOfObject)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -28834,16 +28819,14 @@ func (self *IItemsControl) ItemContainerGenerator() (*IItemContainerGenerator, e
 }
 
 // ItemContainerTransitions (propget get_ItemContainerTransitions) dispatches through IItemsControl's vtable slot 23.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsControl) ItemContainerTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IItemsControl) ItemContainerTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetItemContainerTransitions (propput put_ItemContainerTransitions) dispatches through IItemsControl's vtable slot 24.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsControl) SetItemContainerTransitions(value *syswinrt.IInspectable) error {
+func (self *IItemsControl) SetItemContainerTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -29136,16 +29119,14 @@ func (self *IItemsPresenter) SetHeaderTemplate(value *IDataTemplate) error {
 }
 
 // HeaderTransitions (propget get_HeaderTransitions) dispatches through IItemsPresenter's vtable slot 10.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsPresenter) HeaderTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IItemsPresenter) HeaderTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetHeaderTransitions (propput put_HeaderTransitions) dispatches through IItemsPresenter's vtable slot 11.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsPresenter) SetHeaderTransitions(value *syswinrt.IInspectable) error {
+func (self *IItemsPresenter) SetHeaderTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -29177,16 +29158,14 @@ func (self *IItemsPresenter) SetFooterTemplate(value *IDataTemplate) error {
 }
 
 // FooterTransitions (propget get_FooterTransitions) dispatches through IItemsPresenter's vtable slot 16.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsPresenter) FooterTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IItemsPresenter) FooterTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetFooterTransitions (propput put_FooterTransitions) dispatches through IItemsPresenter's vtable slot 17.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IItemsPresenter) SetFooterTransitions(value *syswinrt.IInspectable) error {
+func (self *IItemsPresenter) SetFooterTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -31854,16 +31833,14 @@ func (self *IListViewBase) SetHeaderTemplate(value *IDataTemplate) error {
 }
 
 // HeaderTransitions (propget get_HeaderTransitions) dispatches through IListViewBase's vtable slot 58.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IListViewBase) HeaderTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IListViewBase) HeaderTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[58], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetHeaderTransitions (propput put_HeaderTransitions) dispatches through IListViewBase's vtable slot 59.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IListViewBase) SetHeaderTransitions(value *syswinrt.IInspectable) error {
+func (self *IListViewBase) SetHeaderTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[59], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -31895,16 +31872,14 @@ func (self *IListViewBase) SetFooterTemplate(value *IDataTemplate) error {
 }
 
 // FooterTransitions (propget get_FooterTransitions) dispatches through IListViewBase's vtable slot 64.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IListViewBase) FooterTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IListViewBase) FooterTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[64], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetFooterTransitions (propput put_FooterTransitions) dispatches through IListViewBase's vtable slot 65.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IListViewBase) SetFooterTransitions(value *syswinrt.IInspectable) error {
+func (self *IListViewBase) SetFooterTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[65], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -36766,9 +36741,8 @@ type IPanel struct {
 var IID_IPanel = win32.GUID{Data1: 0x27a1b418, Data2: 0x56f3, Data3: 0x525e, Data4: [8]byte{0xb8, 0x83, 0xce, 0xfe, 0xd9, 0x05, 0xee, 0xd3}}
 
 // Children (propget get_Children) dispatches through IPanel's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Controls.UIElementCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPanel) Children() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPanel) Children() (*IVectorOfUIElement, error) {
+	result := new(*IVectorOfUIElement)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -36794,16 +36768,14 @@ func (self *IPanel) IsItemsHost() (bool, error) {
 }
 
 // ChildrenTransitions (propget get_ChildrenTransitions) dispatches through IPanel's vtable slot 10.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPanel) ChildrenTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPanel) ChildrenTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetChildrenTransitions (propput put_ChildrenTransitions) dispatches through IPanel's vtable slot 11.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPanel) SetChildrenTransitions(value *syswinrt.IInspectable) error {
+func (self *IPanel) SetChildrenTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -42133,9 +42105,8 @@ func (self *IRichTextBlock) SetTextAlignment(value TextAlignment) error {
 }
 
 // Blocks (propget get_Blocks) dispatches through IRichTextBlock's vtable slot 24.
-// The return value's class Microsoft.UI.Xaml.Documents.BlockCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IRichTextBlock) Blocks() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IRichTextBlock) Blocks() (*IVectorOfBlock, error) {
+	result := new(*IVectorOfBlock)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -50226,9 +50197,8 @@ func (self *ITextBlock) SetText(value string) error {
 }
 
 // Inlines (propget get_Inlines) dispatches through ITextBlock's vtable slot 28.
-// The return value's class Microsoft.UI.Xaml.Documents.InlineCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ITextBlock) Inlines() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ITextBlock) Inlines() (*IVectorOfInline, error) {
+	result := new(*IVectorOfInline)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[28], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -53728,16 +53698,14 @@ func (self *ITreeView2) SetItemContainerStyleSelector(value *IStyleSelector) err
 }
 
 // ItemContainerTransitions (propget get_ItemContainerTransitions) dispatches through ITreeView2's vtable slot 22.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ITreeView2) ItemContainerTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ITreeView2) ItemContainerTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[22], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetItemContainerTransitions (propput put_ItemContainerTransitions) dispatches through ITreeView2's vtable slot 23.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ITreeView2) SetItemContainerTransitions(value *syswinrt.IInspectable) error {
+func (self *ITreeView2) SetItemContainerTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -61686,16 +61654,14 @@ func (self *IPopup) SetVerticalOffset(value float64) error {
 }
 
 // ChildTransitions (propget get_ChildTransitions) dispatches through IPopup's vtable slot 14.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPopup) ChildTransitions() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPopup) ChildTransitions() (*IVectorOfTransition, error) {
+	result := new(*IVectorOfTransition)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetChildTransitions (propput put_ChildTransitions) dispatches through IPopup's vtable slot 15.
-// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPopup) SetChildTransitions(value *syswinrt.IInspectable) error {
+func (self *IPopup) SetChildTransitions(value *IVectorOfTransition) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -66446,9 +66412,8 @@ type IParagraph struct {
 var IID_IParagraph = win32.GUID{Data1: 0x9ed64c77, Data2: 0x329d, Data3: 0x502f, Data4: [8]byte{0xa2, 0x57, 0xf5, 0x83, 0x98, 0xed, 0xab, 0x51}}
 
 // Inlines (propget get_Inlines) dispatches through IParagraph's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Documents.InlineCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IParagraph) Inlines() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IParagraph) Inlines() (*IVectorOfInline, error) {
+	result := new(*IVectorOfInline)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -66556,16 +66521,14 @@ type ISpan struct {
 var IID_ISpan = win32.GUID{Data1: 0x91b93d4d, Data2: 0x4e28, Data3: 0x57b9, Data4: [8]byte{0xbf, 0xfb, 0x35, 0x66, 0xc2, 0xa3, 0xc2, 0xa1}}
 
 // Inlines (propget get_Inlines) dispatches through ISpan's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Documents.InlineCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ISpan) Inlines() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ISpan) Inlines() (*IVectorOfInline, error) {
+	result := new(*IVectorOfInline)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetInlines (propput put_Inlines) dispatches through ISpan's vtable slot 7.
-// Parameter value's class Microsoft.UI.Xaml.Documents.InlineCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ISpan) SetInlines(value *syswinrt.IInspectable) error {
+func (self *ISpan) SetInlines(value *IVectorOfInline) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -71757,16 +71720,14 @@ func (self *IGeometryGroup) SetFillRule(value FillRule) error {
 }
 
 // Children (propget get_Children) dispatches through IGeometryGroup's vtable slot 8.
-// The return value's class Microsoft.UI.Xaml.Media.GeometryCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IGeometryGroup) Children() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IGeometryGroup) Children() (*IVectorOfGeometry, error) {
+	result := new(*IVectorOfGeometry)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetChildren (propput put_Children) dispatches through IGeometryGroup's vtable slot 9.
-// Parameter value's class Microsoft.UI.Xaml.Media.GeometryCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IGeometryGroup) SetChildren(value *syswinrt.IInspectable) error {
+func (self *IGeometryGroup) SetChildren(value *IVectorOfGeometry) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -71876,16 +71837,14 @@ func (self *IGradientBrush) SetColorInterpolationMode(value ColorInterpolationMo
 }
 
 // GradientStops (propget get_GradientStops) dispatches through IGradientBrush's vtable slot 12.
-// The return value's class Microsoft.UI.Xaml.Media.GradientStopCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IGradientBrush) GradientStops() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IGradientBrush) GradientStops() (*IVectorOfGradientStop, error) {
+	result := new(*IVectorOfGradientStop)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetGradientStops (propput put_GradientStops) dispatches through IGradientBrush's vtable slot 13.
-// Parameter value's class Microsoft.UI.Xaml.Media.GradientStopCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IGradientBrush) SetGradientStops(value *syswinrt.IInspectable) error {
+func (self *IGradientBrush) SetGradientStops(value *IVectorOfGradientStop) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -72251,8 +72210,7 @@ type ILinearGradientBrushFactory struct {
 var IID_ILinearGradientBrushFactory = win32.GUID{Data1: 0xc0ba7de3, Data2: 0xccfd, Data3: 0x534c, Data4: [8]byte{0x88, 0x2f, 0x3a, 0xb3, 0x9a, 0xe7, 0x23, 0xf3}}
 
 // CreateInstanceWithGradientStopCollectionAndAngle dispatches through ILinearGradientBrushFactory's vtable slot 6.
-// Parameter gradientStopCollection's class Microsoft.UI.Xaml.Media.GradientStopCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ILinearGradientBrushFactory) CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection *syswinrt.IInspectable, angle float64) (*ILinearGradientBrush, error) {
+func (self *ILinearGradientBrushFactory) CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection *IVectorOfGradientStop, angle float64) (*ILinearGradientBrush, error) {
 	_angle := uintptr(math.Float64bits(angle))
 	result := new(*ILinearGradientBrush)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(gradientStopCollection)), _angle, uintptr(winrt.OutParam(unsafe.Pointer(result))))
@@ -72613,16 +72571,14 @@ type IPathFigure struct {
 var IID_IPathFigure = win32.GUID{Data1: 0x0ee00712, Data2: 0xbf65, Data3: 0x5f27, Data4: [8]byte{0x9c, 0x06, 0x14, 0xab, 0xdf, 0x66, 0x56, 0xd7}}
 
 // Segments (propget get_Segments) dispatches through IPathFigure's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.PathSegmentCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPathFigure) Segments() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPathFigure) Segments() (*IVectorOfPathSegment, error) {
+	result := new(*IVectorOfPathSegment)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetSegments (propput put_Segments) dispatches through IPathFigure's vtable slot 7.
-// Parameter value's class Microsoft.UI.Xaml.Media.PathSegmentCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPathFigure) SetSegments(value *syswinrt.IInspectable) error {
+func (self *IPathFigure) SetSegments(value *IVectorOfPathSegment) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -72737,16 +72693,14 @@ func (self *IPathGeometry) SetFillRule(value FillRule) error {
 }
 
 // Figures (propget get_Figures) dispatches through IPathGeometry's vtable slot 8.
-// The return value's class Microsoft.UI.Xaml.Media.PathFigureCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPathGeometry) Figures() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPathGeometry) Figures() (*IVectorOfPathFigure, error) {
+	result := new(*IVectorOfPathFigure)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetFigures (propput put_Figures) dispatches through IPathGeometry's vtable slot 9.
-// Parameter value's class Microsoft.UI.Xaml.Media.PathFigureCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPathGeometry) SetFigures(value *syswinrt.IInspectable) error {
+func (self *IPathGeometry) SetFigures(value *IVectorOfPathFigure) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -73092,16 +73046,14 @@ type IPolyBezierSegment struct {
 var IID_IPolyBezierSegment = win32.GUID{Data1: 0xd7f760a0, Data2: 0xb93a, Data3: 0x562a, Data4: [8]byte{0x81, 0x18, 0x63, 0x30, 0xed, 0x22, 0xc3, 0x07}}
 
 // Points (propget get_Points) dispatches through IPolyBezierSegment's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyBezierSegment) Points() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPolyBezierSegment) Points() (*IVectorOfPoint, error) {
+	result := new(*IVectorOfPoint)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetPoints (propput put_Points) dispatches through IPolyBezierSegment's vtable slot 7.
-// Parameter value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyBezierSegment) SetPoints(value *syswinrt.IInspectable) error {
+func (self *IPolyBezierSegment) SetPoints(value *IVectorOfPoint) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -73134,16 +73086,14 @@ type IPolyLineSegment struct {
 var IID_IPolyLineSegment = win32.GUID{Data1: 0x426ef287, Data2: 0x0287, Data3: 0x536f, Data4: [8]byte{0xad, 0x9e, 0x6a, 0x05, 0xec, 0xbb, 0x32, 0x3a}}
 
 // Points (propget get_Points) dispatches through IPolyLineSegment's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyLineSegment) Points() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPolyLineSegment) Points() (*IVectorOfPoint, error) {
+	result := new(*IVectorOfPoint)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetPoints (propput put_Points) dispatches through IPolyLineSegment's vtable slot 7.
-// Parameter value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyLineSegment) SetPoints(value *syswinrt.IInspectable) error {
+func (self *IPolyLineSegment) SetPoints(value *IVectorOfPoint) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -73176,16 +73126,14 @@ type IPolyQuadraticBezierSegment struct {
 var IID_IPolyQuadraticBezierSegment = win32.GUID{Data1: 0x56372f4c, Data2: 0xc531, Data3: 0x5c3e, Data4: [8]byte{0xb0, 0xe0, 0x16, 0x45, 0xf5, 0xa8, 0xd8, 0x72}}
 
 // Points (propget get_Points) dispatches through IPolyQuadraticBezierSegment's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyQuadraticBezierSegment) Points() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPolyQuadraticBezierSegment) Points() (*IVectorOfPoint, error) {
+	result := new(*IVectorOfPoint)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetPoints (propput put_Points) dispatches through IPolyQuadraticBezierSegment's vtable slot 7.
-// Parameter value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyQuadraticBezierSegment) SetPoints(value *syswinrt.IInspectable) error {
+func (self *IPolyQuadraticBezierSegment) SetPoints(value *IVectorOfPoint) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -74001,9 +73949,8 @@ type IThemeShadow struct {
 var IID_IThemeShadow = win32.GUID{Data1: 0xc264208a, Data2: 0xd1f4, Data3: 0x58ae, Data4: [8]byte{0x8a, 0x88, 0xfc, 0x59, 0x14, 0x8b, 0xee, 0x69}}
 
 // Receivers (propget get_Receivers) dispatches through IThemeShadow's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.UIElementWeakCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IThemeShadow) Receivers() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IThemeShadow) Receivers() (*IVectorOfUIElement, error) {
+	result := new(*IVectorOfUIElement)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -74153,16 +74100,14 @@ type ITransformGroup struct {
 var IID_ITransformGroup = win32.GUID{Data1: 0x17c55f3b, Data2: 0x899c, Data3: 0x588f, Data4: [8]byte{0x8b, 0xd4, 0x40, 0xfa, 0x3a, 0x5f, 0xcb, 0x04}}
 
 // Children (propget get_Children) dispatches through ITransformGroup's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.TransformCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ITransformGroup) Children() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ITransformGroup) Children() (*IVectorOfTransform, error) {
+	result := new(*IVectorOfTransform)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetChildren (propput put_Children) dispatches through ITransformGroup's vtable slot 7.
-// Parameter value's class Microsoft.UI.Xaml.Media.TransformCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ITransformGroup) SetChildren(value *syswinrt.IInspectable) error {
+func (self *ITransformGroup) SetChildren(value *IVectorOfTransform) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -74915,9 +74860,8 @@ type IColorAnimationUsingKeyFrames struct {
 var IID_IColorAnimationUsingKeyFrames = win32.GUID{Data1: 0x96f28c97, Data2: 0x67eb, Data3: 0x5393, Data4: [8]byte{0x8e, 0x37, 0xa8, 0x1d, 0x8f, 0xda, 0x18, 0xb3}}
 
 // KeyFrames (propget get_KeyFrames) dispatches through IColorAnimationUsingKeyFrames's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.ColorKeyFrameCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IColorAnimationUsingKeyFrames) KeyFrames() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IColorAnimationUsingKeyFrames) KeyFrames() (*IVectorOfColorKeyFrame, error) {
+	result := new(*IVectorOfColorKeyFrame)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -75669,9 +75613,8 @@ type IDoubleAnimationUsingKeyFrames struct {
 var IID_IDoubleAnimationUsingKeyFrames = win32.GUID{Data1: 0x815437d5, Data2: 0x63cf, Data3: 0x54a5, Data4: [8]byte{0xae, 0xa5, 0x24, 0xb8, 0x47, 0x08, 0xd1, 0x2d}}
 
 // KeyFrames (propget get_KeyFrames) dispatches through IDoubleAnimationUsingKeyFrames's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrameCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IDoubleAnimationUsingKeyFrames) KeyFrames() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IDoubleAnimationUsingKeyFrames) KeyFrames() (*IVectorOfDoubleKeyFrame, error) {
+	result := new(*IVectorOfDoubleKeyFrame)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -77011,9 +76954,8 @@ type IObjectAnimationUsingKeyFrames struct {
 var IID_IObjectAnimationUsingKeyFrames = win32.GUID{Data1: 0xaa08dc4c, Data2: 0x0b03, Data3: 0x5c0a, Data4: [8]byte{0xb0, 0x84, 0xd9, 0x5d, 0x27, 0x2b, 0x2f, 0x0d}}
 
 // KeyFrames (propget get_KeyFrames) dispatches through IObjectAnimationUsingKeyFrames's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.ObjectKeyFrameCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IObjectAnimationUsingKeyFrames) KeyFrames() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IObjectAnimationUsingKeyFrames) KeyFrames() (*IVectorOfObjectKeyFrame, error) {
+	result := new(*IVectorOfObjectKeyFrame)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -77305,9 +77247,8 @@ type IPointAnimationUsingKeyFrames struct {
 var IID_IPointAnimationUsingKeyFrames = win32.GUID{Data1: 0xbdd63992, Data2: 0xdf13, Data3: 0x5514, Data4: [8]byte{0x86, 0x11, 0x49, 0x52, 0xf7, 0x22, 0xf6, 0xd0}}
 
 // KeyFrames (propget get_KeyFrames) dispatches through IPointAnimationUsingKeyFrames's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.PointKeyFrameCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPointAnimationUsingKeyFrames) KeyFrames() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPointAnimationUsingKeyFrames) KeyFrames() (*IVectorOfPointKeyFrame, error) {
+	result := new(*IVectorOfPointKeyFrame)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -78717,9 +78658,8 @@ type IStoryboard struct {
 var IID_IStoryboard = win32.GUID{Data1: 0x04d41bb3, Data2: 0x8721, Data3: 0x519e, Data4: [8]byte{0x8e, 0x53, 0xfb, 0x8b, 0x34, 0x92, 0x03, 0x05}}
 
 // Children (propget get_Children) dispatches through IStoryboard's vtable slot 6.
-// The return value's class Microsoft.UI.Xaml.Media.Animation.TimelineCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IStoryboard) Children() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IStoryboard) Children() (*IVectorOfTimeline, error) {
+	result := new(*IVectorOfTimeline)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }

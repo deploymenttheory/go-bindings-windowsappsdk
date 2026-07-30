@@ -9,7 +9,43 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
+
+// AsyncOperationCompletedHandlerOfDataPackageOperation is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<Windows.ApplicationModel.DataTransfer.DataPackageOperation>.
+// IID: add21d46-17df-5a43-a685-3262fce84643
+type AsyncOperationCompletedHandlerOfDataPackageOperation struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfDataPackageOperation is the delegate identifier for AsyncOperationCompletedHandlerOfDataPackageOperation.
+var IID_AsyncOperationCompletedHandlerOfDataPackageOperation = win32.GUID{Data1: 0xadd21d46, Data2: 0x17df, Data3: 0x5a43, Data4: [8]byte{0xa6, 0x85, 0x32, 0x62, 0xfc, 0xe8, 0x46, 0x43}}
+
+// NewAsyncOperationCompletedHandlerOfDataPackageOperation wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<Windows.ApplicationModel.DataTransfer.DataPackageOperation>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfDataPackageOperation(fn func(asyncInfo *IAsyncOperationOfDataPackageOperation, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfDataPackageOperation, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfDataPackageOperation, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfDataPackageOperation)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfDataPackageOperation{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfDataPackageOperation) Ptr() uintptr { return h.delegate.Ptr() }
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfDataPackageOperation) Close() { h.delegate.Release() }
 
 // TypedEventHandlerOfDragDropManagerAndDropOperationTargetRequestedEventArgs is a Go-implemented handler for the WinRT delegate
 // Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Input.DragDrop.DragDropManager, Microsoft.UI.Input.DragDrop.DropOperationTargetRequestedEventArgs>.

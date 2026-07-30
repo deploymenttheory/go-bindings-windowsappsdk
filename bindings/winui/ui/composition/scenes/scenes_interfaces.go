@@ -458,17 +458,15 @@ type ISceneNode struct {
 var IID_ISceneNode = win32.GUID{Data1: 0xa1bce140, Data2: 0x79c2, Data3: 0x59e6, Data4: [8]byte{0x9b, 0x68, 0x63, 0xb1, 0xba, 0xb0, 0xe2, 0xa6}}
 
 // Children (propget get_Children) dispatches through ISceneNode's vtable slot 6.
-// The return value's class Microsoft.UI.Composition.Scenes.SceneNodeCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ISceneNode) Children() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ISceneNode) Children() (*IVectorOfSceneNode, error) {
+	result := new(*IVectorOfSceneNode)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // Components (propget get_Components) dispatches through ISceneNode's vtable slot 7.
-// The return value's class Microsoft.UI.Composition.Scenes.SceneComponentCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *ISceneNode) Components() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *ISceneNode) Components() (*IVectorOfSceneComponent, error) {
+	result := new(*IVectorOfSceneComponent)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }

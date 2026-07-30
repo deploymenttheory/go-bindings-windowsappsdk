@@ -633,16 +633,14 @@ func (self *IFeedResourceRequest) SetContent(value *wrtstoragestreams.IRandomAcc
 }
 
 // Headers (propget get_Headers) dispatches through IFeedResourceRequest's vtable slot 11.
-// The return value's class Windows.Foundation.Collections.StringMap is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IFeedResourceRequest) Headers() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IFeedResourceRequest) Headers() (*IMapOfStringAndString, error) {
+	result := new(*IMapOfStringAndString)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetHeaders (propput put_Headers) dispatches through IFeedResourceRequest's vtable slot 12.
-// Parameter value's class Windows.Foundation.Collections.StringMap is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IFeedResourceRequest) SetHeaders(value *syswinrt.IInspectable) error {
+func (self *IFeedResourceRequest) SetHeaders(value *IMapOfStringAndString) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }

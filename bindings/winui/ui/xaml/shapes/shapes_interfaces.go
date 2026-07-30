@@ -211,16 +211,14 @@ func (self *IPolygon) SetFillRule(value uixaml.FillRule) error {
 }
 
 // Points (propget get_Points) dispatches through IPolygon's vtable slot 8.
-// The return value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolygon) Points() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPolygon) Points() (*IVectorOfPoint, error) {
+	result := new(*IVectorOfPoint)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetPoints (propput put_Points) dispatches through IPolygon's vtable slot 9.
-// Parameter value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolygon) SetPoints(value *syswinrt.IInspectable) error {
+func (self *IPolygon) SetPoints(value *IVectorOfPoint) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -273,16 +271,14 @@ func (self *IPolyline) SetFillRule(value uixaml.FillRule) error {
 }
 
 // Points (propget get_Points) dispatches through IPolyline's vtable slot 8.
-// The return value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyline) Points() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IPolyline) Points() (*IVectorOfPoint, error) {
+	result := new(*IVectorOfPoint)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetPoints (propput put_Points) dispatches through IPolyline's vtable slot 9.
-// Parameter value's class Microsoft.UI.Xaml.Media.PointCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IPolyline) SetPoints(value *syswinrt.IInspectable) error {
+func (self *IPolyline) SetPoints(value *IVectorOfPoint) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -504,16 +500,14 @@ func (self *IShape) SetStrokeDashCap(value uixaml.PenLineCap) error {
 }
 
 // StrokeDashArray (propget get_StrokeDashArray) dispatches through IShape's vtable slot 24.
-// The return value's class Microsoft.UI.Xaml.Media.DoubleCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IShape) StrokeDashArray() (*syswinrt.IInspectable, error) {
-	result := new(*syswinrt.IInspectable)
+func (self *IShape) StrokeDashArray() (*IVectorOfDouble, error) {
+	result := new(*IVectorOfDouble)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStrokeDashArray (propput put_StrokeDashArray) dispatches through IShape's vtable slot 25.
-// Parameter value's class Microsoft.UI.Xaml.Media.DoubleCollection is projected as IInspectable (no emittable default interface is reachable here).
-func (self *IShape) SetStrokeDashArray(value *syswinrt.IInspectable) error {
+func (self *IShape) SetStrokeDashArray(value *IVectorOfDouble) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }

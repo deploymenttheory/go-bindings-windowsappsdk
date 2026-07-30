@@ -5,6 +5,7 @@
 package composition
 
 import (
+	"math"
 	"syscall"
 	"unsafe"
 
@@ -24,9 +25,18 @@ type IAsyncOperationOfICompositionSurface struct {
 // IID_IAsyncOperationOfICompositionSurface is the interface identifier for IAsyncOperationOfICompositionSurface.
 var IID_IAsyncOperationOfICompositionSurface = win32.GUID{Data1: 0x92ceaa5d, Data2: 0xb255, Data3: 0x57d9, Data4: [8]byte{0xab, 0x7c, 0x0f, 0x30, 0x44, 0x85, 0xc1, 0xbd}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfICompositionSurface's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfICompositionSurface) SetCompleted(handler *AsyncOperationCompletedHandlerOfICompositionSurface) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfICompositionSurface's vtable slot 8.
 func (self *IAsyncOperationOfICompositionSurface) GetResults() (*ICompositionSurface, error) {
@@ -99,6 +109,22 @@ func (self *IIterableOfCompositionProjectedShadowReceiver) First() (*IIteratorOf
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfCompositionShape is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionShape>.
+// IID: c9e6839b-5066-5658-afc8-57d50f1bde3f
+type IIterableOfCompositionShape struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfCompositionShape is the interface identifier for IIterableOfCompositionShape.
+var IID_IIterableOfCompositionShape = win32.GUID{Data1: 0xc9e6839b, Data2: 0x5066, Data3: 0x5658, Data4: [8]byte{0xaf, 0xc8, 0x57, 0xd5, 0x0f, 0x1b, 0xde, 0x3f}}
+
+// First dispatches through IIterableOfCompositionShape's vtable slot 6.
+func (self *IIterableOfCompositionShape) First() (*IIteratorOfCompositionShape, error) {
+	result := new(*IIteratorOfCompositionShape)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>.
 // IID: 999d6f68-b74e-5e06-a798-d254c4895670
 type IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase struct {
@@ -111,6 +137,38 @@ var IID_IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase = win32.GUI
 // First dispatches through IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase's vtable slot 6.
 func (self *IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase) First() (*IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase, error) {
 	result := new(*IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfIKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+// IID: e9bdaaf0-cbf6-5c72-be90-29cbf3a1319b
+type IIterableOfIKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfStringAndString is the interface identifier for IIterableOfIKeyValuePairOfStringAndString.
+var IID_IIterableOfIKeyValuePairOfStringAndString = win32.GUID{Data1: 0xe9bdaaf0, Data2: 0xcbf6, Data3: 0x5c72, Data4: [8]byte{0xbe, 0x90, 0x29, 0xcb, 0xf3, 0xa1, 0x31, 0x9b}}
+
+// First dispatches through IIterableOfIKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfStringAndString) First() (*IIteratorOfIKeyValuePairOfStringAndString, error) {
+	result := new(*IIteratorOfIKeyValuePairOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfSingle is the WinRT interface Windows.Foundation.Collections.IIterable`1<Single>.
+// IID: b01bee51-063a-5fda-bd72-d76637bb8cb8
+type IIterableOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfSingle is the interface identifier for IIterableOfSingle.
+var IID_IIterableOfSingle = win32.GUID{Data1: 0xb01bee51, Data2: 0x063a, Data3: 0x5fda, Data4: [8]byte{0xbd, 0x72, 0xd7, 0x66, 0x37, 0xbb, 0x8c, 0xb8}}
+
+// First dispatches through IIterableOfSingle's vtable slot 6.
+func (self *IIterableOfSingle) First() (*IIteratorOfSingle, error) {
+	result := new(*IIteratorOfSingle)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -315,6 +373,48 @@ func (self *IIteratorOfCompositionProjectedShadowReceiver) GetMany(items []*ICom
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIteratorOfCompositionShape is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.CompositionShape>.
+// IID: 4ec94e18-f15c-5432-9bb3-77bdcd96dc04
+type IIteratorOfCompositionShape struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfCompositionShape is the interface identifier for IIteratorOfCompositionShape.
+var IID_IIteratorOfCompositionShape = win32.GUID{Data1: 0x4ec94e18, Data2: 0xf15c, Data3: 0x5432, Data4: [8]byte{0x9b, 0xb3, 0x77, 0xbd, 0xcd, 0x96, 0xdc, 0x04}}
+
+// Current (propget get_Current) dispatches through IIteratorOfCompositionShape's vtable slot 6.
+func (self *IIteratorOfCompositionShape) Current() (*ICompositionShape, error) {
+	result := new(*ICompositionShape)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfCompositionShape's vtable slot 7.
+func (self *IIteratorOfCompositionShape) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfCompositionShape's vtable slot 8.
+func (self *IIteratorOfCompositionShape) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfCompositionShape's vtable slot 9.
+func (self *IIteratorOfCompositionShape) GetMany(items []*ICompositionShape) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>.
 // IID: d7585c8c-8ac4-575f-8a96-0de9c3159ea9
 type IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase struct {
@@ -347,6 +447,90 @@ func (self *IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase) MoveNe
 
 // GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase's vtable slot 9.
 func (self *IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase) GetMany(items []*IKeyValuePairOfStringAndICompositionAnimationBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+// IID: 05eb86f1-7140-5517-b88d-cbaebe57e6b1
+type IIteratorOfIKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfStringAndString is the interface identifier for IIteratorOfIKeyValuePairOfStringAndString.
+var IID_IIteratorOfIKeyValuePairOfStringAndString = win32.GUID{Data1: 0x05eb86f1, Data2: 0x7140, Data3: 0x5517, Data4: [8]byte{0xb8, 0x8d, 0xcb, 0xae, 0xbe, 0x57, 0xe6, 0xb1}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) Current() (*IKeyValuePairOfStringAndString, error) {
+	result := new(*IKeyValuePairOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) GetMany(items []*IKeyValuePairOfStringAndString) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfSingle is the WinRT interface Windows.Foundation.Collections.IIterator`1<Single>.
+// IID: 42614e61-b0aa-5e72-9354-2771db20b7a8
+type IIteratorOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfSingle is the interface identifier for IIteratorOfSingle.
+var IID_IIteratorOfSingle = win32.GUID{Data1: 0x42614e61, Data2: 0xb0aa, Data3: 0x5e72, Data4: [8]byte{0x93, 0x54, 0x27, 0x71, 0xdb, 0x20, 0xb7, 0xa8}}
+
+// Current (propget get_Current) dispatches through IIteratorOfSingle's vtable slot 6.
+func (self *IIteratorOfSingle) Current() (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfSingle's vtable slot 7.
+func (self *IIteratorOfSingle) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfSingle's vtable slot 8.
+func (self *IIteratorOfSingle) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfSingle's vtable slot 9.
+func (self *IIteratorOfSingle) GetMany(items []float32) (uint32, error) {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -460,6 +644,35 @@ func (self *IKeyValuePairOfStringAndICompositionAnimationBase) Value() (*ICompos
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, String>.
+// IID: 60310303-49c5-52e6-abc6-a9b36eccc716
+type IKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfStringAndString is the interface identifier for IKeyValuePairOfStringAndString.
+var IID_IKeyValuePairOfStringAndString = win32.GUID{Data1: 0x60310303, Data2: 0x49c5, Data3: 0x52e6, Data4: [8]byte{0xab, 0xc6, 0xa9, 0xb3, 0x6e, 0xcc, 0xc7, 0x16}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IKeyValuePairOfStringAndString) Key() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfStringAndString's vtable slot 7.
+func (self *IKeyValuePairOfStringAndString) Value() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
 // IMapOfStringAndICompositionAnimationBase is the WinRT interface Windows.Foundation.Collections.IMap`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>.
 // IID: 6a91806a-8668-5938-93f9-759d0021ab9b
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>.
@@ -537,6 +750,91 @@ func (self *IMapOfStringAndICompositionAnimationBase) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
+// IMapOfStringAndString is the WinRT interface Windows.Foundation.Collections.IMap`2<String, String>.
+// IID: f6d1f700-49c2-52ae-8154-826f9908773c
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+type IMapOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IMapOfStringAndString is the interface identifier for IMapOfStringAndString.
+var IID_IMapOfStringAndString = win32.GUID{Data1: 0xf6d1f700, Data2: 0x49c2, Data3: 0x52ae, Data4: [8]byte{0x81, 0x54, 0x82, 0x6f, 0x99, 0x08, 0x77, 0x3c}}
+
+// Lookup dispatches through IMapOfStringAndString's vtable slot 6.
+func (self *IMapOfStringAndString) Lookup(key string) (string, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return "", err
+	}
+	defer hKey.Close()
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Size (propget get_Size) dispatches through IMapOfStringAndString's vtable slot 7.
+func (self *IMapOfStringAndString) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasKey dispatches through IMapOfStringAndString's vtable slot 8.
+func (self *IMapOfStringAndString) HasKey(key string) (bool, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return false, err
+	}
+	defer hKey.Close()
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IMapOfStringAndString's vtable slot 9.
+func (self *IMapOfStringAndString) GetView() (*IMapViewOfStringAndString, error) {
+	result := new(*IMapViewOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Insert dispatches through IMapOfStringAndString's vtable slot 10.
+func (self *IMapOfStringAndString) Insert(key string, value string) (bool, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return false, err
+	}
+	defer hKey.Close()
+	hValue, err := winrt.NewHString(value)
+	if err != nil {
+		return false, err
+	}
+	defer hValue.Close()
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(hValue.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// Remove dispatches through IMapOfStringAndString's vtable slot 11.
+func (self *IMapOfStringAndString) Remove(key string) error {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return err
+	}
+	defer hKey.Close()
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IMapOfStringAndString's vtable slot 12.
+func (self *IMapOfStringAndString) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
 // IMapViewOfStringAndICompositionAnimationBase is the WinRT interface Windows.Foundation.Collections.IMapView`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>.
 // IID: 60d8d804-d025-5b6e-800c-b038cdedbab4
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>.
@@ -580,6 +878,56 @@ func (self *IMapViewOfStringAndICompositionAnimationBase) HasKey(key string) (bo
 
 // Split dispatches through IMapViewOfStringAndICompositionAnimationBase's vtable slot 9.
 func (self *IMapViewOfStringAndICompositionAnimationBase) Split(first **IMapViewOfStringAndICompositionAnimationBase, second **IMapViewOfStringAndICompositionAnimationBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IMapViewOfStringAndString is the WinRT interface Windows.Foundation.Collections.IMapView`2<String, String>.
+// IID: ac7f26f2-feb7-5b2a-8ac4-345bc62caede
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+type IMapViewOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IMapViewOfStringAndString is the interface identifier for IMapViewOfStringAndString.
+var IID_IMapViewOfStringAndString = win32.GUID{Data1: 0xac7f26f2, Data2: 0xfeb7, Data3: 0x5b2a, Data4: [8]byte{0x8a, 0xc4, 0x34, 0x5b, 0xc6, 0x2c, 0xae, 0xde}}
+
+// Lookup dispatches through IMapViewOfStringAndString's vtable slot 6.
+func (self *IMapViewOfStringAndString) Lookup(key string) (string, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return "", err
+	}
+	defer hKey.Close()
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Size (propget get_Size) dispatches through IMapViewOfStringAndString's vtable slot 7.
+func (self *IMapViewOfStringAndString) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasKey dispatches through IMapViewOfStringAndString's vtable slot 8.
+func (self *IMapViewOfStringAndString) HasKey(key string) (bool, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return false, err
+	}
+	defer hKey.Close()
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// Split dispatches through IMapViewOfStringAndString's vtable slot 9.
+func (self *IMapViewOfStringAndString) Split(first **IMapViewOfStringAndString, second **IMapViewOfStringAndString) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -732,6 +1080,204 @@ func (self *IVectorOfCompositionColorGradientStop) ReplaceAll(items []*IComposit
 	return win32.ErrIfFailed(int32(r1))
 }
 
+// IVectorOfCompositionShape is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Composition.CompositionShape>.
+// IID: 7397ef7a-aabd-50a3-9308-06d2a7050621
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionShape>.
+type IVectorOfCompositionShape struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfCompositionShape is the interface identifier for IVectorOfCompositionShape.
+var IID_IVectorOfCompositionShape = win32.GUID{Data1: 0x7397ef7a, Data2: 0xaabd, Data3: 0x50a3, Data4: [8]byte{0x93, 0x08, 0x06, 0xd2, 0xa7, 0x05, 0x06, 0x21}}
+
+// GetAt dispatches through IVectorOfCompositionShape's vtable slot 6.
+func (self *IVectorOfCompositionShape) GetAt(index uint32) (*ICompositionShape, error) {
+	result := new(*ICompositionShape)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfCompositionShape's vtable slot 7.
+func (self *IVectorOfCompositionShape) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfCompositionShape's vtable slot 8.
+func (self *IVectorOfCompositionShape) GetView() (*IVectorViewOfCompositionShape, error) {
+	result := new(*IVectorViewOfCompositionShape)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfCompositionShape's vtable slot 9.
+func (self *IVectorOfCompositionShape) IndexOf(value *ICompositionShape, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfCompositionShape's vtable slot 10.
+func (self *IVectorOfCompositionShape) SetAt(index uint32, value *ICompositionShape) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfCompositionShape's vtable slot 11.
+func (self *IVectorOfCompositionShape) InsertAt(index uint32, value *ICompositionShape) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfCompositionShape's vtable slot 12.
+func (self *IVectorOfCompositionShape) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfCompositionShape's vtable slot 13.
+func (self *IVectorOfCompositionShape) Append(value *ICompositionShape) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfCompositionShape's vtable slot 14.
+func (self *IVectorOfCompositionShape) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfCompositionShape's vtable slot 15.
+func (self *IVectorOfCompositionShape) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfCompositionShape's vtable slot 16.
+func (self *IVectorOfCompositionShape) GetMany(startIndex uint32, items []*ICompositionShape) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfCompositionShape's vtable slot 17.
+func (self *IVectorOfCompositionShape) ReplaceAll(items []*ICompositionShape) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfSingle is the WinRT interface Windows.Foundation.Collections.IVector`1<Single>.
+// IID: 61cf693f-db4c-579f-b905-5dd3d23cfd4d
+// Requires: Windows.Foundation.Collections.IIterable`1<Single>.
+type IVectorOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfSingle is the interface identifier for IVectorOfSingle.
+var IID_IVectorOfSingle = win32.GUID{Data1: 0x61cf693f, Data2: 0xdb4c, Data3: 0x579f, Data4: [8]byte{0xb9, 0x05, 0x5d, 0xd3, 0xd2, 0x3c, 0xfd, 0x4d}}
+
+// GetAt dispatches through IVectorOfSingle's vtable slot 6.
+func (self *IVectorOfSingle) GetAt(index uint32) (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfSingle's vtable slot 7.
+func (self *IVectorOfSingle) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfSingle's vtable slot 8.
+func (self *IVectorOfSingle) GetView() (*IVectorViewOfSingle, error) {
+	result := new(*IVectorViewOfSingle)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfSingle's vtable slot 9.
+func (self *IVectorOfSingle) IndexOf(value float32, index *uint32) (bool, error) {
+	_value := uintptr(math.Float32bits(value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfSingle's vtable slot 10.
+func (self *IVectorOfSingle) SetAt(index uint32, value float32) error {
+	_value := uintptr(math.Float32bits(value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfSingle's vtable slot 11.
+func (self *IVectorOfSingle) InsertAt(index uint32, value float32) error {
+	_value := uintptr(math.Float32bits(value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfSingle's vtable slot 12.
+func (self *IVectorOfSingle) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfSingle's vtable slot 13.
+func (self *IVectorOfSingle) Append(value float32) error {
+	_value := uintptr(math.Float32bits(value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfSingle's vtable slot 14.
+func (self *IVectorOfSingle) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfSingle's vtable slot 15.
+func (self *IVectorOfSingle) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfSingle's vtable slot 16.
+func (self *IVectorOfSingle) GetMany(startIndex uint32, items []float32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfSingle's vtable slot 17.
+func (self *IVectorOfSingle) ReplaceAll(items []float32) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorViewOfCompositionColorGradientStop is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Composition.CompositionColorGradientStop>.
 // IID: b3f66d8c-130e-52d4-803e-5305519d5056
 // Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionColorGradientStop>.
@@ -765,6 +1311,93 @@ func (self *IVectorViewOfCompositionColorGradientStop) IndexOf(value *ICompositi
 
 // GetMany dispatches through IVectorViewOfCompositionColorGradientStop's vtable slot 9.
 func (self *IVectorViewOfCompositionColorGradientStop) GetMany(startIndex uint32, items []*ICompositionColorGradientStop) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfCompositionShape is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Composition.CompositionShape>.
+// IID: 7c3d1b0a-2533-568b-963c-7fdb5769dbe8
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionShape>.
+type IVectorViewOfCompositionShape struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfCompositionShape is the interface identifier for IVectorViewOfCompositionShape.
+var IID_IVectorViewOfCompositionShape = win32.GUID{Data1: 0x7c3d1b0a, Data2: 0x2533, Data3: 0x568b, Data4: [8]byte{0x96, 0x3c, 0x7f, 0xdb, 0x57, 0x69, 0xdb, 0xe8}}
+
+// GetAt dispatches through IVectorViewOfCompositionShape's vtable slot 6.
+func (self *IVectorViewOfCompositionShape) GetAt(index uint32) (*ICompositionShape, error) {
+	result := new(*ICompositionShape)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfCompositionShape's vtable slot 7.
+func (self *IVectorViewOfCompositionShape) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfCompositionShape's vtable slot 8.
+func (self *IVectorViewOfCompositionShape) IndexOf(value *ICompositionShape, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfCompositionShape's vtable slot 9.
+func (self *IVectorViewOfCompositionShape) GetMany(startIndex uint32, items []*ICompositionShape) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfSingle is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Single>.
+// IID: 7bca64fd-150c-5d50-b56b-9f4f474c5930
+// Requires: Windows.Foundation.Collections.IIterable`1<Single>.
+type IVectorViewOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfSingle is the interface identifier for IVectorViewOfSingle.
+var IID_IVectorViewOfSingle = win32.GUID{Data1: 0x7bca64fd, Data2: 0x150c, Data3: 0x5d50, Data4: [8]byte{0xb5, 0x6b, 0x9f, 0x4f, 0x47, 0x4c, 0x59, 0x30}}
+
+// GetAt dispatches through IVectorViewOfSingle's vtable slot 6.
+func (self *IVectorViewOfSingle) GetAt(index uint32) (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfSingle's vtable slot 7.
+func (self *IVectorViewOfSingle) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfSingle's vtable slot 8.
+func (self *IVectorViewOfSingle) IndexOf(value float32, index *uint32) (bool, error) {
+	_value := uintptr(math.Float32bits(value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfSingle's vtable slot 9.
+func (self *IVectorViewOfSingle) GetMany(startIndex uint32, items []float32) (uint32, error) {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {

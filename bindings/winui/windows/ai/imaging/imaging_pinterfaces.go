@@ -25,9 +25,18 @@ type IAsyncOperationOfImageDescriptionGenerator struct {
 // IID_IAsyncOperationOfImageDescriptionGenerator is the interface identifier for IAsyncOperationOfImageDescriptionGenerator.
 var IID_IAsyncOperationOfImageDescriptionGenerator = win32.GUID{Data1: 0x1ebb676d, Data2: 0xc291, Data3: 0x55ef, Data4: [8]byte{0x8d, 0x3f, 0x84, 0x7f, 0xf7, 0x01, 0xef, 0x72}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageDescriptionGenerator's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfImageDescriptionGenerator) SetCompleted(handler *AsyncOperationCompletedHandlerOfImageDescriptionGenerator) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfImageDescriptionGenerator's vtable slot 8.
 func (self *IAsyncOperationOfImageDescriptionGenerator) GetResults() (*IImageDescriptionGenerator, error) {
@@ -46,9 +55,18 @@ type IAsyncOperationOfImageObjectExtractor struct {
 // IID_IAsyncOperationOfImageObjectExtractor is the interface identifier for IAsyncOperationOfImageObjectExtractor.
 var IID_IAsyncOperationOfImageObjectExtractor = win32.GUID{Data1: 0x0f52d3c6, Data2: 0x6444, Data3: 0x5bc9, Data4: [8]byte{0xa7, 0xf2, 0xb8, 0xa6, 0x00, 0x69, 0x34, 0xaa}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageObjectExtractor's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfImageObjectExtractor) SetCompleted(handler *AsyncOperationCompletedHandlerOfImageObjectExtractor) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfImageObjectExtractor's vtable slot 8.
 func (self *IAsyncOperationOfImageObjectExtractor) GetResults() (*IImageObjectExtractor, error) {
@@ -67,9 +85,18 @@ type IAsyncOperationOfImageObjectRemover struct {
 // IID_IAsyncOperationOfImageObjectRemover is the interface identifier for IAsyncOperationOfImageObjectRemover.
 var IID_IAsyncOperationOfImageObjectRemover = win32.GUID{Data1: 0x2ae992c6, Data2: 0xca47, Data3: 0x51bc, Data4: [8]byte{0x8a, 0x4d, 0x65, 0xfd, 0x3b, 0x2a, 0x2e, 0xc2}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageObjectRemover's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfImageObjectRemover) SetCompleted(handler *AsyncOperationCompletedHandlerOfImageObjectRemover) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfImageObjectRemover's vtable slot 8.
 func (self *IAsyncOperationOfImageObjectRemover) GetResults() (*IImageObjectRemover, error) {
@@ -88,9 +115,18 @@ type IAsyncOperationOfImageScaler struct {
 // IID_IAsyncOperationOfImageScaler is the interface identifier for IAsyncOperationOfImageScaler.
 var IID_IAsyncOperationOfImageScaler = win32.GUID{Data1: 0xafbdba2c, Data2: 0xfa3c, Data3: 0x551c, Data4: [8]byte{0x85, 0x70, 0x35, 0x0a, 0xae, 0x1c, 0x53, 0xab}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageScaler's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfImageScaler) SetCompleted(handler *AsyncOperationCompletedHandlerOfImageScaler) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfImageScaler's vtable slot 8.
 func (self *IAsyncOperationOfImageScaler) GetResults() (*IImageScaler, error) {
@@ -109,9 +145,18 @@ type IAsyncOperationOfRecognizedText struct {
 // IID_IAsyncOperationOfRecognizedText is the interface identifier for IAsyncOperationOfRecognizedText.
 var IID_IAsyncOperationOfRecognizedText = win32.GUID{Data1: 0x3103ec71, Data2: 0x2340, Data3: 0x5b2b, Data4: [8]byte{0x88, 0x33, 0xcc, 0x4e, 0xd6, 0x39, 0xe9, 0x36}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfRecognizedText's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfRecognizedText) SetCompleted(handler *AsyncOperationCompletedHandlerOfRecognizedText) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfRecognizedText's vtable slot 8.
 func (self *IAsyncOperationOfRecognizedText) GetResults() (*IRecognizedText, error) {
@@ -130,9 +175,18 @@ type IAsyncOperationOfTextRecognizer struct {
 // IID_IAsyncOperationOfTextRecognizer is the interface identifier for IAsyncOperationOfTextRecognizer.
 var IID_IAsyncOperationOfTextRecognizer = win32.GUID{Data1: 0x740b5d43, Data2: 0x1472, Data3: 0x53d9, Data4: [8]byte{0x92, 0xec, 0x84, 0x65, 0xf6, 0x78, 0xd0, 0xc3}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfTextRecognizer's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfTextRecognizer) SetCompleted(handler *AsyncOperationCompletedHandlerOfTextRecognizer) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfTextRecognizer's vtable slot 8.
 func (self *IAsyncOperationOfTextRecognizer) GetResults() (*ITextRecognizer, error) {
@@ -153,11 +207,20 @@ var IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble = win32.GUID{
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfAIFeatureReadyResultAndDouble) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) GetResults() (*windowsai.IAIFeatureReadyResult, error) {
@@ -176,13 +239,31 @@ type IAsyncOperationWithProgressOfImageDescriptionResultAndString struct {
 // IID_IAsyncOperationWithProgressOfImageDescriptionResultAndString is the interface identifier for IAsyncOperationWithProgressOfImageDescriptionResultAndString.
 var IID_IAsyncOperationWithProgressOfImageDescriptionResultAndString = win32.GUID{Data1: 0xcb8eead4, Data2: 0xf793, Data3: 0x58c5, Data4: [8]byte{0x96, 0xcc, 0x08, 0xb5, 0x6d, 0x59, 0x5f, 0x39}}
 
-// slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfImageDescriptionResultAndString's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfImageDescriptionResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfImageDescriptionResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfImageDescriptionResultAndString's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfImageDescriptionResultAndString) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfImageDescriptionResultAndString) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfImageDescriptionResultAndString's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfImageDescriptionResultAndString) GetResults() (*IImageDescriptionResult, error) {
@@ -215,7 +296,12 @@ func (self *IVectorOfPointInt32) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+// GetView dispatches through IVectorOfPointInt32's vtable slot 8.
+func (self *IVectorOfPointInt32) GetView() (*IVectorViewOfPointInt32, error) {
+	result := new(*IVectorViewOfPointInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IndexOf dispatches through IVectorOfPointInt32's vtable slot 9.
 func (self *IVectorOfPointInt32) IndexOf(value wrtgraphics.PointInt32, index *uint32) (bool, error) {
@@ -311,7 +397,12 @@ func (self *IVectorOfRectInt32) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+// GetView dispatches through IVectorOfRectInt32's vtable slot 8.
+func (self *IVectorOfRectInt32) GetView() (*IVectorViewOfRectInt32, error) {
+	result := new(*IVectorViewOfRectInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IndexOf dispatches through IVectorOfRectInt32's vtable slot 9.
 func (self *IVectorOfRectInt32) IndexOf(value wrtgraphics.RectInt32, index *uint32) (bool, error) {
