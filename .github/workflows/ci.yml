@@ -41,17 +41,14 @@ jobs:
             exit 1
           fi
 
-      # These make real WinRT calls. They are what proves this module composes
-      # with the pinned go-bindings-winrt and go-bindings-win32 at runtime and
-      # not merely at compile time.
-      - name: Tests
-        run: go test ./...
-
       # arm64 is deliberately excluded rather than generated for: Go's
       # asm_windows_arm64.s never loads the V registers, so floats and
       # all-float structs crossing syscall.SyscallN would be silently
       # corrupted. Assert the constraint holds, because a wildcard
       # `GOARCH=arm64 go build` would pass by building nothing at all.
+      #
+      # Placed before the tests so a static check is never skipped by a
+      # runtime failure downstream of it.
       - name: Assert amd64-only build constraints
         shell: bash
         run: |
@@ -59,3 +56,18 @@ jobs:
             echo "::error::a file claims an architecture this module excludes"
             exit 1
           fi
+
+      # The bootstrapper is not committed — it is a Microsoft binary that ships
+      # only in the NuGet package, for redistribution beside the executable —
+      # so the runner has to fetch it before anything can add the Windows App
+      # SDK framework package to its process. Without this step the bootstrap
+      # tests can only report that the file is missing, which says nothing
+      # about whether the code works.
+      - name: Fetch the Windows App SDK bootstrapper
+        run: go run ./cmd/fetch-bootstrap
+
+      # These make real WinRT calls. They are what proves this module composes
+      # with the pinned go-bindings-winrt and go-bindings-win32 at runtime and
+      # not merely at compile time.
+      - name: Tests
+        run: go test ./...

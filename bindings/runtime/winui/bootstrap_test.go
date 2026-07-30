@@ -17,6 +17,24 @@ import (
 // amount of generated code helps, so it is worth proving before writing any.
 //
 // They need the bootstrapper next to them: `go run ./cmd/fetch-bootstrap`.
+// Its absence is skipped rather than failed — the DLL is deliberately not
+// committed, so not having fetched it is a fact about the checkout and not a
+// regression in anything. Every other failure is real.
+
+// requireBootstrap adds the framework package to this process, or skips when
+// the redistributable has not been fetched.
+func requireBootstrap(t *testing.T) {
+	t.Helper()
+	err := Bootstrap(DefaultBootstrap())
+	var notFound *ErrBootstrapDLLNotFound
+	if errors.As(err, &notFound) {
+		t.Skipf("bootstrapper not fetched; run `go run ./cmd/fetch-bootstrap` (looked in %v)", notFound.Searched)
+	}
+	if err != nil {
+		t.Fatalf("Bootstrap: %v", err)
+	}
+	t.Cleanup(BootstrapShutdown)
+}
 
 func TestPackVersion(t *testing.T) {
 	// The layout PACKAGE_VERSION uses: major, minor, build, revision, each
@@ -42,11 +60,8 @@ func TestBootstrapAndActivateXaml(t *testing.T) {
 		t.Fatalf("RoInitialize(single-threaded): %v", err)
 	}
 
-	if err := Bootstrap(DefaultBootstrap()); err != nil {
-		t.Fatalf("Bootstrap: %v", err)
-	}
+	requireBootstrap(t)
 	t.Logf("bootstrapped using %s", BootstrapDLLPath())
-	t.Cleanup(BootstrapShutdown)
 
 	// Before the bootstrap this fails: nothing registers Microsoft.UI.* with
 	// the operating system. Afterwards the framework package is in this
@@ -80,10 +95,7 @@ func TestBootstrapIsIdempotent(t *testing.T) {
 		t.Fatalf("RoInitialize: %v", err)
 	}
 
-	if err := Bootstrap(DefaultBootstrap()); err != nil {
-		t.Fatalf("first Bootstrap: %v", err)
-	}
-	t.Cleanup(BootstrapShutdown)
+	requireBootstrap(t)
 	if err := Bootstrap(DefaultBootstrap()); err != nil {
 		t.Fatalf("second Bootstrap: %v", err)
 	}
