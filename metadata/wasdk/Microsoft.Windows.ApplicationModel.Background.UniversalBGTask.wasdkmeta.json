@@ -1,0 +1,41 @@
+{
+  "namespace": "Microsoft.Windows.ApplicationModel.Background.UniversalBGTask",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.winmd",
+  "structs": {
+    "UniversalBackgroundTaskContract": {}
+  },
+  "interfaces": {
+    "ITask": {
+      "guid": "89cf5f73-8195-590b-8158-bc7d2816ce16",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.Task"
+    }
+  },
+  "classes": {
+    "Task": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITask",
+        "namespace": "Microsoft.Windows.ApplicationModel.Background.UniversalBGTask",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITask",
+          "namespace": "Microsoft.Windows.ApplicationModel.Background.UniversalBGTask",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IBackgroundTask",
+          "namespace": "Windows.ApplicationModel.Background",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "activatable_direct": true
+    }
+  }
+}

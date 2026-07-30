@@ -1,4 +1,6 @@
-// Command fetch-bootstrap downloads the Windows App SDK bootstrapper and the
+package main
+
+// The fetch-bootstrap stage: download the Windows App SDK bootstrapper and the
 // headers its version constants come from.
 //
 // An application that is not packaged with MSIX cannot activate any
@@ -12,10 +14,7 @@
 // for redistribution beside the executable. So it is fetched here and left
 // out of version control (.gitignore excludes *.dll and /metadata/bootstrap/).
 //
-// Usage:
-//
-//	go run ./cmd/fetch-bootstrap [--version 2.3.1] [--arch x64] [--out metadata/bootstrap]
-package main
+//	go run ./cmd/generate fetch-bootstrap [--version 2.3.1] [--arch x64] [--out metadata/bootstrap]
 
 import (
 	"flag"
@@ -30,32 +29,27 @@ import (
 )
 
 const (
-	// sdkPackage is the meta-package; the component that actually carries the
-	// bootstrapper is resolved from its dependency list rather than named
-	// here, because the component versions change with every servicing
-	// release.
-	sdkPackage = "microsoft.windowsappsdk"
 	// foundationPackage is the component holding the bootstrapper and headers.
+	// The component that carries it is resolved from the meta-package's
+	// dependency list rather than pinned here, because component versions
+	// change with every servicing release.
 	foundationPackage = "microsoft.windowsappsdk.foundation"
-	// pinnedSDKVersion is the version this repository targets.
-	pinnedSDKVersion = "2.3.1"
 
 	bootstrapDLL = "Microsoft.WindowsAppRuntime.Bootstrap.dll"
 )
 
-func main() {
-	version := flag.String("version", pinnedSDKVersion, "Windows App SDK version")
-	arch := flag.String("arch", "x64", "architecture: x64, x86, arm64")
-	out := flag.String("out", filepath.Join("metadata", "bootstrap"), "output directory")
-	flag.Parse()
-
-	if err := run(*version, *arch, *out); err != nil {
-		fmt.Fprintln(os.Stderr, "fetch-bootstrap:", err)
-		os.Exit(1)
+func runFetchBootstrap(args []string) error {
+	flags := flag.NewFlagSet("fetch-bootstrap", flag.ExitOnError)
+	version := flags.String("version", pinnedSDKVersion, "Windows App SDK version")
+	arch := flags.String("arch", "x64", "architecture: x64, x86, arm64")
+	out := flags.String("out", filepath.Join("metadata", "bootstrap"), "output directory")
+	if err := flags.Parse(args); err != nil {
+		return err
 	}
+	return fetchBootstrap(*version, *arch, *out)
 }
 
-func run(version, arch, out string) error {
+func fetchBootstrap(version, arch, out string) error {
 	client := nuget.NewClient()
 
 	// Resolve the Foundation component's version from the meta-package rather

@@ -70,7 +70,7 @@ jobs:
       # NuGet package, for redistribution beside the executable. .gitignore
       # excludes it on purpose, so the runner fetches it.
       - name: Fetch the Windows App SDK bootstrapper
-        run: go run ./cmd/fetch-bootstrap
+        run: go run ./cmd/generate fetch-bootstrap
 
       # Then the framework package it looks for. A bare runner has no Windows
       # App SDK runtime installed, so MddBootstrapInitialize2 returns
@@ -95,3 +95,42 @@ jobs:
       # not merely at compile time.
       - name: Tests
         run: go test ./...
+
+  regen:
+    name: Regeneration determinism gate
+    # The generator itself is platform-independent, but it reads the committed
+    # winmds and the pinned module's metadata, so it runs where everything else
+    # does rather than introducing a second environment to reason about.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      # The Windows.* type universe is read out of the pinned go-bindings-winrt
+      # module's own committed metadata, so it has to be in the module cache.
+      - name: Download modules
+        run: go mod download
+
+      - name: Ingest the committed winmds
+        run: go run ./cmd/generate ingest
+
+      # --external makes an unresolvable Windows.* reference a hard error. It
+      # would otherwise surface later as a compile failure with no indication of
+      # which reference caused it.
+      - name: Validate the metadata
+        run: go run ./cmd/generate validate --external
+
+      # The point of committing the IR: regenerating it must reproduce what is
+      # in the tree byte for byte, so a metadata change is always a reviewable
+      # diff and never a surprise inside generated Go.
+      - name: Ingested metadata must match the committed tree
+        shell: bash
+        run: |
+          git add -N metadata/wasdk
+          git diff --exit-code --stat -- metadata/wasdk

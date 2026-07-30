@@ -1,19 +1,18 @@
-// Command fetch-metadata downloads the Windows App SDK winmds.
+package main
+
+// The fetch-metadata stage: download the Windows App SDK winmds.
 //
 // Microsoft.WindowsAppSDK is a meta-package: it carries no metadata itself and
-// depends on nine components that do. Both the component set and their
-// versions change with every servicing release — in 2.3.1 the meta-package is
-// 2.3.1 while Foundation is 2.3.5 — so they are read from the .nuspec rather
-// than written down here.
+// depends on nine components that do. Both the component set and their versions
+// change with every servicing release — in 2.3.1 the meta-package is 2.3.1 while
+// Foundation is 2.3.5 — so they are read from the .nuspec rather than written
+// down here.
 //
 // Version constraints are not uniform either. 2.3.1 pins its Runtime component
-// exactly ("[2.3.1]") and gives the other eight open lower bounds ("2.3.5"),
-// so anything insisting on exact pins would reject the package outright.
+// exactly ("[2.3.1]") and gives the other eight open lower bounds ("2.3.5"), so
+// anything insisting on exact pins would reject the package outright.
 //
-// Usage:
-//
-//	go run ./cmd/fetch-metadata [--version 2.3.1] [--out metadata/winmd] [--force]
-package main
+//	go run ./cmd/generate fetch-metadata [--version 2.3.1] [--out metadata/winmd] [--force]
 
 import (
 	"flag"
@@ -48,19 +47,18 @@ func skipWinmd(base string) bool {
 	return false
 }
 
-func main() {
-	version := flag.String("version", pinnedSDKVersion, "Windows App SDK version")
-	out := flag.String("out", filepath.Join("metadata", "winmd"), "output directory")
-	force := flag.Bool("force", false, "re-download even when the version already matches")
-	flag.Parse()
-
-	if err := run(*version, *out, *force); err != nil {
-		fmt.Fprintln(os.Stderr, "fetch-metadata:", err)
-		os.Exit(1)
+func runFetchMetadata(args []string) error {
+	flags := flag.NewFlagSet("fetch-metadata", flag.ExitOnError)
+	version := flags.String("version", pinnedSDKVersion, "Windows App SDK version")
+	out := flags.String("out", filepath.Join("metadata", "winmd"), "output directory")
+	force := flags.Bool("force", false, "re-download even when the version already matches")
+	if err := flags.Parse(args); err != nil {
+		return err
 	}
+	return fetchMetadata(*version, *out, *force)
 }
 
-func run(version, out string, force bool) error {
+func fetchMetadata(version, out string, force bool) error {
 	provenancePath := filepath.Join(out, "PROVENANCE.json")
 	if !force && alreadyAt(provenancePath, version) {
 		fmt.Printf("%s %s already fetched (--force to re-download)\n", sdkPackageDisplay, version)

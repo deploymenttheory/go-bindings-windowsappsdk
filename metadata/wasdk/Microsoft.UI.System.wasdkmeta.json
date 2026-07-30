@@ -1,0 +1,168 @@
+{
+  "namespace": "Microsoft.UI.System",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "interfaces": {
+    "IThemeSettings": {
+      "guid": "2228ee7e-6d15-563c-8f3c-e8783ba13846",
+      "exclusive_to": "Microsoft.UI.System.ThemeSettings",
+      "methods": [
+        {
+          "name": "add_Changed",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ThemeSettings",
+                    "namespace": "Microsoft.UI.System",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_Changed",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_HighContrast",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_HighContrastScheme",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "HighContrast",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_HighContrast"
+        },
+        {
+          "name": "HighContrastScheme",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_HighContrastScheme"
+        }
+      ],
+      "events": [
+        {
+          "name": "Changed",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ThemeSettings",
+                "namespace": "Microsoft.UI.System",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_Changed",
+          "remove_method": "remove_Changed"
+        }
+      ]
+    },
+    "IThemeSettingsStatics": {
+      "guid": "1586907d-30db-5f97-8fa1-8940c75dccc0",
+      "exclusive_to": "Microsoft.UI.System.ThemeSettings",
+      "methods": [
+        {
+          "name": "CreateForWindowId",
+          "params": [
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ThemeSettings",
+            "namespace": "Microsoft.UI.System",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "ThemeSettings": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IThemeSettings",
+        "namespace": "Microsoft.UI.System",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IThemeSettings",
+          "namespace": "Microsoft.UI.System",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.System.IThemeSettingsStatics"
+      ]
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "namespace": "Microsoft.Windows.ApplicationModel.Background",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.ApplicationModel.Background.winmd",
+  "structs": {
+    "BackgroundTaskContract": {}
+  },
+  "interfaces": {
+    "IBackgroundTaskBuilder": {
+      "guid": "32a355a0-75ca-5cb8-9f8e-2c4ea62d1ee3",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Background.BackgroundTaskBuilder",
+      "methods": [
+        {
+          "name": "SetTrigger",
+          "params": [
+            {
+              "name": "trigger",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IBackgroundTrigger",
+                "namespace": "Windows.ApplicationModel.Background",
+                "target_kind": "Interface",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "SetTaskEntryPointClsid",
+          "params": [
+            {
+              "name": "clsId",
+              "type": {
+                "kind": "Native",
+                "name": "Guid"
+              }
+            }
+          ]
+        },
+        {
+          "name": "AddCondition",
+          "params": [
+            {
+              "name": "condition",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IBackgroundCondition",
+                "namespace": "Windows.ApplicationModel.Background",
+                "target_kind": "Interface",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "put_Name",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Name",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_TaskGroup",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "BackgroundTaskRegistrationGroup",
+                "namespace": "Windows.ApplicationModel.Background",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_TaskGroup",
+          "return": {
+            "kind": "ApiRef",
+            "name": "BackgroundTaskRegistrationGroup",
+            "namespace": "Windows.ApplicationModel.Background",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "Register",
+          "overload": "Register",
+          "return": {
+            "kind": "ApiRef",
+            "name": "BackgroundTaskRegistration",
+            "namespace": "Windows.ApplicationModel.Background",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "Register",
+          "overload": "Register2",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "BackgroundTaskRegistration",
+            "namespace": "Windows.ApplicationModel.Background",
+            "target_kind": "Class",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Name",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Name",
+          "setter": "put_Name"
+        },
+        {
+          "name": "TaskGroup",
+          "type": {
+            "kind": "ApiRef",
+            "name": "BackgroundTaskRegistrationGroup",
+            "namespace": "Windows.ApplicationModel.Background",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_TaskGroup",
+          "setter": "put_TaskGroup"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "BackgroundTaskBuilder": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBackgroundTaskBuilder",
+        "namespace": "Microsoft.Windows.ApplicationModel.Background",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBackgroundTaskBuilder",
+          "namespace": "Microsoft.Windows.ApplicationModel.Background",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    }
+  }
+}

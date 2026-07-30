@@ -1,0 +1,1043 @@
+{
+  "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.ApplicationModel.Resources.winmd",
+  "enums": {
+    "ResourceCandidateKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Unknown",
+          "value": "0"
+        },
+        {
+          "name": "String",
+          "value": "1"
+        },
+        {
+          "name": "FilePath",
+          "value": "2"
+        },
+        {
+          "name": "EmbeddedData",
+          "value": "3"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "MrtCoreContract": {}
+  },
+  "interfaces": {
+    "IKnownResourceQualifierNameStatics": {
+      "guid": "dd6cdedc-559b-50c8-ac53-82fe21f915f3",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.KnownResourceQualifierName",
+      "methods": [
+        {
+          "name": "get_Contrast",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Custom",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_DeviceFamily",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_HomeRegion",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Language",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_LayoutDirection",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Scale",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_TargetSize",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Theme",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Contrast",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Contrast"
+        },
+        {
+          "name": "Custom",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Custom"
+        },
+        {
+          "name": "DeviceFamily",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_DeviceFamily"
+        },
+        {
+          "name": "HomeRegion",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_HomeRegion"
+        },
+        {
+          "name": "Language",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Language"
+        },
+        {
+          "name": "LayoutDirection",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_LayoutDirection"
+        },
+        {
+          "name": "Scale",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Scale"
+        },
+        {
+          "name": "TargetSize",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_TargetSize"
+        },
+        {
+          "name": "Theme",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Theme"
+        }
+      ]
+    },
+    "IResourceCandidate": {
+      "guid": "6c54bc0c-ef1e-57b8-b478-34fece737356",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceCandidate",
+      "methods": [
+        {
+          "name": "get_ValueAsString",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ValueAsBytes",
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "Native",
+              "name": "U1"
+            }
+          }
+        },
+        {
+          "name": "get_Kind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidateKind",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_QualifierValues",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Kind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidateKind",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Kind"
+        },
+        {
+          "name": "QualifierValues",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_QualifierValues"
+        },
+        {
+          "name": "ValueAsBytes",
+          "type": {
+            "kind": "Array",
+            "elem": {
+              "kind": "Native",
+              "name": "U1"
+            }
+          },
+          "getter": "get_ValueAsBytes"
+        },
+        {
+          "name": "ValueAsString",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ValueAsString"
+        }
+      ]
+    },
+    "IResourceCandidateFactory": {
+      "guid": "bb2b30f8-c19b-5f43-88d9-69ad728a32f4",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceCandidate",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "kind",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ResourceCandidateKind",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "data",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidate",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateInstance2",
+          "params": [
+            {
+              "name": "data",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "Native",
+                  "name": "U1"
+                }
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidate",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IResourceContext": {
+      "guid": "96fb48dc-f77d-55ff-af12-34861e3d4939",
+      "methods": [
+        {
+          "name": "get_QualifierValues",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "QualifierValues",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_QualifierValues"
+        }
+      ]
+    },
+    "IResourceContext2": {
+      "guid": "7a3b1158-798c-5949-969d-03510b9ce6ca",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceContext"
+    },
+    "IResourceLoader": {
+      "guid": "bc3f76bf-da46-54cd-8715-8b8aaf16eaac",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceLoader",
+      "methods": [
+        {
+          "name": "GetString",
+          "params": [
+            {
+              "name": "resourceId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "GetStringForUri",
+          "params": [
+            {
+              "name": "resourceUri",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ]
+    },
+    "IResourceLoaderFactory": {
+      "guid": "871f83aa-fb34-50d6-b9b9-2c35f3ffc004",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceLoader",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "fileName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceLoader",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateInstance2",
+          "params": [
+            {
+              "name": "fileName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "resourceMap",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceLoader",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IResourceLoaderStatics": {
+      "guid": "ec9c894a-1466-5f2f-8eee-a70cbd2b51bb",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceLoader",
+      "methods": [
+        {
+          "name": "GetDefaultResourceFilePath",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ]
+    },
+    "IResourceManager": {
+      "guid": "ac2291ef-81be-5c99-a0ae-bcee0180b8a8",
+      "methods": [
+        {
+          "name": "get_MainResourceMap",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceMap",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateResourceContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceContext",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "add_ResourceNotFound",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ResourceManager",
+                    "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ResourceNotFoundEventArgs",
+                    "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_ResourceNotFound",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "MainResourceMap",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ResourceMap",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          },
+          "getter": "get_MainResourceMap"
+        }
+      ],
+      "events": [
+        {
+          "name": "ResourceNotFound",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ResourceManager",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ResourceNotFoundEventArgs",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_ResourceNotFound",
+          "remove_method": "remove_ResourceNotFound"
+        }
+      ]
+    },
+    "IResourceManager2": {
+      "guid": "7ec10160-a154-5c42-8268-30e306b1f585",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceManager"
+    },
+    "IResourceManagerFactory": {
+      "guid": "d6acf18f-458a-535b-a5c4-ac2dc4e49099",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceManager",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "fileName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceManager",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IResourceMap": {
+      "guid": "4abbd9bc-df4e-5c7b-812c-7e7bb0c22377",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceMap",
+      "methods": [
+        {
+          "name": "get_ResourceCount",
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "GetSubtree",
+          "params": [
+            {
+              "name": "reference",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceMap",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "TryGetSubtree",
+          "params": [
+            {
+              "name": "reference",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceMap",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetValue",
+          "overload": "GetValue",
+          "params": [
+            {
+              "name": "resource",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidate",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetValue",
+          "overload": "GetValueWithContext",
+          "params": [
+            {
+              "name": "resource",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "context",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ResourceContext",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidate",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetValueByIndex",
+          "overload": "GetValueByIndex",
+          "params": [
+            {
+              "name": "index",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IKeyValuePair`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ResourceCandidate",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "GetValueByIndex",
+          "overload": "GetValueByIndexWithContext",
+          "params": [
+            {
+              "name": "index",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            },
+            {
+              "name": "context",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ResourceContext",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IKeyValuePair`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ResourceCandidate",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "TryGetValue",
+          "overload": "TryGetValue",
+          "params": [
+            {
+              "name": "resource",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidate",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "TryGetValue",
+          "overload": "TryGetValueWithContext",
+          "params": [
+            {
+              "name": "resource",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "context",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ResourceContext",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceCandidate",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ResourceCount",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          },
+          "getter": "get_ResourceCount"
+        }
+      ]
+    },
+    "IResourceNotFoundEventArgs": {
+      "guid": "64abb08b-e77d-5b26-830f-15941e0e8200",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.Resources.ResourceNotFoundEventArgs",
+      "methods": [
+        {
+          "name": "get_Context",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ResourceContext",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Name",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetResolvedCandidate",
+          "params": [
+            {
+              "name": "candidate",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ResourceCandidate",
+                "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Context",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ResourceContext",
+            "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+            "target_kind": "Class"
+          },
+          "getter": "get_Context"
+        },
+        {
+          "name": "Name",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Name"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "KnownResourceQualifierName": {
+      "static_interfaces": [
+        "Microsoft.Windows.ApplicationModel.Resources.IKnownResourceQualifierNameStatics"
+      ]
+    },
+    "ResourceCandidate": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IResourceCandidate",
+        "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IResourceCandidate",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.ApplicationModel.Resources.IResourceCandidateFactory"
+      ]
+    },
+    "ResourceContext": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IResourceContext",
+        "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IResourceContext2",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IResourceContext",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ResourceLoader": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IResourceLoader",
+        "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IResourceLoader",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "activatable_factories": [
+        "Microsoft.Windows.ApplicationModel.Resources.IResourceLoaderFactory"
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.ApplicationModel.Resources.IResourceLoaderStatics"
+      ]
+    },
+    "ResourceManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IResourceManager",
+        "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IResourceManager2",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IResourceManager",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "activatable_factories": [
+        "Microsoft.Windows.ApplicationModel.Resources.IResourceManagerFactory"
+      ]
+    },
+    "ResourceMap": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IResourceMap",
+        "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IResourceMap",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ResourceNotFoundEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IResourceNotFoundEventArgs",
+        "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IResourceNotFoundEventArgs",
+          "namespace": "Microsoft.Windows.ApplicationModel.Resources",
+          "target_kind": "Interface"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "namespace": "Microsoft.UI.Xaml.XamlTypeInfo",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "interfaces": {
+    "IXamlControlsXamlMetaDataProvider": {
+      "guid": "17fa3f58-3472-5aa2-a0f8-1ab8a519573d",
+      "exclusive_to": "Microsoft.UI.Xaml.XamlTypeInfo.XamlControlsXamlMetaDataProvider"
+    },
+    "IXamlControlsXamlMetaDataProviderStatics": {
+      "guid": "2d7eb3fd-ecdb-5084-b7e0-12f9598381ef",
+      "exclusive_to": "Microsoft.UI.Xaml.XamlTypeInfo.XamlControlsXamlMetaDataProvider",
+      "methods": [
+        {
+          "name": "Initialize"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "XamlControlsXamlMetaDataProvider": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IXamlMetadataProvider",
+        "namespace": "Microsoft.UI.Xaml.Markup",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IXamlControlsXamlMetaDataProvider",
+          "namespace": "Microsoft.UI.Xaml.XamlTypeInfo",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IXamlMetadataProvider",
+          "namespace": "Microsoft.UI.Xaml.Markup",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.XamlTypeInfo.IXamlControlsXamlMetaDataProviderStatics"
+      ]
+    }
+  }
+}

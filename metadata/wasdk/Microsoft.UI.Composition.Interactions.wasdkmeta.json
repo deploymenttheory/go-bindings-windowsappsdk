@@ -1,0 +1,3456 @@
+{
+  "namespace": "Microsoft.UI.Composition.Interactions",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "enums": {
+    "InteractionBindingAxisModes": {
+      "base_type": "uint32",
+      "is_flags": true,
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "PositionX",
+          "value": "1"
+        },
+        {
+          "name": "PositionY",
+          "value": "2"
+        },
+        {
+          "name": "Scale",
+          "value": "4"
+        }
+      ]
+    },
+    "InteractionChainingMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Auto",
+          "value": "0"
+        },
+        {
+          "name": "Always",
+          "value": "1"
+        },
+        {
+          "name": "Never",
+          "value": "2"
+        }
+      ]
+    },
+    "InteractionSourceMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Disabled",
+          "value": "0"
+        },
+        {
+          "name": "EnabledWithInertia",
+          "value": "1"
+        },
+        {
+          "name": "EnabledWithoutInertia",
+          "value": "2"
+        }
+      ]
+    },
+    "InteractionSourceRedirectionMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Disabled",
+          "value": "0"
+        },
+        {
+          "name": "Enabled",
+          "value": "1"
+        }
+      ]
+    },
+    "InteractionTrackerClampingOption": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Auto",
+          "value": "0"
+        },
+        {
+          "name": "Disabled",
+          "value": "1"
+        }
+      ]
+    },
+    "InteractionTrackerPositionUpdateOption": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "AllowActiveCustomScaleAnimation",
+          "value": "1"
+        }
+      ]
+    },
+    "VisualInteractionSourceRedirectionMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Off",
+          "value": "0"
+        },
+        {
+          "name": "CapableTouchpadOnly",
+          "value": "1"
+        },
+        {
+          "name": "PointerWheelOnly",
+          "value": "2"
+        },
+        {
+          "name": "CapableTouchpadAndPointerWheel",
+          "value": "3"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "ICompositionConditionalValue": {
+      "guid": "3743dda0-fbe2-5ecf-9e80-4638a011f707",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.CompositionConditionalValue",
+      "methods": [
+        {
+          "name": "get_Condition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Condition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Value",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Value",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Condition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Condition",
+          "setter": "put_Condition"
+        },
+        {
+          "name": "Value",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Value",
+          "setter": "put_Value"
+        }
+      ]
+    },
+    "ICompositionConditionalValueStatics": {
+      "guid": "df133c1f-a185-536c-b54b-8f369212a581",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.CompositionConditionalValue",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionConditionalValue",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ICompositionInteractionSource": {
+      "guid": "711c72c0-c406-4a12-859b-b44f651af046"
+    },
+    "ICompositionInteractionSourceCollection": {
+      "guid": "9aa1b86b-b002-5e2e-bb2b-0e2c547445e1",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.CompositionInteractionSourceCollection",
+      "methods": [
+        {
+          "name": "get_Count",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "Add",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ICompositionInteractionSource",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Interface"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Remove",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ICompositionInteractionSource",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Interface"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RemoveAll"
+        }
+      ],
+      "properties": [
+        {
+          "name": "Count",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_Count"
+        }
+      ]
+    },
+    "IInteractionSourceConfiguration": {
+      "guid": "099e0124-dadf-5bc6-a895-90387657550f",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionSourceConfiguration",
+      "methods": [
+        {
+          "name": "get_PositionXSourceMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PositionXSourceMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionSourceRedirectionMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PositionYSourceMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PositionYSourceMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionSourceRedirectionMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ScaleSourceMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_ScaleSourceMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionSourceRedirectionMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "PositionXSourceMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PositionXSourceMode",
+          "setter": "put_PositionXSourceMode"
+        },
+        {
+          "name": "PositionYSourceMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PositionYSourceMode",
+          "setter": "put_PositionYSourceMode"
+        },
+        {
+          "name": "ScaleSourceMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_ScaleSourceMode",
+          "setter": "put_ScaleSourceMode"
+        }
+      ]
+    },
+    "IInteractionTracker": {
+      "guid": "02d8ec1f-8f04-505e-bd1e-47b2a204de51",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "get_InteractionSources",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionInteractionSourceCollection",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsPositionRoundingSuggested",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_MaxPosition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_MaxPosition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_MaxScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_MaxScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_MinPosition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_MinPosition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_MinScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_MinScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_NaturalRestingPosition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_NaturalRestingScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_Owner",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IInteractionTrackerOwner",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Interface"
+          }
+        },
+        {
+          "name": "get_Position",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PositionInertiaDecayRate",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_PositionInertiaDecayRate",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IReference`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "Vector3",
+                    "namespace": "Windows.Foundation.Numerics",
+                    "target_kind": "Struct",
+                    "external": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PositionVelocityInPixelsPerSecond",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Scale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_ScaleInertiaDecayRate",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "F32"
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_ScaleInertiaDecayRate",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IReference`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "F32"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ScaleVelocityInPercentPerSecond",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "AdjustPositionXIfGreaterThanThreshold",
+          "params": [
+            {
+              "name": "adjustment",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            },
+            {
+              "name": "positionThreshold",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "AdjustPositionYIfGreaterThanThreshold",
+          "params": [
+            {
+              "name": "adjustment",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            },
+            {
+              "name": "positionThreshold",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigurePositionXInertiaModifiers",
+          "params": [
+            {
+              "name": "modifiers",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "InteractionTrackerInertiaModifier",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigurePositionYInertiaModifiers",
+          "params": [
+            {
+              "name": "modifiers",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "InteractionTrackerInertiaModifier",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigureScaleInertiaModifiers",
+          "params": [
+            {
+              "name": "modifiers",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "InteractionTrackerInertiaModifier",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TryUpdatePosition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdatePositionBy",
+          "params": [
+            {
+              "name": "amount",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdatePositionWithAnimation",
+          "params": [
+            {
+              "name": "animation",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CompositionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdatePositionWithAdditionalVelocity",
+          "params": [
+            {
+              "name": "velocityInPixelsPerSecond",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdateScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            },
+            {
+              "name": "centerPoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdateScaleWithAnimation",
+          "params": [
+            {
+              "name": "animation",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CompositionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "centerPoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdateScaleWithAdditionalVelocity",
+          "params": [
+            {
+              "name": "velocityInPercentPerSecond",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            },
+            {
+              "name": "centerPoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "InteractionSources",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CompositionInteractionSourceCollection",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          },
+          "getter": "get_InteractionSources"
+        },
+        {
+          "name": "IsPositionRoundingSuggested",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsPositionRoundingSuggested"
+        },
+        {
+          "name": "MaxPosition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MaxPosition",
+          "setter": "put_MaxPosition"
+        },
+        {
+          "name": "MaxScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_MaxScale",
+          "setter": "put_MaxScale"
+        },
+        {
+          "name": "MinPosition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MinPosition",
+          "setter": "put_MinPosition"
+        },
+        {
+          "name": "MinScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_MinScale",
+          "setter": "put_MinScale"
+        },
+        {
+          "name": "NaturalRestingPosition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_NaturalRestingPosition"
+        },
+        {
+          "name": "NaturalRestingScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_NaturalRestingScale"
+        },
+        {
+          "name": "Owner",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IInteractionTrackerOwner",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Interface"
+          },
+          "getter": "get_Owner"
+        },
+        {
+          "name": "Position",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Position"
+        },
+        {
+          "name": "PositionInertiaDecayRate",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            ]
+          },
+          "getter": "get_PositionInertiaDecayRate",
+          "setter": "put_PositionInertiaDecayRate"
+        },
+        {
+          "name": "PositionVelocityInPixelsPerSecond",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PositionVelocityInPixelsPerSecond"
+        },
+        {
+          "name": "Scale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_Scale"
+        },
+        {
+          "name": "ScaleInertiaDecayRate",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "F32"
+              }
+            ]
+          },
+          "getter": "get_ScaleInertiaDecayRate",
+          "setter": "put_ScaleInertiaDecayRate"
+        },
+        {
+          "name": "ScaleVelocityInPercentPerSecond",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_ScaleVelocityInPercentPerSecond"
+        }
+      ]
+    },
+    "IInteractionTracker2": {
+      "guid": "396d7fb1-2fad-5508-8591-4ff0dc5a7484",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "ConfigureCenterPointXInertiaModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigureCenterPointYInertiaModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IInteractionTracker3": {
+      "guid": "239752cf-266c-5acb-acc3-b3e3ecaf4d3f",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "ConfigureVector2PositionInertiaModifiers",
+          "params": [
+            {
+              "name": "modifiers",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "InteractionTrackerVector2InertiaModifier",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IInteractionTracker4": {
+      "guid": "a9a9ce02-53c9-5690-a575-f340b7c2fdf2",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "TryUpdatePosition",
+          "overload": "TryUpdatePositionWithOption",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            },
+            {
+              "name": "option",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerClampingOption",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "TryUpdatePositionBy",
+          "overload": "TryUpdatePositionByWithOption",
+          "params": [
+            {
+              "name": "amount",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            },
+            {
+              "name": "option",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerClampingOption",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "get_IsInertiaFromImpulse",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsInertiaFromImpulse",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsInertiaFromImpulse"
+        }
+      ]
+    },
+    "IInteractionTracker5": {
+      "guid": "dbfcd333-c3bf-5057-a45e-25edf06ebd8f",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "TryUpdatePosition",
+          "overload": "TryUpdatePositionWithOption",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            },
+            {
+              "name": "option",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerClampingOption",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "posUpdateOption",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerPositionUpdateOption",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ]
+    },
+    "IInteractionTrackerCustomAnimationStateEnteredArgs": {
+      "guid": "7464035c-cfce-56da-9472-420f276bd0a5",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerCustomAnimationStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_RequestId",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "RequestId",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RequestId"
+        }
+      ]
+    },
+    "IInteractionTrackerCustomAnimationStateEnteredArgs2": {
+      "guid": "06b99fbc-d6a8-5ae3-88b8-e91621becbd6",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerCustomAnimationStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_IsFromBinding",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsFromBinding",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsFromBinding"
+        }
+      ]
+    },
+    "IInteractionTrackerIdleStateEnteredArgs": {
+      "guid": "199094ab-15fd-539c-97b8-964a8196f777",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerIdleStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_RequestId",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "RequestId",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RequestId"
+        }
+      ]
+    },
+    "IInteractionTrackerIdleStateEnteredArgs2": {
+      "guid": "4eb213c0-931c-5164-8965-11c0186d3390",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerIdleStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_IsFromBinding",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsFromBinding",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsFromBinding"
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaModifier": {
+      "guid": "4d3a0c6b-c508-5029-a47a-cbf64636f010",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier"
+    },
+    "IInteractionTrackerInertiaModifierFactory": {
+      "guid": "6dee5b33-0b5a-57b1-8537-93d4fd038f9f",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier"
+    },
+    "IInteractionTrackerInertiaMotion": {
+      "guid": "91f662c0-3141-5b5e-862f-cfc60bee8cd6",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaMotion",
+      "methods": [
+        {
+          "name": "get_Condition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Condition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Motion",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Motion",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Condition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Condition",
+          "setter": "put_Condition"
+        },
+        {
+          "name": "Motion",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Motion",
+          "setter": "put_Motion"
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaMotionStatics": {
+      "guid": "b0185a4f-0059-52c6-a660-9aed0c44ff7d",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaMotion",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionTrackerInertiaMotion",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaNaturalMotion": {
+      "guid": "8c7482e0-185d-56b1-b67f-fca4fcd13cd2",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaNaturalMotion",
+      "methods": [
+        {
+          "name": "get_Condition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Condition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_NaturalMotion",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ScalarNaturalMotionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_NaturalMotion",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ScalarNaturalMotionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Condition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Condition",
+          "setter": "put_Condition"
+        },
+        {
+          "name": "NaturalMotion",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ScalarNaturalMotionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_NaturalMotion",
+          "setter": "put_NaturalMotion"
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaNaturalMotionStatics": {
+      "guid": "860ec143-f165-5298-abf2-47369dd07f10",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaNaturalMotion",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionTrackerInertiaNaturalMotion",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaRestingValue": {
+      "guid": "1a2b20cd-3371-53ff-a560-f4847b467d73",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaRestingValue",
+      "methods": [
+        {
+          "name": "get_Condition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Condition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RestingValue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_RestingValue",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Condition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Condition",
+          "setter": "put_Condition"
+        },
+        {
+          "name": "RestingValue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_RestingValue",
+          "setter": "put_RestingValue"
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaRestingValueStatics": {
+      "guid": "cf0f0414-7fdf-5284-aeef-28b71b62aa4f",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaRestingValue",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionTrackerInertiaRestingValue",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaStateEnteredArgs": {
+      "guid": "5b76c949-a4d0-5c9d-9292-7013ae9656c7",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_ModifiedRestingPosition",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_ModifiedRestingScale",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "F32"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_NaturalRestingPosition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_NaturalRestingScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_PositionVelocityInPixelsPerSecond",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_RequestId",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "get_ScaleVelocityInPercentPerSecond",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ModifiedRestingPosition",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "Vector3",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            ]
+          },
+          "getter": "get_ModifiedRestingPosition"
+        },
+        {
+          "name": "ModifiedRestingScale",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "F32"
+              }
+            ]
+          },
+          "getter": "get_ModifiedRestingScale"
+        },
+        {
+          "name": "NaturalRestingPosition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_NaturalRestingPosition"
+        },
+        {
+          "name": "NaturalRestingScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_NaturalRestingScale"
+        },
+        {
+          "name": "PositionVelocityInPixelsPerSecond",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PositionVelocityInPixelsPerSecond"
+        },
+        {
+          "name": "RequestId",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RequestId"
+        },
+        {
+          "name": "ScaleVelocityInPercentPerSecond",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_ScaleVelocityInPercentPerSecond"
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaStateEnteredArgs2": {
+      "guid": "c42d7e8f-7199-57a9-8aec-8727552b13e6",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_IsInertiaFromImpulse",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsInertiaFromImpulse",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsInertiaFromImpulse"
+        }
+      ]
+    },
+    "IInteractionTrackerInertiaStateEnteredArgs3": {
+      "guid": "ce726ca0-1c04-531b-9951-4aec996952e4",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_IsFromBinding",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsFromBinding",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsFromBinding"
+        }
+      ]
+    },
+    "IInteractionTrackerInteractingStateEnteredArgs": {
+      "guid": "70d29b84-0931-5f17-a8a1-82f8f8782532",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInteractingStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_RequestId",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "RequestId",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RequestId"
+        }
+      ]
+    },
+    "IInteractionTrackerInteractingStateEnteredArgs2": {
+      "guid": "2f1ff38d-2f51-5ceb-8d09-bda1519f9342",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerInteractingStateEnteredArgs",
+      "methods": [
+        {
+          "name": "get_IsFromBinding",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsFromBinding",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsFromBinding"
+        }
+      ]
+    },
+    "IInteractionTrackerOwner": {
+      "guid": "8869779d-1d2a-5816-836a-68a910507d87",
+      "methods": [
+        {
+          "name": "CustomAnimationStateEntered",
+          "params": [
+            {
+              "name": "sender",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerCustomAnimationStateEnteredArgs",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "IdleStateEntered",
+          "params": [
+            {
+              "name": "sender",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerIdleStateEnteredArgs",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "InertiaStateEntered",
+          "params": [
+            {
+              "name": "sender",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerInertiaStateEnteredArgs",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "InteractingStateEntered",
+          "params": [
+            {
+              "name": "sender",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerInteractingStateEnteredArgs",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RequestIgnored",
+          "params": [
+            {
+              "name": "sender",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerRequestIgnoredArgs",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ValuesChanged",
+          "params": [
+            {
+              "name": "sender",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTrackerValuesChangedArgs",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IInteractionTrackerRequestIgnoredArgs": {
+      "guid": "c276205e-f7a5-5ba2-ad45-d12c3c339149",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerRequestIgnoredArgs",
+      "methods": [
+        {
+          "name": "get_RequestId",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "RequestId",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RequestId"
+        }
+      ]
+    },
+    "IInteractionTrackerStatics": {
+      "guid": "7ac9867a-e16e-56ef-9809-f6e404240f50",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionTracker",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateWithOwner",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "owner",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IInteractionTrackerOwner",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Interface"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionTracker",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IInteractionTrackerStatics2": {
+      "guid": "25658e4c-b99f-5108-aab7-1cc44f11508b",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTracker",
+      "methods": [
+        {
+          "name": "SetBindingMode",
+          "params": [
+            {
+              "name": "boundTracker1",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "boundTracker2",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "axisMode",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionBindingAxisModes",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetBindingMode",
+          "params": [
+            {
+              "name": "boundTracker1",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "boundTracker2",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionTracker",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionBindingAxisModes",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        }
+      ]
+    },
+    "IInteractionTrackerValuesChangedArgs": {
+      "guid": "9b495bed-1cf7-55c1-82b9-8022cbf3c766",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerValuesChangedArgs",
+      "methods": [
+        {
+          "name": "get_Position",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_RequestId",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "get_Scale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Position",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Position"
+        },
+        {
+          "name": "RequestId",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RequestId"
+        },
+        {
+          "name": "Scale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_Scale"
+        }
+      ]
+    },
+    "IInteractionTrackerVector2InertiaModifier": {
+      "guid": "4b8ed310-cb61-5f0a-b99a-940cdd2c42b1",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaModifier"
+    },
+    "IInteractionTrackerVector2InertiaModifierFactory": {
+      "guid": "1b3fd240-ba66-5296-b801-62a2a3606613",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaModifier"
+    },
+    "IInteractionTrackerVector2InertiaNaturalMotion": {
+      "guid": "097ba1a6-e077-52d1-86d3-38e3f6619ddf",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaNaturalMotion",
+      "methods": [
+        {
+          "name": "get_Condition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Condition",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ExpressionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_NaturalMotion",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2NaturalMotionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_NaturalMotion",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector2NaturalMotionAnimation",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Condition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExpressionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Condition",
+          "setter": "put_Condition"
+        },
+        {
+          "name": "NaturalMotion",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2NaturalMotionAnimation",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_NaturalMotion",
+          "setter": "put_NaturalMotion"
+        }
+      ]
+    },
+    "IInteractionTrackerVector2InertiaNaturalMotionStatics": {
+      "guid": "cc24ab87-9131-5286-b3ce-1ef97e0974e6",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaNaturalMotion",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionTrackerVector2InertiaNaturalMotion",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IVisualInteractionSource": {
+      "guid": "ea595c95-b9cb-5cd4-bb9c-4934ff329063",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.VisualInteractionSource",
+      "methods": [
+        {
+          "name": "get_IsPositionXRailsEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsPositionXRailsEnabled",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsPositionYRailsEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsPositionYRailsEnabled",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ManipulationRedirectionMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "VisualInteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_ManipulationRedirectionMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "VisualInteractionSourceRedirectionMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PositionXChainingMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionChainingMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PositionXChainingMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionChainingMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PositionXSourceMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PositionXSourceMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionSourceMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PositionYChainingMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionChainingMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PositionYChainingMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionChainingMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PositionYSourceMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PositionYSourceMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionSourceMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ScaleChainingMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionChainingMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_ScaleChainingMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionChainingMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ScaleSourceMode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_ScaleSourceMode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "InteractionSourceMode",
+                "namespace": "Microsoft.UI.Composition.Interactions",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Source",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Visual",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "TryRedirectForManipulation",
+          "params": [
+            {
+              "name": "pointerPoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PointerPoint",
+                "namespace": "Microsoft.UI.Input",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsPositionXRailsEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsPositionXRailsEnabled",
+          "setter": "put_IsPositionXRailsEnabled"
+        },
+        {
+          "name": "IsPositionYRailsEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsPositionYRailsEnabled",
+          "setter": "put_IsPositionYRailsEnabled"
+        },
+        {
+          "name": "ManipulationRedirectionMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "VisualInteractionSourceRedirectionMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_ManipulationRedirectionMode",
+          "setter": "put_ManipulationRedirectionMode"
+        },
+        {
+          "name": "PositionXChainingMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionChainingMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PositionXChainingMode",
+          "setter": "put_PositionXChainingMode"
+        },
+        {
+          "name": "PositionXSourceMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PositionXSourceMode",
+          "setter": "put_PositionXSourceMode"
+        },
+        {
+          "name": "PositionYChainingMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionChainingMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PositionYChainingMode",
+          "setter": "put_PositionYChainingMode"
+        },
+        {
+          "name": "PositionYSourceMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PositionYSourceMode",
+          "setter": "put_PositionYSourceMode"
+        },
+        {
+          "name": "ScaleChainingMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionChainingMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_ScaleChainingMode",
+          "setter": "put_ScaleChainingMode"
+        },
+        {
+          "name": "ScaleSourceMode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceMode",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Enum"
+          },
+          "getter": "get_ScaleSourceMode",
+          "setter": "put_ScaleSourceMode"
+        },
+        {
+          "name": "Source",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Visual",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Source"
+        }
+      ]
+    },
+    "IVisualInteractionSource2": {
+      "guid": "ff1132ba-dc0d-519e-be49-be301e52306a",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.VisualInteractionSource",
+      "methods": [
+        {
+          "name": "get_DeltaPosition",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DeltaScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_Position",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PositionVelocity",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Scale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_ScaleVelocity",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "ConfigureCenterPointXModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigureCenterPointYModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigureDeltaPositionXModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigureDeltaPositionYModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ConfigureDeltaScaleModifiers",
+          "params": [
+            {
+              "name": "conditionalValues",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositionConditionalValue",
+                    "namespace": "Microsoft.UI.Composition.Interactions",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "DeltaPosition",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DeltaPosition"
+        },
+        {
+          "name": "DeltaScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_DeltaScale"
+        },
+        {
+          "name": "Position",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Position"
+        },
+        {
+          "name": "PositionVelocity",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector3",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PositionVelocity"
+        },
+        {
+          "name": "Scale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_Scale"
+        },
+        {
+          "name": "ScaleVelocity",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_ScaleVelocity"
+        }
+      ]
+    },
+    "IVisualInteractionSource3": {
+      "guid": "d523bd66-a05d-5417-8e07-84ae3caf9752",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.VisualInteractionSource",
+      "methods": [
+        {
+          "name": "get_PointerWheelConfig",
+          "return": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceConfiguration",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "PointerWheelConfig",
+          "type": {
+            "kind": "ApiRef",
+            "name": "InteractionSourceConfiguration",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          },
+          "getter": "get_PointerWheelConfig"
+        }
+      ]
+    },
+    "IVisualInteractionSourceObjectFactory": {
+      "guid": "feb73102-238c-52aa-8e03-b68d5ecc44b3",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.VisualInteractionSource"
+    },
+    "IVisualInteractionSourceStatics": {
+      "guid": "5fc9c763-e2e5-530e-87cd-b93118ade8a3",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.VisualInteractionSource",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "VisualInteractionSource",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IVisualInteractionSourceStatics2": {
+      "guid": "a6b494fe-12a1-5a73-b87e-4c4ef58eac6c",
+      "exclusive_to": "Microsoft.UI.Composition.Interactions.VisualInteractionSource",
+      "methods": [
+        {
+          "name": "CreateFromIVisualElement",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IVisualElement",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Interface"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "VisualInteractionSource",
+            "namespace": "Microsoft.UI.Composition.Interactions",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "CompositionConditionalValue": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICompositionConditionalValue",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICompositionConditionalValue",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.ICompositionConditionalValueStatics"
+      ],
+      "composable": true
+    },
+    "CompositionInteractionSourceCollection": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICompositionInteractionSourceCollection",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICompositionInteractionSourceCollection",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "GenericInst",
+          "name": "IIterable`1",
+          "namespace": "Windows.Foundation.Collections",
+          "target_kind": "Interface",
+          "external": true,
+          "args": [
+            {
+              "kind": "ApiRef",
+              "name": "ICompositionInteractionSource",
+              "namespace": "Microsoft.UI.Composition.Interactions",
+              "target_kind": "Interface"
+            }
+          ]
+        }
+      ],
+      "composable": true
+    },
+    "InteractionSourceConfiguration": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionSourceConfiguration",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionSourceConfiguration",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable": true
+    },
+    "InteractionTracker": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTracker",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTracker",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTracker2",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTracker3",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTracker4",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTracker5",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerStatics2",
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerStatics"
+      ],
+      "composable": true
+    },
+    "InteractionTrackerCustomAnimationStateEnteredArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerCustomAnimationStateEnteredArgs",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerCustomAnimationStateEnteredArgs",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerCustomAnimationStateEnteredArgs2",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "InteractionTrackerIdleStateEnteredArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerIdleStateEnteredArgs",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerIdleStateEnteredArgs",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerIdleStateEnteredArgs2",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "InteractionTrackerInertiaModifier": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerInertiaModifier",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaModifier",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaModifierFactory"
+      ],
+      "composable": true
+    },
+    "InteractionTrackerInertiaMotion": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerInertiaMotion",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaMotion",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaMotionStatics"
+      ],
+      "composable": true
+    },
+    "InteractionTrackerInertiaNaturalMotion": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerInertiaNaturalMotion",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaNaturalMotion",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaNaturalMotionStatics"
+      ],
+      "composable": true
+    },
+    "InteractionTrackerInertiaRestingValue": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerInertiaRestingValue",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaRestingValue",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaRestingValueStatics"
+      ],
+      "composable": true
+    },
+    "InteractionTrackerInertiaStateEnteredArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerInertiaStateEnteredArgs",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaStateEnteredArgs",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaStateEnteredArgs2",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInertiaStateEnteredArgs3",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "InteractionTrackerInteractingStateEnteredArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerInteractingStateEnteredArgs",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInteractingStateEnteredArgs",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerInteractingStateEnteredArgs2",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "InteractionTrackerRequestIgnoredArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerRequestIgnoredArgs",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerRequestIgnoredArgs",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "InteractionTrackerValuesChangedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerValuesChangedArgs",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerValuesChangedArgs",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "InteractionTrackerVector2InertiaModifier": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerVector2InertiaModifier",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerVector2InertiaModifier",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerVector2InertiaModifierFactory"
+      ],
+      "composable": true
+    },
+    "InteractionTrackerVector2InertiaNaturalMotion": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IInteractionTrackerVector2InertiaNaturalMotion",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IInteractionTrackerVector2InertiaNaturalMotion",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.IInteractionTrackerVector2InertiaNaturalMotionStatics"
+      ],
+      "composable": true
+    },
+    "VisualInteractionSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IVisualInteractionSource",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IVisualInteractionSource",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IVisualInteractionSource2",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IVisualInteractionSource3",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ICompositionInteractionSource",
+          "namespace": "Microsoft.UI.Composition.Interactions",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Interactions.IVisualInteractionSourceStatics2",
+        "Microsoft.UI.Composition.Interactions.IVisualInteractionSourceStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Composition.Interactions.IVisualInteractionSourceObjectFactory"
+      ],
+      "composable": true
+    }
+  }
+}

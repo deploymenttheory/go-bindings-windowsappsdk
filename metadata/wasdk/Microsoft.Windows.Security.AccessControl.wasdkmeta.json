@@ -1,0 +1,115 @@
+{
+  "namespace": "Microsoft.Windows.Security.AccessControl",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.Security.AccessControl.winmd",
+  "structs": {
+    "AccessControlContract": {},
+    "AppContainerNameAndAccess": {
+      "fields": [
+        {
+          "name": "appContainerName",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "accessMask",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "ISecurityDescriptorHelpersStatics": {
+      "guid": "14fa9e8d-59f0-5017-852f-3ae24fd5ebb1",
+      "exclusive_to": "Microsoft.Windows.Security.AccessControl.SecurityDescriptorHelpers",
+      "methods": [
+        {
+          "name": "GetSddlForAppContainerNames",
+          "params": [
+            {
+              "name": "accessRequests",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "ApiRef",
+                  "name": "AppContainerNameAndAccess",
+                  "namespace": "Microsoft.Windows.Security.AccessControl",
+                  "target_kind": "Struct"
+                }
+              }
+            },
+            {
+              "name": "principalStringSid",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "principalAccessMask",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "GetSecurityDescriptorBytesFromAppContainerNames",
+          "params": [
+            {
+              "name": "accessRequests",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "ApiRef",
+                  "name": "AppContainerNameAndAccess",
+                  "namespace": "Microsoft.Windows.Security.AccessControl",
+                  "target_kind": "Struct"
+                }
+              }
+            },
+            {
+              "name": "principalStringSid",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "principalAccessMask",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "Native",
+              "name": "U1"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "SecurityDescriptorHelpers": {
+      "static_interfaces": [
+        "Microsoft.Windows.Security.AccessControl.ISecurityDescriptorHelpersStatics"
+      ]
+    }
+  }
+}

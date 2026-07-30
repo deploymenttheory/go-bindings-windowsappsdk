@@ -1,0 +1,862 @@
+{
+  "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.winmd",
+  "enums": {
+    "DeploymentStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Unknown",
+          "value": "0"
+        },
+        {
+          "name": "Ok",
+          "value": "1"
+        },
+        {
+          "name": "PackageInstallRequired",
+          "value": "2"
+        },
+        {
+          "name": "PackageInstallFailed",
+          "value": "3"
+        }
+      ]
+    },
+    "RuntimeCompatibilityChange": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "ItemTemplateWrapper_RecyclePoolLeak",
+          "value": "61574373"
+        },
+        {
+          "name": "Animation_FixImplicitHideAnimationCrash",
+          "value": "61760863"
+        },
+        {
+          "name": "TitleBar_ContentDragRegions",
+          "value": "61831627"
+        },
+        {
+          "name": "Popup_WindowedPopupOverrideScale",
+          "value": "61847252"
+        },
+        {
+          "name": "UIAffinityReleaseQueue_PauseDispatchDuringCleanup",
+          "value": "61855278"
+        },
+        {
+          "name": "GetModuleHandle_FixAmbiguousModuleLookup",
+          "value": "62040515"
+        },
+        {
+          "name": "PackageManager_FixCrash",
+          "value": "62056332"
+        },
+        {
+          "name": "ModelInitialization_GetReadyStateAvailabilityGuard",
+          "value": "62056572"
+        },
+        {
+          "name": "WindowsML_MultiEpPerPackage",
+          "value": "62083086"
+        },
+        {
+          "name": "LanguageModelInsights_GetPartialResultLatency",
+          "value": "62100233"
+        },
+        {
+          "name": "WindowsML_FrameworkEpEnumeration",
+          "value": "62100797"
+        },
+        {
+          "name": "WindowsML_EpSelectionMode",
+          "value": "62100876"
+        },
+        {
+          "name": "UniformGridLayout_GetItemsPerLineDivideByZero",
+          "value": "62147120"
+        },
+        {
+          "name": "ApplicationData_GetForUnpackaged",
+          "value": "61684930"
+        },
+        {
+          "name": "InputPointerSource_PointerCancelCrashFix",
+          "value": "61854090"
+        },
+        {
+          "name": "RenderTargetBitmap_PreCommitCrashOnTreeLeave",
+          "value": "62216616"
+        },
+        {
+          "name": "ScrollView_HideIndicatorsTimerUseAfterFree",
+          "value": "62255131"
+        },
+        {
+          "name": "ThemeSettings_OffThreadDestructorFix",
+          "value": "62276145"
+        },
+        {
+          "name": "MRTCore_SparsePackagedPriFallback",
+          "value": "62382643"
+        },
+        {
+          "name": "GetPeerPrivate_UseAfterFree",
+          "value": "62422195"
+        },
+        {
+          "name": "WindowsMLFlatCCatalog_CallbackStringOwnership",
+          "value": "62440888"
+        },
+        {
+          "name": "WindowsML_ComRundownFix",
+          "value": "62440888"
+        },
+        {
+          "name": "WindowsML_ComInitializationFix",
+          "value": "62440888"
+        },
+        {
+          "name": "CPopupRoot_ReplayPointerUpdateCrash",
+          "value": "62393567"
+        },
+        {
+          "name": "XamlIslandRoot_UiaTeardownReentrancyCrash",
+          "value": "62406051"
+        },
+        {
+          "name": "ModernCollectionBasePanel_StaleViewportAnchorRecycle",
+          "value": "62434240"
+        },
+        {
+          "name": "Popup_RemoveChildIdempotentWhenClosing",
+          "value": "62434371"
+        },
+        {
+          "name": "UIAWindow_PauseNewDispatchOnDisconnectProviders",
+          "value": "62434372"
+        },
+        {
+          "name": "CascadingMenuHelper_DelayOpenTimerTickAfterUnload",
+          "value": "62434373"
+        },
+        {
+          "name": "AcrylicBrush_InitializePropertyInMarkup",
+          "value": "62471884"
+        },
+        {
+          "name": "Xaml_ReserveVectorSpace",
+          "value": "62542953"
+        },
+        {
+          "name": "XamlUICommand_LightweightBindings",
+          "value": "62639407"
+        },
+        {
+          "name": "Xaml_DefaultStyleOptimizations",
+          "value": "62644600"
+        },
+        {
+          "name": "Xaml_ThemeResourceUseResourceKeys",
+          "value": "62645877"
+        },
+        {
+          "name": "Xaml_FasterResourceDictionary",
+          "value": "62646974"
+        },
+        {
+          "name": "Xaml_CachedTypeChecks",
+          "value": "62659855"
+        },
+        {
+          "name": "Xaml_FasterXbfIntLoading",
+          "value": "62673714"
+        },
+        {
+          "name": "Xaml_ActivationFactoryFastPaths",
+          "value": "62676756"
+        },
+        {
+          "name": "XamlUICommand_SkipEmptyKeyboardAcceleratorBinding",
+          "value": "62676766"
+        },
+        {
+          "name": "Xaml_ReduceThemeResourceLookupHashing",
+          "value": "62676773"
+        },
+        {
+          "name": "RefreshRateInfo_RemovePowerNotification",
+          "value": "62688041"
+        },
+        {
+          "name": "ApplicationData_GetForUnpackaged_LocalSettings",
+          "value": "62698635"
+        },
+        {
+          "name": "CustomMetadataTypes_InvalidateUseAfterFree",
+          "value": "62724527"
+        },
+        {
+          "name": "CPopup_OpenSetFocusReentrancy",
+          "value": "62724733"
+        },
+        {
+          "name": "MediaPlayerPresenter_DeviceLostCrash",
+          "value": "62724906"
+        },
+        {
+          "name": "HWBuildGlyphRunTextures_DeviceGuardScope",
+          "value": "62725196"
+        },
+        {
+          "name": "FocusRectManager_FindFocusRectHostCrash",
+          "value": "62725364"
+        },
+        {
+          "name": "Xaml_EagerDeviceRemovedEventRegistration",
+          "value": "62726703"
+        },
+        {
+          "name": "XamlSettings_OptionalChangesApi",
+          "value": "62738389"
+        },
+        {
+          "name": "UniversalBGTask_RunCrash",
+          "value": "62755661"
+        },
+        {
+          "name": "Xaml_OptimizedCommandBarInitialization",
+          "value": "62759377"
+        },
+        {
+          "name": "Flyout_SidePlacementFlipUpAlignmentFix",
+          "value": "62771256"
+        },
+        {
+          "name": "LanguageModel_StructuredJsonOutput",
+          "value": "62774942"
+        },
+        {
+          "name": "Xaml_OptimizedCommandBarFlyoutUpdateCommands",
+          "value": "62776273"
+        },
+        {
+          "name": "XamlInit_GetMuxVersionCompileTime",
+          "value": "62779870"
+        },
+        {
+          "name": "Xaml_IconNoGridOptimization",
+          "value": "62784965"
+        },
+        {
+          "name": "UniformGridLayoutFlowLayout_OnItemsChangedNullLayoutStateCrash",
+          "value": "62786355"
+        },
+        {
+          "name": "Xaml_DeferStylePropertySetters",
+          "value": "62789076"
+        },
+        {
+          "name": "Xaml_LoadDeferredResourceOptimization",
+          "value": "62818033"
+        },
+        {
+          "name": "Xaml_DeferContextFlyoutInit",
+          "value": "62833838"
+        },
+        {
+          "name": "Xaml_DelayApplyStylesAfterCreationComplete",
+          "value": "62847209"
+        },
+        {
+          "name": "Xaml_ReserveTrackerCollectionSpace",
+          "value": "62849414"
+        },
+        {
+          "name": "WindowsML_ExecutionProviderEnumerationUpdate",
+          "value": "62865780"
+        },
+        {
+          "name": "CompositionEngine_API",
+          "value": "62917618"
+        },
+        {
+          "name": "WindowsServices_GetKeyboardModifiersStateRace",
+          "value": "62927180"
+        },
+        {
+          "name": "VideoSuperResolution_HardwareDetection",
+          "value": "62934326"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "DeploymentContract": {},
+    "RuntimeCompatibilityContract": {},
+    "VersionInfoContract": {},
+    "WindowsAppRuntimeVersion": {
+      "fields": [
+        {
+          "name": "Major",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "Minor",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "Patch",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IDeploymentInitializeOptions": {
+      "guid": "578a5fd4-9d7f-5e01-97b8-d8ea61db4027",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentInitializeOptions",
+      "methods": [
+        {
+          "name": "get_ForceDeployment",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ForceDeployment",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "ForceDeployment",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ForceDeployment",
+          "setter": "put_ForceDeployment"
+        }
+      ]
+    },
+    "IDeploymentInitializeOptions2": {
+      "guid": "ad902820-149f-5e16-a566-9b2363997de2",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentInitializeOptions",
+      "methods": [
+        {
+          "name": "get_OnErrorShowUI",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_OnErrorShowUI",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "OnErrorShowUI",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_OnErrorShowUI",
+          "setter": "put_OnErrorShowUI"
+        }
+      ]
+    },
+    "IDeploymentManagerStatics": {
+      "guid": "6782a9d0-bfd0-50ea-81b0-32e9ed37cdf0",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentManager",
+      "methods": [
+        {
+          "name": "GetStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DeploymentResult",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "Initialize",
+          "overload": "Initialize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DeploymentResult",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDeploymentManagerStatics2": {
+      "guid": "f49c16ee-6ebc-5f15-bebb-2ba49f8c0b30",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentManager",
+      "methods": [
+        {
+          "name": "Initialize",
+          "overload": "Initialize",
+          "params": [
+            {
+              "name": "deploymentInitializeOptions",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DeploymentInitializeOptions",
+                "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DeploymentResult",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDeploymentResult": {
+      "guid": "27203f62-463d-587a-8eb7-870098901078",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentResult",
+      "methods": [
+        {
+          "name": "get_Status",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DeploymentStatus",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_ExtendedError",
+          "return": {
+            "kind": "ApiRef",
+            "name": "HResult",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ExtendedError",
+          "type": {
+            "kind": "ApiRef",
+            "name": "HResult",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ExtendedError"
+        },
+        {
+          "name": "Status",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DeploymentStatus",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Status"
+        }
+      ]
+    },
+    "IDeploymentResultFactory": {
+      "guid": "acd7bdae-4ae6-5cac-8205-1e8c305f953b",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentResult",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "status",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DeploymentStatus",
+                "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "extendedError",
+              "type": {
+                "kind": "ApiRef",
+                "name": "HResult",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DeploymentResult",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IReleaseInfoStatics": {
+      "guid": "ed9be8ff-073c-5c66-bf97-ef0ce67405c3",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.ReleaseInfo",
+      "methods": [
+        {
+          "name": "get_Major",
+          "return": {
+            "kind": "Native",
+            "name": "U2"
+          }
+        },
+        {
+          "name": "get_Minor",
+          "return": {
+            "kind": "Native",
+            "name": "U2"
+          }
+        },
+        {
+          "name": "get_Patch",
+          "return": {
+            "kind": "Native",
+            "name": "U2"
+          }
+        },
+        {
+          "name": "get_VersionTag",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AsString",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AsString",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AsString"
+        },
+        {
+          "name": "Major",
+          "type": {
+            "kind": "Native",
+            "name": "U2"
+          },
+          "getter": "get_Major"
+        },
+        {
+          "name": "Minor",
+          "type": {
+            "kind": "Native",
+            "name": "U2"
+          },
+          "getter": "get_Minor"
+        },
+        {
+          "name": "Patch",
+          "type": {
+            "kind": "Native",
+            "name": "U2"
+          },
+          "getter": "get_Patch"
+        },
+        {
+          "name": "VersionTag",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_VersionTag"
+        }
+      ]
+    },
+    "IRuntimeCompatibilityOptions": {
+      "guid": "d7403bd9-b25d-5b8f-8de1-9dcb57d99f6c",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityOptions",
+      "methods": [
+        {
+          "name": "get_PatchLevel1",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowsAppRuntimeVersion",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "put_PatchLevel1",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowsAppRuntimeVersion",
+                "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PatchLevel2",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowsAppRuntimeVersion",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "put_PatchLevel2",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowsAppRuntimeVersion",
+                "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_DisabledChanges",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "RuntimeCompatibilityChange",
+                "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+                "target_kind": "Enum"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Apply"
+        }
+      ],
+      "properties": [
+        {
+          "name": "DisabledChanges",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "RuntimeCompatibilityChange",
+                "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+                "target_kind": "Enum"
+              }
+            ]
+          },
+          "getter": "get_DisabledChanges"
+        },
+        {
+          "name": "PatchLevel1",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowsAppRuntimeVersion",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Struct"
+          },
+          "getter": "get_PatchLevel1",
+          "setter": "put_PatchLevel1"
+        },
+        {
+          "name": "PatchLevel2",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowsAppRuntimeVersion",
+            "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+            "target_kind": "Struct"
+          },
+          "getter": "get_PatchLevel2",
+          "setter": "put_PatchLevel2"
+        }
+      ]
+    },
+    "IRuntimeInfoStatics": {
+      "guid": "e5cb9549-8951-590e-a753-8f281cd77ab5",
+      "exclusive_to": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeInfo",
+      "methods": [
+        {
+          "name": "get_Version",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PackageVersion",
+            "namespace": "Windows.ApplicationModel",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_AsString",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AsString",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AsString"
+        },
+        {
+          "name": "Version",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PackageVersion",
+            "namespace": "Windows.ApplicationModel",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Version"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "DeploymentInitializeOptions": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDeploymentInitializeOptions",
+        "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDeploymentInitializeOptions",
+          "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDeploymentInitializeOptions2",
+          "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "DeploymentManager": {
+      "static_interfaces": [
+        "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.IDeploymentManagerStatics2",
+        "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.IDeploymentManagerStatics"
+      ]
+    },
+    "DeploymentResult": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDeploymentResult",
+        "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDeploymentResult",
+          "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.IDeploymentResultFactory"
+      ]
+    },
+    "ReleaseInfo": {
+      "static_interfaces": [
+        "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.IReleaseInfoStatics"
+      ]
+    },
+    "RuntimeCompatibilityOptions": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IRuntimeCompatibilityOptions",
+        "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IRuntimeCompatibilityOptions",
+          "namespace": "Microsoft.Windows.ApplicationModel.WindowsAppRuntime",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "RuntimeInfo": {
+      "static_interfaces": [
+        "Microsoft.Windows.ApplicationModel.WindowsAppRuntime.IRuntimeInfoStatics"
+      ]
+    }
+  }
+}

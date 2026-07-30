@@ -1,0 +1,192 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Controls.AnimatedVisuals",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "classes": {
+    "AnimatedAcceptVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedBackVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedChevronDownSmallVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedChevronRightDownSmallVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedChevronUpDownSmallVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedFindVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedGlobalNavigationButtonVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "AnimatedSettingsVisualSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnimatedVisualSource",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAnimatedVisualSource2",
+          "namespace": "Microsoft.UI.Xaml.Controls",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    }
+  }
+}

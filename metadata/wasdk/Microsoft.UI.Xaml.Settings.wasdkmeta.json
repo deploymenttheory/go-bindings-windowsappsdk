@@ -1,0 +1,134 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Settings",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "enums": {
+    "XamlChangeId": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "_Reserved",
+          "value": "0"
+        },
+        {
+          "name": "IconNoGridOptimization",
+          "value": "61276805"
+        },
+        {
+          "name": "OptimizeApplyStyles",
+          "value": "61697456"
+        },
+        {
+          "name": "DefaultStyleOptimizations",
+          "value": "60995620"
+        },
+        {
+          "name": "DeferContextFlyoutInit",
+          "value": "61098986"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IXamlOptionalChanges": {
+      "guid": "387572ae-ac51-5cb0-8317-2d6e118bea6a",
+      "exclusive_to": "Microsoft.UI.Xaml.Settings.XamlOptionalChanges"
+    },
+    "IXamlOptionalChangesStatics": {
+      "guid": "edb65323-1884-51c9-8b79-719554de4dd9",
+      "exclusive_to": "Microsoft.UI.Xaml.Settings.XamlOptionalChanges",
+      "methods": [
+        {
+          "name": "EnableChange",
+          "params": [
+            {
+              "name": "changeId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlChangeId",
+                "namespace": "Microsoft.UI.Xaml.Settings",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "DisableChange",
+          "params": [
+            {
+              "name": "changeId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlChangeId",
+                "namespace": "Microsoft.UI.Xaml.Settings",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "IsChangeEnabled",
+          "params": [
+            {
+              "name": "changeId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlChangeId",
+                "namespace": "Microsoft.UI.Xaml.Settings",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "Lock",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "IsLocked",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "XamlOptionalChanges": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IXamlOptionalChanges",
+        "namespace": "Microsoft.UI.Xaml.Settings",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IXamlOptionalChanges",
+          "namespace": "Microsoft.UI.Xaml.Settings",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Settings.IXamlOptionalChangesStatics"
+      ]
+    }
+  }
+}
