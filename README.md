@@ -290,6 +290,17 @@ with a styled `Button` and `TextBlock`, responding to clicks, the pointer and th
 keyboard. Everything still takes and returns the generated types, so any call can be
 written the long way and mixed freely; there is no parallel API to escape from.
 
+### Known limitation: text input
+
+`TextBox`, `PasswordBox`, `RichEditBox` and `AutoSuggestBox` **terminate the process**
+when they are laid out, with `0xC000027B` — a stowed WinRT exception from inside the
+framework. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView` and `Grid` are fine.
+
+Construction succeeds, properties set without error, and the element goes into the tree;
+the process dies once layout runs. The cause is not established and is not guessed at.
+`acceptance/textinput_test.go` pins it in a subprocess, with a `TextBlock` control case
+beside it, so it is tracked rather than folklore.
+
 ### Try it
 
 ```sh

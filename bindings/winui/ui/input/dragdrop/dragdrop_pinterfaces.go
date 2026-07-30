@@ -12,6 +12,7 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtapplicationmodeldatatransfer "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/datatransfer"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationOfDataPackageOperation is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.ApplicationModel.DataTransfer.DataPackageOperation>.
@@ -23,6 +24,13 @@ type IAsyncOperationOfDataPackageOperation struct {
 
 // IID_IAsyncOperationOfDataPackageOperation is the interface identifier for IAsyncOperationOfDataPackageOperation.
 var IID_IAsyncOperationOfDataPackageOperation = win32.GUID{Data1: 0x8b98aea9, Data2: 0x64f0, Data3: 0x5672, Data4: [8]byte{0xb3, 0x0e, 0xdf, 0xd9, 0xc2, 0xe4, 0xf6, 0xfe}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfDataPackageOperation requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfDataPackageOperation) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfDataPackageOperation's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).

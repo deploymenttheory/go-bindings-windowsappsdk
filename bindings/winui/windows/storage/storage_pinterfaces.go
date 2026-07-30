@@ -13,6 +13,90 @@ import (
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
+// IIterableOfIKeyValuePairOfStringAndApplicationDataContainer is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>>.
+// IID: e7030f31-6eb1-5a96-a63c-285edbad7ce9
+type IIterableOfIKeyValuePairOfStringAndApplicationDataContainer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfStringAndApplicationDataContainer is the interface identifier for IIterableOfIKeyValuePairOfStringAndApplicationDataContainer.
+var IID_IIterableOfIKeyValuePairOfStringAndApplicationDataContainer = win32.GUID{Data1: 0xe7030f31, Data2: 0x6eb1, Data3: 0x5a96, Data4: [8]byte{0xa6, 0x3c, 0x28, 0x5e, 0xdb, 0xad, 0x7c, 0xe9}}
+
+// First dispatches through IIterableOfIKeyValuePairOfStringAndApplicationDataContainer's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfStringAndApplicationDataContainer) First() (*IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer, error) {
+	result := new(*IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>>.
+// IID: 025639f8-aa0e-57a9-8a5d-412b8afc0646
+type IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer is the interface identifier for IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer.
+var IID_IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer = win32.GUID{Data1: 0x025639f8, Data2: 0xaa0e, Data3: 0x57a9, Data4: [8]byte{0x8a, 0x5d, 0x41, 0x2b, 0x8a, 0xfc, 0x06, 0x46}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer) Current() (*IKeyValuePairOfStringAndApplicationDataContainer, error) {
+	result := new(*IKeyValuePairOfStringAndApplicationDataContainer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndApplicationDataContainer) GetMany(items []*IKeyValuePairOfStringAndApplicationDataContainer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IKeyValuePairOfStringAndApplicationDataContainer is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>.
+// IID: b6a85d01-ee6a-500f-879f-3cce5723ecd4
+type IKeyValuePairOfStringAndApplicationDataContainer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfStringAndApplicationDataContainer is the interface identifier for IKeyValuePairOfStringAndApplicationDataContainer.
+var IID_IKeyValuePairOfStringAndApplicationDataContainer = win32.GUID{Data1: 0xb6a85d01, Data2: 0xee6a, Data3: 0x500f, Data4: [8]byte{0x87, 0x9f, 0x3c, 0xce, 0x57, 0x23, 0xec, 0xd4}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfStringAndApplicationDataContainer's vtable slot 6.
+func (self *IKeyValuePairOfStringAndApplicationDataContainer) Key() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfStringAndApplicationDataContainer's vtable slot 7.
+func (self *IKeyValuePairOfStringAndApplicationDataContainer) Value() (*IApplicationDataContainer, error) {
+	result := new(*IApplicationDataContainer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IMapOfStringAndApplicationDataContainer is the WinRT interface Windows.Foundation.Collections.IMap`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>.
 // IID: bd32b940-93ee-53e5-9637-f9d3b3a32fb0
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>>.
@@ -22,6 +106,13 @@ type IMapOfStringAndApplicationDataContainer struct {
 
 // IID_IMapOfStringAndApplicationDataContainer is the interface identifier for IMapOfStringAndApplicationDataContainer.
 var IID_IMapOfStringAndApplicationDataContainer = win32.GUID{Data1: 0xbd32b940, Data2: 0x93ee, Data3: 0x53e5, Data4: [8]byte{0x96, 0x37, 0xf9, 0xd3, 0xb3, 0xa3, 0x2f, 0xb0}}
+
+// AsIterableOfIKeyValuePairOfStringAndApplicationDataContainer queries the required IIterableOfIKeyValuePairOfStringAndApplicationDataContainer interface.
+// IMapOfStringAndApplicationDataContainer requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndApplicationDataContainer) AsIterableOfIKeyValuePairOfStringAndApplicationDataContainer() (*IIterableOfIKeyValuePairOfStringAndApplicationDataContainer, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndApplicationDataContainer](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndApplicationDataContainer)
+}
 
 // Lookup dispatches through IMapOfStringAndApplicationDataContainer's vtable slot 6.
 func (self *IMapOfStringAndApplicationDataContainer) Lookup(key string) (*IApplicationDataContainer, error) {
@@ -99,6 +190,13 @@ type IMapViewOfStringAndApplicationDataContainer struct {
 
 // IID_IMapViewOfStringAndApplicationDataContainer is the interface identifier for IMapViewOfStringAndApplicationDataContainer.
 var IID_IMapViewOfStringAndApplicationDataContainer = win32.GUID{Data1: 0x9f95d2db, Data2: 0x8cfe, Data3: 0x5ef4, Data4: [8]byte{0xae, 0x51, 0x4d, 0x42, 0xcc, 0xc2, 0x19, 0x29}}
+
+// AsIterableOfIKeyValuePairOfStringAndApplicationDataContainer queries the required IIterableOfIKeyValuePairOfStringAndApplicationDataContainer interface.
+// IMapViewOfStringAndApplicationDataContainer requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.Windows.Storage.ApplicationDataContainer>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndApplicationDataContainer) AsIterableOfIKeyValuePairOfStringAndApplicationDataContainer() (*IIterableOfIKeyValuePairOfStringAndApplicationDataContainer, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndApplicationDataContainer](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndApplicationDataContainer)
+}
 
 // Lookup dispatches through IMapViewOfStringAndApplicationDataContainer's vtable slot 6.
 func (self *IMapViewOfStringAndApplicationDataContainer) Lookup(key string) (*IApplicationDataContainer, error) {

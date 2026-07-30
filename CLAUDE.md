@@ -590,6 +590,45 @@ cut well. [Namespace clusters](#namespace-clusters) removes the need to cut at a
 conclusion to draw from that is that they belong in one Go package, not that one
 direction has to be lost.
 
+## What the examples found
+
+The ergonomic layer exists because one example was written and its friction measured.
+A second, more demanding one — `examples/tasks`: a Grid with row definitions, elements
+positioned by attached property, a ListView of boxed values, and work marshalled back
+through the DispatcherQueue — found three more things, which is the argument for having
+written it.
+
+**A required interface was documented and unreachable.** A WinRT `Requires` clause is a
+hard guarantee that the same object also implements the named interface, reachable by
+QueryInterface — the same relationship a class has with its bases, which already gets
+`As<Interface>` accessors. Interfaces did not. `IObservableVector`1<T>` requires
+`IVector`1<T>` and declares only its own `VectorChanged` event, so `ItemsControl.Items`
+— the core property of every list control — could be read and not added to. 17 declared
+interfaces and 142 monomorphized instantiations carry a `Requires`; they all have
+accessors now.
+
+**Text input terminates the process.** `TextBox`, `PasswordBox`, `RichEditBox` and
+`AutoSuggestBox` all die with `0xC000027B`, a stowed WinRT exception, when the element
+is laid out. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView` and `Grid` are fine
+in the same harness. Construction succeeds, properties set without error, the element
+goes into the tree, and the process dies inside the framework once layout runs — which
+is why the existing acceptance tests never saw it: they measure at `Loaded`, and a
+TextBox never reaches `Loaded`.
+
+The cause is **not established**, and is deliberately not guessed at.
+`acceptance/textinput_test.go` pins it in a subprocess, with a `TextBlock` control case
+beside it so a broken harness cannot masquerade as the finding. The obvious suspect is
+the `XamlControlsResources` failure below — whose conclusion, "it does not matter", was
+reached by measuring a Button, and may hold only for the controls it was measured on.
+Settling that needs a discriminator.
+
+**A default interface is reached differently from every other one.** `Grid`'s default
+interface is `IGrid`, which the class embeds, so `grid.RowDefinitions()` is called
+directly; every other interface needs `grid.AsPanel()` first. Both are right, and a
+caller has to know which is which. Not fixed, because the alternative — promoting the
+default interface's members as forwarding methods — is the promotion measured and
+rejected below, in miniature.
+
 ## The ergonomic layer
 
 `app/ergonomics.go` is hand-written and imports the generated tree. It exists because

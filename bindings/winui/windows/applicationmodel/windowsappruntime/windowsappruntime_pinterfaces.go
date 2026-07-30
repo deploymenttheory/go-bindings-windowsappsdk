@@ -13,6 +13,64 @@ import (
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
+// IIterableOfRuntimeCompatibilityChange is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>.
+// IID: 79fffbf6-dc39-59e3-a684-fa55fb49238f
+type IIterableOfRuntimeCompatibilityChange struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfRuntimeCompatibilityChange is the interface identifier for IIterableOfRuntimeCompatibilityChange.
+var IID_IIterableOfRuntimeCompatibilityChange = win32.GUID{Data1: 0x79fffbf6, Data2: 0xdc39, Data3: 0x59e3, Data4: [8]byte{0xa6, 0x84, 0xfa, 0x55, 0xfb, 0x49, 0x23, 0x8f}}
+
+// First dispatches through IIterableOfRuntimeCompatibilityChange's vtable slot 6.
+func (self *IIterableOfRuntimeCompatibilityChange) First() (*IIteratorOfRuntimeCompatibilityChange, error) {
+	result := new(*IIteratorOfRuntimeCompatibilityChange)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfRuntimeCompatibilityChange is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>.
+// IID: 25abd83a-a7d6-5c3a-94a4-674fd9cec6b4
+type IIteratorOfRuntimeCompatibilityChange struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfRuntimeCompatibilityChange is the interface identifier for IIteratorOfRuntimeCompatibilityChange.
+var IID_IIteratorOfRuntimeCompatibilityChange = win32.GUID{Data1: 0x25abd83a, Data2: 0xa7d6, Data3: 0x5c3a, Data4: [8]byte{0x94, 0xa4, 0x67, 0x4f, 0xd9, 0xce, 0xc6, 0xb4}}
+
+// Current (propget get_Current) dispatches through IIteratorOfRuntimeCompatibilityChange's vtable slot 6.
+func (self *IIteratorOfRuntimeCompatibilityChange) Current() (RuntimeCompatibilityChange, error) {
+	result := new(RuntimeCompatibilityChange)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfRuntimeCompatibilityChange's vtable slot 7.
+func (self *IIteratorOfRuntimeCompatibilityChange) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfRuntimeCompatibilityChange's vtable slot 8.
+func (self *IIteratorOfRuntimeCompatibilityChange) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfRuntimeCompatibilityChange's vtable slot 9.
+func (self *IIteratorOfRuntimeCompatibilityChange) GetMany(items []RuntimeCompatibilityChange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfRuntimeCompatibilityChange is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>.
 // IID: b2d54673-319a-5cef-9997-2aa95cae7d4b
 // Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>.
@@ -22,6 +80,13 @@ type IVectorOfRuntimeCompatibilityChange struct {
 
 // IID_IVectorOfRuntimeCompatibilityChange is the interface identifier for IVectorOfRuntimeCompatibilityChange.
 var IID_IVectorOfRuntimeCompatibilityChange = win32.GUID{Data1: 0xb2d54673, Data2: 0x319a, Data3: 0x5cef, Data4: [8]byte{0x99, 0x97, 0x2a, 0xa9, 0x5c, 0xae, 0x7d, 0x4b}}
+
+// AsIterableOfRuntimeCompatibilityChange queries the required IIterableOfRuntimeCompatibilityChange interface.
+// IVectorOfRuntimeCompatibilityChange requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfRuntimeCompatibilityChange) AsIterableOfRuntimeCompatibilityChange() (*IIterableOfRuntimeCompatibilityChange, error) {
+	return winrt.QueryInterface[IIterableOfRuntimeCompatibilityChange](unsafe.Pointer(self), &IID_IIterableOfRuntimeCompatibilityChange)
+}
 
 // GetAt dispatches through IVectorOfRuntimeCompatibilityChange's vtable slot 6.
 func (self *IVectorOfRuntimeCompatibilityChange) GetAt(index uint32) (RuntimeCompatibilityChange, error) {
@@ -119,6 +184,13 @@ type IVectorViewOfRuntimeCompatibilityChange struct {
 
 // IID_IVectorViewOfRuntimeCompatibilityChange is the interface identifier for IVectorViewOfRuntimeCompatibilityChange.
 var IID_IVectorViewOfRuntimeCompatibilityChange = win32.GUID{Data1: 0xb3675e71, Data2: 0x9db8, Data3: 0x5b51, Data4: [8]byte{0x98, 0x6a, 0x12, 0x23, 0x96, 0x4c, 0x6f, 0x52}}
+
+// AsIterableOfRuntimeCompatibilityChange queries the required IIterableOfRuntimeCompatibilityChange interface.
+// IVectorViewOfRuntimeCompatibilityChange requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfRuntimeCompatibilityChange) AsIterableOfRuntimeCompatibilityChange() (*IIterableOfRuntimeCompatibilityChange, error) {
+	return winrt.QueryInterface[IIterableOfRuntimeCompatibilityChange](unsafe.Pointer(self), &IID_IIterableOfRuntimeCompatibilityChange)
+}
 
 // GetAt dispatches through IVectorViewOfRuntimeCompatibilityChange's vtable slot 6.
 func (self *IVectorViewOfRuntimeCompatibilityChange) GetAt(index uint32) (RuntimeCompatibilityChange, error) {

@@ -13,6 +13,64 @@ import (
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
+// IIterableOfAppInstance is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppLifecycle.AppInstance>.
+// IID: 46dd4ef2-c3a5-5a9f-b72d-8f0836be424a
+type IIterableOfAppInstance struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfAppInstance is the interface identifier for IIterableOfAppInstance.
+var IID_IIterableOfAppInstance = win32.GUID{Data1: 0x46dd4ef2, Data2: 0xc3a5, Data3: 0x5a9f, Data4: [8]byte{0xb7, 0x2d, 0x8f, 0x08, 0x36, 0xbe, 0x42, 0x4a}}
+
+// First dispatches through IIterableOfAppInstance's vtable slot 6.
+func (self *IIterableOfAppInstance) First() (*IIteratorOfAppInstance, error) {
+	result := new(*IIteratorOfAppInstance)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfAppInstance is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.AppLifecycle.AppInstance>.
+// IID: 58c4b850-cfd3-54c7-9568-cf76a017afae
+type IIteratorOfAppInstance struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfAppInstance is the interface identifier for IIteratorOfAppInstance.
+var IID_IIteratorOfAppInstance = win32.GUID{Data1: 0x58c4b850, Data2: 0xcfd3, Data3: 0x54c7, Data4: [8]byte{0x95, 0x68, 0xcf, 0x76, 0xa0, 0x17, 0xaf, 0xae}}
+
+// Current (propget get_Current) dispatches through IIteratorOfAppInstance's vtable slot 6.
+func (self *IIteratorOfAppInstance) Current() (*IAppInstance, error) {
+	result := new(*IAppInstance)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfAppInstance's vtable slot 7.
+func (self *IIteratorOfAppInstance) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfAppInstance's vtable slot 8.
+func (self *IIteratorOfAppInstance) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfAppInstance's vtable slot 9.
+func (self *IIteratorOfAppInstance) GetMany(items []*IAppInstance) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfAppInstance is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.Windows.AppLifecycle.AppInstance>.
 // IID: f37e92bb-b953-5d1e-ae0b-15e49c194c98
 // Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppLifecycle.AppInstance>.
@@ -22,6 +80,13 @@ type IVectorOfAppInstance struct {
 
 // IID_IVectorOfAppInstance is the interface identifier for IVectorOfAppInstance.
 var IID_IVectorOfAppInstance = win32.GUID{Data1: 0xf37e92bb, Data2: 0xb953, Data3: 0x5d1e, Data4: [8]byte{0xae, 0x0b, 0x15, 0xe4, 0x9c, 0x19, 0x4c, 0x98}}
+
+// AsIterableOfAppInstance queries the required IIterableOfAppInstance interface.
+// IVectorOfAppInstance requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppLifecycle.AppInstance>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfAppInstance) AsIterableOfAppInstance() (*IIterableOfAppInstance, error) {
+	return winrt.QueryInterface[IIterableOfAppInstance](unsafe.Pointer(self), &IID_IIterableOfAppInstance)
+}
 
 // GetAt dispatches through IVectorOfAppInstance's vtable slot 6.
 func (self *IVectorOfAppInstance) GetAt(index uint32) (*IAppInstance, error) {
@@ -119,6 +184,13 @@ type IVectorViewOfAppInstance struct {
 
 // IID_IVectorViewOfAppInstance is the interface identifier for IVectorViewOfAppInstance.
 var IID_IVectorViewOfAppInstance = win32.GUID{Data1: 0x1520072b, Data2: 0xd6f2, Data3: 0x5a95, Data4: [8]byte{0x98, 0x8d, 0xe6, 0xc4, 0xa6, 0xeb, 0x66, 0xa4}}
+
+// AsIterableOfAppInstance queries the required IIterableOfAppInstance interface.
+// IVectorViewOfAppInstance requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppLifecycle.AppInstance>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfAppInstance) AsIterableOfAppInstance() (*IIterableOfAppInstance, error) {
+	return winrt.QueryInterface[IIterableOfAppInstance](unsafe.Pointer(self), &IID_IIterableOfAppInstance)
+}
 
 // GetAt dispatches through IVectorViewOfAppInstance's vtable slot 6.
 func (self *IVectorViewOfAppInstance) GetAt(index uint32) (*IAppInstance, error) {

@@ -177,11 +177,79 @@ func (g *Generator) buildInterface(meta *wasdkmeta.NamespaceMeta, fullName, goNa
 			}
 		}
 	}
+	model.QueryMethods = g.buildRequiredQueries(meta, fullName, goName, definition, methodNames, imports)
+
 	// Recorded under the display full name: exact metadata names for declared
 	// interfaces (what the factory gather looks up), and instantiation display
 	// forms, which never collide with them.
 	g.ifaceMethods[fullName] = records
 	return model
+}
+
+// buildRequiredQueries projects an interface's Requires clause as As<Interface>
+// accessors.
+//
+// A WinRT Requires is a hard guarantee that the same object also implements the named
+// interface, reachable by QueryInterface — the same relationship a class has with its
+// base classes' interfaces, and it gets accessors for the same reason.
+//
+// Without them the required interface is documented and unreachable.
+// IObservableVector`1<T> requires IVector`1<T> and declares only its own VectorChanged
+// event, so ItemsControl.Items — the core property of every list control — could be
+// read and not added to without a hand-written QueryInterface against an IID the caller
+// had to know. That is what this repairs, and it lands mostly on the monomorphized
+// collections, where 142 instantiations carry a Requires clause against 17 declared
+// interfaces.
+func (g *Generator) buildRequiredQueries(meta *wasdkmeta.NamespaceMeta, fullName, goName string, definition *wasdkmeta.Interface, methodNames map[string]bool, imports typemap.ImportSet) []view.QueryMethodModel {
+	if len(definition.Requires) == 0 {
+		return nil
+	}
+	context := g.resolveContext(meta.Namespace)
+	scratch := typemap.ImportSet{}
+	var models []view.QueryMethodModel
+
+	for i := range definition.Requires {
+		target := &definition.Requires[i]
+		resolved := g.mapper.GoType(target, context, scratch)
+		if resolved.Kind != typemap.KindInterfacePtr {
+			g.diag("required-interface-skipped", "%s requires %s (%s)",
+				fullName, refDisplay(target), splitReason(resolved.Reason).detail)
+			continue
+		}
+		iidRef, ok := g.iidRef(target, meta.Namespace)
+		if !ok {
+			g.diag("required-interface-skipped", "%s requires %s (no IID)", fullName, refDisplay(target))
+			continue
+		}
+		asName := naming.InterfaceAsName(requiredName(target))
+		if methodNames[asName] {
+			// A member of the interface already owns the name. The interface's own
+			// surface wins; the required one stays reachable by QueryInterface.
+			g.diag("required-interface-skipped", "%s.%s collides with a member", fullName, asName)
+			continue
+		}
+		methodNames[asName] = true
+		models = append(models, view.QueryMethodModel{
+			GoName:        asName,
+			InterfaceType: strings.TrimPrefix(resolved.GoType, "*"),
+			IIDRef:        iidRef,
+			Note:          fmt.Sprintf("%s requires %s, so this always succeeds.", goName, refDisplay(target)),
+		})
+	}
+	imports.Merge(scratch)
+	return models
+}
+
+// requiredName is the name to build an As<Interface> accessor from. A generic
+// instantiation has no plain name — its Go type is the mangled monomorphization — so
+// that is what the accessor is named after.
+func requiredName(ref *wasdkmeta.TypeRef) string {
+	if ref.Kind == "GenericInst" {
+		if mangled, err := instantiationName(ref); err == nil {
+			return mangled
+		}
+	}
+	return ref.Name
 }
 
 // splitParamDecls recovers the individual "name type" declarations from a joined

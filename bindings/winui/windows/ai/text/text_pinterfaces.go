@@ -13,6 +13,7 @@ import (
 	windowsai "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/ai"
 	windowsaifoundation "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/ai/foundation"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationOfLanguageModel is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.Windows.AI.Text.LanguageModel>.
@@ -24,6 +25,13 @@ type IAsyncOperationOfLanguageModel struct {
 
 // IID_IAsyncOperationOfLanguageModel is the interface identifier for IAsyncOperationOfLanguageModel.
 var IID_IAsyncOperationOfLanguageModel = win32.GUID{Data1: 0x172f62b5, Data2: 0x1d49, Data3: 0x535f, Data4: [8]byte{0x8c, 0x07, 0x4d, 0xdd, 0x02, 0x06, 0x6f, 0x36}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfLanguageModel requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfLanguageModel) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfLanguageModel's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -54,6 +62,13 @@ type IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble struct {
 
 // IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble is the interface identifier for IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble.
 var IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble = win32.GUID{Data1: 0x39c32af0, Data2: 0xc9b4, Data3: 0x595f, Data4: [8]byte{0x9e, 0x9b, 0xc6, 0xc2, 0x89, 0xad, 0x9e, 0xa1}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
@@ -88,6 +103,13 @@ type IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString 
 
 // IID_IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString is the interface identifier for IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString.
 var IID_IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString = win32.GUID{Data1: 0x4da8cd88, Data2: 0x9419, Data3: 0x5edc, Data4: [8]byte{0x9f, 0x71, 0x03, 0x60, 0x6f, 0xa2, 0x87, 0xa0}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfGenerateStructuredJsonResponseResultAndString's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -132,6 +154,13 @@ type IAsyncOperationWithProgressOfLanguageModelResponseResultAndString struct {
 // IID_IAsyncOperationWithProgressOfLanguageModelResponseResultAndString is the interface identifier for IAsyncOperationWithProgressOfLanguageModelResponseResultAndString.
 var IID_IAsyncOperationWithProgressOfLanguageModelResponseResultAndString = win32.GUID{Data1: 0x5aec37a6, Data2: 0xa5fa, Data3: 0x5c0d, Data4: [8]byte{0x9d, 0xa7, 0x76, 0x14, 0xe0, 0xb4, 0xed, 0x76}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfLanguageModelResponseResultAndString requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfLanguageModelResponseResultAndString) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfLanguageModelResponseResultAndString's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationWithProgressOfLanguageModelResponseResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfLanguageModelResponseResultAndString) error {
@@ -175,6 +204,13 @@ type IAsyncOperationWithProgressOfTextToTableResponseResultAndString struct {
 // IID_IAsyncOperationWithProgressOfTextToTableResponseResultAndString is the interface identifier for IAsyncOperationWithProgressOfTextToTableResponseResultAndString.
 var IID_IAsyncOperationWithProgressOfTextToTableResponseResultAndString = win32.GUID{Data1: 0xcff503d4, Data2: 0x0ecb, Data3: 0x5924, Data4: [8]byte{0xac, 0xbf, 0x79, 0x6c, 0xa6, 0xc7, 0xd3, 0x73}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfTextToTableResponseResultAndString requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfTextToTableResponseResultAndString) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfTextToTableResponseResultAndString's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationWithProgressOfTextToTableResponseResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfTextToTableResponseResultAndString) error {
@@ -208,6 +244,22 @@ func (self *IAsyncOperationWithProgressOfTextToTableResponseResultAndString) Get
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfConversationItem is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AI.Text.ConversationItem>.
+// IID: e42a9615-3b0e-5a95-8f46-33b5dca2e59c
+type IIterableOfConversationItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfConversationItem is the interface identifier for IIterableOfConversationItem.
+var IID_IIterableOfConversationItem = win32.GUID{Data1: 0xe42a9615, Data2: 0x3b0e, Data3: 0x5a95, Data4: [8]byte{0x8f, 0x46, 0x33, 0xb5, 0xdc, 0xa2, 0xe5, 0x9c}}
+
+// First dispatches through IIterableOfConversationItem's vtable slot 6.
+func (self *IIterableOfConversationItem) First() (*IIteratorOfConversationItem, error) {
+	result := new(*IIteratorOfConversationItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIterableOfEmbeddingVector is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AI.Foundation.EmbeddingVector>.
 // IID: 3314d513-49dd-5f89-8402-a6b673818d80
 type IIterableOfEmbeddingVector struct {
@@ -221,6 +273,48 @@ var IID_IIterableOfEmbeddingVector = win32.GUID{Data1: 0x3314d513, Data2: 0x49dd
 func (self *IIterableOfEmbeddingVector) First() (*IIteratorOfEmbeddingVector, error) {
 	result := new(*IIteratorOfEmbeddingVector)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfConversationItem is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.AI.Text.ConversationItem>.
+// IID: c3ee8c8e-5e58-57c3-a87a-8dab3cf1d079
+type IIteratorOfConversationItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfConversationItem is the interface identifier for IIteratorOfConversationItem.
+var IID_IIteratorOfConversationItem = win32.GUID{Data1: 0xc3ee8c8e, Data2: 0x5e58, Data3: 0x57c3, Data4: [8]byte{0xa8, 0x7a, 0x8d, 0xab, 0x3c, 0xf1, 0xd0, 0x79}}
+
+// Current (propget get_Current) dispatches through IIteratorOfConversationItem's vtable slot 6.
+func (self *IIteratorOfConversationItem) Current() (*IConversationItem, error) {
+	result := new(*IConversationItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfConversationItem's vtable slot 7.
+func (self *IIteratorOfConversationItem) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfConversationItem's vtable slot 8.
+func (self *IIteratorOfConversationItem) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfConversationItem's vtable slot 9.
+func (self *IIteratorOfConversationItem) GetMany(items []*IConversationItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
@@ -276,6 +370,13 @@ type IVectorViewOfConversationItem struct {
 // IID_IVectorViewOfConversationItem is the interface identifier for IVectorViewOfConversationItem.
 var IID_IVectorViewOfConversationItem = win32.GUID{Data1: 0x639207c3, Data2: 0xae0c, Data3: 0x5851, Data4: [8]byte{0xa5, 0x01, 0x26, 0x68, 0xde, 0xcf, 0x14, 0x48}}
 
+// AsIterableOfConversationItem queries the required IIterableOfConversationItem interface.
+// IVectorViewOfConversationItem requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AI.Text.ConversationItem>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfConversationItem) AsIterableOfConversationItem() (*IIterableOfConversationItem, error) {
+	return winrt.QueryInterface[IIterableOfConversationItem](unsafe.Pointer(self), &IID_IIterableOfConversationItem)
+}
+
 // GetAt dispatches through IVectorViewOfConversationItem's vtable slot 6.
 func (self *IVectorViewOfConversationItem) GetAt(index uint32) (*IConversationItem, error) {
 	result := new(*IConversationItem)
@@ -318,6 +419,13 @@ type IVectorViewOfEmbeddingVector struct {
 
 // IID_IVectorViewOfEmbeddingVector is the interface identifier for IVectorViewOfEmbeddingVector.
 var IID_IVectorViewOfEmbeddingVector = win32.GUID{Data1: 0x30811f60, Data2: 0x718e, Data3: 0x550e, Data4: [8]byte{0xb1, 0x21, 0x4e, 0xe1, 0xe9, 0x55, 0xb4, 0x72}}
+
+// AsIterableOfEmbeddingVector queries the required IIterableOfEmbeddingVector interface.
+// IVectorViewOfEmbeddingVector requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AI.Foundation.EmbeddingVector>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfEmbeddingVector) AsIterableOfEmbeddingVector() (*IIterableOfEmbeddingVector, error) {
+	return winrt.QueryInterface[IIterableOfEmbeddingVector](unsafe.Pointer(self), &IID_IIterableOfEmbeddingVector)
+}
 
 // GetAt dispatches through IVectorViewOfEmbeddingVector's vtable slot 6.
 func (self *IVectorViewOfEmbeddingVector) GetAt(index uint32) (*windowsaifoundation.IEmbeddingVector, error) {

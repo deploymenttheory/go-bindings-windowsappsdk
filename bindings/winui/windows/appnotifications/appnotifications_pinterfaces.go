@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationOfAppNotificationProgressResult is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.Windows.AppNotifications.AppNotificationProgressResult>.
@@ -22,6 +23,13 @@ type IAsyncOperationOfAppNotificationProgressResult struct {
 
 // IID_IAsyncOperationOfAppNotificationProgressResult is the interface identifier for IAsyncOperationOfAppNotificationProgressResult.
 var IID_IAsyncOperationOfAppNotificationProgressResult = win32.GUID{Data1: 0xaa739d3f, Data2: 0xd458, Data3: 0x5d30, Data4: [8]byte{0xb2, 0x92, 0xde, 0x6d, 0x52, 0x97, 0x9e, 0xb4}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfAppNotificationProgressResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfAppNotificationProgressResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfAppNotificationProgressResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -53,6 +61,13 @@ type IAsyncOperationOfIVectorOfAppNotification struct {
 // IID_IAsyncOperationOfIVectorOfAppNotification is the interface identifier for IAsyncOperationOfIVectorOfAppNotification.
 var IID_IAsyncOperationOfIVectorOfAppNotification = win32.GUID{Data1: 0x704700c2, Data2: 0xf4a1, Data3: 0x5edd, Data4: [8]byte{0x87, 0x1a, 0xd0, 0xba, 0x8b, 0x9b, 0x4c, 0x59}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfIVectorOfAppNotification requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfIVectorOfAppNotification) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIVectorOfAppNotification's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfIVectorOfAppNotification) SetCompleted(handler *AsyncOperationCompletedHandlerOfIVectorOfAppNotification) error {
@@ -73,6 +88,151 @@ func (self *IAsyncOperationOfIVectorOfAppNotification) GetResults() (*IVectorOfA
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfAppNotification is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppNotifications.AppNotification>.
+// IID: b6fdba11-96fd-5160-b282-52a393823d51
+type IIterableOfAppNotification struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfAppNotification is the interface identifier for IIterableOfAppNotification.
+var IID_IIterableOfAppNotification = win32.GUID{Data1: 0xb6fdba11, Data2: 0x96fd, Data3: 0x5160, Data4: [8]byte{0xb2, 0x82, 0x52, 0xa3, 0x93, 0x82, 0x3d, 0x51}}
+
+// First dispatches through IIterableOfAppNotification's vtable slot 6.
+func (self *IIterableOfAppNotification) First() (*IIteratorOfAppNotification, error) {
+	result := new(*IIteratorOfAppNotification)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfIKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+// IID: e9bdaaf0-cbf6-5c72-be90-29cbf3a1319b
+type IIterableOfIKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfStringAndString is the interface identifier for IIterableOfIKeyValuePairOfStringAndString.
+var IID_IIterableOfIKeyValuePairOfStringAndString = win32.GUID{Data1: 0xe9bdaaf0, Data2: 0xcbf6, Data3: 0x5c72, Data4: [8]byte{0xbe, 0x90, 0x29, 0xcb, 0xf3, 0xa1, 0x31, 0x9b}}
+
+// First dispatches through IIterableOfIKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfStringAndString) First() (*IIteratorOfIKeyValuePairOfStringAndString, error) {
+	result := new(*IIteratorOfIKeyValuePairOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfAppNotification is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.AppNotifications.AppNotification>.
+// IID: 450e1195-001f-58ff-a652-aabd9bcda5c0
+type IIteratorOfAppNotification struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfAppNotification is the interface identifier for IIteratorOfAppNotification.
+var IID_IIteratorOfAppNotification = win32.GUID{Data1: 0x450e1195, Data2: 0x001f, Data3: 0x58ff, Data4: [8]byte{0xa6, 0x52, 0xaa, 0xbd, 0x9b, 0xcd, 0xa5, 0xc0}}
+
+// Current (propget get_Current) dispatches through IIteratorOfAppNotification's vtable slot 6.
+func (self *IIteratorOfAppNotification) Current() (*IAppNotification, error) {
+	result := new(*IAppNotification)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfAppNotification's vtable slot 7.
+func (self *IIteratorOfAppNotification) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfAppNotification's vtable slot 8.
+func (self *IIteratorOfAppNotification) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfAppNotification's vtable slot 9.
+func (self *IIteratorOfAppNotification) GetMany(items []*IAppNotification) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+// IID: 05eb86f1-7140-5517-b88d-cbaebe57e6b1
+type IIteratorOfIKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfStringAndString is the interface identifier for IIteratorOfIKeyValuePairOfStringAndString.
+var IID_IIteratorOfIKeyValuePairOfStringAndString = win32.GUID{Data1: 0x05eb86f1, Data2: 0x7140, Data3: 0x5517, Data4: [8]byte{0xb8, 0x8d, 0xcb, 0xae, 0xbe, 0x57, 0xe6, 0xb1}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) Current() (*IKeyValuePairOfStringAndString, error) {
+	result := new(*IKeyValuePairOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) GetMany(items []*IKeyValuePairOfStringAndString) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, String>.
+// IID: 60310303-49c5-52e6-abc6-a9b36eccc716
+type IKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfStringAndString is the interface identifier for IKeyValuePairOfStringAndString.
+var IID_IKeyValuePairOfStringAndString = win32.GUID{Data1: 0x60310303, Data2: 0x49c5, Data3: 0x52e6, Data4: [8]byte{0xab, 0xc6, 0xa9, 0xb3, 0x6e, 0xcc, 0xc7, 0x16}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IKeyValuePairOfStringAndString) Key() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfStringAndString's vtable slot 7.
+func (self *IKeyValuePairOfStringAndString) Value() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
 // IMapOfStringAndString is the WinRT interface Windows.Foundation.Collections.IMap`2<String, String>.
 // IID: f6d1f700-49c2-52ae-8154-826f9908773c
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
@@ -82,6 +242,13 @@ type IMapOfStringAndString struct {
 
 // IID_IMapOfStringAndString is the interface identifier for IMapOfStringAndString.
 var IID_IMapOfStringAndString = win32.GUID{Data1: 0xf6d1f700, Data2: 0x49c2, Data3: 0x52ae, Data4: [8]byte{0x81, 0x54, 0x82, 0x6f, 0x99, 0x08, 0x77, 0x3c}}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
 
 // Lookup dispatches through IMapOfStringAndString's vtable slot 6.
 func (self *IMapOfStringAndString) Lookup(key string) (string, error) {
@@ -168,6 +335,13 @@ type IMapViewOfStringAndString struct {
 // IID_IMapViewOfStringAndString is the interface identifier for IMapViewOfStringAndString.
 var IID_IMapViewOfStringAndString = win32.GUID{Data1: 0xac7f26f2, Data2: 0xfeb7, Data3: 0x5b2a, Data4: [8]byte{0x8a, 0xc4, 0x34, 0x5b, 0xc6, 0x2c, 0xae, 0xde}}
 
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapViewOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
+
 // Lookup dispatches through IMapViewOfStringAndString's vtable slot 6.
 func (self *IMapViewOfStringAndString) Lookup(key string) (string, error) {
 	hKey, err := winrt.NewHString(key)
@@ -217,6 +391,13 @@ type IVectorOfAppNotification struct {
 
 // IID_IVectorOfAppNotification is the interface identifier for IVectorOfAppNotification.
 var IID_IVectorOfAppNotification = win32.GUID{Data1: 0xde618ddb, Data2: 0xbebc, Data3: 0x5c93, Data4: [8]byte{0x91, 0xfe, 0xeb, 0xd8, 0x90, 0xdf, 0x7c, 0xb7}}
+
+// AsIterableOfAppNotification queries the required IIterableOfAppNotification interface.
+// IVectorOfAppNotification requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppNotifications.AppNotification>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfAppNotification) AsIterableOfAppNotification() (*IIterableOfAppNotification, error) {
+	return winrt.QueryInterface[IIterableOfAppNotification](unsafe.Pointer(self), &IID_IIterableOfAppNotification)
+}
 
 // GetAt dispatches through IVectorOfAppNotification's vtable slot 6.
 func (self *IVectorOfAppNotification) GetAt(index uint32) (*IAppNotification, error) {
@@ -314,6 +495,13 @@ type IVectorViewOfAppNotification struct {
 
 // IID_IVectorViewOfAppNotification is the interface identifier for IVectorViewOfAppNotification.
 var IID_IVectorViewOfAppNotification = win32.GUID{Data1: 0xe645c6bd, Data2: 0xe8e3, Data3: 0x5b12, Data4: [8]byte{0x8b, 0x95, 0x96, 0x3b, 0xac, 0x29, 0xf9, 0x74}}
+
+// AsIterableOfAppNotification queries the required IIterableOfAppNotification interface.
+// IVectorViewOfAppNotification requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.AppNotifications.AppNotification>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfAppNotification) AsIterableOfAppNotification() (*IIterableOfAppNotification, error) {
+	return winrt.QueryInterface[IIterableOfAppNotification](unsafe.Pointer(self), &IID_IIterableOfAppNotification)
+}
 
 // GetAt dispatches through IVectorViewOfAppNotification's vtable slot 6.
 func (self *IVectorViewOfAppNotification) GetAt(index uint32) (*IAppNotification, error) {

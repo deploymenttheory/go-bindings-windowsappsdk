@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus is the WinRT interface Windows.Foundation.IAsyncOperationWithProgress`2<Microsoft.Windows.PushNotifications.PushNotificationCreateChannelResult, Microsoft.Windows.PushNotifications.PushNotificationCreateChannelStatus>.
@@ -22,6 +23,13 @@ type IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNoti
 
 // IID_IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus is the interface identifier for IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus.
 var IID_IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus = win32.GUID{Data1: 0xf9b84a9d, Data2: 0x7d59, Data3: 0x5445, Data4: [8]byte{0x9c, 0xf1, 0x33, 0xa6, 0xc4, 0x51, 0x82, 0x41}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 

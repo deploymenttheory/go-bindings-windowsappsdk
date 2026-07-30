@@ -1351,6 +1351,13 @@ type IContentSiteBridge struct {
 // IID_IContentSiteBridge is the interface identifier for IContentSiteBridge.
 var IID_IContentSiteBridge = win32.GUID{Data1: 0xfaaab99e, Data2: 0xa42b, Data3: 0x549c, Data4: [8]byte{0x92, 0xdf, 0x3b, 0x6d, 0x6e, 0x1e, 0x36, 0x8b}}
 
+// AsClosable queries the required wrtfoundation.IClosable interface.
+// IContentSiteBridge requires Windows.Foundation.IClosable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IContentSiteBridge) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
 // DispatcherQueue (propget get_DispatcherQueue) dispatches through IContentSiteBridge's vtable slot 6.
 func (self *IContentSiteBridge) DispatcherQueue() (*uidispatching.IDispatcherQueue, error) {
 	result := new(*uidispatching.IDispatcherQueue)

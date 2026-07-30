@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationOfIVectorViewOfPickFileResult is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.Storage.Pickers.PickFileResult>>.
@@ -22,6 +23,13 @@ type IAsyncOperationOfIVectorViewOfPickFileResult struct {
 
 // IID_IAsyncOperationOfIVectorViewOfPickFileResult is the interface identifier for IAsyncOperationOfIVectorViewOfPickFileResult.
 var IID_IAsyncOperationOfIVectorViewOfPickFileResult = win32.GUID{Data1: 0xf8cde12a, Data2: 0x675a, Data3: 0x5291, Data4: [8]byte{0xb0, 0x48, 0x58, 0x6c, 0x26, 0x25, 0xae, 0x3e}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfIVectorViewOfPickFileResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfIVectorViewOfPickFileResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIVectorViewOfPickFileResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -53,6 +61,13 @@ type IAsyncOperationOfIVectorViewOfPickFolderResult struct {
 // IID_IAsyncOperationOfIVectorViewOfPickFolderResult is the interface identifier for IAsyncOperationOfIVectorViewOfPickFolderResult.
 var IID_IAsyncOperationOfIVectorViewOfPickFolderResult = win32.GUID{Data1: 0xfa45e594, Data2: 0x2bfb, Data3: 0x58dd, Data4: [8]byte{0xb1, 0x8f, 0x99, 0x0b, 0x0c, 0x1c, 0x6f, 0x2b}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfIVectorViewOfPickFolderResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfIVectorViewOfPickFolderResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIVectorViewOfPickFolderResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfIVectorViewOfPickFolderResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfIVectorViewOfPickFolderResult) error {
@@ -82,6 +97,13 @@ type IAsyncOperationOfPickFileResult struct {
 
 // IID_IAsyncOperationOfPickFileResult is the interface identifier for IAsyncOperationOfPickFileResult.
 var IID_IAsyncOperationOfPickFileResult = win32.GUID{Data1: 0x98316bd9, Data2: 0x5a80, Data3: 0x5c8a, Data4: [8]byte{0x8f, 0x99, 0x2e, 0xfb, 0xe1, 0xe7, 0x02, 0x33}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfPickFileResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfPickFileResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfPickFileResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -113,6 +135,13 @@ type IAsyncOperationOfPickFolderResult struct {
 // IID_IAsyncOperationOfPickFolderResult is the interface identifier for IAsyncOperationOfPickFolderResult.
 var IID_IAsyncOperationOfPickFolderResult = win32.GUID{Data1: 0xf5ef0362, Data2: 0xd68a, Data3: 0x5d05, Data4: [8]byte{0xa1, 0x66, 0xfe, 0x60, 0x8b, 0x68, 0xc2, 0x78}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfPickFolderResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfPickFolderResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfPickFolderResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfPickFolderResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfPickFolderResult) error {
@@ -133,6 +162,276 @@ func (self *IAsyncOperationOfPickFolderResult) GetResults() (*IPickFolderResult,
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfIKeyValuePairOfStringAndIVectorOfString is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Foundation.Collections.IVector`1<String>>>.
+// IID: 4fed2669-d0d3-59f6-91d9-95902d728d6a
+type IIterableOfIKeyValuePairOfStringAndIVectorOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfStringAndIVectorOfString is the interface identifier for IIterableOfIKeyValuePairOfStringAndIVectorOfString.
+var IID_IIterableOfIKeyValuePairOfStringAndIVectorOfString = win32.GUID{Data1: 0x4fed2669, Data2: 0xd0d3, Data3: 0x59f6, Data4: [8]byte{0x91, 0xd9, 0x95, 0x90, 0x2d, 0x72, 0x8d, 0x6a}}
+
+// First dispatches through IIterableOfIKeyValuePairOfStringAndIVectorOfString's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfStringAndIVectorOfString) First() (*IIteratorOfIKeyValuePairOfStringAndIVectorOfString, error) {
+	result := new(*IIteratorOfIKeyValuePairOfStringAndIVectorOfString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfPickFileResult is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Storage.Pickers.PickFileResult>.
+// IID: ff8b2322-ce6d-5136-b5f0-4034dfe09c4b
+type IIterableOfPickFileResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPickFileResult is the interface identifier for IIterableOfPickFileResult.
+var IID_IIterableOfPickFileResult = win32.GUID{Data1: 0xff8b2322, Data2: 0xce6d, Data3: 0x5136, Data4: [8]byte{0xb5, 0xf0, 0x40, 0x34, 0xdf, 0xe0, 0x9c, 0x4b}}
+
+// First dispatches through IIterableOfPickFileResult's vtable slot 6.
+func (self *IIterableOfPickFileResult) First() (*IIteratorOfPickFileResult, error) {
+	result := new(*IIteratorOfPickFileResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfPickFolderResult is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Storage.Pickers.PickFolderResult>.
+// IID: b1bcf990-1721-553c-9856-e1206a6d4d29
+type IIterableOfPickFolderResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPickFolderResult is the interface identifier for IIterableOfPickFolderResult.
+var IID_IIterableOfPickFolderResult = win32.GUID{Data1: 0xb1bcf990, Data2: 0x1721, Data3: 0x553c, Data4: [8]byte{0x98, 0x56, 0xe1, 0x20, 0x6a, 0x6d, 0x4d, 0x29}}
+
+// First dispatches through IIterableOfPickFolderResult's vtable slot 6.
+func (self *IIterableOfPickFolderResult) First() (*IIteratorOfPickFolderResult, error) {
+	result := new(*IIteratorOfPickFolderResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfString is the WinRT interface Windows.Foundation.Collections.IIterable`1<String>.
+// IID: e2fcc7c1-3bfc-5a0b-b2b0-72e769d1cb7e
+type IIterableOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfString is the interface identifier for IIterableOfString.
+var IID_IIterableOfString = win32.GUID{Data1: 0xe2fcc7c1, Data2: 0x3bfc, Data3: 0x5a0b, Data4: [8]byte{0xb2, 0xb0, 0x72, 0xe7, 0x69, 0xd1, 0xcb, 0x7e}}
+
+// First dispatches through IIterableOfString's vtable slot 6.
+func (self *IIterableOfString) First() (*IIteratorOfString, error) {
+	result := new(*IIteratorOfString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfStringAndIVectorOfString is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Foundation.Collections.IVector`1<String>>>.
+// IID: a11824c9-e458-502a-afd8-ce3ce0abd6fe
+type IIteratorOfIKeyValuePairOfStringAndIVectorOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfStringAndIVectorOfString is the interface identifier for IIteratorOfIKeyValuePairOfStringAndIVectorOfString.
+var IID_IIteratorOfIKeyValuePairOfStringAndIVectorOfString = win32.GUID{Data1: 0xa11824c9, Data2: 0xe458, Data3: 0x502a, Data4: [8]byte{0xaf, 0xd8, 0xce, 0x3c, 0xe0, 0xab, 0xd6, 0xfe}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfStringAndIVectorOfString's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfStringAndIVectorOfString) Current() (*IKeyValuePairOfStringAndIVectorOfString, error) {
+	result := new(*IKeyValuePairOfStringAndIVectorOfString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfStringAndIVectorOfString's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfStringAndIVectorOfString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfStringAndIVectorOfString's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfStringAndIVectorOfString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndIVectorOfString's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndIVectorOfString) GetMany(items []*IKeyValuePairOfStringAndIVectorOfString) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPickFileResult is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.Storage.Pickers.PickFileResult>.
+// IID: b07e34ef-ae42-5dea-b3d3-4c252990ab31
+type IIteratorOfPickFileResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPickFileResult is the interface identifier for IIteratorOfPickFileResult.
+var IID_IIteratorOfPickFileResult = win32.GUID{Data1: 0xb07e34ef, Data2: 0xae42, Data3: 0x5dea, Data4: [8]byte{0xb3, 0xd3, 0x4c, 0x25, 0x29, 0x90, 0xab, 0x31}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPickFileResult's vtable slot 6.
+func (self *IIteratorOfPickFileResult) Current() (*IPickFileResult, error) {
+	result := new(*IPickFileResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPickFileResult's vtable slot 7.
+func (self *IIteratorOfPickFileResult) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPickFileResult's vtable slot 8.
+func (self *IIteratorOfPickFileResult) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPickFileResult's vtable slot 9.
+func (self *IIteratorOfPickFileResult) GetMany(items []*IPickFileResult) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPickFolderResult is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.Storage.Pickers.PickFolderResult>.
+// IID: 6e75a5cd-689c-583f-b7b5-6469ac8ca750
+type IIteratorOfPickFolderResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPickFolderResult is the interface identifier for IIteratorOfPickFolderResult.
+var IID_IIteratorOfPickFolderResult = win32.GUID{Data1: 0x6e75a5cd, Data2: 0x689c, Data3: 0x583f, Data4: [8]byte{0xb7, 0xb5, 0x64, 0x69, 0xac, 0x8c, 0xa7, 0x50}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPickFolderResult's vtable slot 6.
+func (self *IIteratorOfPickFolderResult) Current() (*IPickFolderResult, error) {
+	result := new(*IPickFolderResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPickFolderResult's vtable slot 7.
+func (self *IIteratorOfPickFolderResult) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPickFolderResult's vtable slot 8.
+func (self *IIteratorOfPickFolderResult) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPickFolderResult's vtable slot 9.
+func (self *IIteratorOfPickFolderResult) GetMany(items []*IPickFolderResult) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfString is the WinRT interface Windows.Foundation.Collections.IIterator`1<String>.
+// IID: 8c304ebb-6615-50a4-8829-879ecd443236
+type IIteratorOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfString is the interface identifier for IIteratorOfString.
+var IID_IIteratorOfString = win32.GUID{Data1: 0x8c304ebb, Data2: 0x6615, Data3: 0x50a4, Data4: [8]byte{0x88, 0x29, 0x87, 0x9e, 0xcd, 0x44, 0x32, 0x36}}
+
+// Current (propget get_Current) dispatches through IIteratorOfString's vtable slot 6.
+func (self *IIteratorOfString) Current() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfString's vtable slot 7.
+func (self *IIteratorOfString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfString's vtable slot 8.
+func (self *IIteratorOfString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfString's vtable slot 9.
+func (self *IIteratorOfString) GetMany(items []string) (uint32, error) {
+	_itemsRaw := make([]syswinrt.HSTRING, len(items))
+	_itemsSize := uintptr(len(_itemsRaw))
+	_itemsData := uintptr(0)
+	if len(_itemsRaw) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&_itemsRaw[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return 0, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	for _itemsIndex := range items {
+		items[_itemsIndex] = winrt.TakeHString(_itemsRaw[_itemsIndex])
+	}
+	return *result, nil
+}
+
+// IKeyValuePairOfStringAndIVectorOfString is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Foundation.Collections.IVector`1<String>>.
+// IID: 174f26c7-79ea-5f7c-bd70-ac4457f2cac8
+type IKeyValuePairOfStringAndIVectorOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfStringAndIVectorOfString is the interface identifier for IKeyValuePairOfStringAndIVectorOfString.
+var IID_IKeyValuePairOfStringAndIVectorOfString = win32.GUID{Data1: 0x174f26c7, Data2: 0x79ea, Data3: 0x5f7c, Data4: [8]byte{0xbd, 0x70, 0xac, 0x44, 0x57, 0xf2, 0xca, 0xc8}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfStringAndIVectorOfString's vtable slot 6.
+func (self *IKeyValuePairOfStringAndIVectorOfString) Key() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfStringAndIVectorOfString's vtable slot 7.
+func (self *IKeyValuePairOfStringAndIVectorOfString) Value() (*IVectorOfString, error) {
+	result := new(*IVectorOfString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IMapOfStringAndIVectorOfString is the WinRT interface Windows.Foundation.Collections.IMap`2<String, Windows.Foundation.Collections.IVector`1<String>>.
 // IID: e475ca9d-6afb-5992-993e-53e6ef7a9ecd
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Foundation.Collections.IVector`1<String>>>.
@@ -142,6 +441,13 @@ type IMapOfStringAndIVectorOfString struct {
 
 // IID_IMapOfStringAndIVectorOfString is the interface identifier for IMapOfStringAndIVectorOfString.
 var IID_IMapOfStringAndIVectorOfString = win32.GUID{Data1: 0xe475ca9d, Data2: 0x6afb, Data3: 0x5992, Data4: [8]byte{0x99, 0x3e, 0x53, 0xe6, 0xef, 0x7a, 0x9e, 0xcd}}
+
+// AsIterableOfIKeyValuePairOfStringAndIVectorOfString queries the required IIterableOfIKeyValuePairOfStringAndIVectorOfString interface.
+// IMapOfStringAndIVectorOfString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Foundation.Collections.IVector`1<String>>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndIVectorOfString) AsIterableOfIKeyValuePairOfStringAndIVectorOfString() (*IIterableOfIKeyValuePairOfStringAndIVectorOfString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndIVectorOfString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndIVectorOfString)
+}
 
 // Lookup dispatches through IMapOfStringAndIVectorOfString's vtable slot 6.
 func (self *IMapOfStringAndIVectorOfString) Lookup(key string) (*IVectorOfString, error) {
@@ -220,6 +526,13 @@ type IMapViewOfStringAndIVectorOfString struct {
 // IID_IMapViewOfStringAndIVectorOfString is the interface identifier for IMapViewOfStringAndIVectorOfString.
 var IID_IMapViewOfStringAndIVectorOfString = win32.GUID{Data1: 0x153f9c9c, Data2: 0xd22a, Data3: 0x5c9e, Data4: [8]byte{0x9c, 0x74, 0x8b, 0x85, 0xc9, 0x08, 0xb0, 0x00}}
 
+// AsIterableOfIKeyValuePairOfStringAndIVectorOfString queries the required IIterableOfIKeyValuePairOfStringAndIVectorOfString interface.
+// IMapViewOfStringAndIVectorOfString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Foundation.Collections.IVector`1<String>>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndIVectorOfString) AsIterableOfIKeyValuePairOfStringAndIVectorOfString() (*IIterableOfIKeyValuePairOfStringAndIVectorOfString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndIVectorOfString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndIVectorOfString)
+}
+
 // Lookup dispatches through IMapViewOfStringAndIVectorOfString's vtable slot 6.
 func (self *IMapViewOfStringAndIVectorOfString) Lookup(key string) (*IVectorOfString, error) {
 	hKey, err := winrt.NewHString(key)
@@ -266,6 +579,13 @@ type IVectorOfString struct {
 
 // IID_IVectorOfString is the interface identifier for IVectorOfString.
 var IID_IVectorOfString = win32.GUID{Data1: 0x98b9acc1, Data2: 0x4b56, Data3: 0x532e, Data4: [8]byte{0xac, 0x73, 0x03, 0xd5, 0x29, 0x1c, 0xca, 0x90}}
+
+// AsIterableOfString queries the required IIterableOfString interface.
+// IVectorOfString requires Windows.Foundation.Collections.IIterable`1<String>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfString) AsIterableOfString() (*IIterableOfString, error) {
+	return winrt.QueryInterface[IIterableOfString](unsafe.Pointer(self), &IID_IIterableOfString)
+}
 
 // GetAt dispatches through IVectorOfString's vtable slot 6.
 func (self *IVectorOfString) GetAt(index uint32) (string, error) {
@@ -405,6 +725,13 @@ type IVectorViewOfPickFileResult struct {
 // IID_IVectorViewOfPickFileResult is the interface identifier for IVectorViewOfPickFileResult.
 var IID_IVectorViewOfPickFileResult = win32.GUID{Data1: 0x76506627, Data2: 0xd304, Data3: 0x5763, Data4: [8]byte{0x86, 0xc2, 0xd7, 0xfd, 0x3f, 0x17, 0x15, 0x2b}}
 
+// AsIterableOfPickFileResult queries the required IIterableOfPickFileResult interface.
+// IVectorViewOfPickFileResult requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Storage.Pickers.PickFileResult>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPickFileResult) AsIterableOfPickFileResult() (*IIterableOfPickFileResult, error) {
+	return winrt.QueryInterface[IIterableOfPickFileResult](unsafe.Pointer(self), &IID_IIterableOfPickFileResult)
+}
+
 // GetAt dispatches through IVectorViewOfPickFileResult's vtable slot 6.
 func (self *IVectorViewOfPickFileResult) GetAt(index uint32) (*IPickFileResult, error) {
 	result := new(*IPickFileResult)
@@ -448,6 +775,13 @@ type IVectorViewOfPickFolderResult struct {
 // IID_IVectorViewOfPickFolderResult is the interface identifier for IVectorViewOfPickFolderResult.
 var IID_IVectorViewOfPickFolderResult = win32.GUID{Data1: 0x400f8ae5, Data2: 0xaa9a, Data3: 0x5af2, Data4: [8]byte{0x96, 0xe6, 0x97, 0x81, 0x62, 0xeb, 0xda, 0xd5}}
 
+// AsIterableOfPickFolderResult queries the required IIterableOfPickFolderResult interface.
+// IVectorViewOfPickFolderResult requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Storage.Pickers.PickFolderResult>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPickFolderResult) AsIterableOfPickFolderResult() (*IIterableOfPickFolderResult, error) {
+	return winrt.QueryInterface[IIterableOfPickFolderResult](unsafe.Pointer(self), &IID_IIterableOfPickFolderResult)
+}
+
 // GetAt dispatches through IVectorViewOfPickFolderResult's vtable slot 6.
 func (self *IVectorViewOfPickFolderResult) GetAt(index uint32) (*IPickFolderResult, error) {
 	result := new(*IPickFolderResult)
@@ -490,6 +824,13 @@ type IVectorViewOfString struct {
 
 // IID_IVectorViewOfString is the interface identifier for IVectorViewOfString.
 var IID_IVectorViewOfString = win32.GUID{Data1: 0x2f13c006, Data2: 0xa03a, Data3: 0x5f69, Data4: [8]byte{0xb0, 0x90, 0x75, 0xa4, 0x3e, 0x33, 0x42, 0x3e}}
+
+// AsIterableOfString queries the required IIterableOfString interface.
+// IVectorViewOfString requires Windows.Foundation.Collections.IIterable`1<String>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfString) AsIterableOfString() (*IIterableOfString, error) {
+	return winrt.QueryInterface[IIterableOfString](unsafe.Pointer(self), &IID_IIterableOfString)
+}
 
 // GetAt dispatches through IVectorViewOfString's vtable slot 6.
 func (self *IVectorViewOfString) GetAt(index uint32) (string, error) {

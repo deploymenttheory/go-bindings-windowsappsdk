@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtfoundationnumerics "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation/numerics"
 )
 
@@ -256,6 +257,13 @@ type IReferenceOfSingle struct {
 // IID_IReferenceOfSingle is the interface identifier for IReferenceOfSingle.
 var IID_IReferenceOfSingle = win32.GUID{Data1: 0x719cc2ba, Data2: 0x3e76, Data3: 0x5def, Data4: [8]byte{0x9f, 0x1a, 0x38, 0xd8, 0x5a, 0x14, 0x5e, 0xa8}}
 
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfSingle requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfSingle) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
+
 // Value (propget get_Value) dispatches through IReferenceOfSingle's vtable slot 6.
 func (self *IReferenceOfSingle) Value() (float32, error) {
 	result := new(float32)
@@ -272,6 +280,13 @@ type IReferenceOfVector3 struct {
 
 // IID_IReferenceOfVector3 is the interface identifier for IReferenceOfVector3.
 var IID_IReferenceOfVector3 = win32.GUID{Data1: 0x1ee770ff, Data2: 0xc954, Data3: 0x59ca, Data4: [8]byte{0xa7, 0x54, 0x61, 0x99, 0xa9, 0xbe, 0x28, 0x2c}}
+
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfVector3 requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfVector3) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
 
 // Value (propget get_Value) dispatches through IReferenceOfVector3's vtable slot 6.
 func (self *IReferenceOfVector3) Value() (wrtfoundationnumerics.Vector3, error) {

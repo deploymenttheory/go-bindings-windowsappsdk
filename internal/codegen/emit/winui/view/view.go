@@ -66,6 +66,12 @@ type InterfaceModel struct {
 	// Methods holds emitted methods and skipped-slot comments interleaved in
 	// absolute slot order, so the vtable layout stays auditable in the output.
 	Methods []MethodModel
+	// QueryMethods project the interfaces this one REQUIRES, reached by
+	// QueryInterface. Without them a required interface is documented and
+	// unreachable: IObservableVector`1<T> declares Requires IVector`1<T> and
+	// carries only its own VectorChanged event, so ItemsControl.Items could be
+	// read and not added to.
+	QueryMethods []QueryMethodModel
 }
 
 // Return-shape discriminants for MethodModel.ReturnKind. The template branches on

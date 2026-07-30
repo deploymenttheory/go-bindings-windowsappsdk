@@ -14,6 +14,64 @@ import (
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
+// IIterableOfPointerPoint is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Input.PointerPoint>.
+// IID: 645acc33-ffce-5ad3-be2b-c49b9c27c35d
+type IIterableOfPointerPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPointerPoint is the interface identifier for IIterableOfPointerPoint.
+var IID_IIterableOfPointerPoint = win32.GUID{Data1: 0x645acc33, Data2: 0xffce, Data3: 0x5ad3, Data4: [8]byte{0xbe, 0x2b, 0xc4, 0x9b, 0x9c, 0x27, 0xc3, 0x5d}}
+
+// First dispatches through IIterableOfPointerPoint's vtable slot 6.
+func (self *IIterableOfPointerPoint) First() (*IIteratorOfPointerPoint, error) {
+	result := new(*IIteratorOfPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPointerPoint is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Input.PointerPoint>.
+// IID: 5b63939d-11cf-56c4-b0d0-11df9dc487d1
+type IIteratorOfPointerPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPointerPoint is the interface identifier for IIteratorOfPointerPoint.
+var IID_IIteratorOfPointerPoint = win32.GUID{Data1: 0x5b63939d, Data2: 0x11cf, Data3: 0x56c4, Data4: [8]byte{0xb0, 0xd0, 0x11, 0xdf, 0x9d, 0xc4, 0x87, 0xd1}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPointerPoint's vtable slot 6.
+func (self *IIteratorOfPointerPoint) Current() (*IPointerPoint, error) {
+	result := new(*IPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPointerPoint's vtable slot 7.
+func (self *IIteratorOfPointerPoint) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPointerPoint's vtable slot 8.
+func (self *IIteratorOfPointerPoint) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPointerPoint's vtable slot 9.
+func (self *IIteratorOfPointerPoint) GetMany(items []*IPointerPoint) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IReferenceOfRect is the WinRT interface Windows.Foundation.IReference`1<Windows.Foundation.Rect>.
 // IID: 80423f11-054f-5eac-afd3-63b6ce15e77b
 // Requires: Windows.Foundation.IPropertyValue.
@@ -23,6 +81,13 @@ type IReferenceOfRect struct {
 
 // IID_IReferenceOfRect is the interface identifier for IReferenceOfRect.
 var IID_IReferenceOfRect = win32.GUID{Data1: 0x80423f11, Data2: 0x054f, Data3: 0x5eac, Data4: [8]byte{0xaf, 0xd3, 0x63, 0xb6, 0xce, 0x15, 0xe7, 0x7b}}
+
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfRect requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfRect) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
 
 // Value (propget get_Value) dispatches through IReferenceOfRect's vtable slot 6.
 func (self *IReferenceOfRect) Value() (wrtfoundation.Rect, error) {
@@ -40,6 +105,13 @@ type IVectorOfPointerPoint struct {
 
 // IID_IVectorOfPointerPoint is the interface identifier for IVectorOfPointerPoint.
 var IID_IVectorOfPointerPoint = win32.GUID{Data1: 0x8220cf33, Data2: 0x5d76, Data3: 0x5607, Data4: [8]byte{0xbb, 0x7d, 0xb7, 0xcd, 0x07, 0xd2, 0x7f, 0x33}}
+
+// AsIterableOfPointerPoint queries the required IIterableOfPointerPoint interface.
+// IVectorOfPointerPoint requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Input.PointerPoint>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfPointerPoint) AsIterableOfPointerPoint() (*IIterableOfPointerPoint, error) {
+	return winrt.QueryInterface[IIterableOfPointerPoint](unsafe.Pointer(self), &IID_IIterableOfPointerPoint)
+}
 
 // GetAt dispatches through IVectorOfPointerPoint's vtable slot 6.
 func (self *IVectorOfPointerPoint) GetAt(index uint32) (*IPointerPoint, error) {
@@ -137,6 +209,13 @@ type IVectorViewOfPointerPoint struct {
 
 // IID_IVectorViewOfPointerPoint is the interface identifier for IVectorViewOfPointerPoint.
 var IID_IVectorViewOfPointerPoint = win32.GUID{Data1: 0x5fbb224b, Data2: 0x8430, Data3: 0x5086, Data4: [8]byte{0xab, 0x85, 0xe7, 0x1d, 0xfa, 0xa8, 0x4c, 0x90}}
+
+// AsIterableOfPointerPoint queries the required IIterableOfPointerPoint interface.
+// IVectorViewOfPointerPoint requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Input.PointerPoint>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPointerPoint) AsIterableOfPointerPoint() (*IIterableOfPointerPoint, error) {
+	return winrt.QueryInterface[IIterableOfPointerPoint](unsafe.Pointer(self), &IID_IIterableOfPointerPoint)
+}
 
 // GetAt dispatches through IVectorViewOfPointerPoint's vtable slot 6.
 func (self *IVectorViewOfPointerPoint) GetAt(index uint32) (*IPointerPoint, error) {

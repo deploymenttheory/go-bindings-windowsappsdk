@@ -24,6 +24,13 @@ type IAsyncOperationOfPackageVolume struct {
 // IID_IAsyncOperationOfPackageVolume is the interface identifier for IAsyncOperationOfPackageVolume.
 var IID_IAsyncOperationOfPackageVolume = win32.GUID{Data1: 0x4ceb2537, Data2: 0x3c9c, Data3: 0x5007, Data4: [8]byte{0x8c, 0x51, 0x60, 0x85, 0xfc, 0x59, 0x65, 0xb2}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfPackageVolume requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfPackageVolume) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfPackageVolume's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfPackageVolume) SetCompleted(handler *AsyncOperationCompletedHandlerOfPackageVolume) error {
@@ -53,6 +60,13 @@ type IAsyncOperationOfUInt64 struct {
 
 // IID_IAsyncOperationOfUInt64 is the interface identifier for IAsyncOperationOfUInt64.
 var IID_IAsyncOperationOfUInt64 = win32.GUID{Data1: 0x2a70d630, Data2: 0x0767, Data3: 0x5f0a, Data4: [8]byte{0xa1, 0xc2, 0xde, 0xb0, 0x81, 0x26, 0xe2, 0x6e}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfUInt64 requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfUInt64) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfUInt64's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -84,6 +98,13 @@ type IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentPro
 // IID_IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress is the interface identifier for IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress.
 var IID_IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress = win32.GUID{Data1: 0x446a127a, Data2: 0x02de, Data3: 0x5b73, Data4: [8]byte{0xae, 0x01, 0x99, 0x3d, 0x4e, 0x6e, 0xf7, 0x29}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
 // slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
@@ -108,6 +129,473 @@ func (self *IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploy
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, Microsoft.Windows.Management.Deployment.PackageValidationEventSource>>.
+// IID: c0a8ec4e-90ad-5e90-9a1f-6c94a37b903a
+type IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource is the interface identifier for IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource.
+var IID_IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource = win32.GUID{Data1: 0xc0a8ec4e, Data2: 0x90ad, Data3: 0x5e90, Data4: [8]byte{0x9a, 0x1f, 0x6c, 0x94, 0xa3, 0x7b, 0x90, 0x3a}}
+
+// First dispatches through IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource) First() (*IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource, error) {
+	result := new(*IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfIKeyValuePairOfUriAndString is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, String>>.
+// IID: 52129c53-b03d-59b3-a27e-b0385643e9fe
+type IIterableOfIKeyValuePairOfUriAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfUriAndString is the interface identifier for IIterableOfIKeyValuePairOfUriAndString.
+var IID_IIterableOfIKeyValuePairOfUriAndString = win32.GUID{Data1: 0x52129c53, Data2: 0xb03d, Data3: 0x59b3, Data4: [8]byte{0xa2, 0x7e, 0xb0, 0x38, 0x56, 0x43, 0xe9, 0xfe}}
+
+// First dispatches through IIterableOfIKeyValuePairOfUriAndString's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfUriAndString) First() (*IIteratorOfIKeyValuePairOfUriAndString, error) {
+	result := new(*IIteratorOfIKeyValuePairOfUriAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfPackageSetItem is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageSetItem>.
+// IID: 45be2e06-b238-53c6-ad96-32558da5e19e
+type IIterableOfPackageSetItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPackageSetItem is the interface identifier for IIterableOfPackageSetItem.
+var IID_IIterableOfPackageSetItem = win32.GUID{Data1: 0x45be2e06, Data2: 0xb238, Data3: 0x53c6, Data4: [8]byte{0xad, 0x96, 0x32, 0x55, 0x8d, 0xa5, 0xe1, 0x9e}}
+
+// First dispatches through IIterableOfPackageSetItem's vtable slot 6.
+func (self *IIterableOfPackageSetItem) First() (*IIteratorOfPackageSetItem, error) {
+	result := new(*IIteratorOfPackageSetItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfPackageSetItemRuntimeDisposition is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition>.
+// IID: 9f0e9c51-ad26-5814-a133-3c2fbd16f391
+type IIterableOfPackageSetItemRuntimeDisposition struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPackageSetItemRuntimeDisposition is the interface identifier for IIterableOfPackageSetItemRuntimeDisposition.
+var IID_IIterableOfPackageSetItemRuntimeDisposition = win32.GUID{Data1: 0x9f0e9c51, Data2: 0xad26, Data3: 0x5814, Data4: [8]byte{0xa1, 0x33, 0x3c, 0x2f, 0xbd, 0x16, 0xf3, 0x91}}
+
+// First dispatches through IIterableOfPackageSetItemRuntimeDisposition's vtable slot 6.
+func (self *IIterableOfPackageSetItemRuntimeDisposition) First() (*IIteratorOfPackageSetItemRuntimeDisposition, error) {
+	result := new(*IIteratorOfPackageSetItemRuntimeDisposition)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfPackageVolume is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageVolume>.
+// IID: 94c2aeaf-c7ff-5b90-99a2-d0407852880b
+type IIterableOfPackageVolume struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPackageVolume is the interface identifier for IIterableOfPackageVolume.
+var IID_IIterableOfPackageVolume = win32.GUID{Data1: 0x94c2aeaf, Data2: 0xc7ff, Data3: 0x5b90, Data4: [8]byte{0x99, 0xa2, 0xd0, 0x40, 0x78, 0x52, 0x88, 0x0b}}
+
+// First dispatches through IIterableOfPackageVolume's vtable slot 6.
+func (self *IIterableOfPackageVolume) First() (*IIteratorOfPackageVolume, error) {
+	result := new(*IIteratorOfPackageVolume)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfString is the WinRT interface Windows.Foundation.Collections.IIterable`1<String>.
+// IID: e2fcc7c1-3bfc-5a0b-b2b0-72e769d1cb7e
+type IIterableOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfString is the interface identifier for IIterableOfString.
+var IID_IIterableOfString = win32.GUID{Data1: 0xe2fcc7c1, Data2: 0x3bfc, Data3: 0x5a0b, Data4: [8]byte{0xb2, 0xb0, 0x72, 0xe7, 0x69, 0xd1, 0xcb, 0x7e}}
+
+// First dispatches through IIterableOfString's vtable slot 6.
+func (self *IIterableOfString) First() (*IIteratorOfString, error) {
+	result := new(*IIteratorOfString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfUri is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Uri>.
+// IID: b0d63b78-78ad-5e31-b6d8-e32a0e16c447
+type IIterableOfUri struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfUri is the interface identifier for IIterableOfUri.
+var IID_IIterableOfUri = win32.GUID{Data1: 0xb0d63b78, Data2: 0x78ad, Data3: 0x5e31, Data4: [8]byte{0xb6, 0xd8, 0xe3, 0x2a, 0x0e, 0x16, 0xc4, 0x47}}
+
+// First dispatches through IIterableOfUri's vtable slot 6.
+func (self *IIterableOfUri) First() (*IIteratorOfUri, error) {
+	result := new(*IIteratorOfUri)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, Microsoft.Windows.Management.Deployment.PackageValidationEventSource>>.
+// IID: aa70c39d-b1d5-5b3b-bd97-b9d9d26697b0
+type IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource is the interface identifier for IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource.
+var IID_IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource = win32.GUID{Data1: 0xaa70c39d, Data2: 0xb1d5, Data3: 0x5b3b, Data4: [8]byte{0xbd, 0x97, 0xb9, 0xd9, 0xd2, 0x66, 0x97, 0xb0}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource) Current() (*IKeyValuePairOfUriAndPackageValidationEventSource, error) {
+	result := new(*IKeyValuePairOfUriAndPackageValidationEventSource)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfUriAndPackageValidationEventSource) GetMany(items []*IKeyValuePairOfUriAndPackageValidationEventSource) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfUriAndString is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, String>>.
+// IID: 0c11a982-9f05-557f-b3e8-3737b26830d1
+type IIteratorOfIKeyValuePairOfUriAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfUriAndString is the interface identifier for IIteratorOfIKeyValuePairOfUriAndString.
+var IID_IIteratorOfIKeyValuePairOfUriAndString = win32.GUID{Data1: 0x0c11a982, Data2: 0x9f05, Data3: 0x557f, Data4: [8]byte{0xb3, 0xe8, 0x37, 0x37, 0xb2, 0x68, 0x30, 0xd1}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfUriAndString's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfUriAndString) Current() (*IKeyValuePairOfUriAndString, error) {
+	result := new(*IKeyValuePairOfUriAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfUriAndString's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfUriAndString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfUriAndString's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfUriAndString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfUriAndString's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfUriAndString) GetMany(items []*IKeyValuePairOfUriAndString) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPackageSetItem is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.Management.Deployment.PackageSetItem>.
+// IID: 74086841-814d-5f81-8ea4-0fac86b9ae28
+type IIteratorOfPackageSetItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPackageSetItem is the interface identifier for IIteratorOfPackageSetItem.
+var IID_IIteratorOfPackageSetItem = win32.GUID{Data1: 0x74086841, Data2: 0x814d, Data3: 0x5f81, Data4: [8]byte{0x8e, 0xa4, 0x0f, 0xac, 0x86, 0xb9, 0xae, 0x28}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPackageSetItem's vtable slot 6.
+func (self *IIteratorOfPackageSetItem) Current() (*IPackageSetItem, error) {
+	result := new(*IPackageSetItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPackageSetItem's vtable slot 7.
+func (self *IIteratorOfPackageSetItem) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPackageSetItem's vtable slot 8.
+func (self *IIteratorOfPackageSetItem) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPackageSetItem's vtable slot 9.
+func (self *IIteratorOfPackageSetItem) GetMany(items []*IPackageSetItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPackageSetItemRuntimeDisposition is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition>.
+// IID: 2d49cffd-4c79-5c38-99a0-0336074e91d6
+type IIteratorOfPackageSetItemRuntimeDisposition struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPackageSetItemRuntimeDisposition is the interface identifier for IIteratorOfPackageSetItemRuntimeDisposition.
+var IID_IIteratorOfPackageSetItemRuntimeDisposition = win32.GUID{Data1: 0x2d49cffd, Data2: 0x4c79, Data3: 0x5c38, Data4: [8]byte{0x99, 0xa0, 0x03, 0x36, 0x07, 0x4e, 0x91, 0xd6}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPackageSetItemRuntimeDisposition's vtable slot 6.
+func (self *IIteratorOfPackageSetItemRuntimeDisposition) Current() (*IPackageSetItemRuntimeDisposition, error) {
+	result := new(*IPackageSetItemRuntimeDisposition)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPackageSetItemRuntimeDisposition's vtable slot 7.
+func (self *IIteratorOfPackageSetItemRuntimeDisposition) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPackageSetItemRuntimeDisposition's vtable slot 8.
+func (self *IIteratorOfPackageSetItemRuntimeDisposition) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPackageSetItemRuntimeDisposition's vtable slot 9.
+func (self *IIteratorOfPackageSetItemRuntimeDisposition) GetMany(items []*IPackageSetItemRuntimeDisposition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPackageVolume is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.Windows.Management.Deployment.PackageVolume>.
+// IID: f4c3ba48-ad22-5996-a162-8bd805811d2e
+type IIteratorOfPackageVolume struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPackageVolume is the interface identifier for IIteratorOfPackageVolume.
+var IID_IIteratorOfPackageVolume = win32.GUID{Data1: 0xf4c3ba48, Data2: 0xad22, Data3: 0x5996, Data4: [8]byte{0xa1, 0x62, 0x8b, 0xd8, 0x05, 0x81, 0x1d, 0x2e}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPackageVolume's vtable slot 6.
+func (self *IIteratorOfPackageVolume) Current() (*IPackageVolume, error) {
+	result := new(*IPackageVolume)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPackageVolume's vtable slot 7.
+func (self *IIteratorOfPackageVolume) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPackageVolume's vtable slot 8.
+func (self *IIteratorOfPackageVolume) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPackageVolume's vtable slot 9.
+func (self *IIteratorOfPackageVolume) GetMany(items []*IPackageVolume) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfString is the WinRT interface Windows.Foundation.Collections.IIterator`1<String>.
+// IID: 8c304ebb-6615-50a4-8829-879ecd443236
+type IIteratorOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfString is the interface identifier for IIteratorOfString.
+var IID_IIteratorOfString = win32.GUID{Data1: 0x8c304ebb, Data2: 0x6615, Data3: 0x50a4, Data4: [8]byte{0x88, 0x29, 0x87, 0x9e, 0xcd, 0x44, 0x32, 0x36}}
+
+// Current (propget get_Current) dispatches through IIteratorOfString's vtable slot 6.
+func (self *IIteratorOfString) Current() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfString's vtable slot 7.
+func (self *IIteratorOfString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfString's vtable slot 8.
+func (self *IIteratorOfString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfString's vtable slot 9.
+func (self *IIteratorOfString) GetMany(items []string) (uint32, error) {
+	_itemsRaw := make([]syswinrt.HSTRING, len(items))
+	_itemsSize := uintptr(len(_itemsRaw))
+	_itemsData := uintptr(0)
+	if len(_itemsRaw) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&_itemsRaw[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return 0, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	for _itemsIndex := range items {
+		items[_itemsIndex] = winrt.TakeHString(_itemsRaw[_itemsIndex])
+	}
+	return *result, nil
+}
+
+// IIteratorOfUri is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Uri>.
+// IID: 1c157d0f-5efe-5cec-bbd6-0c6ce9af07a5
+type IIteratorOfUri struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfUri is the interface identifier for IIteratorOfUri.
+var IID_IIteratorOfUri = win32.GUID{Data1: 0x1c157d0f, Data2: 0x5efe, Data3: 0x5cec, Data4: [8]byte{0xbb, 0xd6, 0x0c, 0x6c, 0xe9, 0xaf, 0x07, 0xa5}}
+
+// Current (propget get_Current) dispatches through IIteratorOfUri's vtable slot 6.
+func (self *IIteratorOfUri) Current() (*wrtfoundation.IUriRuntimeClass, error) {
+	result := new(*wrtfoundation.IUriRuntimeClass)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfUri's vtable slot 7.
+func (self *IIteratorOfUri) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfUri's vtable slot 8.
+func (self *IIteratorOfUri) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfUri's vtable slot 9.
+func (self *IIteratorOfUri) GetMany(items []*wrtfoundation.IUriRuntimeClass) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IKeyValuePairOfUriAndPackageValidationEventSource is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, Microsoft.Windows.Management.Deployment.PackageValidationEventSource>.
+// IID: 9815350e-edc3-5ec7-9e81-826b9c7c3af6
+type IKeyValuePairOfUriAndPackageValidationEventSource struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfUriAndPackageValidationEventSource is the interface identifier for IKeyValuePairOfUriAndPackageValidationEventSource.
+var IID_IKeyValuePairOfUriAndPackageValidationEventSource = win32.GUID{Data1: 0x9815350e, Data2: 0xedc3, Data3: 0x5ec7, Data4: [8]byte{0x9e, 0x81, 0x82, 0x6b, 0x9c, 0x7c, 0x3a, 0xf6}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 6.
+func (self *IKeyValuePairOfUriAndPackageValidationEventSource) Key() (*wrtfoundation.IUriRuntimeClass, error) {
+	result := new(*wrtfoundation.IUriRuntimeClass)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfUriAndPackageValidationEventSource's vtable slot 7.
+func (self *IKeyValuePairOfUriAndPackageValidationEventSource) Value() (*IPackageValidationEventSource, error) {
+	result := new(*IPackageValidationEventSource)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IKeyValuePairOfUriAndString is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, String>.
+// IID: f1fe0d5e-8449-5479-875f-17daeb0027f0
+type IKeyValuePairOfUriAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfUriAndString is the interface identifier for IKeyValuePairOfUriAndString.
+var IID_IKeyValuePairOfUriAndString = win32.GUID{Data1: 0xf1fe0d5e, Data2: 0x8449, Data3: 0x5479, Data4: [8]byte{0x87, 0x5f, 0x17, 0xda, 0xeb, 0x00, 0x27, 0xf0}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfUriAndString's vtable slot 6.
+func (self *IKeyValuePairOfUriAndString) Key() (*wrtfoundation.IUriRuntimeClass, error) {
+	result := new(*wrtfoundation.IUriRuntimeClass)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfUriAndString's vtable slot 7.
+func (self *IKeyValuePairOfUriAndString) Value() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
 // IMapOfUriAndString is the WinRT interface Windows.Foundation.Collections.IMap`2<Windows.Foundation.Uri, String>.
 // IID: 4c522071-01da-5f85-9d52-29952578a301
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, String>>.
@@ -117,6 +605,13 @@ type IMapOfUriAndString struct {
 
 // IID_IMapOfUriAndString is the interface identifier for IMapOfUriAndString.
 var IID_IMapOfUriAndString = win32.GUID{Data1: 0x4c522071, Data2: 0x01da, Data3: 0x5f85, Data4: [8]byte{0x9d, 0x52, 0x29, 0x95, 0x25, 0x78, 0xa3, 0x01}}
+
+// AsIterableOfIKeyValuePairOfUriAndString queries the required IIterableOfIKeyValuePairOfUriAndString interface.
+// IMapOfUriAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfUriAndString) AsIterableOfIKeyValuePairOfUriAndString() (*IIterableOfIKeyValuePairOfUriAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfUriAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfUriAndString)
+}
 
 // Lookup dispatches through IMapOfUriAndString's vtable slot 6.
 func (self *IMapOfUriAndString) Lookup(key *wrtfoundation.IUriRuntimeClass) (string, error) {
@@ -183,6 +678,13 @@ type IMapViewOfUriAndPackageValidationEventSource struct {
 // IID_IMapViewOfUriAndPackageValidationEventSource is the interface identifier for IMapViewOfUriAndPackageValidationEventSource.
 var IID_IMapViewOfUriAndPackageValidationEventSource = win32.GUID{Data1: 0xd02cd67e, Data2: 0x7cb0, Data3: 0x530d, Data4: [8]byte{0x91, 0xb2, 0x03, 0x97, 0x03, 0x22, 0x82, 0xbd}}
 
+// AsIterableOfIKeyValuePairOfUriAndPackageValidationEventSource queries the required IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource interface.
+// IMapViewOfUriAndPackageValidationEventSource requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, Microsoft.Windows.Management.Deployment.PackageValidationEventSource>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfUriAndPackageValidationEventSource) AsIterableOfIKeyValuePairOfUriAndPackageValidationEventSource() (*IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfUriAndPackageValidationEventSource)
+}
+
 // Lookup dispatches through IMapViewOfUriAndPackageValidationEventSource's vtable slot 6.
 func (self *IMapViewOfUriAndPackageValidationEventSource) Lookup(key *wrtfoundation.IUriRuntimeClass) (*IPackageValidationEventSource, error) {
 	result := new(*IPackageValidationEventSource)
@@ -219,6 +721,13 @@ type IMapViewOfUriAndString struct {
 
 // IID_IMapViewOfUriAndString is the interface identifier for IMapViewOfUriAndString.
 var IID_IMapViewOfUriAndString = win32.GUID{Data1: 0x87530605, Data2: 0x8bd4, Data3: 0x5f0a, Data4: [8]byte{0x85, 0xf1, 0x75, 0x1e, 0x8b, 0xd2, 0x04, 0x46}}
+
+// AsIterableOfIKeyValuePairOfUriAndString queries the required IIterableOfIKeyValuePairOfUriAndString interface.
+// IMapViewOfUriAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Windows.Foundation.Uri, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfUriAndString) AsIterableOfIKeyValuePairOfUriAndString() (*IIterableOfIKeyValuePairOfUriAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfUriAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfUriAndString)
+}
 
 // Lookup dispatches through IMapViewOfUriAndString's vtable slot 6.
 func (self *IMapViewOfUriAndString) Lookup(key *wrtfoundation.IUriRuntimeClass) (string, error) {
@@ -259,6 +768,13 @@ type IVectorOfPackageSetItem struct {
 
 // IID_IVectorOfPackageSetItem is the interface identifier for IVectorOfPackageSetItem.
 var IID_IVectorOfPackageSetItem = win32.GUID{Data1: 0x1a149ede, Data2: 0x06c9, Data3: 0x5179, Data4: [8]byte{0xae, 0xbc, 0x42, 0xf8, 0xae, 0xfc, 0xd8, 0x54}}
+
+// AsIterableOfPackageSetItem queries the required IIterableOfPackageSetItem interface.
+// IVectorOfPackageSetItem requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageSetItem>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfPackageSetItem) AsIterableOfPackageSetItem() (*IIterableOfPackageSetItem, error) {
+	return winrt.QueryInterface[IIterableOfPackageSetItem](unsafe.Pointer(self), &IID_IIterableOfPackageSetItem)
+}
 
 // GetAt dispatches through IVectorOfPackageSetItem's vtable slot 6.
 func (self *IVectorOfPackageSetItem) GetAt(index uint32) (*IPackageSetItem, error) {
@@ -357,6 +873,13 @@ type IVectorOfPackageSetItemRuntimeDisposition struct {
 // IID_IVectorOfPackageSetItemRuntimeDisposition is the interface identifier for IVectorOfPackageSetItemRuntimeDisposition.
 var IID_IVectorOfPackageSetItemRuntimeDisposition = win32.GUID{Data1: 0x27772c5b, Data2: 0x2d44, Data3: 0x5594, Data4: [8]byte{0xac, 0xd9, 0x81, 0x89, 0x07, 0xab, 0x58, 0x2c}}
 
+// AsIterableOfPackageSetItemRuntimeDisposition queries the required IIterableOfPackageSetItemRuntimeDisposition interface.
+// IVectorOfPackageSetItemRuntimeDisposition requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfPackageSetItemRuntimeDisposition) AsIterableOfPackageSetItemRuntimeDisposition() (*IIterableOfPackageSetItemRuntimeDisposition, error) {
+	return winrt.QueryInterface[IIterableOfPackageSetItemRuntimeDisposition](unsafe.Pointer(self), &IID_IIterableOfPackageSetItemRuntimeDisposition)
+}
+
 // GetAt dispatches through IVectorOfPackageSetItemRuntimeDisposition's vtable slot 6.
 func (self *IVectorOfPackageSetItemRuntimeDisposition) GetAt(index uint32) (*IPackageSetItemRuntimeDisposition, error) {
 	result := new(*IPackageSetItemRuntimeDisposition)
@@ -454,6 +977,13 @@ type IVectorOfPackageVolume struct {
 // IID_IVectorOfPackageVolume is the interface identifier for IVectorOfPackageVolume.
 var IID_IVectorOfPackageVolume = win32.GUID{Data1: 0x83d86012, Data2: 0x3bb4, Data3: 0x5aca, Data4: [8]byte{0xb1, 0xff, 0xe2, 0x1e, 0x83, 0x32, 0x1c, 0x0a}}
 
+// AsIterableOfPackageVolume queries the required IIterableOfPackageVolume interface.
+// IVectorOfPackageVolume requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageVolume>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfPackageVolume) AsIterableOfPackageVolume() (*IIterableOfPackageVolume, error) {
+	return winrt.QueryInterface[IIterableOfPackageVolume](unsafe.Pointer(self), &IID_IIterableOfPackageVolume)
+}
+
 // GetAt dispatches through IVectorOfPackageVolume's vtable slot 6.
 func (self *IVectorOfPackageVolume) GetAt(index uint32) (*IPackageVolume, error) {
 	result := new(*IPackageVolume)
@@ -550,6 +1080,13 @@ type IVectorOfString struct {
 
 // IID_IVectorOfString is the interface identifier for IVectorOfString.
 var IID_IVectorOfString = win32.GUID{Data1: 0x98b9acc1, Data2: 0x4b56, Data3: 0x532e, Data4: [8]byte{0xac, 0x73, 0x03, 0xd5, 0x29, 0x1c, 0xca, 0x90}}
+
+// AsIterableOfString queries the required IIterableOfString interface.
+// IVectorOfString requires Windows.Foundation.Collections.IIterable`1<String>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfString) AsIterableOfString() (*IIterableOfString, error) {
+	return winrt.QueryInterface[IIterableOfString](unsafe.Pointer(self), &IID_IIterableOfString)
+}
 
 // GetAt dispatches through IVectorOfString's vtable slot 6.
 func (self *IVectorOfString) GetAt(index uint32) (string, error) {
@@ -689,6 +1226,13 @@ type IVectorOfUri struct {
 // IID_IVectorOfUri is the interface identifier for IVectorOfUri.
 var IID_IVectorOfUri = win32.GUID{Data1: 0x0d82bd8d, Data2: 0xfe62, Data3: 0x5d67, Data4: [8]byte{0xa7, 0xb9, 0x78, 0x86, 0xdd, 0x75, 0xbc, 0x4e}}
 
+// AsIterableOfUri queries the required IIterableOfUri interface.
+// IVectorOfUri requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Uri>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfUri) AsIterableOfUri() (*IIterableOfUri, error) {
+	return winrt.QueryInterface[IIterableOfUri](unsafe.Pointer(self), &IID_IIterableOfUri)
+}
+
 // GetAt dispatches through IVectorOfUri's vtable slot 6.
 func (self *IVectorOfUri) GetAt(index uint32) (*wrtfoundation.IUriRuntimeClass, error) {
 	result := new(*wrtfoundation.IUriRuntimeClass)
@@ -786,6 +1330,13 @@ type IVectorViewOfPackageSetItem struct {
 // IID_IVectorViewOfPackageSetItem is the interface identifier for IVectorViewOfPackageSetItem.
 var IID_IVectorViewOfPackageSetItem = win32.GUID{Data1: 0x8a350fa7, Data2: 0xca4b, Data3: 0x57dc, Data4: [8]byte{0x97, 0x72, 0xe8, 0x24, 0xe3, 0x15, 0x6a, 0xa7}}
 
+// AsIterableOfPackageSetItem queries the required IIterableOfPackageSetItem interface.
+// IVectorViewOfPackageSetItem requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageSetItem>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPackageSetItem) AsIterableOfPackageSetItem() (*IIterableOfPackageSetItem, error) {
+	return winrt.QueryInterface[IIterableOfPackageSetItem](unsafe.Pointer(self), &IID_IIterableOfPackageSetItem)
+}
+
 // GetAt dispatches through IVectorViewOfPackageSetItem's vtable slot 6.
 func (self *IVectorViewOfPackageSetItem) GetAt(index uint32) (*IPackageSetItem, error) {
 	result := new(*IPackageSetItem)
@@ -828,6 +1379,13 @@ type IVectorViewOfPackageSetItemRuntimeDisposition struct {
 
 // IID_IVectorViewOfPackageSetItemRuntimeDisposition is the interface identifier for IVectorViewOfPackageSetItemRuntimeDisposition.
 var IID_IVectorViewOfPackageSetItemRuntimeDisposition = win32.GUID{Data1: 0xc9fc469d, Data2: 0xdd12, Data3: 0x593c, Data4: [8]byte{0xb5, 0x54, 0x8a, 0xad, 0x5d, 0x1c, 0x6c, 0x45}}
+
+// AsIterableOfPackageSetItemRuntimeDisposition queries the required IIterableOfPackageSetItemRuntimeDisposition interface.
+// IVectorViewOfPackageSetItemRuntimeDisposition requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPackageSetItemRuntimeDisposition) AsIterableOfPackageSetItemRuntimeDisposition() (*IIterableOfPackageSetItemRuntimeDisposition, error) {
+	return winrt.QueryInterface[IIterableOfPackageSetItemRuntimeDisposition](unsafe.Pointer(self), &IID_IIterableOfPackageSetItemRuntimeDisposition)
+}
 
 // GetAt dispatches through IVectorViewOfPackageSetItemRuntimeDisposition's vtable slot 6.
 func (self *IVectorViewOfPackageSetItemRuntimeDisposition) GetAt(index uint32) (*IPackageSetItemRuntimeDisposition, error) {
@@ -872,6 +1430,13 @@ type IVectorViewOfPackageVolume struct {
 // IID_IVectorViewOfPackageVolume is the interface identifier for IVectorViewOfPackageVolume.
 var IID_IVectorViewOfPackageVolume = win32.GUID{Data1: 0x9794d073, Data2: 0xde98, Data3: 0x5af3, Data4: [8]byte{0x84, 0x2e, 0xd0, 0xe5, 0xf7, 0xcb, 0xa0, 0x43}}
 
+// AsIterableOfPackageVolume queries the required IIterableOfPackageVolume interface.
+// IVectorViewOfPackageVolume requires Windows.Foundation.Collections.IIterable`1<Microsoft.Windows.Management.Deployment.PackageVolume>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPackageVolume) AsIterableOfPackageVolume() (*IIterableOfPackageVolume, error) {
+	return winrt.QueryInterface[IIterableOfPackageVolume](unsafe.Pointer(self), &IID_IIterableOfPackageVolume)
+}
+
 // GetAt dispatches through IVectorViewOfPackageVolume's vtable slot 6.
 func (self *IVectorViewOfPackageVolume) GetAt(index uint32) (*IPackageVolume, error) {
 	result := new(*IPackageVolume)
@@ -914,6 +1479,13 @@ type IVectorViewOfString struct {
 
 // IID_IVectorViewOfString is the interface identifier for IVectorViewOfString.
 var IID_IVectorViewOfString = win32.GUID{Data1: 0x2f13c006, Data2: 0xa03a, Data3: 0x5f69, Data4: [8]byte{0xb0, 0x90, 0x75, 0xa4, 0x3e, 0x33, 0x42, 0x3e}}
+
+// AsIterableOfString queries the required IIterableOfString interface.
+// IVectorViewOfString requires Windows.Foundation.Collections.IIterable`1<String>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfString) AsIterableOfString() (*IIterableOfString, error) {
+	return winrt.QueryInterface[IIterableOfString](unsafe.Pointer(self), &IID_IIterableOfString)
+}
 
 // GetAt dispatches through IVectorViewOfString's vtable slot 6.
 func (self *IVectorViewOfString) GetAt(index uint32) (string, error) {
@@ -974,6 +1546,13 @@ type IVectorViewOfUri struct {
 
 // IID_IVectorViewOfUri is the interface identifier for IVectorViewOfUri.
 var IID_IVectorViewOfUri = win32.GUID{Data1: 0x4b8385bd, Data2: 0xa2cd, Data3: 0x5ff1, Data4: [8]byte{0xbf, 0x74, 0x7e, 0xa5, 0x80, 0x42, 0x3e, 0x50}}
+
+// AsIterableOfUri queries the required IIterableOfUri interface.
+// IVectorViewOfUri requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Uri>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfUri) AsIterableOfUri() (*IIterableOfUri, error) {
+	return winrt.QueryInterface[IIterableOfUri](unsafe.Pointer(self), &IID_IIterableOfUri)
+}
 
 // GetAt dispatches through IVectorViewOfUri's vtable slot 6.
 func (self *IVectorViewOfUri) GetAt(index uint32) (*wrtfoundation.IUriRuntimeClass, error) {

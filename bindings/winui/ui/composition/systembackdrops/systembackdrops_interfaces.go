@@ -14,6 +14,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui"
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 	wrtuicomposition "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/composition"
 	wrtuicore "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/core"
@@ -333,6 +334,13 @@ type ISystemBackdropController struct {
 // IID_ISystemBackdropController is the interface identifier for ISystemBackdropController.
 var IID_ISystemBackdropController = win32.GUID{Data1: 0x5632d76c, Data2: 0x0b74, Data3: 0x5b52, Data4: [8]byte{0xaa, 0x33, 0x80, 0x26, 0x20, 0x68, 0xae, 0xb2}}
 
+// AsClosable queries the required wrtfoundation.IClosable interface.
+// ISystemBackdropController requires Windows.Foundation.IClosable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ISystemBackdropController) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
 // SetTargetWithWindowId dispatches through ISystemBackdropController's vtable slot 6.
 func (self *ISystemBackdropController) SetTargetWithWindowId(windowId ui.WindowId, desktopWindowTarget *wrtuicomposition.ICompositionTarget) (bool, error) {
 	_windowId := *(*uintptr)(unsafe.Pointer(&windowId))
@@ -357,6 +365,20 @@ type ISystemBackdropControllerWithTargets struct {
 
 // IID_ISystemBackdropControllerWithTargets is the interface identifier for ISystemBackdropControllerWithTargets.
 var IID_ISystemBackdropControllerWithTargets = win32.GUID{Data1: 0x9c56fe7c, Data2: 0x98eb, Data3: 0x5f89, Data4: [8]byte{0xad, 0x97, 0xda, 0xd5, 0x7f, 0xc3, 0x0c, 0x8c}}
+
+// AsSystemBackdropController queries the required ISystemBackdropController interface.
+// ISystemBackdropControllerWithTargets requires Microsoft.UI.Composition.SystemBackdrops.ISystemBackdropController, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ISystemBackdropControllerWithTargets) AsSystemBackdropController() (*ISystemBackdropController, error) {
+	return winrt.QueryInterface[ISystemBackdropController](unsafe.Pointer(self), &IID_ISystemBackdropController)
+}
+
+// AsClosable queries the required wrtfoundation.IClosable interface.
+// ISystemBackdropControllerWithTargets requires Windows.Foundation.IClosable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ISystemBackdropControllerWithTargets) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
 
 // State (propget get_State) dispatches through ISystemBackdropControllerWithTargets's vtable slot 6.
 func (self *ISystemBackdropControllerWithTargets) State() (SystemBackdropState, error) {

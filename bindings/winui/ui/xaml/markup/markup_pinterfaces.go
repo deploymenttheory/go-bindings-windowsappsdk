@@ -14,6 +14,64 @@ import (
 	wrtstoragestreams "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/storage/streams"
 )
 
+// IIterableOfIRandomAccessStream is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Storage.Streams.IRandomAccessStream>.
+// IID: ba666a00-1555-5df4-81a5-07d23f7ffceb
+type IIterableOfIRandomAccessStream struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIRandomAccessStream is the interface identifier for IIterableOfIRandomAccessStream.
+var IID_IIterableOfIRandomAccessStream = win32.GUID{Data1: 0xba666a00, Data2: 0x1555, Data3: 0x5df4, Data4: [8]byte{0x81, 0xa5, 0x07, 0xd2, 0x3f, 0x7f, 0xfc, 0xeb}}
+
+// First dispatches through IIterableOfIRandomAccessStream's vtable slot 6.
+func (self *IIterableOfIRandomAccessStream) First() (*IIteratorOfIRandomAccessStream, error) {
+	result := new(*IIteratorOfIRandomAccessStream)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIRandomAccessStream is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Storage.Streams.IRandomAccessStream>.
+// IID: c875446a-587f-58da-897e-3bbe5ec7c30b
+type IIteratorOfIRandomAccessStream struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIRandomAccessStream is the interface identifier for IIteratorOfIRandomAccessStream.
+var IID_IIteratorOfIRandomAccessStream = win32.GUID{Data1: 0xc875446a, Data2: 0x587f, Data3: 0x58da, Data4: [8]byte{0x89, 0x7e, 0x3b, 0xbe, 0x5e, 0xc7, 0xc3, 0x0b}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIRandomAccessStream's vtable slot 6.
+func (self *IIteratorOfIRandomAccessStream) Current() (*wrtstoragestreams.IRandomAccessStream, error) {
+	result := new(*wrtstoragestreams.IRandomAccessStream)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIRandomAccessStream's vtable slot 7.
+func (self *IIteratorOfIRandomAccessStream) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIRandomAccessStream's vtable slot 8.
+func (self *IIteratorOfIRandomAccessStream) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIRandomAccessStream's vtable slot 9.
+func (self *IIteratorOfIRandomAccessStream) GetMany(items []*wrtstoragestreams.IRandomAccessStream) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfIRandomAccessStream is the WinRT interface Windows.Foundation.Collections.IVector`1<Windows.Storage.Streams.IRandomAccessStream>.
 // IID: 2736b66b-daa3-5e0c-9842-6a0f44b5440b
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Storage.Streams.IRandomAccessStream>.
@@ -23,6 +81,13 @@ type IVectorOfIRandomAccessStream struct {
 
 // IID_IVectorOfIRandomAccessStream is the interface identifier for IVectorOfIRandomAccessStream.
 var IID_IVectorOfIRandomAccessStream = win32.GUID{Data1: 0x2736b66b, Data2: 0xdaa3, Data3: 0x5e0c, Data4: [8]byte{0x98, 0x42, 0x6a, 0x0f, 0x44, 0xb5, 0x44, 0x0b}}
+
+// AsIterableOfIRandomAccessStream queries the required IIterableOfIRandomAccessStream interface.
+// IVectorOfIRandomAccessStream requires Windows.Foundation.Collections.IIterable`1<Windows.Storage.Streams.IRandomAccessStream>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfIRandomAccessStream) AsIterableOfIRandomAccessStream() (*IIterableOfIRandomAccessStream, error) {
+	return winrt.QueryInterface[IIterableOfIRandomAccessStream](unsafe.Pointer(self), &IID_IIterableOfIRandomAccessStream)
+}
 
 // GetAt dispatches through IVectorOfIRandomAccessStream's vtable slot 6.
 func (self *IVectorOfIRandomAccessStream) GetAt(index uint32) (*wrtstoragestreams.IRandomAccessStream, error) {
@@ -120,6 +185,13 @@ type IVectorViewOfIRandomAccessStream struct {
 
 // IID_IVectorViewOfIRandomAccessStream is the interface identifier for IVectorViewOfIRandomAccessStream.
 var IID_IVectorViewOfIRandomAccessStream = win32.GUID{Data1: 0x92cd0a46, Data2: 0x2266, Data3: 0x5cd6, Data4: [8]byte{0x92, 0x93, 0xe1, 0x11, 0x29, 0x9f, 0x27, 0x93}}
+
+// AsIterableOfIRandomAccessStream queries the required IIterableOfIRandomAccessStream interface.
+// IVectorViewOfIRandomAccessStream requires Windows.Foundation.Collections.IIterable`1<Windows.Storage.Streams.IRandomAccessStream>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfIRandomAccessStream) AsIterableOfIRandomAccessStream() (*IIterableOfIRandomAccessStream, error) {
+	return winrt.QueryInterface[IIterableOfIRandomAccessStream](unsafe.Pointer(self), &IID_IIterableOfIRandomAccessStream)
+}
 
 // GetAt dispatches through IVectorViewOfIRandomAccessStream's vtable slot 6.
 func (self *IVectorViewOfIRandomAccessStream) GetAt(index uint32) (*wrtstoragestreams.IRandomAccessStream, error) {

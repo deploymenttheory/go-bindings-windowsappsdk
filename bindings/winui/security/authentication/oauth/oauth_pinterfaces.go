@@ -12,6 +12,7 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtdatajson "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/data/json"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationOfAuthRequestResult is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.Security.Authentication.OAuth.AuthRequestResult>.
@@ -23,6 +24,13 @@ type IAsyncOperationOfAuthRequestResult struct {
 
 // IID_IAsyncOperationOfAuthRequestResult is the interface identifier for IAsyncOperationOfAuthRequestResult.
 var IID_IAsyncOperationOfAuthRequestResult = win32.GUID{Data1: 0x90c43237, Data2: 0xb071, Data3: 0x547a, Data4: [8]byte{0xb4, 0xe1, 0xb7, 0x86, 0xe2, 0x30, 0xe9, 0xde}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfAuthRequestResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfAuthRequestResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfAuthRequestResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -54,6 +62,13 @@ type IAsyncOperationOfTokenRequestResult struct {
 // IID_IAsyncOperationOfTokenRequestResult is the interface identifier for IAsyncOperationOfTokenRequestResult.
 var IID_IAsyncOperationOfTokenRequestResult = win32.GUID{Data1: 0x001a3d77, Data2: 0x0c75, Data3: 0x5e5c, Data4: [8]byte{0x91, 0x0b, 0xd1, 0x43, 0xe6, 0x39, 0xa0, 0x3f}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfTokenRequestResult requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfTokenRequestResult) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfTokenRequestResult's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfTokenRequestResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfTokenRequestResult) error {
@@ -74,6 +89,177 @@ func (self *IAsyncOperationOfTokenRequestResult) GetResults() (*ITokenRequestRes
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfIKeyValuePairOfStringAndIJsonValue is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Data.Json.IJsonValue>>.
+// IID: dfabb6e1-0411-5a8f-aa87-354e7110f099
+type IIterableOfIKeyValuePairOfStringAndIJsonValue struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfStringAndIJsonValue is the interface identifier for IIterableOfIKeyValuePairOfStringAndIJsonValue.
+var IID_IIterableOfIKeyValuePairOfStringAndIJsonValue = win32.GUID{Data1: 0xdfabb6e1, Data2: 0x0411, Data3: 0x5a8f, Data4: [8]byte{0xaa, 0x87, 0x35, 0x4e, 0x71, 0x10, 0xf0, 0x99}}
+
+// First dispatches through IIterableOfIKeyValuePairOfStringAndIJsonValue's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfStringAndIJsonValue) First() (*IIteratorOfIKeyValuePairOfStringAndIJsonValue, error) {
+	result := new(*IIteratorOfIKeyValuePairOfStringAndIJsonValue)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfIKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+// IID: e9bdaaf0-cbf6-5c72-be90-29cbf3a1319b
+type IIterableOfIKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfStringAndString is the interface identifier for IIterableOfIKeyValuePairOfStringAndString.
+var IID_IIterableOfIKeyValuePairOfStringAndString = win32.GUID{Data1: 0xe9bdaaf0, Data2: 0xcbf6, Data3: 0x5c72, Data4: [8]byte{0xbe, 0x90, 0x29, 0xcb, 0xf3, 0xa1, 0x31, 0x9b}}
+
+// First dispatches through IIterableOfIKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfStringAndString) First() (*IIteratorOfIKeyValuePairOfStringAndString, error) {
+	result := new(*IIteratorOfIKeyValuePairOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfStringAndIJsonValue is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Data.Json.IJsonValue>>.
+// IID: f948eac5-33eb-50f5-b5af-e7cecf0e4501
+type IIteratorOfIKeyValuePairOfStringAndIJsonValue struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfStringAndIJsonValue is the interface identifier for IIteratorOfIKeyValuePairOfStringAndIJsonValue.
+var IID_IIteratorOfIKeyValuePairOfStringAndIJsonValue = win32.GUID{Data1: 0xf948eac5, Data2: 0x33eb, Data3: 0x50f5, Data4: [8]byte{0xb5, 0xaf, 0xe7, 0xce, 0xcf, 0x0e, 0x45, 0x01}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfStringAndIJsonValue's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfStringAndIJsonValue) Current() (*IKeyValuePairOfStringAndIJsonValue, error) {
+	result := new(*IKeyValuePairOfStringAndIJsonValue)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfStringAndIJsonValue's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfStringAndIJsonValue) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfStringAndIJsonValue's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfStringAndIJsonValue) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndIJsonValue's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndIJsonValue) GetMany(items []*IKeyValuePairOfStringAndIJsonValue) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfIKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
+// IID: 05eb86f1-7140-5517-b88d-cbaebe57e6b1
+type IIteratorOfIKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfStringAndString is the interface identifier for IIteratorOfIKeyValuePairOfStringAndString.
+var IID_IIteratorOfIKeyValuePairOfStringAndString = win32.GUID{Data1: 0x05eb86f1, Data2: 0x7140, Data3: 0x5517, Data4: [8]byte{0xb8, 0x8d, 0xcb, 0xae, 0xbe, 0x57, 0xe6, 0xb1}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) Current() (*IKeyValuePairOfStringAndString, error) {
+	result := new(*IKeyValuePairOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) GetMany(items []*IKeyValuePairOfStringAndString) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IKeyValuePairOfStringAndIJsonValue is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Data.Json.IJsonValue>.
+// IID: 4deecc89-b0b8-5ee8-a51d-1c25ad9a5b01
+type IKeyValuePairOfStringAndIJsonValue struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfStringAndIJsonValue is the interface identifier for IKeyValuePairOfStringAndIJsonValue.
+var IID_IKeyValuePairOfStringAndIJsonValue = win32.GUID{Data1: 0x4deecc89, Data2: 0xb0b8, Data3: 0x5ee8, Data4: [8]byte{0xa5, 0x1d, 0x1c, 0x25, 0xad, 0x9a, 0x5b, 0x01}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfStringAndIJsonValue's vtable slot 6.
+func (self *IKeyValuePairOfStringAndIJsonValue) Key() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfStringAndIJsonValue's vtable slot 7.
+func (self *IKeyValuePairOfStringAndIJsonValue) Value() (*wrtdatajson.IJsonValue, error) {
+	result := new(*wrtdatajson.IJsonValue)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, String>.
+// IID: 60310303-49c5-52e6-abc6-a9b36eccc716
+type IKeyValuePairOfStringAndString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfStringAndString is the interface identifier for IKeyValuePairOfStringAndString.
+var IID_IKeyValuePairOfStringAndString = win32.GUID{Data1: 0x60310303, Data2: 0x49c5, Data3: 0x52e6, Data4: [8]byte{0xab, 0xc6, 0xa9, 0xb3, 0x6e, 0xcc, 0xc7, 0x16}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfStringAndString's vtable slot 6.
+func (self *IKeyValuePairOfStringAndString) Key() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfStringAndString's vtable slot 7.
+func (self *IKeyValuePairOfStringAndString) Value() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
 // IMapOfStringAndString is the WinRT interface Windows.Foundation.Collections.IMap`2<String, String>.
 // IID: f6d1f700-49c2-52ae-8154-826f9908773c
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>.
@@ -83,6 +269,13 @@ type IMapOfStringAndString struct {
 
 // IID_IMapOfStringAndString is the interface identifier for IMapOfStringAndString.
 var IID_IMapOfStringAndString = win32.GUID{Data1: 0xf6d1f700, Data2: 0x49c2, Data3: 0x52ae, Data4: [8]byte{0x81, 0x54, 0x82, 0x6f, 0x99, 0x08, 0x77, 0x3c}}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
 
 // Lookup dispatches through IMapOfStringAndString's vtable slot 6.
 func (self *IMapOfStringAndString) Lookup(key string) (string, error) {
@@ -169,6 +362,13 @@ type IMapViewOfStringAndIJsonValue struct {
 // IID_IMapViewOfStringAndIJsonValue is the interface identifier for IMapViewOfStringAndIJsonValue.
 var IID_IMapViewOfStringAndIJsonValue = win32.GUID{Data1: 0xeecd690c, Data2: 0x1ff3, Data3: 0x529f, Data4: [8]byte{0x92, 0x3f, 0x9b, 0x1c, 0x31, 0xfd, 0x3d, 0x0f}}
 
+// AsIterableOfIKeyValuePairOfStringAndIJsonValue queries the required IIterableOfIKeyValuePairOfStringAndIJsonValue interface.
+// IMapViewOfStringAndIJsonValue requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Windows.Data.Json.IJsonValue>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndIJsonValue) AsIterableOfIKeyValuePairOfStringAndIJsonValue() (*IIterableOfIKeyValuePairOfStringAndIJsonValue, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndIJsonValue](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndIJsonValue)
+}
+
 // Lookup dispatches through IMapViewOfStringAndIJsonValue's vtable slot 6.
 func (self *IMapViewOfStringAndIJsonValue) Lookup(key string) (*wrtdatajson.IJsonValue, error) {
 	hKey, err := winrt.NewHString(key)
@@ -215,6 +415,13 @@ type IMapViewOfStringAndString struct {
 
 // IID_IMapViewOfStringAndString is the interface identifier for IMapViewOfStringAndString.
 var IID_IMapViewOfStringAndString = win32.GUID{Data1: 0xac7f26f2, Data2: 0xfeb7, Data3: 0x5b2a, Data4: [8]byte{0x8a, 0xc4, 0x34, 0x5b, 0xc6, 0x2c, 0xae, 0xde}}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapViewOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
 
 // Lookup dispatches through IMapViewOfStringAndString's vtable slot 6.
 func (self *IMapViewOfStringAndString) Lookup(key string) (string, error) {

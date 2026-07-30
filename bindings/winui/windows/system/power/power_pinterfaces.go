@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IAsyncOperationOfEffectivePowerMode is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.Windows.System.Power.EffectivePowerMode>.
@@ -22,6 +23,13 @@ type IAsyncOperationOfEffectivePowerMode struct {
 
 // IID_IAsyncOperationOfEffectivePowerMode is the interface identifier for IAsyncOperationOfEffectivePowerMode.
 var IID_IAsyncOperationOfEffectivePowerMode = win32.GUID{Data1: 0xc4dc524f, Data2: 0x9095, Data3: 0x56f2, Data4: [8]byte{0x9a, 0xcf, 0xe1, 0x0f, 0xfa, 0x60, 0x0f, 0xcb}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfEffectivePowerMode requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfEffectivePowerMode) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfEffectivePowerMode's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).

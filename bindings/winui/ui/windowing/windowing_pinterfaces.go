@@ -11,8 +11,67 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 )
+
+// IIterableOfDisplayArea is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Windowing.DisplayArea>.
+// IID: fb253085-6cfc-5fa6-948e-97383f5be36c
+type IIterableOfDisplayArea struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfDisplayArea is the interface identifier for IIterableOfDisplayArea.
+var IID_IIterableOfDisplayArea = win32.GUID{Data1: 0xfb253085, Data2: 0x6cfc, Data3: 0x5fa6, Data4: [8]byte{0x94, 0x8e, 0x97, 0x38, 0x3f, 0x5b, 0xe3, 0x6c}}
+
+// First dispatches through IIterableOfDisplayArea's vtable slot 6.
+func (self *IIterableOfDisplayArea) First() (*IIteratorOfDisplayArea, error) {
+	result := new(*IIteratorOfDisplayArea)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfDisplayArea is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Windowing.DisplayArea>.
+// IID: 3d833884-2258-5c48-8d45-3642fe8c6755
+type IIteratorOfDisplayArea struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfDisplayArea is the interface identifier for IIteratorOfDisplayArea.
+var IID_IIteratorOfDisplayArea = win32.GUID{Data1: 0x3d833884, Data2: 0x2258, Data3: 0x5c48, Data4: [8]byte{0x8d, 0x45, 0x36, 0x42, 0xfe, 0x8c, 0x67, 0x55}}
+
+// Current (propget get_Current) dispatches through IIteratorOfDisplayArea's vtable slot 6.
+func (self *IIteratorOfDisplayArea) Current() (*IDisplayArea, error) {
+	result := new(*IDisplayArea)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfDisplayArea's vtable slot 7.
+func (self *IIteratorOfDisplayArea) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfDisplayArea's vtable slot 8.
+func (self *IIteratorOfDisplayArea) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfDisplayArea's vtable slot 9.
+func (self *IIteratorOfDisplayArea) GetMany(items []*IDisplayArea) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IReferenceOfColor is the WinRT interface Windows.Foundation.IReference`1<Windows.UI.Color>.
 // IID: ab8e5d11-b0c1-5a21-95ae-f16bf3a37624
@@ -23,6 +82,13 @@ type IReferenceOfColor struct {
 
 // IID_IReferenceOfColor is the interface identifier for IReferenceOfColor.
 var IID_IReferenceOfColor = win32.GUID{Data1: 0xab8e5d11, Data2: 0xb0c1, Data3: 0x5a21, Data4: [8]byte{0x95, 0xae, 0xf1, 0x6b, 0xf3, 0xa3, 0x76, 0x24}}
+
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfColor requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfColor) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
 
 // Value (propget get_Value) dispatches through IReferenceOfColor's vtable slot 6.
 func (self *IReferenceOfColor) Value() (wrtui.Color, error) {
@@ -41,6 +107,13 @@ type IReferenceOfInt32 struct {
 // IID_IReferenceOfInt32 is the interface identifier for IReferenceOfInt32.
 var IID_IReferenceOfInt32 = win32.GUID{Data1: 0x548cefbd, Data2: 0xbc8a, Data3: 0x5fa0, Data4: [8]byte{0x8d, 0xf2, 0x95, 0x74, 0x40, 0xfc, 0x8b, 0xf4}}
 
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfInt32 requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfInt32) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
+
 // Value (propget get_Value) dispatches through IReferenceOfInt32's vtable slot 6.
 func (self *IReferenceOfInt32) Value() (int32, error) {
 	result := new(int32)
@@ -57,6 +130,13 @@ type IVectorViewOfDisplayArea struct {
 
 // IID_IVectorViewOfDisplayArea is the interface identifier for IVectorViewOfDisplayArea.
 var IID_IVectorViewOfDisplayArea = win32.GUID{Data1: 0x63490e13, Data2: 0xd075, Data3: 0x5fe2, Data4: [8]byte{0xb6, 0xa4, 0x86, 0xa4, 0x40, 0x95, 0x21, 0x5f}}
+
+// AsIterableOfDisplayArea queries the required IIterableOfDisplayArea interface.
+// IVectorViewOfDisplayArea requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Windowing.DisplayArea>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfDisplayArea) AsIterableOfDisplayArea() (*IIterableOfDisplayArea, error) {
+	return winrt.QueryInterface[IIterableOfDisplayArea](unsafe.Pointer(self), &IID_IIterableOfDisplayArea)
+}
 
 // GetAt dispatches through IVectorViewOfDisplayArea's vtable slot 6.
 func (self *IVectorViewOfDisplayArea) GetAt(index uint32) (*IDisplayArea, error) {
