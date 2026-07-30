@@ -51,6 +51,7 @@ built toward, and is written down now so it does not have to be rediscovered.
 ```sh
 go run ./cmd/generate fetch-metadata     # winmds ← NuGet meta-package fan-out
 go run ./cmd/generate fetch-bootstrap    # the redistributable bootstrapper
+go run ./cmd/generate app-resources --out <dir>   # resources.pri for an unpackaged app
 go run ./cmd/generate ingest             # winmds → metadata/wasdk/*.json
 go run ./cmd/generate validate --external
 go run ./cmd/generate resolve             # every reference → a Go type, or a reason
@@ -633,9 +634,25 @@ those resources in `Microsoft.UI.Xaml.Controls.pri`, whose resource map is named
 *merging* the framework's PRI into one it generates.
 
 Copying that PRI beside the executable does not work — neither as `resources.pri` nor
-with the executable renamed to match the resource map — so the fix is a real `makepri`
-merge, which is build tooling this repository does not have yet. **That is the open
-work.** `acceptance/themeresources_test.go` is the reproduction.
+with the executable renamed to match the resource map. It needs a real `makepri` merge
+that re-roots the framework's entries under the application's own resource map, which is
+what `generate app-resources` does.
+
+`go run ./cmd/generate app-resources --out <dir>` builds it. **It is necessary but not
+yet sufficient:** with it in place MRT resolves the theme resources —
+`ResourceManager.MainResourceMap.GetValue("Files/Microsoft.UI.Xaml/Themes/generic.xbf")`
+succeeds — and XAML still cannot load them, and `XamlControlsResources` still fails to
+activate. The affected controls remain unusable. That is where the trail currently ends.
+
+Two details in that command are worth keeping. The framework package is found through
+`Get-AppxPackage` rather than by listing `C:\Program Files\WindowsApps`, which denies
+enumeration even though a known path inside it reads fine. And the package is chosen by
+the **major version in its name**, not by its `Version` field:
+`Microsoft.WindowsAppRuntime.1.8` carries version `8000.921.1539.0` while
+`Microsoft.WindowsAppRuntime.2` carries `2.3.1.0`, so sorting on `Version` picks the
+older SDK. `selectFramework` is separated out and tested for exactly that reason.
+
+`acceptance/themeresources_test.go` is the reproduction.
 
 The earlier note that `XamlControlsResources` failing "does not matter" was reached by
 measuring a `Button`, and holds only for the controls it was measured on.

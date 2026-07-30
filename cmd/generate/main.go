@@ -33,6 +33,8 @@ func main() {
 		err = runFetchMetadata(os.Args[2:])
 	case "fetch-bootstrap":
 		err = runFetchBootstrap(os.Args[2:])
+	case "app-resources":
+		err = runAppResources(os.Args[2:])
 	case "ingest":
 		err = runIngest(os.Args[2:])
 	case "validate":
@@ -58,6 +60,7 @@ func usage() {
 
 commands:
   fetch-metadata   download the Windows App SDK winmds into metadata/winmd
+  app-resources    build the resources.pri an unpackaged application needs
   fetch-bootstrap  download the redistributable bootstrapper into metadata/bootstrap
   ingest           project the winmds into per-namespace .wasdkmeta.json files
   validate         structural integrity checks over the metadata

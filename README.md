@@ -318,9 +318,16 @@ those resources in `Microsoft.UI.Xaml.Controls.pri`, whose resource map is named
 *merging* the framework's PRI into one it generates.
 
 Copying that PRI beside the executable does not work — neither as `resources.pri` nor
-with the executable renamed to match the resource map — so the fix is a real `makepri`
-merge, which is build tooling this repository does not have yet. **That is the open
-work.** `acceptance/themeresources_test.go` is the reproduction.
+with the executable renamed to match the resource map. It needs a real `makepri` merge
+that re-roots the framework's entries under the application's own resource map.
+
+`go run ./cmd/generate app-resources --out <dir>` builds it. **It is necessary but not
+yet sufficient:** with it in place MRT resolves the theme resources —
+`ResourceManager.MainResourceMap.GetValue("Files/Microsoft.UI.Xaml/Themes/generic.xbf")`
+succeeds — and XAML still cannot load them, and `XamlControlsResources` still fails to
+activate. The affected controls remain unusable. That is where the trail currently ends.
+
+`acceptance/themeresources_test.go` is the reproduction.
 
 The earlier note that `XamlControlsResources` failing "does not matter" was reached by
 measuring a `Button`, and holds only for the controls it was measured on.
