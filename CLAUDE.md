@@ -37,10 +37,11 @@ The controls in it are **styled and rendered**: a `Button` measured at `Loaded` 
 template and a size. The one thing that does not work is activating
 `XamlControlsResources`, which turns out not to be needed; see below.
 
-302 diagnostics remain, down from 870. The largest categories were cleared by
-[conformant arrays](#conformant-arrays) (256) and [namespace
-clusters](#namespace-clusters) (185 import cycles, 75 inherited interfaces, 62 event
-delegates).
+199 diagnostics remain, down from 870. The largest categories were cleared by
+[conformant arrays](#conformant-arrays) (256), [namespace
+clusters](#namespace-clusters) (185 import cycles, 75 inherited interfaces, 70 event
+delegates) and [generic instantiations](#generic-instantiations) (72 wrongly-rejected
+duplicates, 30 collection classes).
 
 `README.md` has the milestone order; the detail below describes the design being
 built toward, and is written down now so it does not have to be rediscovered.
@@ -332,6 +333,51 @@ seeing the second would name a type that was never generated. Members using it
 must be skipped with a distinct reason rather than quietly turned into
 `uintptr` — a binding that compiles and then crashes is worse than one that is
 absent.
+
+### Generic instantiations
+
+A Go type parameterized at the ABI level does not exist, so `IVector`1<UIElement>`
+becomes a concrete `IVectorOfUIElement` **monomorphized into the consuming package**,
+never a reference into go-bindings-winrt. Discovery is demand-driven through
+`typemap.Context.RequestInstantiation` and transitively closed: substituting arguments
+into an open interface surfaces more instantiations — `IVector<T>.GetView` yields
+`IVectorView<T>` — which are queued and drained to a fixed point.
+
+Instantiations are deduped per package by mangled name, and the guard on that dedupe is
+where two lessons live.
+
+**Identity is not the whole struct.** The guard compared `TypeRef`s with
+`reflect.DeepEqual`, which includes `External` — and that field records *whose metadata
+the reference was read from*, not which type it is. `IAsyncOperation`1<Bool>` is
+`External: true` read from this module's JSON, and `External: false` when it surfaces
+through go-bindings-winrt's own IR for `AsyncOperationCompletedHandler`1.Invoke`,
+because inside that module `Windows.Foundation` is local. The guard therefore rejected
+72 identical instantiations as name collisions, and every member naming one degraded.
+`sameType` compares kind, namespace, name, array element and arguments, recursively, and
+deliberately excludes provenance. `TargetKind` is excluded for the same reason: for a
+fixed namespace and name it cannot disagree.
+
+**The guard is still needed.** Mangled names drop namespaces, so
+`Microsoft.UI.Xaml.Documents.TextRange` and `Microsoft.UI.Text.TextRange` both give
+`IVectorOfTextRange`. Letting that through aliases two distinct IIDs onto one Go type,
+which compiles and then fails at `QueryInterface`. Both halves are tested.
+
+**A generic instantiation is a valid default interface.** Thirty XAML classes have
+nothing else: `UIElementCollection`'s default is `IVector`1<UIElement>`,
+`TransitionCollection`'s is `IVector`1<Transition>`. Two places refused them — the class
+emitter and `typemap.resolveClassRef` — and the cost was not the classes but the
+properties returning them: `Panel.Children`, `Grid.RowDefinitions`,
+`TextBlock.Inlines`, `ItemsControl.Items` and `Storyboard.Children` all degraded to
+`IInspectable`, **silently**, because a property whose type is an un-emitted class is
+not itself a diagnostic. Resolution order matters: resolve the default through the seam
+first, which registers the instantiation, then ask `iidRef` for its derived IID var.
+
+**Returned delegates degrade on purpose**, under their own key
+`delegate-return-skipped` rather than a generics key. Handing a native delegate back to
+Go has nothing behind it to call. This is almost entirely
+`IAsyncOperation`1<T>.get_Completed`; `put_Completed` and `GetResults` both lower, so
+the async surface is usable without it. `Context.IsReturn` marks the case explicitly
+rather than inferring it from an unwired seam, so the diagnostic says what is true.
 
 ### Namespace clusters
 

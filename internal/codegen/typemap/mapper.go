@@ -115,8 +115,17 @@ type Context struct {
 	// RequestDelegate is the gather layer's delegate-grounding seam for method
 	// PARAMETERS: the callback grounds a delegate into a package-local handler
 	// type and returns its Go type name. It is wired ONLY for parameter
-	// resolution; delegate RETURNS resolve without it and keep degrading.
+	// resolution; delegate RETURNS resolve without it and keep degrading — see
+	// IsReturn.
 	RequestDelegate func(ref *wasdkmeta.TypeRef) (string, bool)
+
+	// IsReturn marks a resolution of a method's RETURN type, so that a delegate
+	// reaching it is diagnosed as the deliberate policy it is rather than as a
+	// missing capability. The great majority of what looked like a generics gap is
+	// this one shape: IAsyncOperation`1<T>.get_Completed hands a delegate BACK, and
+	// there is no Go callback behind a native delegate to call. put_Completed and
+	// GetResults both lower, so the async surface is usable without it.
+	IsReturn bool
 }
 
 // Mapper resolves TypeRefs against the loaded Registry.
@@ -284,7 +293,13 @@ func (m *Mapper) resolveGenericInst(ref *wasdkmeta.TypeRef, ctx Context) Resolve
 		}
 		return Resolved{GoType: "*" + name, Kind: KindInterfacePtr}
 	}
-	if ctx.RequestDelegate != nil && m.Registry.Delegate(ref.Namespace, ref.Name) != nil {
+	if m.Registry.Delegate(ref.Namespace, ref.Name) != nil {
+		if ctx.IsReturn {
+			return unsupported("delegate-return-skipped", "%s.%s is returned, not passed", ref.Namespace, ref.Name)
+		}
+		if ctx.RequestDelegate == nil {
+			return unsupported("generic-member-skipped", "parameterized type %s.%s", ref.Namespace, ref.Name)
+		}
 		name, ok := ctx.RequestDelegate(ref)
 		if !ok {
 			return unsupported("generic-member-skipped", "parameterized type %s.%s", ref.Namespace, ref.Name)
@@ -338,6 +353,9 @@ func (m *Mapper) resolveApiRef(ref *wasdkmeta.TypeRef, ctx Context, imports Impo
 	case "Class":
 		return m.resolveClassRef(ref, ctx, imports)
 	case "Delegate":
+		if ctx.IsReturn {
+			return unsupported("delegate-return-skipped", "%s.%s is returned, not passed", ref.Namespace, ref.Name)
+		}
 		if ctx.RequestDelegate != nil {
 			if name, ok := ctx.RequestDelegate(ref); ok {
 				return Resolved{GoType: "*" + name, Kind: KindDelegatePtr}
@@ -362,11 +380,17 @@ func (m *Mapper) resolveClassRef(ref *wasdkmeta.TypeRef, ctx Context, imports Im
 	if class == nil {
 		return unsupported("unresolved-typeref", "%s.%s", ref.Namespace, ref.Name)
 	}
-	if class.DefaultInterface != nil && class.DefaultInterface.Kind == "ApiRef" {
+	if class.DefaultInterface != nil {
 		// The default interface is resolved in the CLASS's namespace, not the
 		// referring one: an external class's default interface is named relative
 		// to the external module, and the IR for it carries no External flag of
 		// its own because that module never needed one.
+		//
+		// A GenericInst default is resolved like any other, through the
+		// instantiation seam. XAML's collection classes have nothing else —
+		// UIElementCollection's default is IVector`1<UIElement> — so excluding
+		// them here was what made Panel.Children, Grid.RowDefinitions,
+		// TextBlock.Inlines and ItemsControl.Items all come back as IInspectable.
 		target := *class.DefaultInterface
 		if ref.External {
 			target.External = true

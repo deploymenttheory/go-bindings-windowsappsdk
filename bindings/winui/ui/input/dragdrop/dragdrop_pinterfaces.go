@@ -24,9 +24,18 @@ type IAsyncOperationOfDataPackageOperation struct {
 // IID_IAsyncOperationOfDataPackageOperation is the interface identifier for IAsyncOperationOfDataPackageOperation.
 var IID_IAsyncOperationOfDataPackageOperation = win32.GUID{Data1: 0x8b98aea9, Data2: 0x64f0, Data3: 0x5672, Data4: [8]byte{0xb3, 0x0e, 0xdf, 0xd9, 0xc2, 0xe4, 0xf6, 0xfe}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfDataPackageOperation's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfDataPackageOperation) SetCompleted(handler *AsyncOperationCompletedHandlerOfDataPackageOperation) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfDataPackageOperation's vtable slot 8.
 func (self *IAsyncOperationOfDataPackageOperation) GetResults() (wrtapplicationmodeldatatransfer.DataPackageOperation, error) {

@@ -24,9 +24,18 @@ type IAsyncOperationOfAuthRequestResult struct {
 // IID_IAsyncOperationOfAuthRequestResult is the interface identifier for IAsyncOperationOfAuthRequestResult.
 var IID_IAsyncOperationOfAuthRequestResult = win32.GUID{Data1: 0x90c43237, Data2: 0xb071, Data3: 0x547a, Data4: [8]byte{0xb4, 0xe1, 0xb7, 0x86, 0xe2, 0x30, 0xe9, 0xde}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfAuthRequestResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfAuthRequestResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfAuthRequestResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfAuthRequestResult's vtable slot 8.
 func (self *IAsyncOperationOfAuthRequestResult) GetResults() (*IAuthRequestResult, error) {
@@ -45,9 +54,18 @@ type IAsyncOperationOfTokenRequestResult struct {
 // IID_IAsyncOperationOfTokenRequestResult is the interface identifier for IAsyncOperationOfTokenRequestResult.
 var IID_IAsyncOperationOfTokenRequestResult = win32.GUID{Data1: 0x001a3d77, Data2: 0x0c75, Data3: 0x5e5c, Data4: [8]byte{0x91, 0x0b, 0xd1, 0x43, 0xe6, 0x39, 0xa0, 0x3f}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfTokenRequestResult's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfTokenRequestResult) SetCompleted(handler *AsyncOperationCompletedHandlerOfTokenRequestResult) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfTokenRequestResult's vtable slot 8.
 func (self *IAsyncOperationOfTokenRequestResult) GetResults() (*ITokenRequestResult, error) {
@@ -100,7 +118,12 @@ func (self *IMapOfStringAndString) HasKey(key string) (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetView skipped: parameterized type Windows.Foundation.Collections.IMapView`2
+// GetView dispatches through IMapOfStringAndString's vtable slot 9.
+func (self *IMapOfStringAndString) GetView() (*IMapViewOfStringAndString, error) {
+	result := new(*IMapViewOfStringAndString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Insert dispatches through IMapOfStringAndString's vtable slot 10.
 func (self *IMapOfStringAndString) Insert(key string, value string) (bool, error) {
@@ -177,7 +200,11 @@ func (self *IMapViewOfStringAndIJsonValue) HasKey(key string) (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: Split skipped: parameterized type Windows.Foundation.Collections.IMapView`2
+// Split dispatches through IMapViewOfStringAndIJsonValue's vtable slot 9.
+func (self *IMapViewOfStringAndIJsonValue) Split(first **IMapViewOfStringAndIJsonValue, second **IMapViewOfStringAndIJsonValue) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IMapViewOfStringAndString is the WinRT interface Windows.Foundation.Collections.IMapView`2<String, String>.
 // IID: ac7f26f2-feb7-5b2a-8ac4-345bc62caede
@@ -223,4 +250,8 @@ func (self *IMapViewOfStringAndString) HasKey(key string) (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: Split skipped: parameterized type Windows.Foundation.Collections.IMapView`2
+// Split dispatches through IMapViewOfStringAndString's vtable slot 9.
+func (self *IMapViewOfStringAndString) Split(first **IMapViewOfStringAndString, second **IMapViewOfStringAndString) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
+	return win32.ErrIfFailed(int32(r1))
+}

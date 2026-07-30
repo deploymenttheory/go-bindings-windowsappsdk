@@ -10,7 +10,47 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtapplicationmodelbackground "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/background"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
+
+// AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2<Microsoft.Windows.PushNotifications.PushNotificationCreateChannelResult, Microsoft.Windows.PushNotifications.PushNotificationCreateChannelStatus>.
+// IID: 7d14c00d-233f-5126-83b7-e84a5c3d9cce
+type AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus is the delegate identifier for AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus.
+var IID_AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus = win32.GUID{Data1: 0x7d14c00d, Data2: 0x233f, Data3: 0x5126, Data4: [8]byte{0x83, 0xb7, 0xe8, 0x4a, 0x5c, 0x3d, 0x9c, 0xce}}
+
+// NewAsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus wraps fn as a COM-callable Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2<Microsoft.Windows.PushNotifications.PushNotificationCreateChannelResult, Microsoft.Windows.PushNotifications.PushNotificationCreateChannelStatus>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus(fn func(asyncInfo *IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus) Close() {
+	h.delegate.Release()
+}
 
 // BackgroundTaskCanceledEventHandler is a Go-implemented handler for the WinRT delegate
 // Windows.ApplicationModel.Background.BackgroundTaskCanceledEventHandler.

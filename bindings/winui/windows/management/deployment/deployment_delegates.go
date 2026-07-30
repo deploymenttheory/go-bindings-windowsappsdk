@@ -9,7 +9,117 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
+
+// AsyncOperationCompletedHandlerOfPackageVolume is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<Microsoft.Windows.Management.Deployment.PackageVolume>.
+// IID: ff5a18b8-67be-5926-abd2-0f8ae3484d56
+type AsyncOperationCompletedHandlerOfPackageVolume struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfPackageVolume is the delegate identifier for AsyncOperationCompletedHandlerOfPackageVolume.
+var IID_AsyncOperationCompletedHandlerOfPackageVolume = win32.GUID{Data1: 0xff5a18b8, Data2: 0x67be, Data3: 0x5926, Data4: [8]byte{0xab, 0xd2, 0x0f, 0x8a, 0xe3, 0x48, 0x4d, 0x56}}
+
+// NewAsyncOperationCompletedHandlerOfPackageVolume wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<Microsoft.Windows.Management.Deployment.PackageVolume>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfPackageVolume(fn func(asyncInfo *IAsyncOperationOfPackageVolume, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfPackageVolume, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfPackageVolume, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfPackageVolume)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfPackageVolume{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfPackageVolume) Ptr() uintptr { return h.delegate.Ptr() }
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfPackageVolume) Close() { h.delegate.Release() }
+
+// AsyncOperationCompletedHandlerOfUInt64 is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<UInt64>.
+// IID: ee8aeb02-fb00-51fa-8f57-32583ea241f9
+type AsyncOperationCompletedHandlerOfUInt64 struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfUInt64 is the delegate identifier for AsyncOperationCompletedHandlerOfUInt64.
+var IID_AsyncOperationCompletedHandlerOfUInt64 = win32.GUID{Data1: 0xee8aeb02, Data2: 0xfb00, Data3: 0x51fa, Data4: [8]byte{0x8f, 0x57, 0x32, 0x58, 0x3e, 0xa2, 0x41, 0xf9}}
+
+// NewAsyncOperationCompletedHandlerOfUInt64 wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<UInt64>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfUInt64(fn func(asyncInfo *IAsyncOperationOfUInt64, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfUInt64, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfUInt64, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfUInt64)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfUInt64{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfUInt64) Ptr() uintptr { return h.delegate.Ptr() }
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfUInt64) Close() { h.delegate.Release() }
+
+// AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2<Microsoft.Windows.Management.Deployment.PackageDeploymentResult, Microsoft.Windows.Management.Deployment.PackageDeploymentProgress>.
+// IID: dba3c316-3afa-51e6-a85f-d1af460495e3
+type AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress is the delegate identifier for AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress.
+var IID_AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress = win32.GUID{Data1: 0xdba3c316, Data2: 0x3afa, Data3: 0x51e6, Data4: [8]byte{0xa8, 0x5f, 0xd1, 0xaf, 0x46, 0x04, 0x95, 0xe3}}
+
+// NewAsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress wraps fn as a COM-callable Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2<Microsoft.Windows.Management.Deployment.PackageDeploymentResult, Microsoft.Windows.Management.Deployment.PackageDeploymentProgress>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress(fn func(asyncInfo *IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationWithProgressOfPackageDeploymentResultAndPackageDeploymentProgress)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationWithProgressCompletedHandlerOfPackageDeploymentResultAndPackageDeploymentProgress) Close() {
+	h.delegate.Release()
+}
 
 // TypedEventHandlerOfPackageValidationEventSourceAndPackageValidationEventArgs is a Go-implemented handler for the WinRT delegate
 // Windows.Foundation.TypedEventHandler`2<Microsoft.Windows.Management.Deployment.PackageValidationEventSource, Microsoft.Windows.Management.Deployment.PackageValidationEventArgs>.

@@ -10,7 +10,43 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
+
+// AsyncOperationCompletedHandlerOfIRandomAccessStream is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<Windows.Storage.Streams.IRandomAccessStream>.
+// IID: 398c4183-793d-5b00-819b-4aef92485e94
+type AsyncOperationCompletedHandlerOfIRandomAccessStream struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfIRandomAccessStream is the delegate identifier for AsyncOperationCompletedHandlerOfIRandomAccessStream.
+var IID_AsyncOperationCompletedHandlerOfIRandomAccessStream = win32.GUID{Data1: 0x398c4183, Data2: 0x793d, Data3: 0x5b00, Data4: [8]byte{0x81, 0x9b, 0x4a, 0xef, 0x92, 0x48, 0x5e, 0x94}}
+
+// NewAsyncOperationCompletedHandlerOfIRandomAccessStream wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<Windows.Storage.Streams.IRandomAccessStream>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfIRandomAccessStream(fn func(asyncInfo *IAsyncOperationOfIRandomAccessStream, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfIRandomAccessStream, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfIRandomAccessStream, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfIRandomAccessStream)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfIRandomAccessStream{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfIRandomAccessStream) Ptr() uintptr { return h.delegate.Ptr() }
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfIRandomAccessStream) Close() { h.delegate.Release() }
 
 // TypedEventHandlerOfDisplayInformationAndObject is a Go-implemented handler for the WinRT delegate
 // Windows.Foundation.TypedEventHandler`2<Microsoft.Graphics.Display.DisplayInformation, Object>.

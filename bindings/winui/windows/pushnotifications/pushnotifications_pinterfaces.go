@@ -25,11 +25,20 @@ var IID_IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushN
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
-// slot 7: get_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
+// slot 7: get_Progress skipped: Windows.Foundation.AsyncOperationProgressHandler`2 is returned, not passed
 
-// slot 8: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus's vtable slot 8.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus) SetCompleted(handler *AsyncOperationWithProgressCompletedHandlerOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2
+// slot 9: get_Completed skipped: Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus's vtable slot 10.
 func (self *IAsyncOperationWithProgressOfPushNotificationCreateChannelResultAndPushNotificationCreateChannelStatus) GetResults() (*IPushNotificationCreateChannelResult, error) {

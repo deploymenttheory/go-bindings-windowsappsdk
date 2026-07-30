@@ -24,9 +24,18 @@ type IAsyncOperationOfIRandomAccessStream struct {
 // IID_IAsyncOperationOfIRandomAccessStream is the interface identifier for IAsyncOperationOfIRandomAccessStream.
 var IID_IAsyncOperationOfIRandomAccessStream = win32.GUID{Data1: 0x430ecece, Data2: 0x1418, Data3: 0x5d19, Data4: [8]byte{0x81, 0xb2, 0x5d, 0xdb, 0x38, 0x16, 0x03, 0xcc}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIRandomAccessStream's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfIRandomAccessStream) SetCompleted(handler *AsyncOperationCompletedHandlerOfIRandomAccessStream) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfIRandomAccessStream's vtable slot 8.
 func (self *IAsyncOperationOfIRandomAccessStream) GetResults() (*wrtstoragestreams.IRandomAccessStream, error) {

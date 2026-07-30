@@ -23,9 +23,18 @@ type IAsyncOperationOfEffectivePowerMode struct {
 // IID_IAsyncOperationOfEffectivePowerMode is the interface identifier for IAsyncOperationOfEffectivePowerMode.
 var IID_IAsyncOperationOfEffectivePowerMode = win32.GUID{Data1: 0xc4dc524f, Data2: 0x9095, Data3: 0x56f2, Data4: [8]byte{0x9a, 0xcf, 0xe1, 0x0f, 0xfa, 0x60, 0x0f, 0xcb}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfEffectivePowerMode's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfEffectivePowerMode) SetCompleted(handler *AsyncOperationCompletedHandlerOfEffectivePowerMode) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfEffectivePowerMode's vtable slot 8.
 func (self *IAsyncOperationOfEffectivePowerMode) GetResults() (EffectivePowerMode, error) {

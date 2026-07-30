@@ -24,9 +24,18 @@ type IAsyncOperationOfStorageFile struct {
 // IID_IAsyncOperationOfStorageFile is the interface identifier for IAsyncOperationOfStorageFile.
 var IID_IAsyncOperationOfStorageFile = win32.GUID{Data1: 0x5e52f8ce, Data2: 0xaced, Data3: 0x5a42, Data4: [8]byte{0x95, 0xb4, 0xf6, 0x74, 0xdd, 0x84, 0x88, 0x5e}}
 
-// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfStorageFile's vtable slot 6.
+// A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
+func (self *IAsyncOperationOfStorageFile) SetCompleted(handler *AsyncOperationCompletedHandlerOfStorageFile) error {
+	_handler := uintptr(0)
+	if handler != nil {
+		_handler = handler.Ptr()
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _handler)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+// slot 7: get_Completed skipped: Windows.Foundation.AsyncOperationCompletedHandler`1 is returned, not passed
 
 // GetResults dispatches through IAsyncOperationOfStorageFile's vtable slot 8.
 func (self *IAsyncOperationOfStorageFile) GetResults() (*wrtstorage.IStorageFile, error) {

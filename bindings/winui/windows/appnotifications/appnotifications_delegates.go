@@ -9,7 +9,82 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
+
+// AsyncOperationCompletedHandlerOfAppNotificationProgressResult is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<Microsoft.Windows.AppNotifications.AppNotificationProgressResult>.
+// IID: 566f5620-c1d5-526f-a898-ba7d0da3a56d
+type AsyncOperationCompletedHandlerOfAppNotificationProgressResult struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfAppNotificationProgressResult is the delegate identifier for AsyncOperationCompletedHandlerOfAppNotificationProgressResult.
+var IID_AsyncOperationCompletedHandlerOfAppNotificationProgressResult = win32.GUID{Data1: 0x566f5620, Data2: 0xc1d5, Data3: 0x526f, Data4: [8]byte{0xa8, 0x98, 0xba, 0x7d, 0x0d, 0xa3, 0xa5, 0x6d}}
+
+// NewAsyncOperationCompletedHandlerOfAppNotificationProgressResult wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<Microsoft.Windows.AppNotifications.AppNotificationProgressResult>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfAppNotificationProgressResult(fn func(asyncInfo *IAsyncOperationOfAppNotificationProgressResult, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfAppNotificationProgressResult, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfAppNotificationProgressResult, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfAppNotificationProgressResult)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfAppNotificationProgressResult{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfAppNotificationProgressResult) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfAppNotificationProgressResult) Close() { h.delegate.Release() }
+
+// AsyncOperationCompletedHandlerOfIVectorOfAppNotification is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.AsyncOperationCompletedHandler`1<Windows.Foundation.Collections.IVector`1<Microsoft.Windows.AppNotifications.AppNotification>>.
+// IID: fc00bf73-ae70-537b-a702-a85a20bbd714
+type AsyncOperationCompletedHandlerOfIVectorOfAppNotification struct {
+	delegate *winrt.Delegate
+}
+
+// IID_AsyncOperationCompletedHandlerOfIVectorOfAppNotification is the delegate identifier for AsyncOperationCompletedHandlerOfIVectorOfAppNotification.
+var IID_AsyncOperationCompletedHandlerOfIVectorOfAppNotification = win32.GUID{Data1: 0xfc00bf73, Data2: 0xae70, Data3: 0x537b, Data4: [8]byte{0xa7, 0x02, 0xa8, 0x5a, 0x20, 0xbb, 0xd7, 0x14}}
+
+// NewAsyncOperationCompletedHandlerOfIVectorOfAppNotification wraps fn as a COM-callable Windows.Foundation.AsyncOperationCompletedHandler`1<Windows.Foundation.Collections.IVector`1<Microsoft.Windows.AppNotifications.AppNotification>>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewAsyncOperationCompletedHandlerOfIVectorOfAppNotification(fn func(asyncInfo *IAsyncOperationOfIVectorOfAppNotification, asyncStatus wrtfoundation.AsyncStatus)) (*AsyncOperationCompletedHandlerOfIVectorOfAppNotification, error) {
+	delegate, err := winrt.NewDelegate(IID_AsyncOperationCompletedHandlerOfIVectorOfAppNotification, 2, func(raw []uintptr) uintptr {
+		fn((*IAsyncOperationOfIVectorOfAppNotification)(unsafe.Pointer(raw[0])), wrtfoundation.AsyncStatus(raw[1]))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &AsyncOperationCompletedHandlerOfIVectorOfAppNotification{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *AsyncOperationCompletedHandlerOfIVectorOfAppNotification) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *AsyncOperationCompletedHandlerOfIVectorOfAppNotification) Close() { h.delegate.Release() }
 
 // TypedEventHandlerOfAppNotificationManagerAndAppNotificationActivatedEventArgs is a Go-implemented handler for the WinRT delegate
 // Windows.Foundation.TypedEventHandler`2<Microsoft.Windows.AppNotifications.AppNotificationManager, Microsoft.Windows.AppNotifications.AppNotificationActivatedEventArgs>.

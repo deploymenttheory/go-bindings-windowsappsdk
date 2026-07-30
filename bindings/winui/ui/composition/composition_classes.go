@@ -3536,6 +3536,68 @@ func (self *CompositionShape) AsAnimationObject() (*IAnimationObject, error) {
 	return winrt.QueryInterface[IAnimationObject](unsafe.Pointer(self), &IID_IAnimationObject)
 }
 
+// CompositionShapeCollection is the Microsoft.UI.Composition.CompositionShapeCollection runtime class, surfaced through its
+// default interface IVectorOfCompositionShape. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type CompositionShapeCollection struct {
+	IVectorOfCompositionShape
+}
+
+// AsIterableOfCompositionShape queries the instance's IIterableOfCompositionShape interface.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsIterableOfCompositionShape() (*IIterableOfCompositionShape, error) {
+	return winrt.QueryInterface[IIterableOfCompositionShape](unsafe.Pointer(self), &IID_IIterableOfCompositionShape)
+}
+
+// AsCompositionObject queries the instance's ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsCompositionObject() (*ICompositionObject, error) {
+	return winrt.QueryInterface[ICompositionObject](unsafe.Pointer(self), &IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsCompositionObject2() (*ICompositionObject2, error) {
+	return winrt.QueryInterface[ICompositionObject2](unsafe.Pointer(self), &IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsCompositionObject3() (*ICompositionObject3, error) {
+	return winrt.QueryInterface[ICompositionObject3](unsafe.Pointer(self), &IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsCompositionObject4() (*ICompositionObject4, error) {
+	return winrt.QueryInterface[ICompositionObject4](unsafe.Pointer(self), &IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsCompositionObject5() (*ICompositionObject5, error) {
+	return winrt.QueryInterface[ICompositionObject5](unsafe.Pointer(self), &IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsAnimationObject() (*IAnimationObject, error) {
+	return winrt.QueryInterface[IAnimationObject](unsafe.Pointer(self), &IID_IAnimationObject)
+}
+
 // CompositionSpriteShape is the Microsoft.UI.Composition.CompositionSpriteShape runtime class, surfaced through its
 // default interface ICompositionSpriteShape. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -3596,6 +3658,68 @@ func (self *CompositionSpriteShape) AsClosable() (*wrtfoundation.IClosable, erro
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
 func (self *CompositionSpriteShape) AsAnimationObject() (*IAnimationObject, error) {
+	return winrt.QueryInterface[IAnimationObject](unsafe.Pointer(self), &IID_IAnimationObject)
+}
+
+// CompositionStrokeDashArray is the Microsoft.UI.Composition.CompositionStrokeDashArray runtime class, surfaced through its
+// default interface IVectorOfSingle. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type CompositionStrokeDashArray struct {
+	IVectorOfSingle
+}
+
+// AsIterableOfSingle queries the instance's IIterableOfSingle interface.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsIterableOfSingle() (*IIterableOfSingle, error) {
+	return winrt.QueryInterface[IIterableOfSingle](unsafe.Pointer(self), &IID_IIterableOfSingle)
+}
+
+// AsCompositionObject queries the instance's ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsCompositionObject() (*ICompositionObject, error) {
+	return winrt.QueryInterface[ICompositionObject](unsafe.Pointer(self), &IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsCompositionObject2() (*ICompositionObject2, error) {
+	return winrt.QueryInterface[ICompositionObject2](unsafe.Pointer(self), &IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsCompositionObject3() (*ICompositionObject3, error) {
+	return winrt.QueryInterface[ICompositionObject3](unsafe.Pointer(self), &IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsCompositionObject4() (*ICompositionObject4, error) {
+	return winrt.QueryInterface[ICompositionObject4](unsafe.Pointer(self), &IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsCompositionObject5() (*ICompositionObject5, error) {
+	return winrt.QueryInterface[ICompositionObject5](unsafe.Pointer(self), &IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsAnimationObject() (*IAnimationObject, error) {
 	return winrt.QueryInterface[IAnimationObject](unsafe.Pointer(self), &IID_IAnimationObject)
 }
 
@@ -4596,6 +4720,68 @@ func (self *ImplicitAnimationCollection) AsClosable() (*wrtfoundation.IClosable,
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
 func (self *ImplicitAnimationCollection) AsAnimationObject() (*IAnimationObject, error) {
+	return winrt.QueryInterface[IAnimationObject](unsafe.Pointer(self), &IID_IAnimationObject)
+}
+
+// InitialValueExpressionCollection is the Microsoft.UI.Composition.InitialValueExpressionCollection runtime class, surfaced through its
+// default interface IMapOfStringAndString. Release when done (promoted from
+// the embedded IInspectable → IUnknown chain).
+type InitialValueExpressionCollection struct {
+	IMapOfStringAndString
+}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the instance's IIterableOfIKeyValuePairOfStringAndString interface.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
+
+// AsCompositionObject queries the instance's ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsCompositionObject() (*ICompositionObject, error) {
+	return winrt.QueryInterface[ICompositionObject](unsafe.Pointer(self), &IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsCompositionObject2() (*ICompositionObject2, error) {
+	return winrt.QueryInterface[ICompositionObject2](unsafe.Pointer(self), &IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsCompositionObject3() (*ICompositionObject3, error) {
+	return winrt.QueryInterface[ICompositionObject3](unsafe.Pointer(self), &IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsCompositionObject4() (*ICompositionObject4, error) {
+	return winrt.QueryInterface[ICompositionObject4](unsafe.Pointer(self), &IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsCompositionObject5() (*ICompositionObject5, error) {
+	return winrt.QueryInterface[ICompositionObject5](unsafe.Pointer(self), &IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsAnimationObject() (*IAnimationObject, error) {
 	return winrt.QueryInterface[IAnimationObject](unsafe.Pointer(self), &IID_IAnimationObject)
 }
 

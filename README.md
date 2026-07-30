@@ -74,7 +74,7 @@ external: 4500 references resolved against github.com/deploymenttheory/go-bindin
 
 $ go run ./cmd/generate bindings
 merged 14 mutually recursive namespaces into one package: Microsoft.UI.Xaml
-emitted 64 packages → bindings\winui (302 diagnostics)
+emitted 64 packages → bindings\winui (199 diagnostics)
 
 $ go build ./...
 ```
@@ -85,15 +85,39 @@ only references that go nowhere are to `Microsoft.Web.WebView2.Core`, which ship
 in its own NuGet package and has no Go bindings — recorded as a permanent absence
 rather than left to look like a bug.
 
-The 302 diagnostics are members that cannot be represented, each with a reason, and
+The 199 diagnostics are members that cannot be represented, each with a reason, and
 each leaving an audit comment at its own vtable slot so nothing renumbers. The largest
-groups are open generics (122), delegate TypeDefs (59) and struct references (32). CI
-ratchets the set: a new one fails the build.
+groups are delegate TypeDefs (59), returned delegates (55) and struct references (32).
+CI ratchets the set: a new one fails the build.
 
-Some of that is not burn-down at all. The 59 delegate TypeDefs are deliberately not
-emitted in their home namespace, because consumers ground their own copies. Open
-generics have no Go form to be emitted into: `IVector<T>` is monomorphized where it is
-used, so an *uninstantiated* `T` has nowhere to go.
+Most of that is not burn-down at all. The 59 delegate TypeDefs are deliberately not
+emitted in their home namespace, because consumers ground their own copies. The 55
+returned delegates are `IAsyncOperation<T>.Completed`'s *getter* and its siblings:
+handing a native delegate back to Go has nothing behind it to call, and the setter and
+`GetResults` both lower, so the async surface is usable without it.
+
+**Generic collections used to be the single biggest silent gap.** Thirty XAML classes
+have a generic instantiation as their only interface — `UIElementCollection`'s is
+`IVector<UIElement>` — and the emitter refused them, so `Panel.Children`,
+`Grid.RowDefinitions`, `TextBlock.Inlines`, `ItemsControl.Items` and
+`Storyboard.Children` all came back as bare `IInspectable`. Silently: a property whose
+type is an un-emitted class is not itself a diagnostic. Now:
+
+```go
+children, _ := panel.Children()      // *IVectorOfUIElement
+children.Append(element)             // no QueryInterface, no uintptr
+```
+
+A second bug sat underneath it. Instantiations are deduped per package by mangled name,
+guarded by a check that the same name means the same type — and that check compared
+whole `TypeRef`s, including the flag saying whether the definition is in
+go-bindings-winrt. That flag records *whose metadata the reference was read from*, not
+which type it is: `IAsyncOperation<Bool>` is external read from this module's JSON and
+local when it surfaces through go-bindings-winrt's own IR, because inside that module
+`Windows.Foundation` is local. So 72 identical instantiations were rejected as name
+collisions. Identity is now compared field by field, deliberately excluding provenance,
+and the real collision case is still caught — two `TextRange` types from different
+namespaces both mangle to `IVectorOfTextRange` and must not share one Go type.
 
 **Import cycles used to be the largest group at 185, and are now gone.** Fourteen XAML
 namespaces reference each other in every direction — `Microsoft.UI.Xaml` names
@@ -128,7 +152,8 @@ breaker afterwards finds **nothing left to sever** — if it ever does, an edge 
 from the component computation rather than a cut being warranted.
 
 That one change cleared 185 `import-cycle-skipped`, all 75 `inherited-interface-skipped`
-(the same limit seen from the derived class) and 62 of the 78 `event-delegate-unloweable`.
+(the same limit seen from the derived class) and 70 of the 78 `event-delegate-unloweable`.
+The eight that remain all take `Microsoft.Web.WebView2.Core` types as handler arguments.
 
 **Conformant arrays used to be the largest group at 256, and are also gone.** A WinRT
 array crosses as two ABI words, a count and a data pointer, and which two depends on
@@ -148,7 +173,8 @@ rather than guessed at.
 
 What is left of arrays is 19 members whose elements are `HSTRING` or `Bool`. Those need
 per-element conversion — an HSTRING is a handle, not a string — and a direct slice view
-over them would reinterpret bytes and still compile.
+over them would reinterpret bytes and still compile. Nine `[out]` parameters of those
+two types are open for the same reason.
 
 Inherited members are reachable. A class's metadata lists only the interfaces
 declared at its own level — `Button`'s is just `IButton`, carrying `Flyout` — so the
@@ -247,10 +273,8 @@ The order of work, and why:
 
 M0 through M6 are done: the pipeline runs end to end and produces a usable UI. What is
 left is not a blocker but a queue — the ergonomic layer over the generated bindings,
-the remaining diagnostic burn-down (event delegates with unadaptable `Invoke`
-signatures, 16; array elements needing per-element conversion, 19; generic properties,
-whose type resolves before the instantiation seam), and M7 for anyone who needs a
-custom control.
+the remaining diagnostic burn-down (array elements needing per-element conversion, 19;
+`HSTRING` and `Bool` out-parameters, 9), and M7 for anyone who needs a custom control.
 
 M1 was a gate rather than a step. Everything after it depended on questions
 only it could answer, so it came before any generator work: if a Go executable

@@ -29,6 +29,38 @@ func (self *IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic) First() (
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfSceneComponent is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneComponent>.
+// IID: 2685e472-2678-505f-943f-b18b1689891e
+type IIterableOfSceneComponent struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfSceneComponent is the interface identifier for IIterableOfSceneComponent.
+var IID_IIterableOfSceneComponent = win32.GUID{Data1: 0x2685e472, Data2: 0x2678, Data3: 0x505f, Data4: [8]byte{0x94, 0x3f, 0xb1, 0x8b, 0x16, 0x89, 0x89, 0x1e}}
+
+// First dispatches through IIterableOfSceneComponent's vtable slot 6.
+func (self *IIterableOfSceneComponent) First() (*IIteratorOfSceneComponent, error) {
+	result := new(*IIteratorOfSceneComponent)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfSceneNode is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneNode>.
+// IID: 9cc8ee93-c366-5810-ab51-3590047515f2
+type IIterableOfSceneNode struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfSceneNode is the interface identifier for IIterableOfSceneNode.
+var IID_IIterableOfSceneNode = win32.GUID{Data1: 0x9cc8ee93, Data2: 0xc366, Data3: 0x5810, Data4: [8]byte{0xab, 0x51, 0x35, 0x90, 0x04, 0x75, 0x15, 0xf2}}
+
+// First dispatches through IIterableOfSceneNode's vtable slot 6.
+func (self *IIterableOfSceneNode) First() (*IIteratorOfSceneNode, error) {
+	result := new(*IIteratorOfSceneNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.Scenes.SceneAttributeSemantic>>.
 // IID: eb061e61-364d-546d-8b49-82c585464c00
 type IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic struct {
@@ -61,6 +93,90 @@ func (self *IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic) MoveNext(
 
 // GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic's vtable slot 9.
 func (self *IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic) GetMany(items []*IKeyValuePairOfStringAndSceneAttributeSemantic) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfSceneComponent is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.Scenes.SceneComponent>.
+// IID: 5bae5c3e-e6cc-5583-b768-b577456babe8
+type IIteratorOfSceneComponent struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfSceneComponent is the interface identifier for IIteratorOfSceneComponent.
+var IID_IIteratorOfSceneComponent = win32.GUID{Data1: 0x5bae5c3e, Data2: 0xe6cc, Data3: 0x5583, Data4: [8]byte{0xb7, 0x68, 0xb5, 0x77, 0x45, 0x6b, 0xab, 0xe8}}
+
+// Current (propget get_Current) dispatches through IIteratorOfSceneComponent's vtable slot 6.
+func (self *IIteratorOfSceneComponent) Current() (*ISceneComponent, error) {
+	result := new(*ISceneComponent)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfSceneComponent's vtable slot 7.
+func (self *IIteratorOfSceneComponent) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfSceneComponent's vtable slot 8.
+func (self *IIteratorOfSceneComponent) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfSceneComponent's vtable slot 9.
+func (self *IIteratorOfSceneComponent) GetMany(items []*ISceneComponent) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfSceneNode is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.Scenes.SceneNode>.
+// IID: 9f0ca077-4147-5aed-8819-a9149d2b234d
+type IIteratorOfSceneNode struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfSceneNode is the interface identifier for IIteratorOfSceneNode.
+var IID_IIteratorOfSceneNode = win32.GUID{Data1: 0x9f0ca077, Data2: 0x4147, Data3: 0x5aed, Data4: [8]byte{0x88, 0x19, 0xa9, 0x14, 0x9d, 0x2b, 0x23, 0x4d}}
+
+// Current (propget get_Current) dispatches through IIteratorOfSceneNode's vtable slot 6.
+func (self *IIteratorOfSceneNode) Current() (*ISceneNode, error) {
+	result := new(*ISceneNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfSceneNode's vtable slot 7.
+func (self *IIteratorOfSceneNode) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfSceneNode's vtable slot 8.
+func (self *IIteratorOfSceneNode) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfSceneNode's vtable slot 9.
+func (self *IIteratorOfSceneNode) GetMany(items []*ISceneNode) (uint32, error) {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -219,4 +335,284 @@ func (self *IMapViewOfStringAndSceneAttributeSemantic) HasKey(key string) (bool,
 func (self *IMapViewOfStringAndSceneAttributeSemantic) Split(first **IMapViewOfStringAndSceneAttributeSemantic, second **IMapViewOfStringAndSceneAttributeSemantic) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
 	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfSceneComponent is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Composition.Scenes.SceneComponent>.
+// IID: 9c16c63a-f909-56c7-8778-d7ebc94808d9
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneComponent>.
+type IVectorOfSceneComponent struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfSceneComponent is the interface identifier for IVectorOfSceneComponent.
+var IID_IVectorOfSceneComponent = win32.GUID{Data1: 0x9c16c63a, Data2: 0xf909, Data3: 0x56c7, Data4: [8]byte{0x87, 0x78, 0xd7, 0xeb, 0xc9, 0x48, 0x08, 0xd9}}
+
+// GetAt dispatches through IVectorOfSceneComponent's vtable slot 6.
+func (self *IVectorOfSceneComponent) GetAt(index uint32) (*ISceneComponent, error) {
+	result := new(*ISceneComponent)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfSceneComponent's vtable slot 7.
+func (self *IVectorOfSceneComponent) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfSceneComponent's vtable slot 8.
+func (self *IVectorOfSceneComponent) GetView() (*IVectorViewOfSceneComponent, error) {
+	result := new(*IVectorViewOfSceneComponent)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfSceneComponent's vtable slot 9.
+func (self *IVectorOfSceneComponent) IndexOf(value *ISceneComponent, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfSceneComponent's vtable slot 10.
+func (self *IVectorOfSceneComponent) SetAt(index uint32, value *ISceneComponent) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfSceneComponent's vtable slot 11.
+func (self *IVectorOfSceneComponent) InsertAt(index uint32, value *ISceneComponent) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfSceneComponent's vtable slot 12.
+func (self *IVectorOfSceneComponent) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfSceneComponent's vtable slot 13.
+func (self *IVectorOfSceneComponent) Append(value *ISceneComponent) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfSceneComponent's vtable slot 14.
+func (self *IVectorOfSceneComponent) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfSceneComponent's vtable slot 15.
+func (self *IVectorOfSceneComponent) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfSceneComponent's vtable slot 16.
+func (self *IVectorOfSceneComponent) GetMany(startIndex uint32, items []*ISceneComponent) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfSceneComponent's vtable slot 17.
+func (self *IVectorOfSceneComponent) ReplaceAll(items []*ISceneComponent) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfSceneNode is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Composition.Scenes.SceneNode>.
+// IID: 15c6abb0-bf50-5a9b-8190-16b631f12705
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneNode>.
+type IVectorOfSceneNode struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfSceneNode is the interface identifier for IVectorOfSceneNode.
+var IID_IVectorOfSceneNode = win32.GUID{Data1: 0x15c6abb0, Data2: 0xbf50, Data3: 0x5a9b, Data4: [8]byte{0x81, 0x90, 0x16, 0xb6, 0x31, 0xf1, 0x27, 0x05}}
+
+// GetAt dispatches through IVectorOfSceneNode's vtable slot 6.
+func (self *IVectorOfSceneNode) GetAt(index uint32) (*ISceneNode, error) {
+	result := new(*ISceneNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfSceneNode's vtable slot 7.
+func (self *IVectorOfSceneNode) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfSceneNode's vtable slot 8.
+func (self *IVectorOfSceneNode) GetView() (*IVectorViewOfSceneNode, error) {
+	result := new(*IVectorViewOfSceneNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfSceneNode's vtable slot 9.
+func (self *IVectorOfSceneNode) IndexOf(value *ISceneNode, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfSceneNode's vtable slot 10.
+func (self *IVectorOfSceneNode) SetAt(index uint32, value *ISceneNode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfSceneNode's vtable slot 11.
+func (self *IVectorOfSceneNode) InsertAt(index uint32, value *ISceneNode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfSceneNode's vtable slot 12.
+func (self *IVectorOfSceneNode) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfSceneNode's vtable slot 13.
+func (self *IVectorOfSceneNode) Append(value *ISceneNode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfSceneNode's vtable slot 14.
+func (self *IVectorOfSceneNode) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfSceneNode's vtable slot 15.
+func (self *IVectorOfSceneNode) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfSceneNode's vtable slot 16.
+func (self *IVectorOfSceneNode) GetMany(startIndex uint32, items []*ISceneNode) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfSceneNode's vtable slot 17.
+func (self *IVectorOfSceneNode) ReplaceAll(items []*ISceneNode) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfSceneComponent is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Composition.Scenes.SceneComponent>.
+// IID: 6817b7fd-1182-58b7-aa8a-110337639e4b
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneComponent>.
+type IVectorViewOfSceneComponent struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfSceneComponent is the interface identifier for IVectorViewOfSceneComponent.
+var IID_IVectorViewOfSceneComponent = win32.GUID{Data1: 0x6817b7fd, Data2: 0x1182, Data3: 0x58b7, Data4: [8]byte{0xaa, 0x8a, 0x11, 0x03, 0x37, 0x63, 0x9e, 0x4b}}
+
+// GetAt dispatches through IVectorViewOfSceneComponent's vtable slot 6.
+func (self *IVectorViewOfSceneComponent) GetAt(index uint32) (*ISceneComponent, error) {
+	result := new(*ISceneComponent)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfSceneComponent's vtable slot 7.
+func (self *IVectorViewOfSceneComponent) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfSceneComponent's vtable slot 8.
+func (self *IVectorViewOfSceneComponent) IndexOf(value *ISceneComponent, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfSceneComponent's vtable slot 9.
+func (self *IVectorViewOfSceneComponent) GetMany(startIndex uint32, items []*ISceneComponent) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfSceneNode is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Composition.Scenes.SceneNode>.
+// IID: be91d459-5f24-5044-bb9b-79787c1b3dfd
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneNode>.
+type IVectorViewOfSceneNode struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfSceneNode is the interface identifier for IVectorViewOfSceneNode.
+var IID_IVectorViewOfSceneNode = win32.GUID{Data1: 0xbe91d459, Data2: 0x5f24, Data3: 0x5044, Data4: [8]byte{0xbb, 0x9b, 0x79, 0x78, 0x7c, 0x1b, 0x3d, 0xfd}}
+
+// GetAt dispatches through IVectorViewOfSceneNode's vtable slot 6.
+func (self *IVectorViewOfSceneNode) GetAt(index uint32) (*ISceneNode, error) {
+	result := new(*ISceneNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfSceneNode's vtable slot 7.
+func (self *IVectorViewOfSceneNode) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfSceneNode's vtable slot 8.
+func (self *IVectorViewOfSceneNode) IndexOf(value *ISceneNode, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfSceneNode's vtable slot 9.
+func (self *IVectorViewOfSceneNode) GetMany(startIndex uint32, items []*ISceneNode) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
 }
