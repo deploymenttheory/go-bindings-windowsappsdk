@@ -238,7 +238,10 @@ func compareVersions(a, b string) int {
 	return 0
 }
 
-func sortedKeys(m map[string][]byte) []string {
+// sortedKeys returns a map's keys in sorted order. Every stage iterates maps
+// somewhere, and unsorted iteration is the commonest source of output that
+// differs between runs — which the committed metadata cannot tolerate.
+func sortedKeys[M ~map[string]V, V any](m M) []string {
 	keys := make([]string, 0, len(m))
 	for key := range m {
 		keys = append(keys, key)
