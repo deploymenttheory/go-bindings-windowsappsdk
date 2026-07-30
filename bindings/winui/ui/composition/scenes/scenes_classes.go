@@ -7,7 +7,9 @@ package scenes
 import (
 	"unsafe"
 
+	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // SceneBoundingBox is the Microsoft.UI.Composition.Scenes.SceneBoundingBox runtime class, surfaced through its
@@ -17,11 +19,123 @@ type SceneBoundingBox struct {
 	ISceneBoundingBox
 }
 
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneComponent is the Microsoft.UI.Composition.Scenes.SceneComponent runtime class, surfaced through its
 // default interface ISceneComponent. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SceneComponent struct {
 	ISceneComponent
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneMaterial is the Microsoft.UI.Composition.Scenes.SceneMaterial runtime class, surfaced through its
@@ -31,6 +145,62 @@ type SceneMaterial struct {
 	ISceneMaterial
 }
 
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneMaterialInput is the Microsoft.UI.Composition.Scenes.SceneMaterialInput runtime class, surfaced through its
 // default interface ISceneMaterialInput. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -38,11 +208,123 @@ type SceneMaterialInput struct {
 	ISceneMaterialInput
 }
 
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneMesh is the Microsoft.UI.Composition.Scenes.SceneMesh runtime class, surfaced through its
 // default interface ISceneMesh. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SceneMesh struct {
 	ISceneMesh
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneMeshStatics returns the Microsoft.UI.Composition.Scenes.ISceneMeshStatics statics of the
@@ -76,11 +358,137 @@ func (self *SceneMeshMaterialAttributeMap) AsIterableOfIKeyValuePairOfStringAndS
 	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic)
 }
 
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneMeshRendererComponent is the Microsoft.UI.Composition.Scenes.SceneMeshRendererComponent runtime class, surfaced through its
 // default interface ISceneMeshRendererComponent. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SceneMeshRendererComponent struct {
 	ISceneMeshRendererComponent
+}
+
+// AsSceneRendererComponent queries the instance's ISceneRendererComponent interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneRendererComponent.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsSceneRendererComponent() (*ISceneRendererComponent, error) {
+	return winrt.QueryInterface[ISceneRendererComponent](unsafe.Pointer(self), &IID_ISceneRendererComponent)
+}
+
+// AsSceneComponent queries the instance's ISceneComponent interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneComponent.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsSceneComponent() (*ISceneComponent, error) {
+	return winrt.QueryInterface[ISceneComponent](unsafe.Pointer(self), &IID_ISceneComponent)
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneMeshRendererComponentStatics returns the Microsoft.UI.Composition.Scenes.ISceneMeshRendererComponentStatics statics of the
@@ -102,6 +510,76 @@ type SceneMetallicRoughnessMaterial struct {
 	ISceneMetallicRoughnessMaterial
 }
 
+// AsScenePbrMaterial queries the instance's IScenePbrMaterial interface.
+// Inherited from Microsoft.UI.Composition.Scenes.ScenePbrMaterial.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsScenePbrMaterial() (*IScenePbrMaterial, error) {
+	return winrt.QueryInterface[IScenePbrMaterial](unsafe.Pointer(self), &IID_IScenePbrMaterial)
+}
+
+// AsSceneMaterial queries the instance's ISceneMaterial interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneMaterial.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsSceneMaterial() (*ISceneMaterial, error) {
+	return winrt.QueryInterface[ISceneMaterial](unsafe.Pointer(self), &IID_ISceneMaterial)
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneMetallicRoughnessMaterialStatics returns the Microsoft.UI.Composition.Scenes.ISceneMetallicRoughnessMaterialStatics statics of the
 // Microsoft.UI.Composition.Scenes.SceneMetallicRoughnessMaterial runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -121,11 +599,123 @@ type SceneModelTransform struct {
 	ISceneModelTransform
 }
 
+// AsCompositionTransform queries the instance's uicomposition.ICompositionTransform interface.
+// Inherited from Microsoft.UI.Composition.CompositionTransform.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsCompositionTransform() (*uicomposition.ICompositionTransform, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionTransform](unsafe.Pointer(self), &uicomposition.IID_ICompositionTransform)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneNode is the Microsoft.UI.Composition.Scenes.SceneNode runtime class, surfaced through its
 // default interface ISceneNode. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SceneNode struct {
 	ISceneNode
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneNodeStatics returns the Microsoft.UI.Composition.Scenes.ISceneNodeStatics statics of the
@@ -147,11 +737,123 @@ type SceneObject struct {
 	ISceneObject
 }
 
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // ScenePbrMaterial is the Microsoft.UI.Composition.Scenes.ScenePbrMaterial runtime class, surfaced through its
 // default interface IScenePbrMaterial. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScenePbrMaterial struct {
 	IScenePbrMaterial
+}
+
+// AsSceneMaterial queries the instance's ISceneMaterial interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneMaterial.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsSceneMaterial() (*ISceneMaterial, error) {
+	return winrt.QueryInterface[ISceneMaterial](unsafe.Pointer(self), &IID_ISceneMaterial)
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneRendererComponent is the Microsoft.UI.Composition.Scenes.SceneRendererComponent runtime class, surfaced through its
@@ -161,11 +863,137 @@ type SceneRendererComponent struct {
 	ISceneRendererComponent
 }
 
+// AsSceneComponent queries the instance's ISceneComponent interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneComponent.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsSceneComponent() (*ISceneComponent, error) {
+	return winrt.QueryInterface[ISceneComponent](unsafe.Pointer(self), &IID_ISceneComponent)
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // SceneSurfaceMaterialInput is the Microsoft.UI.Composition.Scenes.SceneSurfaceMaterialInput runtime class, surfaced through its
 // default interface ISceneSurfaceMaterialInput. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SceneSurfaceMaterialInput struct {
 	ISceneSurfaceMaterialInput
+}
+
+// AsSceneMaterialInput queries the instance's ISceneMaterialInput interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneMaterialInput.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsSceneMaterialInput() (*ISceneMaterialInput, error) {
+	return winrt.QueryInterface[ISceneMaterialInput](unsafe.Pointer(self), &IID_ISceneMaterialInput)
+}
+
+// AsSceneObject queries the instance's ISceneObject interface.
+// Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneSurfaceMaterialInputStatics returns the Microsoft.UI.Composition.Scenes.ISceneSurfaceMaterialInputStatics statics of the
@@ -185,6 +1013,90 @@ func SceneSurfaceMaterialInputStatics() (*ISceneSurfaceMaterialInputStatics, err
 // the embedded IInspectable → IUnknown chain).
 type SceneVisual struct {
 	ISceneVisual
+}
+
+// AsContainerVisual queries the instance's uicomposition.IContainerVisual interface.
+// Inherited from Microsoft.UI.Composition.ContainerVisual.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsContainerVisual() (*uicomposition.IContainerVisual, error) {
+	return winrt.QueryInterface[uicomposition.IContainerVisual](unsafe.Pointer(self), &uicomposition.IID_IContainerVisual)
+}
+
+// AsVisual queries the instance's uicomposition.IVisual interface.
+// Inherited from Microsoft.UI.Composition.Visual.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsVisual() (*uicomposition.IVisual, error) {
+	return winrt.QueryInterface[uicomposition.IVisual](unsafe.Pointer(self), &uicomposition.IID_IVisual)
+}
+
+// AsVisual2 queries the instance's uicomposition.IVisual2 interface.
+// Inherited from Microsoft.UI.Composition.Visual.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsVisual2() (*uicomposition.IVisual2, error) {
+	return winrt.QueryInterface[uicomposition.IVisual2](unsafe.Pointer(self), &uicomposition.IID_IVisual2)
+}
+
+// AsVisual3 queries the instance's uicomposition.IVisual3 interface.
+// Inherited from Microsoft.UI.Composition.Visual.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsVisual3() (*uicomposition.IVisual3, error) {
+	return winrt.QueryInterface[uicomposition.IVisual3](unsafe.Pointer(self), &uicomposition.IID_IVisual3)
+}
+
+// AsVisual4 queries the instance's uicomposition.IVisual4 interface.
+// Inherited from Microsoft.UI.Composition.Visual.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsVisual4() (*uicomposition.IVisual4, error) {
+	return winrt.QueryInterface[uicomposition.IVisual4](unsafe.Pointer(self), &uicomposition.IID_IVisual4)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // SceneVisualStatics returns the Microsoft.UI.Composition.Scenes.ISceneVisualStatics statics of the

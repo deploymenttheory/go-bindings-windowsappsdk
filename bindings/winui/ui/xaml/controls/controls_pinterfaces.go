@@ -208,6 +208,22 @@ func (self *IIterableOfColor) First() (*IIteratorOfColor, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfIKeyValuePairOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>>.
+// IID: 33ac68f0-1084-529a-8a17-4e7c8adb7a0c
+type IIterableOfIKeyValuePairOfObjectAndObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfIKeyValuePairOfObjectAndObject is the interface identifier for IIterableOfIKeyValuePairOfObjectAndObject.
+var IID_IIterableOfIKeyValuePairOfObjectAndObject = win32.GUID{Data1: 0x33ac68f0, Data2: 0x1084, Data3: 0x529a, Data4: [8]byte{0x8a, 0x17, 0x4e, 0x7c, 0x8a, 0xdb, 0x7a, 0x0c}}
+
+// First dispatches through IIterableOfIKeyValuePairOfObjectAndObject's vtable slot 6.
+func (self *IIterableOfIKeyValuePairOfObjectAndObject) First() (*IIteratorOfIKeyValuePairOfObjectAndObject, error) {
+	result := new(*IIteratorOfIKeyValuePairOfObjectAndObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIterableOfSwipeItem is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
 // IID: fcf9493a-8108-554a-939f-140b9efe9a34
 type IIterableOfSwipeItem struct {
@@ -256,6 +272,38 @@ func (self *IIteratorOfColor) MoveNext() (bool, error) {
 
 // slot 9: GetMany skipped: conformant array
 
+// IIteratorOfIKeyValuePairOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>>.
+// IID: 31e55e8a-0f05-52fd-90d3-b04aa331aaa4
+type IIteratorOfIKeyValuePairOfObjectAndObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfIKeyValuePairOfObjectAndObject is the interface identifier for IIteratorOfIKeyValuePairOfObjectAndObject.
+var IID_IIteratorOfIKeyValuePairOfObjectAndObject = win32.GUID{Data1: 0x31e55e8a, Data2: 0x0f05, Data3: 0x52fd, Data4: [8]byte{0x90, 0xd3, 0xb0, 0x4a, 0xa3, 0x31, 0xaa, 0xa4}}
+
+// Current (propget get_Current) dispatches through IIteratorOfIKeyValuePairOfObjectAndObject's vtable slot 6.
+func (self *IIteratorOfIKeyValuePairOfObjectAndObject) Current() (*IKeyValuePairOfObjectAndObject, error) {
+	result := new(*IKeyValuePairOfObjectAndObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfIKeyValuePairOfObjectAndObject's vtable slot 7.
+func (self *IIteratorOfIKeyValuePairOfObjectAndObject) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfIKeyValuePairOfObjectAndObject's vtable slot 8.
+func (self *IIteratorOfIKeyValuePairOfObjectAndObject) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 9: GetMany skipped: conformant array
+
 // IIteratorOfSwipeItem is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
 // IID: 52d8e6e5-cc6e-5ea0-9cea-0bd3447274b0
 type IIteratorOfSwipeItem struct {
@@ -287,6 +335,123 @@ func (self *IIteratorOfSwipeItem) MoveNext() (bool, error) {
 }
 
 // slot 9: GetMany skipped: conformant array
+
+// IKeyValuePairOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>.
+// IID: 59e7ae0c-c29d-5ad6-bef5-dedb52a198e1
+type IKeyValuePairOfObjectAndObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IKeyValuePairOfObjectAndObject is the interface identifier for IKeyValuePairOfObjectAndObject.
+var IID_IKeyValuePairOfObjectAndObject = win32.GUID{Data1: 0x59e7ae0c, Data2: 0xc29d, Data3: 0x5ad6, Data4: [8]byte{0xbe, 0xf5, 0xde, 0xdb, 0x52, 0xa1, 0x98, 0xe1}}
+
+// Key (propget get_Key) dispatches through IKeyValuePairOfObjectAndObject's vtable slot 6.
+func (self *IKeyValuePairOfObjectAndObject) Key() (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Value (propget get_Value) dispatches through IKeyValuePairOfObjectAndObject's vtable slot 7.
+func (self *IKeyValuePairOfObjectAndObject) Value() (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IMapOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IMap`2<Object, Object>.
+// IID: f5f69427-55ed-5512-8429-d4f6626dfcdd
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>>.
+type IMapOfObjectAndObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IMapOfObjectAndObject is the interface identifier for IMapOfObjectAndObject.
+var IID_IMapOfObjectAndObject = win32.GUID{Data1: 0xf5f69427, Data2: 0x55ed, Data3: 0x5512, Data4: [8]byte{0x84, 0x29, 0xd4, 0xf6, 0x62, 0x6d, 0xfc, 0xdd}}
+
+// Lookup dispatches through IMapOfObjectAndObject's vtable slot 6.
+func (self *IMapOfObjectAndObject) Lookup(key *syswinrt.IInspectable) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(key)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IMapOfObjectAndObject's vtable slot 7.
+func (self *IMapOfObjectAndObject) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasKey dispatches through IMapOfObjectAndObject's vtable slot 8.
+func (self *IMapOfObjectAndObject) HasKey(key *syswinrt.IInspectable) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(key)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IMapOfObjectAndObject's vtable slot 9.
+func (self *IMapOfObjectAndObject) GetView() (*IMapViewOfObjectAndObject, error) {
+	result := new(*IMapViewOfObjectAndObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Insert dispatches through IMapOfObjectAndObject's vtable slot 10.
+func (self *IMapOfObjectAndObject) Insert(key *syswinrt.IInspectable, value *syswinrt.IInspectable) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(key)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// Remove dispatches through IMapOfObjectAndObject's vtable slot 11.
+func (self *IMapOfObjectAndObject) Remove(key *syswinrt.IInspectable) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(key)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IMapOfObjectAndObject's vtable slot 12.
+func (self *IMapOfObjectAndObject) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IMapViewOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IMapView`2<Object, Object>.
+// IID: efe76d10-cb60-50ad-8a4f-6885cd6212a1
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>>.
+type IMapViewOfObjectAndObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IMapViewOfObjectAndObject is the interface identifier for IMapViewOfObjectAndObject.
+var IID_IMapViewOfObjectAndObject = win32.GUID{Data1: 0xefe76d10, Data2: 0xcb60, Data3: 0x50ad, Data4: [8]byte{0x8a, 0x4f, 0x68, 0x85, 0xcd, 0x62, 0x12, 0xa1}}
+
+// Lookup dispatches through IMapViewOfObjectAndObject's vtable slot 6.
+func (self *IMapViewOfObjectAndObject) Lookup(key *syswinrt.IInspectable) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(key)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IMapViewOfObjectAndObject's vtable slot 7.
+func (self *IMapViewOfObjectAndObject) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasKey dispatches through IMapViewOfObjectAndObject's vtable slot 8.
+func (self *IMapViewOfObjectAndObject) HasKey(key *syswinrt.IInspectable) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(key)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// Split dispatches through IMapViewOfObjectAndObject's vtable slot 9.
+func (self *IMapViewOfObjectAndObject) Split(first **IMapViewOfObjectAndObject, second **IMapViewOfObjectAndObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(first))), uintptr(winrt.OutParam(unsafe.Pointer(second))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IMapViewOfStringAndDouble is the WinRT interface Windows.Foundation.Collections.IMapView`2<String, Double>.
 // IID: d18743cf-94d6-54ac-9da2-f4755fa8e4f2

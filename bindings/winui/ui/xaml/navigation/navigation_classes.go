@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -69,6 +70,13 @@ type NavigationFailedEventArgs struct {
 // the embedded IInspectable → IUnknown chain).
 type PageStackEntry struct {
 	IPageStackEntry
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PageStackEntry) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PageStackEntryStatics returns the Microsoft.UI.Xaml.Navigation.IPageStackEntryStatics statics of the

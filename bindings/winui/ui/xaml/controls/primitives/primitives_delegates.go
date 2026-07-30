@@ -10,6 +10,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
+	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -257,6 +258,78 @@ func (h *ScrollEventHandler) Ptr() uintptr { return h.delegate.Ptr() }
 // invoke the handler — after the event source removed it, or closed. The runtime
 // keeps its own references while the handler stays registered.
 func (h *ScrollEventHandler) Close() { h.delegate.Release() }
+
+// SelectionChangedEventHandler is a Go-implemented handler for the WinRT delegate
+// Microsoft.UI.Xaml.Controls.SelectionChangedEventHandler.
+// IID: a232390d-0e34-595e-8931-fa928a9909f4
+type SelectionChangedEventHandler struct {
+	delegate *winrt.Delegate
+}
+
+// IID_SelectionChangedEventHandler is the delegate identifier for SelectionChangedEventHandler.
+var IID_SelectionChangedEventHandler = win32.GUID{Data1: 0xa232390d, Data2: 0x0e34, Data3: 0x595e, Data4: [8]byte{0x89, 0x31, 0xfa, 0x92, 0x8a, 0x99, 0x09, 0xf4}}
+
+// NewSelectionChangedEventHandler wraps fn as a COM-callable Microsoft.UI.Xaml.Controls.SelectionChangedEventHandler.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewSelectionChangedEventHandler(fn func(sender *syswinrt.IInspectable, e *uixamlcontrols.ISelectionChangedEventArgs)) (*SelectionChangedEventHandler, error) {
+	delegate, err := winrt.NewDelegate(IID_SelectionChangedEventHandler, 2, func(raw []uintptr) uintptr {
+		fn((*syswinrt.IInspectable)(unsafe.Pointer(raw[0])), (*uixamlcontrols.ISelectionChangedEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &SelectionChangedEventHandler{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *SelectionChangedEventHandler) Ptr() uintptr { return h.delegate.Ptr() }
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *SelectionChangedEventHandler) Close() { h.delegate.Release() }
+
+// TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ColorSpectrum, Microsoft.UI.Xaml.Controls.ColorChangedEventArgs>.
+// IID: 0d0cd229-eaa3-57d4-8cef-a2026b779791
+type TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs is the delegate identifier for TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs.
+var IID_TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs = win32.GUID{Data1: 0x0d0cd229, Data2: 0xeaa3, Data3: 0x57d4, Data4: [8]byte{0x8c, 0xef, 0xa2, 0x02, 0x6b, 0x77, 0x97, 0x91}}
+
+// NewTypedEventHandlerOfColorSpectrumAndColorChangedEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ColorSpectrum, Microsoft.UI.Xaml.Controls.ColorChangedEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfColorSpectrumAndColorChangedEventArgs(fn func(sender *IColorSpectrum, args *uixamlcontrols.IColorChangedEventArgs)) (*TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IColorSpectrum)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IColorChangedEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs) Close() { h.delegate.Release() }
 
 // TypedEventHandlerOfFlyoutBaseAndFlyoutBaseClosingEventArgs is a Go-implemented handler for the WinRT delegate
 // Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase, Microsoft.UI.Xaml.Controls.Primitives.FlyoutBaseClosingEventArgs>.
@@ -557,3 +630,237 @@ func (h *TypedEventHandlerOfScrollPresenterAndObject) Ptr() uintptr { return h.d
 // invoke the handler — after the event source removed it, or closed. The runtime
 // keeps its own references while the handler stays registered.
 func (h *TypedEventHandlerOfScrollPresenterAndObject) Close() { h.delegate.Release() }
+
+// TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingAnchorRequestedEventArgs>.
+// IID: 2889a65e-2d95-5770-8cc7-c0d34a525df1
+type TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs is the delegate identifier for TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs.
+var IID_TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs = win32.GUID{Data1: 0x2889a65e, Data2: 0x2d95, Data3: 0x5770, Data4: [8]byte{0x8c, 0xc7, 0xc0, 0xd3, 0x4a, 0x52, 0x5d, 0xf1}}
+
+// NewTypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingAnchorRequestedEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs(fn func(sender *IScrollPresenter, args *uixamlcontrols.IScrollingAnchorRequestedEventArgs)) (*TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IScrollPresenter)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IScrollingAnchorRequestedEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs) Close() {
+	h.delegate.Release()
+}
+
+// TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingBringingIntoViewEventArgs>.
+// IID: b6bbe7ed-61e5-59da-93b2-d2fb63ed22ad
+type TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs is the delegate identifier for TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs.
+var IID_TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs = win32.GUID{Data1: 0xb6bbe7ed, Data2: 0x61e5, Data3: 0x59da, Data4: [8]byte{0x93, 0xb2, 0xd2, 0xfb, 0x63, 0xed, 0x22, 0xad}}
+
+// NewTypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingBringingIntoViewEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs(fn func(sender *IScrollPresenter, args *uixamlcontrols.IScrollingBringingIntoViewEventArgs)) (*TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IScrollPresenter)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IScrollingBringingIntoViewEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs) Close() {
+	h.delegate.Release()
+}
+
+// TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingScrollAnimationStartingEventArgs>.
+// IID: 3deca623-443c-54f2-9877-5a8afa813887
+type TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs is the delegate identifier for TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs.
+var IID_TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs = win32.GUID{Data1: 0x3deca623, Data2: 0x443c, Data3: 0x54f2, Data4: [8]byte{0x98, 0x77, 0x5a, 0x8a, 0xfa, 0x81, 0x38, 0x87}}
+
+// NewTypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingScrollAnimationStartingEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs(fn func(sender *IScrollPresenter, args *uixamlcontrols.IScrollingScrollAnimationStartingEventArgs)) (*TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IScrollPresenter)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IScrollingScrollAnimationStartingEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs) Close() {
+	h.delegate.Release()
+}
+
+// TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingScrollCompletedEventArgs>.
+// IID: ee55f2ad-9d2b-53b9-86b3-9a0cedb6e170
+type TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs is the delegate identifier for TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs.
+var IID_TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs = win32.GUID{Data1: 0xee55f2ad, Data2: 0x9d2b, Data3: 0x53b9, Data4: [8]byte{0x86, 0xb3, 0x9a, 0x0c, 0xed, 0xb6, 0xe1, 0x70}}
+
+// NewTypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingScrollCompletedEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs(fn func(sender *IScrollPresenter, args *uixamlcontrols.IScrollingScrollCompletedEventArgs)) (*TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IScrollPresenter)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IScrollingScrollCompletedEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs) Close() {
+	h.delegate.Release()
+}
+
+// TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingZoomAnimationStartingEventArgs>.
+// IID: 39a1448d-8545-5620-928e-b5c249bae94c
+type TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs is the delegate identifier for TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs.
+var IID_TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs = win32.GUID{Data1: 0x39a1448d, Data2: 0x8545, Data3: 0x5620, Data4: [8]byte{0x92, 0x8e, 0xb5, 0xc2, 0x49, 0xba, 0xe9, 0x4c}}
+
+// NewTypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingZoomAnimationStartingEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs(fn func(sender *IScrollPresenter, args *uixamlcontrols.IScrollingZoomAnimationStartingEventArgs)) (*TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IScrollPresenter)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IScrollingZoomAnimationStartingEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs) Close() {
+	h.delegate.Release()
+}
+
+// TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs is a Go-implemented handler for the WinRT delegate
+// Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingZoomCompletedEventArgs>.
+// IID: 358bdb56-496f-5e61-b553-aa6edad14ed0
+type TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs struct {
+	delegate *winrt.Delegate
+}
+
+// IID_TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs is the delegate identifier for TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs.
+var IID_TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs = win32.GUID{Data1: 0x358bdb56, Data2: 0x496f, Data3: 0x5e61, Data4: [8]byte{0xb5, 0x53, 0xaa, 0x6e, 0xda, 0xd1, 0x4e, 0xd0}}
+
+// NewTypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs wraps fn as a COM-callable Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingZoomCompletedEventArgs>.
+// The handler starts with one Go-held reference; Close it once no native
+// code can still invoke it.
+// Pointer-typed callback arguments are BORROWED references owned by the
+// event source for the duration of the callback: do not Release them or
+// retain them past its return.
+func NewTypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs(fn func(sender *IScrollPresenter, args *uixamlcontrols.IScrollingZoomCompletedEventArgs)) (*TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs, error) {
+	delegate, err := winrt.NewDelegate(IID_TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs, 2, func(raw []uintptr) uintptr {
+		fn((*IScrollPresenter)(unsafe.Pointer(raw[0])), (*uixamlcontrols.IScrollingZoomCompletedEventArgs)(unsafe.Pointer(raw[1])))
+		return 0
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs{delegate: delegate}, nil
+}
+
+// Ptr is the COM object pointer an Add<Event> method registers.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs) Ptr() uintptr {
+	return h.delegate.Ptr()
+}
+
+// Close releases the Go-held reference. Call it once no native code can still
+// invoke the handler — after the event source removed it, or closed. The runtime
+// keeps its own references while the handler stays registered.
+func (h *TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs) Close() {
+	h.delegate.Release()
+}

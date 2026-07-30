@@ -90,10 +90,24 @@ and each leaving an audit comment at its own vtable slot so nothing renumbers.
 The largest groups are conformant arrays (255), severed import cycles (191) and
 open generics (123). CI ratchets the set: a new one fails the build.
 
-What you can do today, and what you cannot: a `Button` can be constructed and its
-`Click` handled in Go, because `Click` is declared on the interface `Button`'s own
-default interface requires. Reaching `Content`, which comes from further up the
-inheritance chain, still needs a hand-written `QueryInterface` — that is M5.
+Inherited members are reachable. A class's metadata lists only the interfaces
+declared at its own level — `Button`'s is just `IButton`, carrying `Flyout` — so the
+generator walks the `Extends` chain and projects each base's interfaces as query
+methods. `Button` gains fifteen, reaching `ContentControl` (`Content`), `Control`
+(`FontSize`), `FrameworkElement` (`Margin`), `UIElement` (`Visibility`) and
+`DependencyObject`:
+
+```go
+button, _ := controls.NewButton()
+content, _ := button.AsContentControl()
+_ = content.SetContent(text)          // Content, three classes up
+element, _ := button.AsUIElement()
+_ = element.SetOpacity(0.5)           // Opacity, four classes up
+```
+
+Twenty import edges are severed to break cycles Go cannot express, so on those the
+accessor is absent. The capability is not: a consuming package closes no cycle, so
+`winrt.QueryInterface[T]` reaches the interface directly.
 
 The order of work, and why:
 
@@ -104,8 +118,8 @@ The order of work, and why:
 | M2 | `fetch-metadata` | done — resolves the nine-package fan-out from the `.nuspec`; winmds and bootstrapper. |
 | M3 | `ingest` | done — winmds → committed JSON, `Windows.*` resolved against go-bindings-winrt. |
 | M4 | `bindings` | done — JSON → 77 packages of compiling Go. |
-| **M5** | Class hierarchy | ← you are here. The base-class chain, without which a `Button` cannot reach `Content`. |
-| M6 | Runtime layer | Apartment control and the application loop, over generated bindings. |
+| M5 | Class hierarchy | done — the `Extends` chain, without which a `Button` could not reach `Content`. |
+| **M6** | Runtime layer | ← you are here. Apartment control and the application loop, over generated bindings. |
 | M7 | Deriving from WinRT classes | Needed for custom controls; requires work in go-bindings-winrt first. |
 
 M1 was a gate rather than a step. Everything after it depended on questions

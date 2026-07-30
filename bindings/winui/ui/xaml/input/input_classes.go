@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -111,6 +112,13 @@ type CharacterReceivedRoutedEventArgs struct {
 	ICharacterReceivedRoutedEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *CharacterReceivedRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // ContextRequestedEventArgs is the Microsoft.UI.Xaml.Input.ContextRequestedEventArgs runtime class, surfaced through its
 // default interface IContextRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -129,6 +137,13 @@ func NewContextRequestedEventArgs() (*ContextRequestedEventArgs, error) {
 	return winrt.QueryInterface[ContextRequestedEventArgs](unsafe.Pointer(instance), &IID_IContextRequestedEventArgs)
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ContextRequestedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // DoubleTappedRoutedEventArgs is the Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs runtime class, surfaced through its
 // default interface IDoubleTappedRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -145,6 +160,13 @@ func NewDoubleTappedRoutedEventArgs() (*DoubleTappedRoutedEventArgs, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DoubleTappedRoutedEventArgs](unsafe.Pointer(instance), &IID_IDoubleTappedRoutedEventArgs)
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *DoubleTappedRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // ExecuteRequestedEventArgs is the Microsoft.UI.Xaml.Input.ExecuteRequestedEventArgs runtime class, surfaced through its
@@ -219,6 +241,13 @@ type GettingFocusEventArgs struct {
 	IGettingFocusEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *GettingFocusEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // HoldingRoutedEventArgs is the Microsoft.UI.Xaml.Input.HoldingRoutedEventArgs runtime class, surfaced through its
 // default interface IHoldingRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -235,6 +264,13 @@ func NewHoldingRoutedEventArgs() (*HoldingRoutedEventArgs, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[HoldingRoutedEventArgs](unsafe.Pointer(instance), &IID_IHoldingRoutedEventArgs)
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *HoldingRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // InertiaExpansionBehavior is the Microsoft.UI.Xaml.Input.InertiaExpansionBehavior runtime class, surfaced through its
@@ -276,6 +312,13 @@ func NewInputScope() (*InputScope, error) {
 	return winrt.QueryInterface[InputScope](unsafe.Pointer(instance), &IID_IInputScope)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *InputScope) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // InputScopeName is the Microsoft.UI.Xaml.Input.InputScopeName runtime class, surfaced through its
 // default interface IInputScopeName. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -292,6 +335,13 @@ func NewInputScopeName() (*InputScopeName, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[InputScopeName](unsafe.Pointer(instance), &IID_IInputScopeName)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *InputScopeName) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CreateInstance constructs a Microsoft.UI.Xaml.Input.InputScopeName instance through
@@ -318,11 +368,25 @@ type KeyRoutedEventArgs struct {
 	IKeyRoutedEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *KeyRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // KeyboardAccelerator is the Microsoft.UI.Xaml.Input.KeyboardAccelerator runtime class, surfaced through its
 // default interface IKeyboardAccelerator. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type KeyboardAccelerator struct {
 	IKeyboardAccelerator
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *KeyboardAccelerator) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // KeyboardAcceleratorStatics returns the Microsoft.UI.Xaml.Input.IKeyboardAcceleratorStatics statics of the
@@ -376,6 +440,13 @@ type LosingFocusEventArgs struct {
 	ILosingFocusEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *LosingFocusEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // ManipulationCompletedRoutedEventArgs is the Microsoft.UI.Xaml.Input.ManipulationCompletedRoutedEventArgs runtime class, surfaced through its
 // default interface IManipulationCompletedRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -392,6 +463,13 @@ func NewManipulationCompletedRoutedEventArgs() (*ManipulationCompletedRoutedEven
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ManipulationCompletedRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationCompletedRoutedEventArgs)
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ManipulationCompletedRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // ManipulationDeltaRoutedEventArgs is the Microsoft.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs runtime class, surfaced through its
@@ -412,6 +490,13 @@ func NewManipulationDeltaRoutedEventArgs() (*ManipulationDeltaRoutedEventArgs, e
 	return winrt.QueryInterface[ManipulationDeltaRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationDeltaRoutedEventArgs)
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ManipulationDeltaRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // ManipulationInertiaStartingRoutedEventArgs is the Microsoft.UI.Xaml.Input.ManipulationInertiaStartingRoutedEventArgs runtime class, surfaced through its
 // default interface IManipulationInertiaStartingRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -428,6 +513,13 @@ func NewManipulationInertiaStartingRoutedEventArgs() (*ManipulationInertiaStarti
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ManipulationInertiaStartingRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationInertiaStartingRoutedEventArgs)
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ManipulationInertiaStartingRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // ManipulationPivot is the Microsoft.UI.Xaml.Input.ManipulationPivot runtime class, surfaced through its
@@ -470,6 +562,13 @@ func CreateInstanceWithCenterAndRadius(center wrtfoundation.Point, radius float6
 // the embedded IInspectable → IUnknown chain).
 type ManipulationStartedRoutedEventArgs struct {
 	IManipulationStartedRoutedEventArgs
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ManipulationStartedRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // NewManipulationStartedRoutedEventArgs constructs a Microsoft.UI.Xaml.Input.ManipulationStartedRoutedEventArgs instance through
@@ -515,11 +614,25 @@ func NewManipulationStartingRoutedEventArgs() (*ManipulationStartingRoutedEventA
 	return winrt.QueryInterface[ManipulationStartingRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationStartingRoutedEventArgs)
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ManipulationStartingRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // NoFocusCandidateFoundEventArgs is the Microsoft.UI.Xaml.Input.NoFocusCandidateFoundEventArgs runtime class, surfaced through its
 // default interface INoFocusCandidateFoundEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type NoFocusCandidateFoundEventArgs struct {
 	INoFocusCandidateFoundEventArgs
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *NoFocusCandidateFoundEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // Pointer is the Microsoft.UI.Xaml.Input.Pointer runtime class, surfaced through its
@@ -534,6 +647,13 @@ type Pointer struct {
 // the embedded IInspectable → IUnknown chain).
 type PointerRoutedEventArgs struct {
 	IPointerRoutedEventArgs
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *PointerRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // ProcessKeyboardAcceleratorEventArgs is the Microsoft.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs runtime class, surfaced through its
@@ -561,11 +681,39 @@ func NewRightTappedRoutedEventArgs() (*RightTappedRoutedEventArgs, error) {
 	return winrt.QueryInterface[RightTappedRoutedEventArgs](unsafe.Pointer(instance), &IID_IRightTappedRoutedEventArgs)
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *RightTappedRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // StandardUICommand is the Microsoft.UI.Xaml.Input.StandardUICommand runtime class, surfaced through its
 // default interface IStandardUICommand. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type StandardUICommand struct {
 	IStandardUICommand
+}
+
+// AsXamlUICommand queries the instance's IXamlUICommand interface.
+// Inherited from Microsoft.UI.Xaml.Input.XamlUICommand.
+// The returned reference is owned by the caller.
+func (self *StandardUICommand) AsXamlUICommand() (*IXamlUICommand, error) {
+	return winrt.QueryInterface[IXamlUICommand](unsafe.Pointer(self), &IID_IXamlUICommand)
+}
+
+// AsCommand queries the instance's ICommand interface.
+// Inherited from Microsoft.UI.Xaml.Input.XamlUICommand.
+// The returned reference is owned by the caller.
+func (self *StandardUICommand) AsCommand() (*ICommand, error) {
+	return winrt.QueryInterface[ICommand](unsafe.Pointer(self), &IID_ICommand)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *StandardUICommand) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // StandardUICommandStatics returns the Microsoft.UI.Xaml.Input.IStandardUICommandStatics statics of the
@@ -648,6 +796,13 @@ func NewTappedRoutedEventArgs() (*TappedRoutedEventArgs, error) {
 	return winrt.QueryInterface[TappedRoutedEventArgs](unsafe.Pointer(instance), &IID_ITappedRoutedEventArgs)
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *TappedRoutedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // XamlUICommand is the Microsoft.UI.Xaml.Input.XamlUICommand runtime class, surfaced through its
 // default interface IXamlUICommand. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -659,6 +814,13 @@ type XamlUICommand struct {
 // The returned reference is owned by the caller.
 func (self *XamlUICommand) AsCommand() (*ICommand, error) {
 	return winrt.QueryInterface[ICommand](unsafe.Pointer(self), &IID_ICommand)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *XamlUICommand) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // XamlUICommandStatics returns the Microsoft.UI.Xaml.Input.IXamlUICommandStatics statics of the

@@ -155,3 +155,46 @@ func (r *Registry) EnumBase(namespace, name string) string {
 	}
 	return ""
 }
+
+// maxBaseChainDepth bounds the Extends walk. XAML's deepest chains run to about
+// eight, so this guards against metadata describing a cycle rather than limiting
+// anything real; the visited set already catches a simple loop, and this catches a
+// pathological one.
+const maxBaseChainDepth = 32
+
+// WalkBaseChain visits each runtime class up the Extends chain, nearest first, and
+// returns a reason string for each chain it could not follow to the end.
+//
+// It lives here, on the Registry, because two callers need the SAME traversal: the
+// class emitter, which projects each base's interfaces as query methods on the
+// derived class, and ComputeBlockedImports, which has to count those exact edges.
+// Two implementations would eventually disagree, and the symptom would be an import
+// cycle in generated code that the cycle breaker had decided did not exist.
+func (r *Registry) WalkBaseChain(class *wasdkmeta.Class, visit func(fullName string, base *wasdkmeta.Class)) []string {
+	if class.BaseClass == nil {
+		return nil
+	}
+	var problems []string
+	visited := map[string]bool{}
+	base := class.BaseClass
+	for depth := 0; base != nil; depth++ {
+		if depth >= maxBaseChainDepth {
+			return append(problems, fmt.Sprintf("the Extends chain exceeds %d levels", maxBaseChainDepth))
+		}
+		fullName := base.Namespace + "." + base.Name
+		if visited[fullName] {
+			return append(problems, fmt.Sprintf("%s appears twice in the Extends chain", fullName))
+		}
+		visited[fullName] = true
+
+		resolved := r.Class(base.Namespace, base.Name)
+		if resolved == nil {
+			// Ingest marks external references, so a miss means the base is in
+			// neither module — and nothing further up the chain is reachable.
+			return append(problems, fmt.Sprintf("%s does not resolve", fullName))
+		}
+		visit(fullName, resolved)
+		base = resolved.BaseClass
+	}
+	return problems
+}

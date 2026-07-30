@@ -8,6 +8,8 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
+	uixamlmedia "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/media"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -28,6 +30,27 @@ func NewBitmapImage() (*BitmapImage, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BitmapImage](unsafe.Pointer(instance), &IID_IBitmapImage)
+}
+
+// AsBitmapSource queries the instance's IBitmapSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.Imaging.BitmapSource.
+// The returned reference is owned by the caller.
+func (self *BitmapImage) AsBitmapSource() (*IBitmapSource, error) {
+	return winrt.QueryInterface[IBitmapSource](unsafe.Pointer(self), &IID_IBitmapSource)
+}
+
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *BitmapImage) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BitmapImage) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BitmapImageStatics returns the Microsoft.UI.Xaml.Media.Imaging.IBitmapImageStatics statics of the
@@ -64,6 +87,20 @@ func CreateInstanceWithUriSource(uriSource *wrtfoundation.IUriRuntimeClass) (*Bi
 // the embedded IInspectable → IUnknown chain).
 type BitmapSource struct {
 	IBitmapSource
+}
+
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *BitmapSource) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BitmapSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BitmapSourceStatics returns the Microsoft.UI.Xaml.Media.Imaging.IBitmapSourceStatics statics of the
@@ -128,6 +165,20 @@ func NewRenderTargetBitmap() (*RenderTargetBitmap, error) {
 	return winrt.QueryInterface[RenderTargetBitmap](unsafe.Pointer(instance), &IID_IRenderTargetBitmap)
 }
 
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *RenderTargetBitmap) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RenderTargetBitmap) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // RenderTargetBitmapStatics returns the Microsoft.UI.Xaml.Media.Imaging.IRenderTargetBitmapStatics statics of the
 // Microsoft.UI.Xaml.Media.Imaging.RenderTargetBitmap runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -164,11 +215,39 @@ func (self *SoftwareBitmapSource) AsClosable() (*wrtfoundation.IClosable, error)
 	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
 }
 
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *SoftwareBitmapSource) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SoftwareBitmapSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SurfaceImageSource is the Microsoft.UI.Xaml.Media.Imaging.SurfaceImageSource runtime class, surfaced through its
 // default interface ISurfaceImageSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SurfaceImageSource struct {
 	ISurfaceImageSource
+}
+
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *SurfaceImageSource) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SurfaceImageSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewSurfaceImageSourceWithDimensions constructs a Microsoft.UI.Xaml.Media.Imaging.SurfaceImageSource instance through
@@ -226,6 +305,20 @@ func NewSurfaceImageSourceWithDimensionsAndOpacity(pixelWidth int32, pixelHeight
 // the embedded IInspectable → IUnknown chain).
 type SvgImageSource struct {
 	ISvgImageSource
+}
+
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *SvgImageSource) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SvgImageSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SvgImageSourceStatics returns the Microsoft.UI.Xaml.Media.Imaging.ISvgImageSourceStatics statics of the
@@ -311,6 +404,27 @@ type VirtualSurfaceImageSource struct {
 	IVirtualSurfaceImageSource
 }
 
+// AsSurfaceImageSource queries the instance's ISurfaceImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.Imaging.SurfaceImageSource.
+// The returned reference is owned by the caller.
+func (self *VirtualSurfaceImageSource) AsSurfaceImageSource() (*ISurfaceImageSource, error) {
+	return winrt.QueryInterface[ISurfaceImageSource](unsafe.Pointer(self), &IID_ISurfaceImageSource)
+}
+
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *VirtualSurfaceImageSource) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *VirtualSurfaceImageSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CreateInstanceWithDimensions constructs a Microsoft.UI.Xaml.Media.Imaging.VirtualSurfaceImageSource instance through
 // Microsoft.UI.Xaml.Media.Imaging.IVirtualSurfaceImageSourceFactory.CreateInstanceWithDimensions. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -350,6 +464,27 @@ func CreateInstanceWithDimensionsAndOpacity(pixelWidth int32, pixelHeight int32,
 // the embedded IInspectable → IUnknown chain).
 type WriteableBitmap struct {
 	IWriteableBitmap
+}
+
+// AsBitmapSource queries the instance's IBitmapSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.Imaging.BitmapSource.
+// The returned reference is owned by the caller.
+func (self *WriteableBitmap) AsBitmapSource() (*IBitmapSource, error) {
+	return winrt.QueryInterface[IBitmapSource](unsafe.Pointer(self), &IID_IBitmapSource)
+}
+
+// AsImageSource queries the instance's uixamlmedia.IImageSource interface.
+// Inherited from Microsoft.UI.Xaml.Media.ImageSource.
+// The returned reference is owned by the caller.
+func (self *WriteableBitmap) AsImageSource() (*uixamlmedia.IImageSource, error) {
+	return winrt.QueryInterface[uixamlmedia.IImageSource](unsafe.Pointer(self), &uixamlmedia.IID_IImageSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *WriteableBitmap) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CreateInstanceWithDimensionsWriteableBitmap constructs a Microsoft.UI.Xaml.Media.Imaging.WriteableBitmap instance through

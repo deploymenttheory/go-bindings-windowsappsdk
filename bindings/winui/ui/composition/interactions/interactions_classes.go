@@ -7,7 +7,9 @@ package interactions
 import (
 	"unsafe"
 
+	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // CompositionConditionalValue is the Microsoft.UI.Composition.Interactions.CompositionConditionalValue runtime class, surfaced through its
@@ -15,6 +17,55 @@ import (
 // the embedded IInspectable → IUnknown chain).
 type CompositionConditionalValue struct {
 	ICompositionConditionalValue
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // CompositionConditionalValueStatics returns the Microsoft.UI.Composition.Interactions.ICompositionConditionalValueStatics statics of the
@@ -42,11 +93,109 @@ func (self *CompositionInteractionSourceCollection) AsIterableOfICompositionInte
 	return winrt.QueryInterface[IIterableOfICompositionInteractionSource](unsafe.Pointer(self), &IID_IIterableOfICompositionInteractionSource)
 }
 
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // InteractionSourceConfiguration is the Microsoft.UI.Composition.Interactions.InteractionSourceConfiguration runtime class, surfaced through its
 // default interface IInteractionSourceConfiguration. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InteractionSourceConfiguration struct {
 	IInteractionSourceConfiguration
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // InteractionTracker is the Microsoft.UI.Composition.Interactions.InteractionTracker runtime class, surfaced through its
@@ -78,6 +227,55 @@ func (self *InteractionTracker) AsInteractionTracker4() (*IInteractionTracker4, 
 // The returned reference is owned by the caller.
 func (self *InteractionTracker) AsInteractionTracker5() (*IInteractionTracker5, error) {
 	return winrt.QueryInterface[IInteractionTracker5](unsafe.Pointer(self), &IID_IInteractionTracker5)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // InteractionTrackerStatics returns the Microsoft.UI.Composition.Interactions.IInteractionTrackerStatics statics of the
@@ -137,11 +335,116 @@ type InteractionTrackerInertiaModifier struct {
 	IInteractionTrackerInertiaModifier
 }
 
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // InteractionTrackerInertiaMotion is the Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaMotion runtime class, surfaced through its
 // default interface IInteractionTrackerInertiaMotion. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerInertiaMotion struct {
 	IInteractionTrackerInertiaMotion
+}
+
+// AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
+// Inherited from Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsInteractionTrackerInertiaModifier() (*IInteractionTrackerInertiaModifier, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaModifier](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaModifier)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // InteractionTrackerInertiaMotionStatics returns the Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaMotionStatics statics of the
@@ -163,6 +466,62 @@ type InteractionTrackerInertiaNaturalMotion struct {
 	IInteractionTrackerInertiaNaturalMotion
 }
 
+// AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
+// Inherited from Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsInteractionTrackerInertiaModifier() (*IInteractionTrackerInertiaModifier, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaModifier](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaModifier)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // InteractionTrackerInertiaNaturalMotionStatics returns the Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaNaturalMotionStatics statics of the
 // Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaNaturalMotion runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -180,6 +539,62 @@ func InteractionTrackerInertiaNaturalMotionStatics() (*IInteractionTrackerInerti
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerInertiaRestingValue struct {
 	IInteractionTrackerInertiaRestingValue
+}
+
+// AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
+// Inherited from Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsInteractionTrackerInertiaModifier() (*IInteractionTrackerInertiaModifier, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaModifier](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaModifier)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // InteractionTrackerInertiaRestingValueStatics returns the Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaRestingValueStatics statics of the
@@ -247,11 +662,116 @@ type InteractionTrackerVector2InertiaModifier struct {
 	IInteractionTrackerVector2InertiaModifier
 }
 
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
 // InteractionTrackerVector2InertiaNaturalMotion is the Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaNaturalMotion runtime class, surfaced through its
 // default interface IInteractionTrackerVector2InertiaNaturalMotion. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerVector2InertiaNaturalMotion struct {
 	IInteractionTrackerVector2InertiaNaturalMotion
+}
+
+// AsInteractionTrackerVector2InertiaModifier queries the instance's IInteractionTrackerVector2InertiaModifier interface.
+// Inherited from Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaModifier.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsInteractionTrackerVector2InertiaModifier() (*IInteractionTrackerVector2InertiaModifier, error) {
+	return winrt.QueryInterface[IInteractionTrackerVector2InertiaModifier](unsafe.Pointer(self), &IID_IInteractionTrackerVector2InertiaModifier)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // InteractionTrackerVector2InertiaNaturalMotionStatics returns the Microsoft.UI.Composition.Interactions.IInteractionTrackerVector2InertiaNaturalMotionStatics statics of the
@@ -289,6 +809,55 @@ func (self *VisualInteractionSource) AsVisualInteractionSource3() (*IVisualInter
 // The returned reference is owned by the caller.
 func (self *VisualInteractionSource) AsCompositionInteractionSource() (*ICompositionInteractionSource, error) {
 	return winrt.QueryInterface[ICompositionInteractionSource](unsafe.Pointer(self), &IID_ICompositionInteractionSource)
+}
+
+// AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsCompositionObject() (*uicomposition.ICompositionObject, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject)
+}
+
+// AsCompositionObject2 queries the instance's uicomposition.ICompositionObject2 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsCompositionObject2() (*uicomposition.ICompositionObject2, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject2](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject2)
+}
+
+// AsCompositionObject3 queries the instance's uicomposition.ICompositionObject3 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsCompositionObject3() (*uicomposition.ICompositionObject3, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject3](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject3)
+}
+
+// AsCompositionObject4 queries the instance's uicomposition.ICompositionObject4 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsCompositionObject4() (*uicomposition.ICompositionObject4, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject4](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject4)
+}
+
+// AsCompositionObject5 queries the instance's uicomposition.ICompositionObject5 interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsCompositionObject5() (*uicomposition.ICompositionObject5, error) {
+	return winrt.QueryInterface[uicomposition.ICompositionObject5](unsafe.Pointer(self), &uicomposition.IID_ICompositionObject5)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Composition.CompositionObject.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
 }
 
 // VisualInteractionSourceStatics returns the Microsoft.UI.Composition.Interactions.IVisualInteractionSourceStatics statics of the

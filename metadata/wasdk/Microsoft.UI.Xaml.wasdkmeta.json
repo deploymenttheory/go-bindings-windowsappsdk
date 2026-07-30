@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -19725,7 +19725,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IAdaptiveTriggerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "StateTriggerBase",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Application": {
       "default_interface": {
@@ -19831,7 +19837,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "BrushTransition": {
       "default_interface": {
@@ -19870,7 +19882,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IColorPaletteResourcesFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ResourceDictionary",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CornerRadiusHelper": {
       "default_interface": {
@@ -19934,7 +19952,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IDataTemplateFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkTemplate",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DataTemplateKey": {
       "default_interface": {
@@ -20068,7 +20092,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IDependencyObjectCollectionFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DependencyProperty": {
       "default_interface": {
@@ -20139,7 +20169,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DragOperationDeferral": {
       "default_interface": {
@@ -20172,7 +20208,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DragUI": {
       "default_interface": {
@@ -20221,7 +20263,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DurationHelper": {
       "default_interface": {
@@ -20331,7 +20379,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "TriggerBase",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ExceptionRoutedEventArgs": {
       "default_interface": {
@@ -20351,7 +20405,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IExceptionRoutedEventArgsFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "FrameworkElement": {
       "default_interface": {
@@ -20386,7 +20446,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IFrameworkElementFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "UIElement",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "FrameworkTemplate": {
       "default_interface": {
@@ -20406,7 +20472,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IFrameworkTemplateFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "FrameworkView": {
       "default_interface": {
@@ -20506,7 +20578,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ExceptionRoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "PointHelper": {
       "default_interface": {
@@ -20567,7 +20645,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.IPropertyPathFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "RectHelper": {
       "default_interface": {
@@ -20649,7 +20733,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IResourceDictionaryFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ResourceManagerRequestedEventArgs": {
       "default_interface": {
@@ -20743,7 +20833,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.ISetterStatics2"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SetterBase",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "SetterBase": {
       "default_interface": {
@@ -20763,7 +20859,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.ISetterBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "SetterBaseCollection": {
       "default_interface": {
@@ -20827,7 +20929,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "SizeHelper": {
       "default_interface": {
@@ -20867,7 +20975,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.IStateTriggerStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "StateTriggerBase",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "StateTriggerBase": {
       "default_interface": {
@@ -20893,7 +21007,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IStateTriggerBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Style": {
       "default_interface": {
@@ -20914,7 +21034,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.IStyleFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TargetPropertyPath": {
       "default_interface": {
@@ -20973,7 +21099,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.ITriggerActionFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TriggerActionCollection": {
       "default_interface": {
@@ -21043,7 +21175,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.ITriggerBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TriggerCollection": {
       "default_interface": {
@@ -21145,7 +21283,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IUIElementFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "UIElementWeakCollection": {
       "default_interface": {
@@ -21250,7 +21394,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "VisualStateChangedEventArgs": {
       "default_interface": {
@@ -21285,7 +21435,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "VisualStateManager": {
       "default_interface": {
@@ -21320,7 +21476,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IVisualStateManagerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "VisualTransition": {
       "default_interface": {
@@ -21340,7 +21502,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.IVisualTransitionFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Window": {
       "default_interface": {

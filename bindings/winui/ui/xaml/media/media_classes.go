@@ -9,6 +9,7 @@ import (
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
@@ -25,6 +26,55 @@ type AcrylicBrush struct {
 // The returned reference is owned by the caller.
 func (self *AcrylicBrush) AsAcrylicBrush2() (*IAcrylicBrush2, error) {
 	return winrt.QueryInterface[IAcrylicBrush2](unsafe.Pointer(self), &IID_IAcrylicBrush2)
+}
+
+// AsXamlCompositionBrushBase queries the instance's IXamlCompositionBrushBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.XamlCompositionBrushBase.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsXamlCompositionBrushBase() (*IXamlCompositionBrushBase, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBase](unsafe.Pointer(self), &IID_IXamlCompositionBrushBase)
+}
+
+// AsXamlCompositionBrushBaseProtected queries the instance's IXamlCompositionBrushBaseProtected interface.
+// Inherited from Microsoft.UI.Xaml.Media.XamlCompositionBrushBase.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsXamlCompositionBrushBaseProtected() (*IXamlCompositionBrushBaseProtected, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBaseProtected](unsafe.Pointer(self), &IID_IXamlCompositionBrushBaseProtected)
+}
+
+// AsXamlCompositionBrushBaseOverrides queries the instance's IXamlCompositionBrushBaseOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.XamlCompositionBrushBase.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsXamlCompositionBrushBaseOverrides() (*IXamlCompositionBrushBaseOverrides, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBaseOverrides](unsafe.Pointer(self), &IID_IXamlCompositionBrushBaseOverrides)
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // AcrylicBrushStatics returns the Microsoft.UI.Xaml.Media.IAcrylicBrushStatics statics of the
@@ -94,6 +144,20 @@ func NewArcSegment() (*ArcSegment, error) {
 	return winrt.QueryInterface[ArcSegment](unsafe.Pointer(instance), &IID_IArcSegment)
 }
 
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *ArcSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ArcSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ArcSegmentStatics returns the Microsoft.UI.Xaml.Media.IArcSegmentStatics statics of the
 // Microsoft.UI.Xaml.Media.ArcSegment runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -122,6 +186,20 @@ func NewBezierSegment() (*BezierSegment, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BezierSegment](unsafe.Pointer(instance), &IID_IBezierSegment)
+}
+
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *BezierSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BezierSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BezierSegmentStatics returns the Microsoft.UI.Xaml.Media.IBezierSegmentStatics statics of the
@@ -154,6 +232,20 @@ func NewBitmapCache() (*BitmapCache, error) {
 	return winrt.QueryInterface[BitmapCache](unsafe.Pointer(instance), &IID_IBitmapCache)
 }
 
+// AsCacheMode queries the instance's ICacheMode interface.
+// Inherited from Microsoft.UI.Xaml.Media.CacheMode.
+// The returned reference is owned by the caller.
+func (self *BitmapCache) AsCacheMode() (*ICacheMode, error) {
+	return winrt.QueryInterface[ICacheMode](unsafe.Pointer(self), &IID_ICacheMode)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BitmapCache) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // Brush is the Microsoft.UI.Xaml.Media.Brush runtime class, surfaced through its
 // default interface IBrush. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -171,6 +263,13 @@ func (self *Brush) AsBrushOverrides() (*IBrushOverrides, error) {
 // The returned reference is owned by the caller.
 func (self *Brush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
 	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Brush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BrushStatics returns the Microsoft.UI.Xaml.Media.IBrushStatics statics of the
@@ -217,6 +316,13 @@ type CacheMode struct {
 	ICacheMode
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CacheMode) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewCacheMode constructs a Microsoft.UI.Xaml.Media.CacheMode instance through
 // Microsoft.UI.Xaml.Media.ICacheModeFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -260,6 +366,34 @@ func NewCompositeTransform() (*CompositeTransform, error) {
 	return winrt.QueryInterface[CompositeTransform](unsafe.Pointer(instance), &IID_ICompositeTransform)
 }
 
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CompositeTransformStatics returns the Microsoft.UI.Xaml.Media.ICompositeTransformStatics statics of the
 // Microsoft.UI.Xaml.Media.CompositeTransform runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -296,6 +430,27 @@ func CompositionTargetStatics() (*ICompositionTargetStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type DesktopAcrylicBackdrop struct {
 	IDesktopAcrylicBackdrop
+}
+
+// AsSystemBackdrop queries the instance's ISystemBackdrop interface.
+// Inherited from Microsoft.UI.Xaml.Media.SystemBackdrop.
+// The returned reference is owned by the caller.
+func (self *DesktopAcrylicBackdrop) AsSystemBackdrop() (*ISystemBackdrop, error) {
+	return winrt.QueryInterface[ISystemBackdrop](unsafe.Pointer(self), &IID_ISystemBackdrop)
+}
+
+// AsSystemBackdropOverrides queries the instance's ISystemBackdropOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.SystemBackdrop.
+// The returned reference is owned by the caller.
+func (self *DesktopAcrylicBackdrop) AsSystemBackdropOverrides() (*ISystemBackdropOverrides, error) {
+	return winrt.QueryInterface[ISystemBackdropOverrides](unsafe.Pointer(self), &IID_ISystemBackdropOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DesktopAcrylicBackdrop) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewDesktopAcrylicBackdrop constructs a Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop instance through
@@ -339,6 +494,20 @@ func NewEllipseGeometry() (*EllipseGeometry, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[EllipseGeometry](unsafe.Pointer(instance), &IID_IEllipseGeometry)
+}
+
+// AsGeometry queries the instance's IGeometry interface.
+// Inherited from Microsoft.UI.Xaml.Media.Geometry.
+// The returned reference is owned by the caller.
+func (self *EllipseGeometry) AsGeometry() (*IGeometry, error) {
+	return winrt.QueryInterface[IGeometry](unsafe.Pointer(self), &IID_IGeometry)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EllipseGeometry) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // EllipseGeometryStatics returns the Microsoft.UI.Xaml.Media.IEllipseGeometryStatics statics of the
@@ -410,6 +579,13 @@ func (self *GeneralTransform) AsGeneralTransformOverrides() (*IGeneralTransformO
 	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GeneralTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewGeneralTransform constructs a Microsoft.UI.Xaml.Media.GeneralTransform instance through
 // Microsoft.UI.Xaml.Media.IGeneralTransformFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -442,6 +618,13 @@ type Geometry struct {
 	IGeometry
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Geometry) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // GeometryStatics returns the Microsoft.UI.Xaml.Media.IGeometryStatics statics of the
 // Microsoft.UI.Xaml.Media.Geometry runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -472,6 +655,20 @@ func NewGeometryGroup() (*GeometryGroup, error) {
 	return winrt.QueryInterface[GeometryGroup](unsafe.Pointer(instance), &IID_IGeometryGroup)
 }
 
+// AsGeometry queries the instance's IGeometry interface.
+// Inherited from Microsoft.UI.Xaml.Media.Geometry.
+// The returned reference is owned by the caller.
+func (self *GeometryGroup) AsGeometry() (*IGeometry, error) {
+	return winrt.QueryInterface[IGeometry](unsafe.Pointer(self), &IID_IGeometry)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GeometryGroup) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // GeometryGroupStatics returns the Microsoft.UI.Xaml.Media.IGeometryGroupStatics statics of the
 // Microsoft.UI.Xaml.Media.GeometryGroup runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -489,6 +686,34 @@ func GeometryGroupStatics() (*IGeometryGroupStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type GradientBrush struct {
 	IGradientBrush
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *GradientBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *GradientBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *GradientBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GradientBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // GradientBrushStatics returns the Microsoft.UI.Xaml.Media.IGradientBrushStatics statics of the
@@ -546,6 +771,13 @@ func NewGradientStop() (*GradientStop, error) {
 	return winrt.QueryInterface[GradientStop](unsafe.Pointer(instance), &IID_IGradientStop)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GradientStop) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // GradientStopStatics returns the Microsoft.UI.Xaml.Media.IGradientStopStatics statics of the
 // Microsoft.UI.Xaml.Media.GradientStop runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -576,6 +808,41 @@ func NewImageBrush() (*ImageBrush, error) {
 	return winrt.QueryInterface[ImageBrush](unsafe.Pointer(instance), &IID_IImageBrush)
 }
 
+// AsTileBrush queries the instance's ITileBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.TileBrush.
+// The returned reference is owned by the caller.
+func (self *ImageBrush) AsTileBrush() (*ITileBrush, error) {
+	return winrt.QueryInterface[ITileBrush](unsafe.Pointer(self), &IID_ITileBrush)
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *ImageBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *ImageBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *ImageBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ImageBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ImageBrushStatics returns the Microsoft.UI.Xaml.Media.IImageBrushStatics statics of the
 // Microsoft.UI.Xaml.Media.ImageBrush runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -595,6 +862,13 @@ type ImageSource struct {
 	IImageSource
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ImageSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LineGeometry is the Microsoft.UI.Xaml.Media.LineGeometry runtime class, surfaced through its
 // default interface ILineGeometry. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -611,6 +885,20 @@ func NewLineGeometry() (*LineGeometry, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LineGeometry](unsafe.Pointer(instance), &IID_ILineGeometry)
+}
+
+// AsGeometry queries the instance's IGeometry interface.
+// Inherited from Microsoft.UI.Xaml.Media.Geometry.
+// The returned reference is owned by the caller.
+func (self *LineGeometry) AsGeometry() (*IGeometry, error) {
+	return winrt.QueryInterface[IGeometry](unsafe.Pointer(self), &IID_IGeometry)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LineGeometry) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // LineGeometryStatics returns the Microsoft.UI.Xaml.Media.ILineGeometryStatics statics of the
@@ -643,6 +931,20 @@ func NewLineSegment() (*LineSegment, error) {
 	return winrt.QueryInterface[LineSegment](unsafe.Pointer(instance), &IID_ILineSegment)
 }
 
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *LineSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LineSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LineSegmentStatics returns the Microsoft.UI.Xaml.Media.ILineSegmentStatics statics of the
 // Microsoft.UI.Xaml.Media.LineSegment runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -671,6 +973,41 @@ func NewLinearGradientBrush() (*LinearGradientBrush, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LinearGradientBrush](unsafe.Pointer(instance), &IID_ILinearGradientBrush)
+}
+
+// AsGradientBrush queries the instance's IGradientBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.GradientBrush.
+// The returned reference is owned by the caller.
+func (self *LinearGradientBrush) AsGradientBrush() (*IGradientBrush, error) {
+	return winrt.QueryInterface[IGradientBrush](unsafe.Pointer(self), &IID_IGradientBrush)
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *LinearGradientBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *LinearGradientBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *LinearGradientBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LinearGradientBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // LinearGradientBrushStatics returns the Microsoft.UI.Xaml.Media.ILinearGradientBrushStatics statics of the
@@ -758,6 +1095,20 @@ func NewMatrix3DProjection() (*Matrix3DProjection, error) {
 	return winrt.QueryInterface[Matrix3DProjection](unsafe.Pointer(instance), &IID_IMatrix3DProjection)
 }
 
+// AsProjection queries the instance's IProjection interface.
+// Inherited from Microsoft.UI.Xaml.Media.Projection.
+// The returned reference is owned by the caller.
+func (self *Matrix3DProjection) AsProjection() (*IProjection, error) {
+	return winrt.QueryInterface[IProjection](unsafe.Pointer(self), &IID_IProjection)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Matrix3DProjection) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // Matrix3DProjectionStatics returns the Microsoft.UI.Xaml.Media.IMatrix3DProjectionStatics statics of the
 // Microsoft.UI.Xaml.Media.Matrix3DProjection runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -807,6 +1158,34 @@ func NewMatrixTransform() (*MatrixTransform, error) {
 	return winrt.QueryInterface[MatrixTransform](unsafe.Pointer(instance), &IID_IMatrixTransform)
 }
 
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *MatrixTransform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *MatrixTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *MatrixTransform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MatrixTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // MatrixTransformStatics returns the Microsoft.UI.Xaml.Media.IMatrixTransformStatics statics of the
 // Microsoft.UI.Xaml.Media.MatrixTransform runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -831,6 +1210,27 @@ type MediaTransportControlsThumbnailRequestedEventArgs struct {
 // the embedded IInspectable → IUnknown chain).
 type MicaBackdrop struct {
 	IMicaBackdrop
+}
+
+// AsSystemBackdrop queries the instance's ISystemBackdrop interface.
+// Inherited from Microsoft.UI.Xaml.Media.SystemBackdrop.
+// The returned reference is owned by the caller.
+func (self *MicaBackdrop) AsSystemBackdrop() (*ISystemBackdrop, error) {
+	return winrt.QueryInterface[ISystemBackdrop](unsafe.Pointer(self), &IID_ISystemBackdrop)
+}
+
+// AsSystemBackdropOverrides queries the instance's ISystemBackdropOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.SystemBackdrop.
+// The returned reference is owned by the caller.
+func (self *MicaBackdrop) AsSystemBackdropOverrides() (*ISystemBackdropOverrides, error) {
+	return winrt.QueryInterface[ISystemBackdropOverrides](unsafe.Pointer(self), &IID_ISystemBackdropOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MicaBackdrop) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // MicaBackdropStatics returns the Microsoft.UI.Xaml.Media.IMicaBackdropStatics statics of the
@@ -888,6 +1288,13 @@ func NewPathFigure() (*PathFigure, error) {
 	return winrt.QueryInterface[PathFigure](unsafe.Pointer(instance), &IID_IPathFigure)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PathFigure) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PathFigureStatics returns the Microsoft.UI.Xaml.Media.IPathFigureStatics statics of the
 // Microsoft.UI.Xaml.Media.PathFigure runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -918,6 +1325,20 @@ func NewPathGeometry() (*PathGeometry, error) {
 	return winrt.QueryInterface[PathGeometry](unsafe.Pointer(instance), &IID_IPathGeometry)
 }
 
+// AsGeometry queries the instance's IGeometry interface.
+// Inherited from Microsoft.UI.Xaml.Media.Geometry.
+// The returned reference is owned by the caller.
+func (self *PathGeometry) AsGeometry() (*IGeometry, error) {
+	return winrt.QueryInterface[IGeometry](unsafe.Pointer(self), &IID_IGeometry)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PathGeometry) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PathGeometryStatics returns the Microsoft.UI.Xaml.Media.IPathGeometryStatics statics of the
 // Microsoft.UI.Xaml.Media.PathGeometry runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -937,6 +1358,13 @@ type PathSegment struct {
 	IPathSegment
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PathSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PlaneProjection is the Microsoft.UI.Xaml.Media.PlaneProjection runtime class, surfaced through its
 // default interface IPlaneProjection. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -953,6 +1381,20 @@ func NewPlaneProjection() (*PlaneProjection, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PlaneProjection](unsafe.Pointer(instance), &IID_IPlaneProjection)
+}
+
+// AsProjection queries the instance's IProjection interface.
+// Inherited from Microsoft.UI.Xaml.Media.Projection.
+// The returned reference is owned by the caller.
+func (self *PlaneProjection) AsProjection() (*IProjection, error) {
+	return winrt.QueryInterface[IProjection](unsafe.Pointer(self), &IID_IProjection)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PlaneProjection) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PlaneProjectionStatics returns the Microsoft.UI.Xaml.Media.IPlaneProjectionStatics statics of the
@@ -985,6 +1427,20 @@ func NewPolyBezierSegment() (*PolyBezierSegment, error) {
 	return winrt.QueryInterface[PolyBezierSegment](unsafe.Pointer(instance), &IID_IPolyBezierSegment)
 }
 
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *PolyBezierSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PolyBezierSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PolyBezierSegmentStatics returns the Microsoft.UI.Xaml.Media.IPolyBezierSegmentStatics statics of the
 // Microsoft.UI.Xaml.Media.PolyBezierSegment runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1013,6 +1469,20 @@ func NewPolyLineSegment() (*PolyLineSegment, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PolyLineSegment](unsafe.Pointer(instance), &IID_IPolyLineSegment)
+}
+
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *PolyLineSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PolyLineSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PolyLineSegmentStatics returns the Microsoft.UI.Xaml.Media.IPolyLineSegmentStatics statics of the
@@ -1045,6 +1515,20 @@ func NewPolyQuadraticBezierSegment() (*PolyQuadraticBezierSegment, error) {
 	return winrt.QueryInterface[PolyQuadraticBezierSegment](unsafe.Pointer(instance), &IID_IPolyQuadraticBezierSegment)
 }
 
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *PolyQuadraticBezierSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PolyQuadraticBezierSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PolyQuadraticBezierSegmentStatics returns the Microsoft.UI.Xaml.Media.IPolyQuadraticBezierSegmentStatics statics of the
 // Microsoft.UI.Xaml.Media.PolyQuadraticBezierSegment runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1062,6 +1546,13 @@ func PolyQuadraticBezierSegmentStatics() (*IPolyQuadraticBezierSegmentStatics, e
 // the embedded IInspectable → IUnknown chain).
 type Projection struct {
 	IProjection
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Projection) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewProjection constructs a Microsoft.UI.Xaml.Media.Projection instance through
@@ -1107,6 +1598,20 @@ func NewQuadraticBezierSegment() (*QuadraticBezierSegment, error) {
 	return winrt.QueryInterface[QuadraticBezierSegment](unsafe.Pointer(instance), &IID_IQuadraticBezierSegment)
 }
 
+// AsPathSegment queries the instance's IPathSegment interface.
+// Inherited from Microsoft.UI.Xaml.Media.PathSegment.
+// The returned reference is owned by the caller.
+func (self *QuadraticBezierSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *QuadraticBezierSegment) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // QuadraticBezierSegmentStatics returns the Microsoft.UI.Xaml.Media.IQuadraticBezierSegmentStatics statics of the
 // Microsoft.UI.Xaml.Media.QuadraticBezierSegment runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1124,6 +1629,55 @@ func QuadraticBezierSegmentStatics() (*IQuadraticBezierSegmentStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type RadialGradientBrush struct {
 	IRadialGradientBrush
+}
+
+// AsXamlCompositionBrushBase queries the instance's IXamlCompositionBrushBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.XamlCompositionBrushBase.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsXamlCompositionBrushBase() (*IXamlCompositionBrushBase, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBase](unsafe.Pointer(self), &IID_IXamlCompositionBrushBase)
+}
+
+// AsXamlCompositionBrushBaseProtected queries the instance's IXamlCompositionBrushBaseProtected interface.
+// Inherited from Microsoft.UI.Xaml.Media.XamlCompositionBrushBase.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsXamlCompositionBrushBaseProtected() (*IXamlCompositionBrushBaseProtected, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBaseProtected](unsafe.Pointer(self), &IID_IXamlCompositionBrushBaseProtected)
+}
+
+// AsXamlCompositionBrushBaseOverrides queries the instance's IXamlCompositionBrushBaseOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.XamlCompositionBrushBase.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsXamlCompositionBrushBaseOverrides() (*IXamlCompositionBrushBaseOverrides, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBaseOverrides](unsafe.Pointer(self), &IID_IXamlCompositionBrushBaseOverrides)
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // RadialGradientBrushStatics returns the Microsoft.UI.Xaml.Media.IRadialGradientBrushStatics statics of the
@@ -1181,6 +1735,20 @@ func NewRectangleGeometry() (*RectangleGeometry, error) {
 	return winrt.QueryInterface[RectangleGeometry](unsafe.Pointer(instance), &IID_IRectangleGeometry)
 }
 
+// AsGeometry queries the instance's IGeometry interface.
+// Inherited from Microsoft.UI.Xaml.Media.Geometry.
+// The returned reference is owned by the caller.
+func (self *RectangleGeometry) AsGeometry() (*IGeometry, error) {
+	return winrt.QueryInterface[IGeometry](unsafe.Pointer(self), &IID_IGeometry)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RectangleGeometry) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // RectangleGeometryStatics returns the Microsoft.UI.Xaml.Media.IRectangleGeometryStatics statics of the
 // Microsoft.UI.Xaml.Media.RectangleGeometry runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1225,6 +1793,34 @@ func NewRotateTransform() (*RotateTransform, error) {
 	return winrt.QueryInterface[RotateTransform](unsafe.Pointer(instance), &IID_IRotateTransform)
 }
 
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *RotateTransform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *RotateTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *RotateTransform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RotateTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // RotateTransformStatics returns the Microsoft.UI.Xaml.Media.IRotateTransformStatics statics of the
 // Microsoft.UI.Xaml.Media.RotateTransform runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1255,6 +1851,34 @@ func NewScaleTransform() (*ScaleTransform, error) {
 	return winrt.QueryInterface[ScaleTransform](unsafe.Pointer(instance), &IID_IScaleTransform)
 }
 
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *ScaleTransform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *ScaleTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *ScaleTransform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ScaleTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ScaleTransformStatics returns the Microsoft.UI.Xaml.Media.IScaleTransformStatics statics of the
 // Microsoft.UI.Xaml.Media.ScaleTransform runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1274,6 +1898,13 @@ type Shadow struct {
 	IShadow
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Shadow) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SkewTransform is the Microsoft.UI.Xaml.Media.SkewTransform runtime class, surfaced through its
 // default interface ISkewTransform. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1290,6 +1921,34 @@ func NewSkewTransform() (*SkewTransform, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SkewTransform](unsafe.Pointer(instance), &IID_ISkewTransform)
+}
+
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *SkewTransform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *SkewTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *SkewTransform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SkewTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SkewTransformStatics returns the Microsoft.UI.Xaml.Media.ISkewTransformStatics statics of the
@@ -1320,6 +1979,34 @@ func NewSolidColorBrush() (*SolidColorBrush, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SolidColorBrush](unsafe.Pointer(instance), &IID_ISolidColorBrush)
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *SolidColorBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *SolidColorBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *SolidColorBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SolidColorBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SolidColorBrushStatics returns the Microsoft.UI.Xaml.Media.ISolidColorBrushStatics statics of the
@@ -1364,6 +2051,13 @@ func (self *SystemBackdrop) AsSystemBackdropOverrides() (*ISystemBackdropOverrid
 	return winrt.QueryInterface[ISystemBackdropOverrides](unsafe.Pointer(self), &IID_ISystemBackdropOverrides)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SystemBackdrop) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewSystemBackdrop constructs a Microsoft.UI.Xaml.Media.SystemBackdrop instance through
 // Microsoft.UI.Xaml.Media.ISystemBackdropFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1396,6 +2090,20 @@ type ThemeShadow struct {
 	IThemeShadow
 }
 
+// AsShadow queries the instance's IShadow interface.
+// Inherited from Microsoft.UI.Xaml.Media.Shadow.
+// The returned reference is owned by the caller.
+func (self *ThemeShadow) AsShadow() (*IShadow, error) {
+	return winrt.QueryInterface[IShadow](unsafe.Pointer(self), &IID_IShadow)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ThemeShadow) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewThemeShadow constructs a Microsoft.UI.Xaml.Media.ThemeShadow instance through
 // Microsoft.UI.Xaml.Media.IThemeShadowFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1426,6 +2134,34 @@ func NewThemeShadow() (*ThemeShadow, error) {
 // the embedded IInspectable → IUnknown chain).
 type TileBrush struct {
 	ITileBrush
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *TileBrush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *TileBrush) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *TileBrush) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TileBrush) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // TileBrushStatics returns the Microsoft.UI.Xaml.Media.ITileBrushStatics statics of the
@@ -1472,6 +2208,27 @@ type Transform struct {
 	ITransform
 }
 
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *Transform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *Transform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Transform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // TransformGroup is the Microsoft.UI.Xaml.Media.TransformGroup runtime class, surfaced through its
 // default interface ITransformGroup. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1488,6 +2245,34 @@ func NewTransformGroup() (*TransformGroup, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[TransformGroup](unsafe.Pointer(instance), &IID_ITransformGroup)
+}
+
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *TransformGroup) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *TransformGroup) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *TransformGroup) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TransformGroup) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // TransformGroupStatics returns the Microsoft.UI.Xaml.Media.ITransformGroupStatics statics of the
@@ -1518,6 +2303,34 @@ func NewTranslateTransform() (*TranslateTransform, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[TranslateTransform](unsafe.Pointer(instance), &IID_ITranslateTransform)
+}
+
+// AsTransform queries the instance's ITransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.Transform.
+// The returned reference is owned by the caller.
+func (self *TranslateTransform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *TranslateTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
+}
+
+// AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
+// The returned reference is owned by the caller.
+func (self *TranslateTransform) AsGeneralTransformOverrides() (*IGeneralTransformOverrides, error) {
+	return winrt.QueryInterface[IGeneralTransformOverrides](unsafe.Pointer(self), &IID_IGeneralTransformOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TranslateTransform) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // TranslateTransformStatics returns the Microsoft.UI.Xaml.Media.ITranslateTransformStatics statics of the
@@ -1568,6 +2381,34 @@ func (self *XamlCompositionBrushBase) AsXamlCompositionBrushBaseProtected() (*IX
 // The returned reference is owned by the caller.
 func (self *XamlCompositionBrushBase) AsXamlCompositionBrushBaseOverrides() (*IXamlCompositionBrushBaseOverrides, error) {
 	return winrt.QueryInterface[IXamlCompositionBrushBaseOverrides](unsafe.Pointer(self), &IID_IXamlCompositionBrushBaseOverrides)
+}
+
+// AsBrush queries the instance's IBrush interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *XamlCompositionBrushBase) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
+}
+
+// AsBrushOverrides queries the instance's IBrushOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *XamlCompositionBrushBase) AsBrushOverrides() (*IBrushOverrides, error) {
+	return winrt.QueryInterface[IBrushOverrides](unsafe.Pointer(self), &IID_IBrushOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.Media.Brush.
+// The returned reference is owned by the caller.
+func (self *XamlCompositionBrushBase) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *XamlCompositionBrushBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // XamlCompositionBrushBaseStatics returns the Microsoft.UI.Xaml.Media.IXamlCompositionBrushBaseStatics statics of the
@@ -1624,6 +2465,13 @@ func (self *XamlLight) AsXamlLightProtected() (*IXamlLightProtected, error) {
 // The returned reference is owned by the caller.
 func (self *XamlLight) AsXamlLightOverrides() (*IXamlLightOverrides, error) {
 	return winrt.QueryInterface[IXamlLightOverrides](unsafe.Pointer(self), &IID_IXamlLightOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *XamlLight) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // XamlLightStatics returns the Microsoft.UI.Xaml.Media.IXamlLightStatics statics of the

@@ -515,6 +515,14 @@ func (p *fileProjector) projectClass(typeDef *winmd.TypeDefRow, row uint32) wasd
 		// composable, which nearly every XAML class is.
 		Composable: !(extendsNamespace == "System" && extendsName == "Object"),
 	}
+	if projected.Composable && extendsNamespace != "" {
+		// The base is recorded as a reference like any other, so it resolves and
+		// is marked external by the same code path — and so emit can walk the
+		// chain to reach inherited members, which nothing else in the metadata
+		// makes reachable.
+		base := p.namedTypeRef(extendsNamespace, extendsName)
+		projected.BaseClass = &base
+	}
 
 	for _, impl := range p.implIndex[row] {
 		target := p.typeRefOfTarget(impl.target)

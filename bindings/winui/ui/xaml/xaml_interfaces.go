@@ -16,7 +16,6 @@ import (
 	uidispatching "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/dispatching"
 	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
 	uiwindowing "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/windowing"
-	uixamlinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/input"
 	windowsapplicationmodelresources "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/applicationmodel/resources"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtapplicationmodelactivation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/activation"
@@ -4433,18 +4432,9 @@ func (self *IUIElement) SetIsHoldingEnabled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// ManipulationMode (propget get_ManipulationMode) dispatches through IUIElement's vtable slot 42.
-func (self *IUIElement) ManipulationMode() (uixamlinput.ManipulationModes, error) {
-	result := new(uixamlinput.ManipulationModes)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[42], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 42: get_ManipulationMode skipped: reference to Microsoft.UI.Xaml.Input.ManipulationModes crosses a severed import edge
 
-// SetManipulationMode (propput put_ManipulationMode) dispatches through IUIElement's vtable slot 43.
-func (self *IUIElement) SetManipulationMode(value uixamlinput.ManipulationModes) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[43], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 43: put_ManipulationMode skipped: reference to Microsoft.UI.Xaml.Input.ManipulationModes crosses a severed import edge
 
 // PointerCaptures (propget get_PointerCaptures) dispatches through IUIElement's vtable slot 44.
 func (self *IUIElement) PointerCaptures() (*IVectorViewOfPointer, error) {
@@ -4553,18 +4543,9 @@ func (self *IUIElement) SetAccessKey(value string) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// KeyTipPlacementMode (propget get_KeyTipPlacementMode) dispatches through IUIElement's vtable slot 60.
-func (self *IUIElement) KeyTipPlacementMode() (uixamlinput.KeyTipPlacementMode, error) {
-	result := new(uixamlinput.KeyTipPlacementMode)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[60], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 60: get_KeyTipPlacementMode skipped: reference to Microsoft.UI.Xaml.Input.KeyTipPlacementMode crosses a severed import edge
 
-// SetKeyTipPlacementMode (propput put_KeyTipPlacementMode) dispatches through IUIElement's vtable slot 61.
-func (self *IUIElement) SetKeyTipPlacementMode(value uixamlinput.KeyTipPlacementMode) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[61], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 61: put_KeyTipPlacementMode skipped: reference to Microsoft.UI.Xaml.Input.KeyTipPlacementMode crosses a severed import edge
 
 // KeyTipHorizontalOffset (propget get_KeyTipHorizontalOffset) dispatches through IUIElement's vtable slot 62.
 func (self *IUIElement) KeyTipHorizontalOffset() (float64, error) {
@@ -4607,70 +4588,25 @@ func (self *IUIElement) SetKeyTipTarget(value *IDependencyObject) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// XYFocusKeyboardNavigation (propget get_XYFocusKeyboardNavigation) dispatches through IUIElement's vtable slot 68.
-func (self *IUIElement) XYFocusKeyboardNavigation() (uixamlinput.XYFocusKeyboardNavigationMode, error) {
-	result := new(uixamlinput.XYFocusKeyboardNavigationMode)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[68], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 68: get_XYFocusKeyboardNavigation skipped: reference to Microsoft.UI.Xaml.Input.XYFocusKeyboardNavigationMode crosses a severed import edge
 
-// SetXYFocusKeyboardNavigation (propput put_XYFocusKeyboardNavigation) dispatches through IUIElement's vtable slot 69.
-func (self *IUIElement) SetXYFocusKeyboardNavigation(value uixamlinput.XYFocusKeyboardNavigationMode) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[69], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 69: put_XYFocusKeyboardNavigation skipped: reference to Microsoft.UI.Xaml.Input.XYFocusKeyboardNavigationMode crosses a severed import edge
 
-// XYFocusUpNavigationStrategy (propget get_XYFocusUpNavigationStrategy) dispatches through IUIElement's vtable slot 70.
-func (self *IUIElement) XYFocusUpNavigationStrategy() (uixamlinput.XYFocusNavigationStrategy, error) {
-	result := new(uixamlinput.XYFocusNavigationStrategy)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[70], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 70: get_XYFocusUpNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// SetXYFocusUpNavigationStrategy (propput put_XYFocusUpNavigationStrategy) dispatches through IUIElement's vtable slot 71.
-func (self *IUIElement) SetXYFocusUpNavigationStrategy(value uixamlinput.XYFocusNavigationStrategy) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[71], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 71: put_XYFocusUpNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// XYFocusDownNavigationStrategy (propget get_XYFocusDownNavigationStrategy) dispatches through IUIElement's vtable slot 72.
-func (self *IUIElement) XYFocusDownNavigationStrategy() (uixamlinput.XYFocusNavigationStrategy, error) {
-	result := new(uixamlinput.XYFocusNavigationStrategy)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[72], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 72: get_XYFocusDownNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// SetXYFocusDownNavigationStrategy (propput put_XYFocusDownNavigationStrategy) dispatches through IUIElement's vtable slot 73.
-func (self *IUIElement) SetXYFocusDownNavigationStrategy(value uixamlinput.XYFocusNavigationStrategy) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[73], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 73: put_XYFocusDownNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// XYFocusLeftNavigationStrategy (propget get_XYFocusLeftNavigationStrategy) dispatches through IUIElement's vtable slot 74.
-func (self *IUIElement) XYFocusLeftNavigationStrategy() (uixamlinput.XYFocusNavigationStrategy, error) {
-	result := new(uixamlinput.XYFocusNavigationStrategy)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[74], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 74: get_XYFocusLeftNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// SetXYFocusLeftNavigationStrategy (propput put_XYFocusLeftNavigationStrategy) dispatches through IUIElement's vtable slot 75.
-func (self *IUIElement) SetXYFocusLeftNavigationStrategy(value uixamlinput.XYFocusNavigationStrategy) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[75], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 75: put_XYFocusLeftNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// XYFocusRightNavigationStrategy (propget get_XYFocusRightNavigationStrategy) dispatches through IUIElement's vtable slot 76.
-func (self *IUIElement) XYFocusRightNavigationStrategy() (uixamlinput.XYFocusNavigationStrategy, error) {
-	result := new(uixamlinput.XYFocusNavigationStrategy)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[76], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 76: get_XYFocusRightNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
-// SetXYFocusRightNavigationStrategy (propput put_XYFocusRightNavigationStrategy) dispatches through IUIElement's vtable slot 77.
-func (self *IUIElement) SetXYFocusRightNavigationStrategy(value uixamlinput.XYFocusNavigationStrategy) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[77], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 77: put_XYFocusRightNavigationStrategy skipped: reference to Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy crosses a severed import edge
 
 // KeyboardAccelerators (propget get_KeyboardAccelerators) dispatches through IUIElement's vtable slot 78.
 func (self *IUIElement) KeyboardAccelerators() (*IVectorOfKeyboardAccelerator, error) {
@@ -4692,18 +4628,9 @@ func (self *IUIElement) SetKeyboardAcceleratorPlacementTarget(value *IDependency
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// KeyboardAcceleratorPlacementMode (propget get_KeyboardAcceleratorPlacementMode) dispatches through IUIElement's vtable slot 81.
-func (self *IUIElement) KeyboardAcceleratorPlacementMode() (uixamlinput.KeyboardAcceleratorPlacementMode, error) {
-	result := new(uixamlinput.KeyboardAcceleratorPlacementMode)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[81], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 81: get_KeyboardAcceleratorPlacementMode skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAcceleratorPlacementMode crosses a severed import edge
 
-// SetKeyboardAcceleratorPlacementMode (propput put_KeyboardAcceleratorPlacementMode) dispatches through IUIElement's vtable slot 82.
-func (self *IUIElement) SetKeyboardAcceleratorPlacementMode(value uixamlinput.KeyboardAcceleratorPlacementMode) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[82], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 82: put_KeyboardAcceleratorPlacementMode skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAcceleratorPlacementMode crosses a severed import edge
 
 // HighContrastAdjustment (propget get_HighContrastAdjustment) dispatches through IUIElement's vtable slot 83.
 func (self *IUIElement) HighContrastAdjustment() (ElementHighContrastAdjustment, error) {
@@ -4718,18 +4645,9 @@ func (self *IUIElement) SetHighContrastAdjustment(value ElementHighContrastAdjus
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TabFocusNavigation (propget get_TabFocusNavigation) dispatches through IUIElement's vtable slot 85.
-func (self *IUIElement) TabFocusNavigation() (uixamlinput.KeyboardNavigationMode, error) {
-	result := new(uixamlinput.KeyboardNavigationMode)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[85], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 85: get_TabFocusNavigation skipped: reference to Microsoft.UI.Xaml.Input.KeyboardNavigationMode crosses a severed import edge
 
-// SetTabFocusNavigation (propput put_TabFocusNavigation) dispatches through IUIElement's vtable slot 86.
-func (self *IUIElement) SetTabFocusNavigation(value uixamlinput.KeyboardNavigationMode) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[86], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 86: put_TabFocusNavigation skipped: reference to Microsoft.UI.Xaml.Input.KeyboardNavigationMode crosses a severed import edge
 
 // OpacityTransition (propget get_OpacityTransition) dispatches through IUIElement's vtable slot 87.
 func (self *IUIElement) OpacityTransition() (*IScalarTransition, error) {
@@ -5013,37 +4931,13 @@ func (self *IUIElement) SetTabIndex(value int32) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// AddKeyUp (event add add_KeyUp) dispatches through IUIElement's vtable slot 130.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveKeyUp.
-func (self *IUIElement) AddKeyUp(handler *KeyEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[130], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 130: add_KeyUp skipped: Microsoft.UI.Xaml.Input.KeyEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.KeyRoutedEventArgs crosses a severed import edge
 
-// RemoveKeyUp (event remove remove_KeyUp) dispatches through IUIElement's vtable slot 131,
-// unregistering the KeyUp handler the token was returned for.
-func (self *IUIElement) RemoveKeyUp(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[131], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 131: remove_KeyUp skipped: KeyUp has no grounded handler
 
-// AddKeyDown (event add add_KeyDown) dispatches through IUIElement's vtable slot 132.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveKeyDown.
-func (self *IUIElement) AddKeyDown(handler *KeyEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[132], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 132: add_KeyDown skipped: Microsoft.UI.Xaml.Input.KeyEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.KeyRoutedEventArgs crosses a severed import edge
 
-// RemoveKeyDown (event remove remove_KeyDown) dispatches through IUIElement's vtable slot 133,
-// unregistering the KeyDown handler the token was returned for.
-func (self *IUIElement) RemoveKeyDown(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[133], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 133: remove_KeyDown skipped: KeyDown has no grounded handler
 
 // AddGotFocus (event add add_GotFocus) dispatches through IUIElement's vtable slot 134.
 // The handler stays registered (and referenced by the runtime) until the
@@ -5109,21 +5003,9 @@ func (self *IUIElement) RemoveDropCompleted(token syswinrt.EventRegistrationToke
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// AddCharacterReceived (event add add_CharacterReceived) dispatches through IUIElement's vtable slot 142.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveCharacterReceived.
-func (self *IUIElement) AddCharacterReceived(handler *TypedEventHandlerOfUIElementAndCharacterReceivedRoutedEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[142], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 142: add_CharacterReceived skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.CharacterReceivedRoutedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.CharacterReceivedRoutedEventArgs crosses a severed import edge
 
-// RemoveCharacterReceived (event remove remove_CharacterReceived) dispatches through IUIElement's vtable slot 143,
-// unregistering the CharacterReceived handler the token was returned for.
-func (self *IUIElement) RemoveCharacterReceived(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[143], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 143: remove_CharacterReceived skipped: CharacterReceived has no grounded handler
 
 // AddDragEnter (event add add_DragEnter) dispatches through IUIElement's vtable slot 144.
 // The handler stays registered (and referenced by the runtime) until the
@@ -5189,197 +5071,53 @@ func (self *IUIElement) RemoveDrop(token syswinrt.EventRegistrationToken) error 
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// AddPointerPressed (event add add_PointerPressed) dispatches through IUIElement's vtable slot 152.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerPressed.
-func (self *IUIElement) AddPointerPressed(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[152], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 152: add_PointerPressed skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerPressed (event remove remove_PointerPressed) dispatches through IUIElement's vtable slot 153,
-// unregistering the PointerPressed handler the token was returned for.
-func (self *IUIElement) RemovePointerPressed(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[153], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 153: remove_PointerPressed skipped: PointerPressed has no grounded handler
 
-// AddPointerMoved (event add add_PointerMoved) dispatches through IUIElement's vtable slot 154.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerMoved.
-func (self *IUIElement) AddPointerMoved(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[154], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 154: add_PointerMoved skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerMoved (event remove remove_PointerMoved) dispatches through IUIElement's vtable slot 155,
-// unregistering the PointerMoved handler the token was returned for.
-func (self *IUIElement) RemovePointerMoved(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[155], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 155: remove_PointerMoved skipped: PointerMoved has no grounded handler
 
-// AddPointerReleased (event add add_PointerReleased) dispatches through IUIElement's vtable slot 156.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerReleased.
-func (self *IUIElement) AddPointerReleased(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[156], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 156: add_PointerReleased skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerReleased (event remove remove_PointerReleased) dispatches through IUIElement's vtable slot 157,
-// unregistering the PointerReleased handler the token was returned for.
-func (self *IUIElement) RemovePointerReleased(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[157], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 157: remove_PointerReleased skipped: PointerReleased has no grounded handler
 
-// AddPointerEntered (event add add_PointerEntered) dispatches through IUIElement's vtable slot 158.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerEntered.
-func (self *IUIElement) AddPointerEntered(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[158], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 158: add_PointerEntered skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerEntered (event remove remove_PointerEntered) dispatches through IUIElement's vtable slot 159,
-// unregistering the PointerEntered handler the token was returned for.
-func (self *IUIElement) RemovePointerEntered(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[159], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 159: remove_PointerEntered skipped: PointerEntered has no grounded handler
 
-// AddPointerExited (event add add_PointerExited) dispatches through IUIElement's vtable slot 160.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerExited.
-func (self *IUIElement) AddPointerExited(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[160], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 160: add_PointerExited skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerExited (event remove remove_PointerExited) dispatches through IUIElement's vtable slot 161,
-// unregistering the PointerExited handler the token was returned for.
-func (self *IUIElement) RemovePointerExited(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[161], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 161: remove_PointerExited skipped: PointerExited has no grounded handler
 
-// AddPointerCaptureLost (event add add_PointerCaptureLost) dispatches through IUIElement's vtable slot 162.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerCaptureLost.
-func (self *IUIElement) AddPointerCaptureLost(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[162], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 162: add_PointerCaptureLost skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerCaptureLost (event remove remove_PointerCaptureLost) dispatches through IUIElement's vtable slot 163,
-// unregistering the PointerCaptureLost handler the token was returned for.
-func (self *IUIElement) RemovePointerCaptureLost(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[163], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 163: remove_PointerCaptureLost skipped: PointerCaptureLost has no grounded handler
 
-// AddPointerCanceled (event add add_PointerCanceled) dispatches through IUIElement's vtable slot 164.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerCanceled.
-func (self *IUIElement) AddPointerCanceled(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[164], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 164: add_PointerCanceled skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerCanceled (event remove remove_PointerCanceled) dispatches through IUIElement's vtable slot 165,
-// unregistering the PointerCanceled handler the token was returned for.
-func (self *IUIElement) RemovePointerCanceled(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[165], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 165: remove_PointerCanceled skipped: PointerCanceled has no grounded handler
 
-// AddPointerWheelChanged (event add add_PointerWheelChanged) dispatches through IUIElement's vtable slot 166.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePointerWheelChanged.
-func (self *IUIElement) AddPointerWheelChanged(handler *PointerEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[166], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 166: add_PointerWheelChanged skipped: Microsoft.UI.Xaml.Input.PointerEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.PointerRoutedEventArgs crosses a severed import edge
 
-// RemovePointerWheelChanged (event remove remove_PointerWheelChanged) dispatches through IUIElement's vtable slot 167,
-// unregistering the PointerWheelChanged handler the token was returned for.
-func (self *IUIElement) RemovePointerWheelChanged(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[167], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 167: remove_PointerWheelChanged skipped: PointerWheelChanged has no grounded handler
 
-// AddTapped (event add add_Tapped) dispatches through IUIElement's vtable slot 168.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveTapped.
-func (self *IUIElement) AddTapped(handler *TappedEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[168], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 168: add_Tapped skipped: Microsoft.UI.Xaml.Input.TappedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.TappedRoutedEventArgs crosses a severed import edge
 
-// RemoveTapped (event remove remove_Tapped) dispatches through IUIElement's vtable slot 169,
-// unregistering the Tapped handler the token was returned for.
-func (self *IUIElement) RemoveTapped(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[169], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 169: remove_Tapped skipped: Tapped has no grounded handler
 
-// AddDoubleTapped (event add add_DoubleTapped) dispatches through IUIElement's vtable slot 170.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveDoubleTapped.
-func (self *IUIElement) AddDoubleTapped(handler *DoubleTappedEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[170], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 170: add_DoubleTapped skipped: Microsoft.UI.Xaml.Input.DoubleTappedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs crosses a severed import edge
 
-// RemoveDoubleTapped (event remove remove_DoubleTapped) dispatches through IUIElement's vtable slot 171,
-// unregistering the DoubleTapped handler the token was returned for.
-func (self *IUIElement) RemoveDoubleTapped(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[171], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 171: remove_DoubleTapped skipped: DoubleTapped has no grounded handler
 
-// AddHolding (event add add_Holding) dispatches through IUIElement's vtable slot 172.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveHolding.
-func (self *IUIElement) AddHolding(handler *HoldingEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[172], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 172: add_Holding skipped: Microsoft.UI.Xaml.Input.HoldingEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.HoldingRoutedEventArgs crosses a severed import edge
 
-// RemoveHolding (event remove remove_Holding) dispatches through IUIElement's vtable slot 173,
-// unregistering the Holding handler the token was returned for.
-func (self *IUIElement) RemoveHolding(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[173], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 173: remove_Holding skipped: Holding has no grounded handler
 
-// AddContextRequested (event add add_ContextRequested) dispatches through IUIElement's vtable slot 174.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveContextRequested.
-func (self *IUIElement) AddContextRequested(handler *TypedEventHandlerOfUIElementAndContextRequestedEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[174], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 174: add_ContextRequested skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.ContextRequestedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.ContextRequestedEventArgs crosses a severed import edge
 
-// RemoveContextRequested (event remove remove_ContextRequested) dispatches through IUIElement's vtable slot 175,
-// unregistering the ContextRequested handler the token was returned for.
-func (self *IUIElement) RemoveContextRequested(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[175], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 175: remove_ContextRequested skipped: ContextRequested has no grounded handler
 
 // AddContextCanceled (event add add_ContextCanceled) dispatches through IUIElement's vtable slot 176.
 // The handler stays registered (and referenced by the runtime) until the
@@ -5397,245 +5135,65 @@ func (self *IUIElement) RemoveContextCanceled(token syswinrt.EventRegistrationTo
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// AddRightTapped (event add add_RightTapped) dispatches through IUIElement's vtable slot 178.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveRightTapped.
-func (self *IUIElement) AddRightTapped(handler *RightTappedEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[178], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 178: add_RightTapped skipped: Microsoft.UI.Xaml.Input.RightTappedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.RightTappedRoutedEventArgs crosses a severed import edge
 
-// RemoveRightTapped (event remove remove_RightTapped) dispatches through IUIElement's vtable slot 179,
-// unregistering the RightTapped handler the token was returned for.
-func (self *IUIElement) RemoveRightTapped(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[179], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 179: remove_RightTapped skipped: RightTapped has no grounded handler
 
-// AddManipulationStarting (event add add_ManipulationStarting) dispatches through IUIElement's vtable slot 180.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveManipulationStarting.
-func (self *IUIElement) AddManipulationStarting(handler *ManipulationStartingEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[180], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 180: add_ManipulationStarting skipped: Microsoft.UI.Xaml.Input.ManipulationStartingEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.ManipulationStartingRoutedEventArgs crosses a severed import edge
 
-// RemoveManipulationStarting (event remove remove_ManipulationStarting) dispatches through IUIElement's vtable slot 181,
-// unregistering the ManipulationStarting handler the token was returned for.
-func (self *IUIElement) RemoveManipulationStarting(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[181], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 181: remove_ManipulationStarting skipped: ManipulationStarting has no grounded handler
 
-// AddManipulationInertiaStarting (event add add_ManipulationInertiaStarting) dispatches through IUIElement's vtable slot 182.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveManipulationInertiaStarting.
-func (self *IUIElement) AddManipulationInertiaStarting(handler *ManipulationInertiaStartingEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[182], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 182: add_ManipulationInertiaStarting skipped: Microsoft.UI.Xaml.Input.ManipulationInertiaStartingEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.ManipulationInertiaStartingRoutedEventArgs crosses a severed import edge
 
-// RemoveManipulationInertiaStarting (event remove remove_ManipulationInertiaStarting) dispatches through IUIElement's vtable slot 183,
-// unregistering the ManipulationInertiaStarting handler the token was returned for.
-func (self *IUIElement) RemoveManipulationInertiaStarting(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[183], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 183: remove_ManipulationInertiaStarting skipped: ManipulationInertiaStarting has no grounded handler
 
-// AddManipulationStarted (event add add_ManipulationStarted) dispatches through IUIElement's vtable slot 184.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveManipulationStarted.
-func (self *IUIElement) AddManipulationStarted(handler *ManipulationStartedEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[184], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 184: add_ManipulationStarted skipped: Microsoft.UI.Xaml.Input.ManipulationStartedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.ManipulationStartedRoutedEventArgs crosses a severed import edge
 
-// RemoveManipulationStarted (event remove remove_ManipulationStarted) dispatches through IUIElement's vtable slot 185,
-// unregistering the ManipulationStarted handler the token was returned for.
-func (self *IUIElement) RemoveManipulationStarted(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[185], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 185: remove_ManipulationStarted skipped: ManipulationStarted has no grounded handler
 
-// AddManipulationDelta (event add add_ManipulationDelta) dispatches through IUIElement's vtable slot 186.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveManipulationDelta.
-func (self *IUIElement) AddManipulationDelta(handler *ManipulationDeltaEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[186], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 186: add_ManipulationDelta skipped: Microsoft.UI.Xaml.Input.ManipulationDeltaEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs crosses a severed import edge
 
-// RemoveManipulationDelta (event remove remove_ManipulationDelta) dispatches through IUIElement's vtable slot 187,
-// unregistering the ManipulationDelta handler the token was returned for.
-func (self *IUIElement) RemoveManipulationDelta(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[187], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 187: remove_ManipulationDelta skipped: ManipulationDelta has no grounded handler
 
-// AddManipulationCompleted (event add add_ManipulationCompleted) dispatches through IUIElement's vtable slot 188.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveManipulationCompleted.
-func (self *IUIElement) AddManipulationCompleted(handler *ManipulationCompletedEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[188], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 188: add_ManipulationCompleted skipped: Microsoft.UI.Xaml.Input.ManipulationCompletedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.ManipulationCompletedRoutedEventArgs crosses a severed import edge
 
-// RemoveManipulationCompleted (event remove remove_ManipulationCompleted) dispatches through IUIElement's vtable slot 189,
-// unregistering the ManipulationCompleted handler the token was returned for.
-func (self *IUIElement) RemoveManipulationCompleted(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[189], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 189: remove_ManipulationCompleted skipped: ManipulationCompleted has no grounded handler
 
-// AddAccessKeyDisplayRequested (event add add_AccessKeyDisplayRequested) dispatches through IUIElement's vtable slot 190.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveAccessKeyDisplayRequested.
-func (self *IUIElement) AddAccessKeyDisplayRequested(handler *TypedEventHandlerOfUIElementAndAccessKeyDisplayRequestedEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[190], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 190: add_AccessKeyDisplayRequested skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.AccessKeyDisplayRequestedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.AccessKeyDisplayRequestedEventArgs crosses a severed import edge
 
-// RemoveAccessKeyDisplayRequested (event remove remove_AccessKeyDisplayRequested) dispatches through IUIElement's vtable slot 191,
-// unregistering the AccessKeyDisplayRequested handler the token was returned for.
-func (self *IUIElement) RemoveAccessKeyDisplayRequested(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[191], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 191: remove_AccessKeyDisplayRequested skipped: AccessKeyDisplayRequested has no grounded handler
 
-// AddAccessKeyDisplayDismissed (event add add_AccessKeyDisplayDismissed) dispatches through IUIElement's vtable slot 192.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveAccessKeyDisplayDismissed.
-func (self *IUIElement) AddAccessKeyDisplayDismissed(handler *TypedEventHandlerOfUIElementAndAccessKeyDisplayDismissedEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[192], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 192: add_AccessKeyDisplayDismissed skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.AccessKeyDisplayDismissedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.AccessKeyDisplayDismissedEventArgs crosses a severed import edge
 
-// RemoveAccessKeyDisplayDismissed (event remove remove_AccessKeyDisplayDismissed) dispatches through IUIElement's vtable slot 193,
-// unregistering the AccessKeyDisplayDismissed handler the token was returned for.
-func (self *IUIElement) RemoveAccessKeyDisplayDismissed(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[193], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 193: remove_AccessKeyDisplayDismissed skipped: AccessKeyDisplayDismissed has no grounded handler
 
-// AddAccessKeyInvoked (event add add_AccessKeyInvoked) dispatches through IUIElement's vtable slot 194.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveAccessKeyInvoked.
-func (self *IUIElement) AddAccessKeyInvoked(handler *TypedEventHandlerOfUIElementAndAccessKeyInvokedEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[194], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 194: add_AccessKeyInvoked skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.AccessKeyInvokedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.AccessKeyInvokedEventArgs crosses a severed import edge
 
-// RemoveAccessKeyInvoked (event remove remove_AccessKeyInvoked) dispatches through IUIElement's vtable slot 195,
-// unregistering the AccessKeyInvoked handler the token was returned for.
-func (self *IUIElement) RemoveAccessKeyInvoked(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[195], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 195: remove_AccessKeyInvoked skipped: AccessKeyInvoked has no grounded handler
 
-// AddProcessKeyboardAccelerators (event add add_ProcessKeyboardAccelerators) dispatches through IUIElement's vtable slot 196.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveProcessKeyboardAccelerators.
-func (self *IUIElement) AddProcessKeyboardAccelerators(handler *TypedEventHandlerOfUIElementAndProcessKeyboardAcceleratorEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[196], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 196: add_ProcessKeyboardAccelerators skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs crosses a severed import edge
 
-// RemoveProcessKeyboardAccelerators (event remove remove_ProcessKeyboardAccelerators) dispatches through IUIElement's vtable slot 197,
-// unregistering the ProcessKeyboardAccelerators handler the token was returned for.
-func (self *IUIElement) RemoveProcessKeyboardAccelerators(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[197], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 197: remove_ProcessKeyboardAccelerators skipped: ProcessKeyboardAccelerators has no grounded handler
 
-// AddGettingFocus (event add add_GettingFocus) dispatches through IUIElement's vtable slot 198.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveGettingFocus.
-func (self *IUIElement) AddGettingFocus(handler *TypedEventHandlerOfUIElementAndGettingFocusEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[198], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 198: add_GettingFocus skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.GettingFocusEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.GettingFocusEventArgs crosses a severed import edge
 
-// RemoveGettingFocus (event remove remove_GettingFocus) dispatches through IUIElement's vtable slot 199,
-// unregistering the GettingFocus handler the token was returned for.
-func (self *IUIElement) RemoveGettingFocus(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[199], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 199: remove_GettingFocus skipped: GettingFocus has no grounded handler
 
-// AddLosingFocus (event add add_LosingFocus) dispatches through IUIElement's vtable slot 200.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveLosingFocus.
-func (self *IUIElement) AddLosingFocus(handler *TypedEventHandlerOfUIElementAndLosingFocusEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[200], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 200: add_LosingFocus skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.LosingFocusEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.LosingFocusEventArgs crosses a severed import edge
 
-// RemoveLosingFocus (event remove remove_LosingFocus) dispatches through IUIElement's vtable slot 201,
-// unregistering the LosingFocus handler the token was returned for.
-func (self *IUIElement) RemoveLosingFocus(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[201], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 201: remove_LosingFocus skipped: LosingFocus has no grounded handler
 
-// AddNoFocusCandidateFound (event add add_NoFocusCandidateFound) dispatches through IUIElement's vtable slot 202.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveNoFocusCandidateFound.
-func (self *IUIElement) AddNoFocusCandidateFound(handler *TypedEventHandlerOfUIElementAndNoFocusCandidateFoundEventArgs) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[202], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 202: add_NoFocusCandidateFound skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.UIElement, Microsoft.UI.Xaml.Input.NoFocusCandidateFoundEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Input.NoFocusCandidateFoundEventArgs crosses a severed import edge
 
-// RemoveNoFocusCandidateFound (event remove remove_NoFocusCandidateFound) dispatches through IUIElement's vtable slot 203,
-// unregistering the NoFocusCandidateFound handler the token was returned for.
-func (self *IUIElement) RemoveNoFocusCandidateFound(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[203], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 203: remove_NoFocusCandidateFound skipped: NoFocusCandidateFound has no grounded handler
 
-// AddPreviewKeyDown (event add add_PreviewKeyDown) dispatches through IUIElement's vtable slot 204.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePreviewKeyDown.
-func (self *IUIElement) AddPreviewKeyDown(handler *KeyEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[204], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 204: add_PreviewKeyDown skipped: Microsoft.UI.Xaml.Input.KeyEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.KeyRoutedEventArgs crosses a severed import edge
 
-// RemovePreviewKeyDown (event remove remove_PreviewKeyDown) dispatches through IUIElement's vtable slot 205,
-// unregistering the PreviewKeyDown handler the token was returned for.
-func (self *IUIElement) RemovePreviewKeyDown(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[205], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 205: remove_PreviewKeyDown skipped: PreviewKeyDown has no grounded handler
 
-// AddPreviewKeyUp (event add add_PreviewKeyUp) dispatches through IUIElement's vtable slot 206.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemovePreviewKeyUp.
-func (self *IUIElement) AddPreviewKeyUp(handler *KeyEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[206], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 206: add_PreviewKeyUp skipped: Microsoft.UI.Xaml.Input.KeyEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Input.KeyRoutedEventArgs crosses a severed import edge
 
-// RemovePreviewKeyUp (event remove remove_PreviewKeyUp) dispatches through IUIElement's vtable slot 207,
-// unregistering the PreviewKeyUp handler the token was returned for.
-func (self *IUIElement) RemovePreviewKeyUp(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[207], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 207: remove_PreviewKeyUp skipped: PreviewKeyUp has no grounded handler
 
 // AddBringIntoViewRequested (event add add_BringIntoViewRequested) dispatches through IUIElement's vtable slot 208.
 // The handler stays registered (and referenced by the runtime) until the
@@ -5666,18 +5224,9 @@ func (self *IUIElement) Arrange(finalRect wrtfoundation.Rect) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// CapturePointer dispatches through IUIElement's vtable slot 212.
-func (self *IUIElement) CapturePointer(value *uixamlinput.IPointer) (bool, error) {
-	result := new(byte)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[212], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result != 0, win32.ErrIfFailed(int32(r1))
-}
+// slot 212: CapturePointer skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
-// ReleasePointerCapture dispatches through IUIElement's vtable slot 213.
-func (self *IUIElement) ReleasePointerCapture(value *uixamlinput.IPointer) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[213], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 213: ReleasePointerCapture skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
 // ReleasePointerCaptures dispatches through IUIElement's vtable slot 214.
 func (self *IUIElement) ReleasePointerCaptures() error {
@@ -5747,11 +5296,7 @@ func (self *IUIElement) StartBringIntoViewWithOptions(options *IBringIntoViewOpt
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TryInvokeKeyboardAccelerator dispatches through IUIElement's vtable slot 225.
-func (self *IUIElement) TryInvokeKeyboardAccelerator(args *uixamlinput.IProcessKeyboardAcceleratorEventArgs) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[225], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(args)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 225: TryInvokeKeyboardAccelerator skipped: reference to Microsoft.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs crosses a severed import edge
 
 // Focus dispatches through IUIElement's vtable slot 226.
 func (self *IUIElement) Focus(value FocusState) (bool, error) {
@@ -5815,17 +5360,9 @@ func (self *IUIElementOverrides) GetChildrenInTabFocusOrder() (*IIterableOfDepen
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// OnKeyboardAcceleratorInvoked dispatches through IUIElementOverrides's vtable slot 10.
-func (self *IUIElementOverrides) OnKeyboardAcceleratorInvoked(args *uixamlinput.IKeyboardAcceleratorInvokedEventArgs) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(args)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 10: OnKeyboardAcceleratorInvoked skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAcceleratorInvokedEventArgs crosses a severed import edge
 
-// OnProcessKeyboardAccelerators dispatches through IUIElementOverrides's vtable slot 11.
-func (self *IUIElementOverrides) OnProcessKeyboardAccelerators(args *uixamlinput.IProcessKeyboardAcceleratorEventArgs) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(args)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 11: OnProcessKeyboardAccelerators skipped: reference to Microsoft.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs crosses a severed import edge
 
 // OnBringIntoViewRequested dispatches through IUIElementOverrides's vtable slot 12.
 func (self *IUIElementOverrides) OnBringIntoViewRequested(e *IBringIntoViewRequestedEventArgs) error {
@@ -6437,12 +5974,7 @@ func (self *IUIElementStatics) TabIndexProperty() (*IDependencyProperty, error) 
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// TryStartDirectManipulation dispatches through IUIElementStatics's vtable slot 86.
-func (self *IUIElementStatics) TryStartDirectManipulation(value *uixamlinput.IPointer) (bool, error) {
-	result := new(byte)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[86], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result != 0, win32.ErrIfFailed(int32(r1))
-}
+// slot 86: TryStartDirectManipulation skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
 // RegisterAsScrollPort dispatches through IUIElementStatics's vtable slot 87.
 func (self *IUIElementStatics) RegisterAsScrollPort(element *IUIElement) error {

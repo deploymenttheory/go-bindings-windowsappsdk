@@ -270,6 +270,45 @@ alias, or one import path appears under two aliases, and CI runs it. Left
 unchecked this is a compile failure across roughly thirty packages on the first
 full run, naming neither the alias nor the namespaces that collided.
 
+### The base-class chain
+
+`Microsoft.UI.Xaml.Controls.IButton` carries **only** `get_Flyout`/`put_Flyout`.
+`Click` is on `Primitives.IButtonBase` at slot 14; `Content` is on
+`IContentControl`. And XAML's `[ExclusiveTo]` interfaces carry **no `Requires` at
+all**, so the interface hierarchy offers no route either — walking `Extends` is the
+whole mechanism.
+
+`Class.BaseClass` records it (schema version 2), and the class emitter walks the
+chain to project each base's interfaces as `As<Interface>()` accessors on the
+derived class. `Button` gains fifteen, reaching `ContentControl`, `Control`,
+`FrameworkElement`, `UIElement` and `DependencyObject`; each records which base it
+came from.
+
+Two things that cost a wrong turn each, so they are written down:
+
+**The import graph has to model what is emitted.** Projecting a base's interfaces
+onto a derived class creates import edges that appear nowhere in the derived
+namespace's own `TypeRef`s. The first version left `ComputeBlockedImports` ignorant
+of them, it severed by an incomplete graph, and the output did not compile. Both
+now share `Registry.WalkBaseChain`, so the graph the breaker cuts is the graph the
+emitter builds.
+
+**Weighting inherited edges higher makes things worse.** It was tried, on the
+reasoning that losing one costs a whole accessor rather than one signature. Raising
+those weights only moves the cut onto other edges in the same cycles, and those
+carry more plain references: 870 degradations became 1040, without recovering the
+edge it was aimed at. `Controls` ↔ `Controls.Primitives` is genuinely mutual and
+dense both ways, one direction has to go, and Go cannot express the cycle.
+
+The *capability* is not lost on a severed edge, only the accessor. A consuming
+package is not part of the generated tree and closes no cycle, so a caller can
+reach the interface directly:
+
+```go
+base, err := winrt.QueryInterface[primitives.IButtonBase](
+    unsafe.Pointer(button), &primitives.IID_IButtonBase)
+```
+
 ## Architecture support
 
 Every file carries `//go:build windows && amd64`.

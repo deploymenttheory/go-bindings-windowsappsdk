@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Media.Animation",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -8697,7 +8697,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "BackEase": {
       "default_interface": {
@@ -8718,7 +8724,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IBackEaseStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "BasicConnectedAnimationConfiguration": {
       "default_interface": {
@@ -8738,7 +8750,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IBasicConnectedAnimationConfigurationFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ConnectedAnimationConfiguration",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "BeginStoryboard": {
       "default_interface": {
@@ -8759,7 +8777,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IBeginStoryboardStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "TriggerAction",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "BounceEase": {
       "default_interface": {
@@ -8780,7 +8804,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IBounceEaseStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "CircleEase": {
       "default_interface": {
@@ -8798,7 +8828,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ColorAnimation": {
       "default_interface": {
@@ -8819,7 +8855,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IColorAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ColorAnimationUsingKeyFrames": {
       "default_interface": {
@@ -8840,7 +8882,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IColorAnimationUsingKeyFramesStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ColorKeyFrame": {
       "default_interface": {
@@ -8863,7 +8911,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IColorKeyFrameFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ColorKeyFrameCollection": {
       "default_interface": {
@@ -8934,7 +8988,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ICommonNavigationTransitionInfoStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NavigationTransitionInfo",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ConnectedAnimation": {
       "default_interface": {
@@ -9009,7 +9069,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IContentThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ContinuumNavigationTransitionInfo": {
       "default_interface": {
@@ -9030,7 +9096,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IContinuumNavigationTransitionInfoStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NavigationTransitionInfo",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "CubicEase": {
       "default_interface": {
@@ -9048,7 +9120,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DirectConnectedAnimationConfiguration": {
       "default_interface": {
@@ -9068,7 +9146,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IDirectConnectedAnimationConfigurationFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ConnectedAnimationConfiguration",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DiscreteColorKeyFrame": {
       "default_interface": {
@@ -9086,7 +9170,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ColorKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DiscreteDoubleKeyFrame": {
       "default_interface": {
@@ -9104,7 +9194,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DoubleKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DiscreteObjectKeyFrame": {
       "default_interface": {
@@ -9122,7 +9218,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ObjectKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DiscretePointKeyFrame": {
       "default_interface": {
@@ -9140,7 +9242,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PointKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DoubleAnimation": {
       "default_interface": {
@@ -9161,7 +9269,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDoubleAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DoubleAnimationUsingKeyFrames": {
       "default_interface": {
@@ -9182,7 +9296,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDoubleAnimationUsingKeyFramesStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DoubleKeyFrame": {
       "default_interface": {
@@ -9205,7 +9325,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IDoubleKeyFrameFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DoubleKeyFrameCollection": {
       "default_interface": {
@@ -9276,7 +9402,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDragItemThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DragOverThemeAnimation": {
       "default_interface": {
@@ -9297,7 +9429,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDragOverThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DrillInNavigationTransitionInfo": {
       "default_interface": {
@@ -9315,7 +9453,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NavigationTransitionInfo",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DrillInThemeAnimation": {
       "default_interface": {
@@ -9336,7 +9480,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDrillInThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DrillOutThemeAnimation": {
       "default_interface": {
@@ -9357,7 +9507,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDrillOutThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "DropTargetItemThemeAnimation": {
       "default_interface": {
@@ -9378,7 +9534,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IDropTargetItemThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "EasingColorKeyFrame": {
       "default_interface": {
@@ -9399,7 +9561,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IEasingColorKeyFrameStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ColorKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "EasingDoubleKeyFrame": {
       "default_interface": {
@@ -9420,7 +9588,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IEasingDoubleKeyFrameStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DoubleKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "EasingFunctionBase": {
       "default_interface": {
@@ -9443,7 +9617,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IEasingFunctionBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "EasingPointKeyFrame": {
       "default_interface": {
@@ -9464,7 +9644,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IEasingPointKeyFrameStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PointKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "EdgeUIThemeTransition": {
       "default_interface": {
@@ -9485,7 +9671,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IEdgeUIThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ElasticEase": {
       "default_interface": {
@@ -9506,7 +9698,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IElasticEaseStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "EntranceNavigationTransitionInfo": {
       "default_interface": {
@@ -9527,7 +9725,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IEntranceNavigationTransitionInfoStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NavigationTransitionInfo",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "EntranceThemeTransition": {
       "default_interface": {
@@ -9548,7 +9752,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IEntranceThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ExponentialEase": {
       "default_interface": {
@@ -9569,7 +9779,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IExponentialEaseStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "FadeInThemeAnimation": {
       "default_interface": {
@@ -9590,7 +9806,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IFadeInThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "FadeOutThemeAnimation": {
       "default_interface": {
@@ -9611,7 +9833,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IFadeOutThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "GravityConnectedAnimationConfiguration": {
       "default_interface": {
@@ -9631,7 +9859,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IGravityConnectedAnimationConfigurationFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ConnectedAnimationConfiguration",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "KeySpline": {
       "default_interface": {
@@ -9649,7 +9883,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "KeyTimeHelper": {
       "default_interface": {
@@ -9686,7 +9926,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ColorKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "LinearDoubleKeyFrame": {
       "default_interface": {
@@ -9704,7 +9950,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DoubleKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "LinearPointKeyFrame": {
       "default_interface": {
@@ -9722,7 +9974,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PointKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "NavigationThemeTransition": {
       "default_interface": {
@@ -9743,7 +10001,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.INavigationThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "NavigationTransitionInfo": {
       "default_interface": {
@@ -9769,7 +10033,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.INavigationTransitionInfoFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ObjectAnimationUsingKeyFrames": {
       "default_interface": {
@@ -9790,7 +10060,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IObjectAnimationUsingKeyFramesStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ObjectKeyFrame": {
       "default_interface": {
@@ -9813,7 +10089,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IObjectKeyFrameFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ObjectKeyFrameCollection": {
       "default_interface": {
@@ -9884,7 +10166,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPaneThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PointAnimation": {
       "default_interface": {
@@ -9905,7 +10193,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPointAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PointAnimationUsingKeyFrames": {
       "default_interface": {
@@ -9926,7 +10220,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPointAnimationUsingKeyFramesStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PointKeyFrame": {
       "default_interface": {
@@ -9949,7 +10249,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.IPointKeyFrameFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "PointKeyFrameCollection": {
       "default_interface": {
@@ -10020,7 +10326,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPointerDownThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PointerUpThemeAnimation": {
       "default_interface": {
@@ -10041,7 +10353,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPointerUpThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PopInThemeAnimation": {
       "default_interface": {
@@ -10062,7 +10380,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPopInThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PopOutThemeAnimation": {
       "default_interface": {
@@ -10083,7 +10407,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPopOutThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PopupThemeTransition": {
       "default_interface": {
@@ -10104,7 +10434,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPopupThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "PowerEase": {
       "default_interface": {
@@ -10125,7 +10461,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IPowerEaseStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "QuadraticEase": {
       "default_interface": {
@@ -10143,7 +10485,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "QuarticEase": {
       "default_interface": {
@@ -10161,7 +10509,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "QuinticEase": {
       "default_interface": {
@@ -10179,7 +10533,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "ReorderThemeTransition": {
       "default_interface": {
@@ -10197,7 +10557,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "RepeatBehaviorHelper": {
       "default_interface": {
@@ -10237,7 +10603,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IRepositionThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "RepositionThemeTransition": {
       "default_interface": {
@@ -10258,7 +10630,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IRepositionThemeTransitionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transition",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SineEase": {
       "default_interface": {
@@ -10276,7 +10654,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "EasingFunctionBase",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SlideNavigationTransitionInfo": {
       "default_interface": {
@@ -10297,7 +10681,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISlideNavigationTransitionInfoStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NavigationTransitionInfo",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SplineColorKeyFrame": {
       "default_interface": {
@@ -10318,7 +10708,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISplineColorKeyFrameStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ColorKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SplineDoubleKeyFrame": {
       "default_interface": {
@@ -10339,7 +10735,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISplineDoubleKeyFrameStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DoubleKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SplinePointKeyFrame": {
       "default_interface": {
@@ -10360,7 +10762,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISplinePointKeyFrameStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PointKeyFrame",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SplitCloseThemeAnimation": {
       "default_interface": {
@@ -10381,7 +10789,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISplitCloseThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SplitOpenThemeAnimation": {
       "default_interface": {
@@ -10402,7 +10816,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISplitOpenThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "Storyboard": {
       "default_interface": {
@@ -10423,7 +10843,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.IStoryboardStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SuppressNavigationTransitionInfo": {
       "default_interface": {
@@ -10441,7 +10867,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NavigationTransitionInfo",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SwipeBackThemeAnimation": {
       "default_interface": {
@@ -10462,7 +10894,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISwipeBackThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "SwipeHintThemeAnimation": {
       "default_interface": {
@@ -10483,7 +10921,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Animation.ISwipeHintThemeAnimationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Timeline",
+        "namespace": "Microsoft.UI.Xaml.Media.Animation",
+        "target_kind": "Class"
+      }
     },
     "Timeline": {
       "default_interface": {
@@ -10506,7 +10950,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.ITimelineFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TimelineCollection": {
       "default_interface": {
@@ -10576,7 +11026,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Animation.ITransitionFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TransitionCollection": {
       "default_interface": {

@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Automation",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -4867,7 +4867,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Automation.IAutomationAnnotationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "AutomationElementIdentifiers": {
       "default_interface": {

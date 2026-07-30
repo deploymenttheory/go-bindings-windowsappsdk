@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Windowing",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.1.3",
   "winmd_file": "Microsoft.UI.winmd",
   "enums": {
@@ -3691,7 +3691,13 @@
       "static_interfaces": [
         "Microsoft.UI.Windowing.ICompactOverlayPresenterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "AppWindowPresenter",
+        "namespace": "Microsoft.UI.Windowing",
+        "target_kind": "Class"
+      }
     },
     "DisplayArea": {
       "default_interface": {
@@ -3747,7 +3753,13 @@
       "static_interfaces": [
         "Microsoft.UI.Windowing.IFullScreenPresenterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "AppWindowPresenter",
+        "namespace": "Microsoft.UI.Windowing",
+        "target_kind": "Class"
+      }
     },
     "OverlappedPresenter": {
       "default_interface": {
@@ -3780,7 +3792,13 @@
         "Microsoft.UI.Windowing.IOverlappedPresenterStatics2",
         "Microsoft.UI.Windowing.IOverlappedPresenterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "AppWindowPresenter",
+        "namespace": "Microsoft.UI.Windowing",
+        "target_kind": "Class"
+      }
     }
   }
 }

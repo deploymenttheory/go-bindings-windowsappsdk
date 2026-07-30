@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Input",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.1.3",
   "winmd_file": "Microsoft.UI.winmd",
   "enums": {
@@ -8433,7 +8433,13 @@
         "Microsoft.UI.Input.IInputActivationListenerStatics2",
         "Microsoft.UI.Input.IInputActivationListenerStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputActivationListenerActivationChangedEventArgs": {
       "default_interface": {
@@ -8498,7 +8504,13 @@
       "composable_factories": [
         "Microsoft.UI.Input.IInputCustomCursorFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputCursor",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputDesktopNamedResourceCursor": {
       "default_interface": {
@@ -8518,7 +8530,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputDesktopNamedResourceCursorStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputCursor",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputDesktopResourceCursor": {
       "default_interface": {
@@ -8538,7 +8556,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputDesktopResourceCursorStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputCursor",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputFocusController": {
       "default_interface": {
@@ -8570,7 +8594,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputFocusControllerStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputFocusNavigationHost": {
       "default_interface": {
@@ -8591,7 +8621,13 @@
         "Microsoft.UI.Input.IInputFocusNavigationHostStatics",
         "Microsoft.UI.Input.IInputFocusNavigationHostStatics2"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputKeyboardSource": {
       "default_interface": {
@@ -8618,7 +8654,13 @@
         "Microsoft.UI.Input.IInputKeyboardSourceStatics",
         "Microsoft.UI.Input.IInputKeyboardSourceStatics2"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputLightDismissAction": {
       "default_interface": {
@@ -8638,7 +8680,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputLightDismissActionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputLightDismissEventArgs": {
       "default_interface": {
@@ -8718,7 +8766,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputPointerSourceStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputPreTranslateKeyboardSource": {
       "default_interface": {
@@ -8738,7 +8792,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputPreTranslateKeyboardSourceStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputObject",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "InputSystemCursor": {
       "default_interface": {
@@ -8758,7 +8818,13 @@
       "static_interfaces": [
         "Microsoft.UI.Input.IInputSystemCursorStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InputCursor",
+        "namespace": "Microsoft.UI.Input",
+        "target_kind": "Class"
+      }
     },
     "KeyEventArgs": {
       "default_interface": {

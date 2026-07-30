@@ -17,9 +17,13 @@
 // they live in an internal package.
 package wasdkmeta
 
-// CurrentSchemaVersion is bumped when the IR changes incompatibly; readers
-// reject files with a different version so stale caches are re-ingested.
-const CurrentSchemaVersion = 1
+// CurrentSchemaVersion is bumped when the IR changes incompatibly; readers reject
+// files with a different version so stale caches are re-ingested.
+//
+// Version 2 added Class.BaseClass. go-bindings-winrt's own files are still at
+// version 1 and are read through their own pinned constant (see
+// wasdkmeta/external), so this moving does not stop them being read.
+const CurrentSchemaVersion = 2
 
 // NamespaceMeta is the serialized unit: the full API surface of one namespace,
 // merged across every winmd that contributes to it.
@@ -192,6 +196,17 @@ type Class struct {
 	// ButtonBase extends Control extends FrameworkElement extends UIElement
 	// extends DependencyObject.
 	Composable bool `json:"composable,omitempty"`
+
+	// BaseClass is the runtime class this one extends, nil when it extends
+	// System.Object. It is the ONLY route to inherited members.
+	//
+	// A class's InterfaceImpl list holds the interfaces declared at its own
+	// level and nothing more: Button's is just [IButton], which carries only
+	// Flyout. Click is on Primitives.IButtonBase and Content on
+	// IContentControl, two and three levels up. XAML's [ExclusiveTo] interfaces
+	// also carry no Requires at all, so the interface hierarchy gives no help
+	// either — walking Extends is the whole mechanism.
+	BaseClass *TypeRef `json:"base_class,omitempty"`
 }
 
 // Delegate is a WinRT delegate: a TypeDef extending System.MulticastDelegate

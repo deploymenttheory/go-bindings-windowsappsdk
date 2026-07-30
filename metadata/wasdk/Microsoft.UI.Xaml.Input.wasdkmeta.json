@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Input",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -5513,7 +5513,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ContextRequestedEventArgs": {
       "default_interface": {
@@ -5531,7 +5537,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DoubleTappedRoutedEventArgs": {
       "default_interface": {
@@ -5549,7 +5561,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ExecuteRequestedEventArgs": {
       "default_interface": {
@@ -5666,7 +5684,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "HoldingRoutedEventArgs": {
       "default_interface": {
@@ -5684,7 +5708,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "InertiaExpansionBehavior": {
       "default_interface": {
@@ -5750,7 +5780,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "InputScopeName": {
       "default_interface": {
@@ -5771,7 +5807,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Input.IInputScopeNameFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "KeyRoutedEventArgs": {
       "default_interface": {
@@ -5788,7 +5830,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "KeyboardAccelerator": {
       "default_interface": {
@@ -5811,7 +5859,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Input.IKeyboardAcceleratorFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "KeyboardAcceleratorInvokedEventArgs": {
       "default_interface": {
@@ -5844,7 +5898,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ManipulationCompletedRoutedEventArgs": {
       "default_interface": {
@@ -5862,7 +5922,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ManipulationDeltaRoutedEventArgs": {
       "default_interface": {
@@ -5880,7 +5946,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ManipulationInertiaStartingRoutedEventArgs": {
       "default_interface": {
@@ -5898,7 +5970,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ManipulationPivot": {
       "default_interface": {
@@ -5938,7 +6016,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Input.IManipulationStartedRoutedEventArgsFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ManipulationStartingRoutedEventArgs": {
       "default_interface": {
@@ -5956,7 +6040,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "NoFocusCandidateFoundEventArgs": {
       "default_interface": {
@@ -5973,7 +6063,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Pointer": {
       "default_interface": {
@@ -6006,7 +6102,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ProcessKeyboardAcceleratorEventArgs": {
       "default_interface": {
@@ -6040,7 +6142,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "StandardUICommand": {
       "default_interface": {
@@ -6063,7 +6171,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Input.IStandardUICommandFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "XamlUICommand",
+        "namespace": "Microsoft.UI.Xaml.Input",
+        "target_kind": "Class"
+      }
     },
     "TappedRoutedEventArgs": {
       "default_interface": {
@@ -6081,7 +6195,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "XamlUICommand": {
       "default_interface": {
@@ -6110,7 +6230,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Input.IXamlUICommandFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     }
   },
   "delegates": {

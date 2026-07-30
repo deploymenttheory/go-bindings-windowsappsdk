@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Content",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.1.3",
   "winmd_file": "Microsoft.UI.winmd",
   "enums": {
@@ -4853,7 +4853,13 @@
         "Microsoft.UI.Content.IDesktopChildSiteBridgeStatics",
         "Microsoft.UI.Content.IDesktopChildSiteBridgeStatics2"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DesktopSiteBridge",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Class"
+      }
     },
     "DesktopPopupSiteBridge": {
       "default_interface": {

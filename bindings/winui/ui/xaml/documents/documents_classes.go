@@ -8,6 +8,8 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -16,6 +18,27 @@ import (
 // the embedded IInspectable → IUnknown chain).
 type Block struct {
 	IBlock
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Block) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Block) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Block) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BlockStatics returns the Microsoft.UI.Xaml.Documents.IBlockStatics statics of the
@@ -73,6 +96,41 @@ func NewBold() (*Bold, error) {
 	return winrt.QueryInterface[Bold](unsafe.Pointer(instance), &IID_IBold)
 }
 
+// AsSpan queries the instance's ISpan interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Span.
+// The returned reference is owned by the caller.
+func (self *Bold) AsSpan() (*ISpan, error) {
+	return winrt.QueryInterface[ISpan](unsafe.Pointer(self), &IID_ISpan)
+}
+
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *Bold) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Bold) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Bold) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Bold) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // Glyphs is the Microsoft.UI.Xaml.Documents.Glyphs runtime class, surfaced through its
 // default interface IGlyphs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -89,6 +147,76 @@ func NewGlyphs() (*Glyphs, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Glyphs](unsafe.Pointer(instance), &IID_IGlyphs)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // GlyphsStatics returns the Microsoft.UI.Xaml.Documents.IGlyphsStatics statics of the
@@ -121,6 +249,41 @@ func NewHyperlink() (*Hyperlink, error) {
 	return winrt.QueryInterface[Hyperlink](unsafe.Pointer(instance), &IID_IHyperlink)
 }
 
+// AsSpan queries the instance's ISpan interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Span.
+// The returned reference is owned by the caller.
+func (self *Hyperlink) AsSpan() (*ISpan, error) {
+	return winrt.QueryInterface[ISpan](unsafe.Pointer(self), &IID_ISpan)
+}
+
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *Hyperlink) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Hyperlink) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Hyperlink) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Hyperlink) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // HyperlinkStatics returns the Microsoft.UI.Xaml.Documents.IHyperlinkStatics statics of the
 // Microsoft.UI.Xaml.Documents.Hyperlink runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -140,11 +303,39 @@ type HyperlinkClickEventArgs struct {
 	IHyperlinkClickEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *HyperlinkClickEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // Inline is the Microsoft.UI.Xaml.Documents.Inline runtime class, surfaced through its
 // default interface IInline. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Inline struct {
 	IInline
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Inline) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Inline) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Inline) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewInline constructs a Microsoft.UI.Xaml.Documents.Inline instance through
@@ -190,6 +381,34 @@ func NewInlineUIContainer() (*InlineUIContainer, error) {
 	return winrt.QueryInterface[InlineUIContainer](unsafe.Pointer(instance), &IID_IInlineUIContainer)
 }
 
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *InlineUIContainer) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *InlineUIContainer) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *InlineUIContainer) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *InlineUIContainer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // Italic is the Microsoft.UI.Xaml.Documents.Italic runtime class, surfaced through its
 // default interface IItalic. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -206,6 +425,41 @@ func NewItalic() (*Italic, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Italic](unsafe.Pointer(instance), &IID_IItalic)
+}
+
+// AsSpan queries the instance's ISpan interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Span.
+// The returned reference is owned by the caller.
+func (self *Italic) AsSpan() (*ISpan, error) {
+	return winrt.QueryInterface[ISpan](unsafe.Pointer(self), &IID_ISpan)
+}
+
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *Italic) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Italic) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Italic) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Italic) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // LineBreak is the Microsoft.UI.Xaml.Documents.LineBreak runtime class, surfaced through its
@@ -226,6 +480,34 @@ func NewLineBreak() (*LineBreak, error) {
 	return winrt.QueryInterface[LineBreak](unsafe.Pointer(instance), &IID_ILineBreak)
 }
 
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *LineBreak) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *LineBreak) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *LineBreak) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LineBreak) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // Paragraph is the Microsoft.UI.Xaml.Documents.Paragraph runtime class, surfaced through its
 // default interface IParagraph. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -242,6 +524,34 @@ func NewParagraph() (*Paragraph, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Paragraph](unsafe.Pointer(instance), &IID_IParagraph)
+}
+
+// AsBlock queries the instance's IBlock interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Block.
+// The returned reference is owned by the caller.
+func (self *Paragraph) AsBlock() (*IBlock, error) {
+	return winrt.QueryInterface[IBlock](unsafe.Pointer(self), &IID_IBlock)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Paragraph) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Paragraph) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Paragraph) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ParagraphStatics returns the Microsoft.UI.Xaml.Documents.IParagraphStatics statics of the
@@ -274,6 +584,34 @@ func NewRun() (*Run, error) {
 	return winrt.QueryInterface[Run](unsafe.Pointer(instance), &IID_IRun)
 }
 
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *Run) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Run) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Run) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Run) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // RunStatics returns the Microsoft.UI.Xaml.Documents.IRunStatics statics of the
 // Microsoft.UI.Xaml.Documents.Run runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -291,6 +629,34 @@ func RunStatics() (*IRunStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type Span struct {
 	ISpan
+}
+
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *Span) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Span) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Span) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Span) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewSpan constructs a Microsoft.UI.Xaml.Documents.Span instance through
@@ -329,6 +695,13 @@ type TextElement struct {
 // The returned reference is owned by the caller.
 func (self *TextElement) AsTextElementOverrides() (*ITextElementOverrides, error) {
 	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TextElement) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // TextElementStatics returns the Microsoft.UI.Xaml.Documents.ITextElementStatics statics of the
@@ -394,6 +767,13 @@ type TextHighlighterBase struct {
 	ITextHighlighterBase
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TextHighlighterBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // TextPointer is the Microsoft.UI.Xaml.Documents.TextPointer runtime class, surfaced through its
 // default interface ITextPointer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -436,4 +816,39 @@ func NewUnderline() (*Underline, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Underline](unsafe.Pointer(instance), &IID_IUnderline)
+}
+
+// AsSpan queries the instance's ISpan interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Span.
+// The returned reference is owned by the caller.
+func (self *Underline) AsSpan() (*ISpan, error) {
+	return winrt.QueryInterface[ISpan](unsafe.Pointer(self), &IID_ISpan)
+}
+
+// AsInline queries the instance's IInline interface.
+// Inherited from Microsoft.UI.Xaml.Documents.Inline.
+// The returned reference is owned by the caller.
+func (self *Underline) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
+}
+
+// AsTextElement queries the instance's ITextElement interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Underline) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
+// AsTextElementOverrides queries the instance's ITextElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Documents.TextElement.
+// The returned reference is owned by the caller.
+func (self *Underline) AsTextElementOverrides() (*ITextElementOverrides, error) {
+	return winrt.QueryInterface[ITextElementOverrides](unsafe.Pointer(self), &IID_ITextElementOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Underline) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }

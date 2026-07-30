@@ -14,6 +14,7 @@ import (
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
+	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	uixamlinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/input"
 	uixamlmedia "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/media"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
@@ -163,9 +164,22 @@ func (self *IAutoSuggestBoxHelperStatics) KeepInteriorCornersSquareProperty() (*
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: SetKeepInteriorCornersSquare skipped: reference to Microsoft.UI.Xaml.Controls.AutoSuggestBox crosses a severed import edge
+// SetKeepInteriorCornersSquare dispatches through IAutoSuggestBoxHelperStatics's vtable slot 7.
+func (self *IAutoSuggestBoxHelperStatics) SetKeepInteriorCornersSquare(autoSuggestBox *uixamlcontrols.IAutoSuggestBox, value bool) error {
+	_value := uintptr(0)
+	if value {
+		_value = 1
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(autoSuggestBox)), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: GetKeepInteriorCornersSquare skipped: reference to Microsoft.UI.Xaml.Controls.AutoSuggestBox crosses a severed import edge
+// GetKeepInteriorCornersSquare dispatches through IAutoSuggestBoxHelperStatics's vtable slot 8.
+func (self *IAutoSuggestBoxHelperStatics) GetKeepInteriorCornersSquare(autoSuggestBox *uixamlcontrols.IAutoSuggestBox) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(autoSuggestBox)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // IButtonBase is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IButtonBase.
 // IID: 65714269-2473-5327-a652-0ea6bce7f403
@@ -177,9 +191,18 @@ type IButtonBase struct {
 // IID_IButtonBase is the interface identifier for IButtonBase.
 var IID_IButtonBase = win32.GUID{Data1: 0x65714269, Data2: 0x2473, Data3: 0x5327, Data4: [8]byte{0xa6, 0x52, 0x0e, 0xa6, 0xbc, 0xe7, 0xf4, 0x03}}
 
-// slot 6: get_ClickMode skipped: reference to Microsoft.UI.Xaml.Controls.ClickMode crosses a severed import edge
+// ClickMode (propget get_ClickMode) dispatches through IButtonBase's vtable slot 6.
+func (self *IButtonBase) ClickMode() (uixamlcontrols.ClickMode, error) {
+	result := new(uixamlcontrols.ClickMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_ClickMode skipped: reference to Microsoft.UI.Xaml.Controls.ClickMode crosses a severed import edge
+// SetClickMode (propput put_ClickMode) dispatches through IButtonBase's vtable slot 7.
+func (self *IButtonBase) SetClickMode(value uixamlcontrols.ClickMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IsPointerOver (propget get_IsPointerOver) dispatches through IButtonBase's vtable slot 8.
 func (self *IButtonBase) IsPointerOver() (bool, error) {
@@ -667,9 +690,18 @@ type IColorPickerSlider struct {
 // IID_IColorPickerSlider is the interface identifier for IColorPickerSlider.
 var IID_IColorPickerSlider = win32.GUID{Data1: 0x456231bb, Data2: 0x5a4c, Data3: 0x564b, Data4: [8]byte{0x9b, 0x3d, 0x2f, 0x15, 0x70, 0x61, 0xa0, 0xf8}}
 
-// slot 6: get_ColorChannel skipped: reference to Microsoft.UI.Xaml.Controls.ColorPickerHsvChannel crosses a severed import edge
+// ColorChannel (propget get_ColorChannel) dispatches through IColorPickerSlider's vtable slot 6.
+func (self *IColorPickerSlider) ColorChannel() (uixamlcontrols.ColorPickerHsvChannel, error) {
+	result := new(uixamlcontrols.ColorPickerHsvChannel)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_ColorChannel skipped: reference to Microsoft.UI.Xaml.Controls.ColorPickerHsvChannel crosses a severed import edge
+// SetColorChannel (propput put_ColorChannel) dispatches through IColorPickerSlider's vtable slot 7.
+func (self *IColorPickerSlider) SetColorChannel(value uixamlcontrols.ColorPickerHsvChannel) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IColorPickerSliderFactory is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IColorPickerSliderFactory.
 // IID: d0cb1f0e-0771-5c7d-ba14-aa431179b2ac
@@ -820,17 +852,47 @@ func (self *IColorSpectrum) SetMaxValue(value int32) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 22: get_Shape skipped: reference to Microsoft.UI.Xaml.Controls.ColorSpectrumShape crosses a severed import edge
+// Shape (propget get_Shape) dispatches through IColorSpectrum's vtable slot 22.
+func (self *IColorSpectrum) Shape() (uixamlcontrols.ColorSpectrumShape, error) {
+	result := new(uixamlcontrols.ColorSpectrumShape)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[22], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 23: put_Shape skipped: reference to Microsoft.UI.Xaml.Controls.ColorSpectrumShape crosses a severed import edge
+// SetShape (propput put_Shape) dispatches through IColorSpectrum's vtable slot 23.
+func (self *IColorSpectrum) SetShape(value uixamlcontrols.ColorSpectrumShape) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 24: get_Components skipped: reference to Microsoft.UI.Xaml.Controls.ColorSpectrumComponents crosses a severed import edge
+// Components (propget get_Components) dispatches through IColorSpectrum's vtable slot 24.
+func (self *IColorSpectrum) Components() (uixamlcontrols.ColorSpectrumComponents, error) {
+	result := new(uixamlcontrols.ColorSpectrumComponents)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 25: put_Components skipped: reference to Microsoft.UI.Xaml.Controls.ColorSpectrumComponents crosses a severed import edge
+// SetComponents (propput put_Components) dispatches through IColorSpectrum's vtable slot 25.
+func (self *IColorSpectrum) SetComponents(value uixamlcontrols.ColorSpectrumComponents) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 26: add_ColorChanged skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ColorSpectrum, Microsoft.UI.Xaml.Controls.ColorChangedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ColorChangedEventArgs crosses a severed import edge
+// AddColorChanged (event add add_ColorChanged) dispatches through IColorSpectrum's vtable slot 26.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveColorChanged.
+func (self *IColorSpectrum) AddColorChanged(handler *TypedEventHandlerOfColorSpectrumAndColorChangedEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[26], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 27: remove_ColorChanged skipped: ColorChanged has no grounded handler
+// RemoveColorChanged (event remove remove_ColorChanged) dispatches through IColorSpectrum's vtable slot 27,
+// unregistering the ColorChanged handler the token was returned for.
+func (self *IColorSpectrum) RemoveColorChanged(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[27], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IColorSpectrumFactory is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IColorSpectrumFactory.
 // IID: efecd442-8c2a-50a6-88a3-3999ea01f096
@@ -1055,9 +1117,22 @@ func (self *IComboBoxHelperStatics) KeepInteriorCornersSquareProperty() (*uixaml
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: SetKeepInteriorCornersSquare skipped: reference to Microsoft.UI.Xaml.Controls.ComboBox crosses a severed import edge
+// SetKeepInteriorCornersSquare dispatches through IComboBoxHelperStatics's vtable slot 7.
+func (self *IComboBoxHelperStatics) SetKeepInteriorCornersSquare(comboBox *uixamlcontrols.IComboBox, value bool) error {
+	_value := uintptr(0)
+	if value {
+		_value = 1
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(comboBox)), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: GetKeepInteriorCornersSquare skipped: reference to Microsoft.UI.Xaml.Controls.ComboBox crosses a severed import edge
+// GetKeepInteriorCornersSquare dispatches through IComboBoxHelperStatics's vtable slot 8.
+func (self *IComboBoxHelperStatics) GetKeepInteriorCornersSquare(comboBox *uixamlcontrols.IComboBox) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(comboBox)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // IComboBoxTemplateSettings is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IComboBoxTemplateSettings.
 // IID: f2dc5e7f-8d3f-5c20-b356-af6f1ff8242a
@@ -1752,9 +1827,18 @@ func (self *IFlyoutBase) SetAllowFocusOnInteraction(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 11: get_LightDismissOverlayMode skipped: reference to Microsoft.UI.Xaml.Controls.LightDismissOverlayMode crosses a severed import edge
+// LightDismissOverlayMode (propget get_LightDismissOverlayMode) dispatches through IFlyoutBase's vtable slot 11.
+func (self *IFlyoutBase) LightDismissOverlayMode() (uixamlcontrols.LightDismissOverlayMode, error) {
+	result := new(uixamlcontrols.LightDismissOverlayMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 12: put_LightDismissOverlayMode skipped: reference to Microsoft.UI.Xaml.Controls.LightDismissOverlayMode crosses a severed import edge
+// SetLightDismissOverlayMode (propput put_LightDismissOverlayMode) dispatches through IFlyoutBase's vtable slot 12.
+func (self *IFlyoutBase) SetLightDismissOverlayMode(value uixamlcontrols.LightDismissOverlayMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // AllowFocusWhenDisabled (propget get_AllowFocusWhenDisabled) dispatches through IFlyoutBase's vtable slot 13.
 func (self *IFlyoutBase) AllowFocusWhenDisabled() (bool, error) {
@@ -2045,7 +2129,12 @@ type IFlyoutBaseOverrides struct {
 // IID_IFlyoutBaseOverrides is the interface identifier for IFlyoutBaseOverrides.
 var IID_IFlyoutBaseOverrides = win32.GUID{Data1: 0x5bb19ed8, Data2: 0x08de, Data3: 0x5eec, Data4: [8]byte{0x91, 0xcb, 0x5f, 0xc5, 0x99, 0x74, 0xe8, 0x94}}
 
-// slot 6: CreatePresenter skipped: reference to Microsoft.UI.Xaml.Controls.Control crosses a severed import edge
+// CreatePresenter dispatches through IFlyoutBaseOverrides's vtable slot 6.
+func (self *IFlyoutBaseOverrides) CreatePresenter() (*uixamlcontrols.IControl, error) {
+	result := new(*uixamlcontrols.IControl)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // OnProcessKeyboardAccelerators dispatches through IFlyoutBaseOverrides's vtable slot 7.
 func (self *IFlyoutBaseOverrides) OnProcessKeyboardAccelerators(args *uixamlinput.IProcessKeyboardAcceleratorEventArgs) error {
@@ -4474,9 +4563,21 @@ func (self *ILoopingSelector) SetItemTemplate(value *uixaml.IDataTemplate) error
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 20: add_SelectionChanged skipped: Microsoft.UI.Xaml.Controls.SelectionChangedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs crosses a severed import edge
+// AddSelectionChanged (event add add_SelectionChanged) dispatches through ILoopingSelector's vtable slot 20.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveSelectionChanged.
+func (self *ILoopingSelector) AddSelectionChanged(handler *SelectionChangedEventHandler) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 21: remove_SelectionChanged skipped: SelectionChanged has no grounded handler
+// RemoveSelectionChanged (event remove remove_SelectionChanged) dispatches through ILoopingSelector's vtable slot 21,
+// unregistering the SelectionChanged handler the token was returned for.
+func (self *ILoopingSelector) RemoveSelectionChanged(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[21], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ILoopingSelectorItem is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.ILoopingSelectorItem.
 // IID: 75d36595-bf4f-5393-819f-eb1e321ce1dc
@@ -4679,9 +4780,18 @@ type INavigationViewItemPresenter struct {
 // IID_INavigationViewItemPresenter is the interface identifier for INavigationViewItemPresenter.
 var IID_INavigationViewItemPresenter = win32.GUID{Data1: 0x64939df5, Data2: 0x760c, Data3: 0x5b0b, Data4: [8]byte{0xaf, 0x4d, 0xd8, 0xdd, 0x4e, 0xe5, 0x02, 0x78}}
 
-// slot 6: get_Icon skipped: reference to Microsoft.UI.Xaml.Controls.IconElement crosses a severed import edge
+// Icon (propget get_Icon) dispatches through INavigationViewItemPresenter's vtable slot 6.
+func (self *INavigationViewItemPresenter) Icon() (*uixamlcontrols.IIconElement, error) {
+	result := new(*uixamlcontrols.IIconElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_Icon skipped: reference to Microsoft.UI.Xaml.Controls.IconElement crosses a severed import edge
+// SetIcon (propput put_Icon) dispatches through INavigationViewItemPresenter's vtable slot 7.
+func (self *INavigationViewItemPresenter) SetIcon(value *uixamlcontrols.IIconElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // TemplateSettings (propget get_TemplateSettings) dispatches through INavigationViewItemPresenter's vtable slot 8.
 func (self *INavigationViewItemPresenter) TemplateSettings() (*INavigationViewItemPresenterTemplateSettings, error) {
@@ -4700,9 +4810,18 @@ type INavigationViewItemPresenter2 struct {
 // IID_INavigationViewItemPresenter2 is the interface identifier for INavigationViewItemPresenter2.
 var IID_INavigationViewItemPresenter2 = win32.GUID{Data1: 0x3f775730, Data2: 0x3713, Data3: 0x5b3b, Data4: [8]byte{0x96, 0x00, 0x53, 0xb7, 0x9f, 0xff, 0x2e, 0x35}}
 
-// slot 6: get_InfoBadge skipped: reference to Microsoft.UI.Xaml.Controls.InfoBadge crosses a severed import edge
+// InfoBadge (propget get_InfoBadge) dispatches through INavigationViewItemPresenter2's vtable slot 6.
+func (self *INavigationViewItemPresenter2) InfoBadge() (*uixamlcontrols.IInfoBadge, error) {
+	result := new(*uixamlcontrols.IInfoBadge)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_InfoBadge skipped: reference to Microsoft.UI.Xaml.Controls.InfoBadge crosses a severed import edge
+// SetInfoBadge (propput put_InfoBadge) dispatches through INavigationViewItemPresenter2's vtable slot 7.
+func (self *INavigationViewItemPresenter2) SetInfoBadge(value *uixamlcontrols.IInfoBadge) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // INavigationViewItemPresenterFactory is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterFactory.
 // IID: b28b0160-022c-593c-ab9a-7b3ded2c0754
@@ -5232,9 +5351,20 @@ func (self *IPopup) SetVerticalOffset(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 14: get_ChildTransitions skipped: reference to Microsoft.UI.Xaml.Media.Animation.TransitionCollection crosses a severed import edge
+// ChildTransitions (propget get_ChildTransitions) dispatches through IPopup's vtable slot 14.
+// The return value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
+func (self *IPopup) ChildTransitions() (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 15: put_ChildTransitions skipped: reference to Microsoft.UI.Xaml.Media.Animation.TransitionCollection crosses a severed import edge
+// SetChildTransitions (propput put_ChildTransitions) dispatches through IPopup's vtable slot 15.
+// Parameter value's class Microsoft.UI.Xaml.Media.Animation.TransitionCollection is projected as IInspectable (no emittable default interface is reachable here).
+func (self *IPopup) SetChildTransitions(value *syswinrt.IInspectable) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IsLightDismissEnabled (propget get_IsLightDismissEnabled) dispatches through IPopup's vtable slot 16.
 func (self *IPopup) IsLightDismissEnabled() (bool, error) {
@@ -5253,9 +5383,18 @@ func (self *IPopup) SetIsLightDismissEnabled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 18: get_LightDismissOverlayMode skipped: reference to Microsoft.UI.Xaml.Controls.LightDismissOverlayMode crosses a severed import edge
+// LightDismissOverlayMode (propget get_LightDismissOverlayMode) dispatches through IPopup's vtable slot 18.
+func (self *IPopup) LightDismissOverlayMode() (uixamlcontrols.LightDismissOverlayMode, error) {
+	result := new(uixamlcontrols.LightDismissOverlayMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 19: put_LightDismissOverlayMode skipped: reference to Microsoft.UI.Xaml.Controls.LightDismissOverlayMode crosses a severed import edge
+// SetLightDismissOverlayMode (propput put_LightDismissOverlayMode) dispatches through IPopup's vtable slot 19.
+func (self *IPopup) SetLightDismissOverlayMode(value uixamlcontrols.LightDismissOverlayMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[19], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ShouldConstrainToRootBounds (propget get_ShouldConstrainToRootBounds) dispatches through IPopup's vtable slot 20.
 func (self *IPopup) ShouldConstrainToRootBounds() (bool, error) {
@@ -5906,9 +6045,18 @@ type IScrollBar struct {
 // IID_IScrollBar is the interface identifier for IScrollBar.
 var IID_IScrollBar = win32.GUID{Data1: 0x568cbf41, Data2: 0xf741, Data3: 0x5f05, Data4: [8]byte{0x8e, 0x08, 0xc0, 0xa5, 0x0a, 0xc1, 0x7c, 0x8c}}
 
-// slot 6: get_Orientation skipped: reference to Microsoft.UI.Xaml.Controls.Orientation crosses a severed import edge
+// Orientation (propget get_Orientation) dispatches through IScrollBar's vtable slot 6.
+func (self *IScrollBar) Orientation() (uixamlcontrols.Orientation, error) {
+	result := new(uixamlcontrols.Orientation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_Orientation skipped: reference to Microsoft.UI.Xaml.Controls.Orientation crosses a severed import edge
+// SetOrientation (propput put_Orientation) dispatches through IScrollBar's vtable slot 7.
+func (self *IScrollBar) SetOrientation(value uixamlcontrols.Orientation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ViewportSize (propget get_ViewportSize) dispatches through IScrollBar's vtable slot 8.
 func (self *IScrollBar) ViewportSize() (float64, error) {
@@ -6251,7 +6399,12 @@ func (self *IScrollControllerPanningInfo) IsRailEnabled() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: get_PanOrientation skipped: reference to Microsoft.UI.Xaml.Controls.Orientation crosses a severed import edge
+// PanOrientation (propget get_PanOrientation) dispatches through IScrollControllerPanningInfo's vtable slot 7.
+func (self *IScrollControllerPanningInfo) PanOrientation() (uixamlcontrols.Orientation, error) {
+	result := new(uixamlcontrols.Orientation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // PanningElementAncestor (propget get_PanningElementAncestor) dispatches through IScrollControllerPanningInfo's vtable slot 8.
 func (self *IScrollControllerPanningInfo) PanningElementAncestor() (*uixaml.IUIElement, error) {
@@ -6335,7 +6488,12 @@ func (self *IScrollControllerScrollByRequestedEventArgs) OffsetDelta() (float64,
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: get_Options skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollOptions crosses a severed import edge
+// Options (propget get_Options) dispatches through IScrollControllerScrollByRequestedEventArgs's vtable slot 7.
+func (self *IScrollControllerScrollByRequestedEventArgs) Options() (*uixamlcontrols.IScrollingScrollOptions, error) {
+	result := new(*uixamlcontrols.IScrollingScrollOptions)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // CorrelationId (propget get_CorrelationId) dispatches through IScrollControllerScrollByRequestedEventArgs's vtable slot 8.
 func (self *IScrollControllerScrollByRequestedEventArgs) CorrelationId() (int32, error) {
@@ -6360,7 +6518,13 @@ type IScrollControllerScrollByRequestedEventArgsFactory struct {
 // IID_IScrollControllerScrollByRequestedEventArgsFactory is the interface identifier for IScrollControllerScrollByRequestedEventArgsFactory.
 var IID_IScrollControllerScrollByRequestedEventArgsFactory = win32.GUID{Data1: 0x7ecf01a7, Data2: 0xef3f, Data3: 0x5af9, Data4: [8]byte{0x93, 0xb4, 0x38, 0xbc, 0x1b, 0xaf, 0xd3, 0x35}}
 
-// slot 6: CreateInstance skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollOptions crosses a severed import edge
+// CreateInstance dispatches through IScrollControllerScrollByRequestedEventArgsFactory's vtable slot 6.
+func (self *IScrollControllerScrollByRequestedEventArgsFactory) CreateInstance(offsetDelta float64, options *uixamlcontrols.IScrollingScrollOptions) (*IScrollControllerScrollByRequestedEventArgs, error) {
+	_offsetDelta := uintptr(math.Float64bits(offsetDelta))
+	result := new(*IScrollControllerScrollByRequestedEventArgs)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _offsetDelta, uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IScrollControllerScrollToRequestedEventArgs is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IScrollControllerScrollToRequestedEventArgs.
 // IID: 73f16b99-7310-5c73-872b-276e5a9d4913
@@ -6379,7 +6543,12 @@ func (self *IScrollControllerScrollToRequestedEventArgs) Offset() (float64, erro
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: get_Options skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollOptions crosses a severed import edge
+// Options (propget get_Options) dispatches through IScrollControllerScrollToRequestedEventArgs's vtable slot 7.
+func (self *IScrollControllerScrollToRequestedEventArgs) Options() (*uixamlcontrols.IScrollingScrollOptions, error) {
+	result := new(*uixamlcontrols.IScrollingScrollOptions)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // CorrelationId (propget get_CorrelationId) dispatches through IScrollControllerScrollToRequestedEventArgs's vtable slot 8.
 func (self *IScrollControllerScrollToRequestedEventArgs) CorrelationId() (int32, error) {
@@ -6404,7 +6573,13 @@ type IScrollControllerScrollToRequestedEventArgsFactory struct {
 // IID_IScrollControllerScrollToRequestedEventArgsFactory is the interface identifier for IScrollControllerScrollToRequestedEventArgsFactory.
 var IID_IScrollControllerScrollToRequestedEventArgsFactory = win32.GUID{Data1: 0x01675dc4, Data2: 0x1074, Data3: 0x54e8, Data4: [8]byte{0xbe, 0xbb, 0x66, 0xb0, 0x3a, 0x33, 0xda, 0x0d}}
 
-// slot 6: CreateInstance skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollOptions crosses a severed import edge
+// CreateInstance dispatches through IScrollControllerScrollToRequestedEventArgsFactory's vtable slot 6.
+func (self *IScrollControllerScrollToRequestedEventArgsFactory) CreateInstance(offset float64, options *uixamlcontrols.IScrollingScrollOptions) (*IScrollControllerScrollToRequestedEventArgs, error) {
+	_offset := uintptr(math.Float64bits(offset))
+	result := new(*IScrollControllerScrollToRequestedEventArgs)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _offset, uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IScrollEventArgs is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IScrollEventArgs.
 // IID: dbd27f11-f937-5ad0-9f75-b962c33254cf
@@ -6536,49 +6711,149 @@ func (self *IScrollPresenter) ScrollableHeight() (float64, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 20: get_ContentOrientation skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingContentOrientation crosses a severed import edge
+// ContentOrientation (propget get_ContentOrientation) dispatches through IScrollPresenter's vtable slot 20.
+func (self *IScrollPresenter) ContentOrientation() (uixamlcontrols.ScrollingContentOrientation, error) {
+	result := new(uixamlcontrols.ScrollingContentOrientation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 21: put_ContentOrientation skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingContentOrientation crosses a severed import edge
+// SetContentOrientation (propput put_ContentOrientation) dispatches through IScrollPresenter's vtable slot 21.
+func (self *IScrollPresenter) SetContentOrientation(value uixamlcontrols.ScrollingContentOrientation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[21], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 22: get_HorizontalScrollChainMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingChainMode crosses a severed import edge
+// HorizontalScrollChainMode (propget get_HorizontalScrollChainMode) dispatches through IScrollPresenter's vtable slot 22.
+func (self *IScrollPresenter) HorizontalScrollChainMode() (uixamlcontrols.ScrollingChainMode, error) {
+	result := new(uixamlcontrols.ScrollingChainMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[22], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 23: put_HorizontalScrollChainMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingChainMode crosses a severed import edge
+// SetHorizontalScrollChainMode (propput put_HorizontalScrollChainMode) dispatches through IScrollPresenter's vtable slot 23.
+func (self *IScrollPresenter) SetHorizontalScrollChainMode(value uixamlcontrols.ScrollingChainMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 24: get_VerticalScrollChainMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingChainMode crosses a severed import edge
+// VerticalScrollChainMode (propget get_VerticalScrollChainMode) dispatches through IScrollPresenter's vtable slot 24.
+func (self *IScrollPresenter) VerticalScrollChainMode() (uixamlcontrols.ScrollingChainMode, error) {
+	result := new(uixamlcontrols.ScrollingChainMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 25: put_VerticalScrollChainMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingChainMode crosses a severed import edge
+// SetVerticalScrollChainMode (propput put_VerticalScrollChainMode) dispatches through IScrollPresenter's vtable slot 25.
+func (self *IScrollPresenter) SetVerticalScrollChainMode(value uixamlcontrols.ScrollingChainMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 26: get_HorizontalScrollRailMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingRailMode crosses a severed import edge
+// HorizontalScrollRailMode (propget get_HorizontalScrollRailMode) dispatches through IScrollPresenter's vtable slot 26.
+func (self *IScrollPresenter) HorizontalScrollRailMode() (uixamlcontrols.ScrollingRailMode, error) {
+	result := new(uixamlcontrols.ScrollingRailMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[26], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 27: put_HorizontalScrollRailMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingRailMode crosses a severed import edge
+// SetHorizontalScrollRailMode (propput put_HorizontalScrollRailMode) dispatches through IScrollPresenter's vtable slot 27.
+func (self *IScrollPresenter) SetHorizontalScrollRailMode(value uixamlcontrols.ScrollingRailMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[27], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 28: get_VerticalScrollRailMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingRailMode crosses a severed import edge
+// VerticalScrollRailMode (propget get_VerticalScrollRailMode) dispatches through IScrollPresenter's vtable slot 28.
+func (self *IScrollPresenter) VerticalScrollRailMode() (uixamlcontrols.ScrollingRailMode, error) {
+	result := new(uixamlcontrols.ScrollingRailMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[28], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 29: put_VerticalScrollRailMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingRailMode crosses a severed import edge
+// SetVerticalScrollRailMode (propput put_VerticalScrollRailMode) dispatches through IScrollPresenter's vtable slot 29.
+func (self *IScrollPresenter) SetVerticalScrollRailMode(value uixamlcontrols.ScrollingRailMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[29], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 30: get_HorizontalScrollMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollMode crosses a severed import edge
+// HorizontalScrollMode (propget get_HorizontalScrollMode) dispatches through IScrollPresenter's vtable slot 30.
+func (self *IScrollPresenter) HorizontalScrollMode() (uixamlcontrols.ScrollingScrollMode, error) {
+	result := new(uixamlcontrols.ScrollingScrollMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[30], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 31: put_HorizontalScrollMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollMode crosses a severed import edge
+// SetHorizontalScrollMode (propput put_HorizontalScrollMode) dispatches through IScrollPresenter's vtable slot 31.
+func (self *IScrollPresenter) SetHorizontalScrollMode(value uixamlcontrols.ScrollingScrollMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[31], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 32: get_VerticalScrollMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollMode crosses a severed import edge
+// VerticalScrollMode (propget get_VerticalScrollMode) dispatches through IScrollPresenter's vtable slot 32.
+func (self *IScrollPresenter) VerticalScrollMode() (uixamlcontrols.ScrollingScrollMode, error) {
+	result := new(uixamlcontrols.ScrollingScrollMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[32], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 33: put_VerticalScrollMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollMode crosses a severed import edge
+// SetVerticalScrollMode (propput put_VerticalScrollMode) dispatches through IScrollPresenter's vtable slot 33.
+func (self *IScrollPresenter) SetVerticalScrollMode(value uixamlcontrols.ScrollingScrollMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[33], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 34: get_ComputedHorizontalScrollMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollMode crosses a severed import edge
+// ComputedHorizontalScrollMode (propget get_ComputedHorizontalScrollMode) dispatches through IScrollPresenter's vtable slot 34.
+func (self *IScrollPresenter) ComputedHorizontalScrollMode() (uixamlcontrols.ScrollingScrollMode, error) {
+	result := new(uixamlcontrols.ScrollingScrollMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[34], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 35: get_ComputedVerticalScrollMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollMode crosses a severed import edge
+// ComputedVerticalScrollMode (propget get_ComputedVerticalScrollMode) dispatches through IScrollPresenter's vtable slot 35.
+func (self *IScrollPresenter) ComputedVerticalScrollMode() (uixamlcontrols.ScrollingScrollMode, error) {
+	result := new(uixamlcontrols.ScrollingScrollMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[35], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 36: get_ZoomChainMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingChainMode crosses a severed import edge
+// ZoomChainMode (propget get_ZoomChainMode) dispatches through IScrollPresenter's vtable slot 36.
+func (self *IScrollPresenter) ZoomChainMode() (uixamlcontrols.ScrollingChainMode, error) {
+	result := new(uixamlcontrols.ScrollingChainMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[36], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 37: put_ZoomChainMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingChainMode crosses a severed import edge
+// SetZoomChainMode (propput put_ZoomChainMode) dispatches through IScrollPresenter's vtable slot 37.
+func (self *IScrollPresenter) SetZoomChainMode(value uixamlcontrols.ScrollingChainMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[37], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 38: get_ZoomMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingZoomMode crosses a severed import edge
+// ZoomMode (propget get_ZoomMode) dispatches through IScrollPresenter's vtable slot 38.
+func (self *IScrollPresenter) ZoomMode() (uixamlcontrols.ScrollingZoomMode, error) {
+	result := new(uixamlcontrols.ScrollingZoomMode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[38], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 39: put_ZoomMode skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingZoomMode crosses a severed import edge
+// SetZoomMode (propput put_ZoomMode) dispatches through IScrollPresenter's vtable slot 39.
+func (self *IScrollPresenter) SetZoomMode(value uixamlcontrols.ScrollingZoomMode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[39], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 40: get_IgnoredInputKinds skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingInputKinds crosses a severed import edge
+// IgnoredInputKinds (propget get_IgnoredInputKinds) dispatches through IScrollPresenter's vtable slot 40.
+func (self *IScrollPresenter) IgnoredInputKinds() (uixamlcontrols.ScrollingInputKinds, error) {
+	result := new(uixamlcontrols.ScrollingInputKinds)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[40], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 41: put_IgnoredInputKinds skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingInputKinds crosses a severed import edge
+// SetIgnoredInputKinds (propput put_IgnoredInputKinds) dispatches through IScrollPresenter's vtable slot 41.
+func (self *IScrollPresenter) SetIgnoredInputKinds(value uixamlcontrols.ScrollingInputKinds) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[41], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // MinZoomFactor (propget get_MinZoomFactor) dispatches through IScrollPresenter's vtable slot 42.
 func (self *IScrollPresenter) MinZoomFactor() (float64, error) {
@@ -6608,7 +6883,12 @@ func (self *IScrollPresenter) SetMaxZoomFactor(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 46: get_State skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingInteractionState crosses a severed import edge
+// State (propget get_State) dispatches through IScrollPresenter's vtable slot 46.
+func (self *IScrollPresenter) State() (uixamlcontrols.ScrollingInteractionState, error) {
+	result := new(uixamlcontrols.ScrollingInteractionState)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[46], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // HorizontalScrollController (propget get_HorizontalScrollController) dispatches through IScrollPresenter's vtable slot 47.
 func (self *IScrollPresenter) HorizontalScrollController() (*IScrollController, error) {
@@ -6694,7 +6974,14 @@ func (self *IScrollPresenter) ScrollTo(horizontalOffset float64, verticalOffset 
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 59: ScrollTo skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollOptions crosses a severed import edge
+// ScrollToWithOptions dispatches through IScrollPresenter's vtable slot 59.
+func (self *IScrollPresenter) ScrollToWithOptions(horizontalOffset float64, verticalOffset float64, options *uixamlcontrols.IScrollingScrollOptions) (int32, error) {
+	_horizontalOffset := uintptr(math.Float64bits(horizontalOffset))
+	_verticalOffset := uintptr(math.Float64bits(verticalOffset))
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[59], uintptr(unsafe.Pointer(self)), _horizontalOffset, _verticalOffset, uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ScrollBy dispatches through IScrollPresenter's vtable slot 60.
 func (self *IScrollPresenter) ScrollBy(horizontalOffsetDelta float64, verticalOffsetDelta float64) (int32, error) {
@@ -6705,7 +6992,14 @@ func (self *IScrollPresenter) ScrollBy(horizontalOffsetDelta float64, verticalOf
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 61: ScrollBy skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollOptions crosses a severed import edge
+// ScrollByWithOptions dispatches through IScrollPresenter's vtable slot 61.
+func (self *IScrollPresenter) ScrollByWithOptions(horizontalOffsetDelta float64, verticalOffsetDelta float64, options *uixamlcontrols.IScrollingScrollOptions) (int32, error) {
+	_horizontalOffsetDelta := uintptr(math.Float64bits(horizontalOffsetDelta))
+	_verticalOffsetDelta := uintptr(math.Float64bits(verticalOffsetDelta))
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[61], uintptr(unsafe.Pointer(self)), _horizontalOffsetDelta, _verticalOffsetDelta, uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // AddScrollVelocity dispatches through IScrollPresenter's vtable slot 62.
 func (self *IScrollPresenter) AddScrollVelocity(offsetsVelocity wrtfoundationnumerics.Vector2, inertiaDecayRate *IReferenceOfVector2) (int32, error) {
@@ -6723,7 +7017,13 @@ func (self *IScrollPresenter) ZoomTo(zoomFactor float32, centerPoint *IReference
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 64: ZoomTo skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingZoomOptions crosses a severed import edge
+// ZoomToWithOptions dispatches through IScrollPresenter's vtable slot 64.
+func (self *IScrollPresenter) ZoomToWithOptions(zoomFactor float32, centerPoint *IReferenceOfVector2, options *uixamlcontrols.IScrollingZoomOptions) (int32, error) {
+	_zoomFactor := uintptr(math.Float32bits(zoomFactor))
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[64], uintptr(unsafe.Pointer(self)), _zoomFactor, uintptr(unsafe.Pointer(centerPoint)), uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ZoomBy dispatches through IScrollPresenter's vtable slot 65.
 func (self *IScrollPresenter) ZoomBy(zoomFactorDelta float32, centerPoint *IReferenceOfVector2) (int32, error) {
@@ -6733,7 +7033,13 @@ func (self *IScrollPresenter) ZoomBy(zoomFactorDelta float32, centerPoint *IRefe
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 66: ZoomBy skipped: reference to Microsoft.UI.Xaml.Controls.ScrollingZoomOptions crosses a severed import edge
+// ZoomByWithOptions dispatches through IScrollPresenter's vtable slot 66.
+func (self *IScrollPresenter) ZoomByWithOptions(zoomFactorDelta float32, centerPoint *IReferenceOfVector2, options *uixamlcontrols.IScrollingZoomOptions) (int32, error) {
+	_zoomFactorDelta := uintptr(math.Float32bits(zoomFactorDelta))
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[66], uintptr(unsafe.Pointer(self)), _zoomFactorDelta, uintptr(unsafe.Pointer(centerPoint)), uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // AddZoomVelocity dispatches through IScrollPresenter's vtable slot 67.
 func (self *IScrollPresenter) AddZoomVelocity(zoomFactorVelocity float32, centerPoint *IReferenceOfVector2, inertiaDecayRate *IReferenceOfSingle) (int32, error) {
@@ -6791,29 +7097,101 @@ func (self *IScrollPresenter) RemoveViewChanged(token syswinrt.EventRegistration
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 74: add_ScrollAnimationStarting skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingScrollAnimationStartingEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollAnimationStartingEventArgs crosses a severed import edge
+// AddScrollAnimationStarting (event add add_ScrollAnimationStarting) dispatches through IScrollPresenter's vtable slot 74.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveScrollAnimationStarting.
+func (self *IScrollPresenter) AddScrollAnimationStarting(handler *TypedEventHandlerOfScrollPresenterAndScrollingScrollAnimationStartingEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[74], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 75: remove_ScrollAnimationStarting skipped: ScrollAnimationStarting has no grounded handler
+// RemoveScrollAnimationStarting (event remove remove_ScrollAnimationStarting) dispatches through IScrollPresenter's vtable slot 75,
+// unregistering the ScrollAnimationStarting handler the token was returned for.
+func (self *IScrollPresenter) RemoveScrollAnimationStarting(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[75], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 76: add_ZoomAnimationStarting skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingZoomAnimationStartingEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ScrollingZoomAnimationStartingEventArgs crosses a severed import edge
+// AddZoomAnimationStarting (event add add_ZoomAnimationStarting) dispatches through IScrollPresenter's vtable slot 76.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveZoomAnimationStarting.
+func (self *IScrollPresenter) AddZoomAnimationStarting(handler *TypedEventHandlerOfScrollPresenterAndScrollingZoomAnimationStartingEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[76], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 77: remove_ZoomAnimationStarting skipped: ZoomAnimationStarting has no grounded handler
+// RemoveZoomAnimationStarting (event remove remove_ZoomAnimationStarting) dispatches through IScrollPresenter's vtable slot 77,
+// unregistering the ZoomAnimationStarting handler the token was returned for.
+func (self *IScrollPresenter) RemoveZoomAnimationStarting(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[77], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 78: add_ScrollCompleted skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingScrollCompletedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ScrollingScrollCompletedEventArgs crosses a severed import edge
+// AddScrollCompleted (event add add_ScrollCompleted) dispatches through IScrollPresenter's vtable slot 78.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveScrollCompleted.
+func (self *IScrollPresenter) AddScrollCompleted(handler *TypedEventHandlerOfScrollPresenterAndScrollingScrollCompletedEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[78], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 79: remove_ScrollCompleted skipped: ScrollCompleted has no grounded handler
+// RemoveScrollCompleted (event remove remove_ScrollCompleted) dispatches through IScrollPresenter's vtable slot 79,
+// unregistering the ScrollCompleted handler the token was returned for.
+func (self *IScrollPresenter) RemoveScrollCompleted(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[79], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 80: add_ZoomCompleted skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingZoomCompletedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ScrollingZoomCompletedEventArgs crosses a severed import edge
+// AddZoomCompleted (event add add_ZoomCompleted) dispatches through IScrollPresenter's vtable slot 80.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveZoomCompleted.
+func (self *IScrollPresenter) AddZoomCompleted(handler *TypedEventHandlerOfScrollPresenterAndScrollingZoomCompletedEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[80], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 81: remove_ZoomCompleted skipped: ZoomCompleted has no grounded handler
+// RemoveZoomCompleted (event remove remove_ZoomCompleted) dispatches through IScrollPresenter's vtable slot 81,
+// unregistering the ZoomCompleted handler the token was returned for.
+func (self *IScrollPresenter) RemoveZoomCompleted(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[81], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 82: add_BringingIntoView skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingBringingIntoViewEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ScrollingBringingIntoViewEventArgs crosses a severed import edge
+// AddBringingIntoView (event add add_BringingIntoView) dispatches through IScrollPresenter's vtable slot 82.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveBringingIntoView.
+func (self *IScrollPresenter) AddBringingIntoView(handler *TypedEventHandlerOfScrollPresenterAndScrollingBringingIntoViewEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[82], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 83: remove_BringingIntoView skipped: BringingIntoView has no grounded handler
+// RemoveBringingIntoView (event remove remove_BringingIntoView) dispatches through IScrollPresenter's vtable slot 83,
+// unregistering the BringingIntoView handler the token was returned for.
+func (self *IScrollPresenter) RemoveBringingIntoView(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[83], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 84: add_AnchorRequested skipped: Windows.Foundation.TypedEventHandler`2<Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter, Microsoft.UI.Xaml.Controls.ScrollingAnchorRequestedEventArgs> Invoke parameter args: reference to Microsoft.UI.Xaml.Controls.ScrollingAnchorRequestedEventArgs crosses a severed import edge
+// AddAnchorRequested (event add add_AnchorRequested) dispatches through IScrollPresenter's vtable slot 84.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveAnchorRequested.
+func (self *IScrollPresenter) AddAnchorRequested(handler *TypedEventHandlerOfScrollPresenterAndScrollingAnchorRequestedEventArgs) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[84], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 85: remove_AnchorRequested skipped: AnchorRequested has no grounded handler
+// RemoveAnchorRequested (event remove remove_AnchorRequested) dispatches through IScrollPresenter's vtable slot 85,
+// unregistering the AnchorRequested handler the token was returned for.
+func (self *IScrollPresenter) RemoveAnchorRequested(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[85], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IScrollPresenterFactory is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.IScrollPresenterFactory.
 // IID: 9f5cdc57-d229-52b2-aee4-37c496764ea3
@@ -7085,9 +7463,14 @@ func (self *IScrollSnapPointsInfo) RemoveVerticalSnapPointsChanged(token syswinr
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 12: GetIrregularSnapPoints skipped: reference to Microsoft.UI.Xaml.Controls.Orientation crosses a severed import edge
+// GetIrregularSnapPoints dispatches through IScrollSnapPointsInfo's vtable slot 12.
+func (self *IScrollSnapPointsInfo) GetIrregularSnapPoints(orientation uixamlcontrols.Orientation, alignment SnapPointsAlignment) (*IVectorViewOfSingle, error) {
+	result := new(*IVectorViewOfSingle)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(orientation), uintptr(alignment), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 13: GetRegularSnapPoints skipped: reference to Microsoft.UI.Xaml.Controls.Orientation crosses a severed import edge
+// slot 13: GetRegularSnapPoints skipped: out parameter offset not representable
 
 // ISelector is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.ISelector.
 // IID: 8f7e2159-e61d-576f-8476-f83fde3d689e
@@ -7172,9 +7555,21 @@ func (self *ISelector) SetIsSynchronizedWithCurrentItem(value *IReferenceOfBool)
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: add_SelectionChanged skipped: Microsoft.UI.Xaml.Controls.SelectionChangedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs crosses a severed import edge
+// AddSelectionChanged (event add add_SelectionChanged) dispatches through ISelector's vtable slot 16.
+// The handler stays registered (and referenced by the runtime) until the
+// returned token is passed to RemoveSelectionChanged.
+func (self *ISelector) AddSelectionChanged(handler *SelectionChangedEventHandler) (syswinrt.EventRegistrationToken, error) {
+	result := new(syswinrt.EventRegistrationToken)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: remove_SelectionChanged skipped: SelectionChanged has no grounded handler
+// RemoveSelectionChanged (event remove remove_SelectionChanged) dispatches through ISelector's vtable slot 17,
+// unregistering the SelectionChanged handler the token was returned for.
+func (self *ISelector) RemoveSelectionChanged(token syswinrt.EventRegistrationToken) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ISelectorFactory is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.ISelectorFactory.
 // IID: 21a42024-af07-58f9-8789-848d3324d901

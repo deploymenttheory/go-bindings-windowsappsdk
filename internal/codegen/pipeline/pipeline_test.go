@@ -226,3 +226,105 @@ func TestReadRootsFileMissing(t *testing.T) {
 		t.Errorf("error = %v, want a not-exist error the caller can distinguish", err)
 	}
 }
+
+// TestBaseChainWalk covers the traversal both the emitter and the cycle breaker
+// depend on. Walking it wrong in either place produces an import cycle in generated
+// code that the breaker believed did not exist.
+func TestBaseChainWalk(t *testing.T) {
+	reg := registry(t)
+	controls := reg.ByNamespace["Microsoft.UI.Xaml.Controls"]
+	if controls == nil {
+		t.Fatal("Microsoft.UI.Xaml.Controls is not loaded")
+	}
+	button, ok := controls.Classes["Button"]
+	if !ok {
+		t.Fatal("Button is not in the registry")
+	}
+	if button.BaseClass == nil {
+		t.Fatal("Button records no base class, so nothing inherited is reachable")
+	}
+
+	var chain []string
+	problems := reg.WalkBaseChain(&button, func(fullName string, _ *wasdkmeta.Class) {
+		chain = append(chain, fullName)
+	})
+	if len(problems) > 0 {
+		t.Errorf("Button's chain could not be followed: %v", problems)
+	}
+	// Nearest first, all the way to the root.
+	want := []string{
+		"Microsoft.UI.Xaml.Controls.Primitives.ButtonBase",
+		"Microsoft.UI.Xaml.Controls.ContentControl",
+		"Microsoft.UI.Xaml.Controls.Control",
+		"Microsoft.UI.Xaml.FrameworkElement",
+		"Microsoft.UI.Xaml.UIElement",
+		"Microsoft.UI.Xaml.DependencyObject",
+	}
+	if len(chain) != len(want) {
+		t.Fatalf("chain = %v, want %v", chain, want)
+	}
+	for i := range want {
+		if chain[i] != want[i] {
+			t.Errorf("chain[%d] = %q, want %q", i, chain[i], want[i])
+		}
+	}
+}
+
+// TestBaseChainTerminates guards against a walk that never ends. Every class in the
+// tree is walked, so a cycle or an unbounded chain anywhere would hang the generator
+// rather than fail it.
+func TestBaseChainTerminates(t *testing.T) {
+	reg := registry(t)
+	var walked, chains int
+	var problems []string
+	for _, meta := range reg.Namespaces {
+		for name := range meta.Classes {
+			class := meta.Classes[name]
+			if class.BaseClass == nil {
+				continue
+			}
+			chains++
+			found := reg.WalkBaseChain(&class, func(string, *wasdkmeta.Class) { walked++ })
+			for _, problem := range found {
+				problems = append(problems, meta.Namespace+"."+name+": "+problem)
+			}
+		}
+	}
+	if chains == 0 {
+		t.Fatal("no class records a base class")
+	}
+	if len(problems) > 0 {
+		limit := min(len(problems), 10)
+		t.Errorf("%d chains could not be followed to the root: %v", len(problems), problems[:limit])
+	}
+	t.Logf("%d chains, %d base classes visited", chains, walked)
+}
+
+// TestClassWithoutABaseWalksNothing covers the root case: a class extending
+// System.Object has no chain, and the walk must not invent one.
+func TestClassWithoutABaseWalksNothing(t *testing.T) {
+	reg := registry(t)
+	var found *wasdkmeta.Class
+	for _, meta := range reg.Namespaces {
+		for name := range meta.Classes {
+			class := meta.Classes[name]
+			if class.BaseClass == nil && !class.Composable {
+				found = &class
+				break
+			}
+		}
+		if found != nil {
+			break
+		}
+	}
+	if found == nil {
+		t.Skip("every class in this metadata is composable")
+	}
+	var visits int
+	if problems := reg.WalkBaseChain(found, func(string, *wasdkmeta.Class) { visits++ }); len(problems) > 0 {
+		t.Errorf("a class with no base reported problems: %v", problems)
+	}
+	if visits != 0 {
+		t.Errorf("visited %d base classes for a class that extends System.Object", visits)
+	}
+}

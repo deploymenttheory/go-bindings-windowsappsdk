@@ -336,6 +336,34 @@ type DesktopChildSiteBridge struct {
 	IDesktopChildSiteBridge
 }
 
+// AsDesktopSiteBridge queries the instance's IDesktopSiteBridge interface.
+// Inherited from Microsoft.UI.Content.DesktopSiteBridge.
+// The returned reference is owned by the caller.
+func (self *DesktopChildSiteBridge) AsDesktopSiteBridge() (*IDesktopSiteBridge, error) {
+	return winrt.QueryInterface[IDesktopSiteBridge](unsafe.Pointer(self), &IID_IDesktopSiteBridge)
+}
+
+// AsClosableNotifier queries the instance's ui.IClosableNotifier interface.
+// Inherited from Microsoft.UI.Content.DesktopSiteBridge.
+// The returned reference is owned by the caller.
+func (self *DesktopChildSiteBridge) AsClosableNotifier() (*ui.IClosableNotifier, error) {
+	return winrt.QueryInterface[ui.IClosableNotifier](unsafe.Pointer(self), &ui.IID_IClosableNotifier)
+}
+
+// AsContentSiteBridge queries the instance's IContentSiteBridge interface.
+// Inherited from Microsoft.UI.Content.DesktopSiteBridge.
+// The returned reference is owned by the caller.
+func (self *DesktopChildSiteBridge) AsContentSiteBridge() (*IContentSiteBridge, error) {
+	return winrt.QueryInterface[IContentSiteBridge](unsafe.Pointer(self), &IID_IContentSiteBridge)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Content.DesktopSiteBridge.
+// The returned reference is owned by the caller.
+func (self *DesktopChildSiteBridge) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
 // DesktopChildSiteBridgeStatics returns the Microsoft.UI.Content.IDesktopChildSiteBridgeStatics statics of the
 // Microsoft.UI.Content.DesktopChildSiteBridge runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
