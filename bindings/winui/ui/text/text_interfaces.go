@@ -678,7 +678,18 @@ func (self *ITextDocument) GetRangeFromPoint(point wrtfoundation.Point, options 
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 25: GetText skipped: string out parameter value is not lowered this wave
+// GetText dispatches through ITextDocument's vtable slot 25.
+func (self *ITextDocument) GetText(options TextGetOptions, value *string) error {
+	_valueRaw := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(options), uintptr(winrt.OutParam(unsafe.Pointer(_valueRaw))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	*value = winrt.TakeHString(*_valueRaw)
+	return nil
+}
 
 // LoadFromStream dispatches through ITextDocument's vtable slot 26.
 func (self *ITextDocument) LoadFromStream(options TextSetOptions, value *wrtstoragestreams.IRandomAccessStream) error {
@@ -790,7 +801,18 @@ func (self *ITextDocument2) SetMathMode(mode RichEditMathMode) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetMathML skipped: string out parameter value is not lowered this wave
+// GetMathML dispatches through ITextDocument2's vtable slot 8.
+func (self *ITextDocument2) GetMathML(value *string) error {
+	_valueRaw := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(_valueRaw))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	*value = winrt.TakeHString(*_valueRaw)
+	return nil
+}
 
 // SetMathML dispatches through ITextDocument2's vtable slot 9.
 func (self *ITextDocument2) SetMathML(value string) error {
@@ -1099,7 +1121,11 @@ func (self *ITextParagraphFormat) GetClone() (*ITextParagraphFormat, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 49: GetTab skipped: out parameter position not representable
+// GetTab dispatches through ITextParagraphFormat's vtable slot 49.
+func (self *ITextParagraphFormat) GetTab(index int32, position *float32, align *TabAlignment, leader *TabLeader) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[49], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(position))), uintptr(winrt.OutParam(unsafe.Pointer(align))), uintptr(winrt.OutParam(unsafe.Pointer(leader))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IsEqual dispatches through ITextParagraphFormat's vtable slot 50.
 func (self *ITextParagraphFormat) IsEqual(format *ITextParagraphFormat) (bool, error) {
@@ -1390,7 +1416,18 @@ func (self *ITextRange) GetRect(options PointOptions, rect *wrtfoundation.Rect, 
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 40: GetText skipped: string out parameter value is not lowered this wave
+// GetText dispatches through ITextRange's vtable slot 40.
+func (self *ITextRange) GetText(options TextGetOptions, value *string) error {
+	_valueRaw := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[40], uintptr(unsafe.Pointer(self)), uintptr(options), uintptr(winrt.OutParam(unsafe.Pointer(_valueRaw))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	*value = winrt.TakeHString(*_valueRaw)
+	return nil
+}
 
 // GetTextViaStream dispatches through ITextRange's vtable slot 41.
 func (self *ITextRange) GetTextViaStream(options TextGetOptions, value *wrtstoragestreams.IRandomAccessStream) error {

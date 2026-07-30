@@ -96,6 +96,11 @@ func New(registry *pipeline.Registry, modulePath, outDir string) *Generator {
 // Clusters exposes the namespace-to-package mapping, for reporting.
 func (g *Generator) Clusters() *pipeline.Clusters { return g.clusters }
 
+// Mapper exposes the type mapper for tests that assert on resolution decisions rather
+// than on emitted text — whether go-bindings-winrt declares a type, for instance, which
+// has no visible form in the output beyond the members it silently removes.
+func (g *Generator) Mapper() *typemap.Mapper { return g.mapper }
+
 // Blocked exposes the severed import edges, for reporting.
 func (g *Generator) Blocked() map[string]map[string]bool { return g.mapper.Blocked }
 

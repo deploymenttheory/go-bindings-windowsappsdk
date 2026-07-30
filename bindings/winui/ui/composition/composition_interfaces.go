@@ -2904,7 +2904,17 @@ func (self *ICompositionPropertySet) TryGetQuaternion(propertyName string, value
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 18: TryGetScalar skipped: out parameter value not representable
+// TryGetScalar dispatches through ICompositionPropertySet's vtable slot 18.
+func (self *ICompositionPropertySet) TryGetScalar(propertyName string, value *float32) (CompositionGetValueStatus, error) {
+	hPropertyName, err := winrt.NewHString(propertyName)
+	if err != nil {
+		return 0, err
+	}
+	defer hPropertyName.Close()
+	result := new(CompositionGetValueStatus)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(hPropertyName.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(value))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // TryGetVector2 dispatches through ICompositionPropertySet's vtable slot 19.
 func (self *ICompositionPropertySet) TryGetVector2(propertyName string, value *wrtfoundationnumerics.Vector2) (CompositionGetValueStatus, error) {
@@ -2967,7 +2977,24 @@ func (self *ICompositionPropertySet2) InsertBoolean(propertyName string, value b
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: TryGetBoolean skipped: bool out parameter value is not lowered this wave
+// TryGetBoolean dispatches through ICompositionPropertySet2's vtable slot 7.
+func (self *ICompositionPropertySet2) TryGetBoolean(propertyName string, value *bool) (CompositionGetValueStatus, error) {
+	hPropertyName, err := winrt.NewHString(propertyName)
+	if err != nil {
+		return 0, err
+	}
+	defer hPropertyName.Close()
+	_valueRaw := new(byte)
+	result := new(CompositionGetValueStatus)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(hPropertyName.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(_valueRaw))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return 0, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	*value = *_valueRaw != 0
+	return *result, nil
+}
 
 // ICompositionRadialGradientBrush is the WinRT interface Microsoft.UI.Composition.ICompositionRadialGradientBrush.
 // IID: 17662f3f-d351-5435-b3b4-ec26cefeccc5

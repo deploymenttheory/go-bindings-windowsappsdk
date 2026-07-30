@@ -74,7 +74,7 @@ external: 4500 references resolved against github.com/deploymenttheory/go-bindin
 
 $ go run ./cmd/generate bindings
 merged 14 mutually recursive namespaces into one package: Microsoft.UI.Xaml
-emitted 64 packages → bindings\winui (199 diagnostics)
+emitted 64 packages → bindings\winui (185 diagnostics)
 
 $ go build ./...
 ```
@@ -85,7 +85,7 @@ only references that go nowhere are to `Microsoft.Web.WebView2.Core`, which ship
 in its own NuGet package and has no Go bindings — recorded as a permanent absence
 rather than left to look like a bug.
 
-The 199 diagnostics are members that cannot be represented, each with a reason, and
+The 185 diagnostics are members that cannot be represented, each with a reason, and
 each leaving an audit comment at its own vtable slot so nothing renumbers. The largest
 groups are delegate TypeDefs (59), returned delegates (55) and struct references (32).
 CI ratchets the set: a new one fails the build.
@@ -171,10 +171,51 @@ is a reason to record the bit rather than ignore it, since passing a count where
 callee writes through a pointer corrupts memory silently. That one member is refused
 rather than guessed at.
 
-What is left of arrays is 19 members whose elements are `HSTRING` or `Bool`. Those need
-per-element conversion — an HSTRING is a handle, not a string — and a direct slice view
-over them would reinterpret bytes and still compile. Nine `[out]` parameters of those
-two types are open for the same reason.
+What is left of arrays is 16 members whose elements are `HSTRING`. Those need
+per-element conversion with a per-direction ownership rule, and a direct slice view over
+them would reinterpret bytes and still compile.
+
+**`[out]` parameters convert both ways now.** An `HSTRING` out-parameter transfers
+ownership, so the generated body declares the raw slot, calls, and takes the handle:
+
+```go
+func (self *ITextRange) GetText(options TextGetOptions, value *string) error {
+	_valueRaw := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[40], ...)
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return err
+	}
+	*value = winrt.TakeHString(*_valueRaw)
+	return nil
+}
+```
+
+The conversion sits inside the success path deliberately: on a failed call the callee
+wrote nothing, and converting the slot anyway would report an error *and* wipe the
+caller's variable. `Bool` out-parameters go through a `byte` for the same reason a
+`Bool` array element cannot be a direct view — one byte, with no guarantee it is 0 or 1.
+
+A float out-parameter was refused by simple omission, which
+`ICompositionPropertySet.TryGetScalar` paid for while every `TryGetVector3` beside it
+worked. An `[out]` parameter is a pointer the callee writes through, so a `float32`
+crosses through memory and never through XMM0.
+
+**A struct field is different, and lands differently.** There is no boundary inside a
+struct at which a conversion could run, so an `HSTRING` field is emitted as the handle,
+with a doc comment saying what that obliges the caller to do. The alternative — a shadow
+struct per type, marshalled at every signature naming one — would cost the property
+conformant arrays depend on, that a `[]T` over emittable structs is a direct view of the
+callee's buffer.
+
+That change surfaced a wrong assumption worth recording. This module resolved a
+`Windows.*` reference on the strength of the type appearing in go-bindings-winrt's
+committed metadata — but the metadata says what a type *is*, and only the emitted source
+says whether there is a Go declaration to name. `Windows.UI.Xaml.Interop.TypeName` is
+`{ HSTRING; TypeKind }` and that module skips it for the same reason this one did, so the
+moment this one stopped refusing `HSTRING` fields, 31 members named an undeclared type and
+the tree stopped compiling. The generator now checks the dependency's emitted packages,
+and those 31 are skipped for a verified reason rather than by luck. Clearing them needs a
+change in go-bindings-winrt and a pin bump.
 
 Inherited members are reachable. A class's metadata lists only the interfaces
 declared at its own level — `Button`'s is just `IButton`, carrying `Flyout` — so the
@@ -273,8 +314,9 @@ The order of work, and why:
 
 M0 through M6 are done: the pipeline runs end to end and produces a usable UI. What is
 left is not a blocker but a queue — the ergonomic layer over the generated bindings,
-the remaining diagnostic burn-down (array elements needing per-element conversion, 19;
-`HSTRING` and `Bool` out-parameters, 9), and M7 for anyone who needs a custom control.
+the remaining diagnostic burn-down (`HSTRING` array elements, 16, which need a
+per-direction ownership rule; and 31 members blocked on go-bindings-winrt emitting
+`TypeName`), and M7 for anyone who needs a custom control.
 
 M1 was a gate rather than a step. Everything after it depended on questions
 only it could answer, so it came before any generator work: if a Go executable

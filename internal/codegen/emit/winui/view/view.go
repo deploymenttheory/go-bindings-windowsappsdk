@@ -34,6 +34,10 @@ type StructModel struct {
 	TypeName string
 	FullName string
 	Fields   []StructFieldModel
+	// NoteLines are doc-comment lines after the summary. A struct carrying an HSTRING
+	// field needs them: the field is a handle the caller owns, which the type alone
+	// does not say.
+	NoteLines []string
 }
 
 // StructFieldModel is one struct field, fully resolved.
@@ -103,6 +107,12 @@ type MethodModel struct {
 	// ArgExprs are the SyscallN argument words after the self word, including
 	// the trailing retval out-pointer when the method has one.
 	ArgExprs []string
+	// Postamble holds statements converting raw out-parameter slots back into the
+	// idiomatic values the caller's pointers expect (HSTRING → string, byte → bool).
+	// It runs ONLY after the HRESULT check succeeds: on a failure the callee wrote
+	// nothing, and a caller's variable must be left as it was rather than zeroed by a
+	// conversion of an unwritten slot.
+	Postamble []string
 	// ReturnKind selects the body shape (Ret* above).
 	ReturnKind int
 	// ResultDecl declares the retval local ("result := new(int32)"),

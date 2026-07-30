@@ -14391,7 +14391,19 @@ func (self *ITextProvider2) RangeFromAnnotation(annotationElement *IIRawElementP
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: GetCaretRange skipped: bool out parameter isActive is not lowered this wave
+// GetCaretRange dispatches through ITextProvider2's vtable slot 7.
+func (self *ITextProvider2) GetCaretRange(isActive *bool) (*ITextRangeProvider, error) {
+	_isActiveRaw := new(byte)
+	result := new(*ITextRangeProvider)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(_isActiveRaw))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	*isActive = *_isActiveRaw != 0
+	return *result, nil
+}
 
 // ITextRangeProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.ITextRangeProvider.
 // IID: 84210361-6ce2-5084-bf3b-28afa6e9851f
@@ -28584,7 +28596,19 @@ func (self *IItemContainerGenerator) Stop() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 15: GenerateNext skipped: bool out parameter isNewlyRealized is not lowered this wave
+// GenerateNext dispatches through IItemContainerGenerator's vtable slot 15.
+func (self *IItemContainerGenerator) GenerateNext(isNewlyRealized *bool) (*IDependencyObject, error) {
+	_isNewlyRealizedRaw := new(byte)
+	result := new(*IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(_isNewlyRealizedRaw))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	*isNewlyRealized = *_isNewlyRealizedRaw != 0
+	return *result, nil
+}
 
 // PrepareItemContainer dispatches through IItemContainerGenerator's vtable slot 16.
 func (self *IItemContainerGenerator) PrepareItemContainer(container *IDependencyObject) error {
@@ -63770,7 +63794,12 @@ func (self *IScrollSnapPointsInfo) GetIrregularSnapPoints(orientation Orientatio
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 13: GetRegularSnapPoints skipped: out parameter offset not representable
+// GetRegularSnapPoints dispatches through IScrollSnapPointsInfo's vtable slot 13.
+func (self *IScrollSnapPointsInfo) GetRegularSnapPoints(orientation Orientation, alignment SnapPointsAlignment, offset *float32) (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(orientation), uintptr(alignment), uintptr(winrt.OutParam(unsafe.Pointer(offset))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ISelector is the WinRT interface Microsoft.UI.Xaml.Controls.Primitives.ISelector.
 // IID: 8f7e2159-e61d-576f-8476-f83fde3d689e
