@@ -650,24 +650,21 @@ func methodBody(content, signature string) string {
 	return rest
 }
 
-// TestArrayElementsThatCannotConvertAreSkipped is the other half: an element whose Go
-// form is not byte-identical to its ABI form must leave a slot comment, not a direct
-// slice view over reinterpreted bytes.
-func TestArrayElementsThatCannotConvertAreSkipped(t *testing.T) {
+// TestNoArrayIsSkippedForItsElement records that every element shape in the committed
+// metadata now lowers. HSTRING was the last holdout; Bool and nested arrays are still
+// refused in the typemap, but neither occurs, so nothing here is skipped for one.
+func TestNoArrayIsSkippedForItsElement(t *testing.T) {
 	result := emit(t)
-	var elementSkips, receiveSkips int
+	var receiveSkips int
 	for _, diagnostic := range result.generator.Diagnostics {
 		switch {
 		case strings.HasPrefix(diagnostic, "array-element-skipped:"):
-			elementSkips++
+			t.Errorf("an array is still skipped for its element type: %s", diagnostic)
 		case strings.HasPrefix(diagnostic, "array-receive-param-skipped:"):
 			receiveSkips++
 		case strings.HasPrefix(diagnostic, "array-param-skipped:"):
 			t.Errorf("a member is still skipped wholesale for being an array: %s", diagnostic)
 		}
-	}
-	if elementSkips == 0 {
-		t.Error("no array-element-skipped diagnostics; HSTRING elements should still be refused")
 	}
 	// Exactly one byref array exists in the committed metadata. If that changes, the
 	// promote-out-param-to-return path stops being a one-off and is worth building.

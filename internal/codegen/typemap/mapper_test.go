@@ -417,16 +417,19 @@ func TestArraysResolveToSlices(t *testing.T) {
 }
 
 // TestArrayElementsNeedingConversionAreRefused is the safety half. An HSTRING is a
-// handle and a WinRT boolean is one byte with no guarantee it is 0 or 1, so a direct
-// slice view over either would reinterpret the bytes as something they are not — and
-// it would compile and run. Refusing is the only correct answer until per-element
-// conversion exists.
+// A WinRT boolean is one byte with no guarantee it is 0 or 1, so a direct slice view
+// over one would reinterpret the bytes as something they are not — producing Go bools
+// that are neither true nor false in comparisons — and it would compile and run.
+//
+// HSTRING elements USED to be refused here for a related reason, and are now converted
+// element by element instead; see TestStringArraysResolveForConversion. Bool could be
+// given the same treatment, and is not, because no array of Bool appears anywhere in
+// the committed metadata — an unexercised conversion is a worse bet than a refusal.
 func TestArrayElementsNeedingConversionAreRefused(t *testing.T) {
 	for _, check := range []struct {
 		what string
 		ref  wasdkmeta.TypeRef
 	}{
-		{"HSTRING", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "HString"})},
 		{"Bool", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "Bool"})},
 		{"a nested array", arrayOf(arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "I4"}))},
 		{"an unresolved element", arrayOf(apiRef("Microsoft.Nope", "IGone", "Interface", false))},
@@ -533,5 +536,29 @@ func TestImportPathsForBothModules(t *testing.T) {
 	}
 	if !strings.HasPrefix(m.RuntimeImportPath(), external.ModulePath) {
 		t.Error("the runtime import does not point at go-bindings-winrt")
+	}
+}
+
+// TestStringArraysResolveForConversion is the positive half. A []string cannot be a
+// direct view of a buffer of HSTRING handles, so the resolution records the element as
+// KindString and the EMITTER builds a parallel handle buffer to convert across — which
+// is why this resolves rather than being refused, and why the import it records is the
+// handle's.
+func TestStringArraysResolveForConversion(t *testing.T) {
+	got, imports := resolve(t, arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "HString"}), "Microsoft.UI.Xaml")
+	if got.Kind != KindArray {
+		t.Fatalf("an array of HSTRING resolved to kind %v (%q), want KindArray", got.Kind, got.Reason)
+	}
+	if got.GoType != "[]string" {
+		t.Errorf("GoType = %q, want []string", got.GoType)
+	}
+	if got.Elem == nil || got.Elem.Kind != KindString {
+		t.Fatal("the element is not recorded as KindString, so the emitter cannot tell " +
+			"it needs conversion rather than a view")
+	}
+	// The buffer the conversion runs over is typed syswinrt.HSTRING, so that import has
+	// to be recorded even though the Go element type is a plain string.
+	if entry, ok := imports["syswinrt"]; !ok || entry.Path != SysWinRTImport {
+		t.Errorf("the syswinrt import was not recorded: %v", imports)
 	}
 }

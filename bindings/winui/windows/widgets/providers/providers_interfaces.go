@@ -309,7 +309,30 @@ func (self *IWidgetManager) UpdateWidget(widgetUpdateRequestOptions *IWidgetUpda
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: GetWidgetIds skipped: string elements need per-element conversion
+// GetWidgetIds dispatches through IWidgetManager's vtable slot 7.
+func (self *IWidgetManager) GetWidgetIds() ([]string, error) {
+	resultSize := new(uint32)
+	result := new(*syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]string, *resultSize)
+	// Converted element by element: the buffer holds HSTRING handles, and the callee
+	// allocated the strings as well as the buffer, so each handle is taken (read and
+	// deleted) exactly once before the buffer itself is freed.
+	for i, raw := range unsafe.Slice(*result, *resultSize) {
+		items[i] = winrt.TakeHString(raw)
+	}
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // GetWidgetInfo dispatches through IWidgetManager's vtable slot 8.
 func (self *IWidgetManager) GetWidgetInfo(widgetId string) (*IWidgetInfo, error) {

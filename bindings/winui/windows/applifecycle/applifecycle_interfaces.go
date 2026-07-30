@@ -25,7 +25,54 @@ type IActivationRegistrationManagerStatics struct {
 // IID_IActivationRegistrationManagerStatics is the interface identifier for IActivationRegistrationManagerStatics.
 var IID_IActivationRegistrationManagerStatics = win32.GUID{Data1: 0x5ac4e92e, Data2: 0x017b, Data3: 0x5d68, Data4: [8]byte{0x81, 0x98, 0xf6, 0x86, 0x36, 0xab, 0x99, 0xd3}}
 
-// slot 6: RegisterForFileTypeActivation skipped: string elements need per-element conversion
+// RegisterForFileTypeActivation dispatches through IActivationRegistrationManagerStatics's vtable slot 6.
+func (self *IActivationRegistrationManagerStatics) RegisterForFileTypeActivation(supportedFileTypes []string, logo string, displayName string, supportedVerbs []string, exePath string) error {
+	_supportedFileTypesRaw := make([]syswinrt.HSTRING, len(supportedFileTypes))
+	for _supportedFileTypesIndex, _supportedFileTypesHandleSource := range supportedFileTypes {
+		_supportedFileTypesHandle, err := winrt.NewHString(_supportedFileTypesHandleSource)
+		if err != nil {
+			return err
+		}
+		defer _supportedFileTypesHandle.Close()
+		_supportedFileTypesRaw[_supportedFileTypesIndex] = _supportedFileTypesHandle.Raw()
+	}
+	_supportedFileTypesSize := uintptr(len(_supportedFileTypesRaw))
+	_supportedFileTypesData := uintptr(0)
+	if len(_supportedFileTypesRaw) > 0 {
+		_supportedFileTypesData = uintptr(winrt.OutParam(unsafe.Pointer(&_supportedFileTypesRaw[0])))
+	}
+	hLogo, err := winrt.NewHString(logo)
+	if err != nil {
+		return err
+	}
+	defer hLogo.Close()
+	hDisplayName, err := winrt.NewHString(displayName)
+	if err != nil {
+		return err
+	}
+	defer hDisplayName.Close()
+	_supportedVerbsRaw := make([]syswinrt.HSTRING, len(supportedVerbs))
+	for _supportedVerbsIndex, _supportedVerbsHandleSource := range supportedVerbs {
+		_supportedVerbsHandle, err := winrt.NewHString(_supportedVerbsHandleSource)
+		if err != nil {
+			return err
+		}
+		defer _supportedVerbsHandle.Close()
+		_supportedVerbsRaw[_supportedVerbsIndex] = _supportedVerbsHandle.Raw()
+	}
+	_supportedVerbsSize := uintptr(len(_supportedVerbsRaw))
+	_supportedVerbsData := uintptr(0)
+	if len(_supportedVerbsRaw) > 0 {
+		_supportedVerbsData = uintptr(winrt.OutParam(unsafe.Pointer(&_supportedVerbsRaw[0])))
+	}
+	hExePath, err := winrt.NewHString(exePath)
+	if err != nil {
+		return err
+	}
+	defer hExePath.Close()
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _supportedFileTypesSize, _supportedFileTypesData, uintptr(hLogo.Raw()), uintptr(hDisplayName.Raw()), _supportedVerbsSize, _supportedVerbsData, uintptr(hExePath.Raw()))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // RegisterForProtocolActivation dispatches through IActivationRegistrationManagerStatics's vtable slot 7.
 func (self *IActivationRegistrationManagerStatics) RegisterForProtocolActivation(scheme string, logo string, displayName string, exePath string) error {
@@ -69,7 +116,30 @@ func (self *IActivationRegistrationManagerStatics) RegisterForStartupActivation(
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: UnregisterForFileTypeActivation skipped: string elements need per-element conversion
+// UnregisterForFileTypeActivation dispatches through IActivationRegistrationManagerStatics's vtable slot 9.
+func (self *IActivationRegistrationManagerStatics) UnregisterForFileTypeActivation(fileTypes []string, exePath string) error {
+	_fileTypesRaw := make([]syswinrt.HSTRING, len(fileTypes))
+	for _fileTypesIndex, _fileTypesHandleSource := range fileTypes {
+		_fileTypesHandle, err := winrt.NewHString(_fileTypesHandleSource)
+		if err != nil {
+			return err
+		}
+		defer _fileTypesHandle.Close()
+		_fileTypesRaw[_fileTypesIndex] = _fileTypesHandle.Raw()
+	}
+	_fileTypesSize := uintptr(len(_fileTypesRaw))
+	_fileTypesData := uintptr(0)
+	if len(_fileTypesRaw) > 0 {
+		_fileTypesData = uintptr(winrt.OutParam(unsafe.Pointer(&_fileTypesRaw[0])))
+	}
+	hExePath, err := winrt.NewHString(exePath)
+	if err != nil {
+		return err
+	}
+	defer hExePath.Close()
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _fileTypesSize, _fileTypesData, uintptr(hExePath.Raw()))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // UnregisterForProtocolActivation dispatches through IActivationRegistrationManagerStatics's vtable slot 10.
 func (self *IActivationRegistrationManagerStatics) UnregisterForProtocolActivation(scheme string, exePath string) error {

@@ -103,43 +103,53 @@ func TestStructsCarryHstringFieldsAsHandles(t *testing.T) {
 	}
 }
 
-// TestExternalTypesAreOnlyNamedIfTheDependencyDeclaresThem is the guard that this
-// phase turned out to need, and it is the one worth keeping longest.
+// TestExternalTypesAreOnlyNamedIfTheDependencyDeclaresThem is the guard that keeps
+// this module honest about what go-bindings-winrt actually emitted.
 //
-// This module resolved a Windows.* reference on the strength of the type appearing in
-// go-bindings-winrt's committed IR. That is the wrong evidence: the IR says what the
-// type is, and only the emitted source says whether there is a Go declaration to name.
-// Windows.UI.Xaml.Interop.TypeName is { HSTRING; TypeKind } and that module skips it,
-// so the moment this one stopped refusing HSTRING struct fields, 31 members began
-// naming an undeclared type and the whole tree stopped compiling.
+// The metadata says what a type IS; only the emitted source says whether there is a Go
+// declaration to name. The two differ exactly where that module degraded something,
+// and it degrades for the same reasons this one does. Naming an undeclared type does
+// not degrade a member — it breaks every consumer's build — so the check is
+// deliberately conservative.
 //
-// A degraded member costs a binding. A reference to an undeclared name costs every
-// consumer their build, so the check is deliberately conservative.
+// Windows.UI.Xaml.Interop.TypeName was the case that proved this, and go-bindings-winrt
+// v0.4.1 now emits it, which is why the 31 members using it are back. Windows.Web.Http
+// .HttpProgress is still skipped there — blocked by IReference`1 fields rather than by
+// a string — so it keeps the negative side of the assertion live.
 func TestExternalTypesAreOnlyNamedIfTheDependencyDeclaresThem(t *testing.T) {
 	result := emit(t)
 	mapper := result.generator.Mapper()
 
-	// TypeKind, an enum in the same namespace, IS declared. Asserting the pair rather
-	// than the failure alone: a check that answered false for everything would pass a
-	// one-sided test while degrading the entire external surface.
-	if !mapper.ExternalDeclares("Windows.UI.Xaml.Interop", "TypeKind") {
-		t.Error("Windows.UI.Xaml.Interop.TypeKind is reported as undeclared, but " +
-			"go-bindings-winrt emits it; the check is refusing types that exist")
-	}
-	if mapper.ExternalDeclares("Windows.UI.Xaml.Interop", "TypeName") {
-		t.Error("Windows.UI.Xaml.Interop.TypeName is reported as declared, but " +
-			"go-bindings-winrt skips it — naming it does not compile")
-	}
-	if mapper.StructEmittable("Windows.UI.Xaml.Interop", "TypeName") {
-		t.Error("TypeName is treated as representable; every member using it will name " +
-			"an undeclared type")
+	// Asserting both directions. A check that answered false for everything would pass
+	// a one-sided test while silently degrading the entire external surface.
+	for _, declared := range []struct {
+		namespace, name string
+		want            bool
+		why             string
+	}{
+		{"Windows.UI.Xaml.Interop", "TypeKind", true, "an enum, always emitted"},
+		{"Windows.UI.Xaml.Interop", "TypeName", true, "emitted since go-bindings-winrt v0.4.1"},
+		{"Windows.Web.Http", "HttpProgress", false, "still skipped there: IReference`1 fields"},
+	} {
+		if got := mapper.ExternalDeclares(declared.namespace, declared.name); got != declared.want {
+			t.Errorf("ExternalDeclares(%s.%s) = %v, want %v — %s",
+				declared.namespace, declared.name, got, declared.want, declared.why)
+		}
 	}
 
-	// And nothing in the output names it. This is the assertion that would have caught
-	// the regression directly.
+	// And the emitted tree names the one that exists, without naming the one that does
+	// not. This is the assertion that would have caught the original regression.
+	var namesTypeName bool
 	for path, content := range result.files {
 		if strings.Contains(content, "wrtuixamlinterop.TypeName") {
-			t.Errorf("%s names wrtuixamlinterop.TypeName, which is not declared", path)
+			namesTypeName = true
 		}
+		if strings.Contains(content, "wrtwebhttp.HttpProgress") {
+			t.Errorf("%s names wrtwebhttp.HttpProgress, which go-bindings-winrt does not declare", path)
+		}
+	}
+	if !namesTypeName {
+		t.Error("nothing names wrtuixamlinterop.TypeName, but the pinned go-bindings-winrt " +
+			"declares it — Frame.Navigate and ControlTemplate.TargetType should be back")
 	}
 }

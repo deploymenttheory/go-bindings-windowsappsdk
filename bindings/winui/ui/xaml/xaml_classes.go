@@ -15,6 +15,7 @@ import (
 	wrtapplicationmodelcore "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/core"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
+	wrtuixamlinterop "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/xaml/interop"
 )
 
 // AdaptiveTrigger is the Microsoft.UI.Xaml.AdaptiveTrigger runtime class, surfaced through its
@@ -1570,6 +1571,23 @@ func NewStyle() (*Style, error) {
 // The returned reference is owned by the caller.
 func (self *Style) AsDependencyObject() (*IDependencyObject, error) {
 	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
+}
+
+// CreateInstanceStyle constructs a Microsoft.UI.Xaml.Style instance through
+// Microsoft.UI.Xaml.IStyleFactory.CreateInstance. The activation factory is fetched
+// per call (a factory cache is a future optimization).
+func CreateInstanceStyle(targetType wrtuixamlinterop.TypeName) (*Style, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.Style", &IID_IStyleFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IStyleFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	instance, err := factory.CreateInstance(targetType)
+	if err != nil {
+		return nil, err
+	}
+	return (*Style)(unsafe.Pointer(instance)), nil
 }
 
 // TargetPropertyPath is the Microsoft.UI.Xaml.TargetPropertyPath runtime class, surfaced through its
@@ -49268,4 +49286,21 @@ func PageStackEntryStatics() (*IPageStackEntryStatics, error) {
 		return nil, err
 	}
 	return (*IPageStackEntryStatics)(unsafe.Pointer(factory)), nil
+}
+
+// CreateInstancePageStackEntry constructs a Microsoft.UI.Xaml.Navigation.PageStackEntry instance through
+// Microsoft.UI.Xaml.Navigation.IPageStackEntryFactory.CreateInstance. The activation factory is fetched
+// per call (a factory cache is a future optimization).
+func CreateInstancePageStackEntry(sourcePageType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable, navigationTransitionInfo *INavigationTransitionInfo) (*PageStackEntry, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.Navigation.PageStackEntry", &IID_IPageStackEntryFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IPageStackEntryFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	instance, err := factory.CreateInstance(sourcePageType, parameter, navigationTransitionInfo)
+	if err != nil {
+		return nil, err
+	}
+	return (*PageStackEntry)(unsafe.Pointer(instance)), nil
 }

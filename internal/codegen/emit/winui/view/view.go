@@ -131,6 +131,10 @@ type MethodModel struct {
 	// ResultElemType is a RetArray's element Go type ("byte", "*IFoo"), which the
 	// body needs to build the slice view over the callee's buffer.
 	ResultElemType string
+	// ResultElemRawType is the ABI element type when it differs from the Go one
+	// ("syswinrt.HSTRING" for a []string). Empty when the two are the same, which is
+	// the direct-view case where the buffer can simply be copied.
+	ResultElemRawType string
 }
 
 // DelegateModel is one Go-implemented handler type emitted into the consuming

@@ -61,7 +61,16 @@ func (self *{{$.TypeName}}) {{.GoName}}({{.ParamStr}}) {{.ReturnSig}} {
 	// copied out before it goes. Element references, where the elements are
 	// interface pointers, transfer to the returned slice.
 	items := make([]{{.ResultElemType}}, *resultSize)
+{{- if .ResultElemRawType}}
+	// Converted element by element: the buffer holds HSTRING handles, and the callee
+	// allocated the strings as well as the buffer, so each handle is taken (read and
+	// deleted) exactly once before the buffer itself is freed.
+	for i, raw := range unsafe.Slice(*result, *resultSize) {
+		items[i] = winrt.TakeHString(raw)
+	}
+{{- else}}
 	copy(items, unsafe.Slice(*result, *resultSize))
+{{- end}}
 	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
 	return items, nil
 {{- else}}
