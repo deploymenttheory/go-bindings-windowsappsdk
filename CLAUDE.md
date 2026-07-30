@@ -33,9 +33,9 @@ produces **77 Go packages / 384 files** that compile, and `acceptance/` puts a r
 WinUI 3 window on screen from Go, with the framework calling a Go handler back on the
 UI thread.
 
-The controls in it are **invisible** — untemplated, measuring 0×0 — because
-`XamlControlsResources` cannot be activated. Why is not established; see below. That
-is the honest headline, and the one open question worth answering next.
+The controls in it are **styled and rendered**: a `Button` measured at `Loaded` has a
+template and a size. The one thing that does not work is activating
+`XamlControlsResources`, which turns out not to be needed; see below.
 
 `README.md` has the milestone order; the detail below describes the design being
 built toward, and is written down now so it does not have to be rediscovered.
@@ -207,25 +207,38 @@ consequence of null-outer composition — confidently, with a citation to a pin 
 distinguishes "too early" from "broken"; a test that saw the failure alone would have
 supported the wrong story just as well.
 
-**What still does not work: activating `XamlControlsResources`.** With the ordering
-correct, `Resources` succeeds and the next call fails instead — `E_FAIL`, at every
-point tried. **The cause is not established.** The leading suspicion is that a Go
-application cannot answer `QueryInterface` for
-`Microsoft.UI.Xaml.Markup.IXamlMetadataProvider`, which
-`TestApplicationHasNoXamlMetadataProvider` pins as `E_NOINTERFACE` — a compiled C# or
-C++ app's `App` class implements it — and that a resource dictionary cannot resolve
-the XAML types it names without one. That is inference from one observation, not a
-demonstrated chain. Do not repeat it as fact until something tests it.
+**`XamlControlsResources` cannot be activated, and it does not matter.** With the
+ordering correct, `Resources` succeeds and the next call fails instead — `E_FAIL`, at
+every point tried. The cause is still unknown, but a spike established what it is
+**not**:
 
-The observable consequence: a `Button` in an activated window has a nil `Template`
-and measures 0×0. It is in the tree and **invisible**. So the window is real and the
-controls are not, which is worth stating plainly rather than rounding up to "a window
-with a Button on screen".
+- Not the projection. A plain `ResourceDictionary` and ordinary controls activate fine.
+- Not a missing metadata provider. `XamlReader.Load` parses markup and instantiates
+  framework types, and malformed markup fails with a genuine parser error — so XAML
+  type resolution works without the application answering `IXamlMetadataProvider`.
 
-That matters because of what the resources are for: without them controls render
-unstyled and every `{ThemeResource}` lookup fails while parsing, which is the usual
-cause of "XamlReader.Load does not work in WinUI 3" reports — a resources problem
-wearing a parser's clothes.
+And it is not load-bearing. WinUI 3 ships its default styles in the framework package,
+unlike WinUI 2 where they came from a NuGet library and had to be merged. Measured at
+`Loaded` — the earliest point at which a size means anything — a `Button` has a real
+template and a real size. `XamlControlsResources`' remaining job in WinUI 3 is
+`UseCompactResources`.
+
+**This is where I was wrong twice, so it is worth being blunt about the method.** I
+first explained the failure as null-outer composition, then as a missing metadata
+provider, and asserted a `0×0` Button as evidence for both. The `0×0` was measured
+before layout ran. Each explanation fitted the one observation I had and neither
+survived a discriminator that took ten minutes to write. `acceptance/styling_test.go`
+now holds those discriminators as tests, so the record cannot drift back.
+
+The lesson worth keeping: **COM aggregation is not on the critical path for a working
+UI.** Building it to fix styling would have fixed nothing. It is still what a Go
+application would need to resolve types *it* defines — a real future concern, and a
+different one.
+
+The received wisdom that "controls render unstyled without `XamlControlsResources`",
+and that a failing `XamlReader.Load` is a resources problem wearing a parser's clothes,
+is **WinUI 2 advice**. It is what led me down the wrong path twice, and it does not
+apply here.
 
 ## The design being built toward
 
