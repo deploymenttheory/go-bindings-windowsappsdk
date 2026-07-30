@@ -7,9 +7,9 @@ interface can be written in Go.
 
 No Visual Studio, no .NET SDK, no XAML compiler, no cgo. Just `go build`.
 
-> **Status: early.** The generator works end to end — 77 packages of compiling
-> Go — but there is no ergonomic layer yet, and inherited members are not reached
-> yet. See [Where this is](#where-this-is).
+> **Status: early, but it works.** 77 packages of generated Go, and a real WinUI 3
+> window on screen from a Go program, in CI. See [Where this is](#where-this-is)
+> for the one thing that does not work yet and why.
 
 ## The family
 
@@ -109,6 +109,41 @@ Twenty import edges are severed to break cycles Go cannot express, so on those t
 accessor is absent. The capability is not: a consuming package closes no cycle, so
 `winrt.QueryInterface[T]` reaches the interface directly.
 
+### A window on screen
+
+`acceptance/` puts one there and CI runs it, on a runner with the Windows App SDK
+runtime installed. `app.Run` handles the startup order, which is not
+interchangeable — lock the thread, enter a single-threaded apartment, register the
+thread delegate bodies run on, bootstrap, then `Application.Start`:
+
+```go
+app.Run(func(application *uixaml.IApplication) error {
+    window, _ := uixaml.NewWindow()
+    window.SetTitle("Hello from Go")
+
+    button, _ := uixamlcontrols.NewButton()
+    base, _ := winrt.QueryInterface[uixamlprimitives.IButtonBase](
+        unsafe.Pointer(button), &uixamlprimitives.IID_IButtonBase)
+    handler, _ := uixamlprimitives.NewRoutedEventHandler(
+        func(sender *syswinrt.IInspectable, e *uixaml.IRoutedEventArgs) {
+            // called by the framework, on the UI thread
+        })
+    base.AddClick(handler)
+
+    element, _ := button.AsUIElement()
+    window.SetContent(element)
+    return window.Activate()
+}, app.Options{})
+```
+
+The one thing that does not work is merging `XamlControlsResources`, so controls
+render unstyled. `Application.Resources` returns `E_UNEXPECTED` on an application
+created with a null controlling outer, which is the only way this module can create
+one yet. It is not a projection bug — `get_Resources` is slot 6, that is pinned
+against the winmd, and every other member of the same interface pointer works — it
+is the first concrete thing that needs **deriving** from a WinRT class, which is
+M7. A test asserts the failure, so the day it starts working is visible.
+
 The order of work, and why:
 
 | | Milestone | Notes |
@@ -119,8 +154,8 @@ The order of work, and why:
 | M3 | `ingest` | done — winmds → committed JSON, `Windows.*` resolved against go-bindings-winrt. |
 | M4 | `bindings` | done — JSON → 77 packages of compiling Go. |
 | M5 | Class hierarchy | done — the `Extends` chain, without which a `Button` could not reach `Content`. |
-| **M6** | Runtime layer | ← you are here. Apartment control and the application loop, over generated bindings. |
-| M7 | Deriving from WinRT classes | Needed for custom controls; requires work in go-bindings-winrt first. |
+| M6 | Runtime layer | done — apartment control and the application loop; a window on screen in CI. |
+| **M7** | Deriving from WinRT classes | ← you are here. Needed for custom controls, and for `Application.Resources`; requires COM aggregation in go-bindings-winrt first. |
 
 M1 was a gate rather than a step. Everything after it depended on questions
 only it could answer, so it came before any generator work: if a Go executable

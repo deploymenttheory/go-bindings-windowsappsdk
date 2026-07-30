@@ -27,10 +27,14 @@ generated for it.
 
 ## Status
 
-M4. The winmds are committed (36 files, 77 namespaces, 4,374 API types), ingest
-projects them into committed JSON with every reference resolved, and the emitter
-produces **77 Go packages / 384 files** that compile. `Button` can be
-constructed and its `Click` handled from Go.
+M6. The winmds are committed (36 files, 77 namespaces, 4,374 API types), ingest
+projects them into committed JSON with every reference resolved, the emitter
+produces **77 Go packages / 384 files** that compile, and `acceptance/` puts a
+**real WinUI 3 window on screen** from Go — a `Button` with content, activated, with
+the framework calling a Go handler back on the UI thread.
+
+What is not done is M7: deriving from a WinRT class. It has one concrete
+consequence today, recorded below.
 
 `README.md` has the milestone order; the detail below describes the design being
 built toward, and is written down now so it does not have to be rediscovered.
@@ -146,7 +150,8 @@ Three things in go-bindings-winrt v0.4.0 exist for this:
   `Invoke`, and it is what every `TryEnqueue` takes — without it there is no
   way to move work onto the UI thread at all.
 
-The startup order matters and is not interchangeable:
+The startup order matters and is not interchangeable. `bindings/runtime/winui`
+does the first four steps as `EnterUIThread`, and `app.Run` the rest:
 
 ```text
 runtime.LockOSThread()
@@ -160,12 +165,41 @@ Application.Start(callback)               ← blocks
 `Application.Start` creates the `DispatcherQueueController` itself;
 `CreateDispatcherQueueController` should not be called by hand.
 
-One trap worth knowing before drawing any conclusion from a window that looks
-wrong: `XamlControlsResources` has to be added to
-`Application.Current.Resources.MergedDictionaries` at startup, or controls
-render unstyled and every `{ThemeResource}` lookup fails while parsing. That
-is the usual cause of "XamlReader.Load does not work in WinUI 3" reports — a
-resources problem wearing a parser's clothes.
+### What the live tests established
+
+Verified against a real 2.3 runtime, in CI as well as locally. Each of these was
+an open question and is now an assertion in `acceptance/`:
+
+**The callback must create the Application.** `Application.Start` does *not*.
+`Application.Current` is nil until the callback constructs one — which is what
+every `Application.Start(_ => new App())` in the C# samples is doing, and easy to
+misread as the framework's job.
+
+**A plain, non-derived `Application` is enough.** This was the M1 question the
+spike was written to answer, and the answer is yes: `NewApplication()` through the
+composable factory with a null outer gives a working `Current`, and from it a
+`Window`, a `Button`, content, activation, and a `DispatcherQueue`. Go-side
+derivation is therefore not on the critical path for building a UI.
+
+**A failed startup must arrange its own shutdown.** If the initialization callback
+returns an error, nothing else can end the message loop — a cross-apartment `Exit`
+is not an option — so `app.Run` calls `Exit` from inside the callback before
+returning into the framework. Without that, a startup error hangs the process
+instead of reporting itself.
+
+**`XamlControlsResources` cannot be merged yet, and the reason is composition.**
+`Application.Resources` returns `E_UNEXPECTED` on a null-outer application. Not a
+projection bug: `get_Resources` is slot 6, `internal/verify` pins that against the
+winmd, the generated call dispatches slot 6, and every other member of the same
+interface pointer works. What is missing is a derived instance for the framework to
+hang application-level state on — so this is the first concrete thing that needs
+M7. It is opt-in (`app.Options.ControlsResources`) and the failure is pinned by a
+test that will break when it starts working.
+
+That matters because of what the resources are for: without them controls render
+unstyled and every `{ThemeResource}` lookup fails while parsing, which is the usual
+cause of "XamlReader.Load does not work in WinUI 3" reports — a resources problem
+wearing a parser's clothes.
 
 ## The design being built toward
 
