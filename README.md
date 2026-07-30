@@ -327,6 +327,30 @@ yet sufficient:** with it in place MRT resolves the theme resources —
 succeeds — and XAML still cannot load them, and `XamlControlsResources` still fails to
 activate. The affected controls remain unusable. That is where the trail currently ends.
 
+
+Reading WinRT's restricted error info gives the two failures precisely, and they differ:
+
+```text
+TextBox     -> Cannot locate resource from 'ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml'
+ProgressBar -> The type 'ProgressBar' was not found
+```
+
+The WinUI source accounts for both: `XamlControlsResources`' constructor sets `Source` to
+exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
+`DefaultStyleResourceUri` under the same `ms-appx` root.
+
+`generate app-resources` builds the missing `resources.pri`, and that **moves** the
+failure rather than removing it — `Cannot locate resource` becomes `E_UNKNOWN_ERROR`, so
+the index is consulted and the dictionary found, but loading it still fails. With
+ProgressBar's "type not found", the remaining piece is that the types inside
+`themeresources.xaml` resolve through `XamlControlsXamlMetaDataProvider`, which reaches
+XAML only via the application's own `IXamlMetadataProvider`. WinUI says as much in
+`MUXControlsFactory::VerifyInitialized`.
+
+A Go application implements no such interface, because that means **deriving from
+`Application`** — COM aggregation, the M7 work. That is the open task, and it is now
+specific rather than unknown.
+
 `acceptance/themeresources_test.go` is the reproduction.
 
 The earlier note that `XamlControlsResources` failing "does not matter" was reached by

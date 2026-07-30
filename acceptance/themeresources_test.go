@@ -29,27 +29,36 @@ import (
 // 0x2B is XAML. Windows Error Reporting names the faulting module as
 // Microsoft.UI.Xaml.dll.
 //
-// What it is: those controls' default styles are not reachable. ms-appx:/// does not
-// resolve in this process, so nothing that needs the theme dictionaries can load —
+// What it is, read out of WinRT's restricted error info rather than inferred from the
+// HRESULT — the two failures say different things:
 //
-//	ResourceDictionary.SetSource("ms-appx:///Microsoft.UI.Xaml/Themes/generic.xaml") -> E_FAIL
-//	NewXamlControlsResources()                                                       -> E_FAIL
-//	XamlReader.Load("<XamlControlsResources/>")                                      -> 0x802B000A
+//	TextBox     -> Cannot locate resource from 'ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml'
+//	ProgressBar -> The type 'ProgressBar' was not found
 //
-// The framework package ships those resources in Microsoft.UI.Xaml.Controls.pri, whose
-// resource map is named Microsoft.UI.Xaml and which holds
-// Files/Microsoft.UI.Xaml/Themes/generic.xbf. An unpackaged application resolves
-// ms-appx:/// through its OWN resources.pri, and a `go build` produces none — which is
-// the gap. MSBuild closes it for C# apps by MERGING the framework's PRI into one it
-// generates for the application.
+// The WinUI source explains both. XamlControlsResources' constructor sets its Source to
+// exactly that URI (controls/dev/dll/XamlControlsResources.cpp), and
+// SetDefaultStyleKeyWorker gives every control a DefaultStyleResourceUri under the same
+// ms-appx root — so a control cannot find its default style, and the type inside the
+// theme dictionary cannot be resolved.
 //
-// Copying that PRI beside the executable does not work, as either resources.pri or with
-// the executable renamed to match the resource map. So the fix is a real makepri merge
-// rather than a file copy, which makes it build tooling this repository does not have
-// yet. That is the open work; this test is the reproduction.
+// An unpackaged application resolves ms-appx:/// through its own resources.pri, which
+// go build does not produce. `generate app-resources` now builds one, and it moves the
+// failure rather than removing it:
 //
-// The earlier note in CLAUDE.md — that XamlControlsResources failing "does not matter" —
-// was reached by measuring a Button, and holds only for the controls it was measured on.
+//	without resources.pri: Cannot locate resource from 'ms-appx:///...themeresources.xaml'
+//	with    resources.pri: E_UNKNOWN_ERROR
+//
+// So the index is now consulted and the dictionary is found; loading it still fails.
+// That, with ProgressBar's "type not found", points at the remaining piece: the types
+// named inside themeresources.xaml are MUX types, resolved through
+// XamlControlsXamlMetaDataProvider, which reaches XAML only through the application's
+// own IXamlMetadataProvider. WinUI says so itself, in MUXControlsFactory::
+// VerifyInitialized: "You must put an instance of Microsoft.UI.Xaml.XamlControlsResources
+// in your Application.Resources.MergedDictionaries."
+//
+// A Go application implements no such interface, because doing so means DERIVING from
+// Application — COM aggregation, the M7 work. That is the open task, and it is now a
+// specific one rather than an unknown.
 //
 // The test runs the case in a SUBPROCESS, because the failure is a process death and
 // nothing in Go recovers from it.
