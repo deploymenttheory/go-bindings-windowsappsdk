@@ -590,6 +590,36 @@ cut well. [Namespace clusters](#namespace-clusters) removes the need to cut at a
 conclusion to draw from that is that they belong in one Go package, not that one
 direction has to be lost.
 
+## The ergonomic layer
+
+`app/ergonomics.go` is hand-written and imports the generated tree. It exists because
+the projection is faithful rather than pleasant, and the obvious remedy does not work.
+
+**Member promotion was measured and rejected.** Projecting inherited members onto
+derived classes — so `Button.SetMargin` works without querying `IFrameworkElement` —
+gives 165,561 promoted members across the tree; restricted to the default interfaces of
+the class and its bases it is still 75,046, and properties-only 59,863. `Button` alone
+would gain 331 methods. Those numbers are in the file's own comment so the next person
+does not re-derive them.
+
+What is there instead is five generic combinators — `All`, `With`, `On`, `Box`,
+`Append`, plus `SetContent` — which name no control and need no maintenance when WinUI
+adds types. `With` takes a generated `As<Interface>` method value and `On` takes an
+`Add<Event>` method value with its `New<Handler>` constructor, so type inference does
+the rest and one function covers the whole surface.
+
+`examples/clicker` is the measurement: 233 lines to 140, same behaviour.
+
+**Apartment discipline in tests.** A test calling `winrt.Initialize()` directly enters an
+apartment on whatever thread its goroutine happens to occupy, and leaves that thread
+initialized when it returns. A later test calling `app.Run` — which needs a
+single-threaded apartment — then fails with `RPC_E_CHANGED_MODE`, but only when the
+scheduler hands it that thread, so it is a flake rather than a failure.
+`acceptance/apartment_test.go` provides `enterApartment`, which locks the OS thread and
+never unlocks it: the Go runtime destroys a locked thread when its goroutine exits, so
+the apartment cannot outlive the test. Such a test must also avoid `t.Run`, because a
+subtest runs on a different goroutine and therefore a different thread.
+
 ## Architecture support
 
 Every file carries `//go:build windows && amd64`.

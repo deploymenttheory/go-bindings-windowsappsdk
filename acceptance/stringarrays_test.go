@@ -32,9 +32,7 @@ import (
 // Windows.Globalization.Calendar is registered with the operating system, so this needs
 // an apartment but not the Windows App SDK bootstrap.
 func TestFillStringArrayAgainstTheLiveRuntime(t *testing.T) {
-	if err := winrt.Initialize(); err != nil {
-		t.Skipf("no WinRT apartment: %v", err)
-	}
+	enterApartment(t)
 
 	calendar, err := wrtglobalization.NewCalendar()
 	if err != nil {
@@ -146,9 +144,7 @@ func TestFillStringArrayAgainstTheLiveRuntime(t *testing.T) {
 // string, which IS the null handle canonically, and a non-ASCII string, whose UTF-16
 // length differs from its Go byte length.
 func TestFillStringArrayAcrossManyElements(t *testing.T) {
-	if err := winrt.Initialize(); err != nil {
-		t.Skipf("no WinRT apartment: %v", err)
-	}
+	enterApartment(t)
 
 	want := []string{"alpha", "beta", "", "delta-éè", "epsilon", "zeta"}
 	backing := winrt.NewStringVectorView(want)

@@ -255,6 +255,41 @@ _ = element.SetOpacity(0.5)           // Opacity, four classes up
 Every one of those accessors is now present, because the classes they reach are in the
 same package. Before clustering, the ones crossing a severed edge were absent.
 
+### The ergonomic layer
+
+Generated bindings are a faithful projection, not a pleasant one: a property declared
+four classes up needs a `QueryInterface` and a `Release`, every setter returns an error,
+and `Button.Content` takes a boxed `IInspectable` rather than a string.
+
+The obvious fix is to promote inherited members onto the classes that inherit them. That
+was measured before it was written, and it does not survive the measurement:
+
+| what gets promoted | members |
+|---|---|
+| every interface on the class and its bases | 165,561 |
+| default interfaces of the class and its bases | 75,046 |
+| the same, properties only | 59,863 |
+
+`Button` alone would gain 331 methods and `IUIElement` carries 183 by itself. That is not
+an ergonomic surface, it is an unusable autocomplete list attached to a generated tree
+several times its current size.
+
+So `app` removes the *ceremony* instead, with generic combinators that name no control
+and need no maintenance as WinUI grows:
+
+```go
+app.All(errs...)                      // a block of setters, one error
+app.With(obj.AsFoo, func(f *IFoo) …)  // query, run, release — any class, any interface
+app.On(x.AddClick, NewHandler, fn)    // ground a delegate and register it
+app.Box(v)                            // a Go value as the IInspectable WinRT wants
+app.Append(panel.AsPanel, children…)  // into a Panel's Children
+```
+
+`examples/clicker` went from 233 lines to 140 doing exactly the same work — a window
+with a styled `Button` and `TextBlock`, responding to clicks, the pointer and the
+keyboard. Everything still takes and returns the generated types, so any call can be
+written the long way and mixed freely; there is no parallel API to escape from.
+
 ### Try it
 
 ```sh
