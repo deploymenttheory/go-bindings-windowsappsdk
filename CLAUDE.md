@@ -41,6 +41,7 @@ go run ./cmd/generate fetch-metadata     # winmds ← NuGet meta-package fan-out
 go run ./cmd/generate fetch-bootstrap    # the redistributable bootstrapper
 go run ./cmd/generate ingest             # winmds → metadata/wasdk/*.json
 go run ./cmd/generate validate --external
+go run ./cmd/generate resolve             # every reference → a Go type, or a reason
 go run ./cmd/generate list
 go run ./cmd/inspect --dir metadata/winmd --namespaces
 
@@ -243,15 +244,23 @@ must be skipped with a distinct reason rather than quietly turned into
 `uintptr` — a binding that compiles and then crashes is worse than one that is
 absent.
 
-### An import alias collision to avoid
+### The import alias collision
 
 After the root prefix is stripped, this repository's `Microsoft.UI.Xaml.Interop`
 and go-bindings-winrt's `Windows.UI.Xaml.Interop` both become the alias
-`uixamlinterop`. The same is true of `UI.Xaml.Data`, `UI.Xaml.Markup`,
-`UI.Text` and `UI` itself. External aliases need a distinguishing prefix, and
-`validate` should check that no two aliases in a package point at different
-paths — otherwise this appears as a compile failure across roughly thirty
-packages on the first full run.
+`uixamlinterop`. The same is true of `UI.Xaml.Data`, `UI.Xaml.Markup`, `UI.Text`
+and `UI` itself. WinUI 3 is a fork of the UWP XAML framework, so the parallel
+naming is not a coincidence and will not go away.
+
+External aliases therefore take a `wrt` prefix: `wrtuixamlinterop`. A prefix
+rather than a suffix so the alias reads as "the WinRT one", and three letters
+because no local namespace can produce it — that would need a `Microsoft.Wrt*`
+namespace to exist.
+
+`generate resolve` hard-errors if two namespaces in one package land on the same
+alias, or one import path appears under two aliases, and CI runs it. Left
+unchecked this is a compile failure across roughly thirty packages on the first
+full run, naming neither the alias nor the namespaces that collided.
 
 ## Architecture support
 

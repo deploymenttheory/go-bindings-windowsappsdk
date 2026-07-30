@@ -35,6 +35,8 @@ func main() {
 		err = runIngest(os.Args[2:])
 	case "validate":
 		err = runValidate(os.Args[2:])
+	case "resolve":
+		err = runResolve(os.Args[2:])
 	case "list":
 		err = runList(os.Args[2:])
 	default:

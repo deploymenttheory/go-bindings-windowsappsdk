@@ -126,6 +126,13 @@ jobs:
       - name: Validate the metadata
         run: go run ./cmd/generate validate --external
 
+      # Runs every type reference through the typemap. It fails on an import
+      # alias collision, which is the failure that would otherwise appear as a
+      # compile error across dozens of packages naming neither the alias nor the
+      # namespaces that collided.
+      - name: Resolve every reference
+        run: go run ./cmd/generate resolve
+
       # The point of committing the IR: regenerating it must reproduce what is
       # in the tree byte for byte, so a metadata change is always a reviewable
       # diff and never a surprise inside generated Go.
