@@ -125,9 +125,17 @@ type Mapper struct {
 	// ModulePath is this module's import path root.
 	ModulePath string
 
-	// Blocked marks severed cross-namespace edges (import-cycle breaks):
-	// Blocked[src][dst] forces references from src to dst to degrade instead of
-	// importing.
+	// Clusters maps each namespace to the Go package that carries it. Mutually
+	// recursive namespaces share one package, so a reference between them is
+	// package-local rather than an import — which is what removes the need to sever
+	// cycles at all.
+	Clusters *pipeline.Clusters
+
+	// Blocked marks severed cross-package edges. With mutually recursive namespaces
+	// merged into single packages the package graph is acyclic by construction, so
+	// this is expected to be empty; it is retained as a backstop rather than removed,
+	// because a silently reintroduced cycle would surface as a compile failure across
+	// the tree instead of a diagnostic.
 	Blocked map[string]map[string]bool
 
 	// structEmittable memoizes the per-struct emittability decision.
@@ -299,7 +307,7 @@ func (m *Mapper) resolveApiRef(ref *wasdkmeta.TypeRef, ctx Context, imports Impo
 	if reason, foreign := ingest.KnownForeignNamespaces[ref.Namespace]; foreign {
 		return unsupported("foreign-type-skipped", "%s.%s: %s", ref.Namespace, ref.Name, reason)
 	}
-	if ref.Namespace != ctx.Namespace && m.Blocked[ctx.Namespace][ref.Namespace] {
+	if !m.SamePackage(ctx.Namespace, ref.Namespace) && m.Blocked[m.packageOf(ctx.Namespace)][m.packageOf(ref.Namespace)] {
 		return unsupported("import-cycle-skipped", "reference to %s.%s crosses a severed import edge", ref.Namespace, ref.Name)
 	}
 
@@ -416,13 +424,35 @@ func (m *Mapper) StructEmittable(namespace, name string) bool {
 	return verdict
 }
 
-// ImportPathFor returns the Go import path of the package carrying a namespace,
-// in whichever module owns it.
+// ImportPathFor returns the Go import path of the package carrying a namespace, in
+// whichever module owns it.
 func (m *Mapper) ImportPathFor(namespace string) string {
 	if m.Registry.IsExternal(namespace) {
 		return external.BindingsImportRoot + "/" + naming.ExternalPackagePath(namespace)
 	}
-	return m.ModulePath + "/bindings/winui/" + naming.PackagePath(namespace)
+	return m.ModulePath + "/bindings/winui/" + naming.PackagePath(m.packageOf(namespace))
+}
+
+// packageOf is the namespace naming the package that carries the given one. External
+// namespaces are never clustered: nothing in go-bindings-winrt imports this module, so
+// no reference into it can close a cycle here.
+func (m *Mapper) packageOf(namespace string) string {
+	if m.Clusters == nil || m.Registry.IsExternal(namespace) {
+		return namespace
+	}
+	return m.Clusters.PackageOf(namespace)
+}
+
+// SamePackage reports whether a reference between two namespaces stays inside one Go
+// package, in which case it needs no import and no qualifier.
+func (m *Mapper) SamePackage(from, to string) bool {
+	if to == "" || from == to {
+		return true
+	}
+	if m.Registry.IsExternal(from) != m.Registry.IsExternal(to) {
+		return false
+	}
+	return m.packageOf(from) == m.packageOf(to)
 }
 
 // AliasFor returns the import alias for a namespace. External aliases carry a
@@ -432,7 +462,7 @@ func (m *Mapper) AliasFor(namespace string) string {
 	if m.Registry.IsExternal(namespace) {
 		return naming.ExternalImportAlias(namespace)
 	}
-	return naming.ImportAlias(namespace)
+	return naming.ImportAlias(m.packageOf(namespace))
 }
 
 // RuntimeImportPath returns the hand-written WinRT runtime this module reuses
@@ -444,7 +474,9 @@ func (m *Mapper) RuntimeImportPath() string { return WinRTRuntimeImport }
 // (recording the import) unless it lives in the namespace being emitted.
 func (m *Mapper) qualifiedName(ref *wasdkmeta.TypeRef, ctx Context, imports ImportSet) string {
 	name := naming.Export(ref.Name)
-	if ref.Namespace == "" || ref.Namespace == ctx.Namespace {
+	// Same PACKAGE, not merely same namespace: a cluster's members are emitted
+	// together, so a reference between them is unqualified.
+	if m.SamePackage(ctx.Namespace, ref.Namespace) {
 		return name
 	}
 	alias := m.AliasFor(ref.Namespace)

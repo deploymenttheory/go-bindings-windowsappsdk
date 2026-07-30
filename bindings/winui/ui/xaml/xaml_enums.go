@@ -1072,3 +1072,6063 @@ func (e WindowActivationState) String() string {
 		return fmt.Sprintf("WindowActivationState(%d)", int32(e))
 	}
 }
+
+// AnnotationType is Microsoft.UI.Xaml.Automation.AnnotationType.
+type AnnotationType int32
+
+const (
+	AnnotationTypeUnknown                AnnotationType = 60000
+	AnnotationTypeSpellingError          AnnotationType = 60001
+	AnnotationTypeGrammarError           AnnotationType = 60002
+	AnnotationTypeComment                AnnotationType = 60003
+	AnnotationTypeFormulaError           AnnotationType = 60004
+	AnnotationTypeTrackChanges           AnnotationType = 60005
+	AnnotationTypeHeader                 AnnotationType = 60006
+	AnnotationTypeFooter                 AnnotationType = 60007
+	AnnotationTypeHighlighted            AnnotationType = 60008
+	AnnotationTypeEndnote                AnnotationType = 60009
+	AnnotationTypeFootnote               AnnotationType = 60010
+	AnnotationTypeInsertionChange        AnnotationType = 60011
+	AnnotationTypeDeletionChange         AnnotationType = 60012
+	AnnotationTypeMoveChange             AnnotationType = 60013
+	AnnotationTypeFormatChange           AnnotationType = 60014
+	AnnotationTypeUnsyncedChange         AnnotationType = 60015
+	AnnotationTypeEditingLockedChange    AnnotationType = 60016
+	AnnotationTypeExternalChange         AnnotationType = 60017
+	AnnotationTypeConflictingChange      AnnotationType = 60018
+	AnnotationTypeAuthor                 AnnotationType = 60019
+	AnnotationTypeAdvancedProofingIssue  AnnotationType = 60020
+	AnnotationTypeDataValidationError    AnnotationType = 60021
+	AnnotationTypeCircularReferenceError AnnotationType = 60022
+)
+
+// String returns the AnnotationType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AnnotationType) String() string {
+	switch e {
+	case AnnotationTypeUnknown:
+		return "AnnotationTypeUnknown"
+	case AnnotationTypeSpellingError:
+		return "AnnotationTypeSpellingError"
+	case AnnotationTypeGrammarError:
+		return "AnnotationTypeGrammarError"
+	case AnnotationTypeComment:
+		return "AnnotationTypeComment"
+	case AnnotationTypeFormulaError:
+		return "AnnotationTypeFormulaError"
+	case AnnotationTypeTrackChanges:
+		return "AnnotationTypeTrackChanges"
+	case AnnotationTypeHeader:
+		return "AnnotationTypeHeader"
+	case AnnotationTypeFooter:
+		return "AnnotationTypeFooter"
+	case AnnotationTypeHighlighted:
+		return "AnnotationTypeHighlighted"
+	case AnnotationTypeEndnote:
+		return "AnnotationTypeEndnote"
+	case AnnotationTypeFootnote:
+		return "AnnotationTypeFootnote"
+	case AnnotationTypeInsertionChange:
+		return "AnnotationTypeInsertionChange"
+	case AnnotationTypeDeletionChange:
+		return "AnnotationTypeDeletionChange"
+	case AnnotationTypeMoveChange:
+		return "AnnotationTypeMoveChange"
+	case AnnotationTypeFormatChange:
+		return "AnnotationTypeFormatChange"
+	case AnnotationTypeUnsyncedChange:
+		return "AnnotationTypeUnsyncedChange"
+	case AnnotationTypeEditingLockedChange:
+		return "AnnotationTypeEditingLockedChange"
+	case AnnotationTypeExternalChange:
+		return "AnnotationTypeExternalChange"
+	case AnnotationTypeConflictingChange:
+		return "AnnotationTypeConflictingChange"
+	case AnnotationTypeAuthor:
+		return "AnnotationTypeAuthor"
+	case AnnotationTypeAdvancedProofingIssue:
+		return "AnnotationTypeAdvancedProofingIssue"
+	case AnnotationTypeDataValidationError:
+		return "AnnotationTypeDataValidationError"
+	case AnnotationTypeCircularReferenceError:
+		return "AnnotationTypeCircularReferenceError"
+	default:
+		return fmt.Sprintf("AnnotationType(%d)", int32(e))
+	}
+}
+
+// AutomationActiveEnd is Microsoft.UI.Xaml.Automation.AutomationActiveEnd.
+type AutomationActiveEnd int32
+
+const (
+	AutomationActiveEndNone  AutomationActiveEnd = 0
+	AutomationActiveEndStart AutomationActiveEnd = 1
+	AutomationActiveEndEnd   AutomationActiveEnd = 2
+)
+
+// String returns the AutomationActiveEnd constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationActiveEnd) String() string {
+	switch e {
+	case AutomationActiveEndNone:
+		return "AutomationActiveEndNone"
+	case AutomationActiveEndStart:
+		return "AutomationActiveEndStart"
+	case AutomationActiveEndEnd:
+		return "AutomationActiveEndEnd"
+	default:
+		return fmt.Sprintf("AutomationActiveEnd(%d)", int32(e))
+	}
+}
+
+// AutomationAnimationStyle is Microsoft.UI.Xaml.Automation.AutomationAnimationStyle.
+type AutomationAnimationStyle int32
+
+const (
+	AutomationAnimationStyleNone               AutomationAnimationStyle = 0
+	AutomationAnimationStyleLasVegasLights     AutomationAnimationStyle = 1
+	AutomationAnimationStyleBlinkingBackground AutomationAnimationStyle = 2
+	AutomationAnimationStyleSparkleText        AutomationAnimationStyle = 3
+	AutomationAnimationStyleMarchingBlackAnts  AutomationAnimationStyle = 4
+	AutomationAnimationStyleMarchingRedAnts    AutomationAnimationStyle = 5
+	AutomationAnimationStyleShimmer            AutomationAnimationStyle = 6
+	AutomationAnimationStyleOther              AutomationAnimationStyle = 7
+)
+
+// String returns the AutomationAnimationStyle constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationAnimationStyle) String() string {
+	switch e {
+	case AutomationAnimationStyleNone:
+		return "AutomationAnimationStyleNone"
+	case AutomationAnimationStyleLasVegasLights:
+		return "AutomationAnimationStyleLasVegasLights"
+	case AutomationAnimationStyleBlinkingBackground:
+		return "AutomationAnimationStyleBlinkingBackground"
+	case AutomationAnimationStyleSparkleText:
+		return "AutomationAnimationStyleSparkleText"
+	case AutomationAnimationStyleMarchingBlackAnts:
+		return "AutomationAnimationStyleMarchingBlackAnts"
+	case AutomationAnimationStyleMarchingRedAnts:
+		return "AutomationAnimationStyleMarchingRedAnts"
+	case AutomationAnimationStyleShimmer:
+		return "AutomationAnimationStyleShimmer"
+	case AutomationAnimationStyleOther:
+		return "AutomationAnimationStyleOther"
+	default:
+		return fmt.Sprintf("AutomationAnimationStyle(%d)", int32(e))
+	}
+}
+
+// AutomationBulletStyle is Microsoft.UI.Xaml.Automation.AutomationBulletStyle.
+type AutomationBulletStyle int32
+
+const (
+	AutomationBulletStyleNone               AutomationBulletStyle = 0
+	AutomationBulletStyleHollowRoundBullet  AutomationBulletStyle = 1
+	AutomationBulletStyleFilledRoundBullet  AutomationBulletStyle = 2
+	AutomationBulletStyleHollowSquareBullet AutomationBulletStyle = 3
+	AutomationBulletStyleFilledSquareBullet AutomationBulletStyle = 4
+	AutomationBulletStyleDashBullet         AutomationBulletStyle = 5
+	AutomationBulletStyleOther              AutomationBulletStyle = 6
+)
+
+// String returns the AutomationBulletStyle constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationBulletStyle) String() string {
+	switch e {
+	case AutomationBulletStyleNone:
+		return "AutomationBulletStyleNone"
+	case AutomationBulletStyleHollowRoundBullet:
+		return "AutomationBulletStyleHollowRoundBullet"
+	case AutomationBulletStyleFilledRoundBullet:
+		return "AutomationBulletStyleFilledRoundBullet"
+	case AutomationBulletStyleHollowSquareBullet:
+		return "AutomationBulletStyleHollowSquareBullet"
+	case AutomationBulletStyleFilledSquareBullet:
+		return "AutomationBulletStyleFilledSquareBullet"
+	case AutomationBulletStyleDashBullet:
+		return "AutomationBulletStyleDashBullet"
+	case AutomationBulletStyleOther:
+		return "AutomationBulletStyleOther"
+	default:
+		return fmt.Sprintf("AutomationBulletStyle(%d)", int32(e))
+	}
+}
+
+// AutomationCaretBidiMode is Microsoft.UI.Xaml.Automation.AutomationCaretBidiMode.
+type AutomationCaretBidiMode int32
+
+const (
+	AutomationCaretBidiModeLTR AutomationCaretBidiMode = 0
+	AutomationCaretBidiModeRTL AutomationCaretBidiMode = 1
+)
+
+// String returns the AutomationCaretBidiMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationCaretBidiMode) String() string {
+	switch e {
+	case AutomationCaretBidiModeLTR:
+		return "AutomationCaretBidiModeLTR"
+	case AutomationCaretBidiModeRTL:
+		return "AutomationCaretBidiModeRTL"
+	default:
+		return fmt.Sprintf("AutomationCaretBidiMode(%d)", int32(e))
+	}
+}
+
+// AutomationCaretPosition is Microsoft.UI.Xaml.Automation.AutomationCaretPosition.
+type AutomationCaretPosition int32
+
+const (
+	AutomationCaretPositionUnknown         AutomationCaretPosition = 0
+	AutomationCaretPositionEndOfLine       AutomationCaretPosition = 1
+	AutomationCaretPositionBeginningOfLine AutomationCaretPosition = 2
+)
+
+// String returns the AutomationCaretPosition constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationCaretPosition) String() string {
+	switch e {
+	case AutomationCaretPositionUnknown:
+		return "AutomationCaretPositionUnknown"
+	case AutomationCaretPositionEndOfLine:
+		return "AutomationCaretPositionEndOfLine"
+	case AutomationCaretPositionBeginningOfLine:
+		return "AutomationCaretPositionBeginningOfLine"
+	default:
+		return fmt.Sprintf("AutomationCaretPosition(%d)", int32(e))
+	}
+}
+
+// AutomationFlowDirections is Microsoft.UI.Xaml.Automation.AutomationFlowDirections.
+type AutomationFlowDirections int32
+
+const (
+	AutomationFlowDirectionsDefault     AutomationFlowDirections = 0
+	AutomationFlowDirectionsRightToLeft AutomationFlowDirections = 1
+	AutomationFlowDirectionsBottomToTop AutomationFlowDirections = 2
+	AutomationFlowDirectionsVertical    AutomationFlowDirections = 3
+)
+
+// String returns the AutomationFlowDirections constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationFlowDirections) String() string {
+	switch e {
+	case AutomationFlowDirectionsDefault:
+		return "AutomationFlowDirectionsDefault"
+	case AutomationFlowDirectionsRightToLeft:
+		return "AutomationFlowDirectionsRightToLeft"
+	case AutomationFlowDirectionsBottomToTop:
+		return "AutomationFlowDirectionsBottomToTop"
+	case AutomationFlowDirectionsVertical:
+		return "AutomationFlowDirectionsVertical"
+	default:
+		return fmt.Sprintf("AutomationFlowDirections(%d)", int32(e))
+	}
+}
+
+// AutomationOutlineStyles is Microsoft.UI.Xaml.Automation.AutomationOutlineStyles.
+type AutomationOutlineStyles int32
+
+const (
+	AutomationOutlineStylesNone     AutomationOutlineStyles = 0
+	AutomationOutlineStylesOutline  AutomationOutlineStyles = 1
+	AutomationOutlineStylesShadow   AutomationOutlineStyles = 2
+	AutomationOutlineStylesEngraved AutomationOutlineStyles = 3
+	AutomationOutlineStylesEmbossed AutomationOutlineStyles = 4
+)
+
+// String returns the AutomationOutlineStyles constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationOutlineStyles) String() string {
+	switch e {
+	case AutomationOutlineStylesNone:
+		return "AutomationOutlineStylesNone"
+	case AutomationOutlineStylesOutline:
+		return "AutomationOutlineStylesOutline"
+	case AutomationOutlineStylesShadow:
+		return "AutomationOutlineStylesShadow"
+	case AutomationOutlineStylesEngraved:
+		return "AutomationOutlineStylesEngraved"
+	case AutomationOutlineStylesEmbossed:
+		return "AutomationOutlineStylesEmbossed"
+	default:
+		return fmt.Sprintf("AutomationOutlineStyles(%d)", int32(e))
+	}
+}
+
+// AutomationStyleId is Microsoft.UI.Xaml.Automation.AutomationStyleId.
+type AutomationStyleId int32
+
+const (
+	AutomationStyleIdHeading1     AutomationStyleId = 70001
+	AutomationStyleIdHeading2     AutomationStyleId = 70002
+	AutomationStyleIdHeading3     AutomationStyleId = 70003
+	AutomationStyleIdHeading4     AutomationStyleId = 70004
+	AutomationStyleIdHeading5     AutomationStyleId = 70005
+	AutomationStyleIdHeading6     AutomationStyleId = 70006
+	AutomationStyleIdHeading7     AutomationStyleId = 70007
+	AutomationStyleIdHeading8     AutomationStyleId = 70008
+	AutomationStyleIdHeading9     AutomationStyleId = 70009
+	AutomationStyleIdTitle        AutomationStyleId = 70010
+	AutomationStyleIdSubtitle     AutomationStyleId = 70011
+	AutomationStyleIdNormal       AutomationStyleId = 70012
+	AutomationStyleIdEmphasis     AutomationStyleId = 70013
+	AutomationStyleIdQuote        AutomationStyleId = 70014
+	AutomationStyleIdBulletedList AutomationStyleId = 70015
+)
+
+// String returns the AutomationStyleId constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationStyleId) String() string {
+	switch e {
+	case AutomationStyleIdHeading1:
+		return "AutomationStyleIdHeading1"
+	case AutomationStyleIdHeading2:
+		return "AutomationStyleIdHeading2"
+	case AutomationStyleIdHeading3:
+		return "AutomationStyleIdHeading3"
+	case AutomationStyleIdHeading4:
+		return "AutomationStyleIdHeading4"
+	case AutomationStyleIdHeading5:
+		return "AutomationStyleIdHeading5"
+	case AutomationStyleIdHeading6:
+		return "AutomationStyleIdHeading6"
+	case AutomationStyleIdHeading7:
+		return "AutomationStyleIdHeading7"
+	case AutomationStyleIdHeading8:
+		return "AutomationStyleIdHeading8"
+	case AutomationStyleIdHeading9:
+		return "AutomationStyleIdHeading9"
+	case AutomationStyleIdTitle:
+		return "AutomationStyleIdTitle"
+	case AutomationStyleIdSubtitle:
+		return "AutomationStyleIdSubtitle"
+	case AutomationStyleIdNormal:
+		return "AutomationStyleIdNormal"
+	case AutomationStyleIdEmphasis:
+		return "AutomationStyleIdEmphasis"
+	case AutomationStyleIdQuote:
+		return "AutomationStyleIdQuote"
+	case AutomationStyleIdBulletedList:
+		return "AutomationStyleIdBulletedList"
+	default:
+		return fmt.Sprintf("AutomationStyleId(%d)", int32(e))
+	}
+}
+
+// AutomationTextDecorationLineStyle is Microsoft.UI.Xaml.Automation.AutomationTextDecorationLineStyle.
+type AutomationTextDecorationLineStyle int32
+
+const (
+	AutomationTextDecorationLineStyleNone            AutomationTextDecorationLineStyle = 0
+	AutomationTextDecorationLineStyleSingle          AutomationTextDecorationLineStyle = 1
+	AutomationTextDecorationLineStyleWordsOnly       AutomationTextDecorationLineStyle = 2
+	AutomationTextDecorationLineStyleDouble          AutomationTextDecorationLineStyle = 3
+	AutomationTextDecorationLineStyleDot             AutomationTextDecorationLineStyle = 4
+	AutomationTextDecorationLineStyleDash            AutomationTextDecorationLineStyle = 5
+	AutomationTextDecorationLineStyleDashDot         AutomationTextDecorationLineStyle = 6
+	AutomationTextDecorationLineStyleDashDotDot      AutomationTextDecorationLineStyle = 7
+	AutomationTextDecorationLineStyleWavy            AutomationTextDecorationLineStyle = 8
+	AutomationTextDecorationLineStyleThickSingle     AutomationTextDecorationLineStyle = 9
+	AutomationTextDecorationLineStyleDoubleWavy      AutomationTextDecorationLineStyle = 10
+	AutomationTextDecorationLineStyleThickWavy       AutomationTextDecorationLineStyle = 11
+	AutomationTextDecorationLineStyleLongDash        AutomationTextDecorationLineStyle = 12
+	AutomationTextDecorationLineStyleThickDash       AutomationTextDecorationLineStyle = 13
+	AutomationTextDecorationLineStyleThickDashDot    AutomationTextDecorationLineStyle = 14
+	AutomationTextDecorationLineStyleThickDashDotDot AutomationTextDecorationLineStyle = 15
+	AutomationTextDecorationLineStyleThickDot        AutomationTextDecorationLineStyle = 16
+	AutomationTextDecorationLineStyleThickLongDash   AutomationTextDecorationLineStyle = 17
+	AutomationTextDecorationLineStyleOther           AutomationTextDecorationLineStyle = 18
+)
+
+// String returns the AutomationTextDecorationLineStyle constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationTextDecorationLineStyle) String() string {
+	switch e {
+	case AutomationTextDecorationLineStyleNone:
+		return "AutomationTextDecorationLineStyleNone"
+	case AutomationTextDecorationLineStyleSingle:
+		return "AutomationTextDecorationLineStyleSingle"
+	case AutomationTextDecorationLineStyleWordsOnly:
+		return "AutomationTextDecorationLineStyleWordsOnly"
+	case AutomationTextDecorationLineStyleDouble:
+		return "AutomationTextDecorationLineStyleDouble"
+	case AutomationTextDecorationLineStyleDot:
+		return "AutomationTextDecorationLineStyleDot"
+	case AutomationTextDecorationLineStyleDash:
+		return "AutomationTextDecorationLineStyleDash"
+	case AutomationTextDecorationLineStyleDashDot:
+		return "AutomationTextDecorationLineStyleDashDot"
+	case AutomationTextDecorationLineStyleDashDotDot:
+		return "AutomationTextDecorationLineStyleDashDotDot"
+	case AutomationTextDecorationLineStyleWavy:
+		return "AutomationTextDecorationLineStyleWavy"
+	case AutomationTextDecorationLineStyleThickSingle:
+		return "AutomationTextDecorationLineStyleThickSingle"
+	case AutomationTextDecorationLineStyleDoubleWavy:
+		return "AutomationTextDecorationLineStyleDoubleWavy"
+	case AutomationTextDecorationLineStyleThickWavy:
+		return "AutomationTextDecorationLineStyleThickWavy"
+	case AutomationTextDecorationLineStyleLongDash:
+		return "AutomationTextDecorationLineStyleLongDash"
+	case AutomationTextDecorationLineStyleThickDash:
+		return "AutomationTextDecorationLineStyleThickDash"
+	case AutomationTextDecorationLineStyleThickDashDot:
+		return "AutomationTextDecorationLineStyleThickDashDot"
+	case AutomationTextDecorationLineStyleThickDashDotDot:
+		return "AutomationTextDecorationLineStyleThickDashDotDot"
+	case AutomationTextDecorationLineStyleThickDot:
+		return "AutomationTextDecorationLineStyleThickDot"
+	case AutomationTextDecorationLineStyleThickLongDash:
+		return "AutomationTextDecorationLineStyleThickLongDash"
+	case AutomationTextDecorationLineStyleOther:
+		return "AutomationTextDecorationLineStyleOther"
+	default:
+		return fmt.Sprintf("AutomationTextDecorationLineStyle(%d)", int32(e))
+	}
+}
+
+// AutomationTextEditChangeType is Microsoft.UI.Xaml.Automation.AutomationTextEditChangeType.
+type AutomationTextEditChangeType int32
+
+const (
+	AutomationTextEditChangeTypeNone                 AutomationTextEditChangeType = 0
+	AutomationTextEditChangeTypeAutoCorrect          AutomationTextEditChangeType = 1
+	AutomationTextEditChangeTypeComposition          AutomationTextEditChangeType = 2
+	AutomationTextEditChangeTypeCompositionFinalized AutomationTextEditChangeType = 3
+)
+
+// String returns the AutomationTextEditChangeType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationTextEditChangeType) String() string {
+	switch e {
+	case AutomationTextEditChangeTypeNone:
+		return "AutomationTextEditChangeTypeNone"
+	case AutomationTextEditChangeTypeAutoCorrect:
+		return "AutomationTextEditChangeTypeAutoCorrect"
+	case AutomationTextEditChangeTypeComposition:
+		return "AutomationTextEditChangeTypeComposition"
+	case AutomationTextEditChangeTypeCompositionFinalized:
+		return "AutomationTextEditChangeTypeCompositionFinalized"
+	default:
+		return fmt.Sprintf("AutomationTextEditChangeType(%d)", int32(e))
+	}
+}
+
+// DockPosition is Microsoft.UI.Xaml.Automation.DockPosition.
+type DockPosition int32
+
+const (
+	DockPositionTop    DockPosition = 0
+	DockPositionLeft   DockPosition = 1
+	DockPositionBottom DockPosition = 2
+	DockPositionRight  DockPosition = 3
+	DockPositionFill   DockPosition = 4
+	DockPositionNone   DockPosition = 5
+)
+
+// String returns the DockPosition constant's name, or its numeric form when
+// the value is not a known constant.
+func (e DockPosition) String() string {
+	switch e {
+	case DockPositionTop:
+		return "DockPositionTop"
+	case DockPositionLeft:
+		return "DockPositionLeft"
+	case DockPositionBottom:
+		return "DockPositionBottom"
+	case DockPositionRight:
+		return "DockPositionRight"
+	case DockPositionFill:
+		return "DockPositionFill"
+	case DockPositionNone:
+		return "DockPositionNone"
+	default:
+		return fmt.Sprintf("DockPosition(%d)", int32(e))
+	}
+}
+
+// ExpandCollapseState is Microsoft.UI.Xaml.Automation.ExpandCollapseState.
+type ExpandCollapseState int32
+
+const (
+	ExpandCollapseStateCollapsed         ExpandCollapseState = 0
+	ExpandCollapseStateExpanded          ExpandCollapseState = 1
+	ExpandCollapseStatePartiallyExpanded ExpandCollapseState = 2
+	ExpandCollapseStateLeafNode          ExpandCollapseState = 3
+)
+
+// String returns the ExpandCollapseState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ExpandCollapseState) String() string {
+	switch e {
+	case ExpandCollapseStateCollapsed:
+		return "ExpandCollapseStateCollapsed"
+	case ExpandCollapseStateExpanded:
+		return "ExpandCollapseStateExpanded"
+	case ExpandCollapseStatePartiallyExpanded:
+		return "ExpandCollapseStatePartiallyExpanded"
+	case ExpandCollapseStateLeafNode:
+		return "ExpandCollapseStateLeafNode"
+	default:
+		return fmt.Sprintf("ExpandCollapseState(%d)", int32(e))
+	}
+}
+
+// RowOrColumnMajor is Microsoft.UI.Xaml.Automation.RowOrColumnMajor.
+type RowOrColumnMajor int32
+
+const (
+	RowOrColumnMajorRowMajor      RowOrColumnMajor = 0
+	RowOrColumnMajorColumnMajor   RowOrColumnMajor = 1
+	RowOrColumnMajorIndeterminate RowOrColumnMajor = 2
+)
+
+// String returns the RowOrColumnMajor constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RowOrColumnMajor) String() string {
+	switch e {
+	case RowOrColumnMajorRowMajor:
+		return "RowOrColumnMajorRowMajor"
+	case RowOrColumnMajorColumnMajor:
+		return "RowOrColumnMajorColumnMajor"
+	case RowOrColumnMajorIndeterminate:
+		return "RowOrColumnMajorIndeterminate"
+	default:
+		return fmt.Sprintf("RowOrColumnMajor(%d)", int32(e))
+	}
+}
+
+// ScrollAmount is Microsoft.UI.Xaml.Automation.ScrollAmount.
+type ScrollAmount int32
+
+const (
+	ScrollAmountLargeDecrement ScrollAmount = 0
+	ScrollAmountSmallDecrement ScrollAmount = 1
+	ScrollAmountNoAmount       ScrollAmount = 2
+	ScrollAmountLargeIncrement ScrollAmount = 3
+	ScrollAmountSmallIncrement ScrollAmount = 4
+)
+
+// String returns the ScrollAmount constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollAmount) String() string {
+	switch e {
+	case ScrollAmountLargeDecrement:
+		return "ScrollAmountLargeDecrement"
+	case ScrollAmountSmallDecrement:
+		return "ScrollAmountSmallDecrement"
+	case ScrollAmountNoAmount:
+		return "ScrollAmountNoAmount"
+	case ScrollAmountLargeIncrement:
+		return "ScrollAmountLargeIncrement"
+	case ScrollAmountSmallIncrement:
+		return "ScrollAmountSmallIncrement"
+	default:
+		return fmt.Sprintf("ScrollAmount(%d)", int32(e))
+	}
+}
+
+// SupportedTextSelection is Microsoft.UI.Xaml.Automation.SupportedTextSelection.
+type SupportedTextSelection int32
+
+const (
+	SupportedTextSelectionNone     SupportedTextSelection = 0
+	SupportedTextSelectionSingle   SupportedTextSelection = 1
+	SupportedTextSelectionMultiple SupportedTextSelection = 2
+)
+
+// String returns the SupportedTextSelection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SupportedTextSelection) String() string {
+	switch e {
+	case SupportedTextSelectionNone:
+		return "SupportedTextSelectionNone"
+	case SupportedTextSelectionSingle:
+		return "SupportedTextSelectionSingle"
+	case SupportedTextSelectionMultiple:
+		return "SupportedTextSelectionMultiple"
+	default:
+		return fmt.Sprintf("SupportedTextSelection(%d)", int32(e))
+	}
+}
+
+// SynchronizedInputType is Microsoft.UI.Xaml.Automation.SynchronizedInputType.
+type SynchronizedInputType int32
+
+const (
+	SynchronizedInputTypeKeyUp          SynchronizedInputType = 1
+	SynchronizedInputTypeKeyDown        SynchronizedInputType = 2
+	SynchronizedInputTypeLeftMouseUp    SynchronizedInputType = 4
+	SynchronizedInputTypeLeftMouseDown  SynchronizedInputType = 8
+	SynchronizedInputTypeRightMouseUp   SynchronizedInputType = 16
+	SynchronizedInputTypeRightMouseDown SynchronizedInputType = 32
+)
+
+// String returns the SynchronizedInputType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SynchronizedInputType) String() string {
+	switch e {
+	case SynchronizedInputTypeKeyUp:
+		return "SynchronizedInputTypeKeyUp"
+	case SynchronizedInputTypeKeyDown:
+		return "SynchronizedInputTypeKeyDown"
+	case SynchronizedInputTypeLeftMouseUp:
+		return "SynchronizedInputTypeLeftMouseUp"
+	case SynchronizedInputTypeLeftMouseDown:
+		return "SynchronizedInputTypeLeftMouseDown"
+	case SynchronizedInputTypeRightMouseUp:
+		return "SynchronizedInputTypeRightMouseUp"
+	case SynchronizedInputTypeRightMouseDown:
+		return "SynchronizedInputTypeRightMouseDown"
+	default:
+		return fmt.Sprintf("SynchronizedInputType(%d)", int32(e))
+	}
+}
+
+// ToggleState is Microsoft.UI.Xaml.Automation.ToggleState.
+type ToggleState int32
+
+const (
+	ToggleStateOff           ToggleState = 0
+	ToggleStateOn            ToggleState = 1
+	ToggleStateIndeterminate ToggleState = 2
+)
+
+// String returns the ToggleState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ToggleState) String() string {
+	switch e {
+	case ToggleStateOff:
+		return "ToggleStateOff"
+	case ToggleStateOn:
+		return "ToggleStateOn"
+	case ToggleStateIndeterminate:
+		return "ToggleStateIndeterminate"
+	default:
+		return fmt.Sprintf("ToggleState(%d)", int32(e))
+	}
+}
+
+// WindowInteractionState is Microsoft.UI.Xaml.Automation.WindowInteractionState.
+type WindowInteractionState int32
+
+const (
+	WindowInteractionStateRunning                 WindowInteractionState = 0
+	WindowInteractionStateClosing                 WindowInteractionState = 1
+	WindowInteractionStateReadyForUserInteraction WindowInteractionState = 2
+	WindowInteractionStateBlockedByModalWindow    WindowInteractionState = 3
+	WindowInteractionStateNotResponding           WindowInteractionState = 4
+)
+
+// String returns the WindowInteractionState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e WindowInteractionState) String() string {
+	switch e {
+	case WindowInteractionStateRunning:
+		return "WindowInteractionStateRunning"
+	case WindowInteractionStateClosing:
+		return "WindowInteractionStateClosing"
+	case WindowInteractionStateReadyForUserInteraction:
+		return "WindowInteractionStateReadyForUserInteraction"
+	case WindowInteractionStateBlockedByModalWindow:
+		return "WindowInteractionStateBlockedByModalWindow"
+	case WindowInteractionStateNotResponding:
+		return "WindowInteractionStateNotResponding"
+	default:
+		return fmt.Sprintf("WindowInteractionState(%d)", int32(e))
+	}
+}
+
+// WindowVisualState is Microsoft.UI.Xaml.Automation.WindowVisualState.
+type WindowVisualState int32
+
+const (
+	WindowVisualStateNormal    WindowVisualState = 0
+	WindowVisualStateMaximized WindowVisualState = 1
+	WindowVisualStateMinimized WindowVisualState = 2
+)
+
+// String returns the WindowVisualState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e WindowVisualState) String() string {
+	switch e {
+	case WindowVisualStateNormal:
+		return "WindowVisualStateNormal"
+	case WindowVisualStateMaximized:
+		return "WindowVisualStateMaximized"
+	case WindowVisualStateMinimized:
+		return "WindowVisualStateMinimized"
+	default:
+		return fmt.Sprintf("WindowVisualState(%d)", int32(e))
+	}
+}
+
+// ZoomUnit is Microsoft.UI.Xaml.Automation.ZoomUnit.
+type ZoomUnit int32
+
+const (
+	ZoomUnitNoAmount       ZoomUnit = 0
+	ZoomUnitLargeDecrement ZoomUnit = 1
+	ZoomUnitSmallDecrement ZoomUnit = 2
+	ZoomUnitLargeIncrement ZoomUnit = 3
+	ZoomUnitSmallIncrement ZoomUnit = 4
+)
+
+// String returns the ZoomUnit constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ZoomUnit) String() string {
+	switch e {
+	case ZoomUnitNoAmount:
+		return "ZoomUnitNoAmount"
+	case ZoomUnitLargeDecrement:
+		return "ZoomUnitLargeDecrement"
+	case ZoomUnitSmallDecrement:
+		return "ZoomUnitSmallDecrement"
+	case ZoomUnitLargeIncrement:
+		return "ZoomUnitLargeIncrement"
+	case ZoomUnitSmallIncrement:
+		return "ZoomUnitSmallIncrement"
+	default:
+		return fmt.Sprintf("ZoomUnit(%d)", int32(e))
+	}
+}
+
+// AccessibilityView is Microsoft.UI.Xaml.Automation.Peers.AccessibilityView.
+type AccessibilityView int32
+
+const (
+	AccessibilityViewRaw     AccessibilityView = 0
+	AccessibilityViewControl AccessibilityView = 1
+	AccessibilityViewContent AccessibilityView = 2
+)
+
+// String returns the AccessibilityView constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AccessibilityView) String() string {
+	switch e {
+	case AccessibilityViewRaw:
+		return "AccessibilityViewRaw"
+	case AccessibilityViewControl:
+		return "AccessibilityViewControl"
+	case AccessibilityViewContent:
+		return "AccessibilityViewContent"
+	default:
+		return fmt.Sprintf("AccessibilityView(%d)", int32(e))
+	}
+}
+
+// AutomationControlType is Microsoft.UI.Xaml.Automation.Peers.AutomationControlType.
+type AutomationControlType int32
+
+const (
+	AutomationControlTypeButton       AutomationControlType = 0
+	AutomationControlTypeCalendar     AutomationControlType = 1
+	AutomationControlTypeCheckBox     AutomationControlType = 2
+	AutomationControlTypeComboBox     AutomationControlType = 3
+	AutomationControlTypeEdit         AutomationControlType = 4
+	AutomationControlTypeHyperlink    AutomationControlType = 5
+	AutomationControlTypeImage        AutomationControlType = 6
+	AutomationControlTypeListItem     AutomationControlType = 7
+	AutomationControlTypeList         AutomationControlType = 8
+	AutomationControlTypeMenu         AutomationControlType = 9
+	AutomationControlTypeMenuBar      AutomationControlType = 10
+	AutomationControlTypeMenuItem     AutomationControlType = 11
+	AutomationControlTypeProgressBar  AutomationControlType = 12
+	AutomationControlTypeRadioButton  AutomationControlType = 13
+	AutomationControlTypeScrollBar    AutomationControlType = 14
+	AutomationControlTypeSlider       AutomationControlType = 15
+	AutomationControlTypeSpinner      AutomationControlType = 16
+	AutomationControlTypeStatusBar    AutomationControlType = 17
+	AutomationControlTypeTab          AutomationControlType = 18
+	AutomationControlTypeTabItem      AutomationControlType = 19
+	AutomationControlTypeText         AutomationControlType = 20
+	AutomationControlTypeToolBar      AutomationControlType = 21
+	AutomationControlTypeToolTip      AutomationControlType = 22
+	AutomationControlTypeTree         AutomationControlType = 23
+	AutomationControlTypeTreeItem     AutomationControlType = 24
+	AutomationControlTypeCustom       AutomationControlType = 25
+	AutomationControlTypeGroup        AutomationControlType = 26
+	AutomationControlTypeThumb        AutomationControlType = 27
+	AutomationControlTypeDataGrid     AutomationControlType = 28
+	AutomationControlTypeDataItem     AutomationControlType = 29
+	AutomationControlTypeDocument     AutomationControlType = 30
+	AutomationControlTypeSplitButton  AutomationControlType = 31
+	AutomationControlTypeWindow       AutomationControlType = 32
+	AutomationControlTypePane         AutomationControlType = 33
+	AutomationControlTypeHeader       AutomationControlType = 34
+	AutomationControlTypeHeaderItem   AutomationControlType = 35
+	AutomationControlTypeTable        AutomationControlType = 36
+	AutomationControlTypeTitleBar     AutomationControlType = 37
+	AutomationControlTypeSeparator    AutomationControlType = 38
+	AutomationControlTypeSemanticZoom AutomationControlType = 39
+	AutomationControlTypeAppBar       AutomationControlType = 40
+	AutomationControlTypeFlipView     AutomationControlType = 41
+)
+
+// String returns the AutomationControlType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationControlType) String() string {
+	switch e {
+	case AutomationControlTypeButton:
+		return "AutomationControlTypeButton"
+	case AutomationControlTypeCalendar:
+		return "AutomationControlTypeCalendar"
+	case AutomationControlTypeCheckBox:
+		return "AutomationControlTypeCheckBox"
+	case AutomationControlTypeComboBox:
+		return "AutomationControlTypeComboBox"
+	case AutomationControlTypeEdit:
+		return "AutomationControlTypeEdit"
+	case AutomationControlTypeHyperlink:
+		return "AutomationControlTypeHyperlink"
+	case AutomationControlTypeImage:
+		return "AutomationControlTypeImage"
+	case AutomationControlTypeListItem:
+		return "AutomationControlTypeListItem"
+	case AutomationControlTypeList:
+		return "AutomationControlTypeList"
+	case AutomationControlTypeMenu:
+		return "AutomationControlTypeMenu"
+	case AutomationControlTypeMenuBar:
+		return "AutomationControlTypeMenuBar"
+	case AutomationControlTypeMenuItem:
+		return "AutomationControlTypeMenuItem"
+	case AutomationControlTypeProgressBar:
+		return "AutomationControlTypeProgressBar"
+	case AutomationControlTypeRadioButton:
+		return "AutomationControlTypeRadioButton"
+	case AutomationControlTypeScrollBar:
+		return "AutomationControlTypeScrollBar"
+	case AutomationControlTypeSlider:
+		return "AutomationControlTypeSlider"
+	case AutomationControlTypeSpinner:
+		return "AutomationControlTypeSpinner"
+	case AutomationControlTypeStatusBar:
+		return "AutomationControlTypeStatusBar"
+	case AutomationControlTypeTab:
+		return "AutomationControlTypeTab"
+	case AutomationControlTypeTabItem:
+		return "AutomationControlTypeTabItem"
+	case AutomationControlTypeText:
+		return "AutomationControlTypeText"
+	case AutomationControlTypeToolBar:
+		return "AutomationControlTypeToolBar"
+	case AutomationControlTypeToolTip:
+		return "AutomationControlTypeToolTip"
+	case AutomationControlTypeTree:
+		return "AutomationControlTypeTree"
+	case AutomationControlTypeTreeItem:
+		return "AutomationControlTypeTreeItem"
+	case AutomationControlTypeCustom:
+		return "AutomationControlTypeCustom"
+	case AutomationControlTypeGroup:
+		return "AutomationControlTypeGroup"
+	case AutomationControlTypeThumb:
+		return "AutomationControlTypeThumb"
+	case AutomationControlTypeDataGrid:
+		return "AutomationControlTypeDataGrid"
+	case AutomationControlTypeDataItem:
+		return "AutomationControlTypeDataItem"
+	case AutomationControlTypeDocument:
+		return "AutomationControlTypeDocument"
+	case AutomationControlTypeSplitButton:
+		return "AutomationControlTypeSplitButton"
+	case AutomationControlTypeWindow:
+		return "AutomationControlTypeWindow"
+	case AutomationControlTypePane:
+		return "AutomationControlTypePane"
+	case AutomationControlTypeHeader:
+		return "AutomationControlTypeHeader"
+	case AutomationControlTypeHeaderItem:
+		return "AutomationControlTypeHeaderItem"
+	case AutomationControlTypeTable:
+		return "AutomationControlTypeTable"
+	case AutomationControlTypeTitleBar:
+		return "AutomationControlTypeTitleBar"
+	case AutomationControlTypeSeparator:
+		return "AutomationControlTypeSeparator"
+	case AutomationControlTypeSemanticZoom:
+		return "AutomationControlTypeSemanticZoom"
+	case AutomationControlTypeAppBar:
+		return "AutomationControlTypeAppBar"
+	case AutomationControlTypeFlipView:
+		return "AutomationControlTypeFlipView"
+	default:
+		return fmt.Sprintf("AutomationControlType(%d)", int32(e))
+	}
+}
+
+// AutomationEvents is Microsoft.UI.Xaml.Automation.Peers.AutomationEvents.
+type AutomationEvents int32
+
+const (
+	AutomationEventsToolTipOpened                                     AutomationEvents = 0
+	AutomationEventsToolTipClosed                                     AutomationEvents = 1
+	AutomationEventsMenuOpened                                        AutomationEvents = 2
+	AutomationEventsMenuClosed                                        AutomationEvents = 3
+	AutomationEventsAutomationFocusChanged                            AutomationEvents = 4
+	AutomationEventsInvokePatternOnInvoked                            AutomationEvents = 5
+	AutomationEventsSelectionItemPatternOnElementAddedToSelection     AutomationEvents = 6
+	AutomationEventsSelectionItemPatternOnElementRemovedFromSelection AutomationEvents = 7
+	AutomationEventsSelectionItemPatternOnElementSelected             AutomationEvents = 8
+	AutomationEventsSelectionPatternOnInvalidated                     AutomationEvents = 9
+	AutomationEventsTextPatternOnTextSelectionChanged                 AutomationEvents = 10
+	AutomationEventsTextPatternOnTextChanged                          AutomationEvents = 11
+	AutomationEventsAsyncContentLoaded                                AutomationEvents = 12
+	AutomationEventsPropertyChanged                                   AutomationEvents = 13
+	AutomationEventsStructureChanged                                  AutomationEvents = 14
+	AutomationEventsDragStart                                         AutomationEvents = 15
+	AutomationEventsDragCancel                                        AutomationEvents = 16
+	AutomationEventsDragComplete                                      AutomationEvents = 17
+	AutomationEventsDragEnter                                         AutomationEvents = 18
+	AutomationEventsDragLeave                                         AutomationEvents = 19
+	AutomationEventsDropped                                           AutomationEvents = 20
+	AutomationEventsLiveRegionChanged                                 AutomationEvents = 21
+	AutomationEventsInputReachedTarget                                AutomationEvents = 22
+	AutomationEventsInputReachedOtherElement                          AutomationEvents = 23
+	AutomationEventsInputDiscarded                                    AutomationEvents = 24
+	AutomationEventsWindowClosed                                      AutomationEvents = 25
+	AutomationEventsWindowOpened                                      AutomationEvents = 26
+	AutomationEventsConversionTargetChanged                           AutomationEvents = 27
+	AutomationEventsTextEditTextChanged                               AutomationEvents = 28
+	AutomationEventsLayoutInvalidated                                 AutomationEvents = 29
+)
+
+// String returns the AutomationEvents constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationEvents) String() string {
+	switch e {
+	case AutomationEventsToolTipOpened:
+		return "AutomationEventsToolTipOpened"
+	case AutomationEventsToolTipClosed:
+		return "AutomationEventsToolTipClosed"
+	case AutomationEventsMenuOpened:
+		return "AutomationEventsMenuOpened"
+	case AutomationEventsMenuClosed:
+		return "AutomationEventsMenuClosed"
+	case AutomationEventsAutomationFocusChanged:
+		return "AutomationEventsAutomationFocusChanged"
+	case AutomationEventsInvokePatternOnInvoked:
+		return "AutomationEventsInvokePatternOnInvoked"
+	case AutomationEventsSelectionItemPatternOnElementAddedToSelection:
+		return "AutomationEventsSelectionItemPatternOnElementAddedToSelection"
+	case AutomationEventsSelectionItemPatternOnElementRemovedFromSelection:
+		return "AutomationEventsSelectionItemPatternOnElementRemovedFromSelection"
+	case AutomationEventsSelectionItemPatternOnElementSelected:
+		return "AutomationEventsSelectionItemPatternOnElementSelected"
+	case AutomationEventsSelectionPatternOnInvalidated:
+		return "AutomationEventsSelectionPatternOnInvalidated"
+	case AutomationEventsTextPatternOnTextSelectionChanged:
+		return "AutomationEventsTextPatternOnTextSelectionChanged"
+	case AutomationEventsTextPatternOnTextChanged:
+		return "AutomationEventsTextPatternOnTextChanged"
+	case AutomationEventsAsyncContentLoaded:
+		return "AutomationEventsAsyncContentLoaded"
+	case AutomationEventsPropertyChanged:
+		return "AutomationEventsPropertyChanged"
+	case AutomationEventsStructureChanged:
+		return "AutomationEventsStructureChanged"
+	case AutomationEventsDragStart:
+		return "AutomationEventsDragStart"
+	case AutomationEventsDragCancel:
+		return "AutomationEventsDragCancel"
+	case AutomationEventsDragComplete:
+		return "AutomationEventsDragComplete"
+	case AutomationEventsDragEnter:
+		return "AutomationEventsDragEnter"
+	case AutomationEventsDragLeave:
+		return "AutomationEventsDragLeave"
+	case AutomationEventsDropped:
+		return "AutomationEventsDropped"
+	case AutomationEventsLiveRegionChanged:
+		return "AutomationEventsLiveRegionChanged"
+	case AutomationEventsInputReachedTarget:
+		return "AutomationEventsInputReachedTarget"
+	case AutomationEventsInputReachedOtherElement:
+		return "AutomationEventsInputReachedOtherElement"
+	case AutomationEventsInputDiscarded:
+		return "AutomationEventsInputDiscarded"
+	case AutomationEventsWindowClosed:
+		return "AutomationEventsWindowClosed"
+	case AutomationEventsWindowOpened:
+		return "AutomationEventsWindowOpened"
+	case AutomationEventsConversionTargetChanged:
+		return "AutomationEventsConversionTargetChanged"
+	case AutomationEventsTextEditTextChanged:
+		return "AutomationEventsTextEditTextChanged"
+	case AutomationEventsLayoutInvalidated:
+		return "AutomationEventsLayoutInvalidated"
+	default:
+		return fmt.Sprintf("AutomationEvents(%d)", int32(e))
+	}
+}
+
+// AutomationHeadingLevel is Microsoft.UI.Xaml.Automation.Peers.AutomationHeadingLevel.
+type AutomationHeadingLevel int32
+
+const (
+	AutomationHeadingLevelNone   AutomationHeadingLevel = 0
+	AutomationHeadingLevelLevel1 AutomationHeadingLevel = 1
+	AutomationHeadingLevelLevel2 AutomationHeadingLevel = 2
+	AutomationHeadingLevelLevel3 AutomationHeadingLevel = 3
+	AutomationHeadingLevelLevel4 AutomationHeadingLevel = 4
+	AutomationHeadingLevelLevel5 AutomationHeadingLevel = 5
+	AutomationHeadingLevelLevel6 AutomationHeadingLevel = 6
+	AutomationHeadingLevelLevel7 AutomationHeadingLevel = 7
+	AutomationHeadingLevelLevel8 AutomationHeadingLevel = 8
+	AutomationHeadingLevelLevel9 AutomationHeadingLevel = 9
+)
+
+// String returns the AutomationHeadingLevel constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationHeadingLevel) String() string {
+	switch e {
+	case AutomationHeadingLevelNone:
+		return "AutomationHeadingLevelNone"
+	case AutomationHeadingLevelLevel1:
+		return "AutomationHeadingLevelLevel1"
+	case AutomationHeadingLevelLevel2:
+		return "AutomationHeadingLevelLevel2"
+	case AutomationHeadingLevelLevel3:
+		return "AutomationHeadingLevelLevel3"
+	case AutomationHeadingLevelLevel4:
+		return "AutomationHeadingLevelLevel4"
+	case AutomationHeadingLevelLevel5:
+		return "AutomationHeadingLevelLevel5"
+	case AutomationHeadingLevelLevel6:
+		return "AutomationHeadingLevelLevel6"
+	case AutomationHeadingLevelLevel7:
+		return "AutomationHeadingLevelLevel7"
+	case AutomationHeadingLevelLevel8:
+		return "AutomationHeadingLevelLevel8"
+	case AutomationHeadingLevelLevel9:
+		return "AutomationHeadingLevelLevel9"
+	default:
+		return fmt.Sprintf("AutomationHeadingLevel(%d)", int32(e))
+	}
+}
+
+// AutomationLandmarkType is Microsoft.UI.Xaml.Automation.Peers.AutomationLandmarkType.
+type AutomationLandmarkType int32
+
+const (
+	AutomationLandmarkTypeNone       AutomationLandmarkType = 0
+	AutomationLandmarkTypeCustom     AutomationLandmarkType = 1
+	AutomationLandmarkTypeForm       AutomationLandmarkType = 2
+	AutomationLandmarkTypeMain       AutomationLandmarkType = 3
+	AutomationLandmarkTypeNavigation AutomationLandmarkType = 4
+	AutomationLandmarkTypeSearch     AutomationLandmarkType = 5
+)
+
+// String returns the AutomationLandmarkType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationLandmarkType) String() string {
+	switch e {
+	case AutomationLandmarkTypeNone:
+		return "AutomationLandmarkTypeNone"
+	case AutomationLandmarkTypeCustom:
+		return "AutomationLandmarkTypeCustom"
+	case AutomationLandmarkTypeForm:
+		return "AutomationLandmarkTypeForm"
+	case AutomationLandmarkTypeMain:
+		return "AutomationLandmarkTypeMain"
+	case AutomationLandmarkTypeNavigation:
+		return "AutomationLandmarkTypeNavigation"
+	case AutomationLandmarkTypeSearch:
+		return "AutomationLandmarkTypeSearch"
+	default:
+		return fmt.Sprintf("AutomationLandmarkType(%d)", int32(e))
+	}
+}
+
+// AutomationLiveSetting is Microsoft.UI.Xaml.Automation.Peers.AutomationLiveSetting.
+type AutomationLiveSetting int32
+
+const (
+	AutomationLiveSettingOff       AutomationLiveSetting = 0
+	AutomationLiveSettingPolite    AutomationLiveSetting = 1
+	AutomationLiveSettingAssertive AutomationLiveSetting = 2
+)
+
+// String returns the AutomationLiveSetting constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationLiveSetting) String() string {
+	switch e {
+	case AutomationLiveSettingOff:
+		return "AutomationLiveSettingOff"
+	case AutomationLiveSettingPolite:
+		return "AutomationLiveSettingPolite"
+	case AutomationLiveSettingAssertive:
+		return "AutomationLiveSettingAssertive"
+	default:
+		return fmt.Sprintf("AutomationLiveSetting(%d)", int32(e))
+	}
+}
+
+// AutomationNavigationDirection is Microsoft.UI.Xaml.Automation.Peers.AutomationNavigationDirection.
+type AutomationNavigationDirection int32
+
+const (
+	AutomationNavigationDirectionParent          AutomationNavigationDirection = 0
+	AutomationNavigationDirectionNextSibling     AutomationNavigationDirection = 1
+	AutomationNavigationDirectionPreviousSibling AutomationNavigationDirection = 2
+	AutomationNavigationDirectionFirstChild      AutomationNavigationDirection = 3
+	AutomationNavigationDirectionLastChild       AutomationNavigationDirection = 4
+)
+
+// String returns the AutomationNavigationDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationNavigationDirection) String() string {
+	switch e {
+	case AutomationNavigationDirectionParent:
+		return "AutomationNavigationDirectionParent"
+	case AutomationNavigationDirectionNextSibling:
+		return "AutomationNavigationDirectionNextSibling"
+	case AutomationNavigationDirectionPreviousSibling:
+		return "AutomationNavigationDirectionPreviousSibling"
+	case AutomationNavigationDirectionFirstChild:
+		return "AutomationNavigationDirectionFirstChild"
+	case AutomationNavigationDirectionLastChild:
+		return "AutomationNavigationDirectionLastChild"
+	default:
+		return fmt.Sprintf("AutomationNavigationDirection(%d)", int32(e))
+	}
+}
+
+// AutomationNotificationKind is Microsoft.UI.Xaml.Automation.Peers.AutomationNotificationKind.
+type AutomationNotificationKind int32
+
+const (
+	AutomationNotificationKindItemAdded       AutomationNotificationKind = 0
+	AutomationNotificationKindItemRemoved     AutomationNotificationKind = 1
+	AutomationNotificationKindActionCompleted AutomationNotificationKind = 2
+	AutomationNotificationKindActionAborted   AutomationNotificationKind = 3
+	AutomationNotificationKindOther           AutomationNotificationKind = 4
+)
+
+// String returns the AutomationNotificationKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationNotificationKind) String() string {
+	switch e {
+	case AutomationNotificationKindItemAdded:
+		return "AutomationNotificationKindItemAdded"
+	case AutomationNotificationKindItemRemoved:
+		return "AutomationNotificationKindItemRemoved"
+	case AutomationNotificationKindActionCompleted:
+		return "AutomationNotificationKindActionCompleted"
+	case AutomationNotificationKindActionAborted:
+		return "AutomationNotificationKindActionAborted"
+	case AutomationNotificationKindOther:
+		return "AutomationNotificationKindOther"
+	default:
+		return fmt.Sprintf("AutomationNotificationKind(%d)", int32(e))
+	}
+}
+
+// AutomationNotificationProcessing is Microsoft.UI.Xaml.Automation.Peers.AutomationNotificationProcessing.
+type AutomationNotificationProcessing int32
+
+const (
+	AutomationNotificationProcessingImportantAll          AutomationNotificationProcessing = 0
+	AutomationNotificationProcessingImportantMostRecent   AutomationNotificationProcessing = 1
+	AutomationNotificationProcessingAll                   AutomationNotificationProcessing = 2
+	AutomationNotificationProcessingMostRecent            AutomationNotificationProcessing = 3
+	AutomationNotificationProcessingCurrentThenMostRecent AutomationNotificationProcessing = 4
+)
+
+// String returns the AutomationNotificationProcessing constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationNotificationProcessing) String() string {
+	switch e {
+	case AutomationNotificationProcessingImportantAll:
+		return "AutomationNotificationProcessingImportantAll"
+	case AutomationNotificationProcessingImportantMostRecent:
+		return "AutomationNotificationProcessingImportantMostRecent"
+	case AutomationNotificationProcessingAll:
+		return "AutomationNotificationProcessingAll"
+	case AutomationNotificationProcessingMostRecent:
+		return "AutomationNotificationProcessingMostRecent"
+	case AutomationNotificationProcessingCurrentThenMostRecent:
+		return "AutomationNotificationProcessingCurrentThenMostRecent"
+	default:
+		return fmt.Sprintf("AutomationNotificationProcessing(%d)", int32(e))
+	}
+}
+
+// AutomationOrientation is Microsoft.UI.Xaml.Automation.Peers.AutomationOrientation.
+type AutomationOrientation int32
+
+const (
+	AutomationOrientationNone       AutomationOrientation = 0
+	AutomationOrientationHorizontal AutomationOrientation = 1
+	AutomationOrientationVertical   AutomationOrientation = 2
+)
+
+// String returns the AutomationOrientation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationOrientation) String() string {
+	switch e {
+	case AutomationOrientationNone:
+		return "AutomationOrientationNone"
+	case AutomationOrientationHorizontal:
+		return "AutomationOrientationHorizontal"
+	case AutomationOrientationVertical:
+		return "AutomationOrientationVertical"
+	default:
+		return fmt.Sprintf("AutomationOrientation(%d)", int32(e))
+	}
+}
+
+// AutomationStructureChangeType is Microsoft.UI.Xaml.Automation.Peers.AutomationStructureChangeType.
+type AutomationStructureChangeType int32
+
+const (
+	AutomationStructureChangeTypeChildAdded          AutomationStructureChangeType = 0
+	AutomationStructureChangeTypeChildRemoved        AutomationStructureChangeType = 1
+	AutomationStructureChangeTypeChildrenInvalidated AutomationStructureChangeType = 2
+	AutomationStructureChangeTypeChildrenBulkAdded   AutomationStructureChangeType = 3
+	AutomationStructureChangeTypeChildrenBulkRemoved AutomationStructureChangeType = 4
+	AutomationStructureChangeTypeChildrenReordered   AutomationStructureChangeType = 5
+)
+
+// String returns the AutomationStructureChangeType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutomationStructureChangeType) String() string {
+	switch e {
+	case AutomationStructureChangeTypeChildAdded:
+		return "AutomationStructureChangeTypeChildAdded"
+	case AutomationStructureChangeTypeChildRemoved:
+		return "AutomationStructureChangeTypeChildRemoved"
+	case AutomationStructureChangeTypeChildrenInvalidated:
+		return "AutomationStructureChangeTypeChildrenInvalidated"
+	case AutomationStructureChangeTypeChildrenBulkAdded:
+		return "AutomationStructureChangeTypeChildrenBulkAdded"
+	case AutomationStructureChangeTypeChildrenBulkRemoved:
+		return "AutomationStructureChangeTypeChildrenBulkRemoved"
+	case AutomationStructureChangeTypeChildrenReordered:
+		return "AutomationStructureChangeTypeChildrenReordered"
+	default:
+		return fmt.Sprintf("AutomationStructureChangeType(%d)", int32(e))
+	}
+}
+
+// PatternInterface is Microsoft.UI.Xaml.Automation.Peers.PatternInterface.
+type PatternInterface int32
+
+const (
+	PatternInterfaceInvoke            PatternInterface = 0
+	PatternInterfaceSelection         PatternInterface = 1
+	PatternInterfaceValue             PatternInterface = 2
+	PatternInterfaceRangeValue        PatternInterface = 3
+	PatternInterfaceScroll            PatternInterface = 4
+	PatternInterfaceScrollItem        PatternInterface = 5
+	PatternInterfaceExpandCollapse    PatternInterface = 6
+	PatternInterfaceGrid              PatternInterface = 7
+	PatternInterfaceGridItem          PatternInterface = 8
+	PatternInterfaceMultipleView      PatternInterface = 9
+	PatternInterfaceWindow            PatternInterface = 10
+	PatternInterfaceSelectionItem     PatternInterface = 11
+	PatternInterfaceDock              PatternInterface = 12
+	PatternInterfaceTable             PatternInterface = 13
+	PatternInterfaceTableItem         PatternInterface = 14
+	PatternInterfaceToggle            PatternInterface = 15
+	PatternInterfaceTransform         PatternInterface = 16
+	PatternInterfaceText              PatternInterface = 17
+	PatternInterfaceItemContainer     PatternInterface = 18
+	PatternInterfaceVirtualizedItem   PatternInterface = 19
+	PatternInterfaceText2             PatternInterface = 20
+	PatternInterfaceTextChild         PatternInterface = 21
+	PatternInterfaceTextRange         PatternInterface = 22
+	PatternInterfaceAnnotation        PatternInterface = 23
+	PatternInterfaceDrag              PatternInterface = 24
+	PatternInterfaceDropTarget        PatternInterface = 25
+	PatternInterfaceObjectModel       PatternInterface = 26
+	PatternInterfaceSpreadsheet       PatternInterface = 27
+	PatternInterfaceSpreadsheetItem   PatternInterface = 28
+	PatternInterfaceStyles            PatternInterface = 29
+	PatternInterfaceTransform2        PatternInterface = 30
+	PatternInterfaceSynchronizedInput PatternInterface = 31
+	PatternInterfaceTextEdit          PatternInterface = 32
+	PatternInterfaceCustomNavigation  PatternInterface = 33
+)
+
+// String returns the PatternInterface constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PatternInterface) String() string {
+	switch e {
+	case PatternInterfaceInvoke:
+		return "PatternInterfaceInvoke"
+	case PatternInterfaceSelection:
+		return "PatternInterfaceSelection"
+	case PatternInterfaceValue:
+		return "PatternInterfaceValue"
+	case PatternInterfaceRangeValue:
+		return "PatternInterfaceRangeValue"
+	case PatternInterfaceScroll:
+		return "PatternInterfaceScroll"
+	case PatternInterfaceScrollItem:
+		return "PatternInterfaceScrollItem"
+	case PatternInterfaceExpandCollapse:
+		return "PatternInterfaceExpandCollapse"
+	case PatternInterfaceGrid:
+		return "PatternInterfaceGrid"
+	case PatternInterfaceGridItem:
+		return "PatternInterfaceGridItem"
+	case PatternInterfaceMultipleView:
+		return "PatternInterfaceMultipleView"
+	case PatternInterfaceWindow:
+		return "PatternInterfaceWindow"
+	case PatternInterfaceSelectionItem:
+		return "PatternInterfaceSelectionItem"
+	case PatternInterfaceDock:
+		return "PatternInterfaceDock"
+	case PatternInterfaceTable:
+		return "PatternInterfaceTable"
+	case PatternInterfaceTableItem:
+		return "PatternInterfaceTableItem"
+	case PatternInterfaceToggle:
+		return "PatternInterfaceToggle"
+	case PatternInterfaceTransform:
+		return "PatternInterfaceTransform"
+	case PatternInterfaceText:
+		return "PatternInterfaceText"
+	case PatternInterfaceItemContainer:
+		return "PatternInterfaceItemContainer"
+	case PatternInterfaceVirtualizedItem:
+		return "PatternInterfaceVirtualizedItem"
+	case PatternInterfaceText2:
+		return "PatternInterfaceText2"
+	case PatternInterfaceTextChild:
+		return "PatternInterfaceTextChild"
+	case PatternInterfaceTextRange:
+		return "PatternInterfaceTextRange"
+	case PatternInterfaceAnnotation:
+		return "PatternInterfaceAnnotation"
+	case PatternInterfaceDrag:
+		return "PatternInterfaceDrag"
+	case PatternInterfaceDropTarget:
+		return "PatternInterfaceDropTarget"
+	case PatternInterfaceObjectModel:
+		return "PatternInterfaceObjectModel"
+	case PatternInterfaceSpreadsheet:
+		return "PatternInterfaceSpreadsheet"
+	case PatternInterfaceSpreadsheetItem:
+		return "PatternInterfaceSpreadsheetItem"
+	case PatternInterfaceStyles:
+		return "PatternInterfaceStyles"
+	case PatternInterfaceTransform2:
+		return "PatternInterfaceTransform2"
+	case PatternInterfaceSynchronizedInput:
+		return "PatternInterfaceSynchronizedInput"
+	case PatternInterfaceTextEdit:
+		return "PatternInterfaceTextEdit"
+	case PatternInterfaceCustomNavigation:
+		return "PatternInterfaceCustomNavigation"
+	default:
+		return fmt.Sprintf("PatternInterface(%d)", int32(e))
+	}
+}
+
+// AnnotatedScrollBarScrollingEventKind is Microsoft.UI.Xaml.Controls.AnnotatedScrollBarScrollingEventKind.
+type AnnotatedScrollBarScrollingEventKind int32
+
+const (
+	AnnotatedScrollBarScrollingEventKindClick           AnnotatedScrollBarScrollingEventKind = 0
+	AnnotatedScrollBarScrollingEventKindDrag            AnnotatedScrollBarScrollingEventKind = 1
+	AnnotatedScrollBarScrollingEventKindIncrementButton AnnotatedScrollBarScrollingEventKind = 2
+	AnnotatedScrollBarScrollingEventKindDecrementButton AnnotatedScrollBarScrollingEventKind = 3
+)
+
+// String returns the AnnotatedScrollBarScrollingEventKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AnnotatedScrollBarScrollingEventKind) String() string {
+	switch e {
+	case AnnotatedScrollBarScrollingEventKindClick:
+		return "AnnotatedScrollBarScrollingEventKindClick"
+	case AnnotatedScrollBarScrollingEventKindDrag:
+		return "AnnotatedScrollBarScrollingEventKindDrag"
+	case AnnotatedScrollBarScrollingEventKindIncrementButton:
+		return "AnnotatedScrollBarScrollingEventKindIncrementButton"
+	case AnnotatedScrollBarScrollingEventKindDecrementButton:
+		return "AnnotatedScrollBarScrollingEventKindDecrementButton"
+	default:
+		return fmt.Sprintf("AnnotatedScrollBarScrollingEventKind(%d)", int32(e))
+	}
+}
+
+// AppBarClosedDisplayMode is Microsoft.UI.Xaml.Controls.AppBarClosedDisplayMode.
+type AppBarClosedDisplayMode int32
+
+const (
+	AppBarClosedDisplayModeCompact AppBarClosedDisplayMode = 0
+	AppBarClosedDisplayModeMinimal AppBarClosedDisplayMode = 1
+	AppBarClosedDisplayModeHidden  AppBarClosedDisplayMode = 2
+)
+
+// String returns the AppBarClosedDisplayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AppBarClosedDisplayMode) String() string {
+	switch e {
+	case AppBarClosedDisplayModeCompact:
+		return "AppBarClosedDisplayModeCompact"
+	case AppBarClosedDisplayModeMinimal:
+		return "AppBarClosedDisplayModeMinimal"
+	case AppBarClosedDisplayModeHidden:
+		return "AppBarClosedDisplayModeHidden"
+	default:
+		return fmt.Sprintf("AppBarClosedDisplayMode(%d)", int32(e))
+	}
+}
+
+// AutoSuggestionBoxTextChangeReason is Microsoft.UI.Xaml.Controls.AutoSuggestionBoxTextChangeReason.
+type AutoSuggestionBoxTextChangeReason int32
+
+const (
+	AutoSuggestionBoxTextChangeReasonUserInput          AutoSuggestionBoxTextChangeReason = 0
+	AutoSuggestionBoxTextChangeReasonProgrammaticChange AutoSuggestionBoxTextChangeReason = 1
+	AutoSuggestionBoxTextChangeReasonSuggestionChosen   AutoSuggestionBoxTextChangeReason = 2
+)
+
+// String returns the AutoSuggestionBoxTextChangeReason constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AutoSuggestionBoxTextChangeReason) String() string {
+	switch e {
+	case AutoSuggestionBoxTextChangeReasonUserInput:
+		return "AutoSuggestionBoxTextChangeReasonUserInput"
+	case AutoSuggestionBoxTextChangeReasonProgrammaticChange:
+		return "AutoSuggestionBoxTextChangeReasonProgrammaticChange"
+	case AutoSuggestionBoxTextChangeReasonSuggestionChosen:
+		return "AutoSuggestionBoxTextChangeReasonSuggestionChosen"
+	default:
+		return fmt.Sprintf("AutoSuggestionBoxTextChangeReason(%d)", int32(e))
+	}
+}
+
+// BackgroundSizing is Microsoft.UI.Xaml.Controls.BackgroundSizing.
+type BackgroundSizing int32
+
+const (
+	BackgroundSizingInnerBorderEdge BackgroundSizing = 0
+	BackgroundSizingOuterBorderEdge BackgroundSizing = 1
+)
+
+// String returns the BackgroundSizing constant's name, or its numeric form when
+// the value is not a known constant.
+func (e BackgroundSizing) String() string {
+	switch e {
+	case BackgroundSizingInnerBorderEdge:
+		return "BackgroundSizingInnerBorderEdge"
+	case BackgroundSizingOuterBorderEdge:
+		return "BackgroundSizingOuterBorderEdge"
+	default:
+		return fmt.Sprintf("BackgroundSizing(%d)", int32(e))
+	}
+}
+
+// CalendarViewDisplayMode is Microsoft.UI.Xaml.Controls.CalendarViewDisplayMode.
+type CalendarViewDisplayMode int32
+
+const (
+	CalendarViewDisplayModeMonth  CalendarViewDisplayMode = 0
+	CalendarViewDisplayModeYear   CalendarViewDisplayMode = 1
+	CalendarViewDisplayModeDecade CalendarViewDisplayMode = 2
+)
+
+// String returns the CalendarViewDisplayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CalendarViewDisplayMode) String() string {
+	switch e {
+	case CalendarViewDisplayModeMonth:
+		return "CalendarViewDisplayModeMonth"
+	case CalendarViewDisplayModeYear:
+		return "CalendarViewDisplayModeYear"
+	case CalendarViewDisplayModeDecade:
+		return "CalendarViewDisplayModeDecade"
+	default:
+		return fmt.Sprintf("CalendarViewDisplayMode(%d)", int32(e))
+	}
+}
+
+// CalendarViewSelectionMode is Microsoft.UI.Xaml.Controls.CalendarViewSelectionMode.
+type CalendarViewSelectionMode int32
+
+const (
+	CalendarViewSelectionModeNone     CalendarViewSelectionMode = 0
+	CalendarViewSelectionModeSingle   CalendarViewSelectionMode = 1
+	CalendarViewSelectionModeMultiple CalendarViewSelectionMode = 2
+)
+
+// String returns the CalendarViewSelectionMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CalendarViewSelectionMode) String() string {
+	switch e {
+	case CalendarViewSelectionModeNone:
+		return "CalendarViewSelectionModeNone"
+	case CalendarViewSelectionModeSingle:
+		return "CalendarViewSelectionModeSingle"
+	case CalendarViewSelectionModeMultiple:
+		return "CalendarViewSelectionModeMultiple"
+	default:
+		return fmt.Sprintf("CalendarViewSelectionMode(%d)", int32(e))
+	}
+}
+
+// CandidateWindowAlignment is Microsoft.UI.Xaml.Controls.CandidateWindowAlignment.
+type CandidateWindowAlignment int32
+
+const (
+	CandidateWindowAlignmentDefault    CandidateWindowAlignment = 0
+	CandidateWindowAlignmentBottomEdge CandidateWindowAlignment = 1
+)
+
+// String returns the CandidateWindowAlignment constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CandidateWindowAlignment) String() string {
+	switch e {
+	case CandidateWindowAlignmentDefault:
+		return "CandidateWindowAlignmentDefault"
+	case CandidateWindowAlignmentBottomEdge:
+		return "CandidateWindowAlignmentBottomEdge"
+	default:
+		return fmt.Sprintf("CandidateWindowAlignment(%d)", int32(e))
+	}
+}
+
+// CharacterCasing is Microsoft.UI.Xaml.Controls.CharacterCasing.
+type CharacterCasing int32
+
+const (
+	CharacterCasingNormal CharacterCasing = 0
+	CharacterCasingLower  CharacterCasing = 1
+	CharacterCasingUpper  CharacterCasing = 2
+)
+
+// String returns the CharacterCasing constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CharacterCasing) String() string {
+	switch e {
+	case CharacterCasingNormal:
+		return "CharacterCasingNormal"
+	case CharacterCasingLower:
+		return "CharacterCasingLower"
+	case CharacterCasingUpper:
+		return "CharacterCasingUpper"
+	default:
+		return fmt.Sprintf("CharacterCasing(%d)", int32(e))
+	}
+}
+
+// ClickMode is Microsoft.UI.Xaml.Controls.ClickMode.
+type ClickMode int32
+
+const (
+	ClickModeRelease ClickMode = 0
+	ClickModePress   ClickMode = 1
+	ClickModeHover   ClickMode = 2
+)
+
+// String returns the ClickMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ClickMode) String() string {
+	switch e {
+	case ClickModeRelease:
+		return "ClickModeRelease"
+	case ClickModePress:
+		return "ClickModePress"
+	case ClickModeHover:
+		return "ClickModeHover"
+	default:
+		return fmt.Sprintf("ClickMode(%d)", int32(e))
+	}
+}
+
+// ColorPickerHsvChannel is Microsoft.UI.Xaml.Controls.ColorPickerHsvChannel.
+type ColorPickerHsvChannel int32
+
+const (
+	ColorPickerHsvChannelHue        ColorPickerHsvChannel = 0
+	ColorPickerHsvChannelSaturation ColorPickerHsvChannel = 1
+	ColorPickerHsvChannelValue      ColorPickerHsvChannel = 2
+	ColorPickerHsvChannelAlpha      ColorPickerHsvChannel = 3
+)
+
+// String returns the ColorPickerHsvChannel constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ColorPickerHsvChannel) String() string {
+	switch e {
+	case ColorPickerHsvChannelHue:
+		return "ColorPickerHsvChannelHue"
+	case ColorPickerHsvChannelSaturation:
+		return "ColorPickerHsvChannelSaturation"
+	case ColorPickerHsvChannelValue:
+		return "ColorPickerHsvChannelValue"
+	case ColorPickerHsvChannelAlpha:
+		return "ColorPickerHsvChannelAlpha"
+	default:
+		return fmt.Sprintf("ColorPickerHsvChannel(%d)", int32(e))
+	}
+}
+
+// ColorSpectrumComponents is Microsoft.UI.Xaml.Controls.ColorSpectrumComponents.
+type ColorSpectrumComponents int32
+
+const (
+	ColorSpectrumComponentsHueValue        ColorSpectrumComponents = 0
+	ColorSpectrumComponentsValueHue        ColorSpectrumComponents = 1
+	ColorSpectrumComponentsHueSaturation   ColorSpectrumComponents = 2
+	ColorSpectrumComponentsSaturationHue   ColorSpectrumComponents = 3
+	ColorSpectrumComponentsSaturationValue ColorSpectrumComponents = 4
+	ColorSpectrumComponentsValueSaturation ColorSpectrumComponents = 5
+)
+
+// String returns the ColorSpectrumComponents constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ColorSpectrumComponents) String() string {
+	switch e {
+	case ColorSpectrumComponentsHueValue:
+		return "ColorSpectrumComponentsHueValue"
+	case ColorSpectrumComponentsValueHue:
+		return "ColorSpectrumComponentsValueHue"
+	case ColorSpectrumComponentsHueSaturation:
+		return "ColorSpectrumComponentsHueSaturation"
+	case ColorSpectrumComponentsSaturationHue:
+		return "ColorSpectrumComponentsSaturationHue"
+	case ColorSpectrumComponentsSaturationValue:
+		return "ColorSpectrumComponentsSaturationValue"
+	case ColorSpectrumComponentsValueSaturation:
+		return "ColorSpectrumComponentsValueSaturation"
+	default:
+		return fmt.Sprintf("ColorSpectrumComponents(%d)", int32(e))
+	}
+}
+
+// ColorSpectrumShape is Microsoft.UI.Xaml.Controls.ColorSpectrumShape.
+type ColorSpectrumShape int32
+
+const (
+	ColorSpectrumShapeBox  ColorSpectrumShape = 0
+	ColorSpectrumShapeRing ColorSpectrumShape = 1
+)
+
+// String returns the ColorSpectrumShape constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ColorSpectrumShape) String() string {
+	switch e {
+	case ColorSpectrumShapeBox:
+		return "ColorSpectrumShapeBox"
+	case ColorSpectrumShapeRing:
+		return "ColorSpectrumShapeRing"
+	default:
+		return fmt.Sprintf("ColorSpectrumShape(%d)", int32(e))
+	}
+}
+
+// ComboBoxSelectionChangedTrigger is Microsoft.UI.Xaml.Controls.ComboBoxSelectionChangedTrigger.
+type ComboBoxSelectionChangedTrigger int32
+
+const (
+	ComboBoxSelectionChangedTriggerCommitted ComboBoxSelectionChangedTrigger = 0
+	ComboBoxSelectionChangedTriggerAlways    ComboBoxSelectionChangedTrigger = 1
+)
+
+// String returns the ComboBoxSelectionChangedTrigger constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ComboBoxSelectionChangedTrigger) String() string {
+	switch e {
+	case ComboBoxSelectionChangedTriggerCommitted:
+		return "ComboBoxSelectionChangedTriggerCommitted"
+	case ComboBoxSelectionChangedTriggerAlways:
+		return "ComboBoxSelectionChangedTriggerAlways"
+	default:
+		return fmt.Sprintf("ComboBoxSelectionChangedTrigger(%d)", int32(e))
+	}
+}
+
+// CommandBarDefaultLabelPosition is Microsoft.UI.Xaml.Controls.CommandBarDefaultLabelPosition.
+type CommandBarDefaultLabelPosition int32
+
+const (
+	CommandBarDefaultLabelPositionBottom    CommandBarDefaultLabelPosition = 0
+	CommandBarDefaultLabelPositionRight     CommandBarDefaultLabelPosition = 1
+	CommandBarDefaultLabelPositionCollapsed CommandBarDefaultLabelPosition = 2
+)
+
+// String returns the CommandBarDefaultLabelPosition constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CommandBarDefaultLabelPosition) String() string {
+	switch e {
+	case CommandBarDefaultLabelPositionBottom:
+		return "CommandBarDefaultLabelPositionBottom"
+	case CommandBarDefaultLabelPositionRight:
+		return "CommandBarDefaultLabelPositionRight"
+	case CommandBarDefaultLabelPositionCollapsed:
+		return "CommandBarDefaultLabelPositionCollapsed"
+	default:
+		return fmt.Sprintf("CommandBarDefaultLabelPosition(%d)", int32(e))
+	}
+}
+
+// CommandBarDynamicOverflowAction is Microsoft.UI.Xaml.Controls.CommandBarDynamicOverflowAction.
+type CommandBarDynamicOverflowAction int32
+
+const (
+	CommandBarDynamicOverflowActionAddingToOverflow     CommandBarDynamicOverflowAction = 0
+	CommandBarDynamicOverflowActionRemovingFromOverflow CommandBarDynamicOverflowAction = 1
+)
+
+// String returns the CommandBarDynamicOverflowAction constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CommandBarDynamicOverflowAction) String() string {
+	switch e {
+	case CommandBarDynamicOverflowActionAddingToOverflow:
+		return "CommandBarDynamicOverflowActionAddingToOverflow"
+	case CommandBarDynamicOverflowActionRemovingFromOverflow:
+		return "CommandBarDynamicOverflowActionRemovingFromOverflow"
+	default:
+		return fmt.Sprintf("CommandBarDynamicOverflowAction(%d)", int32(e))
+	}
+}
+
+// CommandBarLabelPosition is Microsoft.UI.Xaml.Controls.CommandBarLabelPosition.
+type CommandBarLabelPosition int32
+
+const (
+	CommandBarLabelPositionDefault   CommandBarLabelPosition = 0
+	CommandBarLabelPositionCollapsed CommandBarLabelPosition = 1
+)
+
+// String returns the CommandBarLabelPosition constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CommandBarLabelPosition) String() string {
+	switch e {
+	case CommandBarLabelPositionDefault:
+		return "CommandBarLabelPositionDefault"
+	case CommandBarLabelPositionCollapsed:
+		return "CommandBarLabelPositionCollapsed"
+	default:
+		return fmt.Sprintf("CommandBarLabelPosition(%d)", int32(e))
+	}
+}
+
+// CommandBarOverflowButtonVisibility is Microsoft.UI.Xaml.Controls.CommandBarOverflowButtonVisibility.
+type CommandBarOverflowButtonVisibility int32
+
+const (
+	CommandBarOverflowButtonVisibilityAuto      CommandBarOverflowButtonVisibility = 0
+	CommandBarOverflowButtonVisibilityVisible   CommandBarOverflowButtonVisibility = 1
+	CommandBarOverflowButtonVisibilityCollapsed CommandBarOverflowButtonVisibility = 2
+)
+
+// String returns the CommandBarOverflowButtonVisibility constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CommandBarOverflowButtonVisibility) String() string {
+	switch e {
+	case CommandBarOverflowButtonVisibilityAuto:
+		return "CommandBarOverflowButtonVisibilityAuto"
+	case CommandBarOverflowButtonVisibilityVisible:
+		return "CommandBarOverflowButtonVisibilityVisible"
+	case CommandBarOverflowButtonVisibilityCollapsed:
+		return "CommandBarOverflowButtonVisibilityCollapsed"
+	default:
+		return fmt.Sprintf("CommandBarOverflowButtonVisibility(%d)", int32(e))
+	}
+}
+
+// ContentDialogButton is Microsoft.UI.Xaml.Controls.ContentDialogButton.
+type ContentDialogButton int32
+
+const (
+	ContentDialogButtonNone      ContentDialogButton = 0
+	ContentDialogButtonPrimary   ContentDialogButton = 1
+	ContentDialogButtonSecondary ContentDialogButton = 2
+	ContentDialogButtonClose     ContentDialogButton = 3
+)
+
+// String returns the ContentDialogButton constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ContentDialogButton) String() string {
+	switch e {
+	case ContentDialogButtonNone:
+		return "ContentDialogButtonNone"
+	case ContentDialogButtonPrimary:
+		return "ContentDialogButtonPrimary"
+	case ContentDialogButtonSecondary:
+		return "ContentDialogButtonSecondary"
+	case ContentDialogButtonClose:
+		return "ContentDialogButtonClose"
+	default:
+		return fmt.Sprintf("ContentDialogButton(%d)", int32(e))
+	}
+}
+
+// ContentDialogPlacement is Microsoft.UI.Xaml.Controls.ContentDialogPlacement.
+type ContentDialogPlacement int32
+
+const (
+	ContentDialogPlacementPopup   ContentDialogPlacement = 0
+	ContentDialogPlacementInPlace ContentDialogPlacement = 1
+)
+
+// String returns the ContentDialogPlacement constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ContentDialogPlacement) String() string {
+	switch e {
+	case ContentDialogPlacementPopup:
+		return "ContentDialogPlacementPopup"
+	case ContentDialogPlacementInPlace:
+		return "ContentDialogPlacementInPlace"
+	default:
+		return fmt.Sprintf("ContentDialogPlacement(%d)", int32(e))
+	}
+}
+
+// ContentDialogResult is Microsoft.UI.Xaml.Controls.ContentDialogResult.
+type ContentDialogResult int32
+
+const (
+	ContentDialogResultNone      ContentDialogResult = 0
+	ContentDialogResultPrimary   ContentDialogResult = 1
+	ContentDialogResultSecondary ContentDialogResult = 2
+)
+
+// String returns the ContentDialogResult constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ContentDialogResult) String() string {
+	switch e {
+	case ContentDialogResultNone:
+		return "ContentDialogResultNone"
+	case ContentDialogResultPrimary:
+		return "ContentDialogResultPrimary"
+	case ContentDialogResultSecondary:
+		return "ContentDialogResultSecondary"
+	default:
+		return fmt.Sprintf("ContentDialogResult(%d)", int32(e))
+	}
+}
+
+// DisabledFormattingAccelerators is Microsoft.UI.Xaml.Controls.DisabledFormattingAccelerators.
+// Bitmask — values may be combined with |.
+type DisabledFormattingAccelerators uint32
+
+const (
+	DisabledFormattingAcceleratorsNone      DisabledFormattingAccelerators = 0
+	DisabledFormattingAcceleratorsBold      DisabledFormattingAccelerators = 1
+	DisabledFormattingAcceleratorsItalic    DisabledFormattingAccelerators = 2
+	DisabledFormattingAcceleratorsUnderline DisabledFormattingAccelerators = 4
+	DisabledFormattingAcceleratorsAll       DisabledFormattingAccelerators = 4294967295
+)
+
+// String returns the DisabledFormattingAccelerators constant's name, or its numeric form when
+// the value is not a known constant.
+func (e DisabledFormattingAccelerators) String() string {
+	switch e {
+	case DisabledFormattingAcceleratorsNone:
+		return "DisabledFormattingAcceleratorsNone"
+	case DisabledFormattingAcceleratorsBold:
+		return "DisabledFormattingAcceleratorsBold"
+	case DisabledFormattingAcceleratorsItalic:
+		return "DisabledFormattingAcceleratorsItalic"
+	case DisabledFormattingAcceleratorsUnderline:
+		return "DisabledFormattingAcceleratorsUnderline"
+	case DisabledFormattingAcceleratorsAll:
+		return "DisabledFormattingAcceleratorsAll"
+	default:
+		return fmt.Sprintf("DisabledFormattingAccelerators(%d)", uint32(e))
+	}
+}
+
+// ElementRealizationOptions is Microsoft.UI.Xaml.Controls.ElementRealizationOptions.
+// Bitmask — values may be combined with |.
+type ElementRealizationOptions uint32
+
+const (
+	ElementRealizationOptionsNone                ElementRealizationOptions = 0
+	ElementRealizationOptionsForceCreate         ElementRealizationOptions = 1
+	ElementRealizationOptionsSuppressAutoRecycle ElementRealizationOptions = 2
+)
+
+// String returns the ElementRealizationOptions constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ElementRealizationOptions) String() string {
+	switch e {
+	case ElementRealizationOptionsNone:
+		return "ElementRealizationOptionsNone"
+	case ElementRealizationOptionsForceCreate:
+		return "ElementRealizationOptionsForceCreate"
+	case ElementRealizationOptionsSuppressAutoRecycle:
+		return "ElementRealizationOptionsSuppressAutoRecycle"
+	default:
+		return fmt.Sprintf("ElementRealizationOptions(%d)", uint32(e))
+	}
+}
+
+// ExpandDirection is Microsoft.UI.Xaml.Controls.ExpandDirection.
+type ExpandDirection int32
+
+const (
+	ExpandDirectionDown ExpandDirection = 0
+	ExpandDirectionUp   ExpandDirection = 1
+)
+
+// String returns the ExpandDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ExpandDirection) String() string {
+	switch e {
+	case ExpandDirectionDown:
+		return "ExpandDirectionDown"
+	case ExpandDirectionUp:
+		return "ExpandDirectionUp"
+	default:
+		return fmt.Sprintf("ExpandDirection(%d)", int32(e))
+	}
+}
+
+// IncrementalLoadingTrigger is Microsoft.UI.Xaml.Controls.IncrementalLoadingTrigger.
+type IncrementalLoadingTrigger int32
+
+const (
+	IncrementalLoadingTriggerNone IncrementalLoadingTrigger = 0
+	IncrementalLoadingTriggerEdge IncrementalLoadingTrigger = 1
+)
+
+// String returns the IncrementalLoadingTrigger constant's name, or its numeric form when
+// the value is not a known constant.
+func (e IncrementalLoadingTrigger) String() string {
+	switch e {
+	case IncrementalLoadingTriggerNone:
+		return "IncrementalLoadingTriggerNone"
+	case IncrementalLoadingTriggerEdge:
+		return "IncrementalLoadingTriggerEdge"
+	default:
+		return fmt.Sprintf("IncrementalLoadingTrigger(%d)", int32(e))
+	}
+}
+
+// IndexBasedLayoutOrientation is Microsoft.UI.Xaml.Controls.IndexBasedLayoutOrientation.
+type IndexBasedLayoutOrientation int32
+
+const (
+	IndexBasedLayoutOrientationNone        IndexBasedLayoutOrientation = 0
+	IndexBasedLayoutOrientationTopToBottom IndexBasedLayoutOrientation = 1
+	IndexBasedLayoutOrientationLeftToRight IndexBasedLayoutOrientation = 2
+)
+
+// String returns the IndexBasedLayoutOrientation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e IndexBasedLayoutOrientation) String() string {
+	switch e {
+	case IndexBasedLayoutOrientationNone:
+		return "IndexBasedLayoutOrientationNone"
+	case IndexBasedLayoutOrientationTopToBottom:
+		return "IndexBasedLayoutOrientationTopToBottom"
+	case IndexBasedLayoutOrientationLeftToRight:
+		return "IndexBasedLayoutOrientationLeftToRight"
+	default:
+		return fmt.Sprintf("IndexBasedLayoutOrientation(%d)", int32(e))
+	}
+}
+
+// InfoBarCloseReason is Microsoft.UI.Xaml.Controls.InfoBarCloseReason.
+type InfoBarCloseReason int32
+
+const (
+	InfoBarCloseReasonCloseButton  InfoBarCloseReason = 0
+	InfoBarCloseReasonProgrammatic InfoBarCloseReason = 1
+)
+
+// String returns the InfoBarCloseReason constant's name, or its numeric form when
+// the value is not a known constant.
+func (e InfoBarCloseReason) String() string {
+	switch e {
+	case InfoBarCloseReasonCloseButton:
+		return "InfoBarCloseReasonCloseButton"
+	case InfoBarCloseReasonProgrammatic:
+		return "InfoBarCloseReasonProgrammatic"
+	default:
+		return fmt.Sprintf("InfoBarCloseReason(%d)", int32(e))
+	}
+}
+
+// InfoBarSeverity is Microsoft.UI.Xaml.Controls.InfoBarSeverity.
+type InfoBarSeverity int32
+
+const (
+	InfoBarSeverityInformational InfoBarSeverity = 0
+	InfoBarSeveritySuccess       InfoBarSeverity = 1
+	InfoBarSeverityWarning       InfoBarSeverity = 2
+	InfoBarSeverityError         InfoBarSeverity = 3
+)
+
+// String returns the InfoBarSeverity constant's name, or its numeric form when
+// the value is not a known constant.
+func (e InfoBarSeverity) String() string {
+	switch e {
+	case InfoBarSeverityInformational:
+		return "InfoBarSeverityInformational"
+	case InfoBarSeveritySuccess:
+		return "InfoBarSeveritySuccess"
+	case InfoBarSeverityWarning:
+		return "InfoBarSeverityWarning"
+	case InfoBarSeverityError:
+		return "InfoBarSeverityError"
+	default:
+		return fmt.Sprintf("InfoBarSeverity(%d)", int32(e))
+	}
+}
+
+// ItemCollectionTransitionOperation is Microsoft.UI.Xaml.Controls.ItemCollectionTransitionOperation.
+type ItemCollectionTransitionOperation int32
+
+const (
+	ItemCollectionTransitionOperationAdd    ItemCollectionTransitionOperation = 0
+	ItemCollectionTransitionOperationRemove ItemCollectionTransitionOperation = 1
+	ItemCollectionTransitionOperationMove   ItemCollectionTransitionOperation = 2
+)
+
+// String returns the ItemCollectionTransitionOperation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ItemCollectionTransitionOperation) String() string {
+	switch e {
+	case ItemCollectionTransitionOperationAdd:
+		return "ItemCollectionTransitionOperationAdd"
+	case ItemCollectionTransitionOperationRemove:
+		return "ItemCollectionTransitionOperationRemove"
+	case ItemCollectionTransitionOperationMove:
+		return "ItemCollectionTransitionOperationMove"
+	default:
+		return fmt.Sprintf("ItemCollectionTransitionOperation(%d)", int32(e))
+	}
+}
+
+// ItemCollectionTransitionTriggers is Microsoft.UI.Xaml.Controls.ItemCollectionTransitionTriggers.
+// Bitmask — values may be combined with |.
+type ItemCollectionTransitionTriggers uint32
+
+const (
+	ItemCollectionTransitionTriggersCollectionChangeAdd    ItemCollectionTransitionTriggers = 1
+	ItemCollectionTransitionTriggersCollectionChangeRemove ItemCollectionTransitionTriggers = 2
+	ItemCollectionTransitionTriggersCollectionChangeReset  ItemCollectionTransitionTriggers = 4
+	ItemCollectionTransitionTriggersLayoutTransition       ItemCollectionTransitionTriggers = 8
+)
+
+// String returns the ItemCollectionTransitionTriggers constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ItemCollectionTransitionTriggers) String() string {
+	switch e {
+	case ItemCollectionTransitionTriggersCollectionChangeAdd:
+		return "ItemCollectionTransitionTriggersCollectionChangeAdd"
+	case ItemCollectionTransitionTriggersCollectionChangeRemove:
+		return "ItemCollectionTransitionTriggersCollectionChangeRemove"
+	case ItemCollectionTransitionTriggersCollectionChangeReset:
+		return "ItemCollectionTransitionTriggersCollectionChangeReset"
+	case ItemCollectionTransitionTriggersLayoutTransition:
+		return "ItemCollectionTransitionTriggersLayoutTransition"
+	default:
+		return fmt.Sprintf("ItemCollectionTransitionTriggers(%d)", uint32(e))
+	}
+}
+
+// ItemsUpdatingScrollMode is Microsoft.UI.Xaml.Controls.ItemsUpdatingScrollMode.
+type ItemsUpdatingScrollMode int32
+
+const (
+	ItemsUpdatingScrollModeKeepItemsInView    ItemsUpdatingScrollMode = 0
+	ItemsUpdatingScrollModeKeepScrollOffset   ItemsUpdatingScrollMode = 1
+	ItemsUpdatingScrollModeKeepLastItemInView ItemsUpdatingScrollMode = 2
+)
+
+// String returns the ItemsUpdatingScrollMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ItemsUpdatingScrollMode) String() string {
+	switch e {
+	case ItemsUpdatingScrollModeKeepItemsInView:
+		return "ItemsUpdatingScrollModeKeepItemsInView"
+	case ItemsUpdatingScrollModeKeepScrollOffset:
+		return "ItemsUpdatingScrollModeKeepScrollOffset"
+	case ItemsUpdatingScrollModeKeepLastItemInView:
+		return "ItemsUpdatingScrollModeKeepLastItemInView"
+	default:
+		return fmt.Sprintf("ItemsUpdatingScrollMode(%d)", int32(e))
+	}
+}
+
+// ItemsViewSelectionMode is Microsoft.UI.Xaml.Controls.ItemsViewSelectionMode.
+type ItemsViewSelectionMode int32
+
+const (
+	ItemsViewSelectionModeNone     ItemsViewSelectionMode = 0
+	ItemsViewSelectionModeSingle   ItemsViewSelectionMode = 1
+	ItemsViewSelectionModeMultiple ItemsViewSelectionMode = 2
+	ItemsViewSelectionModeExtended ItemsViewSelectionMode = 3
+)
+
+// String returns the ItemsViewSelectionMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ItemsViewSelectionMode) String() string {
+	switch e {
+	case ItemsViewSelectionModeNone:
+		return "ItemsViewSelectionModeNone"
+	case ItemsViewSelectionModeSingle:
+		return "ItemsViewSelectionModeSingle"
+	case ItemsViewSelectionModeMultiple:
+		return "ItemsViewSelectionModeMultiple"
+	case ItemsViewSelectionModeExtended:
+		return "ItemsViewSelectionModeExtended"
+	default:
+		return fmt.Sprintf("ItemsViewSelectionMode(%d)", int32(e))
+	}
+}
+
+// LightDismissOverlayMode is Microsoft.UI.Xaml.Controls.LightDismissOverlayMode.
+type LightDismissOverlayMode int32
+
+const (
+	LightDismissOverlayModeAuto LightDismissOverlayMode = 0
+	LightDismissOverlayModeOn   LightDismissOverlayMode = 1
+	LightDismissOverlayModeOff  LightDismissOverlayMode = 2
+)
+
+// String returns the LightDismissOverlayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e LightDismissOverlayMode) String() string {
+	switch e {
+	case LightDismissOverlayModeAuto:
+		return "LightDismissOverlayModeAuto"
+	case LightDismissOverlayModeOn:
+		return "LightDismissOverlayModeOn"
+	case LightDismissOverlayModeOff:
+		return "LightDismissOverlayModeOff"
+	default:
+		return fmt.Sprintf("LightDismissOverlayMode(%d)", int32(e))
+	}
+}
+
+// LinedFlowLayoutItemsJustification is Microsoft.UI.Xaml.Controls.LinedFlowLayoutItemsJustification.
+type LinedFlowLayoutItemsJustification int32
+
+const (
+	LinedFlowLayoutItemsJustificationStart        LinedFlowLayoutItemsJustification = 0
+	LinedFlowLayoutItemsJustificationCenter       LinedFlowLayoutItemsJustification = 1
+	LinedFlowLayoutItemsJustificationEnd          LinedFlowLayoutItemsJustification = 2
+	LinedFlowLayoutItemsJustificationSpaceAround  LinedFlowLayoutItemsJustification = 3
+	LinedFlowLayoutItemsJustificationSpaceBetween LinedFlowLayoutItemsJustification = 4
+	LinedFlowLayoutItemsJustificationSpaceEvenly  LinedFlowLayoutItemsJustification = 5
+)
+
+// String returns the LinedFlowLayoutItemsJustification constant's name, or its numeric form when
+// the value is not a known constant.
+func (e LinedFlowLayoutItemsJustification) String() string {
+	switch e {
+	case LinedFlowLayoutItemsJustificationStart:
+		return "LinedFlowLayoutItemsJustificationStart"
+	case LinedFlowLayoutItemsJustificationCenter:
+		return "LinedFlowLayoutItemsJustificationCenter"
+	case LinedFlowLayoutItemsJustificationEnd:
+		return "LinedFlowLayoutItemsJustificationEnd"
+	case LinedFlowLayoutItemsJustificationSpaceAround:
+		return "LinedFlowLayoutItemsJustificationSpaceAround"
+	case LinedFlowLayoutItemsJustificationSpaceBetween:
+		return "LinedFlowLayoutItemsJustificationSpaceBetween"
+	case LinedFlowLayoutItemsJustificationSpaceEvenly:
+		return "LinedFlowLayoutItemsJustificationSpaceEvenly"
+	default:
+		return fmt.Sprintf("LinedFlowLayoutItemsJustification(%d)", int32(e))
+	}
+}
+
+// LinedFlowLayoutItemsStretch is Microsoft.UI.Xaml.Controls.LinedFlowLayoutItemsStretch.
+type LinedFlowLayoutItemsStretch int32
+
+const (
+	LinedFlowLayoutItemsStretchNone LinedFlowLayoutItemsStretch = 0
+	LinedFlowLayoutItemsStretchFill LinedFlowLayoutItemsStretch = 1
+)
+
+// String returns the LinedFlowLayoutItemsStretch constant's name, or its numeric form when
+// the value is not a known constant.
+func (e LinedFlowLayoutItemsStretch) String() string {
+	switch e {
+	case LinedFlowLayoutItemsStretchNone:
+		return "LinedFlowLayoutItemsStretchNone"
+	case LinedFlowLayoutItemsStretchFill:
+		return "LinedFlowLayoutItemsStretchFill"
+	default:
+		return fmt.Sprintf("LinedFlowLayoutItemsStretch(%d)", int32(e))
+	}
+}
+
+// ListPickerFlyoutSelectionMode is Microsoft.UI.Xaml.Controls.ListPickerFlyoutSelectionMode.
+type ListPickerFlyoutSelectionMode int32
+
+const (
+	ListPickerFlyoutSelectionModeSingle   ListPickerFlyoutSelectionMode = 0
+	ListPickerFlyoutSelectionModeMultiple ListPickerFlyoutSelectionMode = 1
+)
+
+// String returns the ListPickerFlyoutSelectionMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ListPickerFlyoutSelectionMode) String() string {
+	switch e {
+	case ListPickerFlyoutSelectionModeSingle:
+		return "ListPickerFlyoutSelectionModeSingle"
+	case ListPickerFlyoutSelectionModeMultiple:
+		return "ListPickerFlyoutSelectionModeMultiple"
+	default:
+		return fmt.Sprintf("ListPickerFlyoutSelectionMode(%d)", int32(e))
+	}
+}
+
+// ListViewReorderMode is Microsoft.UI.Xaml.Controls.ListViewReorderMode.
+type ListViewReorderMode int32
+
+const (
+	ListViewReorderModeDisabled ListViewReorderMode = 0
+	ListViewReorderModeEnabled  ListViewReorderMode = 1
+)
+
+// String returns the ListViewReorderMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ListViewReorderMode) String() string {
+	switch e {
+	case ListViewReorderModeDisabled:
+		return "ListViewReorderModeDisabled"
+	case ListViewReorderModeEnabled:
+		return "ListViewReorderModeEnabled"
+	default:
+		return fmt.Sprintf("ListViewReorderMode(%d)", int32(e))
+	}
+}
+
+// ListViewSelectionMode is Microsoft.UI.Xaml.Controls.ListViewSelectionMode.
+type ListViewSelectionMode int32
+
+const (
+	ListViewSelectionModeNone     ListViewSelectionMode = 0
+	ListViewSelectionModeSingle   ListViewSelectionMode = 1
+	ListViewSelectionModeMultiple ListViewSelectionMode = 2
+	ListViewSelectionModeExtended ListViewSelectionMode = 3
+)
+
+// String returns the ListViewSelectionMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ListViewSelectionMode) String() string {
+	switch e {
+	case ListViewSelectionModeNone:
+		return "ListViewSelectionModeNone"
+	case ListViewSelectionModeSingle:
+		return "ListViewSelectionModeSingle"
+	case ListViewSelectionModeMultiple:
+		return "ListViewSelectionModeMultiple"
+	case ListViewSelectionModeExtended:
+		return "ListViewSelectionModeExtended"
+	default:
+		return fmt.Sprintf("ListViewSelectionMode(%d)", int32(e))
+	}
+}
+
+// NavigationViewBackButtonVisible is Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.
+type NavigationViewBackButtonVisible int32
+
+const (
+	NavigationViewBackButtonVisibleCollapsed NavigationViewBackButtonVisible = 0
+	NavigationViewBackButtonVisibleVisible   NavigationViewBackButtonVisible = 1
+	NavigationViewBackButtonVisibleAuto      NavigationViewBackButtonVisible = 2
+)
+
+// String returns the NavigationViewBackButtonVisible constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationViewBackButtonVisible) String() string {
+	switch e {
+	case NavigationViewBackButtonVisibleCollapsed:
+		return "NavigationViewBackButtonVisibleCollapsed"
+	case NavigationViewBackButtonVisibleVisible:
+		return "NavigationViewBackButtonVisibleVisible"
+	case NavigationViewBackButtonVisibleAuto:
+		return "NavigationViewBackButtonVisibleAuto"
+	default:
+		return fmt.Sprintf("NavigationViewBackButtonVisible(%d)", int32(e))
+	}
+}
+
+// NavigationViewDisplayMode is Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.
+type NavigationViewDisplayMode int32
+
+const (
+	NavigationViewDisplayModeMinimal  NavigationViewDisplayMode = 0
+	NavigationViewDisplayModeCompact  NavigationViewDisplayMode = 1
+	NavigationViewDisplayModeExpanded NavigationViewDisplayMode = 2
+)
+
+// String returns the NavigationViewDisplayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationViewDisplayMode) String() string {
+	switch e {
+	case NavigationViewDisplayModeMinimal:
+		return "NavigationViewDisplayModeMinimal"
+	case NavigationViewDisplayModeCompact:
+		return "NavigationViewDisplayModeCompact"
+	case NavigationViewDisplayModeExpanded:
+		return "NavigationViewDisplayModeExpanded"
+	default:
+		return fmt.Sprintf("NavigationViewDisplayMode(%d)", int32(e))
+	}
+}
+
+// NavigationViewOverflowLabelMode is Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.
+type NavigationViewOverflowLabelMode int32
+
+const (
+	NavigationViewOverflowLabelModeMoreLabel NavigationViewOverflowLabelMode = 0
+	NavigationViewOverflowLabelModeNoLabel   NavigationViewOverflowLabelMode = 1
+)
+
+// String returns the NavigationViewOverflowLabelMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationViewOverflowLabelMode) String() string {
+	switch e {
+	case NavigationViewOverflowLabelModeMoreLabel:
+		return "NavigationViewOverflowLabelModeMoreLabel"
+	case NavigationViewOverflowLabelModeNoLabel:
+		return "NavigationViewOverflowLabelModeNoLabel"
+	default:
+		return fmt.Sprintf("NavigationViewOverflowLabelMode(%d)", int32(e))
+	}
+}
+
+// NavigationViewPaneDisplayMode is Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.
+type NavigationViewPaneDisplayMode int32
+
+const (
+	NavigationViewPaneDisplayModeAuto        NavigationViewPaneDisplayMode = 0
+	NavigationViewPaneDisplayModeLeft        NavigationViewPaneDisplayMode = 1
+	NavigationViewPaneDisplayModeTop         NavigationViewPaneDisplayMode = 2
+	NavigationViewPaneDisplayModeLeftCompact NavigationViewPaneDisplayMode = 3
+	NavigationViewPaneDisplayModeLeftMinimal NavigationViewPaneDisplayMode = 4
+)
+
+// String returns the NavigationViewPaneDisplayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationViewPaneDisplayMode) String() string {
+	switch e {
+	case NavigationViewPaneDisplayModeAuto:
+		return "NavigationViewPaneDisplayModeAuto"
+	case NavigationViewPaneDisplayModeLeft:
+		return "NavigationViewPaneDisplayModeLeft"
+	case NavigationViewPaneDisplayModeTop:
+		return "NavigationViewPaneDisplayModeTop"
+	case NavigationViewPaneDisplayModeLeftCompact:
+		return "NavigationViewPaneDisplayModeLeftCompact"
+	case NavigationViewPaneDisplayModeLeftMinimal:
+		return "NavigationViewPaneDisplayModeLeftMinimal"
+	default:
+		return fmt.Sprintf("NavigationViewPaneDisplayMode(%d)", int32(e))
+	}
+}
+
+// NavigationViewSelectionFollowsFocus is Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.
+type NavigationViewSelectionFollowsFocus int32
+
+const (
+	NavigationViewSelectionFollowsFocusDisabled NavigationViewSelectionFollowsFocus = 0
+	NavigationViewSelectionFollowsFocusEnabled  NavigationViewSelectionFollowsFocus = 1
+)
+
+// String returns the NavigationViewSelectionFollowsFocus constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationViewSelectionFollowsFocus) String() string {
+	switch e {
+	case NavigationViewSelectionFollowsFocusDisabled:
+		return "NavigationViewSelectionFollowsFocusDisabled"
+	case NavigationViewSelectionFollowsFocusEnabled:
+		return "NavigationViewSelectionFollowsFocusEnabled"
+	default:
+		return fmt.Sprintf("NavigationViewSelectionFollowsFocus(%d)", int32(e))
+	}
+}
+
+// NavigationViewShoulderNavigationEnabled is Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.
+type NavigationViewShoulderNavigationEnabled int32
+
+const (
+	NavigationViewShoulderNavigationEnabledWhenSelectionFollowsFocus NavigationViewShoulderNavigationEnabled = 0
+	NavigationViewShoulderNavigationEnabledAlways                    NavigationViewShoulderNavigationEnabled = 1
+	NavigationViewShoulderNavigationEnabledNever                     NavigationViewShoulderNavigationEnabled = 2
+)
+
+// String returns the NavigationViewShoulderNavigationEnabled constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationViewShoulderNavigationEnabled) String() string {
+	switch e {
+	case NavigationViewShoulderNavigationEnabledWhenSelectionFollowsFocus:
+		return "NavigationViewShoulderNavigationEnabledWhenSelectionFollowsFocus"
+	case NavigationViewShoulderNavigationEnabledAlways:
+		return "NavigationViewShoulderNavigationEnabledAlways"
+	case NavigationViewShoulderNavigationEnabledNever:
+		return "NavigationViewShoulderNavigationEnabledNever"
+	default:
+		return fmt.Sprintf("NavigationViewShoulderNavigationEnabled(%d)", int32(e))
+	}
+}
+
+// NumberBoxSpinButtonPlacementMode is Microsoft.UI.Xaml.Controls.NumberBoxSpinButtonPlacementMode.
+type NumberBoxSpinButtonPlacementMode int32
+
+const (
+	NumberBoxSpinButtonPlacementModeHidden  NumberBoxSpinButtonPlacementMode = 0
+	NumberBoxSpinButtonPlacementModeCompact NumberBoxSpinButtonPlacementMode = 1
+	NumberBoxSpinButtonPlacementModeInline  NumberBoxSpinButtonPlacementMode = 2
+)
+
+// String returns the NumberBoxSpinButtonPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NumberBoxSpinButtonPlacementMode) String() string {
+	switch e {
+	case NumberBoxSpinButtonPlacementModeHidden:
+		return "NumberBoxSpinButtonPlacementModeHidden"
+	case NumberBoxSpinButtonPlacementModeCompact:
+		return "NumberBoxSpinButtonPlacementModeCompact"
+	case NumberBoxSpinButtonPlacementModeInline:
+		return "NumberBoxSpinButtonPlacementModeInline"
+	default:
+		return fmt.Sprintf("NumberBoxSpinButtonPlacementMode(%d)", int32(e))
+	}
+}
+
+// NumberBoxValidationMode is Microsoft.UI.Xaml.Controls.NumberBoxValidationMode.
+type NumberBoxValidationMode int32
+
+const (
+	NumberBoxValidationModeInvalidInputOverwritten NumberBoxValidationMode = 0
+	NumberBoxValidationModeDisabled                NumberBoxValidationMode = 1
+)
+
+// String returns the NumberBoxValidationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NumberBoxValidationMode) String() string {
+	switch e {
+	case NumberBoxValidationModeInvalidInputOverwritten:
+		return "NumberBoxValidationModeInvalidInputOverwritten"
+	case NumberBoxValidationModeDisabled:
+		return "NumberBoxValidationModeDisabled"
+	default:
+		return fmt.Sprintf("NumberBoxValidationMode(%d)", int32(e))
+	}
+}
+
+// Orientation is Microsoft.UI.Xaml.Controls.Orientation.
+type Orientation int32
+
+const (
+	OrientationVertical   Orientation = 0
+	OrientationHorizontal Orientation = 1
+)
+
+// String returns the Orientation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e Orientation) String() string {
+	switch e {
+	case OrientationVertical:
+		return "OrientationVertical"
+	case OrientationHorizontal:
+		return "OrientationHorizontal"
+	default:
+		return fmt.Sprintf("Orientation(%d)", int32(e))
+	}
+}
+
+// PanelScrollingDirection is Microsoft.UI.Xaml.Controls.PanelScrollingDirection.
+type PanelScrollingDirection int32
+
+const (
+	PanelScrollingDirectionNone     PanelScrollingDirection = 0
+	PanelScrollingDirectionForward  PanelScrollingDirection = 1
+	PanelScrollingDirectionBackward PanelScrollingDirection = 2
+)
+
+// String returns the PanelScrollingDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PanelScrollingDirection) String() string {
+	switch e {
+	case PanelScrollingDirectionNone:
+		return "PanelScrollingDirectionNone"
+	case PanelScrollingDirectionForward:
+		return "PanelScrollingDirectionForward"
+	case PanelScrollingDirectionBackward:
+		return "PanelScrollingDirectionBackward"
+	default:
+		return fmt.Sprintf("PanelScrollingDirection(%d)", int32(e))
+	}
+}
+
+// ParallaxSourceOffsetKind is Microsoft.UI.Xaml.Controls.ParallaxSourceOffsetKind.
+type ParallaxSourceOffsetKind int32
+
+const (
+	ParallaxSourceOffsetKindAbsolute ParallaxSourceOffsetKind = 0
+	ParallaxSourceOffsetKindRelative ParallaxSourceOffsetKind = 1
+)
+
+// String returns the ParallaxSourceOffsetKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ParallaxSourceOffsetKind) String() string {
+	switch e {
+	case ParallaxSourceOffsetKindAbsolute:
+		return "ParallaxSourceOffsetKindAbsolute"
+	case ParallaxSourceOffsetKindRelative:
+		return "ParallaxSourceOffsetKindRelative"
+	default:
+		return fmt.Sprintf("ParallaxSourceOffsetKind(%d)", int32(e))
+	}
+}
+
+// PasswordRevealMode is Microsoft.UI.Xaml.Controls.PasswordRevealMode.
+type PasswordRevealMode int32
+
+const (
+	PasswordRevealModePeek    PasswordRevealMode = 0
+	PasswordRevealModeHidden  PasswordRevealMode = 1
+	PasswordRevealModeVisible PasswordRevealMode = 2
+)
+
+// String returns the PasswordRevealMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PasswordRevealMode) String() string {
+	switch e {
+	case PasswordRevealModePeek:
+		return "PasswordRevealModePeek"
+	case PasswordRevealModeHidden:
+		return "PasswordRevealModeHidden"
+	case PasswordRevealModeVisible:
+		return "PasswordRevealModeVisible"
+	default:
+		return fmt.Sprintf("PasswordRevealMode(%d)", int32(e))
+	}
+}
+
+// PipsPagerButtonVisibility is Microsoft.UI.Xaml.Controls.PipsPagerButtonVisibility.
+type PipsPagerButtonVisibility int32
+
+const (
+	PipsPagerButtonVisibilityVisible              PipsPagerButtonVisibility = 0
+	PipsPagerButtonVisibilityVisibleOnPointerOver PipsPagerButtonVisibility = 1
+	PipsPagerButtonVisibilityCollapsed            PipsPagerButtonVisibility = 2
+)
+
+// String returns the PipsPagerButtonVisibility constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PipsPagerButtonVisibility) String() string {
+	switch e {
+	case PipsPagerButtonVisibilityVisible:
+		return "PipsPagerButtonVisibilityVisible"
+	case PipsPagerButtonVisibilityVisibleOnPointerOver:
+		return "PipsPagerButtonVisibilityVisibleOnPointerOver"
+	case PipsPagerButtonVisibilityCollapsed:
+		return "PipsPagerButtonVisibilityCollapsed"
+	default:
+		return fmt.Sprintf("PipsPagerButtonVisibility(%d)", int32(e))
+	}
+}
+
+// PipsPagerWrapMode is Microsoft.UI.Xaml.Controls.PipsPagerWrapMode.
+type PipsPagerWrapMode int32
+
+const (
+	PipsPagerWrapModeNone PipsPagerWrapMode = 0
+	PipsPagerWrapModeWrap PipsPagerWrapMode = 1
+)
+
+// String returns the PipsPagerWrapMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PipsPagerWrapMode) String() string {
+	switch e {
+	case PipsPagerWrapModeNone:
+		return "PipsPagerWrapModeNone"
+	case PipsPagerWrapModeWrap:
+		return "PipsPagerWrapModeWrap"
+	default:
+		return fmt.Sprintf("PipsPagerWrapMode(%d)", int32(e))
+	}
+}
+
+// PivotHeaderFocusVisualPlacement is Microsoft.UI.Xaml.Controls.PivotHeaderFocusVisualPlacement.
+type PivotHeaderFocusVisualPlacement int32
+
+const (
+	PivotHeaderFocusVisualPlacementItemHeaders        PivotHeaderFocusVisualPlacement = 0
+	PivotHeaderFocusVisualPlacementSelectedItemHeader PivotHeaderFocusVisualPlacement = 1
+)
+
+// String returns the PivotHeaderFocusVisualPlacement constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PivotHeaderFocusVisualPlacement) String() string {
+	switch e {
+	case PivotHeaderFocusVisualPlacementItemHeaders:
+		return "PivotHeaderFocusVisualPlacementItemHeaders"
+	case PivotHeaderFocusVisualPlacementSelectedItemHeader:
+		return "PivotHeaderFocusVisualPlacementSelectedItemHeader"
+	default:
+		return fmt.Sprintf("PivotHeaderFocusVisualPlacement(%d)", int32(e))
+	}
+}
+
+// PivotSlideInAnimationGroup is Microsoft.UI.Xaml.Controls.PivotSlideInAnimationGroup.
+type PivotSlideInAnimationGroup int32
+
+const (
+	PivotSlideInAnimationGroupDefault    PivotSlideInAnimationGroup = 0
+	PivotSlideInAnimationGroupGroupOne   PivotSlideInAnimationGroup = 1
+	PivotSlideInAnimationGroupGroupTwo   PivotSlideInAnimationGroup = 2
+	PivotSlideInAnimationGroupGroupThree PivotSlideInAnimationGroup = 3
+)
+
+// String returns the PivotSlideInAnimationGroup constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PivotSlideInAnimationGroup) String() string {
+	switch e {
+	case PivotSlideInAnimationGroupDefault:
+		return "PivotSlideInAnimationGroupDefault"
+	case PivotSlideInAnimationGroupGroupOne:
+		return "PivotSlideInAnimationGroupGroupOne"
+	case PivotSlideInAnimationGroupGroupTwo:
+		return "PivotSlideInAnimationGroupGroupTwo"
+	case PivotSlideInAnimationGroupGroupThree:
+		return "PivotSlideInAnimationGroupGroupThree"
+	default:
+		return fmt.Sprintf("PivotSlideInAnimationGroup(%d)", int32(e))
+	}
+}
+
+// PlayerAnimationOptimization is Microsoft.UI.Xaml.Controls.PlayerAnimationOptimization.
+type PlayerAnimationOptimization int32
+
+const (
+	PlayerAnimationOptimizationLatency   PlayerAnimationOptimization = 0
+	PlayerAnimationOptimizationResources PlayerAnimationOptimization = 1
+)
+
+// String returns the PlayerAnimationOptimization constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PlayerAnimationOptimization) String() string {
+	switch e {
+	case PlayerAnimationOptimizationLatency:
+		return "PlayerAnimationOptimizationLatency"
+	case PlayerAnimationOptimizationResources:
+		return "PlayerAnimationOptimizationResources"
+	default:
+		return fmt.Sprintf("PlayerAnimationOptimization(%d)", int32(e))
+	}
+}
+
+// RefreshPullDirection is Microsoft.UI.Xaml.Controls.RefreshPullDirection.
+type RefreshPullDirection int32
+
+const (
+	RefreshPullDirectionLeftToRight RefreshPullDirection = 0
+	RefreshPullDirectionTopToBottom RefreshPullDirection = 1
+	RefreshPullDirectionRightToLeft RefreshPullDirection = 2
+	RefreshPullDirectionBottomToTop RefreshPullDirection = 3
+)
+
+// String returns the RefreshPullDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RefreshPullDirection) String() string {
+	switch e {
+	case RefreshPullDirectionLeftToRight:
+		return "RefreshPullDirectionLeftToRight"
+	case RefreshPullDirectionTopToBottom:
+		return "RefreshPullDirectionTopToBottom"
+	case RefreshPullDirectionRightToLeft:
+		return "RefreshPullDirectionRightToLeft"
+	case RefreshPullDirectionBottomToTop:
+		return "RefreshPullDirectionBottomToTop"
+	default:
+		return fmt.Sprintf("RefreshPullDirection(%d)", int32(e))
+	}
+}
+
+// RefreshVisualizerOrientation is Microsoft.UI.Xaml.Controls.RefreshVisualizerOrientation.
+type RefreshVisualizerOrientation int32
+
+const (
+	RefreshVisualizerOrientationAuto                             RefreshVisualizerOrientation = 0
+	RefreshVisualizerOrientationNormal                           RefreshVisualizerOrientation = 1
+	RefreshVisualizerOrientationRotate90DegreesCounterclockwise  RefreshVisualizerOrientation = 2
+	RefreshVisualizerOrientationRotate270DegreesCounterclockwise RefreshVisualizerOrientation = 3
+)
+
+// String returns the RefreshVisualizerOrientation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RefreshVisualizerOrientation) String() string {
+	switch e {
+	case RefreshVisualizerOrientationAuto:
+		return "RefreshVisualizerOrientationAuto"
+	case RefreshVisualizerOrientationNormal:
+		return "RefreshVisualizerOrientationNormal"
+	case RefreshVisualizerOrientationRotate90DegreesCounterclockwise:
+		return "RefreshVisualizerOrientationRotate90DegreesCounterclockwise"
+	case RefreshVisualizerOrientationRotate270DegreesCounterclockwise:
+		return "RefreshVisualizerOrientationRotate270DegreesCounterclockwise"
+	default:
+		return fmt.Sprintf("RefreshVisualizerOrientation(%d)", int32(e))
+	}
+}
+
+// RefreshVisualizerState is Microsoft.UI.Xaml.Controls.RefreshVisualizerState.
+type RefreshVisualizerState int32
+
+const (
+	RefreshVisualizerStateIdle        RefreshVisualizerState = 0
+	RefreshVisualizerStatePeeking     RefreshVisualizerState = 1
+	RefreshVisualizerStateInteracting RefreshVisualizerState = 2
+	RefreshVisualizerStatePending     RefreshVisualizerState = 3
+	RefreshVisualizerStateRefreshing  RefreshVisualizerState = 4
+)
+
+// String returns the RefreshVisualizerState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RefreshVisualizerState) String() string {
+	switch e {
+	case RefreshVisualizerStateIdle:
+		return "RefreshVisualizerStateIdle"
+	case RefreshVisualizerStatePeeking:
+		return "RefreshVisualizerStatePeeking"
+	case RefreshVisualizerStateInteracting:
+		return "RefreshVisualizerStateInteracting"
+	case RefreshVisualizerStatePending:
+		return "RefreshVisualizerStatePending"
+	case RefreshVisualizerStateRefreshing:
+		return "RefreshVisualizerStateRefreshing"
+	default:
+		return fmt.Sprintf("RefreshVisualizerState(%d)", int32(e))
+	}
+}
+
+// RequiresPointer is Microsoft.UI.Xaml.Controls.RequiresPointer.
+type RequiresPointer int32
+
+const (
+	RequiresPointerNever       RequiresPointer = 0
+	RequiresPointerWhenEngaged RequiresPointer = 1
+	RequiresPointerWhenFocused RequiresPointer = 2
+)
+
+// String returns the RequiresPointer constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RequiresPointer) String() string {
+	switch e {
+	case RequiresPointerNever:
+		return "RequiresPointerNever"
+	case RequiresPointerWhenEngaged:
+		return "RequiresPointerWhenEngaged"
+	case RequiresPointerWhenFocused:
+		return "RequiresPointerWhenFocused"
+	default:
+		return fmt.Sprintf("RequiresPointer(%d)", int32(e))
+	}
+}
+
+// RichEditClipboardFormat is Microsoft.UI.Xaml.Controls.RichEditClipboardFormat.
+type RichEditClipboardFormat int32
+
+const (
+	RichEditClipboardFormatAllFormats RichEditClipboardFormat = 0
+	RichEditClipboardFormatPlainText  RichEditClipboardFormat = 1
+)
+
+// String returns the RichEditClipboardFormat constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RichEditClipboardFormat) String() string {
+	switch e {
+	case RichEditClipboardFormatAllFormats:
+		return "RichEditClipboardFormatAllFormats"
+	case RichEditClipboardFormatPlainText:
+		return "RichEditClipboardFormatPlainText"
+	default:
+		return fmt.Sprintf("RichEditClipboardFormat(%d)", int32(e))
+	}
+}
+
+// ScrollBarVisibility is Microsoft.UI.Xaml.Controls.ScrollBarVisibility.
+type ScrollBarVisibility int32
+
+const (
+	ScrollBarVisibilityDisabled ScrollBarVisibility = 0
+	ScrollBarVisibilityAuto     ScrollBarVisibility = 1
+	ScrollBarVisibilityHidden   ScrollBarVisibility = 2
+	ScrollBarVisibilityVisible  ScrollBarVisibility = 3
+)
+
+// String returns the ScrollBarVisibility constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollBarVisibility) String() string {
+	switch e {
+	case ScrollBarVisibilityDisabled:
+		return "ScrollBarVisibilityDisabled"
+	case ScrollBarVisibilityAuto:
+		return "ScrollBarVisibilityAuto"
+	case ScrollBarVisibilityHidden:
+		return "ScrollBarVisibilityHidden"
+	case ScrollBarVisibilityVisible:
+		return "ScrollBarVisibilityVisible"
+	default:
+		return fmt.Sprintf("ScrollBarVisibility(%d)", int32(e))
+	}
+}
+
+// ScrollIntoViewAlignment is Microsoft.UI.Xaml.Controls.ScrollIntoViewAlignment.
+type ScrollIntoViewAlignment int32
+
+const (
+	ScrollIntoViewAlignmentDefault ScrollIntoViewAlignment = 0
+	ScrollIntoViewAlignmentLeading ScrollIntoViewAlignment = 1
+)
+
+// String returns the ScrollIntoViewAlignment constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollIntoViewAlignment) String() string {
+	switch e {
+	case ScrollIntoViewAlignmentDefault:
+		return "ScrollIntoViewAlignmentDefault"
+	case ScrollIntoViewAlignmentLeading:
+		return "ScrollIntoViewAlignmentLeading"
+	default:
+		return fmt.Sprintf("ScrollIntoViewAlignment(%d)", int32(e))
+	}
+}
+
+// ScrollMode is Microsoft.UI.Xaml.Controls.ScrollMode.
+type ScrollMode int32
+
+const (
+	ScrollModeDisabled ScrollMode = 0
+	ScrollModeEnabled  ScrollMode = 1
+	ScrollModeAuto     ScrollMode = 2
+)
+
+// String returns the ScrollMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollMode) String() string {
+	switch e {
+	case ScrollModeDisabled:
+		return "ScrollModeDisabled"
+	case ScrollModeEnabled:
+		return "ScrollModeEnabled"
+	case ScrollModeAuto:
+		return "ScrollModeAuto"
+	default:
+		return fmt.Sprintf("ScrollMode(%d)", int32(e))
+	}
+}
+
+// ScrollingAnimationMode is Microsoft.UI.Xaml.Controls.ScrollingAnimationMode.
+type ScrollingAnimationMode int32
+
+const (
+	ScrollingAnimationModeDisabled ScrollingAnimationMode = 0
+	ScrollingAnimationModeEnabled  ScrollingAnimationMode = 1
+	ScrollingAnimationModeAuto     ScrollingAnimationMode = 2
+)
+
+// String returns the ScrollingAnimationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingAnimationMode) String() string {
+	switch e {
+	case ScrollingAnimationModeDisabled:
+		return "ScrollingAnimationModeDisabled"
+	case ScrollingAnimationModeEnabled:
+		return "ScrollingAnimationModeEnabled"
+	case ScrollingAnimationModeAuto:
+		return "ScrollingAnimationModeAuto"
+	default:
+		return fmt.Sprintf("ScrollingAnimationMode(%d)", int32(e))
+	}
+}
+
+// ScrollingChainMode is Microsoft.UI.Xaml.Controls.ScrollingChainMode.
+type ScrollingChainMode int32
+
+const (
+	ScrollingChainModeAuto   ScrollingChainMode = 0
+	ScrollingChainModeAlways ScrollingChainMode = 1
+	ScrollingChainModeNever  ScrollingChainMode = 2
+)
+
+// String returns the ScrollingChainMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingChainMode) String() string {
+	switch e {
+	case ScrollingChainModeAuto:
+		return "ScrollingChainModeAuto"
+	case ScrollingChainModeAlways:
+		return "ScrollingChainModeAlways"
+	case ScrollingChainModeNever:
+		return "ScrollingChainModeNever"
+	default:
+		return fmt.Sprintf("ScrollingChainMode(%d)", int32(e))
+	}
+}
+
+// ScrollingContentOrientation is Microsoft.UI.Xaml.Controls.ScrollingContentOrientation.
+type ScrollingContentOrientation int32
+
+const (
+	ScrollingContentOrientationVertical   ScrollingContentOrientation = 0
+	ScrollingContentOrientationHorizontal ScrollingContentOrientation = 1
+	ScrollingContentOrientationNone       ScrollingContentOrientation = 2
+	ScrollingContentOrientationBoth       ScrollingContentOrientation = 3
+)
+
+// String returns the ScrollingContentOrientation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingContentOrientation) String() string {
+	switch e {
+	case ScrollingContentOrientationVertical:
+		return "ScrollingContentOrientationVertical"
+	case ScrollingContentOrientationHorizontal:
+		return "ScrollingContentOrientationHorizontal"
+	case ScrollingContentOrientationNone:
+		return "ScrollingContentOrientationNone"
+	case ScrollingContentOrientationBoth:
+		return "ScrollingContentOrientationBoth"
+	default:
+		return fmt.Sprintf("ScrollingContentOrientation(%d)", int32(e))
+	}
+}
+
+// ScrollingInputKinds is Microsoft.UI.Xaml.Controls.ScrollingInputKinds.
+// Bitmask — values may be combined with |.
+type ScrollingInputKinds uint32
+
+const (
+	ScrollingInputKindsNone       ScrollingInputKinds = 0
+	ScrollingInputKindsTouch      ScrollingInputKinds = 1
+	ScrollingInputKindsPen        ScrollingInputKinds = 2
+	ScrollingInputKindsMouseWheel ScrollingInputKinds = 4
+	ScrollingInputKindsKeyboard   ScrollingInputKinds = 8
+	ScrollingInputKindsGamepad    ScrollingInputKinds = 16
+	ScrollingInputKindsAll        ScrollingInputKinds = 255
+)
+
+// String returns the ScrollingInputKinds constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingInputKinds) String() string {
+	switch e {
+	case ScrollingInputKindsNone:
+		return "ScrollingInputKindsNone"
+	case ScrollingInputKindsTouch:
+		return "ScrollingInputKindsTouch"
+	case ScrollingInputKindsPen:
+		return "ScrollingInputKindsPen"
+	case ScrollingInputKindsMouseWheel:
+		return "ScrollingInputKindsMouseWheel"
+	case ScrollingInputKindsKeyboard:
+		return "ScrollingInputKindsKeyboard"
+	case ScrollingInputKindsGamepad:
+		return "ScrollingInputKindsGamepad"
+	case ScrollingInputKindsAll:
+		return "ScrollingInputKindsAll"
+	default:
+		return fmt.Sprintf("ScrollingInputKinds(%d)", uint32(e))
+	}
+}
+
+// ScrollingInteractionState is Microsoft.UI.Xaml.Controls.ScrollingInteractionState.
+type ScrollingInteractionState int32
+
+const (
+	ScrollingInteractionStateIdle        ScrollingInteractionState = 0
+	ScrollingInteractionStateInteraction ScrollingInteractionState = 1
+	ScrollingInteractionStateInertia     ScrollingInteractionState = 2
+	ScrollingInteractionStateAnimation   ScrollingInteractionState = 3
+)
+
+// String returns the ScrollingInteractionState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingInteractionState) String() string {
+	switch e {
+	case ScrollingInteractionStateIdle:
+		return "ScrollingInteractionStateIdle"
+	case ScrollingInteractionStateInteraction:
+		return "ScrollingInteractionStateInteraction"
+	case ScrollingInteractionStateInertia:
+		return "ScrollingInteractionStateInertia"
+	case ScrollingInteractionStateAnimation:
+		return "ScrollingInteractionStateAnimation"
+	default:
+		return fmt.Sprintf("ScrollingInteractionState(%d)", int32(e))
+	}
+}
+
+// ScrollingRailMode is Microsoft.UI.Xaml.Controls.ScrollingRailMode.
+type ScrollingRailMode int32
+
+const (
+	ScrollingRailModeEnabled  ScrollingRailMode = 0
+	ScrollingRailModeDisabled ScrollingRailMode = 1
+)
+
+// String returns the ScrollingRailMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingRailMode) String() string {
+	switch e {
+	case ScrollingRailModeEnabled:
+		return "ScrollingRailModeEnabled"
+	case ScrollingRailModeDisabled:
+		return "ScrollingRailModeDisabled"
+	default:
+		return fmt.Sprintf("ScrollingRailMode(%d)", int32(e))
+	}
+}
+
+// ScrollingScrollBarVisibility is Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility.
+type ScrollingScrollBarVisibility int32
+
+const (
+	ScrollingScrollBarVisibilityAuto    ScrollingScrollBarVisibility = 0
+	ScrollingScrollBarVisibilityVisible ScrollingScrollBarVisibility = 1
+	ScrollingScrollBarVisibilityHidden  ScrollingScrollBarVisibility = 2
+)
+
+// String returns the ScrollingScrollBarVisibility constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingScrollBarVisibility) String() string {
+	switch e {
+	case ScrollingScrollBarVisibilityAuto:
+		return "ScrollingScrollBarVisibilityAuto"
+	case ScrollingScrollBarVisibilityVisible:
+		return "ScrollingScrollBarVisibilityVisible"
+	case ScrollingScrollBarVisibilityHidden:
+		return "ScrollingScrollBarVisibilityHidden"
+	default:
+		return fmt.Sprintf("ScrollingScrollBarVisibility(%d)", int32(e))
+	}
+}
+
+// ScrollingScrollMode is Microsoft.UI.Xaml.Controls.ScrollingScrollMode.
+type ScrollingScrollMode int32
+
+const (
+	ScrollingScrollModeEnabled  ScrollingScrollMode = 0
+	ScrollingScrollModeDisabled ScrollingScrollMode = 1
+	ScrollingScrollModeAuto     ScrollingScrollMode = 2
+)
+
+// String returns the ScrollingScrollMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingScrollMode) String() string {
+	switch e {
+	case ScrollingScrollModeEnabled:
+		return "ScrollingScrollModeEnabled"
+	case ScrollingScrollModeDisabled:
+		return "ScrollingScrollModeDisabled"
+	case ScrollingScrollModeAuto:
+		return "ScrollingScrollModeAuto"
+	default:
+		return fmt.Sprintf("ScrollingScrollMode(%d)", int32(e))
+	}
+}
+
+// ScrollingSnapPointsMode is Microsoft.UI.Xaml.Controls.ScrollingSnapPointsMode.
+type ScrollingSnapPointsMode int32
+
+const (
+	ScrollingSnapPointsModeDefault ScrollingSnapPointsMode = 0
+	ScrollingSnapPointsModeIgnore  ScrollingSnapPointsMode = 1
+)
+
+// String returns the ScrollingSnapPointsMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingSnapPointsMode) String() string {
+	switch e {
+	case ScrollingSnapPointsModeDefault:
+		return "ScrollingSnapPointsModeDefault"
+	case ScrollingSnapPointsModeIgnore:
+		return "ScrollingSnapPointsModeIgnore"
+	default:
+		return fmt.Sprintf("ScrollingSnapPointsMode(%d)", int32(e))
+	}
+}
+
+// ScrollingZoomMode is Microsoft.UI.Xaml.Controls.ScrollingZoomMode.
+type ScrollingZoomMode int32
+
+const (
+	ScrollingZoomModeEnabled  ScrollingZoomMode = 0
+	ScrollingZoomModeDisabled ScrollingZoomMode = 1
+)
+
+// String returns the ScrollingZoomMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingZoomMode) String() string {
+	switch e {
+	case ScrollingZoomModeEnabled:
+		return "ScrollingZoomModeEnabled"
+	case ScrollingZoomModeDisabled:
+		return "ScrollingZoomModeDisabled"
+	default:
+		return fmt.Sprintf("ScrollingZoomMode(%d)", int32(e))
+	}
+}
+
+// SelectionMode is Microsoft.UI.Xaml.Controls.SelectionMode.
+type SelectionMode int32
+
+const (
+	SelectionModeSingle   SelectionMode = 0
+	SelectionModeMultiple SelectionMode = 1
+	SelectionModeExtended SelectionMode = 2
+)
+
+// String returns the SelectionMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SelectionMode) String() string {
+	switch e {
+	case SelectionModeSingle:
+		return "SelectionModeSingle"
+	case SelectionModeMultiple:
+		return "SelectionModeMultiple"
+	case SelectionModeExtended:
+		return "SelectionModeExtended"
+	default:
+		return fmt.Sprintf("SelectionMode(%d)", int32(e))
+	}
+}
+
+// SnapPointsType is Microsoft.UI.Xaml.Controls.SnapPointsType.
+type SnapPointsType int32
+
+const (
+	SnapPointsTypeNone            SnapPointsType = 0
+	SnapPointsTypeOptional        SnapPointsType = 1
+	SnapPointsTypeMandatory       SnapPointsType = 2
+	SnapPointsTypeOptionalSingle  SnapPointsType = 3
+	SnapPointsTypeMandatorySingle SnapPointsType = 4
+)
+
+// String returns the SnapPointsType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SnapPointsType) String() string {
+	switch e {
+	case SnapPointsTypeNone:
+		return "SnapPointsTypeNone"
+	case SnapPointsTypeOptional:
+		return "SnapPointsTypeOptional"
+	case SnapPointsTypeMandatory:
+		return "SnapPointsTypeMandatory"
+	case SnapPointsTypeOptionalSingle:
+		return "SnapPointsTypeOptionalSingle"
+	case SnapPointsTypeMandatorySingle:
+		return "SnapPointsTypeMandatorySingle"
+	default:
+		return fmt.Sprintf("SnapPointsType(%d)", int32(e))
+	}
+}
+
+// SplitViewDisplayMode is Microsoft.UI.Xaml.Controls.SplitViewDisplayMode.
+type SplitViewDisplayMode int32
+
+const (
+	SplitViewDisplayModeOverlay        SplitViewDisplayMode = 0
+	SplitViewDisplayModeInline         SplitViewDisplayMode = 1
+	SplitViewDisplayModeCompactOverlay SplitViewDisplayMode = 2
+	SplitViewDisplayModeCompactInline  SplitViewDisplayMode = 3
+)
+
+// String returns the SplitViewDisplayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SplitViewDisplayMode) String() string {
+	switch e {
+	case SplitViewDisplayModeOverlay:
+		return "SplitViewDisplayModeOverlay"
+	case SplitViewDisplayModeInline:
+		return "SplitViewDisplayModeInline"
+	case SplitViewDisplayModeCompactOverlay:
+		return "SplitViewDisplayModeCompactOverlay"
+	case SplitViewDisplayModeCompactInline:
+		return "SplitViewDisplayModeCompactInline"
+	default:
+		return fmt.Sprintf("SplitViewDisplayMode(%d)", int32(e))
+	}
+}
+
+// SplitViewPanePlacement is Microsoft.UI.Xaml.Controls.SplitViewPanePlacement.
+type SplitViewPanePlacement int32
+
+const (
+	SplitViewPanePlacementLeft  SplitViewPanePlacement = 0
+	SplitViewPanePlacementRight SplitViewPanePlacement = 1
+)
+
+// String returns the SplitViewPanePlacement constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SplitViewPanePlacement) String() string {
+	switch e {
+	case SplitViewPanePlacementLeft:
+		return "SplitViewPanePlacementLeft"
+	case SplitViewPanePlacementRight:
+		return "SplitViewPanePlacementRight"
+	default:
+		return fmt.Sprintf("SplitViewPanePlacement(%d)", int32(e))
+	}
+}
+
+// StretchDirection is Microsoft.UI.Xaml.Controls.StretchDirection.
+type StretchDirection int32
+
+const (
+	StretchDirectionUpOnly   StretchDirection = 0
+	StretchDirectionDownOnly StretchDirection = 1
+	StretchDirectionBoth     StretchDirection = 2
+)
+
+// String returns the StretchDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e StretchDirection) String() string {
+	switch e {
+	case StretchDirectionUpOnly:
+		return "StretchDirectionUpOnly"
+	case StretchDirectionDownOnly:
+		return "StretchDirectionDownOnly"
+	case StretchDirectionBoth:
+		return "StretchDirectionBoth"
+	default:
+		return fmt.Sprintf("StretchDirection(%d)", int32(e))
+	}
+}
+
+// SwipeBehaviorOnInvoked is Microsoft.UI.Xaml.Controls.SwipeBehaviorOnInvoked.
+type SwipeBehaviorOnInvoked int32
+
+const (
+	SwipeBehaviorOnInvokedAuto       SwipeBehaviorOnInvoked = 0
+	SwipeBehaviorOnInvokedClose      SwipeBehaviorOnInvoked = 1
+	SwipeBehaviorOnInvokedRemainOpen SwipeBehaviorOnInvoked = 2
+)
+
+// String returns the SwipeBehaviorOnInvoked constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SwipeBehaviorOnInvoked) String() string {
+	switch e {
+	case SwipeBehaviorOnInvokedAuto:
+		return "SwipeBehaviorOnInvokedAuto"
+	case SwipeBehaviorOnInvokedClose:
+		return "SwipeBehaviorOnInvokedClose"
+	case SwipeBehaviorOnInvokedRemainOpen:
+		return "SwipeBehaviorOnInvokedRemainOpen"
+	default:
+		return fmt.Sprintf("SwipeBehaviorOnInvoked(%d)", int32(e))
+	}
+}
+
+// SwipeMode is Microsoft.UI.Xaml.Controls.SwipeMode.
+type SwipeMode int32
+
+const (
+	SwipeModeReveal  SwipeMode = 0
+	SwipeModeExecute SwipeMode = 1
+)
+
+// String returns the SwipeMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SwipeMode) String() string {
+	switch e {
+	case SwipeModeReveal:
+		return "SwipeModeReveal"
+	case SwipeModeExecute:
+		return "SwipeModeExecute"
+	default:
+		return fmt.Sprintf("SwipeMode(%d)", int32(e))
+	}
+}
+
+// Symbol is Microsoft.UI.Xaml.Controls.Symbol.
+type Symbol int32
+
+const (
+	SymbolPrevious               Symbol = 57600
+	SymbolNext                   Symbol = 57601
+	SymbolPlay                   Symbol = 57602
+	SymbolPause                  Symbol = 57603
+	SymbolEdit                   Symbol = 57604
+	SymbolSave                   Symbol = 57605
+	SymbolClear                  Symbol = 57606
+	SymbolDelete                 Symbol = 57607
+	SymbolRemove                 Symbol = 57608
+	SymbolAdd                    Symbol = 57609
+	SymbolCancel                 Symbol = 57610
+	SymbolAccept                 Symbol = 57611
+	SymbolMore                   Symbol = 57612
+	SymbolRedo                   Symbol = 57613
+	SymbolUndo                   Symbol = 57614
+	SymbolHome                   Symbol = 57615
+	SymbolUp                     Symbol = 57616
+	SymbolForward                Symbol = 57617
+	SymbolBack                   Symbol = 57618
+	SymbolFavorite               Symbol = 57619
+	SymbolCamera                 Symbol = 57620
+	SymbolSetting                Symbol = 57621
+	SymbolVideo                  Symbol = 57622
+	SymbolSync                   Symbol = 57623
+	SymbolDownload               Symbol = 57624
+	SymbolMail                   Symbol = 57625
+	SymbolFind                   Symbol = 57626
+	SymbolHelp                   Symbol = 57627
+	SymbolUpload                 Symbol = 57628
+	SymbolEmoji                  Symbol = 57629
+	SymbolTwoPage                Symbol = 57630
+	SymbolLeaveChat              Symbol = 57631
+	SymbolMailForward            Symbol = 57632
+	SymbolClock                  Symbol = 57633
+	SymbolSend                   Symbol = 57634
+	SymbolCrop                   Symbol = 57635
+	SymbolRotateCamera           Symbol = 57636
+	SymbolPeople                 Symbol = 57637
+	SymbolOpenPane               Symbol = 57638
+	SymbolClosePane              Symbol = 57639
+	SymbolWorld                  Symbol = 57640
+	SymbolFlag                   Symbol = 57641
+	SymbolPreviewLink            Symbol = 57642
+	SymbolGlobe                  Symbol = 57643
+	SymbolTrim                   Symbol = 57644
+	SymbolAttachCamera           Symbol = 57645
+	SymbolZoomIn                 Symbol = 57646
+	SymbolBookmarks              Symbol = 57647
+	SymbolDocument               Symbol = 57648
+	SymbolProtectedDocument      Symbol = 57649
+	SymbolPage                   Symbol = 57650
+	SymbolBullets                Symbol = 57651
+	SymbolComment                Symbol = 57652
+	SymbolMailFilled             Symbol = 57653
+	SymbolContactInfo            Symbol = 57654
+	SymbolHangUp                 Symbol = 57655
+	SymbolViewAll                Symbol = 57656
+	SymbolMapPin                 Symbol = 57657
+	SymbolPhone                  Symbol = 57658
+	SymbolVideoChat              Symbol = 57659
+	SymbolSwitch                 Symbol = 57660
+	SymbolContact                Symbol = 57661
+	SymbolRename                 Symbol = 57662
+	SymbolPin                    Symbol = 57665
+	SymbolMusicInfo              Symbol = 57666
+	SymbolGo                     Symbol = 57667
+	SymbolKeyboard               Symbol = 57668
+	SymbolDockLeft               Symbol = 57669
+	SymbolDockRight              Symbol = 57670
+	SymbolDockBottom             Symbol = 57671
+	SymbolRemote                 Symbol = 57672
+	SymbolRefresh                Symbol = 57673
+	SymbolRotate                 Symbol = 57674
+	SymbolShuffle                Symbol = 57675
+	SymbolList                   Symbol = 57676
+	SymbolShop                   Symbol = 57677
+	SymbolSelectAll              Symbol = 57678
+	SymbolOrientation            Symbol = 57679
+	SymbolImport                 Symbol = 57680
+	SymbolImportAll              Symbol = 57681
+	SymbolBrowsePhotos           Symbol = 57685
+	SymbolWebCam                 Symbol = 57686
+	SymbolPictures               Symbol = 57688
+	SymbolSaveLocal              Symbol = 57689
+	SymbolCaption                Symbol = 57690
+	SymbolStop                   Symbol = 57691
+	SymbolShowResults            Symbol = 57692
+	SymbolVolume                 Symbol = 57693
+	SymbolRepair                 Symbol = 57694
+	SymbolMessage                Symbol = 57695
+	SymbolPage2                  Symbol = 57696
+	SymbolCalendarDay            Symbol = 57697
+	SymbolCalendarWeek           Symbol = 57698
+	SymbolCalendar               Symbol = 57699
+	SymbolCharacter              Symbol = 57700
+	SymbolMailReplyAll           Symbol = 57701
+	SymbolRead                   Symbol = 57702
+	SymbolLink                   Symbol = 57703
+	SymbolAccount                Symbol = 57704
+	SymbolShowBcc                Symbol = 57705
+	SymbolHideBcc                Symbol = 57706
+	SymbolCut                    Symbol = 57707
+	SymbolAttach                 Symbol = 57708
+	SymbolPaste                  Symbol = 57709
+	SymbolFilter                 Symbol = 57710
+	SymbolCopy                   Symbol = 57711
+	SymbolEmoji2                 Symbol = 57712
+	SymbolImportant              Symbol = 57713
+	SymbolMailReply              Symbol = 57714
+	SymbolSlideShow              Symbol = 57715
+	SymbolSort                   Symbol = 57716
+	SymbolManage                 Symbol = 57720
+	SymbolAllApps                Symbol = 57721
+	SymbolDisconnectDrive        Symbol = 57722
+	SymbolMapDrive               Symbol = 57723
+	SymbolNewWindow              Symbol = 57724
+	SymbolOpenWith               Symbol = 57725
+	SymbolContactPresence        Symbol = 57729
+	SymbolPriority               Symbol = 57730
+	SymbolGoToToday              Symbol = 57732
+	SymbolFont                   Symbol = 57733
+	SymbolFontColor              Symbol = 57734
+	SymbolContact2               Symbol = 57735
+	SymbolFolder                 Symbol = 57736
+	SymbolAudio                  Symbol = 57737
+	SymbolPlaceholder            Symbol = 57738
+	SymbolView                   Symbol = 57739
+	SymbolSetLockScreen          Symbol = 57740
+	SymbolSetTile                Symbol = 57741
+	SymbolClosedCaption          Symbol = 57744
+	SymbolStopSlideShow          Symbol = 57745
+	SymbolPermissions            Symbol = 57746
+	SymbolHighlight              Symbol = 57747
+	SymbolDisableUpdates         Symbol = 57748
+	SymbolUnFavorite             Symbol = 57749
+	SymbolUnPin                  Symbol = 57750
+	SymbolOpenLocal              Symbol = 57751
+	SymbolMute                   Symbol = 57752
+	SymbolItalic                 Symbol = 57753
+	SymbolUnderline              Symbol = 57754
+	SymbolBold                   Symbol = 57755
+	SymbolMoveToFolder           Symbol = 57756
+	SymbolLikeDislike            Symbol = 57757
+	SymbolDislike                Symbol = 57758
+	SymbolLike                   Symbol = 57759
+	SymbolAlignRight             Symbol = 57760
+	SymbolAlignCenter            Symbol = 57761
+	SymbolAlignLeft              Symbol = 57762
+	SymbolZoom                   Symbol = 57763
+	SymbolZoomOut                Symbol = 57764
+	SymbolOpenFile               Symbol = 57765
+	SymbolOtherUser              Symbol = 57766
+	SymbolAdmin                  Symbol = 57767
+	SymbolStreet                 Symbol = 57795
+	SymbolMap                    Symbol = 57796
+	SymbolClearSelection         Symbol = 57797
+	SymbolFontDecrease           Symbol = 57798
+	SymbolFontIncrease           Symbol = 57799
+	SymbolFontSize               Symbol = 57800
+	SymbolCellPhone              Symbol = 57801
+	SymbolReShare                Symbol = 57802
+	SymbolTag                    Symbol = 57803
+	SymbolRepeatOne              Symbol = 57804
+	SymbolRepeatAll              Symbol = 57805
+	SymbolOutlineStar            Symbol = 57806
+	SymbolSolidStar              Symbol = 57807
+	SymbolCalculator             Symbol = 57808
+	SymbolDirections             Symbol = 57809
+	SymbolTarget                 Symbol = 57810
+	SymbolLibrary                Symbol = 57811
+	SymbolPhoneBook              Symbol = 57812
+	SymbolMemo                   Symbol = 57813
+	SymbolMicrophone             Symbol = 57814
+	SymbolPostUpdate             Symbol = 57815
+	SymbolBackToWindow           Symbol = 57816
+	SymbolFullScreen             Symbol = 57817
+	SymbolNewFolder              Symbol = 57818
+	SymbolCalendarReply          Symbol = 57819
+	SymbolUnSyncFolder           Symbol = 57821
+	SymbolReportHacked           Symbol = 57822
+	SymbolSyncFolder             Symbol = 57823
+	SymbolBlockContact           Symbol = 57824
+	SymbolSwitchApps             Symbol = 57825
+	SymbolAddFriend              Symbol = 57826
+	SymbolTouchPointer           Symbol = 57827
+	SymbolGoToStart              Symbol = 57828
+	SymbolZeroBars               Symbol = 57829
+	SymbolOneBar                 Symbol = 57830
+	SymbolTwoBars                Symbol = 57831
+	SymbolThreeBars              Symbol = 57832
+	SymbolFourBars               Symbol = 57833
+	SymbolScan                   Symbol = 58004
+	SymbolPreview                Symbol = 58005
+	SymbolGlobalNavigationButton Symbol = 59136
+	SymbolShare                  Symbol = 59181
+	SymbolPrint                  Symbol = 59209
+	SymbolXboxOneConsole         Symbol = 59792
+)
+
+// String returns the Symbol constant's name, or its numeric form when
+// the value is not a known constant.
+func (e Symbol) String() string {
+	switch e {
+	case SymbolPrevious:
+		return "SymbolPrevious"
+	case SymbolNext:
+		return "SymbolNext"
+	case SymbolPlay:
+		return "SymbolPlay"
+	case SymbolPause:
+		return "SymbolPause"
+	case SymbolEdit:
+		return "SymbolEdit"
+	case SymbolSave:
+		return "SymbolSave"
+	case SymbolClear:
+		return "SymbolClear"
+	case SymbolDelete:
+		return "SymbolDelete"
+	case SymbolRemove:
+		return "SymbolRemove"
+	case SymbolAdd:
+		return "SymbolAdd"
+	case SymbolCancel:
+		return "SymbolCancel"
+	case SymbolAccept:
+		return "SymbolAccept"
+	case SymbolMore:
+		return "SymbolMore"
+	case SymbolRedo:
+		return "SymbolRedo"
+	case SymbolUndo:
+		return "SymbolUndo"
+	case SymbolHome:
+		return "SymbolHome"
+	case SymbolUp:
+		return "SymbolUp"
+	case SymbolForward:
+		return "SymbolForward"
+	case SymbolBack:
+		return "SymbolBack"
+	case SymbolFavorite:
+		return "SymbolFavorite"
+	case SymbolCamera:
+		return "SymbolCamera"
+	case SymbolSetting:
+		return "SymbolSetting"
+	case SymbolVideo:
+		return "SymbolVideo"
+	case SymbolSync:
+		return "SymbolSync"
+	case SymbolDownload:
+		return "SymbolDownload"
+	case SymbolMail:
+		return "SymbolMail"
+	case SymbolFind:
+		return "SymbolFind"
+	case SymbolHelp:
+		return "SymbolHelp"
+	case SymbolUpload:
+		return "SymbolUpload"
+	case SymbolEmoji:
+		return "SymbolEmoji"
+	case SymbolTwoPage:
+		return "SymbolTwoPage"
+	case SymbolLeaveChat:
+		return "SymbolLeaveChat"
+	case SymbolMailForward:
+		return "SymbolMailForward"
+	case SymbolClock:
+		return "SymbolClock"
+	case SymbolSend:
+		return "SymbolSend"
+	case SymbolCrop:
+		return "SymbolCrop"
+	case SymbolRotateCamera:
+		return "SymbolRotateCamera"
+	case SymbolPeople:
+		return "SymbolPeople"
+	case SymbolOpenPane:
+		return "SymbolOpenPane"
+	case SymbolClosePane:
+		return "SymbolClosePane"
+	case SymbolWorld:
+		return "SymbolWorld"
+	case SymbolFlag:
+		return "SymbolFlag"
+	case SymbolPreviewLink:
+		return "SymbolPreviewLink"
+	case SymbolGlobe:
+		return "SymbolGlobe"
+	case SymbolTrim:
+		return "SymbolTrim"
+	case SymbolAttachCamera:
+		return "SymbolAttachCamera"
+	case SymbolZoomIn:
+		return "SymbolZoomIn"
+	case SymbolBookmarks:
+		return "SymbolBookmarks"
+	case SymbolDocument:
+		return "SymbolDocument"
+	case SymbolProtectedDocument:
+		return "SymbolProtectedDocument"
+	case SymbolPage:
+		return "SymbolPage"
+	case SymbolBullets:
+		return "SymbolBullets"
+	case SymbolComment:
+		return "SymbolComment"
+	case SymbolMailFilled:
+		return "SymbolMailFilled"
+	case SymbolContactInfo:
+		return "SymbolContactInfo"
+	case SymbolHangUp:
+		return "SymbolHangUp"
+	case SymbolViewAll:
+		return "SymbolViewAll"
+	case SymbolMapPin:
+		return "SymbolMapPin"
+	case SymbolPhone:
+		return "SymbolPhone"
+	case SymbolVideoChat:
+		return "SymbolVideoChat"
+	case SymbolSwitch:
+		return "SymbolSwitch"
+	case SymbolContact:
+		return "SymbolContact"
+	case SymbolRename:
+		return "SymbolRename"
+	case SymbolPin:
+		return "SymbolPin"
+	case SymbolMusicInfo:
+		return "SymbolMusicInfo"
+	case SymbolGo:
+		return "SymbolGo"
+	case SymbolKeyboard:
+		return "SymbolKeyboard"
+	case SymbolDockLeft:
+		return "SymbolDockLeft"
+	case SymbolDockRight:
+		return "SymbolDockRight"
+	case SymbolDockBottom:
+		return "SymbolDockBottom"
+	case SymbolRemote:
+		return "SymbolRemote"
+	case SymbolRefresh:
+		return "SymbolRefresh"
+	case SymbolRotate:
+		return "SymbolRotate"
+	case SymbolShuffle:
+		return "SymbolShuffle"
+	case SymbolList:
+		return "SymbolList"
+	case SymbolShop:
+		return "SymbolShop"
+	case SymbolSelectAll:
+		return "SymbolSelectAll"
+	case SymbolOrientation:
+		return "SymbolOrientation"
+	case SymbolImport:
+		return "SymbolImport"
+	case SymbolImportAll:
+		return "SymbolImportAll"
+	case SymbolBrowsePhotos:
+		return "SymbolBrowsePhotos"
+	case SymbolWebCam:
+		return "SymbolWebCam"
+	case SymbolPictures:
+		return "SymbolPictures"
+	case SymbolSaveLocal:
+		return "SymbolSaveLocal"
+	case SymbolCaption:
+		return "SymbolCaption"
+	case SymbolStop:
+		return "SymbolStop"
+	case SymbolShowResults:
+		return "SymbolShowResults"
+	case SymbolVolume:
+		return "SymbolVolume"
+	case SymbolRepair:
+		return "SymbolRepair"
+	case SymbolMessage:
+		return "SymbolMessage"
+	case SymbolPage2:
+		return "SymbolPage2"
+	case SymbolCalendarDay:
+		return "SymbolCalendarDay"
+	case SymbolCalendarWeek:
+		return "SymbolCalendarWeek"
+	case SymbolCalendar:
+		return "SymbolCalendar"
+	case SymbolCharacter:
+		return "SymbolCharacter"
+	case SymbolMailReplyAll:
+		return "SymbolMailReplyAll"
+	case SymbolRead:
+		return "SymbolRead"
+	case SymbolLink:
+		return "SymbolLink"
+	case SymbolAccount:
+		return "SymbolAccount"
+	case SymbolShowBcc:
+		return "SymbolShowBcc"
+	case SymbolHideBcc:
+		return "SymbolHideBcc"
+	case SymbolCut:
+		return "SymbolCut"
+	case SymbolAttach:
+		return "SymbolAttach"
+	case SymbolPaste:
+		return "SymbolPaste"
+	case SymbolFilter:
+		return "SymbolFilter"
+	case SymbolCopy:
+		return "SymbolCopy"
+	case SymbolEmoji2:
+		return "SymbolEmoji2"
+	case SymbolImportant:
+		return "SymbolImportant"
+	case SymbolMailReply:
+		return "SymbolMailReply"
+	case SymbolSlideShow:
+		return "SymbolSlideShow"
+	case SymbolSort:
+		return "SymbolSort"
+	case SymbolManage:
+		return "SymbolManage"
+	case SymbolAllApps:
+		return "SymbolAllApps"
+	case SymbolDisconnectDrive:
+		return "SymbolDisconnectDrive"
+	case SymbolMapDrive:
+		return "SymbolMapDrive"
+	case SymbolNewWindow:
+		return "SymbolNewWindow"
+	case SymbolOpenWith:
+		return "SymbolOpenWith"
+	case SymbolContactPresence:
+		return "SymbolContactPresence"
+	case SymbolPriority:
+		return "SymbolPriority"
+	case SymbolGoToToday:
+		return "SymbolGoToToday"
+	case SymbolFont:
+		return "SymbolFont"
+	case SymbolFontColor:
+		return "SymbolFontColor"
+	case SymbolContact2:
+		return "SymbolContact2"
+	case SymbolFolder:
+		return "SymbolFolder"
+	case SymbolAudio:
+		return "SymbolAudio"
+	case SymbolPlaceholder:
+		return "SymbolPlaceholder"
+	case SymbolView:
+		return "SymbolView"
+	case SymbolSetLockScreen:
+		return "SymbolSetLockScreen"
+	case SymbolSetTile:
+		return "SymbolSetTile"
+	case SymbolClosedCaption:
+		return "SymbolClosedCaption"
+	case SymbolStopSlideShow:
+		return "SymbolStopSlideShow"
+	case SymbolPermissions:
+		return "SymbolPermissions"
+	case SymbolHighlight:
+		return "SymbolHighlight"
+	case SymbolDisableUpdates:
+		return "SymbolDisableUpdates"
+	case SymbolUnFavorite:
+		return "SymbolUnFavorite"
+	case SymbolUnPin:
+		return "SymbolUnPin"
+	case SymbolOpenLocal:
+		return "SymbolOpenLocal"
+	case SymbolMute:
+		return "SymbolMute"
+	case SymbolItalic:
+		return "SymbolItalic"
+	case SymbolUnderline:
+		return "SymbolUnderline"
+	case SymbolBold:
+		return "SymbolBold"
+	case SymbolMoveToFolder:
+		return "SymbolMoveToFolder"
+	case SymbolLikeDislike:
+		return "SymbolLikeDislike"
+	case SymbolDislike:
+		return "SymbolDislike"
+	case SymbolLike:
+		return "SymbolLike"
+	case SymbolAlignRight:
+		return "SymbolAlignRight"
+	case SymbolAlignCenter:
+		return "SymbolAlignCenter"
+	case SymbolAlignLeft:
+		return "SymbolAlignLeft"
+	case SymbolZoom:
+		return "SymbolZoom"
+	case SymbolZoomOut:
+		return "SymbolZoomOut"
+	case SymbolOpenFile:
+		return "SymbolOpenFile"
+	case SymbolOtherUser:
+		return "SymbolOtherUser"
+	case SymbolAdmin:
+		return "SymbolAdmin"
+	case SymbolStreet:
+		return "SymbolStreet"
+	case SymbolMap:
+		return "SymbolMap"
+	case SymbolClearSelection:
+		return "SymbolClearSelection"
+	case SymbolFontDecrease:
+		return "SymbolFontDecrease"
+	case SymbolFontIncrease:
+		return "SymbolFontIncrease"
+	case SymbolFontSize:
+		return "SymbolFontSize"
+	case SymbolCellPhone:
+		return "SymbolCellPhone"
+	case SymbolReShare:
+		return "SymbolReShare"
+	case SymbolTag:
+		return "SymbolTag"
+	case SymbolRepeatOne:
+		return "SymbolRepeatOne"
+	case SymbolRepeatAll:
+		return "SymbolRepeatAll"
+	case SymbolOutlineStar:
+		return "SymbolOutlineStar"
+	case SymbolSolidStar:
+		return "SymbolSolidStar"
+	case SymbolCalculator:
+		return "SymbolCalculator"
+	case SymbolDirections:
+		return "SymbolDirections"
+	case SymbolTarget:
+		return "SymbolTarget"
+	case SymbolLibrary:
+		return "SymbolLibrary"
+	case SymbolPhoneBook:
+		return "SymbolPhoneBook"
+	case SymbolMemo:
+		return "SymbolMemo"
+	case SymbolMicrophone:
+		return "SymbolMicrophone"
+	case SymbolPostUpdate:
+		return "SymbolPostUpdate"
+	case SymbolBackToWindow:
+		return "SymbolBackToWindow"
+	case SymbolFullScreen:
+		return "SymbolFullScreen"
+	case SymbolNewFolder:
+		return "SymbolNewFolder"
+	case SymbolCalendarReply:
+		return "SymbolCalendarReply"
+	case SymbolUnSyncFolder:
+		return "SymbolUnSyncFolder"
+	case SymbolReportHacked:
+		return "SymbolReportHacked"
+	case SymbolSyncFolder:
+		return "SymbolSyncFolder"
+	case SymbolBlockContact:
+		return "SymbolBlockContact"
+	case SymbolSwitchApps:
+		return "SymbolSwitchApps"
+	case SymbolAddFriend:
+		return "SymbolAddFriend"
+	case SymbolTouchPointer:
+		return "SymbolTouchPointer"
+	case SymbolGoToStart:
+		return "SymbolGoToStart"
+	case SymbolZeroBars:
+		return "SymbolZeroBars"
+	case SymbolOneBar:
+		return "SymbolOneBar"
+	case SymbolTwoBars:
+		return "SymbolTwoBars"
+	case SymbolThreeBars:
+		return "SymbolThreeBars"
+	case SymbolFourBars:
+		return "SymbolFourBars"
+	case SymbolScan:
+		return "SymbolScan"
+	case SymbolPreview:
+		return "SymbolPreview"
+	case SymbolGlobalNavigationButton:
+		return "SymbolGlobalNavigationButton"
+	case SymbolShare:
+		return "SymbolShare"
+	case SymbolPrint:
+		return "SymbolPrint"
+	case SymbolXboxOneConsole:
+		return "SymbolXboxOneConsole"
+	default:
+		return fmt.Sprintf("Symbol(%d)", int32(e))
+	}
+}
+
+// TabViewCloseButtonOverlayMode is Microsoft.UI.Xaml.Controls.TabViewCloseButtonOverlayMode.
+type TabViewCloseButtonOverlayMode int32
+
+const (
+	TabViewCloseButtonOverlayModeAuto          TabViewCloseButtonOverlayMode = 0
+	TabViewCloseButtonOverlayModeOnPointerOver TabViewCloseButtonOverlayMode = 1
+	TabViewCloseButtonOverlayModeAlways        TabViewCloseButtonOverlayMode = 2
+)
+
+// String returns the TabViewCloseButtonOverlayMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TabViewCloseButtonOverlayMode) String() string {
+	switch e {
+	case TabViewCloseButtonOverlayModeAuto:
+		return "TabViewCloseButtonOverlayModeAuto"
+	case TabViewCloseButtonOverlayModeOnPointerOver:
+		return "TabViewCloseButtonOverlayModeOnPointerOver"
+	case TabViewCloseButtonOverlayModeAlways:
+		return "TabViewCloseButtonOverlayModeAlways"
+	default:
+		return fmt.Sprintf("TabViewCloseButtonOverlayMode(%d)", int32(e))
+	}
+}
+
+// TabViewWidthMode is Microsoft.UI.Xaml.Controls.TabViewWidthMode.
+type TabViewWidthMode int32
+
+const (
+	TabViewWidthModeEqual         TabViewWidthMode = 0
+	TabViewWidthModeSizeToContent TabViewWidthMode = 1
+	TabViewWidthModeCompact       TabViewWidthMode = 2
+)
+
+// String returns the TabViewWidthMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TabViewWidthMode) String() string {
+	switch e {
+	case TabViewWidthModeEqual:
+		return "TabViewWidthModeEqual"
+	case TabViewWidthModeSizeToContent:
+		return "TabViewWidthModeSizeToContent"
+	case TabViewWidthModeCompact:
+		return "TabViewWidthModeCompact"
+	default:
+		return fmt.Sprintf("TabViewWidthMode(%d)", int32(e))
+	}
+}
+
+// TeachingTipCloseReason is Microsoft.UI.Xaml.Controls.TeachingTipCloseReason.
+type TeachingTipCloseReason int32
+
+const (
+	TeachingTipCloseReasonCloseButton  TeachingTipCloseReason = 0
+	TeachingTipCloseReasonLightDismiss TeachingTipCloseReason = 1
+	TeachingTipCloseReasonProgrammatic TeachingTipCloseReason = 2
+)
+
+// String returns the TeachingTipCloseReason constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TeachingTipCloseReason) String() string {
+	switch e {
+	case TeachingTipCloseReasonCloseButton:
+		return "TeachingTipCloseReasonCloseButton"
+	case TeachingTipCloseReasonLightDismiss:
+		return "TeachingTipCloseReasonLightDismiss"
+	case TeachingTipCloseReasonProgrammatic:
+		return "TeachingTipCloseReasonProgrammatic"
+	default:
+		return fmt.Sprintf("TeachingTipCloseReason(%d)", int32(e))
+	}
+}
+
+// TeachingTipHeroContentPlacementMode is Microsoft.UI.Xaml.Controls.TeachingTipHeroContentPlacementMode.
+type TeachingTipHeroContentPlacementMode int32
+
+const (
+	TeachingTipHeroContentPlacementModeAuto   TeachingTipHeroContentPlacementMode = 0
+	TeachingTipHeroContentPlacementModeTop    TeachingTipHeroContentPlacementMode = 1
+	TeachingTipHeroContentPlacementModeBottom TeachingTipHeroContentPlacementMode = 2
+)
+
+// String returns the TeachingTipHeroContentPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TeachingTipHeroContentPlacementMode) String() string {
+	switch e {
+	case TeachingTipHeroContentPlacementModeAuto:
+		return "TeachingTipHeroContentPlacementModeAuto"
+	case TeachingTipHeroContentPlacementModeTop:
+		return "TeachingTipHeroContentPlacementModeTop"
+	case TeachingTipHeroContentPlacementModeBottom:
+		return "TeachingTipHeroContentPlacementModeBottom"
+	default:
+		return fmt.Sprintf("TeachingTipHeroContentPlacementMode(%d)", int32(e))
+	}
+}
+
+// TeachingTipPlacementMode is Microsoft.UI.Xaml.Controls.TeachingTipPlacementMode.
+type TeachingTipPlacementMode int32
+
+const (
+	TeachingTipPlacementModeAuto        TeachingTipPlacementMode = 0
+	TeachingTipPlacementModeTop         TeachingTipPlacementMode = 1
+	TeachingTipPlacementModeBottom      TeachingTipPlacementMode = 2
+	TeachingTipPlacementModeLeft        TeachingTipPlacementMode = 3
+	TeachingTipPlacementModeRight       TeachingTipPlacementMode = 4
+	TeachingTipPlacementModeTopRight    TeachingTipPlacementMode = 5
+	TeachingTipPlacementModeTopLeft     TeachingTipPlacementMode = 6
+	TeachingTipPlacementModeBottomRight TeachingTipPlacementMode = 7
+	TeachingTipPlacementModeBottomLeft  TeachingTipPlacementMode = 8
+	TeachingTipPlacementModeLeftTop     TeachingTipPlacementMode = 9
+	TeachingTipPlacementModeLeftBottom  TeachingTipPlacementMode = 10
+	TeachingTipPlacementModeRightTop    TeachingTipPlacementMode = 11
+	TeachingTipPlacementModeRightBottom TeachingTipPlacementMode = 12
+	TeachingTipPlacementModeCenter      TeachingTipPlacementMode = 13
+)
+
+// String returns the TeachingTipPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TeachingTipPlacementMode) String() string {
+	switch e {
+	case TeachingTipPlacementModeAuto:
+		return "TeachingTipPlacementModeAuto"
+	case TeachingTipPlacementModeTop:
+		return "TeachingTipPlacementModeTop"
+	case TeachingTipPlacementModeBottom:
+		return "TeachingTipPlacementModeBottom"
+	case TeachingTipPlacementModeLeft:
+		return "TeachingTipPlacementModeLeft"
+	case TeachingTipPlacementModeRight:
+		return "TeachingTipPlacementModeRight"
+	case TeachingTipPlacementModeTopRight:
+		return "TeachingTipPlacementModeTopRight"
+	case TeachingTipPlacementModeTopLeft:
+		return "TeachingTipPlacementModeTopLeft"
+	case TeachingTipPlacementModeBottomRight:
+		return "TeachingTipPlacementModeBottomRight"
+	case TeachingTipPlacementModeBottomLeft:
+		return "TeachingTipPlacementModeBottomLeft"
+	case TeachingTipPlacementModeLeftTop:
+		return "TeachingTipPlacementModeLeftTop"
+	case TeachingTipPlacementModeLeftBottom:
+		return "TeachingTipPlacementModeLeftBottom"
+	case TeachingTipPlacementModeRightTop:
+		return "TeachingTipPlacementModeRightTop"
+	case TeachingTipPlacementModeRightBottom:
+		return "TeachingTipPlacementModeRightBottom"
+	case TeachingTipPlacementModeCenter:
+		return "TeachingTipPlacementModeCenter"
+	default:
+		return fmt.Sprintf("TeachingTipPlacementMode(%d)", int32(e))
+	}
+}
+
+// TeachingTipTailVisibility is Microsoft.UI.Xaml.Controls.TeachingTipTailVisibility.
+type TeachingTipTailVisibility int32
+
+const (
+	TeachingTipTailVisibilityAuto      TeachingTipTailVisibility = 0
+	TeachingTipTailVisibilityVisible   TeachingTipTailVisibility = 1
+	TeachingTipTailVisibilityCollapsed TeachingTipTailVisibility = 2
+)
+
+// String returns the TeachingTipTailVisibility constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TeachingTipTailVisibility) String() string {
+	switch e {
+	case TeachingTipTailVisibilityAuto:
+		return "TeachingTipTailVisibilityAuto"
+	case TeachingTipTailVisibilityVisible:
+		return "TeachingTipTailVisibilityVisible"
+	case TeachingTipTailVisibilityCollapsed:
+		return "TeachingTipTailVisibilityCollapsed"
+	default:
+		return fmt.Sprintf("TeachingTipTailVisibility(%d)", int32(e))
+	}
+}
+
+// TreeViewSelectionMode is Microsoft.UI.Xaml.Controls.TreeViewSelectionMode.
+type TreeViewSelectionMode int32
+
+const (
+	TreeViewSelectionModeNone     TreeViewSelectionMode = 0
+	TreeViewSelectionModeSingle   TreeViewSelectionMode = 1
+	TreeViewSelectionModeMultiple TreeViewSelectionMode = 2
+)
+
+// String returns the TreeViewSelectionMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TreeViewSelectionMode) String() string {
+	switch e {
+	case TreeViewSelectionModeNone:
+		return "TreeViewSelectionModeNone"
+	case TreeViewSelectionModeSingle:
+		return "TreeViewSelectionModeSingle"
+	case TreeViewSelectionModeMultiple:
+		return "TreeViewSelectionModeMultiple"
+	default:
+		return fmt.Sprintf("TreeViewSelectionMode(%d)", int32(e))
+	}
+}
+
+// TwoPaneViewMode is Microsoft.UI.Xaml.Controls.TwoPaneViewMode.
+type TwoPaneViewMode int32
+
+const (
+	TwoPaneViewModeSinglePane TwoPaneViewMode = 0
+	TwoPaneViewModeWide       TwoPaneViewMode = 1
+	TwoPaneViewModeTall       TwoPaneViewMode = 2
+)
+
+// String returns the TwoPaneViewMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TwoPaneViewMode) String() string {
+	switch e {
+	case TwoPaneViewModeSinglePane:
+		return "TwoPaneViewModeSinglePane"
+	case TwoPaneViewModeWide:
+		return "TwoPaneViewModeWide"
+	case TwoPaneViewModeTall:
+		return "TwoPaneViewModeTall"
+	default:
+		return fmt.Sprintf("TwoPaneViewMode(%d)", int32(e))
+	}
+}
+
+// TwoPaneViewPriority is Microsoft.UI.Xaml.Controls.TwoPaneViewPriority.
+type TwoPaneViewPriority int32
+
+const (
+	TwoPaneViewPriorityPane1 TwoPaneViewPriority = 0
+	TwoPaneViewPriorityPane2 TwoPaneViewPriority = 1
+)
+
+// String returns the TwoPaneViewPriority constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TwoPaneViewPriority) String() string {
+	switch e {
+	case TwoPaneViewPriorityPane1:
+		return "TwoPaneViewPriorityPane1"
+	case TwoPaneViewPriorityPane2:
+		return "TwoPaneViewPriorityPane2"
+	default:
+		return fmt.Sprintf("TwoPaneViewPriority(%d)", int32(e))
+	}
+}
+
+// TwoPaneViewTallModeConfiguration is Microsoft.UI.Xaml.Controls.TwoPaneViewTallModeConfiguration.
+type TwoPaneViewTallModeConfiguration int32
+
+const (
+	TwoPaneViewTallModeConfigurationSinglePane TwoPaneViewTallModeConfiguration = 0
+	TwoPaneViewTallModeConfigurationTopBottom  TwoPaneViewTallModeConfiguration = 1
+	TwoPaneViewTallModeConfigurationBottomTop  TwoPaneViewTallModeConfiguration = 2
+)
+
+// String returns the TwoPaneViewTallModeConfiguration constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TwoPaneViewTallModeConfiguration) String() string {
+	switch e {
+	case TwoPaneViewTallModeConfigurationSinglePane:
+		return "TwoPaneViewTallModeConfigurationSinglePane"
+	case TwoPaneViewTallModeConfigurationTopBottom:
+		return "TwoPaneViewTallModeConfigurationTopBottom"
+	case TwoPaneViewTallModeConfigurationBottomTop:
+		return "TwoPaneViewTallModeConfigurationBottomTop"
+	default:
+		return fmt.Sprintf("TwoPaneViewTallModeConfiguration(%d)", int32(e))
+	}
+}
+
+// TwoPaneViewWideModeConfiguration is Microsoft.UI.Xaml.Controls.TwoPaneViewWideModeConfiguration.
+type TwoPaneViewWideModeConfiguration int32
+
+const (
+	TwoPaneViewWideModeConfigurationSinglePane TwoPaneViewWideModeConfiguration = 0
+	TwoPaneViewWideModeConfigurationLeftRight  TwoPaneViewWideModeConfiguration = 1
+	TwoPaneViewWideModeConfigurationRightLeft  TwoPaneViewWideModeConfiguration = 2
+)
+
+// String returns the TwoPaneViewWideModeConfiguration constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TwoPaneViewWideModeConfiguration) String() string {
+	switch e {
+	case TwoPaneViewWideModeConfigurationSinglePane:
+		return "TwoPaneViewWideModeConfigurationSinglePane"
+	case TwoPaneViewWideModeConfigurationLeftRight:
+		return "TwoPaneViewWideModeConfigurationLeftRight"
+	case TwoPaneViewWideModeConfigurationRightLeft:
+		return "TwoPaneViewWideModeConfigurationRightLeft"
+	default:
+		return fmt.Sprintf("TwoPaneViewWideModeConfiguration(%d)", int32(e))
+	}
+}
+
+// UniformGridLayoutItemsJustification is Microsoft.UI.Xaml.Controls.UniformGridLayoutItemsJustification.
+type UniformGridLayoutItemsJustification int32
+
+const (
+	UniformGridLayoutItemsJustificationStart        UniformGridLayoutItemsJustification = 0
+	UniformGridLayoutItemsJustificationCenter       UniformGridLayoutItemsJustification = 1
+	UniformGridLayoutItemsJustificationEnd          UniformGridLayoutItemsJustification = 2
+	UniformGridLayoutItemsJustificationSpaceAround  UniformGridLayoutItemsJustification = 3
+	UniformGridLayoutItemsJustificationSpaceBetween UniformGridLayoutItemsJustification = 4
+	UniformGridLayoutItemsJustificationSpaceEvenly  UniformGridLayoutItemsJustification = 5
+)
+
+// String returns the UniformGridLayoutItemsJustification constant's name, or its numeric form when
+// the value is not a known constant.
+func (e UniformGridLayoutItemsJustification) String() string {
+	switch e {
+	case UniformGridLayoutItemsJustificationStart:
+		return "UniformGridLayoutItemsJustificationStart"
+	case UniformGridLayoutItemsJustificationCenter:
+		return "UniformGridLayoutItemsJustificationCenter"
+	case UniformGridLayoutItemsJustificationEnd:
+		return "UniformGridLayoutItemsJustificationEnd"
+	case UniformGridLayoutItemsJustificationSpaceAround:
+		return "UniformGridLayoutItemsJustificationSpaceAround"
+	case UniformGridLayoutItemsJustificationSpaceBetween:
+		return "UniformGridLayoutItemsJustificationSpaceBetween"
+	case UniformGridLayoutItemsJustificationSpaceEvenly:
+		return "UniformGridLayoutItemsJustificationSpaceEvenly"
+	default:
+		return fmt.Sprintf("UniformGridLayoutItemsJustification(%d)", int32(e))
+	}
+}
+
+// UniformGridLayoutItemsStretch is Microsoft.UI.Xaml.Controls.UniformGridLayoutItemsStretch.
+type UniformGridLayoutItemsStretch int32
+
+const (
+	UniformGridLayoutItemsStretchNone    UniformGridLayoutItemsStretch = 0
+	UniformGridLayoutItemsStretchFill    UniformGridLayoutItemsStretch = 1
+	UniformGridLayoutItemsStretchUniform UniformGridLayoutItemsStretch = 2
+)
+
+// String returns the UniformGridLayoutItemsStretch constant's name, or its numeric form when
+// the value is not a known constant.
+func (e UniformGridLayoutItemsStretch) String() string {
+	switch e {
+	case UniformGridLayoutItemsStretchNone:
+		return "UniformGridLayoutItemsStretchNone"
+	case UniformGridLayoutItemsStretchFill:
+		return "UniformGridLayoutItemsStretchFill"
+	case UniformGridLayoutItemsStretchUniform:
+		return "UniformGridLayoutItemsStretchUniform"
+	default:
+		return fmt.Sprintf("UniformGridLayoutItemsStretch(%d)", int32(e))
+	}
+}
+
+// VirtualizationMode is Microsoft.UI.Xaml.Controls.VirtualizationMode.
+type VirtualizationMode int32
+
+const (
+	VirtualizationModeStandard  VirtualizationMode = 0
+	VirtualizationModeRecycling VirtualizationMode = 1
+)
+
+// String returns the VirtualizationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e VirtualizationMode) String() string {
+	switch e {
+	case VirtualizationModeStandard:
+		return "VirtualizationModeStandard"
+	case VirtualizationModeRecycling:
+		return "VirtualizationModeRecycling"
+	default:
+		return fmt.Sprintf("VirtualizationMode(%d)", int32(e))
+	}
+}
+
+// ZoomMode is Microsoft.UI.Xaml.Controls.ZoomMode.
+type ZoomMode int32
+
+const (
+	ZoomModeDisabled ZoomMode = 0
+	ZoomModeEnabled  ZoomMode = 1
+)
+
+// String returns the ZoomMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ZoomMode) String() string {
+	switch e {
+	case ZoomModeDisabled:
+		return "ZoomModeDisabled"
+	case ZoomModeEnabled:
+		return "ZoomModeEnabled"
+	default:
+		return fmt.Sprintf("ZoomMode(%d)", int32(e))
+	}
+}
+
+// AnimationDirection is Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection.
+type AnimationDirection int32
+
+const (
+	AnimationDirectionLeft   AnimationDirection = 0
+	AnimationDirectionTop    AnimationDirection = 1
+	AnimationDirectionRight  AnimationDirection = 2
+	AnimationDirectionBottom AnimationDirection = 3
+)
+
+// String returns the AnimationDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AnimationDirection) String() string {
+	switch e {
+	case AnimationDirectionLeft:
+		return "AnimationDirectionLeft"
+	case AnimationDirectionTop:
+		return "AnimationDirectionTop"
+	case AnimationDirectionRight:
+		return "AnimationDirectionRight"
+	case AnimationDirectionBottom:
+		return "AnimationDirectionBottom"
+	default:
+		return fmt.Sprintf("AnimationDirection(%d)", int32(e))
+	}
+}
+
+// ComponentResourceLocation is Microsoft.UI.Xaml.Controls.Primitives.ComponentResourceLocation.
+type ComponentResourceLocation int32
+
+const (
+	ComponentResourceLocationApplication ComponentResourceLocation = 0
+	ComponentResourceLocationNested      ComponentResourceLocation = 1
+)
+
+// String returns the ComponentResourceLocation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ComponentResourceLocation) String() string {
+	switch e {
+	case ComponentResourceLocationApplication:
+		return "ComponentResourceLocationApplication"
+	case ComponentResourceLocationNested:
+		return "ComponentResourceLocationNested"
+	default:
+		return fmt.Sprintf("ComponentResourceLocation(%d)", int32(e))
+	}
+}
+
+// CornerRadiusFilterKind is Microsoft.UI.Xaml.Controls.Primitives.CornerRadiusFilterKind.
+type CornerRadiusFilterKind int32
+
+const (
+	CornerRadiusFilterKindNone             CornerRadiusFilterKind = 0
+	CornerRadiusFilterKindTop              CornerRadiusFilterKind = 1
+	CornerRadiusFilterKindRight            CornerRadiusFilterKind = 2
+	CornerRadiusFilterKindBottom           CornerRadiusFilterKind = 3
+	CornerRadiusFilterKindLeft             CornerRadiusFilterKind = 4
+	CornerRadiusFilterKindTopLeftValue     CornerRadiusFilterKind = 5
+	CornerRadiusFilterKindBottomRightValue CornerRadiusFilterKind = 6
+)
+
+// String returns the CornerRadiusFilterKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CornerRadiusFilterKind) String() string {
+	switch e {
+	case CornerRadiusFilterKindNone:
+		return "CornerRadiusFilterKindNone"
+	case CornerRadiusFilterKindTop:
+		return "CornerRadiusFilterKindTop"
+	case CornerRadiusFilterKindRight:
+		return "CornerRadiusFilterKindRight"
+	case CornerRadiusFilterKindBottom:
+		return "CornerRadiusFilterKindBottom"
+	case CornerRadiusFilterKindLeft:
+		return "CornerRadiusFilterKindLeft"
+	case CornerRadiusFilterKindTopLeftValue:
+		return "CornerRadiusFilterKindTopLeftValue"
+	case CornerRadiusFilterKindBottomRightValue:
+		return "CornerRadiusFilterKindBottomRightValue"
+	default:
+		return fmt.Sprintf("CornerRadiusFilterKind(%d)", int32(e))
+	}
+}
+
+// CornerRadiusToThicknessConverterKind is Microsoft.UI.Xaml.Controls.Primitives.CornerRadiusToThicknessConverterKind.
+type CornerRadiusToThicknessConverterKind int32
+
+const (
+	CornerRadiusToThicknessConverterKindFilterTopAndBottomFromLeft   CornerRadiusToThicknessConverterKind = 0
+	CornerRadiusToThicknessConverterKindFilterTopAndBottomFromRight  CornerRadiusToThicknessConverterKind = 1
+	CornerRadiusToThicknessConverterKindFilterLeftAndRightFromTop    CornerRadiusToThicknessConverterKind = 2
+	CornerRadiusToThicknessConverterKindFilterLeftAndRightFromBottom CornerRadiusToThicknessConverterKind = 3
+	CornerRadiusToThicknessConverterKindFilterTopFromTopLeft         CornerRadiusToThicknessConverterKind = 4
+	CornerRadiusToThicknessConverterKindFilterTopFromTopRight        CornerRadiusToThicknessConverterKind = 5
+	CornerRadiusToThicknessConverterKindFilterRightFromTopRight      CornerRadiusToThicknessConverterKind = 6
+	CornerRadiusToThicknessConverterKindFilterRightFromBottomRight   CornerRadiusToThicknessConverterKind = 7
+	CornerRadiusToThicknessConverterKindFilterBottomFromBottomRight  CornerRadiusToThicknessConverterKind = 8
+	CornerRadiusToThicknessConverterKindFilterBottomFromBottomLeft   CornerRadiusToThicknessConverterKind = 9
+	CornerRadiusToThicknessConverterKindFilterLeftFromBottomLeft     CornerRadiusToThicknessConverterKind = 10
+	CornerRadiusToThicknessConverterKindFilterLeftFromTopLeft        CornerRadiusToThicknessConverterKind = 11
+)
+
+// String returns the CornerRadiusToThicknessConverterKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e CornerRadiusToThicknessConverterKind) String() string {
+	switch e {
+	case CornerRadiusToThicknessConverterKindFilterTopAndBottomFromLeft:
+		return "CornerRadiusToThicknessConverterKindFilterTopAndBottomFromLeft"
+	case CornerRadiusToThicknessConverterKindFilterTopAndBottomFromRight:
+		return "CornerRadiusToThicknessConverterKindFilterTopAndBottomFromRight"
+	case CornerRadiusToThicknessConverterKindFilterLeftAndRightFromTop:
+		return "CornerRadiusToThicknessConverterKindFilterLeftAndRightFromTop"
+	case CornerRadiusToThicknessConverterKindFilterLeftAndRightFromBottom:
+		return "CornerRadiusToThicknessConverterKindFilterLeftAndRightFromBottom"
+	case CornerRadiusToThicknessConverterKindFilterTopFromTopLeft:
+		return "CornerRadiusToThicknessConverterKindFilterTopFromTopLeft"
+	case CornerRadiusToThicknessConverterKindFilterTopFromTopRight:
+		return "CornerRadiusToThicknessConverterKindFilterTopFromTopRight"
+	case CornerRadiusToThicknessConverterKindFilterRightFromTopRight:
+		return "CornerRadiusToThicknessConverterKindFilterRightFromTopRight"
+	case CornerRadiusToThicknessConverterKindFilterRightFromBottomRight:
+		return "CornerRadiusToThicknessConverterKindFilterRightFromBottomRight"
+	case CornerRadiusToThicknessConverterKindFilterBottomFromBottomRight:
+		return "CornerRadiusToThicknessConverterKindFilterBottomFromBottomRight"
+	case CornerRadiusToThicknessConverterKindFilterBottomFromBottomLeft:
+		return "CornerRadiusToThicknessConverterKindFilterBottomFromBottomLeft"
+	case CornerRadiusToThicknessConverterKindFilterLeftFromBottomLeft:
+		return "CornerRadiusToThicknessConverterKindFilterLeftFromBottomLeft"
+	case CornerRadiusToThicknessConverterKindFilterLeftFromTopLeft:
+		return "CornerRadiusToThicknessConverterKindFilterLeftFromTopLeft"
+	default:
+		return fmt.Sprintf("CornerRadiusToThicknessConverterKind(%d)", int32(e))
+	}
+}
+
+// EdgeTransitionLocation is Microsoft.UI.Xaml.Controls.Primitives.EdgeTransitionLocation.
+type EdgeTransitionLocation int32
+
+const (
+	EdgeTransitionLocationLeft   EdgeTransitionLocation = 0
+	EdgeTransitionLocationTop    EdgeTransitionLocation = 1
+	EdgeTransitionLocationRight  EdgeTransitionLocation = 2
+	EdgeTransitionLocationBottom EdgeTransitionLocation = 3
+)
+
+// String returns the EdgeTransitionLocation constant's name, or its numeric form when
+// the value is not a known constant.
+func (e EdgeTransitionLocation) String() string {
+	switch e {
+	case EdgeTransitionLocationLeft:
+		return "EdgeTransitionLocationLeft"
+	case EdgeTransitionLocationTop:
+		return "EdgeTransitionLocationTop"
+	case EdgeTransitionLocationRight:
+		return "EdgeTransitionLocationRight"
+	case EdgeTransitionLocationBottom:
+		return "EdgeTransitionLocationBottom"
+	default:
+		return fmt.Sprintf("EdgeTransitionLocation(%d)", int32(e))
+	}
+}
+
+// FlyoutPlacementMode is Microsoft.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.
+type FlyoutPlacementMode int32
+
+const (
+	FlyoutPlacementModeTop                    FlyoutPlacementMode = 0
+	FlyoutPlacementModeBottom                 FlyoutPlacementMode = 1
+	FlyoutPlacementModeLeft                   FlyoutPlacementMode = 2
+	FlyoutPlacementModeRight                  FlyoutPlacementMode = 3
+	FlyoutPlacementModeFull                   FlyoutPlacementMode = 4
+	FlyoutPlacementModeTopEdgeAlignedLeft     FlyoutPlacementMode = 5
+	FlyoutPlacementModeTopEdgeAlignedRight    FlyoutPlacementMode = 6
+	FlyoutPlacementModeBottomEdgeAlignedLeft  FlyoutPlacementMode = 7
+	FlyoutPlacementModeBottomEdgeAlignedRight FlyoutPlacementMode = 8
+	FlyoutPlacementModeLeftEdgeAlignedTop     FlyoutPlacementMode = 9
+	FlyoutPlacementModeLeftEdgeAlignedBottom  FlyoutPlacementMode = 10
+	FlyoutPlacementModeRightEdgeAlignedTop    FlyoutPlacementMode = 11
+	FlyoutPlacementModeRightEdgeAlignedBottom FlyoutPlacementMode = 12
+	FlyoutPlacementModeAuto                   FlyoutPlacementMode = 13
+)
+
+// String returns the FlyoutPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FlyoutPlacementMode) String() string {
+	switch e {
+	case FlyoutPlacementModeTop:
+		return "FlyoutPlacementModeTop"
+	case FlyoutPlacementModeBottom:
+		return "FlyoutPlacementModeBottom"
+	case FlyoutPlacementModeLeft:
+		return "FlyoutPlacementModeLeft"
+	case FlyoutPlacementModeRight:
+		return "FlyoutPlacementModeRight"
+	case FlyoutPlacementModeFull:
+		return "FlyoutPlacementModeFull"
+	case FlyoutPlacementModeTopEdgeAlignedLeft:
+		return "FlyoutPlacementModeTopEdgeAlignedLeft"
+	case FlyoutPlacementModeTopEdgeAlignedRight:
+		return "FlyoutPlacementModeTopEdgeAlignedRight"
+	case FlyoutPlacementModeBottomEdgeAlignedLeft:
+		return "FlyoutPlacementModeBottomEdgeAlignedLeft"
+	case FlyoutPlacementModeBottomEdgeAlignedRight:
+		return "FlyoutPlacementModeBottomEdgeAlignedRight"
+	case FlyoutPlacementModeLeftEdgeAlignedTop:
+		return "FlyoutPlacementModeLeftEdgeAlignedTop"
+	case FlyoutPlacementModeLeftEdgeAlignedBottom:
+		return "FlyoutPlacementModeLeftEdgeAlignedBottom"
+	case FlyoutPlacementModeRightEdgeAlignedTop:
+		return "FlyoutPlacementModeRightEdgeAlignedTop"
+	case FlyoutPlacementModeRightEdgeAlignedBottom:
+		return "FlyoutPlacementModeRightEdgeAlignedBottom"
+	case FlyoutPlacementModeAuto:
+		return "FlyoutPlacementModeAuto"
+	default:
+		return fmt.Sprintf("FlyoutPlacementMode(%d)", int32(e))
+	}
+}
+
+// FlyoutShowMode is Microsoft.UI.Xaml.Controls.Primitives.FlyoutShowMode.
+type FlyoutShowMode int32
+
+const (
+	FlyoutShowModeAuto                                  FlyoutShowMode = 0
+	FlyoutShowModeStandard                              FlyoutShowMode = 1
+	FlyoutShowModeTransient                             FlyoutShowMode = 2
+	FlyoutShowModeTransientWithDismissOnPointerMoveAway FlyoutShowMode = 3
+)
+
+// String returns the FlyoutShowMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FlyoutShowMode) String() string {
+	switch e {
+	case FlyoutShowModeAuto:
+		return "FlyoutShowModeAuto"
+	case FlyoutShowModeStandard:
+		return "FlyoutShowModeStandard"
+	case FlyoutShowModeTransient:
+		return "FlyoutShowModeTransient"
+	case FlyoutShowModeTransientWithDismissOnPointerMoveAway:
+		return "FlyoutShowModeTransientWithDismissOnPointerMoveAway"
+	default:
+		return fmt.Sprintf("FlyoutShowMode(%d)", int32(e))
+	}
+}
+
+// GeneratorDirection is Microsoft.UI.Xaml.Controls.Primitives.GeneratorDirection.
+type GeneratorDirection int32
+
+const (
+	GeneratorDirectionForward  GeneratorDirection = 0
+	GeneratorDirectionBackward GeneratorDirection = 1
+)
+
+// String returns the GeneratorDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e GeneratorDirection) String() string {
+	switch e {
+	case GeneratorDirectionForward:
+		return "GeneratorDirectionForward"
+	case GeneratorDirectionBackward:
+		return "GeneratorDirectionBackward"
+	default:
+		return fmt.Sprintf("GeneratorDirection(%d)", int32(e))
+	}
+}
+
+// GroupHeaderPlacement is Microsoft.UI.Xaml.Controls.Primitives.GroupHeaderPlacement.
+type GroupHeaderPlacement int32
+
+const (
+	GroupHeaderPlacementTop  GroupHeaderPlacement = 0
+	GroupHeaderPlacementLeft GroupHeaderPlacement = 1
+)
+
+// String returns the GroupHeaderPlacement constant's name, or its numeric form when
+// the value is not a known constant.
+func (e GroupHeaderPlacement) String() string {
+	switch e {
+	case GroupHeaderPlacementTop:
+		return "GroupHeaderPlacementTop"
+	case GroupHeaderPlacementLeft:
+		return "GroupHeaderPlacementLeft"
+	default:
+		return fmt.Sprintf("GroupHeaderPlacement(%d)", int32(e))
+	}
+}
+
+// ListViewItemPresenterCheckMode is Microsoft.UI.Xaml.Controls.Primitives.ListViewItemPresenterCheckMode.
+type ListViewItemPresenterCheckMode int32
+
+const (
+	ListViewItemPresenterCheckModeInline  ListViewItemPresenterCheckMode = 0
+	ListViewItemPresenterCheckModeOverlay ListViewItemPresenterCheckMode = 1
+)
+
+// String returns the ListViewItemPresenterCheckMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ListViewItemPresenterCheckMode) String() string {
+	switch e {
+	case ListViewItemPresenterCheckModeInline:
+		return "ListViewItemPresenterCheckModeInline"
+	case ListViewItemPresenterCheckModeOverlay:
+		return "ListViewItemPresenterCheckModeOverlay"
+	default:
+		return fmt.Sprintf("ListViewItemPresenterCheckMode(%d)", int32(e))
+	}
+}
+
+// ListViewItemPresenterSelectionIndicatorMode is Microsoft.UI.Xaml.Controls.Primitives.ListViewItemPresenterSelectionIndicatorMode.
+type ListViewItemPresenterSelectionIndicatorMode int32
+
+const (
+	ListViewItemPresenterSelectionIndicatorModeInline  ListViewItemPresenterSelectionIndicatorMode = 0
+	ListViewItemPresenterSelectionIndicatorModeOverlay ListViewItemPresenterSelectionIndicatorMode = 1
+)
+
+// String returns the ListViewItemPresenterSelectionIndicatorMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ListViewItemPresenterSelectionIndicatorMode) String() string {
+	switch e {
+	case ListViewItemPresenterSelectionIndicatorModeInline:
+		return "ListViewItemPresenterSelectionIndicatorModeInline"
+	case ListViewItemPresenterSelectionIndicatorModeOverlay:
+		return "ListViewItemPresenterSelectionIndicatorModeOverlay"
+	default:
+		return fmt.Sprintf("ListViewItemPresenterSelectionIndicatorMode(%d)", int32(e))
+	}
+}
+
+// PlacementMode is Microsoft.UI.Xaml.Controls.Primitives.PlacementMode.
+type PlacementMode int32
+
+const (
+	PlacementModeBottom PlacementMode = 2
+	PlacementModeLeft   PlacementMode = 9
+	PlacementModeMouse  PlacementMode = 7
+	PlacementModeRight  PlacementMode = 4
+	PlacementModeTop    PlacementMode = 10
+)
+
+// String returns the PlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PlacementMode) String() string {
+	switch e {
+	case PlacementModeBottom:
+		return "PlacementModeBottom"
+	case PlacementModeLeft:
+		return "PlacementModeLeft"
+	case PlacementModeMouse:
+		return "PlacementModeMouse"
+	case PlacementModeRight:
+		return "PlacementModeRight"
+	case PlacementModeTop:
+		return "PlacementModeTop"
+	default:
+		return fmt.Sprintf("PlacementMode(%d)", int32(e))
+	}
+}
+
+// PopupPlacementMode is Microsoft.UI.Xaml.Controls.Primitives.PopupPlacementMode.
+type PopupPlacementMode int32
+
+const (
+	PopupPlacementModeAuto                   PopupPlacementMode = 0
+	PopupPlacementModeTop                    PopupPlacementMode = 1
+	PopupPlacementModeBottom                 PopupPlacementMode = 2
+	PopupPlacementModeLeft                   PopupPlacementMode = 3
+	PopupPlacementModeRight                  PopupPlacementMode = 4
+	PopupPlacementModeTopEdgeAlignedLeft     PopupPlacementMode = 5
+	PopupPlacementModeTopEdgeAlignedRight    PopupPlacementMode = 6
+	PopupPlacementModeBottomEdgeAlignedLeft  PopupPlacementMode = 7
+	PopupPlacementModeBottomEdgeAlignedRight PopupPlacementMode = 8
+	PopupPlacementModeLeftEdgeAlignedTop     PopupPlacementMode = 9
+	PopupPlacementModeLeftEdgeAlignedBottom  PopupPlacementMode = 10
+	PopupPlacementModeRightEdgeAlignedTop    PopupPlacementMode = 11
+	PopupPlacementModeRightEdgeAlignedBottom PopupPlacementMode = 12
+)
+
+// String returns the PopupPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PopupPlacementMode) String() string {
+	switch e {
+	case PopupPlacementModeAuto:
+		return "PopupPlacementModeAuto"
+	case PopupPlacementModeTop:
+		return "PopupPlacementModeTop"
+	case PopupPlacementModeBottom:
+		return "PopupPlacementModeBottom"
+	case PopupPlacementModeLeft:
+		return "PopupPlacementModeLeft"
+	case PopupPlacementModeRight:
+		return "PopupPlacementModeRight"
+	case PopupPlacementModeTopEdgeAlignedLeft:
+		return "PopupPlacementModeTopEdgeAlignedLeft"
+	case PopupPlacementModeTopEdgeAlignedRight:
+		return "PopupPlacementModeTopEdgeAlignedRight"
+	case PopupPlacementModeBottomEdgeAlignedLeft:
+		return "PopupPlacementModeBottomEdgeAlignedLeft"
+	case PopupPlacementModeBottomEdgeAlignedRight:
+		return "PopupPlacementModeBottomEdgeAlignedRight"
+	case PopupPlacementModeLeftEdgeAlignedTop:
+		return "PopupPlacementModeLeftEdgeAlignedTop"
+	case PopupPlacementModeLeftEdgeAlignedBottom:
+		return "PopupPlacementModeLeftEdgeAlignedBottom"
+	case PopupPlacementModeRightEdgeAlignedTop:
+		return "PopupPlacementModeRightEdgeAlignedTop"
+	case PopupPlacementModeRightEdgeAlignedBottom:
+		return "PopupPlacementModeRightEdgeAlignedBottom"
+	default:
+		return fmt.Sprintf("PopupPlacementMode(%d)", int32(e))
+	}
+}
+
+// ScrollEventType is Microsoft.UI.Xaml.Controls.Primitives.ScrollEventType.
+type ScrollEventType int32
+
+const (
+	ScrollEventTypeSmallDecrement ScrollEventType = 0
+	ScrollEventTypeSmallIncrement ScrollEventType = 1
+	ScrollEventTypeLargeDecrement ScrollEventType = 2
+	ScrollEventTypeLargeIncrement ScrollEventType = 3
+	ScrollEventTypeThumbPosition  ScrollEventType = 4
+	ScrollEventTypeThumbTrack     ScrollEventType = 5
+	ScrollEventTypeFirst          ScrollEventType = 6
+	ScrollEventTypeLast           ScrollEventType = 7
+	ScrollEventTypeEndScroll      ScrollEventType = 8
+)
+
+// String returns the ScrollEventType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollEventType) String() string {
+	switch e {
+	case ScrollEventTypeSmallDecrement:
+		return "ScrollEventTypeSmallDecrement"
+	case ScrollEventTypeSmallIncrement:
+		return "ScrollEventTypeSmallIncrement"
+	case ScrollEventTypeLargeDecrement:
+		return "ScrollEventTypeLargeDecrement"
+	case ScrollEventTypeLargeIncrement:
+		return "ScrollEventTypeLargeIncrement"
+	case ScrollEventTypeThumbPosition:
+		return "ScrollEventTypeThumbPosition"
+	case ScrollEventTypeThumbTrack:
+		return "ScrollEventTypeThumbTrack"
+	case ScrollEventTypeFirst:
+		return "ScrollEventTypeFirst"
+	case ScrollEventTypeLast:
+		return "ScrollEventTypeLast"
+	case ScrollEventTypeEndScroll:
+		return "ScrollEventTypeEndScroll"
+	default:
+		return fmt.Sprintf("ScrollEventType(%d)", int32(e))
+	}
+}
+
+// ScrollSnapPointsAlignment is Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointsAlignment.
+type ScrollSnapPointsAlignment int32
+
+const (
+	ScrollSnapPointsAlignmentNear   ScrollSnapPointsAlignment = 0
+	ScrollSnapPointsAlignmentCenter ScrollSnapPointsAlignment = 1
+	ScrollSnapPointsAlignmentFar    ScrollSnapPointsAlignment = 2
+)
+
+// String returns the ScrollSnapPointsAlignment constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollSnapPointsAlignment) String() string {
+	switch e {
+	case ScrollSnapPointsAlignmentNear:
+		return "ScrollSnapPointsAlignmentNear"
+	case ScrollSnapPointsAlignmentCenter:
+		return "ScrollSnapPointsAlignmentCenter"
+	case ScrollSnapPointsAlignmentFar:
+		return "ScrollSnapPointsAlignmentFar"
+	default:
+		return fmt.Sprintf("ScrollSnapPointsAlignment(%d)", int32(e))
+	}
+}
+
+// ScrollingIndicatorMode is Microsoft.UI.Xaml.Controls.Primitives.ScrollingIndicatorMode.
+type ScrollingIndicatorMode int32
+
+const (
+	ScrollingIndicatorModeNone           ScrollingIndicatorMode = 0
+	ScrollingIndicatorModeTouchIndicator ScrollingIndicatorMode = 1
+	ScrollingIndicatorModeMouseIndicator ScrollingIndicatorMode = 2
+)
+
+// String returns the ScrollingIndicatorMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ScrollingIndicatorMode) String() string {
+	switch e {
+	case ScrollingIndicatorModeNone:
+		return "ScrollingIndicatorModeNone"
+	case ScrollingIndicatorModeTouchIndicator:
+		return "ScrollingIndicatorModeTouchIndicator"
+	case ScrollingIndicatorModeMouseIndicator:
+		return "ScrollingIndicatorModeMouseIndicator"
+	default:
+		return fmt.Sprintf("ScrollingIndicatorMode(%d)", int32(e))
+	}
+}
+
+// SliderSnapsTo is Microsoft.UI.Xaml.Controls.Primitives.SliderSnapsTo.
+type SliderSnapsTo int32
+
+const (
+	SliderSnapsToStepValues SliderSnapsTo = 0
+	SliderSnapsToTicks      SliderSnapsTo = 1
+)
+
+// String returns the SliderSnapsTo constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SliderSnapsTo) String() string {
+	switch e {
+	case SliderSnapsToStepValues:
+		return "SliderSnapsToStepValues"
+	case SliderSnapsToTicks:
+		return "SliderSnapsToTicks"
+	default:
+		return fmt.Sprintf("SliderSnapsTo(%d)", int32(e))
+	}
+}
+
+// SnapPointsAlignment is Microsoft.UI.Xaml.Controls.Primitives.SnapPointsAlignment.
+type SnapPointsAlignment int32
+
+const (
+	SnapPointsAlignmentNear   SnapPointsAlignment = 0
+	SnapPointsAlignmentCenter SnapPointsAlignment = 1
+	SnapPointsAlignmentFar    SnapPointsAlignment = 2
+)
+
+// String returns the SnapPointsAlignment constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SnapPointsAlignment) String() string {
+	switch e {
+	case SnapPointsAlignmentNear:
+		return "SnapPointsAlignmentNear"
+	case SnapPointsAlignmentCenter:
+		return "SnapPointsAlignmentCenter"
+	case SnapPointsAlignmentFar:
+		return "SnapPointsAlignmentFar"
+	default:
+		return fmt.Sprintf("SnapPointsAlignment(%d)", int32(e))
+	}
+}
+
+// TickPlacement is Microsoft.UI.Xaml.Controls.Primitives.TickPlacement.
+type TickPlacement int32
+
+const (
+	TickPlacementNone        TickPlacement = 0
+	TickPlacementTopLeft     TickPlacement = 1
+	TickPlacementBottomRight TickPlacement = 2
+	TickPlacementOutside     TickPlacement = 3
+	TickPlacementInline      TickPlacement = 4
+)
+
+// String returns the TickPlacement constant's name, or its numeric form when
+// the value is not a known constant.
+func (e TickPlacement) String() string {
+	switch e {
+	case TickPlacementNone:
+		return "TickPlacementNone"
+	case TickPlacementTopLeft:
+		return "TickPlacementTopLeft"
+	case TickPlacementBottomRight:
+		return "TickPlacementBottomRight"
+	case TickPlacementOutside:
+		return "TickPlacementOutside"
+	case TickPlacementInline:
+		return "TickPlacementInline"
+	default:
+		return fmt.Sprintf("TickPlacement(%d)", int32(e))
+	}
+}
+
+// BindingMode is Microsoft.UI.Xaml.Data.BindingMode.
+type BindingMode int32
+
+const (
+	BindingModeOneWay  BindingMode = 1
+	BindingModeOneTime BindingMode = 2
+	BindingModeTwoWay  BindingMode = 3
+)
+
+// String returns the BindingMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e BindingMode) String() string {
+	switch e {
+	case BindingModeOneWay:
+		return "BindingModeOneWay"
+	case BindingModeOneTime:
+		return "BindingModeOneTime"
+	case BindingModeTwoWay:
+		return "BindingModeTwoWay"
+	default:
+		return fmt.Sprintf("BindingMode(%d)", int32(e))
+	}
+}
+
+// RelativeSourceMode is Microsoft.UI.Xaml.Data.RelativeSourceMode.
+type RelativeSourceMode int32
+
+const (
+	RelativeSourceModeNone            RelativeSourceMode = 0
+	RelativeSourceModeTemplatedParent RelativeSourceMode = 1
+	RelativeSourceModeSelf            RelativeSourceMode = 2
+)
+
+// String returns the RelativeSourceMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RelativeSourceMode) String() string {
+	switch e {
+	case RelativeSourceModeNone:
+		return "RelativeSourceModeNone"
+	case RelativeSourceModeTemplatedParent:
+		return "RelativeSourceModeTemplatedParent"
+	case RelativeSourceModeSelf:
+		return "RelativeSourceModeSelf"
+	default:
+		return fmt.Sprintf("RelativeSourceMode(%d)", int32(e))
+	}
+}
+
+// UpdateSourceTrigger is Microsoft.UI.Xaml.Data.UpdateSourceTrigger.
+type UpdateSourceTrigger int32
+
+const (
+	UpdateSourceTriggerDefault         UpdateSourceTrigger = 0
+	UpdateSourceTriggerPropertyChanged UpdateSourceTrigger = 1
+	UpdateSourceTriggerExplicit        UpdateSourceTrigger = 2
+	UpdateSourceTriggerLostFocus       UpdateSourceTrigger = 3
+)
+
+// String returns the UpdateSourceTrigger constant's name, or its numeric form when
+// the value is not a known constant.
+func (e UpdateSourceTrigger) String() string {
+	switch e {
+	case UpdateSourceTriggerDefault:
+		return "UpdateSourceTriggerDefault"
+	case UpdateSourceTriggerPropertyChanged:
+		return "UpdateSourceTriggerPropertyChanged"
+	case UpdateSourceTriggerExplicit:
+		return "UpdateSourceTriggerExplicit"
+	case UpdateSourceTriggerLostFocus:
+		return "UpdateSourceTriggerLostFocus"
+	default:
+		return fmt.Sprintf("UpdateSourceTrigger(%d)", int32(e))
+	}
+}
+
+// LogicalDirection is Microsoft.UI.Xaml.Documents.LogicalDirection.
+type LogicalDirection int32
+
+const (
+	LogicalDirectionBackward LogicalDirection = 0
+	LogicalDirectionForward  LogicalDirection = 1
+)
+
+// String returns the LogicalDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e LogicalDirection) String() string {
+	switch e {
+	case LogicalDirectionBackward:
+		return "LogicalDirectionBackward"
+	case LogicalDirectionForward:
+		return "LogicalDirectionForward"
+	default:
+		return fmt.Sprintf("LogicalDirection(%d)", int32(e))
+	}
+}
+
+// UnderlineStyle is Microsoft.UI.Xaml.Documents.UnderlineStyle.
+type UnderlineStyle int32
+
+const (
+	UnderlineStyleNone   UnderlineStyle = 0
+	UnderlineStyleSingle UnderlineStyle = 1
+)
+
+// String returns the UnderlineStyle constant's name, or its numeric form when
+// the value is not a known constant.
+func (e UnderlineStyle) String() string {
+	switch e {
+	case UnderlineStyleNone:
+		return "UnderlineStyleNone"
+	case UnderlineStyleSingle:
+		return "UnderlineStyleSingle"
+	default:
+		return fmt.Sprintf("UnderlineStyle(%d)", int32(e))
+	}
+}
+
+// FocusInputDeviceKind is Microsoft.UI.Xaml.Input.FocusInputDeviceKind.
+type FocusInputDeviceKind int32
+
+const (
+	FocusInputDeviceKindNone           FocusInputDeviceKind = 0
+	FocusInputDeviceKindMouse          FocusInputDeviceKind = 1
+	FocusInputDeviceKindTouch          FocusInputDeviceKind = 2
+	FocusInputDeviceKindPen            FocusInputDeviceKind = 3
+	FocusInputDeviceKindKeyboard       FocusInputDeviceKind = 4
+	FocusInputDeviceKindGameController FocusInputDeviceKind = 5
+)
+
+// String returns the FocusInputDeviceKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FocusInputDeviceKind) String() string {
+	switch e {
+	case FocusInputDeviceKindNone:
+		return "FocusInputDeviceKindNone"
+	case FocusInputDeviceKindMouse:
+		return "FocusInputDeviceKindMouse"
+	case FocusInputDeviceKindTouch:
+		return "FocusInputDeviceKindTouch"
+	case FocusInputDeviceKindPen:
+		return "FocusInputDeviceKindPen"
+	case FocusInputDeviceKindKeyboard:
+		return "FocusInputDeviceKindKeyboard"
+	case FocusInputDeviceKindGameController:
+		return "FocusInputDeviceKindGameController"
+	default:
+		return fmt.Sprintf("FocusInputDeviceKind(%d)", int32(e))
+	}
+}
+
+// FocusNavigationDirection is Microsoft.UI.Xaml.Input.FocusNavigationDirection.
+type FocusNavigationDirection int32
+
+const (
+	FocusNavigationDirectionNext     FocusNavigationDirection = 0
+	FocusNavigationDirectionPrevious FocusNavigationDirection = 1
+	FocusNavigationDirectionUp       FocusNavigationDirection = 2
+	FocusNavigationDirectionDown     FocusNavigationDirection = 3
+	FocusNavigationDirectionLeft     FocusNavigationDirection = 4
+	FocusNavigationDirectionRight    FocusNavigationDirection = 5
+	FocusNavigationDirectionNone     FocusNavigationDirection = 6
+)
+
+// String returns the FocusNavigationDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FocusNavigationDirection) String() string {
+	switch e {
+	case FocusNavigationDirectionNext:
+		return "FocusNavigationDirectionNext"
+	case FocusNavigationDirectionPrevious:
+		return "FocusNavigationDirectionPrevious"
+	case FocusNavigationDirectionUp:
+		return "FocusNavigationDirectionUp"
+	case FocusNavigationDirectionDown:
+		return "FocusNavigationDirectionDown"
+	case FocusNavigationDirectionLeft:
+		return "FocusNavigationDirectionLeft"
+	case FocusNavigationDirectionRight:
+		return "FocusNavigationDirectionRight"
+	case FocusNavigationDirectionNone:
+		return "FocusNavigationDirectionNone"
+	default:
+		return fmt.Sprintf("FocusNavigationDirection(%d)", int32(e))
+	}
+}
+
+// InputScopeNameValue is Microsoft.UI.Xaml.Input.InputScopeNameValue.
+type InputScopeNameValue int32
+
+const (
+	InputScopeNameValueDefault                 InputScopeNameValue = 0
+	InputScopeNameValueUrl                     InputScopeNameValue = 1
+	InputScopeNameValueEmailSmtpAddress        InputScopeNameValue = 5
+	InputScopeNameValuePersonalFullName        InputScopeNameValue = 7
+	InputScopeNameValueCurrencyAmountAndSymbol InputScopeNameValue = 20
+	InputScopeNameValueCurrencyAmount          InputScopeNameValue = 21
+	InputScopeNameValueDateMonthNumber         InputScopeNameValue = 23
+	InputScopeNameValueDateDayNumber           InputScopeNameValue = 24
+	InputScopeNameValueDateYear                InputScopeNameValue = 25
+	InputScopeNameValueDigits                  InputScopeNameValue = 28
+	InputScopeNameValueNumber                  InputScopeNameValue = 29
+	InputScopeNameValuePassword                InputScopeNameValue = 31
+	InputScopeNameValueTelephoneNumber         InputScopeNameValue = 32
+	InputScopeNameValueTelephoneCountryCode    InputScopeNameValue = 33
+	InputScopeNameValueTelephoneAreaCode       InputScopeNameValue = 34
+	InputScopeNameValueTelephoneLocalNumber    InputScopeNameValue = 35
+	InputScopeNameValueTimeHour                InputScopeNameValue = 37
+	InputScopeNameValueTimeMinutesOrSeconds    InputScopeNameValue = 38
+	InputScopeNameValueNumberFullWidth         InputScopeNameValue = 39
+	InputScopeNameValueAlphanumericHalfWidth   InputScopeNameValue = 40
+	InputScopeNameValueAlphanumericFullWidth   InputScopeNameValue = 41
+	InputScopeNameValueHiragana                InputScopeNameValue = 44
+	InputScopeNameValueKatakanaHalfWidth       InputScopeNameValue = 45
+	InputScopeNameValueKatakanaFullWidth       InputScopeNameValue = 46
+	InputScopeNameValueHanja                   InputScopeNameValue = 47
+	InputScopeNameValueHangulHalfWidth         InputScopeNameValue = 48
+	InputScopeNameValueHangulFullWidth         InputScopeNameValue = 49
+	InputScopeNameValueSearch                  InputScopeNameValue = 50
+	InputScopeNameValueFormula                 InputScopeNameValue = 51
+	InputScopeNameValueSearchIncremental       InputScopeNameValue = 52
+	InputScopeNameValueChineseHalfWidth        InputScopeNameValue = 53
+	InputScopeNameValueChineseFullWidth        InputScopeNameValue = 54
+	InputScopeNameValueNativeScript            InputScopeNameValue = 55
+	InputScopeNameValueText                    InputScopeNameValue = 57
+	InputScopeNameValueChat                    InputScopeNameValue = 58
+	InputScopeNameValueNameOrPhoneNumber       InputScopeNameValue = 59
+	InputScopeNameValueEmailNameOrAddress      InputScopeNameValue = 60
+	InputScopeNameValueMaps                    InputScopeNameValue = 62
+	InputScopeNameValueNumericPassword         InputScopeNameValue = 63
+	InputScopeNameValueNumericPin              InputScopeNameValue = 64
+	InputScopeNameValueAlphanumericPin         InputScopeNameValue = 65
+	InputScopeNameValueFormulaNumber           InputScopeNameValue = 67
+	InputScopeNameValueChatWithoutEmoji        InputScopeNameValue = 68
+)
+
+// String returns the InputScopeNameValue constant's name, or its numeric form when
+// the value is not a known constant.
+func (e InputScopeNameValue) String() string {
+	switch e {
+	case InputScopeNameValueDefault:
+		return "InputScopeNameValueDefault"
+	case InputScopeNameValueUrl:
+		return "InputScopeNameValueUrl"
+	case InputScopeNameValueEmailSmtpAddress:
+		return "InputScopeNameValueEmailSmtpAddress"
+	case InputScopeNameValuePersonalFullName:
+		return "InputScopeNameValuePersonalFullName"
+	case InputScopeNameValueCurrencyAmountAndSymbol:
+		return "InputScopeNameValueCurrencyAmountAndSymbol"
+	case InputScopeNameValueCurrencyAmount:
+		return "InputScopeNameValueCurrencyAmount"
+	case InputScopeNameValueDateMonthNumber:
+		return "InputScopeNameValueDateMonthNumber"
+	case InputScopeNameValueDateDayNumber:
+		return "InputScopeNameValueDateDayNumber"
+	case InputScopeNameValueDateYear:
+		return "InputScopeNameValueDateYear"
+	case InputScopeNameValueDigits:
+		return "InputScopeNameValueDigits"
+	case InputScopeNameValueNumber:
+		return "InputScopeNameValueNumber"
+	case InputScopeNameValuePassword:
+		return "InputScopeNameValuePassword"
+	case InputScopeNameValueTelephoneNumber:
+		return "InputScopeNameValueTelephoneNumber"
+	case InputScopeNameValueTelephoneCountryCode:
+		return "InputScopeNameValueTelephoneCountryCode"
+	case InputScopeNameValueTelephoneAreaCode:
+		return "InputScopeNameValueTelephoneAreaCode"
+	case InputScopeNameValueTelephoneLocalNumber:
+		return "InputScopeNameValueTelephoneLocalNumber"
+	case InputScopeNameValueTimeHour:
+		return "InputScopeNameValueTimeHour"
+	case InputScopeNameValueTimeMinutesOrSeconds:
+		return "InputScopeNameValueTimeMinutesOrSeconds"
+	case InputScopeNameValueNumberFullWidth:
+		return "InputScopeNameValueNumberFullWidth"
+	case InputScopeNameValueAlphanumericHalfWidth:
+		return "InputScopeNameValueAlphanumericHalfWidth"
+	case InputScopeNameValueAlphanumericFullWidth:
+		return "InputScopeNameValueAlphanumericFullWidth"
+	case InputScopeNameValueHiragana:
+		return "InputScopeNameValueHiragana"
+	case InputScopeNameValueKatakanaHalfWidth:
+		return "InputScopeNameValueKatakanaHalfWidth"
+	case InputScopeNameValueKatakanaFullWidth:
+		return "InputScopeNameValueKatakanaFullWidth"
+	case InputScopeNameValueHanja:
+		return "InputScopeNameValueHanja"
+	case InputScopeNameValueHangulHalfWidth:
+		return "InputScopeNameValueHangulHalfWidth"
+	case InputScopeNameValueHangulFullWidth:
+		return "InputScopeNameValueHangulFullWidth"
+	case InputScopeNameValueSearch:
+		return "InputScopeNameValueSearch"
+	case InputScopeNameValueFormula:
+		return "InputScopeNameValueFormula"
+	case InputScopeNameValueSearchIncremental:
+		return "InputScopeNameValueSearchIncremental"
+	case InputScopeNameValueChineseHalfWidth:
+		return "InputScopeNameValueChineseHalfWidth"
+	case InputScopeNameValueChineseFullWidth:
+		return "InputScopeNameValueChineseFullWidth"
+	case InputScopeNameValueNativeScript:
+		return "InputScopeNameValueNativeScript"
+	case InputScopeNameValueText:
+		return "InputScopeNameValueText"
+	case InputScopeNameValueChat:
+		return "InputScopeNameValueChat"
+	case InputScopeNameValueNameOrPhoneNumber:
+		return "InputScopeNameValueNameOrPhoneNumber"
+	case InputScopeNameValueEmailNameOrAddress:
+		return "InputScopeNameValueEmailNameOrAddress"
+	case InputScopeNameValueMaps:
+		return "InputScopeNameValueMaps"
+	case InputScopeNameValueNumericPassword:
+		return "InputScopeNameValueNumericPassword"
+	case InputScopeNameValueNumericPin:
+		return "InputScopeNameValueNumericPin"
+	case InputScopeNameValueAlphanumericPin:
+		return "InputScopeNameValueAlphanumericPin"
+	case InputScopeNameValueFormulaNumber:
+		return "InputScopeNameValueFormulaNumber"
+	case InputScopeNameValueChatWithoutEmoji:
+		return "InputScopeNameValueChatWithoutEmoji"
+	default:
+		return fmt.Sprintf("InputScopeNameValue(%d)", int32(e))
+	}
+}
+
+// KeyTipPlacementMode is Microsoft.UI.Xaml.Input.KeyTipPlacementMode.
+type KeyTipPlacementMode int32
+
+const (
+	KeyTipPlacementModeAuto   KeyTipPlacementMode = 0
+	KeyTipPlacementModeBottom KeyTipPlacementMode = 1
+	KeyTipPlacementModeTop    KeyTipPlacementMode = 2
+	KeyTipPlacementModeLeft   KeyTipPlacementMode = 3
+	KeyTipPlacementModeRight  KeyTipPlacementMode = 4
+	KeyTipPlacementModeCenter KeyTipPlacementMode = 5
+	KeyTipPlacementModeHidden KeyTipPlacementMode = 6
+)
+
+// String returns the KeyTipPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e KeyTipPlacementMode) String() string {
+	switch e {
+	case KeyTipPlacementModeAuto:
+		return "KeyTipPlacementModeAuto"
+	case KeyTipPlacementModeBottom:
+		return "KeyTipPlacementModeBottom"
+	case KeyTipPlacementModeTop:
+		return "KeyTipPlacementModeTop"
+	case KeyTipPlacementModeLeft:
+		return "KeyTipPlacementModeLeft"
+	case KeyTipPlacementModeRight:
+		return "KeyTipPlacementModeRight"
+	case KeyTipPlacementModeCenter:
+		return "KeyTipPlacementModeCenter"
+	case KeyTipPlacementModeHidden:
+		return "KeyTipPlacementModeHidden"
+	default:
+		return fmt.Sprintf("KeyTipPlacementMode(%d)", int32(e))
+	}
+}
+
+// KeyboardAcceleratorPlacementMode is Microsoft.UI.Xaml.Input.KeyboardAcceleratorPlacementMode.
+type KeyboardAcceleratorPlacementMode int32
+
+const (
+	KeyboardAcceleratorPlacementModeAuto   KeyboardAcceleratorPlacementMode = 0
+	KeyboardAcceleratorPlacementModeHidden KeyboardAcceleratorPlacementMode = 1
+)
+
+// String returns the KeyboardAcceleratorPlacementMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e KeyboardAcceleratorPlacementMode) String() string {
+	switch e {
+	case KeyboardAcceleratorPlacementModeAuto:
+		return "KeyboardAcceleratorPlacementModeAuto"
+	case KeyboardAcceleratorPlacementModeHidden:
+		return "KeyboardAcceleratorPlacementModeHidden"
+	default:
+		return fmt.Sprintf("KeyboardAcceleratorPlacementMode(%d)", int32(e))
+	}
+}
+
+// KeyboardNavigationMode is Microsoft.UI.Xaml.Input.KeyboardNavigationMode.
+type KeyboardNavigationMode int32
+
+const (
+	KeyboardNavigationModeLocal KeyboardNavigationMode = 0
+	KeyboardNavigationModeCycle KeyboardNavigationMode = 1
+	KeyboardNavigationModeOnce  KeyboardNavigationMode = 2
+)
+
+// String returns the KeyboardNavigationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e KeyboardNavigationMode) String() string {
+	switch e {
+	case KeyboardNavigationModeLocal:
+		return "KeyboardNavigationModeLocal"
+	case KeyboardNavigationModeCycle:
+		return "KeyboardNavigationModeCycle"
+	case KeyboardNavigationModeOnce:
+		return "KeyboardNavigationModeOnce"
+	default:
+		return fmt.Sprintf("KeyboardNavigationMode(%d)", int32(e))
+	}
+}
+
+// ManipulationModes is Microsoft.UI.Xaml.Input.ManipulationModes.
+// Bitmask — values may be combined with |.
+type ManipulationModes uint32
+
+const (
+	ManipulationModesNone             ManipulationModes = 0
+	ManipulationModesTranslateX       ManipulationModes = 1
+	ManipulationModesTranslateY       ManipulationModes = 2
+	ManipulationModesTranslateRailsX  ManipulationModes = 4
+	ManipulationModesTranslateRailsY  ManipulationModes = 8
+	ManipulationModesRotate           ManipulationModes = 16
+	ManipulationModesScale            ManipulationModes = 32
+	ManipulationModesTranslateInertia ManipulationModes = 64
+	ManipulationModesRotateInertia    ManipulationModes = 128
+	ManipulationModesScaleInertia     ManipulationModes = 256
+	ManipulationModesAll              ManipulationModes = 65535
+	ManipulationModesSystem           ManipulationModes = 65536
+)
+
+// String returns the ManipulationModes constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ManipulationModes) String() string {
+	switch e {
+	case ManipulationModesNone:
+		return "ManipulationModesNone"
+	case ManipulationModesTranslateX:
+		return "ManipulationModesTranslateX"
+	case ManipulationModesTranslateY:
+		return "ManipulationModesTranslateY"
+	case ManipulationModesTranslateRailsX:
+		return "ManipulationModesTranslateRailsX"
+	case ManipulationModesTranslateRailsY:
+		return "ManipulationModesTranslateRailsY"
+	case ManipulationModesRotate:
+		return "ManipulationModesRotate"
+	case ManipulationModesScale:
+		return "ManipulationModesScale"
+	case ManipulationModesTranslateInertia:
+		return "ManipulationModesTranslateInertia"
+	case ManipulationModesRotateInertia:
+		return "ManipulationModesRotateInertia"
+	case ManipulationModesScaleInertia:
+		return "ManipulationModesScaleInertia"
+	case ManipulationModesAll:
+		return "ManipulationModesAll"
+	case ManipulationModesSystem:
+		return "ManipulationModesSystem"
+	default:
+		return fmt.Sprintf("ManipulationModes(%d)", uint32(e))
+	}
+}
+
+// StandardUICommandKind is Microsoft.UI.Xaml.Input.StandardUICommandKind.
+type StandardUICommandKind int32
+
+const (
+	StandardUICommandKindNone      StandardUICommandKind = 0
+	StandardUICommandKindCut       StandardUICommandKind = 1
+	StandardUICommandKindCopy      StandardUICommandKind = 2
+	StandardUICommandKindPaste     StandardUICommandKind = 3
+	StandardUICommandKindSelectAll StandardUICommandKind = 4
+	StandardUICommandKindDelete    StandardUICommandKind = 5
+	StandardUICommandKindShare     StandardUICommandKind = 6
+	StandardUICommandKindSave      StandardUICommandKind = 7
+	StandardUICommandKindOpen      StandardUICommandKind = 8
+	StandardUICommandKindClose     StandardUICommandKind = 9
+	StandardUICommandKindPause     StandardUICommandKind = 10
+	StandardUICommandKindPlay      StandardUICommandKind = 11
+	StandardUICommandKindStop      StandardUICommandKind = 12
+	StandardUICommandKindForward   StandardUICommandKind = 13
+	StandardUICommandKindBackward  StandardUICommandKind = 14
+	StandardUICommandKindUndo      StandardUICommandKind = 15
+	StandardUICommandKindRedo      StandardUICommandKind = 16
+)
+
+// String returns the StandardUICommandKind constant's name, or its numeric form when
+// the value is not a known constant.
+func (e StandardUICommandKind) String() string {
+	switch e {
+	case StandardUICommandKindNone:
+		return "StandardUICommandKindNone"
+	case StandardUICommandKindCut:
+		return "StandardUICommandKindCut"
+	case StandardUICommandKindCopy:
+		return "StandardUICommandKindCopy"
+	case StandardUICommandKindPaste:
+		return "StandardUICommandKindPaste"
+	case StandardUICommandKindSelectAll:
+		return "StandardUICommandKindSelectAll"
+	case StandardUICommandKindDelete:
+		return "StandardUICommandKindDelete"
+	case StandardUICommandKindShare:
+		return "StandardUICommandKindShare"
+	case StandardUICommandKindSave:
+		return "StandardUICommandKindSave"
+	case StandardUICommandKindOpen:
+		return "StandardUICommandKindOpen"
+	case StandardUICommandKindClose:
+		return "StandardUICommandKindClose"
+	case StandardUICommandKindPause:
+		return "StandardUICommandKindPause"
+	case StandardUICommandKindPlay:
+		return "StandardUICommandKindPlay"
+	case StandardUICommandKindStop:
+		return "StandardUICommandKindStop"
+	case StandardUICommandKindForward:
+		return "StandardUICommandKindForward"
+	case StandardUICommandKindBackward:
+		return "StandardUICommandKindBackward"
+	case StandardUICommandKindUndo:
+		return "StandardUICommandKindUndo"
+	case StandardUICommandKindRedo:
+		return "StandardUICommandKindRedo"
+	default:
+		return fmt.Sprintf("StandardUICommandKind(%d)", int32(e))
+	}
+}
+
+// XYFocusKeyboardNavigationMode is Microsoft.UI.Xaml.Input.XYFocusKeyboardNavigationMode.
+type XYFocusKeyboardNavigationMode int32
+
+const (
+	XYFocusKeyboardNavigationModeAuto     XYFocusKeyboardNavigationMode = 0
+	XYFocusKeyboardNavigationModeEnabled  XYFocusKeyboardNavigationMode = 1
+	XYFocusKeyboardNavigationModeDisabled XYFocusKeyboardNavigationMode = 2
+)
+
+// String returns the XYFocusKeyboardNavigationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e XYFocusKeyboardNavigationMode) String() string {
+	switch e {
+	case XYFocusKeyboardNavigationModeAuto:
+		return "XYFocusKeyboardNavigationModeAuto"
+	case XYFocusKeyboardNavigationModeEnabled:
+		return "XYFocusKeyboardNavigationModeEnabled"
+	case XYFocusKeyboardNavigationModeDisabled:
+		return "XYFocusKeyboardNavigationModeDisabled"
+	default:
+		return fmt.Sprintf("XYFocusKeyboardNavigationMode(%d)", int32(e))
+	}
+}
+
+// XYFocusNavigationStrategy is Microsoft.UI.Xaml.Input.XYFocusNavigationStrategy.
+type XYFocusNavigationStrategy int32
+
+const (
+	XYFocusNavigationStrategyAuto                        XYFocusNavigationStrategy = 0
+	XYFocusNavigationStrategyProjection                  XYFocusNavigationStrategy = 1
+	XYFocusNavigationStrategyNavigationDirectionDistance XYFocusNavigationStrategy = 2
+	XYFocusNavigationStrategyRectilinearDistance         XYFocusNavigationStrategy = 3
+)
+
+// String returns the XYFocusNavigationStrategy constant's name, or its numeric form when
+// the value is not a known constant.
+func (e XYFocusNavigationStrategy) String() string {
+	switch e {
+	case XYFocusNavigationStrategyAuto:
+		return "XYFocusNavigationStrategyAuto"
+	case XYFocusNavigationStrategyProjection:
+		return "XYFocusNavigationStrategyProjection"
+	case XYFocusNavigationStrategyNavigationDirectionDistance:
+		return "XYFocusNavigationStrategyNavigationDirectionDistance"
+	case XYFocusNavigationStrategyRectilinearDistance:
+		return "XYFocusNavigationStrategyRectilinearDistance"
+	default:
+		return fmt.Sprintf("XYFocusNavigationStrategy(%d)", int32(e))
+	}
+}
+
+// XYFocusNavigationStrategyOverride is Microsoft.UI.Xaml.Input.XYFocusNavigationStrategyOverride.
+type XYFocusNavigationStrategyOverride int32
+
+const (
+	XYFocusNavigationStrategyOverrideNone                        XYFocusNavigationStrategyOverride = 0
+	XYFocusNavigationStrategyOverrideAuto                        XYFocusNavigationStrategyOverride = 1
+	XYFocusNavigationStrategyOverrideProjection                  XYFocusNavigationStrategyOverride = 2
+	XYFocusNavigationStrategyOverrideNavigationDirectionDistance XYFocusNavigationStrategyOverride = 3
+	XYFocusNavigationStrategyOverrideRectilinearDistance         XYFocusNavigationStrategyOverride = 4
+)
+
+// String returns the XYFocusNavigationStrategyOverride constant's name, or its numeric form when
+// the value is not a known constant.
+func (e XYFocusNavigationStrategyOverride) String() string {
+	switch e {
+	case XYFocusNavigationStrategyOverrideNone:
+		return "XYFocusNavigationStrategyOverrideNone"
+	case XYFocusNavigationStrategyOverrideAuto:
+		return "XYFocusNavigationStrategyOverrideAuto"
+	case XYFocusNavigationStrategyOverrideProjection:
+		return "XYFocusNavigationStrategyOverrideProjection"
+	case XYFocusNavigationStrategyOverrideNavigationDirectionDistance:
+		return "XYFocusNavigationStrategyOverrideNavigationDirectionDistance"
+	case XYFocusNavigationStrategyOverrideRectilinearDistance:
+		return "XYFocusNavigationStrategyOverrideRectilinearDistance"
+	default:
+		return fmt.Sprintf("XYFocusNavigationStrategyOverride(%d)", int32(e))
+	}
+}
+
+// AlignmentX is Microsoft.UI.Xaml.Media.AlignmentX.
+type AlignmentX int32
+
+const (
+	AlignmentXLeft   AlignmentX = 0
+	AlignmentXCenter AlignmentX = 1
+	AlignmentXRight  AlignmentX = 2
+)
+
+// String returns the AlignmentX constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AlignmentX) String() string {
+	switch e {
+	case AlignmentXLeft:
+		return "AlignmentXLeft"
+	case AlignmentXCenter:
+		return "AlignmentXCenter"
+	case AlignmentXRight:
+		return "AlignmentXRight"
+	default:
+		return fmt.Sprintf("AlignmentX(%d)", int32(e))
+	}
+}
+
+// AlignmentY is Microsoft.UI.Xaml.Media.AlignmentY.
+type AlignmentY int32
+
+const (
+	AlignmentYTop    AlignmentY = 0
+	AlignmentYCenter AlignmentY = 1
+	AlignmentYBottom AlignmentY = 2
+)
+
+// String returns the AlignmentY constant's name, or its numeric form when
+// the value is not a known constant.
+func (e AlignmentY) String() string {
+	switch e {
+	case AlignmentYTop:
+		return "AlignmentYTop"
+	case AlignmentYCenter:
+		return "AlignmentYCenter"
+	case AlignmentYBottom:
+		return "AlignmentYBottom"
+	default:
+		return fmt.Sprintf("AlignmentY(%d)", int32(e))
+	}
+}
+
+// BrushMappingMode is Microsoft.UI.Xaml.Media.BrushMappingMode.
+type BrushMappingMode int32
+
+const (
+	BrushMappingModeAbsolute              BrushMappingMode = 0
+	BrushMappingModeRelativeToBoundingBox BrushMappingMode = 1
+)
+
+// String returns the BrushMappingMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e BrushMappingMode) String() string {
+	switch e {
+	case BrushMappingModeAbsolute:
+		return "BrushMappingModeAbsolute"
+	case BrushMappingModeRelativeToBoundingBox:
+		return "BrushMappingModeRelativeToBoundingBox"
+	default:
+		return fmt.Sprintf("BrushMappingMode(%d)", int32(e))
+	}
+}
+
+// ColorInterpolationMode is Microsoft.UI.Xaml.Media.ColorInterpolationMode.
+type ColorInterpolationMode int32
+
+const (
+	ColorInterpolationModeScRgbLinearInterpolation ColorInterpolationMode = 0
+	ColorInterpolationModeSRgbLinearInterpolation  ColorInterpolationMode = 1
+)
+
+// String returns the ColorInterpolationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ColorInterpolationMode) String() string {
+	switch e {
+	case ColorInterpolationModeScRgbLinearInterpolation:
+		return "ColorInterpolationModeScRgbLinearInterpolation"
+	case ColorInterpolationModeSRgbLinearInterpolation:
+		return "ColorInterpolationModeSRgbLinearInterpolation"
+	default:
+		return fmt.Sprintf("ColorInterpolationMode(%d)", int32(e))
+	}
+}
+
+// ElementCompositeMode is Microsoft.UI.Xaml.Media.ElementCompositeMode.
+type ElementCompositeMode int32
+
+const (
+	ElementCompositeModeInherit    ElementCompositeMode = 0
+	ElementCompositeModeSourceOver ElementCompositeMode = 1
+	ElementCompositeModeMinBlend   ElementCompositeMode = 2
+)
+
+// String returns the ElementCompositeMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ElementCompositeMode) String() string {
+	switch e {
+	case ElementCompositeModeInherit:
+		return "ElementCompositeModeInherit"
+	case ElementCompositeModeSourceOver:
+		return "ElementCompositeModeSourceOver"
+	case ElementCompositeModeMinBlend:
+		return "ElementCompositeModeMinBlend"
+	default:
+		return fmt.Sprintf("ElementCompositeMode(%d)", int32(e))
+	}
+}
+
+// FastPlayFallbackBehaviour is Microsoft.UI.Xaml.Media.FastPlayFallbackBehaviour.
+type FastPlayFallbackBehaviour int32
+
+const (
+	FastPlayFallbackBehaviourSkip    FastPlayFallbackBehaviour = 0
+	FastPlayFallbackBehaviourHide    FastPlayFallbackBehaviour = 1
+	FastPlayFallbackBehaviourDisable FastPlayFallbackBehaviour = 2
+)
+
+// String returns the FastPlayFallbackBehaviour constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FastPlayFallbackBehaviour) String() string {
+	switch e {
+	case FastPlayFallbackBehaviourSkip:
+		return "FastPlayFallbackBehaviourSkip"
+	case FastPlayFallbackBehaviourHide:
+		return "FastPlayFallbackBehaviourHide"
+	case FastPlayFallbackBehaviourDisable:
+		return "FastPlayFallbackBehaviourDisable"
+	default:
+		return fmt.Sprintf("FastPlayFallbackBehaviour(%d)", int32(e))
+	}
+}
+
+// FillRule is Microsoft.UI.Xaml.Media.FillRule.
+type FillRule int32
+
+const (
+	FillRuleEvenOdd FillRule = 0
+	FillRuleNonzero FillRule = 1
+)
+
+// String returns the FillRule constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FillRule) String() string {
+	switch e {
+	case FillRuleEvenOdd:
+		return "FillRuleEvenOdd"
+	case FillRuleNonzero:
+		return "FillRuleNonzero"
+	default:
+		return fmt.Sprintf("FillRule(%d)", int32(e))
+	}
+}
+
+// GradientSpreadMethod is Microsoft.UI.Xaml.Media.GradientSpreadMethod.
+type GradientSpreadMethod int32
+
+const (
+	GradientSpreadMethodPad     GradientSpreadMethod = 0
+	GradientSpreadMethodReflect GradientSpreadMethod = 1
+	GradientSpreadMethodRepeat  GradientSpreadMethod = 2
+)
+
+// String returns the GradientSpreadMethod constant's name, or its numeric form when
+// the value is not a known constant.
+func (e GradientSpreadMethod) String() string {
+	switch e {
+	case GradientSpreadMethodPad:
+		return "GradientSpreadMethodPad"
+	case GradientSpreadMethodReflect:
+		return "GradientSpreadMethodReflect"
+	case GradientSpreadMethodRepeat:
+		return "GradientSpreadMethodRepeat"
+	default:
+		return fmt.Sprintf("GradientSpreadMethod(%d)", int32(e))
+	}
+}
+
+// LoadedImageSourceLoadStatus is Microsoft.UI.Xaml.Media.LoadedImageSourceLoadStatus.
+type LoadedImageSourceLoadStatus int32
+
+const (
+	LoadedImageSourceLoadStatusSuccess       LoadedImageSourceLoadStatus = 0
+	LoadedImageSourceLoadStatusNetworkError  LoadedImageSourceLoadStatus = 1
+	LoadedImageSourceLoadStatusInvalidFormat LoadedImageSourceLoadStatus = 2
+	LoadedImageSourceLoadStatusOther         LoadedImageSourceLoadStatus = 3
+)
+
+// String returns the LoadedImageSourceLoadStatus constant's name, or its numeric form when
+// the value is not a known constant.
+func (e LoadedImageSourceLoadStatus) String() string {
+	switch e {
+	case LoadedImageSourceLoadStatusSuccess:
+		return "LoadedImageSourceLoadStatusSuccess"
+	case LoadedImageSourceLoadStatusNetworkError:
+		return "LoadedImageSourceLoadStatusNetworkError"
+	case LoadedImageSourceLoadStatusInvalidFormat:
+		return "LoadedImageSourceLoadStatusInvalidFormat"
+	case LoadedImageSourceLoadStatusOther:
+		return "LoadedImageSourceLoadStatusOther"
+	default:
+		return fmt.Sprintf("LoadedImageSourceLoadStatus(%d)", int32(e))
+	}
+}
+
+// PenLineCap is Microsoft.UI.Xaml.Media.PenLineCap.
+type PenLineCap int32
+
+const (
+	PenLineCapFlat     PenLineCap = 0
+	PenLineCapSquare   PenLineCap = 1
+	PenLineCapRound    PenLineCap = 2
+	PenLineCapTriangle PenLineCap = 3
+)
+
+// String returns the PenLineCap constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PenLineCap) String() string {
+	switch e {
+	case PenLineCapFlat:
+		return "PenLineCapFlat"
+	case PenLineCapSquare:
+		return "PenLineCapSquare"
+	case PenLineCapRound:
+		return "PenLineCapRound"
+	case PenLineCapTriangle:
+		return "PenLineCapTriangle"
+	default:
+		return fmt.Sprintf("PenLineCap(%d)", int32(e))
+	}
+}
+
+// PenLineJoin is Microsoft.UI.Xaml.Media.PenLineJoin.
+type PenLineJoin int32
+
+const (
+	PenLineJoinMiter PenLineJoin = 0
+	PenLineJoinBevel PenLineJoin = 1
+	PenLineJoinRound PenLineJoin = 2
+)
+
+// String returns the PenLineJoin constant's name, or its numeric form when
+// the value is not a known constant.
+func (e PenLineJoin) String() string {
+	switch e {
+	case PenLineJoinMiter:
+		return "PenLineJoinMiter"
+	case PenLineJoinBevel:
+		return "PenLineJoinBevel"
+	case PenLineJoinRound:
+		return "PenLineJoinRound"
+	default:
+		return fmt.Sprintf("PenLineJoin(%d)", int32(e))
+	}
+}
+
+// Stretch is Microsoft.UI.Xaml.Media.Stretch.
+type Stretch int32
+
+const (
+	StretchNone          Stretch = 0
+	StretchFill          Stretch = 1
+	StretchUniform       Stretch = 2
+	StretchUniformToFill Stretch = 3
+)
+
+// String returns the Stretch constant's name, or its numeric form when
+// the value is not a known constant.
+func (e Stretch) String() string {
+	switch e {
+	case StretchNone:
+		return "StretchNone"
+	case StretchFill:
+		return "StretchFill"
+	case StretchUniform:
+		return "StretchUniform"
+	case StretchUniformToFill:
+		return "StretchUniformToFill"
+	default:
+		return fmt.Sprintf("Stretch(%d)", int32(e))
+	}
+}
+
+// StyleSimulations is Microsoft.UI.Xaml.Media.StyleSimulations.
+type StyleSimulations int32
+
+const (
+	StyleSimulationsNone                 StyleSimulations = 0
+	StyleSimulationsBoldSimulation       StyleSimulations = 1
+	StyleSimulationsItalicSimulation     StyleSimulations = 2
+	StyleSimulationsBoldItalicSimulation StyleSimulations = 3
+)
+
+// String returns the StyleSimulations constant's name, or its numeric form when
+// the value is not a known constant.
+func (e StyleSimulations) String() string {
+	switch e {
+	case StyleSimulationsNone:
+		return "StyleSimulationsNone"
+	case StyleSimulationsBoldSimulation:
+		return "StyleSimulationsBoldSimulation"
+	case StyleSimulationsItalicSimulation:
+		return "StyleSimulationsItalicSimulation"
+	case StyleSimulationsBoldItalicSimulation:
+		return "StyleSimulationsBoldItalicSimulation"
+	default:
+		return fmt.Sprintf("StyleSimulations(%d)", int32(e))
+	}
+}
+
+// SweepDirection is Microsoft.UI.Xaml.Media.SweepDirection.
+type SweepDirection int32
+
+const (
+	SweepDirectionCounterclockwise SweepDirection = 0
+	SweepDirectionClockwise        SweepDirection = 1
+)
+
+// String returns the SweepDirection constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SweepDirection) String() string {
+	switch e {
+	case SweepDirectionCounterclockwise:
+		return "SweepDirectionCounterclockwise"
+	case SweepDirectionClockwise:
+		return "SweepDirectionClockwise"
+	default:
+		return fmt.Sprintf("SweepDirection(%d)", int32(e))
+	}
+}
+
+// ClockState is Microsoft.UI.Xaml.Media.Animation.ClockState.
+type ClockState int32
+
+const (
+	ClockStateActive  ClockState = 0
+	ClockStateFilling ClockState = 1
+	ClockStateStopped ClockState = 2
+)
+
+// String returns the ClockState constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ClockState) String() string {
+	switch e {
+	case ClockStateActive:
+		return "ClockStateActive"
+	case ClockStateFilling:
+		return "ClockStateFilling"
+	case ClockStateStopped:
+		return "ClockStateStopped"
+	default:
+		return fmt.Sprintf("ClockState(%d)", int32(e))
+	}
+}
+
+// ConnectedAnimationComponent is Microsoft.UI.Xaml.Media.Animation.ConnectedAnimationComponent.
+type ConnectedAnimationComponent int32
+
+const (
+	ConnectedAnimationComponentOffsetX   ConnectedAnimationComponent = 0
+	ConnectedAnimationComponentOffsetY   ConnectedAnimationComponent = 1
+	ConnectedAnimationComponentCrossFade ConnectedAnimationComponent = 2
+	ConnectedAnimationComponentScale     ConnectedAnimationComponent = 3
+)
+
+// String returns the ConnectedAnimationComponent constant's name, or its numeric form when
+// the value is not a known constant.
+func (e ConnectedAnimationComponent) String() string {
+	switch e {
+	case ConnectedAnimationComponentOffsetX:
+		return "ConnectedAnimationComponentOffsetX"
+	case ConnectedAnimationComponentOffsetY:
+		return "ConnectedAnimationComponentOffsetY"
+	case ConnectedAnimationComponentCrossFade:
+		return "ConnectedAnimationComponentCrossFade"
+	case ConnectedAnimationComponentScale:
+		return "ConnectedAnimationComponentScale"
+	default:
+		return fmt.Sprintf("ConnectedAnimationComponent(%d)", int32(e))
+	}
+}
+
+// EasingMode is Microsoft.UI.Xaml.Media.Animation.EasingMode.
+type EasingMode int32
+
+const (
+	EasingModeEaseOut   EasingMode = 0
+	EasingModeEaseIn    EasingMode = 1
+	EasingModeEaseInOut EasingMode = 2
+)
+
+// String returns the EasingMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e EasingMode) String() string {
+	switch e {
+	case EasingModeEaseOut:
+		return "EasingModeEaseOut"
+	case EasingModeEaseIn:
+		return "EasingModeEaseIn"
+	case EasingModeEaseInOut:
+		return "EasingModeEaseInOut"
+	default:
+		return fmt.Sprintf("EasingMode(%d)", int32(e))
+	}
+}
+
+// FillBehavior is Microsoft.UI.Xaml.Media.Animation.FillBehavior.
+type FillBehavior int32
+
+const (
+	FillBehaviorHoldEnd FillBehavior = 0
+	FillBehaviorStop    FillBehavior = 1
+)
+
+// String returns the FillBehavior constant's name, or its numeric form when
+// the value is not a known constant.
+func (e FillBehavior) String() string {
+	switch e {
+	case FillBehaviorHoldEnd:
+		return "FillBehaviorHoldEnd"
+	case FillBehaviorStop:
+		return "FillBehaviorStop"
+	default:
+		return fmt.Sprintf("FillBehavior(%d)", int32(e))
+	}
+}
+
+// RepeatBehaviorType is Microsoft.UI.Xaml.Media.Animation.RepeatBehaviorType.
+type RepeatBehaviorType int32
+
+const (
+	RepeatBehaviorTypeCount    RepeatBehaviorType = 0
+	RepeatBehaviorTypeDuration RepeatBehaviorType = 1
+	RepeatBehaviorTypeForever  RepeatBehaviorType = 2
+)
+
+// String returns the RepeatBehaviorType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e RepeatBehaviorType) String() string {
+	switch e {
+	case RepeatBehaviorTypeCount:
+		return "RepeatBehaviorTypeCount"
+	case RepeatBehaviorTypeDuration:
+		return "RepeatBehaviorTypeDuration"
+	case RepeatBehaviorTypeForever:
+		return "RepeatBehaviorTypeForever"
+	default:
+		return fmt.Sprintf("RepeatBehaviorType(%d)", int32(e))
+	}
+}
+
+// SlideNavigationTransitionEffect is Microsoft.UI.Xaml.Media.Animation.SlideNavigationTransitionEffect.
+type SlideNavigationTransitionEffect int32
+
+const (
+	SlideNavigationTransitionEffectFromBottom SlideNavigationTransitionEffect = 0
+	SlideNavigationTransitionEffectFromLeft   SlideNavigationTransitionEffect = 1
+	SlideNavigationTransitionEffectFromRight  SlideNavigationTransitionEffect = 2
+)
+
+// String returns the SlideNavigationTransitionEffect constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SlideNavigationTransitionEffect) String() string {
+	switch e {
+	case SlideNavigationTransitionEffectFromBottom:
+		return "SlideNavigationTransitionEffectFromBottom"
+	case SlideNavigationTransitionEffectFromLeft:
+		return "SlideNavigationTransitionEffectFromLeft"
+	case SlideNavigationTransitionEffectFromRight:
+		return "SlideNavigationTransitionEffectFromRight"
+	default:
+		return fmt.Sprintf("SlideNavigationTransitionEffect(%d)", int32(e))
+	}
+}
+
+// BitmapCreateOptions is Microsoft.UI.Xaml.Media.Imaging.BitmapCreateOptions.
+// Bitmask — values may be combined with |.
+type BitmapCreateOptions uint32
+
+const (
+	BitmapCreateOptionsNone             BitmapCreateOptions = 0
+	BitmapCreateOptionsIgnoreImageCache BitmapCreateOptions = 8
+)
+
+// String returns the BitmapCreateOptions constant's name, or its numeric form when
+// the value is not a known constant.
+func (e BitmapCreateOptions) String() string {
+	switch e {
+	case BitmapCreateOptionsNone:
+		return "BitmapCreateOptionsNone"
+	case BitmapCreateOptionsIgnoreImageCache:
+		return "BitmapCreateOptionsIgnoreImageCache"
+	default:
+		return fmt.Sprintf("BitmapCreateOptions(%d)", uint32(e))
+	}
+}
+
+// DecodePixelType is Microsoft.UI.Xaml.Media.Imaging.DecodePixelType.
+type DecodePixelType int32
+
+const (
+	DecodePixelTypePhysical DecodePixelType = 0
+	DecodePixelTypeLogical  DecodePixelType = 1
+)
+
+// String returns the DecodePixelType constant's name, or its numeric form when
+// the value is not a known constant.
+func (e DecodePixelType) String() string {
+	switch e {
+	case DecodePixelTypePhysical:
+		return "DecodePixelTypePhysical"
+	case DecodePixelTypeLogical:
+		return "DecodePixelTypeLogical"
+	default:
+		return fmt.Sprintf("DecodePixelType(%d)", int32(e))
+	}
+}
+
+// SvgImageSourceLoadStatus is Microsoft.UI.Xaml.Media.Imaging.SvgImageSourceLoadStatus.
+type SvgImageSourceLoadStatus int32
+
+const (
+	SvgImageSourceLoadStatusSuccess       SvgImageSourceLoadStatus = 0
+	SvgImageSourceLoadStatusNetworkError  SvgImageSourceLoadStatus = 1
+	SvgImageSourceLoadStatusInvalidFormat SvgImageSourceLoadStatus = 2
+	SvgImageSourceLoadStatusOther         SvgImageSourceLoadStatus = 3
+)
+
+// String returns the SvgImageSourceLoadStatus constant's name, or its numeric form when
+// the value is not a known constant.
+func (e SvgImageSourceLoadStatus) String() string {
+	switch e {
+	case SvgImageSourceLoadStatusSuccess:
+		return "SvgImageSourceLoadStatusSuccess"
+	case SvgImageSourceLoadStatusNetworkError:
+		return "SvgImageSourceLoadStatusNetworkError"
+	case SvgImageSourceLoadStatusInvalidFormat:
+		return "SvgImageSourceLoadStatusInvalidFormat"
+	case SvgImageSourceLoadStatusOther:
+		return "SvgImageSourceLoadStatusOther"
+	default:
+		return fmt.Sprintf("SvgImageSourceLoadStatus(%d)", int32(e))
+	}
+}
+
+// NavigationCacheMode is Microsoft.UI.Xaml.Navigation.NavigationCacheMode.
+type NavigationCacheMode int32
+
+const (
+	NavigationCacheModeDisabled NavigationCacheMode = 0
+	NavigationCacheModeRequired NavigationCacheMode = 1
+	NavigationCacheModeEnabled  NavigationCacheMode = 2
+)
+
+// String returns the NavigationCacheMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationCacheMode) String() string {
+	switch e {
+	case NavigationCacheModeDisabled:
+		return "NavigationCacheModeDisabled"
+	case NavigationCacheModeRequired:
+		return "NavigationCacheModeRequired"
+	case NavigationCacheModeEnabled:
+		return "NavigationCacheModeEnabled"
+	default:
+		return fmt.Sprintf("NavigationCacheMode(%d)", int32(e))
+	}
+}
+
+// NavigationMode is Microsoft.UI.Xaml.Navigation.NavigationMode.
+type NavigationMode int32
+
+const (
+	NavigationModeNew     NavigationMode = 0
+	NavigationModeBack    NavigationMode = 1
+	NavigationModeForward NavigationMode = 2
+	NavigationModeRefresh NavigationMode = 3
+)
+
+// String returns the NavigationMode constant's name, or its numeric form when
+// the value is not a known constant.
+func (e NavigationMode) String() string {
+	switch e {
+	case NavigationModeNew:
+		return "NavigationModeNew"
+	case NavigationModeBack:
+		return "NavigationModeBack"
+	case NavigationModeForward:
+		return "NavigationModeForward"
+	case NavigationModeRefresh:
+		return "NavigationModeRefresh"
+	default:
+		return fmt.Sprintf("NavigationMode(%d)", int32(e))
+	}
+}

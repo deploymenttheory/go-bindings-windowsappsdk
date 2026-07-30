@@ -2,9 +2,13 @@
 
 // Command clicker is a WinUI 3 application in about a hundred lines of Go.
 //
-// It puts a real window on screen with a StackPanel, a TextBlock and a Button, and
-// the Button's Click handler is a Go closure that updates the TextBlock. Nothing here
-// is a test harness: it runs until you close the window.
+// It puts a real window on screen with a StackPanel, a TextBlock and a Button. The
+// Button's Click handler is a Go closure that updates the TextBlock, and so are the
+// panel's PointerEntered and KeyDown handlers. Nothing here is a test harness: it runs
+// until you close the window.
+//
+// Click the button, move the mouse over the panel, then type — all three arrive as Go
+// function calls on the UI thread.
 //
 //	go run ./examples/clicker
 //
@@ -23,8 +27,6 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
-	uixamlprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -44,7 +46,7 @@ func build(ready *app.Ready) error {
 		return err
 	}
 
-	panel, err := uixamlcontrols.NewStackPanel()
+	panel, err := uixaml.NewStackPanel()
 	if err != nil {
 		return err
 	}
@@ -61,15 +63,15 @@ func build(ready *app.Ready) error {
 		_ = frame.SetVerticalAlignment(uixaml.VerticalAlignmentCenter)
 	}
 
-	label, err := uixamlcontrols.NewTextBlock()
+	label, err := uixaml.NewTextBlock()
 	if err != nil {
 		return err
 	}
-	if err := label.SetText("Nothing clicked yet."); err != nil {
+	if err := label.SetText("Click the button, move the mouse, or press a key."); err != nil {
 		return err
 	}
 
-	button, err := uixamlcontrols.NewButton()
+	button, err := uixaml.NewButton()
 	if err != nil {
 		return err
 	}
@@ -81,7 +83,7 @@ func build(ready *app.Ready) error {
 	// invokes it there and go-bindings-winrt's inline-thread mode keeps it there — so
 	// it may touch XAML objects directly.
 	clicks := 0
-	handler, err := uixamlprimitives.NewRoutedEventHandler(
+	handler, err := uixaml.NewRoutedEventHandler(
 		func(_ *syswinrt.IInspectable, _ *uixaml.IRoutedEventArgs) {
 			clicks++
 			word := "times"
@@ -95,18 +97,52 @@ func build(ready *app.Ready) error {
 	}
 	// Not closed: the handler stays registered for the life of the window.
 
-	// Click is declared on Primitives.IButtonBase, two classes above Button. Controls
-	// and Controls.Primitives reference each other, so one import direction is severed
-	// and there is no generated AsButtonBase — a consuming package like this one closes
-	// no cycle, so the generic QueryInterface reaches it.
-	base, err := winrt.QueryInterface[uixamlprimitives.IButtonBase](
-		unsafe.Pointer(button), &uixamlprimitives.IID_IButtonBase)
+	// Click is declared on Primitives.IButtonBase, two classes above Button. There is a
+	// generated accessor for it because Controls and Controls.Primitives share one Go
+	// package — before they did, this line was a hand-written QueryInterface.
+	base, err := button.AsButtonBase()
 	if err != nil {
 		return err
 	}
 	defer base.Release()
 	if _, err := base.AddClick(handler); err != nil {
 		return err
+	}
+
+	// Pointer and keyboard events. These are declared on UIElement and take argument
+	// types from Microsoft.UI.Xaml.Input — a different namespace, in the same Go
+	// package, because the two reference each other and Go's package is its unit of
+	// mutual recursion. Split apart they were unreachable.
+	if root, err := panel.AsUIElement(); err == nil {
+		defer root.Release()
+
+		enter, err := uixaml.NewPointerEventHandler(
+			func(_ *syswinrt.IInspectable, _ *uixaml.IPointerRoutedEventArgs) {
+				_ = label.SetText("Pointer entered the panel.")
+			})
+		if err != nil {
+			return err
+		}
+		if _, err := root.AddPointerEntered(enter); err != nil {
+			return err
+		}
+
+		// The window has to be focusable for keystrokes to arrive, which a Button in
+		// the tree provides once it has focus — click it, then type.
+		keys, err := uixaml.NewKeyEventHandler(
+			func(_ *syswinrt.IInspectable, e *uixaml.IKeyRoutedEventArgs) {
+				key, err := e.Key()
+				if err != nil {
+					return
+				}
+				_ = label.SetText(fmt.Sprintf("Key pressed: %s", key))
+			})
+		if err != nil {
+			return err
+		}
+		if _, err := root.AddKeyDown(keys); err != nil {
+			return err
+		}
 	}
 
 	if err := addChildren(panel, label, button); err != nil {
@@ -140,7 +176,7 @@ func build(ready *app.Ready) error {
 
 // setButtonText boxes a string the way WinRT boxes one and assigns it as the Button's
 // Content, which is declared on ContentControl three classes above Button.
-func setButtonText(button *uixamlcontrols.Button, text string) error {
+func setButtonText(button *uixaml.Button, text string) error {
 	content, err := button.AsContentControl()
 	if err != nil {
 		return err
@@ -162,12 +198,15 @@ func setButtonText(button *uixamlcontrols.Button, text string) error {
 
 // addChildren appends elements to a Panel's Children collection.
 //
-// IPanel.Children is typed IInspectable in the projection rather than
-// IVector<UIElement>: the generic instantiation could not be named where the property
-// is declared, so it degraded. The vector is still there at the ABI, and the
-// monomorphized IVectorOfUIElement emitted into this package names it — so one
-// QueryInterface recovers the typed collection.
-func addChildren(panel *uixamlcontrols.StackPanel, elements ...interface {
+// IPanel.Children is still typed IInspectable rather than IVector<UIElement>: a
+// PROPERTY's type resolves before the emitter's generic-instantiation seam is wired, so
+// the instantiation degraded. The vector is there at the ABI, and the monomorphized
+// IVectorOfUIElement in this same package names it, so one QueryInterface recovers the
+// typed collection.
+//
+// This is the remaining ergonomic wart, and the clearest candidate for the next round:
+// nothing about it is fundamental, unlike the import cycles that used to sit here.
+func addChildren(panel *uixaml.StackPanel, elements ...interface {
 	AsUIElement() (*uixaml.IUIElement, error)
 }) error {
 	// Children is declared on Panel, one class above StackPanel — reached through the
@@ -184,8 +223,8 @@ func addChildren(panel *uixamlcontrols.StackPanel, elements ...interface {
 	}
 	defer raw.Release()
 
-	children, err := winrt.QueryInterface[uixamlcontrols.IVectorOfUIElement](
-		unsafe.Pointer(raw), &uixamlcontrols.IID_IVectorOfUIElement)
+	children, err := winrt.QueryInterface[uixaml.IVectorOfUIElement](
+		unsafe.Pointer(raw), &uixaml.IID_IVectorOfUIElement)
 	if err != nil {
 		return err
 	}

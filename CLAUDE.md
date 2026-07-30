@@ -29,13 +29,18 @@ generated for it.
 
 M6. The winmds are committed (36 files, 77 namespaces, 4,374 API types), ingest
 projects them into committed JSON with every reference resolved, the emitter
-produces **77 Go packages / 384 files** that compile, and `acceptance/` puts a real
-WinUI 3 window on screen from Go, with the framework calling a Go handler back on the
-UI thread.
+produces **64 Go packages / 309 files** that compile, and `acceptance/` puts a real
+WinUI 3 window on screen from Go, with the framework calling Go handlers back on the
+UI thread for clicks, pointer moves and keystrokes.
 
 The controls in it are **styled and rendered**: a `Button` measured at `Loaded` has a
 template and a size. The one thing that does not work is activating
 `XamlControlsResources`, which turns out not to be needed; see below.
+
+302 diagnostics remain, down from 870. The largest categories were cleared by
+[conformant arrays](#conformant-arrays) (256) and [namespace
+clusters](#namespace-clusters) (185 import cycles, 75 inherited interfaces, 62 event
+delegates).
 
 `README.md` has the milestone order; the detail below describes the design being
 built toward, and is written down now so it does not have to be rediscovered.
@@ -262,13 +267,16 @@ metadata/
   bootstrap/           NOT committed: the bootstrapper DLL and SDK headers
 bindings/
   runtime/winui/       hand-written; imports nothing generated
-  winui/<namespace>/   generated; never hand-edited
+  winui/<package>/     generated; never hand-edited
 app/                   the ergonomic layer; imports generated code
 acceptance/            tests against live WinRT
 ```
 
-Namespaces drop the `Microsoft.` prefix: `Microsoft.UI.Xaml.Controls` becomes
-`bindings/winui/ui/xaml/controls`, package `controls`.
+Namespaces drop the `Microsoft.` prefix: `Microsoft.UI.Dispatching` becomes
+`bindings/winui/ui/dispatching`, package `dispatching`. It is not one package per
+namespace, though — see [Namespace clusters](#namespace-clusters): the fourteen
+mutually recursive XAML namespaces share `bindings/winui/ui/xaml`, so
+`Microsoft.UI.Xaml.Controls.Button` is `uixaml.Button`.
 
 There is no `winmd-roots.txt`. An earlier sketch had one, but it would say
 twice what is already decided elsewhere: `fetch-metadata` excludes
@@ -324,6 +332,52 @@ seeing the second would name a type that was never generated. Members using it
 must be skipped with a distinct reason rather than quietly turned into
 `uintptr` — a binding that compiles and then crashes is worse than one that is
 absent.
+
+### Namespace clusters
+
+**One Go package per strongly-connected component of the namespace reference graph,
+not one per namespace.**
+
+Fourteen XAML namespaces reference each other in every direction.
+`Microsoft.UI.Xaml` names `Controls.Panel`; `Controls` names `UIElement`; both name
+`Input.PointerRoutedEventArgs`, which names them back. One package per namespace makes
+that a set of import cycles, and Go rejects import cycles.
+
+The earlier approach severed the cheapest edge in each cycle and degraded every
+reference over it to an opaque word. That was never cheap. The cheapest edge by
+reference count was `Microsoft.UI.Xaml → Microsoft.UI.Xaml.Input`, and cutting it
+removed **all eighteen** pointer, keyboard and manipulation events on `UIElement`,
+because their argument types live there. `Button` could not reach `ButtonBase`, so
+`Click` needed a hand-written `QueryInterface`.
+
+The namespace was the wrong unit. **Go's package is its unit of mutual recursion, the
+way C#'s assembly is** — and all fourteen ship in one assembly, `Microsoft.UI.Xaml.winmd`.
+Collapsing each component into one package makes the package graph acyclic by
+construction, so there is nothing left to sever.
+
+`internal/codegen/pipeline/clusters.go` computes them (Tarjan, iterative — the graph is
+small but recursion depth is not something to bet on). The representative is the
+shortest member name, which gives `Microsoft.UI.Xaml` rather than an invented one, so
+the package is at the path a reader would guess. `typemap.SamePackage` is then what
+makes a cross-namespace reference need no import at all.
+
+Three invariants, all asserted in `pipeline`:
+
+- the fourteen members are written out **in full** in the test, so a servicing release
+  that changes the recursion is a reviewed diff — a namespace joining or leaving the
+  cluster *moves types between Go packages*;
+- the other 63 namespaces each keep their own package, so clustering cannot quietly
+  collapse things that had no cycle;
+- `ComputeBlockedImports` finds **nothing to sever** afterwards. If that ever fails, an
+  edge is missing from the component computation — a bug in `localReferenceGraph`, not a
+  reason to start cutting again.
+
+External namespaces are never clustered. A reference into go-bindings-winrt cannot close
+a cycle here, because nothing in that module imports this one, and merging one of its
+namespaces into a local package would be meaningless — this module cannot add files to it.
+
+The cycle breaker is kept rather than deleted. It now operates on packages, and it is
+the assertion that clustering worked.
 
 ### The import alias collision
 
@@ -393,34 +447,30 @@ whole mechanism.
 
 `Class.BaseClass` records it (schema version 2), and the class emitter walks the
 chain to project each base's interfaces as `As<Interface>()` accessors on the
-derived class. `Button` gains fifteen, reaching `ContentControl`, `Control`,
-`FrameworkElement`, `UIElement` and `DependencyObject`; each records which base it
-came from.
-
-Two things that cost a wrong turn each, so they are written down:
+derived class. `Button` gains fifteen, reaching `ButtonBase`, `ContentControl`,
+`Control`, `FrameworkElement`, `UIElement` and `DependencyObject`; each records which
+base it came from.
 
 **The import graph has to model what is emitted.** Projecting a base's interfaces
 onto a derived class creates import edges that appear nowhere in the derived
-namespace's own `TypeRef`s. The first version left `ComputeBlockedImports` ignorant
-of them, it severed by an incomplete graph, and the output did not compile. Both
-now share `Registry.WalkBaseChain`, so the graph the breaker cuts is the graph the
-emitter builds.
+namespace's own `TypeRef`s. The first version left the graph ignorant of them, so
+`Controls` and `Peers` reached each other through inheritance alone and the output did
+not compile. `localReferenceGraph` and the emitter now share `Registry.WalkBaseChain`,
+so the graph clustering is computed from is the graph the emitter builds.
 
-**Weighting inherited edges higher makes things worse.** It was tried, on the
+Two dead ends, recorded so they are not retried:
+
+**Weighting inherited edges higher makes severing worse.** It was tried, on the
 reasoning that losing one costs a whole accessor rather than one signature. Raising
-those weights only moves the cut onto other edges in the same cycles, and those
-carry more plain references: 870 degradations became 1040, without recovering the
-edge it was aimed at. `Controls` ↔ `Controls.Primitives` is genuinely mutual and
-dense both ways, one direction has to go, and Go cannot express the cycle.
+those weights only moves the cut onto other edges in the same cycles, and those carry
+more plain references: 870 degradations became 1040, without recovering the edge it was
+aimed at.
 
-The *capability* is not lost on a severed edge, only the accessor. A consuming
-package is not part of the generated tree and closes no cycle, so a caller can
-reach the interface directly:
-
-```go
-base, err := winrt.QueryInterface[primitives.IButtonBase](
-    unsafe.Pointer(button), &primitives.IID_IButtonBase)
-```
+**Severing was the wrong answer to the question.** Both of the above are about picking a
+cut well. [Namespace clusters](#namespace-clusters) removes the need to cut at all —
+`Controls` ↔ `Controls.Primitives` is genuinely mutual and dense both ways, and the
+conclusion to draw from that is that they belong in one Go package, not that one
+direction has to be lost.
 
 ## Architecture support
 

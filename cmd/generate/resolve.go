@@ -40,10 +40,12 @@ func runResolve(args []string) error {
 	if err != nil {
 		return err
 	}
-	blocked := pipeline.ComputeBlockedImports(registry)
+	clusters := pipeline.ComputeClusters(registry)
+	blocked := pipeline.ComputeBlockedImports(registry, clusters)
 	mapper := &typemap.Mapper{
 		Registry:   registry,
 		ModulePath: modulePath,
+		Clusters:   clusters,
 		Blocked:    blocked,
 	}
 
@@ -55,6 +57,19 @@ func runResolve(args []string) error {
 		report.resolveNamespace(meta, *showImports)
 	}
 
+	if merged := clusters.Merged(); len(merged) > 0 {
+		fmt.Println("namespaces merged into one package (mutually recursive):")
+		for _, representative := range merged {
+			members := clusters.Members(representative)
+			fmt.Printf("  %s  (%d namespaces)\n", representative, len(members))
+			for _, member := range members {
+				if member != representative {
+					fmt.Printf("      %s\n", member)
+				}
+			}
+		}
+		fmt.Println()
+	}
 	if len(blocked) > 0 {
 		fmt.Println("severed import edges (references across these degrade):")
 		for _, src := range sortedKeys(blocked) {

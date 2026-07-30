@@ -19,8 +19,6 @@ import (
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/runtime/winui"
 	uidispatching "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/dispatching"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
-	uixamlprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -83,7 +81,7 @@ func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 			return err
 		}
 
-		button, err := uixamlcontrols.NewButton()
+		button, err := uixaml.NewButton()
 		if err != nil {
 			return err
 		}
@@ -115,13 +113,13 @@ func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 		// Controls.Primitives reference each other, so one import direction is
 		// severed and there is no generated AsButtonBase — but a consuming package
 		// closes no cycle, so the generic QueryInterface reaches it.
-		base, err := winrt.QueryInterface[uixamlprimitives.IButtonBase](
-			unsafe.Pointer(button), &uixamlprimitives.IID_IButtonBase)
+		base, err := winrt.QueryInterface[uixaml.IButtonBase](
+			unsafe.Pointer(button), &uixaml.IID_IButtonBase)
 		if err != nil {
 			return err
 		}
 		defer base.Release()
-		handler, err := uixamlprimitives.NewRoutedEventHandler(
+		handler, err := uixaml.NewRoutedEventHandler(
 			func(_ *syswinrt.IInspectable, _ *uixaml.IRoutedEventArgs) {
 				// Reached only by a real click, which this test cannot synthesize.
 				// Registering it is what is being checked; that the framework can

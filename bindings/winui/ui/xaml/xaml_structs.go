@@ -43,3 +43,68 @@ type WinUIContract struct {
 // XamlContract is Microsoft.UI.Xaml.XamlContract.
 type XamlContract struct {
 }
+
+// RawElementProviderRuntimeId is Microsoft.UI.Xaml.Automation.Peers.RawElementProviderRuntimeId.
+type RawElementProviderRuntimeId struct {
+	Part1 uint32
+	Part2 uint32
+}
+
+// GeneratorPosition is Microsoft.UI.Xaml.Controls.Primitives.GeneratorPosition.
+type GeneratorPosition struct {
+	Index  int32
+	Offset int32
+}
+
+// LoadMoreItemsResult is Microsoft.UI.Xaml.Data.LoadMoreItemsResult.
+type LoadMoreItemsResult struct {
+	Count uint32
+}
+
+// TextRange is Microsoft.UI.Xaml.Documents.TextRange.
+type TextRange struct {
+	StartIndex int32
+	Length     int32
+}
+
+// Matrix is Microsoft.UI.Xaml.Media.Matrix.
+type Matrix struct {
+	M11     float64
+	M12     float64
+	M21     float64
+	M22     float64
+	OffsetX float64
+	OffsetY float64
+}
+
+// KeyTime is Microsoft.UI.Xaml.Media.Animation.KeyTime.
+type KeyTime struct {
+	TimeSpan wrtfoundation.TimeSpan
+}
+
+// RepeatBehavior is Microsoft.UI.Xaml.Media.Animation.RepeatBehavior.
+type RepeatBehavior struct {
+	Count    float64
+	Duration wrtfoundation.TimeSpan
+	Type     RepeatBehaviorType
+}
+
+// Matrix3D is Microsoft.UI.Xaml.Media.Media3D.Matrix3D.
+type Matrix3D struct {
+	M11     float64
+	M12     float64
+	M13     float64
+	M14     float64
+	M21     float64
+	M22     float64
+	M23     float64
+	M24     float64
+	M31     float64
+	M32     float64
+	M33     float64
+	M34     float64
+	OffsetX float64
+	OffsetY float64
+	OffsetZ float64
+	M44     float64
+}

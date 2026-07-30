@@ -2,5 +2,28 @@
 
 //go:build windows && amd64
 
-// Package xaml binds the Microsoft.UI.Xaml API surface of the Windows App SDK.
+// Package xaml binds the Microsoft.UI.Xaml API surface of the Windows App SDK,
+// including every namespace beneath it that references it back:
+//
+//   - Microsoft.UI.Xaml
+//   - Microsoft.UI.Xaml.Automation
+//   - Microsoft.UI.Xaml.Automation.Peers
+//   - Microsoft.UI.Xaml.Automation.Provider
+//   - Microsoft.UI.Xaml.Controls
+//   - Microsoft.UI.Xaml.Controls.Primitives
+//   - Microsoft.UI.Xaml.Data
+//   - Microsoft.UI.Xaml.Documents
+//   - Microsoft.UI.Xaml.Input
+//   - Microsoft.UI.Xaml.Media
+//   - Microsoft.UI.Xaml.Media.Animation
+//   - Microsoft.UI.Xaml.Media.Imaging
+//   - Microsoft.UI.Xaml.Media.Media3D
+//   - Microsoft.UI.Xaml.Navigation
+//
+// They share one package because they are mutually recursive, and a Go package is
+// the unit of mutual recursion — the same role the assembly plays in the SDK
+// itself, which ships all of these together. Splitting them would require severing
+// reference cycles, and the members lost to that are the ones that matter:
+// UIElement's pointer, keyboard and manipulation events all take argument types
+// declared in Microsoft.UI.Xaml.Input.
 package xaml

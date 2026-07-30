@@ -409,8 +409,11 @@ func (g *Generator) resolveFactory(meta *wasdkmeta.NamespaceMeta, classFullName,
 	case definition.Arity > 0:
 		g.diag(diagKey, "%s factory %s (generic)", classFullName, factoryFullName)
 		return ref, nil, "", false
-	case ref.Namespace != meta.Namespace:
-		g.diag(diagKey, "%s factory %s (outside the class namespace)", classFullName, factoryFullName)
+	case !g.mapper.SamePackage(meta.Namespace, ref.Namespace):
+		// The emitted method surface is recorded per package, so a factory outside it
+		// has nothing to delegate to. Clustering widens this: a factory in a sibling
+		// namespace of the same package is now reachable.
+		g.diag(diagKey, "%s factory %s (outside the class package)", classFullName, factoryFullName)
 		return ref, nil, "", false
 	}
 	iidRef, ok := g.iidRef(&ref, meta.Namespace)
@@ -503,7 +506,9 @@ func (g *Generator) iidRef(ref *wasdkmeta.TypeRef, fromNamespace string) (string
 		return "", false
 	}
 	iidVar := "IID_" + naming.Export(ref.Name)
-	if ref.Namespace == fromNamespace {
+	// Same PACKAGE, not merely same namespace: a cluster's members share one scope, so
+	// an IID var declared by a sibling namespace is reachable unqualified.
+	if g.mapper.SamePackage(fromNamespace, ref.Namespace) {
 		return "&" + iidVar, true
 	}
 	// The alias has to come from the mapper, not from naming directly: an external

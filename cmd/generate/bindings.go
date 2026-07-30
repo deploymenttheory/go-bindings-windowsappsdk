@@ -67,7 +67,10 @@ func runBindings(args []string) error {
 	}
 
 	generator := emitwinui.New(registry, modulePath, *outDir)
-	written, err := generator.EmitAll(filter)
+	// A run driven by the committed roots covers the whole pinned surface, so stale
+	// files anywhere under the output root are stale. Only an ad-hoc --namespace run
+	// prunes conservatively, since it deliberately emits a subset.
+	written, err := generator.EmitAll(filter, *namespaceFilter == "")
 	if err != nil {
 		return err
 	}
@@ -75,6 +78,13 @@ func runBindings(args []string) error {
 	if *verbose {
 		for _, diagnostic := range diags {
 			fmt.Fprintln(os.Stderr, "diagnostic:", diagnostic)
+		}
+	}
+	if merged := generator.Clusters().Merged(); len(merged) > 0 {
+		for _, representative := range merged {
+			members := generator.Clusters().Members(representative)
+			fmt.Printf("merged %d mutually recursive namespaces into one package: %s\n",
+				len(members), representative)
 		}
 	}
 	if blocked := generator.Blocked(); len(blocked) > 0 {

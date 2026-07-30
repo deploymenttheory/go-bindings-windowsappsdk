@@ -7,15 +7,15 @@ package animatedvisuals
 import (
 	"unsafe"
 
-	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
 // AnimatedAcceptVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedAcceptVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedAcceptVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedAcceptVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedAcceptVisualSource through its default
@@ -26,20 +26,20 @@ func NewAnimatedAcceptVisualSource() (*AnimatedAcceptVisualSource, error) {
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedAcceptVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedAcceptVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedAcceptVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedAcceptVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedBackVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedBackVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedBackVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedBackVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedBackVisualSource through its default
@@ -50,20 +50,20 @@ func NewAnimatedBackVisualSource() (*AnimatedBackVisualSource, error) {
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedBackVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedBackVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedBackVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedBackVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedChevronDownSmallVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedChevronDownSmallVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedChevronDownSmallVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedChevronDownSmallVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedChevronDownSmallVisualSource through its default
@@ -74,20 +74,20 @@ func NewAnimatedChevronDownSmallVisualSource() (*AnimatedChevronDownSmallVisualS
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedChevronDownSmallVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedChevronDownSmallVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedChevronDownSmallVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedChevronDownSmallVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedChevronRightDownSmallVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedChevronRightDownSmallVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedChevronRightDownSmallVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedChevronRightDownSmallVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedChevronRightDownSmallVisualSource through its default
@@ -98,20 +98,20 @@ func NewAnimatedChevronRightDownSmallVisualSource() (*AnimatedChevronRightDownSm
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedChevronRightDownSmallVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedChevronRightDownSmallVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedChevronRightDownSmallVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedChevronRightDownSmallVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedChevronUpDownSmallVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedChevronUpDownSmallVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedChevronUpDownSmallVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedChevronUpDownSmallVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedChevronUpDownSmallVisualSource through its default
@@ -122,20 +122,20 @@ func NewAnimatedChevronUpDownSmallVisualSource() (*AnimatedChevronUpDownSmallVis
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedChevronUpDownSmallVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedChevronUpDownSmallVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedChevronUpDownSmallVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedChevronUpDownSmallVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedFindVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedFindVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedFindVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedFindVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedFindVisualSource through its default
@@ -146,20 +146,20 @@ func NewAnimatedFindVisualSource() (*AnimatedFindVisualSource, error) {
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedFindVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedFindVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedFindVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedFindVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedGlobalNavigationButtonVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedGlobalNavigationButtonVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedGlobalNavigationButtonVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedGlobalNavigationButtonVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedGlobalNavigationButtonVisualSource through its default
@@ -170,20 +170,20 @@ func NewAnimatedGlobalNavigationButtonVisualSource() (*AnimatedGlobalNavigationB
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedGlobalNavigationButtonVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedGlobalNavigationButtonVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedGlobalNavigationButtonVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedGlobalNavigationButtonVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }
 
 // AnimatedSettingsVisualSource is the Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedSettingsVisualSource runtime class, surfaced through its
-// default interface uixamlcontrols.IAnimatedVisualSource. Release when done (promoted from
+// default interface uixaml.IAnimatedVisualSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedSettingsVisualSource struct {
-	uixamlcontrols.IAnimatedVisualSource
+	uixaml.IAnimatedVisualSource
 }
 
 // NewAnimatedSettingsVisualSource activates Microsoft.UI.Xaml.Controls.AnimatedVisuals.AnimatedSettingsVisualSource through its default
@@ -194,11 +194,11 @@ func NewAnimatedSettingsVisualSource() (*AnimatedSettingsVisualSource, error) {
 		return nil, err
 	}
 	defer instance.Release()
-	return winrt.QueryInterface[AnimatedSettingsVisualSource](unsafe.Pointer(instance), &uixamlcontrols.IID_IAnimatedVisualSource)
+	return winrt.QueryInterface[AnimatedSettingsVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
-// AsAnimatedVisualSource2 queries the instance's uixamlcontrols.IAnimatedVisualSource2 interface.
+// AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
-func (self *AnimatedSettingsVisualSource) AsAnimatedVisualSource2() (*uixamlcontrols.IAnimatedVisualSource2, error) {
-	return winrt.QueryInterface[uixamlcontrols.IAnimatedVisualSource2](unsafe.Pointer(self), &uixamlcontrols.IID_IAnimatedVisualSource2)
+func (self *AnimatedSettingsVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource2](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource2)
 }

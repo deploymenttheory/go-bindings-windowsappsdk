@@ -54,12 +54,19 @@ func emit(t *testing.T) *emitted {
 	for _, meta := range registry.Namespaces {
 		filter[meta.Namespace] = true
 	}
-	count, err := generator.EmitAll(filter)
+	count, err := generator.EmitAll(filter, true)
 	if err != nil {
 		t.Fatalf("EmitAll: %v", err)
 	}
-	if count != len(registry.Namespaces) {
-		t.Fatalf("emitted %d packages, want %d", count, len(registry.Namespaces))
+	// Packages, not namespaces: mutually recursive namespaces share one package, so the
+	// count is the number of strongly-connected components.
+	clusters := pipeline.ComputeClusters(registry)
+	packages := map[string]bool{}
+	for _, meta := range registry.Namespaces {
+		packages[clusters.PackageOf(meta.Namespace)] = true
+	}
+	if count != len(packages) {
+		t.Fatalf("emitted %d packages, want %d", count, len(packages))
 	}
 	files := map[string]string{}
 	err = filepath.WalkDir(dir, func(path string, entry os.DirEntry, err error) error {
@@ -124,7 +131,7 @@ func TestEveryPackageHasTheScaffold(t *testing.T) {
 // click: a way to construct the Button, a grounded handler type, and an Add that
 // dispatches at the right slot.
 func TestButtonClickPathIsCallable(t *testing.T) {
-	classes := source(t, "ui/xaml/controls/controls_classes.go")
+	classes := source(t, "ui/xaml/xaml_classes.go")
 	// Button is composable, so the constructor goes through the composable factory
 	// with a null outer rather than RoActivateInstance.
 	if !strings.Contains(classes, "func NewButton() (*Button, error)") {
@@ -137,21 +144,21 @@ func TestButtonClickPathIsCallable(t *testing.T) {
 		t.Error("Button does not embed its default interface")
 	}
 
-	primitives := source(t, "ui/xaml/controls/primitives/primitives_interfaces.go")
+	interfaces := source(t, "ui/xaml/xaml_interfaces.go")
 	// Slot 14 is pinned independently in internal/verify against the winmd.
-	if !strings.Contains(primitives, "func (self *IButtonBase) AddClick(handler *RoutedEventHandler) (syswinrt.EventRegistrationToken, error)") {
+	if !strings.Contains(interfaces, "func (self *IButtonBase) AddClick(handler *RoutedEventHandler) (syswinrt.EventRegistrationToken, error)") {
 		t.Error("IButtonBase.AddClick is not emitted with a typed handler")
 	}
-	if !strings.Contains(primitives, "self.LpVtbl[14]") {
+	if !strings.Contains(interfaces, "self.LpVtbl[14]") {
 		t.Error("AddClick does not dispatch through slot 14")
 	}
-	if !strings.Contains(primitives, "func (self *IButtonBase) RemoveClick(token syswinrt.EventRegistrationToken) error") {
+	if !strings.Contains(interfaces, "func (self *IButtonBase) RemoveClick(token syswinrt.EventRegistrationToken) error") {
 		t.Error("IButtonBase.RemoveClick is not emitted")
 	}
 
-	delegates := source(t, "ui/xaml/controls/primitives/primitives_delegates.go")
+	delegates := source(t, "ui/xaml/xaml_delegates.go")
 	if !strings.Contains(delegates, "func NewRoutedEventHandler(fn func(") {
-		t.Error("no RoutedEventHandler constructor was grounded into the primitives package")
+		t.Error("no RoutedEventHandler constructor was grounded into the xaml package")
 	}
 	if !strings.Contains(delegates, "winrt.NewDelegate(IID_RoutedEventHandler, 2,") {
 		t.Error("the handler does not build a 2-word delegate")
@@ -273,13 +280,42 @@ func TestSkippedMembersKeepTheirSlots(t *testing.T) {
 // binding that compiles and then crashes is worse than one that is not there.
 func TestNoForeignTypeReachesTheOutput(t *testing.T) {
 	result := emit(t)
+	// Matching on the namespace, not on type names. The SDK declares its own XAML wrapper
+	// types with confusingly similar names — Microsoft.UI.Xaml.Controls.WebView2 and
+	// .CoreWebView2InitializedEventArgs are both legitimate and both emitted — so only the
+	// fully-qualified foreign namespace identifies a leak.
+	const foreignNamespace = "Microsoft.Web.WebView2"
+	var mentions int
 	for path, content := range result.files {
-		if strings.Contains(content, "WebView2.Core") && !strings.Contains(path, "controls") {
-			t.Errorf("%s mentions Microsoft.Web.WebView2.Core outside a skip comment", path)
+		// Line by line, and asserting where the mention IS rather than where it is not.
+		// The previous version keyed off the file path, which silently stopped checking
+		// anything the moment packages moved.
+		for number, line := range strings.Split(content, "\n") {
+			if !strings.Contains(line, foreignNamespace) {
+				continue
+			}
+			mentions++
+			trimmed := strings.TrimSpace(line)
+			if !strings.HasPrefix(trimmed, "//") || !strings.Contains(trimmed, "skipped:") {
+				t.Errorf("%s:%d names %s outside a skip comment: %s",
+					path, number+1, foreignNamespace, trimmed)
+			}
 		}
-		if strings.Contains(content, "CoreWebView2Environment") &&
-			!strings.Contains(content, "skipped:") {
-			t.Errorf("%s names a WebView2 type outside a skip comment", path)
+	}
+	if mentions == 0 {
+		t.Errorf("no %s mention anywhere, not even a skip comment: the members that "+
+			"reference it should still be leaving an audit trail", foreignNamespace)
+	}
+	// The names that WOULD appear if a foreign type were projected rather than skipped.
+	// Microsoft.Web.WebView2.Core.CoreWebView2 is what WebView2's own CoreWebView2
+	// property returns, so it is the one type a leak would most likely produce — and it
+	// collides with nothing the SDK declares itself.
+	for _, declaration := range []string{"type CoreWebView2 struct", "type ICoreWebView2 struct"} {
+		for path, content := range result.files {
+			if strings.Contains(content, declaration) {
+				t.Errorf("%s declares %q; a Microsoft.Web.WebView2.Core type was projected",
+					path, declaration)
+			}
 		}
 	}
 	// And it is diagnosed under its own key, so it can never be confused with an
@@ -338,7 +374,7 @@ func TestEmissionIsDeterministic(t *testing.T) {
 	run := func() map[string]string {
 		dir := t.TempDir()
 		generator := New(registry, modulePath, dir)
-		if _, err := generator.EmitAll(filter); err != nil {
+		if _, err := generator.EmitAll(filter, true); err != nil {
 			t.Fatalf("EmitAll: %v", err)
 		}
 		files := map[string]string{}
@@ -399,7 +435,7 @@ func TestPruningLeavesHandWrittenFilesAlone(t *testing.T) {
 	}
 
 	generator := New(registry, modulePath, dir)
-	if _, err := generator.EmitAll(map[string]bool{"Microsoft.UI.Xaml": true}); err != nil {
+	if _, err := generator.EmitAll(map[string]bool{"Microsoft.UI.Xaml": true}, false); err != nil {
 		t.Fatalf("EmitAll: %v", err)
 	}
 	if _, err := os.Stat(handWritten); err != nil {
@@ -419,7 +455,7 @@ func TestPruningLeavesHandWrittenFilesAlone(t *testing.T) {
 // Visibility (IUIElement) or Margin (IFrameworkElement), which is to say anything
 // a button is used for.
 func TestInheritedInterfacesAreReachable(t *testing.T) {
-	classes := source(t, "ui/xaml/controls/controls_classes.go")
+	classes := source(t, "ui/xaml/xaml_classes.go")
 	block := classBlock(classes, "Button")
 	if block == "" {
 		t.Fatal("no Button class block found")
@@ -440,9 +476,18 @@ func TestInheritedInterfacesAreReachable(t *testing.T) {
 	if !strings.Contains(block, "// Inherited from Microsoft.UI.Xaml.FrameworkElement.") {
 		t.Error("inherited accessors do not record the base class they came from")
 	}
-	// Cross-namespace inheritance has to use the import alias, not a bare name.
-	if !strings.Contains(block, "(*uixaml.IUIElement, error)") {
-		t.Error("the inherited UIElement accessor is not package-qualified")
+	// UIElement is in a sibling namespace of the same cluster, so the accessor names it
+	// unqualified. Before clustering this line asserted the opposite, and the reference
+	// crossed a severed edge as often as not.
+	if !strings.Contains(block, "(*IUIElement, error)") {
+		t.Errorf("the inherited UIElement accessor is qualified, but it is in the same package")
+	}
+	// And the accessor that clustering restored: Button reaching ButtonBase, where
+	// Click lives. Controls and Controls.Primitives used to be separate packages with a
+	// severed edge between them.
+	if !strings.Contains(block, "func (self *Button) AsButtonBase()") {
+		t.Error("Button has no AsButtonBase accessor; Click is unreachable without a " +
+			"hand-written QueryInterface")
 	}
 }
 

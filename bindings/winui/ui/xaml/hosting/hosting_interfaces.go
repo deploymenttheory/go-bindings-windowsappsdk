@@ -14,8 +14,6 @@ import (
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	uicontent "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/content"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
-	uixamlmedia "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/media"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -51,14 +49,14 @@ func (self *IDesktopWindowXamlSource) HasFocus() (bool, error) {
 }
 
 // SystemBackdrop (propget get_SystemBackdrop) dispatches through IDesktopWindowXamlSource's vtable slot 9.
-func (self *IDesktopWindowXamlSource) SystemBackdrop() (*uixamlmedia.ISystemBackdrop, error) {
-	result := new(*uixamlmedia.ISystemBackdrop)
+func (self *IDesktopWindowXamlSource) SystemBackdrop() (*uixaml.ISystemBackdrop, error) {
+	result := new(*uixaml.ISystemBackdrop)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetSystemBackdrop (propput put_SystemBackdrop) dispatches through IDesktopWindowXamlSource's vtable slot 10.
-func (self *IDesktopWindowXamlSource) SetSystemBackdrop(value *uixamlmedia.ISystemBackdrop) error {
+func (self *IDesktopWindowXamlSource) SetSystemBackdrop(value *uixaml.ISystemBackdrop) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -235,7 +233,7 @@ func (self *IElementCompositionPreviewStatics) SetElementChildVisual(element *ui
 }
 
 // GetScrollViewerManipulationPropertySet dispatches through IElementCompositionPreviewStatics's vtable slot 9.
-func (self *IElementCompositionPreviewStatics) GetScrollViewerManipulationPropertySet(scrollViewer *uixamlcontrols.IScrollViewer) (*uicomposition.ICompositionPropertySet, error) {
+func (self *IElementCompositionPreviewStatics) GetScrollViewerManipulationPropertySet(scrollViewer *uixaml.IScrollViewer) (*uicomposition.ICompositionPropertySet, error) {
 	result := new(*uicomposition.ICompositionPropertySet)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(scrollViewer)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))

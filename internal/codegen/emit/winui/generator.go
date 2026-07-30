@@ -26,6 +26,7 @@ import (
 // Generator emits the bindings tree for a loaded Registry.
 type Generator struct {
 	registry *pipeline.Registry
+	clusters *pipeline.Clusters
 	mapper   *typemap.Mapper
 	// outDir is the bindings/winui output root.
 	outDir string
@@ -75,60 +76,82 @@ type Generator struct {
 // New builds a Generator. Import cycles among the local namespaces are computed up
 // front; references along severed edges degrade instead of importing.
 func New(registry *pipeline.Registry, modulePath, outDir string) *Generator {
+	// Clusters first: mutually recursive namespaces are merged into single packages,
+	// which makes the package graph acyclic, which is why the blocked set that follows
+	// comes back empty.
+	clusters := pipeline.ComputeClusters(registry)
 	return &Generator{
 		registry: registry,
+		clusters: clusters,
 		mapper: &typemap.Mapper{
 			Registry:   registry,
 			ModulePath: modulePath,
-			Blocked:    pipeline.ComputeBlockedImports(registry),
+			Clusters:   clusters,
+			Blocked:    pipeline.ComputeBlockedImports(registry, clusters),
 		},
 		outDir: outDir,
 	}
 }
 
+// Clusters exposes the namespace-to-package mapping, for reporting.
+func (g *Generator) Clusters() *pipeline.Clusters { return g.clusters }
+
 // Blocked exposes the severed import edges, for reporting.
 func (g *Generator) Blocked() map[string]map[string]bool { return g.mapper.Blocked }
 
-// EmitAll generates every loaded namespace, or — when filter is non-empty — the
-// filter set plus the transitive closure of namespaces its EMITTED members
-// reference. The closure is not optional: a generated package that imports one
-// which was not generated does not compile.
-func (g *Generator) EmitAll(filter map[string]bool) (int, error) {
+// EmitAll generates every loaded namespace, or — when filter is non-empty — the filter
+// set plus the transitive closure of namespaces its EMITTED members reference. The
+// closure is not optional: a generated package that imports one which was not generated
+// does not compile.
+//
+// fullSweep prunes stale generated files across the WHOLE output tree rather than only
+// inside the directories this run wrote. It must be set whenever the run covers the
+// complete pinned surface, because a change to how namespaces map onto packages MOVES
+// packages — and the files left at the old paths still compile, so nothing else would
+// notice them.
+func (g *Generator) EmitAll(filter map[string]bool, fullSweep bool) (int, error) {
 	g.writtenFiles = map[string]bool{}
 	g.referenced = map[string]bool{}
 	emitted := map[string]bool{}
 
+	// The worklist is in PACKAGES, not namespaces: a cluster's members are emitted
+	// together or not at all, since they reference each other without imports.
 	pending := make([]string, 0, len(g.registry.Namespaces))
+	seed := func(namespace string) {
+		if g.registry.ByNamespace[namespace] == nil {
+			return
+		}
+		pending = append(pending, g.clusters.PackageOf(namespace))
+	}
 	if len(filter) > 0 {
 		for namespace := range filter {
-			pending = append(pending, namespace)
+			if g.registry.ByNamespace[namespace] == nil {
+				return 0, fmt.Errorf(
+					"root namespace %s is not in the loaded metadata (re-run ingest without a filter)", namespace)
+			}
+			seed(namespace)
 		}
 	} else {
 		for _, meta := range g.registry.Namespaces {
-			pending = append(pending, meta.Namespace)
+			seed(meta.Namespace)
 		}
 	}
 	sort.Strings(pending)
 
 	for len(pending) > 0 {
-		namespace := pending[0]
+		pkg := pending[0]
 		pending = pending[1:]
-		if emitted[namespace] {
+		if emitted[pkg] {
 			continue
 		}
-		meta := g.registry.ByNamespace[namespace]
-		if meta == nil {
-			return len(emitted), fmt.Errorf(
-				"referenced namespace %s is not in the loaded metadata (re-run ingest without a filter)", namespace)
-		}
-		emitted[namespace] = true
-		if err := g.emitNamespace(meta); err != nil {
-			return len(emitted), fmt.Errorf("emitting %s: %w", namespace, err)
+		emitted[pkg] = true
+		if err := g.emitPackage(pkg); err != nil {
+			return len(emitted), fmt.Errorf("emitting %s: %w", pkg, err)
 		}
 		var discovered []string
 		for referenced := range g.referenced {
-			if !emitted[referenced] {
-				discovered = append(discovered, referenced)
+			if target := g.clusters.PackageOf(referenced); !emitted[target] {
+				discovered = append(discovered, target)
 			}
 		}
 		sort.Strings(discovered)
@@ -136,9 +159,8 @@ func (g *Generator) EmitAll(filter map[string]bool) (int, error) {
 	}
 
 	// Remove generated files from earlier runs this run did not rewrite: renamed
-	// constructs, removed namespaces. A filtered run prunes only inside the
-	// packages it emitted; a full run sweeps the whole tree.
-	if err := g.pruneStale(len(filter) == 0); err != nil {
+	// constructs, removed namespaces, and packages that moved.
+	if err := g.pruneStale(fullSweep || len(filter) == 0); err != nil {
 		return len(emitted), err
 	}
 	sort.Strings(g.Diagnostics)
@@ -193,20 +215,42 @@ func (g *Generator) pruneStale(fullSweep bool) error {
 	return nil
 }
 
-// emitNamespace writes one namespace's package: doc.go plus the per-construct
-// files, each only when non-empty.
-func (g *Generator) emitNamespace(meta *wasdkmeta.NamespaceMeta) error {
-	g.prepareNamespaceClaims(meta)
-	packageName := naming.PackageName(meta.Namespace)
-	packageDir := filepath.Join(g.outDir, filepath.FromSlash(naming.PackagePath(meta.Namespace)))
+// emitPackage writes one Go package: doc.go plus the per-construct files, each only
+// when non-empty.
+//
+// A package carries every namespace in its cluster. Mutually recursive namespaces are
+// emitted together because Go's package is its unit of mutual recursion — see
+// pipeline.ComputeClusters — so the fourteen Microsoft.UI.Xaml.* namespaces become one
+// package, exactly as they are one assembly in the SDK itself.
+//
+// Every member's constructs are built before the generic-instantiation worklist is
+// drained, because an instantiation requested while building the last member still has
+// to land in the same file.
+func (g *Generator) emitPackage(pkg string) error {
+	members := g.clusters.Members(pkg)
+	metas := make([]*wasdkmeta.NamespaceMeta, 0, len(members))
+	for _, namespace := range members {
+		if meta := g.registry.ByNamespace[namespace]; meta != nil {
+			metas = append(metas, meta)
+		}
+	}
+	if len(metas) == 0 {
+		return fmt.Errorf("package %s has no loaded namespaces (re-run ingest without a filter)", pkg)
+	}
 
-	// Enums: String() uses fmt. writeFile prunes the import when the package has
-	// no enums, and the body when there is nothing to write.
+	g.preparePackageClaims(metas)
+	packageName := naming.PackageName(pkg)
+	packageDir := filepath.Join(g.outDir, filepath.FromSlash(naming.PackagePath(pkg)))
+
+	// Enums: String() uses fmt. writeFile prunes the import when the package has no
+	// enums, and the body when there is nothing to write.
 	enumImports := typemap.ImportSet{"fmt": {Path: "fmt"}}
 	var enumBody strings.Builder
-	for _, model := range g.buildEnumModels(meta) {
-		if err := renderInto(&enumBody, render.Enum, model); err != nil {
-			return err
+	for _, meta := range metas {
+		for _, model := range g.buildEnumModels(meta) {
+			if err := renderInto(&enumBody, render.Enum, model); err != nil {
+				return err
+			}
 		}
 	}
 	if err := g.writeFile(packageDir, packageName+"_enums.go", packageName, enumImports, enumBody.String()); err != nil {
@@ -215,9 +259,11 @@ func (g *Generator) emitNamespace(meta *wasdkmeta.NamespaceMeta) error {
 
 	structImports := typemap.ImportSet{}
 	var structBody strings.Builder
-	for _, model := range g.buildStructModels(meta, structImports) {
-		if err := renderInto(&structBody, render.Struct, model); err != nil {
-			return err
+	for _, meta := range metas {
+		for _, model := range g.buildStructModels(meta, structImports) {
+			if err := renderInto(&structBody, render.Struct, model); err != nil {
+				return err
+			}
 		}
 	}
 	if err := g.writeFile(packageDir, packageName+"_structs.go", packageName, structImports, structBody.String()); err != nil {
@@ -226,9 +272,11 @@ func (g *Generator) emitNamespace(meta *wasdkmeta.NamespaceMeta) error {
 
 	interfaceImports := typemap.ImportSet{}
 	var interfaceBody strings.Builder
-	for _, model := range g.buildInterfaceModels(meta, interfaceImports) {
-		if err := renderInto(&interfaceBody, render.Interface, model); err != nil {
-			return err
+	for _, meta := range metas {
+		for _, model := range g.buildInterfaceModels(meta, interfaceImports) {
+			if err := renderInto(&interfaceBody, render.Interface, model); err != nil {
+				return err
+			}
 		}
 	}
 	if err := g.writeFile(packageDir, packageName+"_interfaces.go", packageName, interfaceImports, interfaceBody.String()); err != nil {
@@ -237,21 +285,24 @@ func (g *Generator) emitNamespace(meta *wasdkmeta.NamespaceMeta) error {
 
 	classImports := typemap.ImportSet{}
 	var classBody strings.Builder
-	for _, model := range g.buildClassModels(meta, classImports) {
-		if err := renderInto(&classBody, render.Class, model); err != nil {
-			return err
+	for _, meta := range metas {
+		for _, model := range g.buildClassModels(meta, classImports) {
+			if err := renderInto(&classBody, render.Class, model); err != nil {
+				return err
+			}
 		}
 	}
 	if err := g.writeFile(packageDir, packageName+"_classes.go", packageName, classImports, classBody.String()); err != nil {
 		return err
 	}
 
-	// Generic instantiations requested by the members built above, plus the
-	// transitive ones their synthesized methods surface. The worklist is drained
-	// only after every requester has run.
+	// Generic instantiations requested by everything above, plus the transitive ones
+	// their synthesized methods surface. Drained only after every member has run, and
+	// resolved in the representative's namespace — which is the same package, so
+	// qualification is identical whichever member asked.
 	pinterfaceImports := typemap.ImportSet{}
 	var pinterfaceBody strings.Builder
-	for _, model := range g.buildPinterfaceModels(meta, pinterfaceImports) {
+	for _, model := range g.buildPinterfaceModels(metas[0], pinterfaceImports) {
 		if err := renderInto(&pinterfaceBody, render.Interface, model); err != nil {
 			return err
 		}
@@ -260,9 +311,9 @@ func (g *Generator) emitNamespace(meta *wasdkmeta.NamespaceMeta) error {
 		return err
 	}
 
-	// Delegate handlers grounded by the event accessors and delegate parameters
-	// built above. The models were built eagerly at request time; sort for
-	// determinism, since requests arrive in map-iteration order.
+	// Delegate handlers grounded by the event accessors and delegate parameters above.
+	// The models were built eagerly at request time; sort for determinism, since
+	// requests arrive in map-iteration order.
 	sort.Slice(g.pdelModels, func(i, j int) bool { return g.pdelModels[i].TypeName < g.pdelModels[j].TypeName })
 	var delegateBody strings.Builder
 	for _, model := range g.pdelModels {
@@ -274,21 +325,47 @@ func (g *Generator) emitNamespace(meta *wasdkmeta.NamespaceMeta) error {
 		return err
 	}
 
-	// Delegate TypeDefs are not emitted into their home namespace: consumers
-	// ground their own copies on demand instead. Record one diagnostic each so
-	// the absence is accounted for rather than silent.
-	for _, name := range sortedKeys(meta.Delegates) {
-		g.diag("delegate-type-skipped", "%s.%s", meta.Namespace, name)
+	// Delegate TypeDefs are not emitted into their home namespace: consumers ground
+	// their own copies on demand instead. Record one diagnostic each so the absence is
+	// accounted for rather than silent.
+	for _, meta := range metas {
+		for _, name := range sortedKeys(meta.Delegates) {
+			g.diag("delegate-type-skipped", "%s.%s", meta.Namespace, name)
+		}
 	}
 
-	// The package comment must sit above the package clause, which fileasm's
-	// scaffold does not model, so doc.go is written directly.
-	doc := fmt.Sprintf(
-		"%s\n\n//go:build %s\n\n// Package %s binds the %s API surface of the Windows App SDK.\npackage %s\n",
-		fileasm.Header, fileasm.GeneratedBuildTag, packageName, meta.Namespace, packageName)
+	// The package comment must sit above the package clause, which fileasm's scaffold
+	// does not model, so doc.go is written directly.
 	docPath := filepath.Join(packageDir, "doc.go")
 	g.writtenFiles[docPath] = true
-	return writeRawFile(docPath, []byte(doc))
+	return writeRawFile(docPath, []byte(g.packageDoc(packageName, pkg, members)))
+}
+
+// packageDoc renders doc.go. A multi-namespace package says which namespaces it
+// carries and why they are together, because a reader looking for
+// Microsoft.UI.Xaml.Controls needs to know it is here.
+func (g *Generator) packageDoc(packageName, pkg string, members []string) string {
+	var doc strings.Builder
+	fmt.Fprintf(&doc, "%s\n\n//go:build %s\n\n", fileasm.Header, fileasm.GeneratedBuildTag)
+	if len(members) == 1 {
+		fmt.Fprintf(&doc, "// Package %s binds the %s API surface of the Windows App SDK.\n", packageName, pkg)
+		fmt.Fprintf(&doc, "package %s\n", packageName)
+		return doc.String()
+	}
+	fmt.Fprintf(&doc, "// Package %s binds the %s API surface of the Windows App SDK,\n", packageName, pkg)
+	fmt.Fprintf(&doc, "// including every namespace beneath it that references it back:\n//\n")
+	for _, member := range members {
+		fmt.Fprintf(&doc, "//   - %s\n", member)
+	}
+	doc.WriteString("//\n" +
+		"// They share one package because they are mutually recursive, and a Go package is\n" +
+		"// the unit of mutual recursion — the same role the assembly plays in the SDK\n" +
+		"// itself, which ships all of these together. Splitting them would require severing\n" +
+		"// reference cycles, and the members lost to that are the ones that matter:\n" +
+		"// UIElement's pointer, keyboard and manipulation events all take argument types\n" +
+		"// declared in Microsoft.UI.Xaml.Input.\n")
+	fmt.Fprintf(&doc, "package %s\n", packageName)
+	return doc.String()
 }
 
 // renderInto appends one rendered construct to the file body.
@@ -397,9 +474,15 @@ func writeRawFile(path string, content []byte) error {
 	return os.WriteFile(path, content, 0o644)
 }
 
-// prepareNamespaceClaims resets the per-namespace state and pre-claims every
-// top-level type name, so a type always wins a type-versus-value collision.
-func (g *Generator) prepareNamespaceClaims(meta *wasdkmeta.NamespaceMeta) {
+// preparePackageClaims resets the per-package state and pre-claims every top-level
+// type name across every namespace the package carries, so a type always wins a
+// type-versus-value collision.
+//
+// Claims are package-wide, not namespace-wide, because Go has one package-level scope.
+// Merging the fourteen XAML namespaces put 2,937 type names in one scope with zero
+// collisions — the namespaces partition the names cleanly — but the claim machinery is
+// what would catch it if a future SDK stopped being so tidy.
+func (g *Generator) preparePackageClaims(metas []*wasdkmeta.NamespaceMeta) {
 	g.claimedNames = map[string]bool{}
 	g.typeNames = map[string]bool{}
 	g.pinstByName = map[string]*wasdkmeta.TypeRef{}
@@ -417,24 +500,26 @@ func (g *Generator) prepareNamespaceClaims(meta *wasdkmeta.NamespaceMeta) {
 			g.typeNames[exported] = true
 		}
 	}
-	for _, name := range sortedKeys(meta.Enums) {
-		claimType(name)
-	}
-	for _, name := range sortedKeys(meta.Structs) {
-		claimType(name)
-	}
-	for _, name := range sortedKeys(meta.Interfaces) {
-		claimType(name)
-	}
-	for _, name := range sortedKeys(meta.Classes) {
-		// A class that can never emit a type — statics-only, no default interface,
-		// where the accessors are the whole projection — must not hold a claim. A
-		// statics-only class X with statics interface IX would otherwise block its
-		// own X() accessor.
-		if meta.Classes[name].DefaultInterface == nil {
-			continue
+	for _, meta := range metas {
+		for _, name := range sortedKeys(meta.Enums) {
+			claimType(name)
 		}
-		claimType(name)
+		for _, name := range sortedKeys(meta.Structs) {
+			claimType(name)
+		}
+		for _, name := range sortedKeys(meta.Interfaces) {
+			claimType(name)
+		}
+		for _, name := range sortedKeys(meta.Classes) {
+			// A class that can never emit a type — statics-only, no default interface,
+			// where the accessors are the whole projection — must not hold a claim. A
+			// statics-only class X with statics interface IX would otherwise block its
+			// own X() accessor.
+			if meta.Classes[name].DefaultInterface == nil {
+				continue
+			}
+			claimType(name)
+		}
 	}
 }
 
