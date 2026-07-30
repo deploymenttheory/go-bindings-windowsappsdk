@@ -7,8 +7,9 @@ interface can be written in Go.
 
 No Visual Studio, no .NET SDK, no XAML compiler, no cgo. Just `go build`.
 
-> **Status: early.** The metadata pipeline works; no Go is emitted yet. See
-> [Where this is](#where-this-is) for what works today and what does not.
+> **Status: early.** The generator works end to end — 77 packages of compiling
+> Go — but there is no ergonomic layer yet, and inherited members are not reached
+> yet. See [Where this is](#where-this-is).
 
 ## The family
 
@@ -58,29 +59,41 @@ without which `DispatcherQueue.TryEnqueue` could not be called at all.
 
 ## Where this is
 
-The metadata pipeline is done; nothing is emitted as Go yet.
-
-36 winmds are committed, covering **77 namespaces and 4,374 types** — 2,568
-interfaces, 1,286 classes, 392 enums, 69 structs, 59 delegates. `ingest`
-projects them into one committed JSON file per namespace, and **every reference
-resolves**: no unresolved type references at all, and 4,500 `Windows.*`
-references resolving into the pinned go-bindings-winrt.
+The generator runs end to end. 36 winmds are committed, covering **77 namespaces
+and 4,374 types** — 2,568 interfaces, 1,286 classes, 392 enums, 69 structs, 59
+delegates — and they become **77 Go packages, 384 files, all compiling**.
 
 ```console
 $ go run ./cmd/generate ingest
 Windows.* universe: 12643 types from github.com/deploymenttheory/go-bindings-winrt v0.4.0
 ingested 77 namespaces → metadata\wasdk (32 diagnostics)
-  attribute-type-skipped       18
-  foreign-namespace-ref        14
 
 $ go run ./cmd/generate validate --external
 validate: 77 namespaces, 0 errors, 0 warnings
 external: 4500 references resolved against github.com/deploymenttheory/go-bindings-winrt v0.4.0
+
+$ go run ./cmd/generate bindings
+severed 18 import edges across 8 namespaces (references over them degrade)
+emitted 77 packages → bindings\winui (755 diagnostics)
+
+$ go build ./...
 ```
 
-The 14 remaining references are all to `Microsoft.Web.WebView2.Core`, which
-ships in its own NuGet package and has no Go bindings; they are recorded as a
-permanent absence rather than left to look like a bug.
+**Every reference resolves.** There are no unresolved type references anywhere,
+and 4,500 `Windows.*` references resolve into the pinned go-bindings-winrt. The
+only references that go nowhere are to `Microsoft.Web.WebView2.Core`, which ships
+in its own NuGet package and has no Go bindings — recorded as a permanent absence
+rather than left to look like a bug.
+
+The 755 diagnostics are members that cannot be represented, each with a reason,
+and each leaving an audit comment at its own vtable slot so nothing renumbers.
+The largest groups are conformant arrays (255), severed import cycles (191) and
+open generics (123). CI ratchets the set: a new one fails the build.
+
+What you can do today, and what you cannot: a `Button` can be constructed and its
+`Click` handled in Go, because `Click` is declared on the interface `Button`'s own
+default interface requires. Reaching `Content`, which comes from further up the
+inheritance chain, still needs a hand-written `QueryInterface` — that is M5.
 
 The order of work, and why:
 
@@ -90,8 +103,8 @@ The order of work, and why:
 | M1 | **Feasibility spike** | done — a Go executable bootstraps the SDK and activates `Microsoft.UI.Xaml` types, in CI. |
 | M2 | `fetch-metadata` | done — resolves the nine-package fan-out from the `.nuspec`; winmds and bootstrapper. |
 | M3 | `ingest` | done — winmds → committed JSON, `Windows.*` resolved against go-bindings-winrt. |
-| **M4** | `bindings` | ← you are here. JSON → Go. |
-| M5 | Class hierarchy | The base-class chain, without which a `Button` cannot reach `Click`. |
+| M4 | `bindings` | done — JSON → 77 packages of compiling Go. |
+| **M5** | Class hierarchy | ← you are here. The base-class chain, without which a `Button` cannot reach `Content`. |
 | M6 | Runtime layer | Apartment control and the application loop, over generated bindings. |
 | M7 | Deriving from WinRT classes | Needed for custom controls; requires work in go-bindings-winrt first. |
 

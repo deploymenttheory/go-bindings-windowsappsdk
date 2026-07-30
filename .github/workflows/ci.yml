@@ -32,8 +32,13 @@ jobs:
       - name: Build
         run: go build ./...
 
-      - name: Vet
-        run: go vet ./...
+      # Vet everything hand-written. The generated packages are excluded because
+      # the delegate adapters convert a raw uintptr to a typed pointer, which
+      # trips vet's unsafe.Pointer heuristic by design: that word IS a native
+      # object pointer the event source owns, arriving through a COM callback,
+      # and there is no Go pointer for it to have come from.
+      - name: Vet (non-generated packages)
+        run: go vet ./cmd/... ./internal/... ./bindings/runtime/...
 
       # super-linter cannot check formatting here: it runs on Linux, where the
       # build tags exclude every file. So it is checked on Windows instead.
@@ -133,11 +138,19 @@ jobs:
       - name: Resolve every reference
         run: go run ./cmd/generate resolve
 
-      # The point of committing the IR: regenerating it must reproduce what is
-      # in the tree byte for byte, so a metadata change is always a reviewable
-      # diff and never a surprise inside generated Go.
-      - name: Ingested metadata must match the committed tree
+      # One command clears and re-emits the committed bindings tree — the closure
+      # of the roots pinned in metadata/emit-roots.txt — and enforces the
+      # diagnostics ratchet: a projection this size always has members it cannot
+      # represent, so the useful question is whether there are MORE than last
+      # time.
+      - name: Regenerate the bindings, with the ratchet
+        run: go run ./cmd/generate bindings --diagnostics-baseline metadata/diagnostics-baseline.json
+
+      # The point of committing both trees: regenerating must reproduce them byte
+      # for byte, so a metadata change is always a reviewable diff and never a
+      # surprise inside generated Go.
+      - name: Generated output must match the committed tree
         shell: bash
         run: |
-          git add -N metadata/wasdk
-          git diff --exit-code --stat -- metadata/wasdk
+          git add -N bindings metadata/wasdk
+          git diff --exit-code --stat -- bindings metadata/wasdk

@@ -4,6 +4,8 @@
 //	generate fetch-bootstrap   download the redistributable bootstrapper + headers
 //	generate ingest            project the winmds into per-namespace .wasdkmeta.json files
 //	generate validate          structural integrity checks over the metadata
+//	generate resolve           run every type reference through the typemap
+//	generate bindings          emit the Go bindings from the metadata (self-cleaning)
 //	generate list              list the ingested namespaces with construct counts
 //
 // The stages are separate commands rather than one because they have different
@@ -37,6 +39,8 @@ func main() {
 		err = runValidate(os.Args[2:])
 	case "resolve":
 		err = runResolve(os.Args[2:])
+	case "bindings":
+		err = runBindings(os.Args[2:])
 	case "list":
 		err = runList(os.Args[2:])
 	default:
@@ -57,5 +61,7 @@ commands:
   fetch-bootstrap  download the redistributable bootstrapper into metadata/bootstrap
   ingest           project the winmds into per-namespace .wasdkmeta.json files
   validate         structural integrity checks over the metadata
+  resolve          run every type reference through the typemap and report
+  bindings         emit the Go bindings from the metadata (self-cleaning)
   list             list the ingested namespaces with construct counts`)
 }

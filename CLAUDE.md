@@ -27,12 +27,13 @@ generated for it.
 
 ## Status
 
-M3. The winmds are committed (36 files, 77 namespaces, 4,374 API types) and
-ingest projects them into committed JSON with every reference resolved — no
-unresolved type references at all, and 4,500 `Windows.*` references resolving
-into go-bindings-winrt. Nothing is emitted as Go yet. `README.md` has the
-milestone order; the detail below describes the design being built toward, and
-is written down now so it does not have to be rediscovered.
+M4. The winmds are committed (36 files, 77 namespaces, 4,374 API types), ingest
+projects them into committed JSON with every reference resolved, and the emitter
+produces **77 Go packages / 384 files** that compile. `Button` can be
+constructed and its `Click` handled from Go.
+
+`README.md` has the milestone order; the detail below describes the design being
+built toward, and is written down now so it does not have to be rediscovered.
 
 ## Commands
 
@@ -42,13 +43,20 @@ go run ./cmd/generate fetch-bootstrap    # the redistributable bootstrapper
 go run ./cmd/generate ingest             # winmds → metadata/wasdk/*.json
 go run ./cmd/generate validate --external
 go run ./cmd/generate resolve             # every reference → a Go type, or a reason
+go run ./cmd/generate bindings --diagnostics-baseline metadata/diagnostics-baseline.json
 go run ./cmd/generate list
 go run ./cmd/inspect --dir metadata/winmd --namespaces
 
 go build ./...
-go vet ./...
+go vet ./cmd/... ./internal/... ./bindings/runtime/...   # NOT ./... — see below
 go test ./...    # makes real WinRT calls; needs Windows
 ```
+
+`go vet ./...` does not pass, and should not be made to. The generated delegate
+adapters convert a raw `uintptr` to a typed pointer, which trips vet's
+`unsafe.Pointer` heuristic by design: that word IS a native object pointer the
+event source owns, arriving through a COM callback, and there is no Go pointer
+for it to have come from. Vet the hand-written packages.
 
 The bootstrap tests need two things the repository cannot carry, and they fail
 differently:
