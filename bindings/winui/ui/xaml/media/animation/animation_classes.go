@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -29,6 +30,20 @@ func NewAddDeleteThemeTransition() (*AddDeleteThemeTransition, error) {
 	return winrt.QueryInterface[AddDeleteThemeTransition](unsafe.Pointer(instance), &IID_IAddDeleteThemeTransition)
 }
 
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *AddDeleteThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AddDeleteThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // BackEase is the Microsoft.UI.Xaml.Media.Animation.BackEase runtime class, surfaced through its
 // default interface IBackEase. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -45,6 +60,20 @@ func NewBackEase() (*BackEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BackEase](unsafe.Pointer(instance), &IID_IBackEase)
+}
+
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *BackEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BackEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BackEaseStatics returns the Microsoft.UI.Xaml.Media.Animation.IBackEaseStatics statics of the
@@ -64,6 +93,13 @@ func BackEaseStatics() (*IBackEaseStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type BasicConnectedAnimationConfiguration struct {
 	IBasicConnectedAnimationConfiguration
+}
+
+// AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ConnectedAnimationConfiguration.
+// The returned reference is owned by the caller.
+func (self *BasicConnectedAnimationConfiguration) AsConnectedAnimationConfiguration() (*IConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IConnectedAnimationConfiguration)
 }
 
 // NewBasicConnectedAnimationConfiguration constructs a Microsoft.UI.Xaml.Media.Animation.BasicConnectedAnimationConfiguration instance through
@@ -109,6 +145,20 @@ func NewBeginStoryboard() (*BeginStoryboard, error) {
 	return winrt.QueryInterface[BeginStoryboard](unsafe.Pointer(instance), &IID_IBeginStoryboard)
 }
 
+// AsTriggerAction queries the instance's uixaml.ITriggerAction interface.
+// Inherited from Microsoft.UI.Xaml.TriggerAction.
+// The returned reference is owned by the caller.
+func (self *BeginStoryboard) AsTriggerAction() (*uixaml.ITriggerAction, error) {
+	return winrt.QueryInterface[uixaml.ITriggerAction](unsafe.Pointer(self), &uixaml.IID_ITriggerAction)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BeginStoryboard) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // BeginStoryboardStatics returns the Microsoft.UI.Xaml.Media.Animation.IBeginStoryboardStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.BeginStoryboard runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -137,6 +187,20 @@ func NewBounceEase() (*BounceEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BounceEase](unsafe.Pointer(instance), &IID_IBounceEase)
+}
+
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *BounceEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BounceEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // BounceEaseStatics returns the Microsoft.UI.Xaml.Media.Animation.IBounceEaseStatics statics of the
@@ -169,6 +233,20 @@ func NewCircleEase() (*CircleEase, error) {
 	return winrt.QueryInterface[CircleEase](unsafe.Pointer(instance), &IID_ICircleEase)
 }
 
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *CircleEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CircleEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ColorAnimation is the Microsoft.UI.Xaml.Media.Animation.ColorAnimation runtime class, surfaced through its
 // default interface IColorAnimation. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -185,6 +263,20 @@ func NewColorAnimation() (*ColorAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ColorAnimation](unsafe.Pointer(instance), &IID_IColorAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *ColorAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ColorAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IColorAnimationStatics statics of the
@@ -217,6 +309,20 @@ func NewColorAnimationUsingKeyFrames() (*ColorAnimationUsingKeyFrames, error) {
 	return winrt.QueryInterface[ColorAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IColorAnimationUsingKeyFrames)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *ColorAnimationUsingKeyFrames) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorAnimationUsingKeyFrames) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ColorAnimationUsingKeyFramesStatics returns the Microsoft.UI.Xaml.Media.Animation.IColorAnimationUsingKeyFramesStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.ColorAnimationUsingKeyFrames runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -234,6 +340,13 @@ func ColorAnimationUsingKeyFramesStatics() (*IColorAnimationUsingKeyFramesStatic
 // the embedded IInspectable → IUnknown chain).
 type ColorKeyFrame struct {
 	IColorKeyFrame
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ColorKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IColorKeyFrameStatics statics of the
@@ -289,6 +402,27 @@ func NewCommonNavigationTransitionInfo() (*CommonNavigationTransitionInfo, error
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[CommonNavigationTransitionInfo](unsafe.Pointer(instance), &IID_ICommonNavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *CommonNavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *CommonNavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
+	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CommonNavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CommonNavigationTransitionInfoStatics returns the Microsoft.UI.Xaml.Media.Animation.ICommonNavigationTransitionInfoStatics statics of the
@@ -354,6 +488,20 @@ func NewContentThemeTransition() (*ContentThemeTransition, error) {
 	return winrt.QueryInterface[ContentThemeTransition](unsafe.Pointer(instance), &IID_IContentThemeTransition)
 }
 
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *ContentThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ContentThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ContentThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.IContentThemeTransitionStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.ContentThemeTransition runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -382,6 +530,27 @@ func NewContinuumNavigationTransitionInfo() (*ContinuumNavigationTransitionInfo,
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ContinuumNavigationTransitionInfo](unsafe.Pointer(instance), &IID_IContinuumNavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *ContinuumNavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *ContinuumNavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
+	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ContinuumNavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ContinuumNavigationTransitionInfoStatics returns the Microsoft.UI.Xaml.Media.Animation.IContinuumNavigationTransitionInfoStatics statics of the
@@ -414,11 +583,32 @@ func NewCubicEase() (*CubicEase, error) {
 	return winrt.QueryInterface[CubicEase](unsafe.Pointer(instance), &IID_ICubicEase)
 }
 
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *CubicEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CubicEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DirectConnectedAnimationConfiguration is the Microsoft.UI.Xaml.Media.Animation.DirectConnectedAnimationConfiguration runtime class, surfaced through its
 // default interface IDirectConnectedAnimationConfiguration. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DirectConnectedAnimationConfiguration struct {
 	IDirectConnectedAnimationConfiguration
+}
+
+// AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ConnectedAnimationConfiguration.
+// The returned reference is owned by the caller.
+func (self *DirectConnectedAnimationConfiguration) AsConnectedAnimationConfiguration() (*IConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IConnectedAnimationConfiguration)
 }
 
 // NewDirectConnectedAnimationConfiguration constructs a Microsoft.UI.Xaml.Media.Animation.DirectConnectedAnimationConfiguration instance through
@@ -464,6 +654,20 @@ func NewDiscreteColorKeyFrame() (*DiscreteColorKeyFrame, error) {
 	return winrt.QueryInterface[DiscreteColorKeyFrame](unsafe.Pointer(instance), &IID_IDiscreteColorKeyFrame)
 }
 
+// AsColorKeyFrame queries the instance's IColorKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
+// The returned reference is owned by the caller.
+func (self *DiscreteColorKeyFrame) AsColorKeyFrame() (*IColorKeyFrame, error) {
+	return winrt.QueryInterface[IColorKeyFrame](unsafe.Pointer(self), &IID_IColorKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DiscreteColorKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DiscreteDoubleKeyFrame is the Microsoft.UI.Xaml.Media.Animation.DiscreteDoubleKeyFrame runtime class, surfaced through its
 // default interface IDiscreteDoubleKeyFrame. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -480,6 +684,20 @@ func NewDiscreteDoubleKeyFrame() (*DiscreteDoubleKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DiscreteDoubleKeyFrame](unsafe.Pointer(instance), &IID_IDiscreteDoubleKeyFrame)
+}
+
+// AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrame.
+// The returned reference is owned by the caller.
+func (self *DiscreteDoubleKeyFrame) AsDoubleKeyFrame() (*IDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IDoubleKeyFrame](unsafe.Pointer(self), &IID_IDoubleKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DiscreteDoubleKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // DiscreteObjectKeyFrame is the Microsoft.UI.Xaml.Media.Animation.DiscreteObjectKeyFrame runtime class, surfaced through its
@@ -500,6 +718,20 @@ func NewDiscreteObjectKeyFrame() (*DiscreteObjectKeyFrame, error) {
 	return winrt.QueryInterface[DiscreteObjectKeyFrame](unsafe.Pointer(instance), &IID_IDiscreteObjectKeyFrame)
 }
 
+// AsObjectKeyFrame queries the instance's IObjectKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ObjectKeyFrame.
+// The returned reference is owned by the caller.
+func (self *DiscreteObjectKeyFrame) AsObjectKeyFrame() (*IObjectKeyFrame, error) {
+	return winrt.QueryInterface[IObjectKeyFrame](unsafe.Pointer(self), &IID_IObjectKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DiscreteObjectKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DiscretePointKeyFrame is the Microsoft.UI.Xaml.Media.Animation.DiscretePointKeyFrame runtime class, surfaced through its
 // default interface IDiscretePointKeyFrame. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -518,6 +750,20 @@ func NewDiscretePointKeyFrame() (*DiscretePointKeyFrame, error) {
 	return winrt.QueryInterface[DiscretePointKeyFrame](unsafe.Pointer(instance), &IID_IDiscretePointKeyFrame)
 }
 
+// AsPointKeyFrame queries the instance's IPointKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.PointKeyFrame.
+// The returned reference is owned by the caller.
+func (self *DiscretePointKeyFrame) AsPointKeyFrame() (*IPointKeyFrame, error) {
+	return winrt.QueryInterface[IPointKeyFrame](unsafe.Pointer(self), &IID_IPointKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DiscretePointKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DoubleAnimation is the Microsoft.UI.Xaml.Media.Animation.DoubleAnimation runtime class, surfaced through its
 // default interface IDoubleAnimation. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -534,6 +780,20 @@ func NewDoubleAnimation() (*DoubleAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DoubleAnimation](unsafe.Pointer(instance), &IID_IDoubleAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DoubleAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DoubleAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // DoubleAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IDoubleAnimationStatics statics of the
@@ -566,6 +826,20 @@ func NewDoubleAnimationUsingKeyFrames() (*DoubleAnimationUsingKeyFrames, error) 
 	return winrt.QueryInterface[DoubleAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IDoubleAnimationUsingKeyFrames)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DoubleAnimationUsingKeyFrames) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DoubleAnimationUsingKeyFrames) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DoubleAnimationUsingKeyFramesStatics returns the Microsoft.UI.Xaml.Media.Animation.IDoubleAnimationUsingKeyFramesStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.DoubleAnimationUsingKeyFrames runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -583,6 +857,13 @@ func DoubleAnimationUsingKeyFramesStatics() (*IDoubleAnimationUsingKeyFramesStat
 // the embedded IInspectable → IUnknown chain).
 type DoubleKeyFrame struct {
 	IDoubleKeyFrame
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DoubleKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // DoubleKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IDoubleKeyFrameStatics statics of the
@@ -640,6 +921,20 @@ func NewDragItemThemeAnimation() (*DragItemThemeAnimation, error) {
 	return winrt.QueryInterface[DragItemThemeAnimation](unsafe.Pointer(instance), &IID_IDragItemThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DragItemThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DragItemThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DragItemThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IDragItemThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.DragItemThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -668,6 +963,20 @@ func NewDragOverThemeAnimation() (*DragOverThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DragOverThemeAnimation](unsafe.Pointer(instance), &IID_IDragOverThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DragOverThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DragOverThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // DragOverThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IDragOverThemeAnimationStatics statics of the
@@ -700,6 +1009,27 @@ func NewDrillInNavigationTransitionInfo() (*DrillInNavigationTransitionInfo, err
 	return winrt.QueryInterface[DrillInNavigationTransitionInfo](unsafe.Pointer(instance), &IID_IDrillInNavigationTransitionInfo)
 }
 
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *DrillInNavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *DrillInNavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
+	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DrillInNavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DrillInThemeAnimation is the Microsoft.UI.Xaml.Media.Animation.DrillInThemeAnimation runtime class, surfaced through its
 // default interface IDrillInThemeAnimation. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -716,6 +1046,20 @@ func NewDrillInThemeAnimation() (*DrillInThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DrillInThemeAnimation](unsafe.Pointer(instance), &IID_IDrillInThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DrillInThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DrillInThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // DrillInThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IDrillInThemeAnimationStatics statics of the
@@ -748,6 +1092,20 @@ func NewDrillOutThemeAnimation() (*DrillOutThemeAnimation, error) {
 	return winrt.QueryInterface[DrillOutThemeAnimation](unsafe.Pointer(instance), &IID_IDrillOutThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DrillOutThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DrillOutThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DrillOutThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IDrillOutThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.DrillOutThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -776,6 +1134,20 @@ func NewDropTargetItemThemeAnimation() (*DropTargetItemThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DropTargetItemThemeAnimation](unsafe.Pointer(instance), &IID_IDropTargetItemThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *DropTargetItemThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DropTargetItemThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // DropTargetItemThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IDropTargetItemThemeAnimationStatics statics of the
@@ -808,6 +1180,20 @@ func NewEasingColorKeyFrame() (*EasingColorKeyFrame, error) {
 	return winrt.QueryInterface[EasingColorKeyFrame](unsafe.Pointer(instance), &IID_IEasingColorKeyFrame)
 }
 
+// AsColorKeyFrame queries the instance's IColorKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
+// The returned reference is owned by the caller.
+func (self *EasingColorKeyFrame) AsColorKeyFrame() (*IColorKeyFrame, error) {
+	return winrt.QueryInterface[IColorKeyFrame](unsafe.Pointer(self), &IID_IColorKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EasingColorKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // EasingColorKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IEasingColorKeyFrameStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.EasingColorKeyFrame runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -838,6 +1224,20 @@ func NewEasingDoubleKeyFrame() (*EasingDoubleKeyFrame, error) {
 	return winrt.QueryInterface[EasingDoubleKeyFrame](unsafe.Pointer(instance), &IID_IEasingDoubleKeyFrame)
 }
 
+// AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrame.
+// The returned reference is owned by the caller.
+func (self *EasingDoubleKeyFrame) AsDoubleKeyFrame() (*IDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IDoubleKeyFrame](unsafe.Pointer(self), &IID_IDoubleKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EasingDoubleKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // EasingDoubleKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IEasingDoubleKeyFrameStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.EasingDoubleKeyFrame runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -855,6 +1255,13 @@ func EasingDoubleKeyFrameStatics() (*IEasingDoubleKeyFrameStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type EasingFunctionBase struct {
 	IEasingFunctionBase
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EasingFunctionBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // EasingFunctionBaseStatics returns the Microsoft.UI.Xaml.Media.Animation.IEasingFunctionBaseStatics statics of the
@@ -887,6 +1294,20 @@ func NewEasingPointKeyFrame() (*EasingPointKeyFrame, error) {
 	return winrt.QueryInterface[EasingPointKeyFrame](unsafe.Pointer(instance), &IID_IEasingPointKeyFrame)
 }
 
+// AsPointKeyFrame queries the instance's IPointKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.PointKeyFrame.
+// The returned reference is owned by the caller.
+func (self *EasingPointKeyFrame) AsPointKeyFrame() (*IPointKeyFrame, error) {
+	return winrt.QueryInterface[IPointKeyFrame](unsafe.Pointer(self), &IID_IPointKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EasingPointKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // EasingPointKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IEasingPointKeyFrameStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.EasingPointKeyFrame runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -915,6 +1336,20 @@ func NewEdgeUIThemeTransition() (*EdgeUIThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[EdgeUIThemeTransition](unsafe.Pointer(instance), &IID_IEdgeUIThemeTransition)
+}
+
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *EdgeUIThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EdgeUIThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // EdgeUIThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.IEdgeUIThemeTransitionStatics statics of the
@@ -947,6 +1382,20 @@ func NewElasticEase() (*ElasticEase, error) {
 	return winrt.QueryInterface[ElasticEase](unsafe.Pointer(instance), &IID_IElasticEase)
 }
 
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *ElasticEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ElasticEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ElasticEaseStatics returns the Microsoft.UI.Xaml.Media.Animation.IElasticEaseStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.ElasticEase runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -975,6 +1424,27 @@ func NewEntranceNavigationTransitionInfo() (*EntranceNavigationTransitionInfo, e
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[EntranceNavigationTransitionInfo](unsafe.Pointer(instance), &IID_IEntranceNavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *EntranceNavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *EntranceNavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
+	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EntranceNavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // EntranceNavigationTransitionInfoStatics returns the Microsoft.UI.Xaml.Media.Animation.IEntranceNavigationTransitionInfoStatics statics of the
@@ -1007,6 +1477,20 @@ func NewEntranceThemeTransition() (*EntranceThemeTransition, error) {
 	return winrt.QueryInterface[EntranceThemeTransition](unsafe.Pointer(instance), &IID_IEntranceThemeTransition)
 }
 
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *EntranceThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *EntranceThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // EntranceThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.IEntranceThemeTransitionStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.EntranceThemeTransition runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1035,6 +1519,20 @@ func NewExponentialEase() (*ExponentialEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ExponentialEase](unsafe.Pointer(instance), &IID_IExponentialEase)
+}
+
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *ExponentialEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ExponentialEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ExponentialEaseStatics returns the Microsoft.UI.Xaml.Media.Animation.IExponentialEaseStatics statics of the
@@ -1067,6 +1565,20 @@ func NewFadeInThemeAnimation() (*FadeInThemeAnimation, error) {
 	return winrt.QueryInterface[FadeInThemeAnimation](unsafe.Pointer(instance), &IID_IFadeInThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *FadeInThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FadeInThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // FadeInThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IFadeInThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.FadeInThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1097,6 +1609,20 @@ func NewFadeOutThemeAnimation() (*FadeOutThemeAnimation, error) {
 	return winrt.QueryInterface[FadeOutThemeAnimation](unsafe.Pointer(instance), &IID_IFadeOutThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *FadeOutThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FadeOutThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // FadeOutThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IFadeOutThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.FadeOutThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1114,6 +1640,13 @@ func FadeOutThemeAnimationStatics() (*IFadeOutThemeAnimationStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type GravityConnectedAnimationConfiguration struct {
 	IGravityConnectedAnimationConfiguration
+}
+
+// AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ConnectedAnimationConfiguration.
+// The returned reference is owned by the caller.
+func (self *GravityConnectedAnimationConfiguration) AsConnectedAnimationConfiguration() (*IConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IConnectedAnimationConfiguration)
 }
 
 // NewGravityConnectedAnimationConfiguration constructs a Microsoft.UI.Xaml.Media.Animation.GravityConnectedAnimationConfiguration instance through
@@ -1159,6 +1692,13 @@ func NewKeySpline() (*KeySpline, error) {
 	return winrt.QueryInterface[KeySpline](unsafe.Pointer(instance), &IID_IKeySpline)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *KeySpline) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // KeyTimeHelper is the Microsoft.UI.Xaml.Media.Animation.KeyTimeHelper runtime class, surfaced through its
 // default interface IKeyTimeHelper. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1196,6 +1736,20 @@ func NewLinearColorKeyFrame() (*LinearColorKeyFrame, error) {
 	return winrt.QueryInterface[LinearColorKeyFrame](unsafe.Pointer(instance), &IID_ILinearColorKeyFrame)
 }
 
+// AsColorKeyFrame queries the instance's IColorKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
+// The returned reference is owned by the caller.
+func (self *LinearColorKeyFrame) AsColorKeyFrame() (*IColorKeyFrame, error) {
+	return winrt.QueryInterface[IColorKeyFrame](unsafe.Pointer(self), &IID_IColorKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LinearColorKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LinearDoubleKeyFrame is the Microsoft.UI.Xaml.Media.Animation.LinearDoubleKeyFrame runtime class, surfaced through its
 // default interface ILinearDoubleKeyFrame. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1212,6 +1766,20 @@ func NewLinearDoubleKeyFrame() (*LinearDoubleKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LinearDoubleKeyFrame](unsafe.Pointer(instance), &IID_ILinearDoubleKeyFrame)
+}
+
+// AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrame.
+// The returned reference is owned by the caller.
+func (self *LinearDoubleKeyFrame) AsDoubleKeyFrame() (*IDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IDoubleKeyFrame](unsafe.Pointer(self), &IID_IDoubleKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LinearDoubleKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // LinearPointKeyFrame is the Microsoft.UI.Xaml.Media.Animation.LinearPointKeyFrame runtime class, surfaced through its
@@ -1232,6 +1800,20 @@ func NewLinearPointKeyFrame() (*LinearPointKeyFrame, error) {
 	return winrt.QueryInterface[LinearPointKeyFrame](unsafe.Pointer(instance), &IID_ILinearPointKeyFrame)
 }
 
+// AsPointKeyFrame queries the instance's IPointKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.PointKeyFrame.
+// The returned reference is owned by the caller.
+func (self *LinearPointKeyFrame) AsPointKeyFrame() (*IPointKeyFrame, error) {
+	return winrt.QueryInterface[IPointKeyFrame](unsafe.Pointer(self), &IID_IPointKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LinearPointKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NavigationThemeTransition is the Microsoft.UI.Xaml.Media.Animation.NavigationThemeTransition runtime class, surfaced through its
 // default interface INavigationThemeTransition. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1248,6 +1830,20 @@ func NewNavigationThemeTransition() (*NavigationThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[NavigationThemeTransition](unsafe.Pointer(instance), &IID_INavigationThemeTransition)
+}
+
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *NavigationThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NavigationThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NavigationThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.INavigationThemeTransitionStatics statics of the
@@ -1273,6 +1869,13 @@ type NavigationTransitionInfo struct {
 // The returned reference is owned by the caller.
 func (self *NavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
 	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewNavigationTransitionInfo constructs a Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo instance through
@@ -1318,6 +1921,20 @@ func NewObjectAnimationUsingKeyFrames() (*ObjectAnimationUsingKeyFrames, error) 
 	return winrt.QueryInterface[ObjectAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IObjectAnimationUsingKeyFrames)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *ObjectAnimationUsingKeyFrames) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ObjectAnimationUsingKeyFrames) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ObjectAnimationUsingKeyFramesStatics returns the Microsoft.UI.Xaml.Media.Animation.IObjectAnimationUsingKeyFramesStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.ObjectAnimationUsingKeyFrames runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1335,6 +1952,13 @@ func ObjectAnimationUsingKeyFramesStatics() (*IObjectAnimationUsingKeyFramesStat
 // the embedded IInspectable → IUnknown chain).
 type ObjectKeyFrame struct {
 	IObjectKeyFrame
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ObjectKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ObjectKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IObjectKeyFrameStatics statics of the
@@ -1392,6 +2016,20 @@ func NewPaneThemeTransition() (*PaneThemeTransition, error) {
 	return winrt.QueryInterface[PaneThemeTransition](unsafe.Pointer(instance), &IID_IPaneThemeTransition)
 }
 
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *PaneThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PaneThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PaneThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.IPaneThemeTransitionStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.PaneThemeTransition runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1420,6 +2058,20 @@ func NewPointAnimation() (*PointAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PointAnimation](unsafe.Pointer(instance), &IID_IPointAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *PointAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PointAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PointAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IPointAnimationStatics statics of the
@@ -1452,6 +2104,20 @@ func NewPointAnimationUsingKeyFrames() (*PointAnimationUsingKeyFrames, error) {
 	return winrt.QueryInterface[PointAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IPointAnimationUsingKeyFrames)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *PointAnimationUsingKeyFrames) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PointAnimationUsingKeyFrames) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PointAnimationUsingKeyFramesStatics returns the Microsoft.UI.Xaml.Media.Animation.IPointAnimationUsingKeyFramesStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.PointAnimationUsingKeyFrames runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1469,6 +2135,13 @@ func PointAnimationUsingKeyFramesStatics() (*IPointAnimationUsingKeyFramesStatic
 // the embedded IInspectable → IUnknown chain).
 type PointKeyFrame struct {
 	IPointKeyFrame
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PointKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PointKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.IPointKeyFrameStatics statics of the
@@ -1526,6 +2199,20 @@ func NewPointerDownThemeAnimation() (*PointerDownThemeAnimation, error) {
 	return winrt.QueryInterface[PointerDownThemeAnimation](unsafe.Pointer(instance), &IID_IPointerDownThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *PointerDownThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PointerDownThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PointerDownThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IPointerDownThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.PointerDownThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1554,6 +2241,20 @@ func NewPointerUpThemeAnimation() (*PointerUpThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PointerUpThemeAnimation](unsafe.Pointer(instance), &IID_IPointerUpThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *PointerUpThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PointerUpThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PointerUpThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IPointerUpThemeAnimationStatics statics of the
@@ -1586,6 +2287,20 @@ func NewPopInThemeAnimation() (*PopInThemeAnimation, error) {
 	return winrt.QueryInterface[PopInThemeAnimation](unsafe.Pointer(instance), &IID_IPopInThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *PopInThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PopInThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PopInThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IPopInThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.PopInThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1614,6 +2329,20 @@ func NewPopOutThemeAnimation() (*PopOutThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PopOutThemeAnimation](unsafe.Pointer(instance), &IID_IPopOutThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *PopOutThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PopOutThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PopOutThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IPopOutThemeAnimationStatics statics of the
@@ -1646,6 +2375,20 @@ func NewPopupThemeTransition() (*PopupThemeTransition, error) {
 	return winrt.QueryInterface[PopupThemeTransition](unsafe.Pointer(instance), &IID_IPopupThemeTransition)
 }
 
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *PopupThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PopupThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PopupThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.IPopupThemeTransitionStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.PopupThemeTransition runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1674,6 +2417,20 @@ func NewPowerEase() (*PowerEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PowerEase](unsafe.Pointer(instance), &IID_IPowerEase)
+}
+
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *PowerEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PowerEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PowerEaseStatics returns the Microsoft.UI.Xaml.Media.Animation.IPowerEaseStatics statics of the
@@ -1706,6 +2463,20 @@ func NewQuadraticEase() (*QuadraticEase, error) {
 	return winrt.QueryInterface[QuadraticEase](unsafe.Pointer(instance), &IID_IQuadraticEase)
 }
 
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *QuadraticEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *QuadraticEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // QuarticEase is the Microsoft.UI.Xaml.Media.Animation.QuarticEase runtime class, surfaced through its
 // default interface IQuarticEase. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1722,6 +2493,20 @@ func NewQuarticEase() (*QuarticEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[QuarticEase](unsafe.Pointer(instance), &IID_IQuarticEase)
+}
+
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *QuarticEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *QuarticEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // QuinticEase is the Microsoft.UI.Xaml.Media.Animation.QuinticEase runtime class, surfaced through its
@@ -1742,6 +2527,20 @@ func NewQuinticEase() (*QuinticEase, error) {
 	return winrt.QueryInterface[QuinticEase](unsafe.Pointer(instance), &IID_IQuinticEase)
 }
 
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *QuinticEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *QuinticEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ReorderThemeTransition is the Microsoft.UI.Xaml.Media.Animation.ReorderThemeTransition runtime class, surfaced through its
 // default interface IReorderThemeTransition. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1758,6 +2557,20 @@ func NewReorderThemeTransition() (*ReorderThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ReorderThemeTransition](unsafe.Pointer(instance), &IID_IReorderThemeTransition)
+}
+
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *ReorderThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ReorderThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // RepeatBehaviorHelper is the Microsoft.UI.Xaml.Media.Animation.RepeatBehaviorHelper runtime class, surfaced through its
@@ -1797,6 +2610,20 @@ func NewRepositionThemeAnimation() (*RepositionThemeAnimation, error) {
 	return winrt.QueryInterface[RepositionThemeAnimation](unsafe.Pointer(instance), &IID_IRepositionThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *RepositionThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RepositionThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // RepositionThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.IRepositionThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.RepositionThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1825,6 +2652,20 @@ func NewRepositionThemeTransition() (*RepositionThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RepositionThemeTransition](unsafe.Pointer(instance), &IID_IRepositionThemeTransition)
+}
+
+// AsTransition queries the instance's ITransition interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
+// The returned reference is owned by the caller.
+func (self *RepositionThemeTransition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RepositionThemeTransition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // RepositionThemeTransitionStatics returns the Microsoft.UI.Xaml.Media.Animation.IRepositionThemeTransitionStatics statics of the
@@ -1857,6 +2698,20 @@ func NewSineEase() (*SineEase, error) {
 	return winrt.QueryInterface[SineEase](unsafe.Pointer(instance), &IID_ISineEase)
 }
 
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
+// The returned reference is owned by the caller.
+func (self *SineEase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SineEase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SlideNavigationTransitionInfo is the Microsoft.UI.Xaml.Media.Animation.SlideNavigationTransitionInfo runtime class, surfaced through its
 // default interface ISlideNavigationTransitionInfo. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1873,6 +2728,27 @@ func NewSlideNavigationTransitionInfo() (*SlideNavigationTransitionInfo, error) 
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SlideNavigationTransitionInfo](unsafe.Pointer(instance), &IID_ISlideNavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *SlideNavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *SlideNavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
+	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SlideNavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SlideNavigationTransitionInfoStatics returns the Microsoft.UI.Xaml.Media.Animation.ISlideNavigationTransitionInfoStatics statics of the
@@ -1905,6 +2781,20 @@ func NewSplineColorKeyFrame() (*SplineColorKeyFrame, error) {
 	return winrt.QueryInterface[SplineColorKeyFrame](unsafe.Pointer(instance), &IID_ISplineColorKeyFrame)
 }
 
+// AsColorKeyFrame queries the instance's IColorKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
+// The returned reference is owned by the caller.
+func (self *SplineColorKeyFrame) AsColorKeyFrame() (*IColorKeyFrame, error) {
+	return winrt.QueryInterface[IColorKeyFrame](unsafe.Pointer(self), &IID_IColorKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplineColorKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SplineColorKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.ISplineColorKeyFrameStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.SplineColorKeyFrame runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1933,6 +2823,20 @@ func NewSplineDoubleKeyFrame() (*SplineDoubleKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SplineDoubleKeyFrame](unsafe.Pointer(instance), &IID_ISplineDoubleKeyFrame)
+}
+
+// AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrame.
+// The returned reference is owned by the caller.
+func (self *SplineDoubleKeyFrame) AsDoubleKeyFrame() (*IDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IDoubleKeyFrame](unsafe.Pointer(self), &IID_IDoubleKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplineDoubleKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SplineDoubleKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.ISplineDoubleKeyFrameStatics statics of the
@@ -1965,6 +2869,20 @@ func NewSplinePointKeyFrame() (*SplinePointKeyFrame, error) {
 	return winrt.QueryInterface[SplinePointKeyFrame](unsafe.Pointer(instance), &IID_ISplinePointKeyFrame)
 }
 
+// AsPointKeyFrame queries the instance's IPointKeyFrame interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.PointKeyFrame.
+// The returned reference is owned by the caller.
+func (self *SplinePointKeyFrame) AsPointKeyFrame() (*IPointKeyFrame, error) {
+	return winrt.QueryInterface[IPointKeyFrame](unsafe.Pointer(self), &IID_IPointKeyFrame)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplinePointKeyFrame) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SplinePointKeyFrameStatics returns the Microsoft.UI.Xaml.Media.Animation.ISplinePointKeyFrameStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.SplinePointKeyFrame runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1993,6 +2911,20 @@ func NewSplitCloseThemeAnimation() (*SplitCloseThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SplitCloseThemeAnimation](unsafe.Pointer(instance), &IID_ISplitCloseThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *SplitCloseThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplitCloseThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SplitCloseThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.ISplitCloseThemeAnimationStatics statics of the
@@ -2025,6 +2957,20 @@ func NewSplitOpenThemeAnimation() (*SplitOpenThemeAnimation, error) {
 	return winrt.QueryInterface[SplitOpenThemeAnimation](unsafe.Pointer(instance), &IID_ISplitOpenThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *SplitOpenThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplitOpenThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SplitOpenThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.ISplitOpenThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.SplitOpenThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2053,6 +2999,20 @@ func NewStoryboard() (*Storyboard, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Storyboard](unsafe.Pointer(instance), &IID_IStoryboard)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *Storyboard) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Storyboard) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // StoryboardStatics returns the Microsoft.UI.Xaml.Media.Animation.IStoryboardStatics statics of the
@@ -2085,6 +3045,27 @@ func NewSuppressNavigationTransitionInfo() (*SuppressNavigationTransitionInfo, e
 	return winrt.QueryInterface[SuppressNavigationTransitionInfo](unsafe.Pointer(instance), &IID_ISuppressNavigationTransitionInfo)
 }
 
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *SuppressNavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
+}
+
+// AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
+// The returned reference is owned by the caller.
+func (self *SuppressNavigationTransitionInfo) AsNavigationTransitionInfoOverrides() (*INavigationTransitionInfoOverrides, error) {
+	return winrt.QueryInterface[INavigationTransitionInfoOverrides](unsafe.Pointer(self), &IID_INavigationTransitionInfoOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SuppressNavigationTransitionInfo) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SwipeBackThemeAnimation is the Microsoft.UI.Xaml.Media.Animation.SwipeBackThemeAnimation runtime class, surfaced through its
 // default interface ISwipeBackThemeAnimation. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -2101,6 +3082,20 @@ func NewSwipeBackThemeAnimation() (*SwipeBackThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SwipeBackThemeAnimation](unsafe.Pointer(instance), &IID_ISwipeBackThemeAnimation)
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *SwipeBackThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SwipeBackThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SwipeBackThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.ISwipeBackThemeAnimationStatics statics of the
@@ -2133,6 +3128,20 @@ func NewSwipeHintThemeAnimation() (*SwipeHintThemeAnimation, error) {
 	return winrt.QueryInterface[SwipeHintThemeAnimation](unsafe.Pointer(instance), &IID_ISwipeHintThemeAnimation)
 }
 
+// AsTimeline queries the instance's ITimeline interface.
+// Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
+// The returned reference is owned by the caller.
+func (self *SwipeHintThemeAnimation) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SwipeHintThemeAnimation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // SwipeHintThemeAnimationStatics returns the Microsoft.UI.Xaml.Media.Animation.ISwipeHintThemeAnimationStatics statics of the
 // Microsoft.UI.Xaml.Media.Animation.SwipeHintThemeAnimation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2150,6 +3159,13 @@ func SwipeHintThemeAnimationStatics() (*ISwipeHintThemeAnimationStatics, error) 
 // the embedded IInspectable → IUnknown chain).
 type Timeline struct {
 	ITimeline
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Timeline) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // TimelineStatics returns the Microsoft.UI.Xaml.Media.Animation.ITimelineStatics statics of the
@@ -2194,4 +3210,11 @@ func NewTimeline() (*Timeline, error) {
 // the embedded IInspectable → IUnknown chain).
 type Transition struct {
 	ITransition
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Transition) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }

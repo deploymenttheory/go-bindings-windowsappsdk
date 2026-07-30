@@ -124,6 +124,13 @@ type CompactOverlayPresenter struct {
 	ICompactOverlayPresenter
 }
 
+// AsAppWindowPresenter queries the instance's IAppWindowPresenter interface.
+// Inherited from Microsoft.UI.Windowing.AppWindowPresenter.
+// The returned reference is owned by the caller.
+func (self *CompactOverlayPresenter) AsAppWindowPresenter() (*IAppWindowPresenter, error) {
+	return winrt.QueryInterface[IAppWindowPresenter](unsafe.Pointer(self), &IID_IAppWindowPresenter)
+}
+
 // CompactOverlayPresenterStatics returns the Microsoft.UI.Windowing.ICompactOverlayPresenterStatics statics of the
 // Microsoft.UI.Windowing.CompactOverlayPresenter runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -181,6 +188,13 @@ type FullScreenPresenter struct {
 	IFullScreenPresenter
 }
 
+// AsAppWindowPresenter queries the instance's IAppWindowPresenter interface.
+// Inherited from Microsoft.UI.Windowing.AppWindowPresenter.
+// The returned reference is owned by the caller.
+func (self *FullScreenPresenter) AsAppWindowPresenter() (*IAppWindowPresenter, error) {
+	return winrt.QueryInterface[IAppWindowPresenter](unsafe.Pointer(self), &IID_IAppWindowPresenter)
+}
+
 // FullScreenPresenterStatics returns the Microsoft.UI.Windowing.IFullScreenPresenterStatics statics of the
 // Microsoft.UI.Windowing.FullScreenPresenter runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -210,6 +224,13 @@ func (self *OverlappedPresenter) AsOverlappedPresenter2() (*IOverlappedPresenter
 // The returned reference is owned by the caller.
 func (self *OverlappedPresenter) AsOverlappedPresenter3() (*IOverlappedPresenter3, error) {
 	return winrt.QueryInterface[IOverlappedPresenter3](unsafe.Pointer(self), &IID_IOverlappedPresenter3)
+}
+
+// AsAppWindowPresenter queries the instance's IAppWindowPresenter interface.
+// Inherited from Microsoft.UI.Windowing.AppWindowPresenter.
+// The returned reference is owned by the caller.
+func (self *OverlappedPresenter) AsAppWindowPresenter() (*IAppWindowPresenter, error) {
+	return winrt.QueryInterface[IAppWindowPresenter](unsafe.Pointer(self), &IID_IAppWindowPresenter)
 }
 
 // OverlappedPresenterStatics returns the Microsoft.UI.Windowing.IOverlappedPresenterStatics statics of the

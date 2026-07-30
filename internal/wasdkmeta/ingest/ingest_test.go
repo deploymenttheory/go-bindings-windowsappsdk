@@ -263,6 +263,35 @@ func TestButtonRecordsItsCompositionShape(t *testing.T) {
 		t.Errorf("Button lists %d interfaces, want 1 — inherited interfaces are NOT in InterfaceImpl, "+
 			"which is why the base-class chain has to be walked separately", len(button.Interfaces))
 	}
+	// The chain is the only route to those inherited interfaces, so the base has to
+	// be recorded: Button extends Primitives.ButtonBase, where Click lives.
+	if button.BaseClass == nil {
+		t.Fatal("Button records no base class")
+	}
+	if got := button.BaseClass.Namespace + "." + button.BaseClass.Name; got != "Microsoft.UI.Xaml.Controls.Primitives.ButtonBase" {
+		t.Errorf("Button extends %s, want Microsoft.UI.Xaml.Controls.Primitives.ButtonBase", got)
+	}
+	if button.BaseClass.TargetKind != "Class" {
+		t.Errorf("the base reference is classified as %q, want Class", button.BaseClass.TargetKind)
+	}
+}
+
+// TestRootClassHasNoBase is the other end of the chain: a class extending
+// System.Object must record no base, or the walk would chase a marker type that is
+// not a runtime class at all.
+func TestRootClassHasNoBase(t *testing.T) {
+	result := run(t)
+	xaml := result.byName["Microsoft.UI.Xaml"]
+	root, ok := xaml.Classes["DependencyObject"]
+	if !ok {
+		t.Fatal("DependencyObject was not projected")
+	}
+	if root.Composable {
+		t.Error("DependencyObject is marked composable, but it extends System.Object")
+	}
+	if root.BaseClass != nil {
+		t.Errorf("DependencyObject records a base class (%s.%s)", root.BaseClass.Namespace, root.BaseClass.Name)
+	}
 }
 
 // TestEveryInterfaceIsQueryable guards the generated QueryInterface calls: an

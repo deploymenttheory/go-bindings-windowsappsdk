@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Media.Media3D",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "structs": {
@@ -1155,7 +1155,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Media3D.ICompositeTransform3DStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform3D",
+        "namespace": "Microsoft.UI.Xaml.Media.Media3D",
+        "target_kind": "Class"
+      }
     },
     "Matrix3DHelper": {
       "default_interface": {
@@ -1195,7 +1201,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Media3D.IPerspectiveTransform3DStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform3D",
+        "namespace": "Microsoft.UI.Xaml.Media.Media3D",
+        "target_kind": "Class"
+      }
     },
     "Transform3D": {
       "default_interface": {
@@ -1215,7 +1227,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Media3D.ITransform3DFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     }
   }
 }

@@ -13,7 +13,6 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrolsprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
@@ -1297,18 +1296,9 @@ func (self *IDragOverThemeAnimation) SetToOffset(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// Direction (propget get_Direction) dispatches through IDragOverThemeAnimation's vtable slot 10.
-func (self *IDragOverThemeAnimation) Direction() (uixamlcontrolsprimitives.AnimationDirection, error) {
-	result := new(uixamlcontrolsprimitives.AnimationDirection)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 10: get_Direction skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection crosses a severed import edge
 
-// SetDirection (propput put_Direction) dispatches through IDragOverThemeAnimation's vtable slot 11.
-func (self *IDragOverThemeAnimation) SetDirection(value uixamlcontrolsprimitives.AnimationDirection) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 11: put_Direction skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection crosses a severed import edge
 
 // IDragOverThemeAnimationStatics is the WinRT interface Microsoft.UI.Xaml.Media.Animation.IDragOverThemeAnimationStatics.
 // IID: 8301afd2-68b2-5c6c-aadf-9a98d620e8d2
@@ -1819,18 +1809,9 @@ type IEdgeUIThemeTransition struct {
 // IID_IEdgeUIThemeTransition is the interface identifier for IEdgeUIThemeTransition.
 var IID_IEdgeUIThemeTransition = win32.GUID{Data1: 0x57089964, Data2: 0xe358, Data3: 0x5fe2, Data4: [8]byte{0x84, 0xe7, 0x15, 0xe8, 0x2b, 0xba, 0x9c, 0x06}}
 
-// Edge (propget get_Edge) dispatches through IEdgeUIThemeTransition's vtable slot 6.
-func (self *IEdgeUIThemeTransition) Edge() (uixamlcontrolsprimitives.EdgeTransitionLocation, error) {
-	result := new(uixamlcontrolsprimitives.EdgeTransitionLocation)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_Edge skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.EdgeTransitionLocation crosses a severed import edge
 
-// SetEdge (propput put_Edge) dispatches through IEdgeUIThemeTransition's vtable slot 7.
-func (self *IEdgeUIThemeTransition) SetEdge(value uixamlcontrolsprimitives.EdgeTransitionLocation) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 7: put_Edge skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.EdgeTransitionLocation crosses a severed import edge
 
 // IEdgeUIThemeTransitionStatics is the WinRT interface Microsoft.UI.Xaml.Media.Animation.IEdgeUIThemeTransitionStatics.
 // IID: 316af8d4-d2a0-5d27-9af6-747797965d46
@@ -2555,18 +2536,9 @@ type IPaneThemeTransition struct {
 // IID_IPaneThemeTransition is the interface identifier for IPaneThemeTransition.
 var IID_IPaneThemeTransition = win32.GUID{Data1: 0x321bcd80, Data2: 0x157c, Data3: 0x5e10, Data4: [8]byte{0xb0, 0xfe, 0x64, 0x40, 0xbd, 0x92, 0x52, 0x9a}}
 
-// Edge (propget get_Edge) dispatches through IPaneThemeTransition's vtable slot 6.
-func (self *IPaneThemeTransition) Edge() (uixamlcontrolsprimitives.EdgeTransitionLocation, error) {
-	result := new(uixamlcontrolsprimitives.EdgeTransitionLocation)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_Edge skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.EdgeTransitionLocation crosses a severed import edge
 
-// SetEdge (propput put_Edge) dispatches through IPaneThemeTransition's vtable slot 7.
-func (self *IPaneThemeTransition) SetEdge(value uixamlcontrolsprimitives.EdgeTransitionLocation) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 7: put_Edge skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.EdgeTransitionLocation crosses a severed import edge
 
 // IPaneThemeTransitionStatics is the WinRT interface Microsoft.UI.Xaml.Media.Animation.IPaneThemeTransitionStatics.
 // IID: 47e01752-5264-5fb1-8946-ab49fe6af8fd
@@ -3739,18 +3711,9 @@ func (self *ISplitCloseThemeAnimation) SetOffsetFromCenter(value float64) error 
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// ContentTranslationDirection (propget get_ContentTranslationDirection) dispatches through ISplitCloseThemeAnimation's vtable slot 24.
-func (self *ISplitCloseThemeAnimation) ContentTranslationDirection() (uixamlcontrolsprimitives.AnimationDirection, error) {
-	result := new(uixamlcontrolsprimitives.AnimationDirection)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 24: get_ContentTranslationDirection skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection crosses a severed import edge
 
-// SetContentTranslationDirection (propput put_ContentTranslationDirection) dispatches through ISplitCloseThemeAnimation's vtable slot 25.
-func (self *ISplitCloseThemeAnimation) SetContentTranslationDirection(value uixamlcontrolsprimitives.AnimationDirection) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 25: put_ContentTranslationDirection skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection crosses a severed import edge
 
 // ContentTranslationOffset (propget get_ContentTranslationOffset) dispatches through ISplitCloseThemeAnimation's vtable slot 26.
 func (self *ISplitCloseThemeAnimation) ContentTranslationOffset() (float64, error) {
@@ -4007,18 +3970,9 @@ func (self *ISplitOpenThemeAnimation) SetOffsetFromCenter(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// ContentTranslationDirection (propget get_ContentTranslationDirection) dispatches through ISplitOpenThemeAnimation's vtable slot 24.
-func (self *ISplitOpenThemeAnimation) ContentTranslationDirection() (uixamlcontrolsprimitives.AnimationDirection, error) {
-	result := new(uixamlcontrolsprimitives.AnimationDirection)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 24: get_ContentTranslationDirection skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection crosses a severed import edge
 
-// SetContentTranslationDirection (propput put_ContentTranslationDirection) dispatches through ISplitOpenThemeAnimation's vtable slot 25.
-func (self *ISplitOpenThemeAnimation) SetContentTranslationDirection(value uixamlcontrolsprimitives.AnimationDirection) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 25: put_ContentTranslationDirection skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AnimationDirection crosses a severed import edge
 
 // ContentTranslationOffset (propget get_ContentTranslationOffset) dispatches through ISplitOpenThemeAnimation's vtable slot 26.
 func (self *ISplitOpenThemeAnimation) ContentTranslationOffset() (float64, error) {

@@ -16,7 +16,6 @@ import (
 	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
 	uitext "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/text"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrolsprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
 	uixamldata "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/data"
 	uixamldocuments "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/documents"
 	uixamlinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/input"
@@ -709,12 +708,7 @@ type IAnnotatedScrollBar struct {
 // IID_IAnnotatedScrollBar is the interface identifier for IAnnotatedScrollBar.
 var IID_IAnnotatedScrollBar = win32.GUID{Data1: 0x0f4904a9, Data2: 0xb6f9, Data3: 0x5834, Data4: [8]byte{0x8d, 0x5d, 0x59, 0xbc, 0x3b, 0x7b, 0x7e, 0xe2}}
 
-// ScrollController (propget get_ScrollController) dispatches through IAnnotatedScrollBar's vtable slot 6.
-func (self *IAnnotatedScrollBar) ScrollController() (*uixamlcontrolsprimitives.IScrollController, error) {
-	result := new(*uixamlcontrolsprimitives.IScrollController)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_ScrollController skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.IScrollController crosses a severed import edge
 
 // Labels (propget get_Labels) dispatches through IAnnotatedScrollBar's vtable slot 7.
 func (self *IAnnotatedScrollBar) Labels() (*IVectorOfAnnotatedScrollBarLabel, error) {
@@ -1026,12 +1020,7 @@ func (self *IAppBar) SetClosedDisplayMode(value AppBarClosedDisplayMode) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IAppBar's vtable slot 12.
-func (self *IAppBar) TemplateSettings() (*uixamlcontrolsprimitives.IAppBarTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IAppBarTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 12: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AppBarTemplateSettings crosses a severed import edge
 
 // LightDismissOverlayMode (propget get_LightDismissOverlayMode) dispatches through IAppBar's vtable slot 13.
 func (self *IAppBar) LightDismissOverlayMode() (LightDismissOverlayMode, error) {
@@ -1188,12 +1177,7 @@ func (self *IAppBarButton) SetKeyboardAcceleratorTextOverride(value string) erro
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IAppBarButton's vtable slot 14.
-func (self *IAppBarButton) TemplateSettings() (*uixamlcontrolsprimitives.IAppBarButtonTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IAppBarButtonTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 14: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AppBarButtonTemplateSettings crosses a severed import edge
 
 // IAppBarButtonFactory is the WinRT interface Microsoft.UI.Xaml.Controls.IAppBarButtonFactory.
 // IID: 4168a40a-d11f-5aeb-974e-bb43a6e7f9b2
@@ -1554,12 +1538,7 @@ func (self *IAppBarToggleButton) SetKeyboardAcceleratorTextOverride(value string
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IAppBarToggleButton's vtable slot 14.
-func (self *IAppBarToggleButton) TemplateSettings() (*uixamlcontrolsprimitives.IAppBarToggleButtonTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IAppBarToggleButtonTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 14: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.AppBarToggleButtonTemplateSettings crosses a severed import edge
 
 // IAppBarToggleButtonFactory is the WinRT interface Microsoft.UI.Xaml.Controls.IAppBarToggleButtonFactory.
 // IID: 07bfb2d6-23b9-57a2-9122-006294bfa92f
@@ -2577,18 +2556,9 @@ type IButton struct {
 // IID_IButton is the interface identifier for IButton.
 var IID_IButton = win32.GUID{Data1: 0x216c183d, Data2: 0xd07a, Data3: 0x5aa5, Data4: [8]byte{0xb8, 0xa4, 0x03, 0x00, 0xa2, 0x68, 0x3e, 0x87}}
 
-// Flyout (propget get_Flyout) dispatches through IButton's vtable slot 6.
-func (self *IButton) Flyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_Flyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetFlyout (propput put_Flyout) dispatches through IButton's vtable slot 7.
-func (self *IButton) SetFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 7: put_Flyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // IButtonFactory is the WinRT interface Microsoft.UI.Xaml.Controls.IButtonFactory.
 // IID: fe393422-d91c-57b1-9a9c-2c7e3f41f77c
@@ -3362,12 +3332,7 @@ func (self *ICalendarView) SetSelectionMode(value CalendarViewSelectionMode) err
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through ICalendarView's vtable slot 29.
-func (self *ICalendarView) TemplateSettings() (*uixamlcontrolsprimitives.ICalendarViewTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.ICalendarViewTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[29], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 29: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.CalendarViewTemplateSettings crosses a severed import edge
 
 // FocusBorderBrush (propget get_FocusBorderBrush) dispatches through ICalendarView's vtable slot 30.
 func (self *ICalendarView) FocusBorderBrush() (*uixamlmedia.IBrush, error) {
@@ -5143,18 +5108,9 @@ func (self *IChoosingItemContainerEventArgs) Item() (*syswinrt.IInspectable, err
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// ItemContainer (propget get_ItemContainer) dispatches through IChoosingItemContainerEventArgs's vtable slot 8.
-func (self *IChoosingItemContainerEventArgs) ItemContainer() (*uixamlcontrolsprimitives.ISelectorItem, error) {
-	result := new(*uixamlcontrolsprimitives.ISelectorItem)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 8: get_ItemContainer skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SelectorItem crosses a severed import edge
 
-// SetItemContainer (propput put_ItemContainer) dispatches through IChoosingItemContainerEventArgs's vtable slot 9.
-func (self *IChoosingItemContainerEventArgs) SetItemContainer(value *uixamlcontrolsprimitives.ISelectorItem) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 9: put_ItemContainer skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SelectorItem crosses a severed import edge
 
 // IsContainerPrepared (propget get_IsContainerPrepared) dispatches through IChoosingItemContainerEventArgs's vtable slot 10.
 func (self *IChoosingItemContainerEventArgs) IsContainerPrepared() (bool, error) {
@@ -5916,12 +5872,7 @@ func (self *IComboBox) SelectionBoxItemTemplate() (*uixaml.IDataTemplate, error)
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IComboBox's vtable slot 15.
-func (self *IComboBox) TemplateSettings() (*uixamlcontrolsprimitives.IComboBoxTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IComboBoxTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 15: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ComboBoxTemplateSettings crosses a severed import edge
 
 // Header (propget get_Header) dispatches through IComboBox's vtable slot 16.
 func (self *IComboBox) Header() (*syswinrt.IInspectable, error) {
@@ -6362,12 +6313,7 @@ func (self *ICommandBar) SetCommandBarOverflowPresenterStyle(value *uixaml.IStyl
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// CommandBarTemplateSettings (propget get_CommandBarTemplateSettings) dispatches through ICommandBar's vtable slot 10.
-func (self *ICommandBar) CommandBarTemplateSettings() (*uixamlcontrolsprimitives.ICommandBarTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.ICommandBarTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 10: get_CommandBarTemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.CommandBarTemplateSettings crosses a severed import edge
 
 // DefaultLabelPosition (propget get_DefaultLabelPosition) dispatches through ICommandBar's vtable slot 11.
 func (self *ICommandBar) DefaultLabelPosition() (CommandBarDefaultLabelPosition, error) {
@@ -6648,12 +6594,7 @@ type IContainerContentChangingEventArgs struct {
 // IID_IContainerContentChangingEventArgs is the interface identifier for IContainerContentChangingEventArgs.
 var IID_IContainerContentChangingEventArgs = win32.GUID{Data1: 0xf4c8c937, Data2: 0xb070, Data3: 0x53ce, Data4: [8]byte{0xa7, 0x6c, 0x07, 0x4e, 0xe5, 0x75, 0x0a, 0x71}}
 
-// ItemContainer (propget get_ItemContainer) dispatches through IContainerContentChangingEventArgs's vtable slot 6.
-func (self *IContainerContentChangingEventArgs) ItemContainer() (*uixamlcontrolsprimitives.ISelectorItem, error) {
-	result := new(*uixamlcontrolsprimitives.ISelectorItem)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_ItemContainer skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SelectorItem crosses a severed import edge
 
 // InRecycleQueue (propget get_InRecycleQueue) dispatches through IContainerContentChangingEventArgs's vtable slot 7.
 func (self *IContainerContentChangingEventArgs) InRecycleQueue() (bool, error) {
@@ -11705,12 +11646,7 @@ type IGridViewItem struct {
 // IID_IGridViewItem is the interface identifier for IGridViewItem.
 var IID_IGridViewItem = win32.GUID{Data1: 0x9debb4a5, Data2: 0xe7b7, Data3: 0x5a41, Data4: [8]byte{0xa1, 0xee, 0xf7, 0x7d, 0x8a, 0x7b, 0x00, 0x23}}
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IGridViewItem's vtable slot 6.
-func (self *IGridViewItem) TemplateSettings() (*uixamlcontrolsprimitives.IGridViewItemTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IGridViewItemTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GridViewItemTemplateSettings crosses a severed import edge
 
 // IGridViewItemFactory is the WinRT interface Microsoft.UI.Xaml.Controls.IGridViewItemFactory.
 // IID: 96a56215-230c-5efb-8401-0ce01617c657
@@ -13102,18 +13038,9 @@ func (self *IInfoBar) SetCloseButtonCommandParameter(value *syswinrt.IInspectabl
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// ActionButton (propget get_ActionButton) dispatches through IInfoBar's vtable slot 26.
-func (self *IInfoBar) ActionButton() (*uixamlcontrolsprimitives.IButtonBase, error) {
-	result := new(*uixamlcontrolsprimitives.IButtonBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[26], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 26: get_ActionButton skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ButtonBase crosses a severed import edge
 
-// SetActionButton (propput put_ActionButton) dispatches through IInfoBar's vtable slot 27.
-func (self *IInfoBar) SetActionButton(value *uixamlcontrolsprimitives.IButtonBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[27], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 27: put_ActionButton skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ButtonBase crosses a severed import edge
 
 // Content (propget get_Content) dispatches through IInfoBar's vtable slot 28.
 func (self *IInfoBar) Content() (*syswinrt.IInspectable, error) {
@@ -13744,21 +13671,9 @@ type IItemContainerGenerator struct {
 // IID_IItemContainerGenerator is the interface identifier for IItemContainerGenerator.
 var IID_IItemContainerGenerator = win32.GUID{Data1: 0xc4c5d5ae, Data2: 0xed98, Data3: 0x510f, Data4: [8]byte{0xaf, 0xae, 0x8a, 0x0a, 0xc6, 0x06, 0x7a, 0x3b}}
 
-// AddItemsChanged (event add add_ItemsChanged) dispatches through IItemContainerGenerator's vtable slot 6.
-// The handler stays registered (and referenced by the runtime) until the
-// returned token is passed to RemoveItemsChanged.
-func (self *IItemContainerGenerator) AddItemsChanged(handler *ItemsChangedEventHandler) (syswinrt.EventRegistrationToken, error) {
-	result := new(syswinrt.EventRegistrationToken)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), handler.Ptr(), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: add_ItemsChanged skipped: Microsoft.UI.Xaml.Controls.Primitives.ItemsChangedEventHandler Invoke parameter e: reference to Microsoft.UI.Xaml.Controls.Primitives.ItemsChangedEventArgs crosses a severed import edge
 
-// RemoveItemsChanged (event remove remove_ItemsChanged) dispatches through IItemContainerGenerator's vtable slot 7,
-// unregistering the ItemsChanged handler the token was returned for.
-func (self *IItemContainerGenerator) RemoveItemsChanged(token syswinrt.EventRegistrationToken) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(token.Value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 7: remove_ItemsChanged skipped: ItemsChanged has no grounded handler
 
 // ItemFromContainer dispatches through IItemContainerGenerator's vtable slot 8.
 func (self *IItemContainerGenerator) ItemFromContainer(container *uixaml.IDependencyObject) (*syswinrt.IInspectable, error) {
@@ -13795,16 +13710,7 @@ func (self *IItemContainerGenerator) GetItemContainerGeneratorForPanel(panel *IP
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// StartAt dispatches through IItemContainerGenerator's vtable slot 13.
-func (self *IItemContainerGenerator) StartAt(position uixamlcontrolsprimitives.GeneratorPosition, direction uixamlcontrolsprimitives.GeneratorDirection, allowStartAtRealizedItem bool) error {
-	_position := *(*uintptr)(unsafe.Pointer(&position))
-	_allowStartAtRealizedItem := uintptr(0)
-	if allowStartAtRealizedItem {
-		_allowStartAtRealizedItem = 1
-	}
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), _position, uintptr(direction), _allowStartAtRealizedItem)
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 13: StartAt skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GeneratorPosition crosses a severed import edge
 
 // Stop dispatches through IItemContainerGenerator's vtable slot 14.
 func (self *IItemContainerGenerator) Stop() error {
@@ -13826,34 +13732,13 @@ func (self *IItemContainerGenerator) RemoveAll() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// Remove dispatches through IItemContainerGenerator's vtable slot 18.
-func (self *IItemContainerGenerator) Remove(position uixamlcontrolsprimitives.GeneratorPosition, count int32) error {
-	_position := *(*uintptr)(unsafe.Pointer(&position))
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), _position, uintptr(count))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 18: Remove skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GeneratorPosition crosses a severed import edge
 
-// GeneratorPositionFromIndex dispatches through IItemContainerGenerator's vtable slot 19.
-func (self *IItemContainerGenerator) GeneratorPositionFromIndex(itemIndex int32) (uixamlcontrolsprimitives.GeneratorPosition, error) {
-	result := new(uixamlcontrolsprimitives.GeneratorPosition)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[19], uintptr(unsafe.Pointer(self)), uintptr(itemIndex), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 19: GeneratorPositionFromIndex skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GeneratorPosition crosses a severed import edge
 
-// IndexFromGeneratorPosition dispatches through IItemContainerGenerator's vtable slot 20.
-func (self *IItemContainerGenerator) IndexFromGeneratorPosition(position uixamlcontrolsprimitives.GeneratorPosition) (int32, error) {
-	_position := *(*uintptr)(unsafe.Pointer(&position))
-	result := new(int32)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), _position, uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 20: IndexFromGeneratorPosition skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GeneratorPosition crosses a severed import edge
 
-// Recycle dispatches through IItemContainerGenerator's vtable slot 21.
-func (self *IItemContainerGenerator) Recycle(position uixamlcontrolsprimitives.GeneratorPosition, count int32) error {
-	_position := *(*uintptr)(unsafe.Pointer(&position))
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[21], uintptr(unsafe.Pointer(self)), _position, uintptr(count))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 21: Recycle skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GeneratorPosition crosses a severed import edge
 
 // IItemContainerMapping is the WinRT interface Microsoft.UI.Xaml.Controls.IItemContainerMapping.
 // IID: b3e03a32-ea83-5626-bfda-d327a1c7550c
@@ -15030,18 +14915,9 @@ func (self *IItemsStackPanel) ScrollingDirection() (PanelScrollingDirection, err
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// GroupHeaderPlacement (propget get_GroupHeaderPlacement) dispatches through IItemsStackPanel's vtable slot 15.
-func (self *IItemsStackPanel) GroupHeaderPlacement() (uixamlcontrolsprimitives.GroupHeaderPlacement, error) {
-	result := new(uixamlcontrolsprimitives.GroupHeaderPlacement)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 15: get_GroupHeaderPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GroupHeaderPlacement crosses a severed import edge
 
-// SetGroupHeaderPlacement (propput put_GroupHeaderPlacement) dispatches through IItemsStackPanel's vtable slot 16.
-func (self *IItemsStackPanel) SetGroupHeaderPlacement(value uixamlcontrolsprimitives.GroupHeaderPlacement) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 16: put_GroupHeaderPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GroupHeaderPlacement crosses a severed import edge
 
 // ItemsUpdatingScrollMode (propget get_ItemsUpdatingScrollMode) dispatches through IItemsStackPanel's vtable slot 17.
 func (self *IItemsStackPanel) ItemsUpdatingScrollMode() (ItemsUpdatingScrollMode, error) {
@@ -15162,18 +15038,9 @@ func (self *IItemsView) ScrollView() (*IScrollView, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// VerticalScrollController (propget get_VerticalScrollController) dispatches through IItemsView's vtable slot 9.
-func (self *IItemsView) VerticalScrollController() (*uixamlcontrolsprimitives.IScrollController, error) {
-	result := new(*uixamlcontrolsprimitives.IScrollController)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 9: get_VerticalScrollController skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.IScrollController crosses a severed import edge
 
-// SetVerticalScrollController (propput put_VerticalScrollController) dispatches through IItemsView's vtable slot 10.
-func (self *IItemsView) SetVerticalScrollController(value *uixamlcontrolsprimitives.IScrollController) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 10: put_VerticalScrollController skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.IScrollController crosses a severed import edge
 
 // ItemTemplate (propget get_ItemTemplate) dispatches through IItemsView's vtable slot 11.
 func (self *IItemsView) ItemTemplate() (*uixaml.IElementFactory, error) {
@@ -15585,18 +15452,9 @@ func (self *IItemsWrapGrid) ScrollingDirection() (PanelScrollingDirection, error
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// GroupHeaderPlacement (propget get_GroupHeaderPlacement) dispatches through IItemsWrapGrid's vtable slot 21.
-func (self *IItemsWrapGrid) GroupHeaderPlacement() (uixamlcontrolsprimitives.GroupHeaderPlacement, error) {
-	result := new(uixamlcontrolsprimitives.GroupHeaderPlacement)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[21], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 21: get_GroupHeaderPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GroupHeaderPlacement crosses a severed import edge
 
-// SetGroupHeaderPlacement (propput put_GroupHeaderPlacement) dispatches through IItemsWrapGrid's vtable slot 22.
-func (self *IItemsWrapGrid) SetGroupHeaderPlacement(value uixamlcontrolsprimitives.GroupHeaderPlacement) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[22], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 22: put_GroupHeaderPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.GroupHeaderPlacement crosses a severed import edge
 
 // CacheLength (propget get_CacheLength) dispatches through IItemsWrapGrid's vtable slot 23.
 func (self *IItemsWrapGrid) CacheLength() (float64, error) {
@@ -17344,12 +17202,7 @@ type IListViewItem struct {
 // IID_IListViewItem is the interface identifier for IListViewItem.
 var IID_IListViewItem = win32.GUID{Data1: 0x05fe41c2, Data2: 0x0451, Data3: 0x5d38, Data4: [8]byte{0x9c, 0x55, 0x5d, 0x10, 0xcf, 0xd0, 0x88, 0x89}}
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IListViewItem's vtable slot 6.
-func (self *IListViewItem) TemplateSettings() (*uixamlcontrolsprimitives.IListViewItemTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IListViewItemTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ListViewItemTemplateSettings crosses a severed import edge
 
 // IListViewItemFactory is the WinRT interface Microsoft.UI.Xaml.Controls.IListViewItemFactory.
 // IID: d9f4d0b8-ee59-5036-bd7a-7c89cf0bc2ac
@@ -19094,12 +18947,7 @@ func (self *IMenuFlyoutItem) SetKeyboardAcceleratorTextOverride(value string) er
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IMenuFlyoutItem's vtable slot 16.
-func (self *IMenuFlyoutItem) TemplateSettings() (*uixamlcontrolsprimitives.IMenuFlyoutItemTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IMenuFlyoutItemTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 16: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.MenuFlyoutItemTemplateSettings crosses a severed import edge
 
 // AddClick (event add add_Click) dispatches through IMenuFlyoutItem's vtable slot 17.
 // The handler stays registered (and referenced by the runtime) until the
@@ -19209,12 +19057,7 @@ type IMenuFlyoutPresenter struct {
 // IID_IMenuFlyoutPresenter is the interface identifier for IMenuFlyoutPresenter.
 var IID_IMenuFlyoutPresenter = win32.GUID{Data1: 0x5c9b4644, Data2: 0xe292, Data3: 0x5436, Data4: [8]byte{0x86, 0xec, 0x1c, 0x0e, 0x29, 0xf9, 0x4c, 0x2d}}
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IMenuFlyoutPresenter's vtable slot 6.
-func (self *IMenuFlyoutPresenter) TemplateSettings() (*uixamlcontrolsprimitives.IMenuFlyoutPresenterTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IMenuFlyoutPresenterTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.MenuFlyoutPresenterTemplateSettings crosses a severed import edge
 
 // IsDefaultShadowEnabled (propget get_IsDefaultShadowEnabled) dispatches through IMenuFlyoutPresenter's vtable slot 7.
 func (self *IMenuFlyoutPresenter) IsDefaultShadowEnabled() (bool, error) {
@@ -21468,18 +21311,9 @@ func (self *INumberBox) SetPlaceholderText(value string) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// SelectionFlyout (propget get_SelectionFlyout) dispatches through INumberBox's vtable slot 24.
-func (self *INumberBox) SelectionFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[24], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 24: get_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetSelectionFlyout (propput put_SelectionFlyout) dispatches through INumberBox's vtable slot 25.
-func (self *INumberBox) SetSelectionFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[25], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 25: put_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // SelectionHighlightColor (propget get_SelectionHighlightColor) dispatches through INumberBox's vtable slot 26.
 func (self *INumberBox) SelectionHighlightColor() (*uixamlmedia.ISolidColorBrush, error) {
@@ -22606,18 +22440,9 @@ func (self *IPasswordBox) CanPasteClipboardContent() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// SelectionFlyout (propget get_SelectionFlyout) dispatches through IPasswordBox's vtable slot 31.
-func (self *IPasswordBox) SelectionFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[31], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 31: get_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetSelectionFlyout (propput put_SelectionFlyout) dispatches through IPasswordBox's vtable slot 32.
-func (self *IPasswordBox) SetSelectionFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[32], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 32: put_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // Description (propget get_Description) dispatches through IPasswordBox's vtable slot 33.
 func (self *IPasswordBox) Description() (*syswinrt.IInspectable, error) {
@@ -26666,25 +26491,11 @@ func (self *IRichEditBox) TextDocument() (*uitext.ITextDocument, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// SelectionFlyout (propget get_SelectionFlyout) dispatches through IRichEditBox's vtable slot 44.
-func (self *IRichEditBox) SelectionFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[44], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 44: get_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetSelectionFlyout (propput put_SelectionFlyout) dispatches through IRichEditBox's vtable slot 45.
-func (self *IRichEditBox) SetSelectionFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[45], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 45: put_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// ProofingMenuFlyout (propget get_ProofingMenuFlyout) dispatches through IRichEditBox's vtable slot 46.
-func (self *IRichEditBox) ProofingMenuFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[46], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 46: get_ProofingMenuFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // Description (propget get_Description) dispatches through IRichEditBox's vtable slot 47.
 func (self *IRichEditBox) Description() (*syswinrt.IInspectable, error) {
@@ -27601,18 +27412,9 @@ func (self *IRichTextBlock) TextHighlighters() (*IVectorOfTextHighlighter, error
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// SelectionFlyout (propget get_SelectionFlyout) dispatches through IRichTextBlock's vtable slot 64.
-func (self *IRichTextBlock) SelectionFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[64], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 64: get_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetSelectionFlyout (propput put_SelectionFlyout) dispatches through IRichTextBlock's vtable slot 65.
-func (self *IRichTextBlock) SetSelectionFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[65], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 65: put_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // AddSelectionChanged (event add add_SelectionChanged) dispatches through IRichTextBlock's vtable slot 66.
 // The handler stays registered (and referenced by the runtime) until the
@@ -28472,12 +28274,7 @@ func (self *IScrollView) CurrentAnchor() (*uixaml.IUIElement, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// ScrollPresenter (propget get_ScrollPresenter) dispatches through IScrollView's vtable slot 9.
-func (self *IScrollView) ScrollPresenter() (*uixamlcontrolsprimitives.IScrollPresenter, error) {
-	result := new(*uixamlcontrolsprimitives.IScrollPresenter)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 9: get_ScrollPresenter skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter crosses a severed import edge
 
 // ExpressionAnimationSources (propget get_ExpressionAnimationSources) dispatches through IScrollView's vtable slot 10.
 func (self *IScrollView) ExpressionAnimationSources() (*uicomposition.ICompositionPropertySet, error) {
@@ -29411,31 +29208,13 @@ func (self *IScrollViewer) SetZoomMode(value ZoomMode) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// HorizontalSnapPointsAlignment (propget get_HorizontalSnapPointsAlignment) dispatches through IScrollViewer's vtable slot 30.
-func (self *IScrollViewer) HorizontalSnapPointsAlignment() (uixamlcontrolsprimitives.SnapPointsAlignment, error) {
-	result := new(uixamlcontrolsprimitives.SnapPointsAlignment)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[30], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 30: get_HorizontalSnapPointsAlignment skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SnapPointsAlignment crosses a severed import edge
 
-// SetHorizontalSnapPointsAlignment (propput put_HorizontalSnapPointsAlignment) dispatches through IScrollViewer's vtable slot 31.
-func (self *IScrollViewer) SetHorizontalSnapPointsAlignment(value uixamlcontrolsprimitives.SnapPointsAlignment) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[31], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 31: put_HorizontalSnapPointsAlignment skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SnapPointsAlignment crosses a severed import edge
 
-// VerticalSnapPointsAlignment (propget get_VerticalSnapPointsAlignment) dispatches through IScrollViewer's vtable slot 32.
-func (self *IScrollViewer) VerticalSnapPointsAlignment() (uixamlcontrolsprimitives.SnapPointsAlignment, error) {
-	result := new(uixamlcontrolsprimitives.SnapPointsAlignment)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[32], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 32: get_VerticalSnapPointsAlignment skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SnapPointsAlignment crosses a severed import edge
 
-// SetVerticalSnapPointsAlignment (propput put_VerticalSnapPointsAlignment) dispatches through IScrollViewer's vtable slot 33.
-func (self *IScrollViewer) SetVerticalSnapPointsAlignment(value uixamlcontrolsprimitives.SnapPointsAlignment) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[33], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 33: put_VerticalSnapPointsAlignment skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SnapPointsAlignment crosses a severed import edge
 
 // HorizontalSnapPointsType (propget get_HorizontalSnapPointsType) dispatches through IScrollViewer's vtable slot 34.
 func (self *IScrollViewer) HorizontalSnapPointsType() (SnapPointsType, error) {
@@ -31451,18 +31230,9 @@ func (self *ISlider) SetStepFrequency(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// SnapsTo (propget get_SnapsTo) dispatches through ISlider's vtable slot 10.
-func (self *ISlider) SnapsTo() (uixamlcontrolsprimitives.SliderSnapsTo, error) {
-	result := new(uixamlcontrolsprimitives.SliderSnapsTo)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 10: get_SnapsTo skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SliderSnapsTo crosses a severed import edge
 
-// SetSnapsTo (propput put_SnapsTo) dispatches through ISlider's vtable slot 11.
-func (self *ISlider) SetSnapsTo(value uixamlcontrolsprimitives.SliderSnapsTo) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 11: put_SnapsTo skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SliderSnapsTo crosses a severed import edge
 
 // TickFrequency (propget get_TickFrequency) dispatches through ISlider's vtable slot 12.
 func (self *ISlider) TickFrequency() (float64, error) {
@@ -31478,18 +31248,9 @@ func (self *ISlider) SetTickFrequency(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TickPlacement (propget get_TickPlacement) dispatches through ISlider's vtable slot 14.
-func (self *ISlider) TickPlacement() (uixamlcontrolsprimitives.TickPlacement, error) {
-	result := new(uixamlcontrolsprimitives.TickPlacement)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 14: get_TickPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.TickPlacement crosses a severed import edge
 
-// SetTickPlacement (propput put_TickPlacement) dispatches through ISlider's vtable slot 15.
-func (self *ISlider) SetTickPlacement(value uixamlcontrolsprimitives.TickPlacement) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 15: put_TickPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.TickPlacement crosses a severed import edge
 
 // Orientation (propget get_Orientation) dispatches through ISlider's vtable slot 16.
 func (self *ISlider) Orientation() (Orientation, error) {
@@ -31691,18 +31452,9 @@ type ISplitButton struct {
 // IID_ISplitButton is the interface identifier for ISplitButton.
 var IID_ISplitButton = win32.GUID{Data1: 0xf627202d, Data2: 0xd2d7, Data3: 0x5ff6, Data4: [8]byte{0xbb, 0x05, 0x8c, 0x48, 0xeb, 0x6b, 0x1f, 0xc6}}
 
-// Flyout (propget get_Flyout) dispatches through ISplitButton's vtable slot 6.
-func (self *ISplitButton) Flyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: get_Flyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetFlyout (propput put_Flyout) dispatches through ISplitButton's vtable slot 7.
-func (self *ISplitButton) SetFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 7: put_Flyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // Command (propget get_Command) dispatches through ISplitButton's vtable slot 8.
 func (self *ISplitButton) Command() (*uixamlinput.ICommand, error) {
@@ -31995,12 +31747,7 @@ func (self *ISplitView) SetDisplayMode(value SplitViewDisplayMode) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through ISplitView's vtable slot 20.
-func (self *ISplitView) TemplateSettings() (*uixamlcontrolsprimitives.ISplitViewTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.ISplitViewTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 20: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.SplitViewTemplateSettings crosses a severed import edge
 
 // PaneBackground (propget get_PaneBackground) dispatches through ISplitView's vtable slot 21.
 func (self *ISplitView) PaneBackground() (*uixamlmedia.IBrush, error) {
@@ -35517,18 +35264,9 @@ func (self *ITextBlock) TextHighlighters() (*IVectorOfTextHighlighter, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// SelectionFlyout (propget get_SelectionFlyout) dispatches through ITextBlock's vtable slot 63.
-func (self *ITextBlock) SelectionFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[63], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 63: get_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetSelectionFlyout (propput put_SelectionFlyout) dispatches through ITextBlock's vtable slot 64.
-func (self *ITextBlock) SetSelectionFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[64], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 64: put_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // AddSelectionChanged (event add add_SelectionChanged) dispatches through ITextBlock's vtable slot 65.
 // The handler stays registered (and referenced by the runtime) until the
@@ -36167,25 +35905,11 @@ func (self *ITextBox) CanRedo() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// SelectionFlyout (propget get_SelectionFlyout) dispatches through ITextBox's vtable slot 53.
-func (self *ITextBox) SelectionFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[53], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 53: get_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// SetSelectionFlyout (propput put_SelectionFlyout) dispatches through ITextBox's vtable slot 54.
-func (self *ITextBox) SetSelectionFlyout(value *uixamlcontrolsprimitives.IFlyoutBase) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[54], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 54: put_SelectionFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
-// ProofingMenuFlyout (propget get_ProofingMenuFlyout) dispatches through ITextBox's vtable slot 55.
-func (self *ITextBox) ProofingMenuFlyout() (*uixamlcontrolsprimitives.IFlyoutBase, error) {
-	result := new(*uixamlcontrolsprimitives.IFlyoutBase)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[55], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 55: get_ProofingMenuFlyout skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase crosses a severed import edge
 
 // Description (propget get_Description) dispatches through ITextBox's vtable slot 56.
 func (self *ITextBox) Description() (*syswinrt.IInspectable, error) {
@@ -38145,12 +37869,7 @@ func (self *IToggleSwitch) SetOffContentTemplate(value *uixaml.IDataTemplate) er
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IToggleSwitch's vtable slot 20.
-func (self *IToggleSwitch) TemplateSettings() (*uixamlcontrolsprimitives.IToggleSwitchTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IToggleSwitchTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 20: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ToggleSwitchTemplateSettings crosses a severed import edge
 
 // AddToggled (event add add_Toggled) dispatches through IToggleSwitch's vtable slot 21.
 // The handler stays registered (and referenced by the runtime) until the
@@ -38302,18 +38021,9 @@ func (self *IToolTip) SetIsOpen(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// Placement (propget get_Placement) dispatches through IToolTip's vtable slot 10.
-func (self *IToolTip) Placement() (uixamlcontrolsprimitives.PlacementMode, error) {
-	result := new(uixamlcontrolsprimitives.PlacementMode)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 10: get_Placement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.PlacementMode crosses a severed import edge
 
-// SetPlacement (propput put_Placement) dispatches through IToolTip's vtable slot 11.
-func (self *IToolTip) SetPlacement(value uixamlcontrolsprimitives.PlacementMode) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 11: put_Placement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.PlacementMode crosses a severed import edge
 
 // PlacementTarget (propget get_PlacementTarget) dispatches through IToolTip's vtable slot 12.
 func (self *IToolTip) PlacementTarget() (*uixaml.IUIElement, error) {
@@ -38355,12 +38065,7 @@ func (self *IToolTip) SetVerticalOffset(value float64) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// TemplateSettings (propget get_TemplateSettings) dispatches through IToolTip's vtable slot 18.
-func (self *IToolTip) TemplateSettings() (*uixamlcontrolsprimitives.IToolTipTemplateSettings, error) {
-	result := new(*uixamlcontrolsprimitives.IToolTipTemplateSettings)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 18: get_TemplateSettings skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ToolTipTemplateSettings crosses a severed import edge
 
 // AddClosed (event add add_Closed) dispatches through IToolTip's vtable slot 19.
 // The handler stays registered (and referenced by the runtime) until the
@@ -38438,18 +38143,9 @@ func (self *IToolTipServiceStatics) PlacementProperty() (*uixaml.IDependencyProp
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// GetPlacement dispatches through IToolTipServiceStatics's vtable slot 7.
-func (self *IToolTipServiceStatics) GetPlacement(element *uixaml.IDependencyObject) (uixamlcontrolsprimitives.PlacementMode, error) {
-	result := new(uixamlcontrolsprimitives.PlacementMode)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(element)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 7: GetPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.PlacementMode crosses a severed import edge
 
-// SetPlacement dispatches through IToolTipServiceStatics's vtable slot 8.
-func (self *IToolTipServiceStatics) SetPlacement(element *uixaml.IDependencyObject, value uixamlcontrolsprimitives.PlacementMode) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(element)), uintptr(value))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 8: SetPlacement skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.PlacementMode crosses a severed import edge
 
 // PlacementTargetProperty (propget get_PlacementTargetProperty) dispatches through IToolTipServiceStatics's vtable slot 9.
 func (self *IToolTipServiceStatics) PlacementTargetProperty() (*uixaml.IDependencyProperty, error) {
@@ -40795,11 +40491,7 @@ type IVirtualizingPanelOverrides struct {
 // IID_IVirtualizingPanelOverrides is the interface identifier for IVirtualizingPanelOverrides.
 var IID_IVirtualizingPanelOverrides = win32.GUID{Data1: 0x3ffe2108, Data2: 0x0382, Data3: 0x50c8, Data4: [8]byte{0xb2, 0x95, 0x21, 0xbd, 0x8b, 0xee, 0x04, 0xd7}}
 
-// OnItemsChanged dispatches through IVirtualizingPanelOverrides's vtable slot 6.
-func (self *IVirtualizingPanelOverrides) OnItemsChanged(sender *syswinrt.IInspectable, args *uixamlcontrolsprimitives.IItemsChangedEventArgs) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(sender)), uintptr(unsafe.Pointer(args)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 6: OnItemsChanged skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.ItemsChangedEventArgs crosses a severed import edge
 
 // OnClearChildren dispatches through IVirtualizingPanelOverrides's vtable slot 7.
 func (self *IVirtualizingPanelOverrides) OnClearChildren() error {

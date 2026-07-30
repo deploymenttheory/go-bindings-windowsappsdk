@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Hosting",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {

@@ -22,6 +22,41 @@ type AnimatedVisualPlayerAutomationPeer struct {
 	IAnimatedVisualPlayerAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewAnimatedVisualPlayerAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.AnimatedVisualPlayerAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IAnimatedVisualPlayerAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -72,6 +107,41 @@ func (self *AppBarAutomationPeer) AsWindowProvider() (*uixamlautomationprovider.
 	return winrt.QueryInterface[uixamlautomationprovider.IWindowProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IWindowProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AppBarAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewAppBarAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.AppBarAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IAppBarAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -110,6 +180,62 @@ func (self *AppBarButtonAutomationPeer) AsExpandCollapseProvider() (*uixamlautom
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
 }
 
+// AsButtonAutomationPeer queries the instance's IButtonAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsButtonAutomationPeer() (*IButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonAutomationPeer](unsafe.Pointer(self), &IID_IButtonAutomationPeer)
+}
+
+// AsInvokeProvider queries the instance's uixamlautomationprovider.IInvokeProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsInvokeProvider() (*uixamlautomationprovider.IInvokeProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
+}
+
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewAppBarButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.AppBarButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IAppBarButtonAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -140,6 +266,62 @@ func NewAppBarButtonAutomationPeerWithOwner(owner *uixamlcontrols.IAppBarButton)
 // the embedded IInspectable → IUnknown chain).
 type AppBarToggleButtonAutomationPeer struct {
 	IAppBarToggleButtonAutomationPeer
+}
+
+// AsToggleButtonAutomationPeer queries the instance's IToggleButtonAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsToggleButtonAutomationPeer() (*IToggleButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleButtonAutomationPeer](unsafe.Pointer(self), &IID_IToggleButtonAutomationPeer)
+}
+
+// AsToggleProvider queries the instance's uixamlautomationprovider.IToggleProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsToggleProvider() (*uixamlautomationprovider.IToggleProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
+}
+
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewAppBarToggleButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.AppBarToggleButtonAutomationPeer instance through
@@ -180,6 +362,41 @@ func (self *AutoSuggestBoxAutomationPeer) AsInvokeProvider() (*uixamlautomationp
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CreateInstanceWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.AutoSuggestBoxAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IAutoSuggestBoxAutomationPeerFactory.CreateInstanceWithOwner. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -214,6 +431,13 @@ func (self *AutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtect
 // The returned reference is owned by the caller.
 func (self *AutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
 	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // AutomationPeerStatics returns the Microsoft.UI.Xaml.Automation.Peers.IAutomationPeerStatics statics of the
@@ -271,6 +495,13 @@ func NewAutomationPeerAnnotation() (*AutomationPeerAnnotation, error) {
 	return winrt.QueryInterface[AutomationPeerAnnotation](unsafe.Pointer(instance), &IID_IAutomationPeerAnnotation)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AutomationPeerAnnotation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // AutomationPeerAnnotationStatics returns the Microsoft.UI.Xaml.Automation.Peers.IAutomationPeerAnnotationStatics statics of the
 // Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -294,6 +525,41 @@ type BreadcrumbBarItemAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *BreadcrumbBarItemAutomationPeer) AsInvokeProvider() (*uixamlautomationprovider.IInvokeProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewBreadcrumbBarItemAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.BreadcrumbBarItemAutomationPeer instance through
@@ -334,6 +600,48 @@ func (self *ButtonAutomationPeer) AsInvokeProvider() (*uixamlautomationprovider.
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IButtonAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -364,6 +672,41 @@ func NewButtonAutomationPeerWithOwner(owner *uixamlcontrols.IButton) (*ButtonAut
 // the embedded IInspectable → IUnknown chain).
 type ButtonBaseAutomationPeer struct {
 	IButtonBaseAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonBaseAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonBaseAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonBaseAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ButtonBaseAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ButtonBaseAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewButtonBaseAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer instance through
@@ -410,6 +753,41 @@ func (self *CalendarDatePickerAutomationPeer) AsValueProvider() (*uixamlautomati
 	return winrt.QueryInterface[uixamlautomationprovider.IValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IValueProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewCalendarDatePickerAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.CalendarDatePickerAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ICalendarDatePickerAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -440,6 +818,62 @@ func NewCalendarDatePickerAutomationPeerWithOwner(owner *uixamlcontrols.ICalenda
 // the embedded IInspectable → IUnknown chain).
 type CheckBoxAutomationPeer struct {
 	ICheckBoxAutomationPeer
+}
+
+// AsToggleButtonAutomationPeer queries the instance's IToggleButtonAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsToggleButtonAutomationPeer() (*IToggleButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleButtonAutomationPeer](unsafe.Pointer(self), &IID_IToggleButtonAutomationPeer)
+}
+
+// AsToggleProvider queries the instance's uixamlautomationprovider.IToggleProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsToggleProvider() (*uixamlautomationprovider.IToggleProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
+}
+
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewCheckBoxAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.CheckBoxAutomationPeer instance through
@@ -474,6 +908,62 @@ type ColorPickerSliderAutomationPeer struct {
 	IColorPickerSliderAutomationPeer
 }
 
+// AsSliderAutomationPeer queries the instance's ISliderAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SliderAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsSliderAutomationPeer() (*ISliderAutomationPeer, error) {
+	return winrt.QueryInterface[ISliderAutomationPeer](unsafe.Pointer(self), &IID_ISliderAutomationPeer)
+}
+
+// AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsRangeBaseAutomationPeer() (*IRangeBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IRangeBaseAutomationPeer](unsafe.Pointer(self), &IID_IRangeBaseAutomationPeer)
+}
+
+// AsRangeValueProvider queries the instance's uixamlautomationprovider.IRangeValueProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsRangeValueProvider() (*uixamlautomationprovider.IRangeValueProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IRangeValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IRangeValueProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewColorPickerSliderAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ColorPickerSliderAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IColorPickerSliderAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -504,6 +994,41 @@ func NewColorPickerSliderAutomationPeerWithOwner(owner *uixamlcontrolsprimitives
 // the embedded IInspectable → IUnknown chain).
 type ColorSpectrumAutomationPeer struct {
 	IColorSpectrumAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrumAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrumAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrumAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrumAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrumAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewColorSpectrumAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ColorSpectrumAutomationPeer instance through
@@ -556,6 +1081,76 @@ func (self *ComboBoxAutomationPeer) AsWindowProvider() (*uixamlautomationprovide
 	return winrt.QueryInterface[uixamlautomationprovider.IWindowProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IWindowProvider)
 }
 
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewComboBoxAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ComboBoxAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IComboBoxAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -586,6 +1181,41 @@ func NewComboBoxAutomationPeerWithOwner(owner *uixamlcontrols.IComboBox) (*Combo
 // the embedded IInspectable → IUnknown chain).
 type ComboBoxItemAutomationPeer struct {
 	IComboBoxItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewComboBoxItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ComboBoxItemAutomationPeer instance through
@@ -626,6 +1256,62 @@ func (self *ComboBoxItemDataAutomationPeer) AsScrollItemProvider() (*uixamlautom
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollItemProvider)
 }
 
+// AsSelectorItemAutomationPeer queries the instance's ISelectorItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsSelectorItemAutomationPeer() (*ISelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorItemAutomationPeer)
+}
+
+// AsSelectionItemProvider queries the instance's uixamlautomationprovider.ISelectionItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsSelectionItemProvider() (*uixamlautomationprovider.ISelectionItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
+}
+
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewComboBoxItemDataAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.ComboBoxItemDataAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IComboBoxItemDataAutomationPeerFactory.CreateInstanceWithParentAndItem with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -656,6 +1342,41 @@ func NewComboBoxItemDataAutomationPeerWithParentAndItem(item *syswinrt.IInspecta
 // the embedded IInspectable → IUnknown chain).
 type DatePickerAutomationPeer struct {
 	IDatePickerAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DatePickerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewDatePickerAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.DatePickerAutomationPeer instance through
@@ -690,6 +1411,41 @@ type DatePickerFlyoutPresenterAutomationPeer struct {
 	IDatePickerFlyoutPresenterAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // DropDownButtonAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.DropDownButtonAutomationPeer runtime class, surfaced through its
 // default interface IDropDownButtonAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -701,6 +1457,62 @@ type DropDownButtonAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *DropDownButtonAutomationPeer) AsExpandCollapseProvider() (*uixamlautomationprovider.IExpandCollapseProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
+}
+
+// AsButtonAutomationPeer queries the instance's IButtonAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsButtonAutomationPeer() (*IButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonAutomationPeer](unsafe.Pointer(self), &IID_IButtonAutomationPeer)
+}
+
+// AsInvokeProvider queries the instance's uixamlautomationprovider.IInvokeProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsInvokeProvider() (*uixamlautomationprovider.IInvokeProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
+}
+
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewDropDownButtonAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.DropDownButtonAutomationPeer instance through
@@ -741,6 +1553,41 @@ func (self *ExpanderAutomationPeer) AsExpandCollapseProvider() (*uixamlautomatio
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ExpanderAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ExpanderAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ExpanderAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ExpanderAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ExpanderAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewExpanderAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ExpanderAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IExpanderAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -773,6 +1620,76 @@ type FlipViewAutomationPeer struct {
 	IFlipViewAutomationPeer
 }
 
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewFlipViewAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.FlipViewAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IFlipViewAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -803,6 +1720,41 @@ func NewFlipViewAutomationPeerWithOwner(owner *uixamlcontrols.IFlipView) (*FlipV
 // the embedded IInspectable → IUnknown chain).
 type FlipViewItemAutomationPeer struct {
 	IFlipViewItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewFlipViewItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.FlipViewItemAutomationPeer instance through
@@ -843,6 +1795,62 @@ func (self *FlipViewItemDataAutomationPeer) AsScrollItemProvider() (*uixamlautom
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollItemProvider)
 }
 
+// AsSelectorItemAutomationPeer queries the instance's ISelectorItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsSelectorItemAutomationPeer() (*ISelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorItemAutomationPeer)
+}
+
+// AsSelectionItemProvider queries the instance's uixamlautomationprovider.ISelectionItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsSelectionItemProvider() (*uixamlautomationprovider.ISelectionItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
+}
+
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewFlipViewItemDataAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.FlipViewItemDataAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IFlipViewItemDataAutomationPeerFactory.CreateInstanceWithParentAndItem with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -875,6 +1883,41 @@ type FlyoutPresenterAutomationPeer struct {
 	IFlyoutPresenterAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewFlyoutPresenterAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.FlyoutPresenterAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IFlyoutPresenterAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -905,6 +1948,34 @@ func NewFlyoutPresenterAutomationPeerWithOwner(owner *uixamlcontrols.IFlyoutPres
 // the embedded IInspectable → IUnknown chain).
 type FrameworkElementAutomationPeer struct {
 	IFrameworkElementAutomationPeer
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FrameworkElementAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FrameworkElementAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *FrameworkElementAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FrameworkElementAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // FrameworkElementAutomationPeerStatics returns the Microsoft.UI.Xaml.Automation.Peers.IFrameworkElementAutomationPeerStatics statics of the
@@ -951,6 +2022,90 @@ type GridViewAutomationPeer struct {
 	IGridViewAutomationPeer
 }
 
+// AsListViewBaseAutomationPeer queries the instance's IListViewBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsListViewBaseAutomationPeer() (*IListViewBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseAutomationPeer)
+}
+
+// AsDropTargetProvider queries the instance's uixamlautomationprovider.IDropTargetProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsDropTargetProvider() (*uixamlautomationprovider.IDropTargetProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IDropTargetProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IDropTargetProvider)
+}
+
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewGridViewAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.GridViewAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IGridViewAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -983,6 +2138,48 @@ type GridViewHeaderItemAutomationPeer struct {
 	IGridViewHeaderItemAutomationPeer
 }
 
+// AsListViewBaseHeaderItemAutomationPeer queries the instance's IListViewBaseHeaderItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseHeaderItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsListViewBaseHeaderItemAutomationPeer() (*IListViewBaseHeaderItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseHeaderItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseHeaderItemAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewGridViewHeaderItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.GridViewHeaderItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IGridViewHeaderItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1013,6 +2210,41 @@ func NewGridViewHeaderItemAutomationPeerWithOwner(owner *uixamlcontrols.IGridVie
 // the embedded IInspectable → IUnknown chain).
 type GridViewItemAutomationPeer struct {
 	IGridViewItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GridViewItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewGridViewItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.GridViewItemAutomationPeer instance through
@@ -1053,6 +2285,62 @@ func (self *GridViewItemDataAutomationPeer) AsScrollItemProvider() (*uixamlautom
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollItemProvider)
 }
 
+// AsSelectorItemAutomationPeer queries the instance's ISelectorItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsSelectorItemAutomationPeer() (*ISelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorItemAutomationPeer)
+}
+
+// AsSelectionItemProvider queries the instance's uixamlautomationprovider.ISelectionItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsSelectionItemProvider() (*uixamlautomationprovider.ISelectionItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
+}
+
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewGridViewItemDataAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.GridViewItemDataAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IGridViewItemDataAutomationPeerFactory.CreateInstanceWithParentAndItem with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1085,6 +2373,41 @@ type GroupItemAutomationPeer struct {
 	IGroupItemAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GroupItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GroupItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GroupItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *GroupItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GroupItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewGroupItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.GroupItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IGroupItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1115,6 +2438,41 @@ func NewGroupItemAutomationPeerWithOwner(owner *uixamlcontrols.IGroupItem) (*Gro
 // the embedded IInspectable → IUnknown chain).
 type HubAutomationPeer struct {
 	IHubAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *HubAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewHubAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.HubAutomationPeer instance through
@@ -1155,6 +2513,41 @@ func (self *HubSectionAutomationPeer) AsScrollItemProvider() (*uixamlautomationp
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollItemProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubSectionAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubSectionAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubSectionAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HubSectionAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *HubSectionAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewHubSectionAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.HubSectionAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IHubSectionAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1193,6 +2586,48 @@ func (self *HyperlinkButtonAutomationPeer) AsInvokeProvider() (*uixamlautomation
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewHyperlinkButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.HyperlinkButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IHyperlinkButtonAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1225,6 +2660,41 @@ type ImageAutomationPeer struct {
 	IImageAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ImageAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ImageAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ImageAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ImageAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ImageAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewImageAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ImageAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IImageAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1255,6 +2725,41 @@ func NewImageAutomationPeerWithOwner(owner *uixamlcontrols.IImage) (*ImageAutoma
 // the embedded IInspectable → IUnknown chain).
 type InfoBarAutomationPeer struct {
 	IInfoBarAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *InfoBarAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *InfoBarAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *InfoBarAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *InfoBarAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *InfoBarAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewInfoBarAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.InfoBarAutomationPeer instance through
@@ -1293,6 +2798,34 @@ type ItemAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *ItemAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewItemAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer instance through
@@ -1339,6 +2872,41 @@ func (self *ItemContainerAutomationPeer) AsInvokeProvider() (*uixamlautomationpr
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemContainerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemContainerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemContainerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemContainerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ItemContainerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewItemContainerAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ItemContainerAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IItemContainerAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1383,6 +2951,41 @@ func (self *ItemsControlAutomationPeer) AsItemContainerProvider() (*uixamlautoma
 	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsControlAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsControlAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsControlAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsControlAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ItemsControlAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewItemsControlAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IItemsControlAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1421,6 +3024,41 @@ func (self *ItemsViewAutomationPeer) AsSelectionProvider() (*uixamlautomationpro
 	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsViewAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsViewAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsViewAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ItemsViewAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ItemsViewAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewItemsViewAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ItemsViewAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IItemsViewAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1453,6 +3091,76 @@ type ListBoxAutomationPeer struct {
 	IListBoxAutomationPeer
 }
 
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewListBoxAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListBoxAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IListBoxAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1483,6 +3191,41 @@ func NewListBoxAutomationPeerWithOwner(owner *uixamlcontrols.IListBox) (*ListBox
 // the embedded IInspectable → IUnknown chain).
 type ListBoxItemAutomationPeer struct {
 	IListBoxItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewListBoxItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListBoxItemAutomationPeer instance through
@@ -1523,6 +3266,62 @@ func (self *ListBoxItemDataAutomationPeer) AsScrollItemProvider() (*uixamlautoma
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollItemProvider)
 }
 
+// AsSelectorItemAutomationPeer queries the instance's ISelectorItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsSelectorItemAutomationPeer() (*ISelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorItemAutomationPeer)
+}
+
+// AsSelectionItemProvider queries the instance's uixamlautomationprovider.ISelectionItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsSelectionItemProvider() (*uixamlautomationprovider.ISelectionItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
+}
+
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewListBoxItemDataAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.ListBoxItemDataAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IListBoxItemDataAutomationPeerFactory.CreateInstanceWithParentAndItem with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1555,11 +3354,130 @@ type ListPickerFlyoutPresenterAutomationPeer struct {
 	IListPickerFlyoutPresenterAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ListViewAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.ListViewAutomationPeer runtime class, surfaced through its
 // default interface IListViewAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ListViewAutomationPeer struct {
 	IListViewAutomationPeer
+}
+
+// AsListViewBaseAutomationPeer queries the instance's IListViewBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsListViewBaseAutomationPeer() (*IListViewBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseAutomationPeer)
+}
+
+// AsDropTargetProvider queries the instance's uixamlautomationprovider.IDropTargetProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsDropTargetProvider() (*uixamlautomationprovider.IDropTargetProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IDropTargetProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IDropTargetProvider)
+}
+
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewListViewAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListViewAutomationPeer instance through
@@ -1600,6 +3518,76 @@ func (self *ListViewBaseAutomationPeer) AsDropTargetProvider() (*uixamlautomatio
 	return winrt.QueryInterface[uixamlautomationprovider.IDropTargetProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IDropTargetProvider)
 }
 
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewListViewBaseAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IListViewBaseAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1630,6 +3618,41 @@ func NewListViewBaseAutomationPeerWithOwner(owner *uixamlcontrols.IListViewBase)
 // the embedded IInspectable → IUnknown chain).
 type ListViewBaseHeaderItemAutomationPeer struct {
 	IListViewBaseHeaderItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewListViewBaseHeaderItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListViewBaseHeaderItemAutomationPeer instance through
@@ -1664,6 +3687,48 @@ type ListViewHeaderItemAutomationPeer struct {
 	IListViewHeaderItemAutomationPeer
 }
 
+// AsListViewBaseHeaderItemAutomationPeer queries the instance's IListViewBaseHeaderItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseHeaderItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsListViewBaseHeaderItemAutomationPeer() (*IListViewBaseHeaderItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseHeaderItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseHeaderItemAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewListViewHeaderItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListViewHeaderItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IListViewHeaderItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1694,6 +3759,41 @@ func NewListViewHeaderItemAutomationPeerWithOwner(owner *uixamlcontrols.IListVie
 // the embedded IInspectable → IUnknown chain).
 type ListViewItemAutomationPeer struct {
 	IListViewItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewListViewItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ListViewItemAutomationPeer instance through
@@ -1732,6 +3832,62 @@ type ListViewItemDataAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *ListViewItemDataAutomationPeer) AsScrollItemProvider() (*uixamlautomationprovider.IScrollItemProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollItemProvider)
+}
+
+// AsSelectorItemAutomationPeer queries the instance's ISelectorItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsSelectorItemAutomationPeer() (*ISelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorItemAutomationPeer)
+}
+
+// AsSelectionItemProvider queries the instance's uixamlautomationprovider.ISelectionItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsSelectionItemProvider() (*uixamlautomationprovider.ISelectionItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
+}
+
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewListViewItemDataAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.ListViewItemDataAutomationPeer instance through
@@ -1784,6 +3940,41 @@ func (self *LoopingSelectorAutomationPeer) AsScrollProvider() (*uixamlautomation
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LoopingSelectorItemAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.LoopingSelectorItemAutomationPeer runtime class, surfaced through its
 // default interface ILoopingSelectorItemAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1803,6 +3994,41 @@ func (self *LoopingSelectorItemAutomationPeer) AsSelectionItemProvider() (*uixam
 	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LoopingSelectorItemDataAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.LoopingSelectorItemDataAutomationPeer runtime class, surfaced through its
 // default interface ILoopingSelectorItemDataAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1816,11 +4042,74 @@ func (self *LoopingSelectorItemDataAutomationPeer) AsVirtualizedItemProvider() (
 	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
 }
 
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // MediaPlayerElementAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.MediaPlayerElementAutomationPeer runtime class, surfaced through its
 // default interface IMediaPlayerElementAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MediaPlayerElementAutomationPeer struct {
 	IMediaPlayerElementAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElementAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElementAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElementAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElementAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElementAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewMediaPlayerElementAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.MediaPlayerElementAutomationPeer instance through
@@ -1855,6 +4144,41 @@ type MediaTransportControlsAutomationPeer struct {
 	IMediaTransportControlsAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewMediaTransportControlsAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.MediaTransportControlsAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IMediaTransportControlsAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1885,6 +4209,41 @@ func NewMediaTransportControlsAutomationPeerWithOwner(owner *uixamlcontrols.IMed
 // the embedded IInspectable → IUnknown chain).
 type MenuBarAutomationPeer struct {
 	IMenuBarAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MenuBarAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewMenuBarAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.MenuBarAutomationPeer instance through
@@ -1931,6 +4290,41 @@ func (self *MenuBarItemAutomationPeer) AsInvokeProvider() (*uixamlautomationprov
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewMenuBarItemAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.MenuBarItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IMenuBarItemAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1969,6 +4363,41 @@ func (self *MenuFlyoutItemAutomationPeer) AsInvokeProvider() (*uixamlautomationp
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewMenuFlyoutItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.MenuFlyoutItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IMenuFlyoutItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2001,6 +4430,62 @@ type MenuFlyoutPresenterAutomationPeer struct {
 	IMenuFlyoutPresenterAutomationPeer
 }
 
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewMenuFlyoutPresenterAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.MenuFlyoutPresenterAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IMenuFlyoutPresenterAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2031,6 +4516,41 @@ func NewMenuFlyoutPresenterAutomationPeerWithOwner(owner *uixamlcontrols.IMenuFl
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewAutomationPeer struct {
 	INavigationViewAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NavigationViewAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewNavigationViewAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.NavigationViewAutomationPeer instance through
@@ -2071,6 +4591,41 @@ func (self *NavigationViewItemAutomationPeer) AsExpandCollapseProvider() (*uixam
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewNavigationViewItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.NavigationViewItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.INavigationViewItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2101,6 +4656,41 @@ func NewNavigationViewItemAutomationPeerWithOwner(owner *uixamlcontrols.INavigat
 // the embedded IInspectable → IUnknown chain).
 type NumberBoxAutomationPeer struct {
 	INumberBoxAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NumberBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NumberBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NumberBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *NumberBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NumberBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewNumberBoxAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.NumberBoxAutomationPeer instance through
@@ -2135,6 +4725,41 @@ type PasswordBoxAutomationPeer struct {
 	IPasswordBoxAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewPasswordBoxAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.PasswordBoxAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IPasswordBoxAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2165,6 +4790,41 @@ func NewPasswordBoxAutomationPeerWithOwner(owner *uixamlcontrols.IPasswordBox) (
 // the embedded IInspectable → IUnknown chain).
 type PersonPictureAutomationPeer struct {
 	IPersonPictureAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PersonPictureAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PersonPictureAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PersonPictureAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PersonPictureAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PersonPictureAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewPersonPictureAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.PersonPictureAutomationPeer instance through
@@ -2199,11 +4859,81 @@ type PickerFlyoutPresenterAutomationPeer struct {
 	IPickerFlyoutPresenterAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PipsPagerAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.PipsPagerAutomationPeer runtime class, surfaced through its
 // default interface IPipsPagerAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PipsPagerAutomationPeer struct {
 	IPipsPagerAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PipsPagerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PipsPagerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PipsPagerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PipsPagerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PipsPagerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewPipsPagerAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.PipsPagerAutomationPeer instance through
@@ -2250,6 +4980,62 @@ func (self *PivotAutomationPeer) AsScrollProvider() (*uixamlautomationprovider.I
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollProvider)
 }
 
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CreateInstanceWithOwnerPivotAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.PivotAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IPivotAutomationPeerFactory.CreateInstanceWithOwner. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -2272,6 +5058,41 @@ func CreateInstanceWithOwnerPivotAutomationPeer(owner *uixamlcontrols.IPivot) (*
 // the embedded IInspectable → IUnknown chain).
 type PivotItemAutomationPeer struct {
 	IPivotItemAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PivotItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CreateInstanceWithOwnerPivotItemAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.PivotItemAutomationPeer instance through
@@ -2316,6 +5137,41 @@ func (self *PivotItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlaut
 	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
 }
 
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *PivotItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PivotItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CreateInstanceWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.PivotItemDataAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IPivotItemDataAutomationPeerFactory.CreateInstanceWithParentAndItem. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -2338,6 +5194,55 @@ func CreateInstanceWithParentAndItem(item *syswinrt.IInspectable, parent *IPivot
 // the embedded IInspectable → IUnknown chain).
 type ProgressBarAutomationPeer struct {
 	IProgressBarAutomationPeer
+}
+
+// AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsRangeBaseAutomationPeer() (*IRangeBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IRangeBaseAutomationPeer](unsafe.Pointer(self), &IID_IRangeBaseAutomationPeer)
+}
+
+// AsRangeValueProvider queries the instance's uixamlautomationprovider.IRangeValueProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsRangeValueProvider() (*uixamlautomationprovider.IRangeValueProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IRangeValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IRangeValueProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewProgressBarAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ProgressBarAutomationPeer instance through
@@ -2378,6 +5283,41 @@ func (self *ProgressRingAutomationPeer) AsRangeValueProvider() (*uixamlautomatio
 	return winrt.QueryInterface[uixamlautomationprovider.IRangeValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IRangeValueProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressRingAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressRingAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressRingAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ProgressRingAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ProgressRingAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewProgressRingAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ProgressRingAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IProgressRingAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2416,6 +5356,62 @@ func (self *RadioButtonAutomationPeer) AsSelectionItemProvider() (*uixamlautomat
 	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
 }
 
+// AsToggleButtonAutomationPeer queries the instance's IToggleButtonAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsToggleButtonAutomationPeer() (*IToggleButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleButtonAutomationPeer](unsafe.Pointer(self), &IID_IToggleButtonAutomationPeer)
+}
+
+// AsToggleProvider queries the instance's uixamlautomationprovider.IToggleProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsToggleProvider() (*uixamlautomationprovider.IToggleProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
+}
+
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewRadioButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RadioButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IRadioButtonAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2446,6 +5442,41 @@ func NewRadioButtonAutomationPeerWithOwner(owner *uixamlcontrols.IRadioButton) (
 // the embedded IInspectable → IUnknown chain).
 type RadioButtonsAutomationPeer struct {
 	IRadioButtonsAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonsAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonsAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonsAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RadioButtonsAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RadioButtonsAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewRadioButtonsAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.RadioButtonsAutomationPeer instance through
@@ -2486,6 +5517,41 @@ func (self *RangeBaseAutomationPeer) AsRangeValueProvider() (*uixamlautomationpr
 	return winrt.QueryInterface[uixamlautomationprovider.IRangeValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IRangeValueProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RangeBaseAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RangeBaseAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RangeBaseAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RangeBaseAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RangeBaseAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewRangeBaseAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IRangeBaseAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2516,6 +5582,41 @@ func NewRangeBaseAutomationPeerWithOwner(owner *uixamlcontrolsprimitives.IRangeB
 // the embedded IInspectable → IUnknown chain).
 type RatingControlAutomationPeer struct {
 	IRatingControlAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RatingControlAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RatingControlAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RatingControlAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RatingControlAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RatingControlAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewRatingControlAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RatingControlAutomationPeer instance through
@@ -2556,6 +5657,48 @@ func (self *RepeatButtonAutomationPeer) AsInvokeProvider() (*uixamlautomationpro
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewRepeatButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RepeatButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IRepeatButtonAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2586,6 +5729,41 @@ func NewRepeatButtonAutomationPeerWithOwner(owner *uixamlcontrolsprimitives.IRep
 // the embedded IInspectable → IUnknown chain).
 type RepeaterAutomationPeer struct {
 	IRepeaterAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeaterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeaterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeaterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RepeaterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RepeaterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewRepeaterAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.RepeaterAutomationPeer instance through
@@ -2620,6 +5798,41 @@ type RichEditBoxAutomationPeer struct {
 	IRichEditBoxAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewRichEditBoxAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RichEditBoxAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IRichEditBoxAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2650,6 +5863,41 @@ func NewRichEditBoxAutomationPeerWithOwner(owner *uixamlcontrols.IRichEditBox) (
 // the embedded IInspectable → IUnknown chain).
 type RichTextBlockAutomationPeer struct {
 	IRichTextBlockAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewRichTextBlockAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RichTextBlockAutomationPeer instance through
@@ -2684,6 +5932,41 @@ type RichTextBlockOverflowAutomationPeer struct {
 	IRichTextBlockOverflowAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflowAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflowAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflowAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflowAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflowAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewRichTextBlockOverflowAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.RichTextBlockOverflowAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IRichTextBlockOverflowAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2716,6 +5999,55 @@ type ScrollBarAutomationPeer struct {
 	IScrollBarAutomationPeer
 }
 
+// AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsRangeBaseAutomationPeer() (*IRangeBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IRangeBaseAutomationPeer](unsafe.Pointer(self), &IID_IRangeBaseAutomationPeer)
+}
+
+// AsRangeValueProvider queries the instance's uixamlautomationprovider.IRangeValueProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsRangeValueProvider() (*uixamlautomationprovider.IRangeValueProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IRangeValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IRangeValueProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewScrollBarAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ScrollBarAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IScrollBarAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2746,6 +6078,41 @@ func NewScrollBarAutomationPeerWithOwner(owner *uixamlcontrolsprimitives.IScroll
 // the embedded IInspectable → IUnknown chain).
 type ScrollPresenterAutomationPeer struct {
 	IScrollPresenterAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewScrollPresenterAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ScrollPresenterAutomationPeer instance through
@@ -2786,6 +6153,41 @@ func (self *ScrollViewerAutomationPeer) AsScrollProvider() (*uixamlautomationpro
 	return winrt.QueryInterface[uixamlautomationprovider.IScrollProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IScrollProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewScrollViewerAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ScrollViewerAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IScrollViewerAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2824,6 +6226,62 @@ func (self *SelectorAutomationPeer) AsSelectionProvider() (*uixamlautomationprov
 	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
 }
 
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewSelectorAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ISelectorAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2854,6 +6312,62 @@ func NewSelectorAutomationPeerWithOwner(owner *uixamlcontrolsprimitives.ISelecto
 // the embedded IInspectable → IUnknown chain).
 type SelectorBarItemAutomationPeer struct {
 	ISelectorBarItemAutomationPeer
+}
+
+// AsItemContainerAutomationPeer queries the instance's IItemContainerAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemContainerAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsItemContainerAutomationPeer() (*IItemContainerAutomationPeer, error) {
+	return winrt.QueryInterface[IItemContainerAutomationPeer](unsafe.Pointer(self), &IID_IItemContainerAutomationPeer)
+}
+
+// AsSelectionItemProvider queries the instance's uixamlautomationprovider.ISelectionItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemContainerAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsSelectionItemProvider() (*uixamlautomationprovider.ISelectionItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
+}
+
+// AsInvokeProvider queries the instance's uixamlautomationprovider.IInvokeProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemContainerAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsInvokeProvider() (*uixamlautomationprovider.IInvokeProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewSelectorBarItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.SelectorBarItemAutomationPeer instance through
@@ -2894,6 +6408,48 @@ func (self *SelectorItemAutomationPeer) AsSelectionItemProvider() (*uixamlautoma
 	return winrt.QueryInterface[uixamlautomationprovider.ISelectionItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionItemProvider)
 }
 
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewSelectorItemAutomationPeerWithParentAndItem constructs a Microsoft.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ISelectorItemAutomationPeerFactory.CreateInstanceWithParentAndItem with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2932,6 +6488,41 @@ func (self *SemanticZoomAutomationPeer) AsToggleProvider() (*uixamlautomationpro
 	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewSemanticZoomAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.SemanticZoomAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ISemanticZoomAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -2962,6 +6553,55 @@ func NewSemanticZoomAutomationPeerWithOwner(owner *uixamlcontrols.ISemanticZoom)
 // the embedded IInspectable → IUnknown chain).
 type SliderAutomationPeer struct {
 	ISliderAutomationPeer
+}
+
+// AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsRangeBaseAutomationPeer() (*IRangeBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IRangeBaseAutomationPeer](unsafe.Pointer(self), &IID_IRangeBaseAutomationPeer)
+}
+
+// AsRangeValueProvider queries the instance's uixamlautomationprovider.IRangeValueProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsRangeValueProvider() (*uixamlautomationprovider.IRangeValueProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IRangeValueProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IRangeValueProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewSliderAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.SliderAutomationPeer instance through
@@ -3008,6 +6648,41 @@ func (self *SplitButtonAutomationPeer) AsInvokeProvider() (*uixamlautomationprov
 	return winrt.QueryInterface[uixamlautomationprovider.IInvokeProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IInvokeProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplitButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewSplitButtonAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.SplitButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ISplitButtonAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3052,6 +6727,41 @@ func (self *SplitMenuFlyoutItemAutomationPeer) AsExpandCollapseProvider() (*uixa
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewSplitMenuFlyoutItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.SplitMenuFlyoutItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ISplitMenuFlyoutItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3082,6 +6792,41 @@ func NewSplitMenuFlyoutItemAutomationPeerWithOwner(owner *uixamlcontrols.ISplitM
 // the embedded IInspectable → IUnknown chain).
 type TabViewAutomationPeer struct {
 	ITabViewAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TabViewAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewTabViewAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.TabViewAutomationPeer instance through
@@ -3116,6 +6861,48 @@ type TabViewItemAutomationPeer struct {
 	ITabViewItemAutomationPeer
 }
 
+// AsListViewItemAutomationPeer queries the instance's IListViewItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsListViewItemAutomationPeer() (*IListViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewItemAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewTabViewItemAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.TabViewItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ITabViewItemAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3146,6 +6933,41 @@ func NewTabViewItemAutomationPeer(owner *uixamlcontrols.ITabViewItem) (*TabViewI
 // the embedded IInspectable → IUnknown chain).
 type TeachingTipAutomationPeer struct {
 	ITeachingTipAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TeachingTipAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TeachingTipAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TeachingTipAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TeachingTipAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TeachingTipAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewTeachingTipAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.TeachingTipAutomationPeer instance through
@@ -3180,6 +7002,41 @@ type TextBlockAutomationPeer struct {
 	ITextBlockAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBlockAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBlockAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBlockAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBlockAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TextBlockAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewTextBlockAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.TextBlockAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ITextBlockAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3210,6 +7067,41 @@ func NewTextBlockAutomationPeerWithOwner(owner *uixamlcontrols.ITextBlock) (*Tex
 // the embedded IInspectable → IUnknown chain).
 type TextBoxAutomationPeer struct {
 	ITextBoxAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBoxAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBoxAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBoxAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TextBoxAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TextBoxAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewTextBoxAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.TextBoxAutomationPeer instance through
@@ -3244,6 +7136,41 @@ type ThumbAutomationPeer struct {
 	IThumbAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ThumbAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ThumbAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ThumbAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ThumbAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ThumbAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewThumbAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ThumbAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IThumbAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3274,6 +7201,41 @@ func NewThumbAutomationPeerWithOwner(owner *uixamlcontrolsprimitives.IThumb) (*T
 // the embedded IInspectable → IUnknown chain).
 type TimePickerAutomationPeer struct {
 	ITimePickerAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TimePickerAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewTimePickerAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.TimePickerAutomationPeer instance through
@@ -3308,6 +7270,41 @@ type TimePickerFlyoutPresenterAutomationPeer struct {
 	ITimePickerFlyoutPresenterAutomationPeer
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenterAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenterAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenterAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenterAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ToggleButtonAutomationPeer is the Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer runtime class, surfaced through its
 // default interface IToggleButtonAutomationPeer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -3319,6 +7316,48 @@ type ToggleButtonAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *ToggleButtonAutomationPeer) AsToggleProvider() (*uixamlautomationprovider.IToggleProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
+}
+
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewToggleButtonAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer instance through
@@ -3357,6 +7396,41 @@ type ToggleMenuFlyoutItemAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *ToggleMenuFlyoutItemAutomationPeer) AsToggleProvider() (*uixamlautomationprovider.IToggleProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewToggleMenuFlyoutItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ToggleMenuFlyoutItemAutomationPeer instance through
@@ -3403,6 +7477,41 @@ func (self *ToggleSplitButtonAutomationPeer) AsToggleProvider() (*uixamlautomati
 	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
 }
 
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewToggleSplitButtonAutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.ToggleSplitButtonAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.IToggleSplitButtonAutomationPeerFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3439,6 +7548,41 @@ type ToggleSwitchAutomationPeer struct {
 // The returned reference is owned by the caller.
 func (self *ToggleSwitchAutomationPeer) AsToggleProvider() (*uixamlautomationprovider.IToggleProvider, error) {
 	return winrt.QueryInterface[uixamlautomationprovider.IToggleProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IToggleProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewToggleSwitchAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.ToggleSwitchAutomationPeer instance through
@@ -3479,6 +7623,48 @@ func (self *TreeViewItemAutomationPeer) AsExpandCollapseProvider() (*uixamlautom
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
 }
 
+// AsListViewItemAutomationPeer queries the instance's IListViewItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsListViewItemAutomationPeer() (*IListViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewItemAutomationPeer)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewTreeViewItemAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.TreeViewItemAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ITreeViewItemAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3517,6 +7703,48 @@ func (self *TreeViewItemDataAutomationPeer) AsExpandCollapseProvider() (*uixamla
 	return winrt.QueryInterface[uixamlautomationprovider.IExpandCollapseProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IExpandCollapseProvider)
 }
 
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
+// AsVirtualizedItemProvider queries the instance's uixamlautomationprovider.IVirtualizedItemProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsVirtualizedItemProvider() (*uixamlautomationprovider.IVirtualizedItemProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IVirtualizedItemProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IVirtualizedItemProvider)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewTreeViewItemDataAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.TreeViewItemDataAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ITreeViewItemDataAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3549,6 +7777,97 @@ type TreeViewListAutomationPeer struct {
 	ITreeViewListAutomationPeer
 }
 
+// AsListViewAutomationPeer queries the instance's IListViewAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsListViewAutomationPeer() (*IListViewAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewAutomationPeer](unsafe.Pointer(self), &IID_IListViewAutomationPeer)
+}
+
+// AsListViewBaseAutomationPeer queries the instance's IListViewBaseAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsListViewBaseAutomationPeer() (*IListViewBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseAutomationPeer)
+}
+
+// AsDropTargetProvider queries the instance's uixamlautomationprovider.IDropTargetProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsDropTargetProvider() (*uixamlautomationprovider.IDropTargetProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IDropTargetProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IDropTargetProvider)
+}
+
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
+}
+
+// AsSelectionProvider queries the instance's uixamlautomationprovider.ISelectionProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.SelectorAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsSelectionProvider() (*uixamlautomationprovider.ISelectionProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.ISelectionProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_ISelectionProvider)
+}
+
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
+// AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeerOverrides](unsafe.Pointer(self), &IID_IItemsControlAutomationPeerOverrides)
+}
+
+// AsItemContainerProvider queries the instance's uixamlautomationprovider.IItemContainerProvider interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsItemContainerProvider() (*uixamlautomationprovider.IItemContainerProvider, error) {
+	return winrt.QueryInterface[uixamlautomationprovider.IItemContainerProvider](unsafe.Pointer(self), &uixamlautomationprovider.IID_IItemContainerProvider)
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewTreeViewListAutomationPeerWithOwner constructs a Microsoft.UI.Xaml.Automation.Peers.TreeViewListAutomationPeer instance through
 // Microsoft.UI.Xaml.Automation.Peers.ITreeViewListAutomationPeerFactory.CreateInstanceWithOwner with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -3579,6 +7898,41 @@ func NewTreeViewListAutomationPeerWithOwner(owner *uixamlcontrols.ITreeViewList)
 // the embedded IInspectable → IUnknown chain).
 type WebView2AutomationPeer struct {
 	IWebView2AutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
+// The returned reference is owned by the caller.
+func (self *WebView2AutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *WebView2AutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
+}
+
+// AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *WebView2AutomationPeer) AsAutomationPeerProtected() (*IAutomationPeerProtected, error) {
+	return winrt.QueryInterface[IAutomationPeerProtected](unsafe.Pointer(self), &IID_IAutomationPeerProtected)
+}
+
+// AsAutomationPeerOverrides queries the instance's IAutomationPeerOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Automation.Peers.AutomationPeer.
+// The returned reference is owned by the caller.
+func (self *WebView2AutomationPeer) AsAutomationPeerOverrides() (*IAutomationPeerOverrides, error) {
+	return winrt.QueryInterface[IAutomationPeerOverrides](unsafe.Pointer(self), &IID_IAutomationPeerOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *WebView2AutomationPeer) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewWebView2AutomationPeer constructs a Microsoft.UI.Xaml.Automation.Peers.WebView2AutomationPeer instance through

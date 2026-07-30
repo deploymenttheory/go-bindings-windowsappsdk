@@ -54,6 +54,7 @@ func WalkRefs(meta *NamespaceMeta, visit func(*TypeRef)) {
 	for name := range meta.Classes {
 		definition := meta.Classes[name]
 		walkRef(definition.DefaultInterface)
+		walkRef(definition.BaseClass)
 		for i := range definition.Interfaces {
 			walkRef(&definition.Interfaces[i])
 		}

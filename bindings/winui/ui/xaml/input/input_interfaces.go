@@ -12,6 +12,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtsystem "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/system"
@@ -151,7 +152,11 @@ type IAccessKeyManagerStatics2 struct {
 // IID_IAccessKeyManagerStatics2 is the interface identifier for IAccessKeyManagerStatics2.
 var IID_IAccessKeyManagerStatics2 = win32.GUID{Data1: 0x512c9f63, Data2: 0x24ad, Data3: 0x5df2, Data4: [8]byte{0xb8, 0xed, 0x47, 0x24, 0x06, 0xdb, 0x31, 0xc0}}
 
-// slot 6: EnterDisplayMode skipped: reference to Microsoft.UI.Xaml.XamlRoot crosses a severed import edge
+// EnterDisplayModeForXamlRoot dispatches through IAccessKeyManagerStatics2's vtable slot 6.
+func (self *IAccessKeyManagerStatics2) EnterDisplayModeForXamlRoot(XamlRoot *uixaml.IXamlRoot) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(XamlRoot)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ICanExecuteRequestedEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.ICanExecuteRequestedEventArgs.
 // IID: e4bf6d7d-f6eb-53ca-a2d4-c741ec871e38
@@ -293,7 +298,12 @@ func (self *IContextRequestedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: TryGetPosition skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// TryGetPosition dispatches through IContextRequestedEventArgs's vtable slot 8.
+func (self *IContextRequestedEventArgs) TryGetPosition(relativeTo *uixaml.IUIElement, point *wrtfoundation.Point) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(point))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // IDoubleTappedRoutedEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.IDoubleTappedRoutedEventArgs.
 // IID: 32b9549d-11d8-53a5-a953-02409537a11f
@@ -329,7 +339,12 @@ func (self *IDoubleTappedRoutedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetPosition skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// GetPosition dispatches through IDoubleTappedRoutedEventArgs's vtable slot 9.
+func (self *IDoubleTappedRoutedEventArgs) GetPosition(relativeTo *uixaml.IUIElement) (wrtfoundation.Point, error) {
+	result := new(wrtfoundation.Point)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IExecuteRequestedEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.IExecuteRequestedEventArgs.
 // IID: e1a9fd0c-34d0-5ae2-8f5d-377e7a8a2708
@@ -358,9 +373,18 @@ type IFindNextElementOptions struct {
 // IID_IFindNextElementOptions is the interface identifier for IFindNextElementOptions.
 var IID_IFindNextElementOptions = win32.GUID{Data1: 0x7f88e76b, Data2: 0x7417, Data3: 0x5447, Data4: [8]byte{0xae, 0xd4, 0x2f, 0xab, 0xd2, 0x91, 0xbd, 0xc6}}
 
-// slot 6: get_SearchRoot skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// SearchRoot (propget get_SearchRoot) dispatches through IFindNextElementOptions's vtable slot 6.
+func (self *IFindNextElementOptions) SearchRoot() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_SearchRoot skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// SetSearchRoot (propput put_SearchRoot) dispatches through IFindNextElementOptions's vtable slot 7.
+func (self *IFindNextElementOptions) SetSearchRoot(value *uixaml.IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ExclusionRect (propget get_ExclusionRect) dispatches through IFindNextElementOptions's vtable slot 8.
 func (self *IFindNextElementOptions) ExclusionRect() (wrtfoundation.Rect, error) {
@@ -421,7 +445,12 @@ type IFocusManagerGotFocusEventArgs struct {
 // IID_IFocusManagerGotFocusEventArgs is the interface identifier for IFocusManagerGotFocusEventArgs.
 var IID_IFocusManagerGotFocusEventArgs = win32.GUID{Data1: 0x50aca341, Data2: 0x4519, Data3: 0x59cf, Data4: [8]byte{0x83, 0xb1, 0xc9, 0xc4, 0x5c, 0xfd, 0xb8, 0x16}}
 
-// slot 6: get_NewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// NewFocusedElement (propget get_NewFocusedElement) dispatches through IFocusManagerGotFocusEventArgs's vtable slot 6.
+func (self *IFocusManagerGotFocusEventArgs) NewFocusedElement() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // CorrelationId (propget get_CorrelationId) dispatches through IFocusManagerGotFocusEventArgs's vtable slot 7.
 func (self *IFocusManagerGotFocusEventArgs) CorrelationId() (win32.GUID, error) {
@@ -440,7 +469,12 @@ type IFocusManagerLostFocusEventArgs struct {
 // IID_IFocusManagerLostFocusEventArgs is the interface identifier for IFocusManagerLostFocusEventArgs.
 var IID_IFocusManagerLostFocusEventArgs = win32.GUID{Data1: 0xfdaf2c3f, Data2: 0xa22e, Data3: 0x5902, Data4: [8]byte{0xab, 0xce, 0xb6, 0x07, 0x58, 0xfb, 0xed, 0x1e}}
 
-// slot 6: get_OldFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// OldFocusedElement (propget get_OldFocusedElement) dispatches through IFocusManagerLostFocusEventArgs's vtable slot 6.
+func (self *IFocusManagerLostFocusEventArgs) OldFocusedElement() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // CorrelationId (propget get_CorrelationId) dispatches through IFocusManagerLostFocusEventArgs's vtable slot 7.
 func (self *IFocusManagerLostFocusEventArgs) CorrelationId() (win32.GUID, error) {
@@ -523,7 +557,12 @@ func (self *IFocusManagerStatics) RemoveLosingFocus(token syswinrt.EventRegistra
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 14: TryFocusAsync skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// TryFocusAsync dispatches through IFocusManagerStatics's vtable slot 14.
+func (self *IFocusManagerStatics) TryFocusAsync(element *uixaml.IDependencyObject, value uixaml.FocusState) (*IAsyncOperationOfFocusMovementResult, error) {
+	result := new(*IAsyncOperationOfFocusMovementResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(element)), uintptr(value), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // TryMoveFocusAsync dispatches through IFocusManagerStatics's vtable slot 15.
 func (self *IFocusManagerStatics) TryMoveFocusAsync(focusNavigationDirection FocusNavigationDirection) (*IAsyncOperationOfFocusMovementResult, error) {
@@ -546,17 +585,47 @@ func (self *IFocusManagerStatics) TryMoveFocusWithOptions(focusNavigationDirecti
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 18: FindNextElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// FindNextElement dispatches through IFocusManagerStatics's vtable slot 18.
+func (self *IFocusManagerStatics) FindNextElement(focusNavigationDirection FocusNavigationDirection) (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(focusNavigationDirection), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 19: FindFirstFocusableElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// FindFirstFocusableElement dispatches through IFocusManagerStatics's vtable slot 19.
+func (self *IFocusManagerStatics) FindFirstFocusableElement(searchScope *uixaml.IDependencyObject) (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[19], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(searchScope)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 20: FindLastFocusableElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// FindLastFocusableElement dispatches through IFocusManagerStatics's vtable slot 20.
+func (self *IFocusManagerStatics) FindLastFocusableElement(searchScope *uixaml.IDependencyObject) (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[20], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(searchScope)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 21: FindNextElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// FindNextElementWithOptions dispatches through IFocusManagerStatics's vtable slot 21.
+func (self *IFocusManagerStatics) FindNextElementWithOptions(focusNavigationDirection FocusNavigationDirection, focusNavigationOptions *IFindNextElementOptions) (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[21], uintptr(unsafe.Pointer(self)), uintptr(focusNavigationDirection), uintptr(unsafe.Pointer(focusNavigationOptions)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 22: FindNextFocusableElement skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// FindNextFocusableElement dispatches through IFocusManagerStatics's vtable slot 22.
+func (self *IFocusManagerStatics) FindNextFocusableElement(focusNavigationDirection FocusNavigationDirection) (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[22], uintptr(unsafe.Pointer(self)), uintptr(focusNavigationDirection), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 23: FindNextFocusableElement skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// FindNextFocusableElementWithHint dispatches through IFocusManagerStatics's vtable slot 23.
+func (self *IFocusManagerStatics) FindNextFocusableElementWithHint(focusNavigationDirection FocusNavigationDirection, hintRect wrtfoundation.Rect) (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(focusNavigationDirection), uintptr(winrt.OutParam(unsafe.Pointer(&hintRect))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // TryMoveFocus dispatches through IFocusManagerStatics's vtable slot 24.
 func (self *IFocusManagerStatics) TryMoveFocus(focusNavigationDirection FocusNavigationDirection) (bool, error) {
@@ -572,7 +641,12 @@ func (self *IFocusManagerStatics) GetFocusedElement() (*syswinrt.IInspectable, e
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 26: GetFocusedElement skipped: reference to Microsoft.UI.Xaml.XamlRoot crosses a severed import edge
+// GetFocusedElementWithRoot dispatches through IFocusManagerStatics's vtable slot 26.
+func (self *IFocusManagerStatics) GetFocusedElementWithRoot(xamlRoot *uixaml.IXamlRoot) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[26], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(xamlRoot)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IFocusMovementResult is the WinRT interface Microsoft.UI.Xaml.Input.IFocusMovementResult.
 // IID: a46259fd-3edd-554b-a188-0a47b71e4e1a
@@ -601,13 +675,32 @@ type IGettingFocusEventArgs struct {
 // IID_IGettingFocusEventArgs is the interface identifier for IGettingFocusEventArgs.
 var IID_IGettingFocusEventArgs = win32.GUID{Data1: 0x37fd3af0, Data2: 0xbd3c, Data3: 0x5bf5, Data4: [8]byte{0xa9, 0xcd, 0x71, 0xa1, 0xe8, 0x7a, 0xf9, 0x50}}
 
-// slot 6: get_OldFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// OldFocusedElement (propget get_OldFocusedElement) dispatches through IGettingFocusEventArgs's vtable slot 6.
+func (self *IGettingFocusEventArgs) OldFocusedElement() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_NewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// NewFocusedElement (propget get_NewFocusedElement) dispatches through IGettingFocusEventArgs's vtable slot 7.
+func (self *IGettingFocusEventArgs) NewFocusedElement() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: put_NewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// SetNewFocusedElement (propput put_NewFocusedElement) dispatches through IGettingFocusEventArgs's vtable slot 8.
+func (self *IGettingFocusEventArgs) SetNewFocusedElement(value *uixaml.IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_FocusState skipped: reference to Microsoft.UI.Xaml.FocusState crosses a severed import edge
+// FocusState (propget get_FocusState) dispatches through IGettingFocusEventArgs's vtable slot 9.
+func (self *IGettingFocusEventArgs) FocusState() (uixaml.FocusState, error) {
+	result := new(uixaml.FocusState)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Direction (propget get_Direction) dispatches through IGettingFocusEventArgs's vtable slot 10.
 func (self *IGettingFocusEventArgs) Direction() (FocusNavigationDirection, error) {
@@ -671,7 +764,12 @@ func (self *IGettingFocusEventArgs) TryCancel() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 18: TrySetNewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// TrySetNewFocusedElement dispatches through IGettingFocusEventArgs's vtable slot 18.
+func (self *IGettingFocusEventArgs) TrySetNewFocusedElement(element *uixaml.IDependencyObject) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(element)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // IHoldingRoutedEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.IHoldingRoutedEventArgs.
 // IID: 8272a4b2-2221-551e-b0bb-16e29138ab20
@@ -714,7 +812,12 @@ func (self *IHoldingRoutedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 10: GetPosition skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// GetPosition dispatches through IHoldingRoutedEventArgs's vtable slot 10.
+func (self *IHoldingRoutedEventArgs) GetPosition(relativeTo *uixaml.IUIElement) (wrtfoundation.Point, error) {
+	result := new(wrtfoundation.Point)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IInertiaExpansionBehavior is the WinRT interface Microsoft.UI.Xaml.Input.IInertiaExpansionBehavior.
 // IID: d60029b7-f0cd-5aea-abe5-7410d09118c6
@@ -998,9 +1101,18 @@ func (self *IKeyboardAccelerator) SetIsEnabled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 12: get_ScopeOwner skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// ScopeOwner (propget get_ScopeOwner) dispatches through IKeyboardAccelerator's vtable slot 12.
+func (self *IKeyboardAccelerator) ScopeOwner() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 13: put_ScopeOwner skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// SetScopeOwner (propput put_ScopeOwner) dispatches through IKeyboardAccelerator's vtable slot 13.
+func (self *IKeyboardAccelerator) SetScopeOwner(value *uixaml.IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // AddInvoked (event add add_Invoked) dispatches through IKeyboardAccelerator's vtable slot 14.
 // The handler stays registered (and referenced by the runtime) until the
@@ -1062,7 +1174,12 @@ func (self *IKeyboardAcceleratorInvokedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: get_Element skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// Element (propget get_Element) dispatches through IKeyboardAcceleratorInvokedEventArgs's vtable slot 8.
+func (self *IKeyboardAcceleratorInvokedEventArgs) Element() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // KeyboardAccelerator (propget get_KeyboardAccelerator) dispatches through IKeyboardAcceleratorInvokedEventArgs's vtable slot 9.
 func (self *IKeyboardAcceleratorInvokedEventArgs) KeyboardAccelerator() (*IKeyboardAccelerator, error) {
@@ -1081,13 +1198,33 @@ type IKeyboardAcceleratorStatics struct {
 // IID_IKeyboardAcceleratorStatics is the interface identifier for IKeyboardAcceleratorStatics.
 var IID_IKeyboardAcceleratorStatics = win32.GUID{Data1: 0x73e674ca, Data2: 0x73f4, Data3: 0x5e77, Data4: [8]byte{0xb8, 0xd6, 0xff, 0x78, 0x52, 0xa6, 0x3b, 0x0b}}
 
-// slot 6: get_KeyProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// KeyProperty (propget get_KeyProperty) dispatches through IKeyboardAcceleratorStatics's vtable slot 6.
+func (self *IKeyboardAcceleratorStatics) KeyProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_ModifiersProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// ModifiersProperty (propget get_ModifiersProperty) dispatches through IKeyboardAcceleratorStatics's vtable slot 7.
+func (self *IKeyboardAcceleratorStatics) ModifiersProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: get_IsEnabledProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// IsEnabledProperty (propget get_IsEnabledProperty) dispatches through IKeyboardAcceleratorStatics's vtable slot 8.
+func (self *IKeyboardAcceleratorStatics) IsEnabledProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_ScopeOwnerProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// ScopeOwnerProperty (propget get_ScopeOwnerProperty) dispatches through IKeyboardAcceleratorStatics's vtable slot 9.
+func (self *IKeyboardAcceleratorStatics) ScopeOwnerProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ILosingFocusEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.ILosingFocusEventArgs.
 // IID: fa0e5ffa-2b1b-52f8-bb66-e35f51e73cf3
@@ -1099,13 +1236,32 @@ type ILosingFocusEventArgs struct {
 // IID_ILosingFocusEventArgs is the interface identifier for ILosingFocusEventArgs.
 var IID_ILosingFocusEventArgs = win32.GUID{Data1: 0xfa0e5ffa, Data2: 0x2b1b, Data3: 0x52f8, Data4: [8]byte{0xbb, 0x66, 0xe3, 0x5f, 0x51, 0xe7, 0x3c, 0xf3}}
 
-// slot 6: get_OldFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// OldFocusedElement (propget get_OldFocusedElement) dispatches through ILosingFocusEventArgs's vtable slot 6.
+func (self *ILosingFocusEventArgs) OldFocusedElement() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_NewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// NewFocusedElement (propget get_NewFocusedElement) dispatches through ILosingFocusEventArgs's vtable slot 7.
+func (self *ILosingFocusEventArgs) NewFocusedElement() (*uixaml.IDependencyObject, error) {
+	result := new(*uixaml.IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: put_NewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// SetNewFocusedElement (propput put_NewFocusedElement) dispatches through ILosingFocusEventArgs's vtable slot 8.
+func (self *ILosingFocusEventArgs) SetNewFocusedElement(value *uixaml.IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_FocusState skipped: reference to Microsoft.UI.Xaml.FocusState crosses a severed import edge
+// FocusState (propget get_FocusState) dispatches through ILosingFocusEventArgs's vtable slot 9.
+func (self *ILosingFocusEventArgs) FocusState() (uixaml.FocusState, error) {
+	result := new(uixaml.FocusState)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Direction (propget get_Direction) dispatches through ILosingFocusEventArgs's vtable slot 10.
 func (self *ILosingFocusEventArgs) Direction() (FocusNavigationDirection, error) {
@@ -1169,7 +1325,12 @@ func (self *ILosingFocusEventArgs) TryCancel() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 18: TrySetNewFocusedElement skipped: reference to Microsoft.UI.Xaml.DependencyObject crosses a severed import edge
+// TrySetNewFocusedElement dispatches through ILosingFocusEventArgs's vtable slot 18.
+func (self *ILosingFocusEventArgs) TrySetNewFocusedElement(element *uixaml.IDependencyObject) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(element)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // IManipulationCompletedRoutedEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.IManipulationCompletedRoutedEventArgs.
 // IID: e3be9e4e-c5fb-5859-a81d-ce12fc3a2f4d
@@ -1181,7 +1342,12 @@ type IManipulationCompletedRoutedEventArgs struct {
 // IID_IManipulationCompletedRoutedEventArgs is the interface identifier for IManipulationCompletedRoutedEventArgs.
 var IID_IManipulationCompletedRoutedEventArgs = win32.GUID{Data1: 0xe3be9e4e, Data2: 0xc5fb, Data3: 0x5859, Data4: [8]byte{0xa8, 0x1d, 0xce, 0x12, 0xfc, 0x3a, 0x2f, 0x4d}}
 
-// slot 6: get_Container skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// Container (propget get_Container) dispatches through IManipulationCompletedRoutedEventArgs's vtable slot 6.
+func (self *IManipulationCompletedRoutedEventArgs) Container() (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Position (propget get_Position) dispatches through IManipulationCompletedRoutedEventArgs's vtable slot 7.
 func (self *IManipulationCompletedRoutedEventArgs) Position() (wrtfoundation.Point, error) {
@@ -1245,7 +1411,12 @@ type IManipulationDeltaRoutedEventArgs struct {
 // IID_IManipulationDeltaRoutedEventArgs is the interface identifier for IManipulationDeltaRoutedEventArgs.
 var IID_IManipulationDeltaRoutedEventArgs = win32.GUID{Data1: 0x51369745, Data2: 0x960f, Data3: 0x54ac, Data4: [8]byte{0x93, 0xfa, 0x76, 0x3d, 0x22, 0x91, 0x0d, 0xea}}
 
-// slot 6: get_Container skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// Container (propget get_Container) dispatches through IManipulationDeltaRoutedEventArgs's vtable slot 6.
+func (self *IManipulationDeltaRoutedEventArgs) Container() (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Position (propget get_Position) dispatches through IManipulationDeltaRoutedEventArgs's vtable slot 7.
 func (self *IManipulationDeltaRoutedEventArgs) Position() (wrtfoundation.Point, error) {
@@ -1322,7 +1493,12 @@ type IManipulationInertiaStartingRoutedEventArgs struct {
 // IID_IManipulationInertiaStartingRoutedEventArgs is the interface identifier for IManipulationInertiaStartingRoutedEventArgs.
 var IID_IManipulationInertiaStartingRoutedEventArgs = win32.GUID{Data1: 0x17d510be, Data2: 0x5514, Data3: 0x5952, Data4: [8]byte{0x9a, 0xfd, 0x95, 0x9b, 0x60, 0xab, 0x93, 0x94}}
 
-// slot 6: get_Container skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// Container (propget get_Container) dispatches through IManipulationInertiaStartingRoutedEventArgs's vtable slot 6.
+func (self *IManipulationInertiaStartingRoutedEventArgs) Container() (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ExpansionBehavior (propget get_ExpansionBehavior) dispatches through IManipulationInertiaStartingRoutedEventArgs's vtable slot 7.
 func (self *IManipulationInertiaStartingRoutedEventArgs) ExpansionBehavior() (*IInertiaExpansionBehavior, error) {
@@ -1475,7 +1651,12 @@ type IManipulationStartedRoutedEventArgs struct {
 // IID_IManipulationStartedRoutedEventArgs is the interface identifier for IManipulationStartedRoutedEventArgs.
 var IID_IManipulationStartedRoutedEventArgs = win32.GUID{Data1: 0x61857950, Data2: 0x5821, Data3: 0x5652, Data4: [8]byte{0x9f, 0xdf, 0xc6, 0x27, 0x7c, 0x58, 0x86, 0xf5}}
 
-// slot 6: get_Container skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// Container (propget get_Container) dispatches through IManipulationStartedRoutedEventArgs's vtable slot 6.
+func (self *IManipulationStartedRoutedEventArgs) Container() (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Position (propget get_Position) dispatches through IManipulationStartedRoutedEventArgs's vtable slot 7.
 func (self *IManipulationStartedRoutedEventArgs) Position() (wrtfoundation.Point, error) {
@@ -1561,9 +1742,18 @@ func (self *IManipulationStartingRoutedEventArgs) SetMode(value ManipulationMode
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: get_Container skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// Container (propget get_Container) dispatches through IManipulationStartingRoutedEventArgs's vtable slot 8.
+func (self *IManipulationStartingRoutedEventArgs) Container() (*uixaml.IUIElement, error) {
+	result := new(*uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: put_Container skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// SetContainer (propput put_Container) dispatches through IManipulationStartingRoutedEventArgs's vtable slot 9.
+func (self *IManipulationStartingRoutedEventArgs) SetContainer(value *uixaml.IUIElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // Pivot (propget get_Pivot) dispatches through IManipulationStartingRoutedEventArgs's vtable slot 10.
 func (self *IManipulationStartingRoutedEventArgs) Pivot() (*IManipulationPivot, error) {
@@ -1722,9 +1912,19 @@ func (self *IPointerRoutedEventArgs) IsGenerated() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 11: GetCurrentPoint skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// GetCurrentPoint dispatches through IPointerRoutedEventArgs's vtable slot 11.
+func (self *IPointerRoutedEventArgs) GetCurrentPoint(relativeTo *uixaml.IUIElement) (*uiinput.IPointerPoint, error) {
+	result := new(*uiinput.IPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 12: GetIntermediatePoints skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// GetIntermediatePoints dispatches through IPointerRoutedEventArgs's vtable slot 12.
+func (self *IPointerRoutedEventArgs) GetIntermediatePoints(relativeTo *uixaml.IUIElement) (*IVectorOfPointerPoint, error) {
+	result := new(*IVectorOfPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IProcessKeyboardAcceleratorEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.IProcessKeyboardAcceleratorEventArgs.
 // IID: 9be0d058-3d26-5811-b50a-3bb80ca766c9
@@ -1801,7 +2001,12 @@ func (self *IRightTappedRoutedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetPosition skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// GetPosition dispatches through IRightTappedRoutedEventArgs's vtable slot 9.
+func (self *IRightTappedRoutedEventArgs) GetPosition(relativeTo *uixaml.IUIElement) (wrtfoundation.Point, error) {
+	result := new(wrtfoundation.Point)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IStandardUICommand is the WinRT interface Microsoft.UI.Xaml.Input.IStandardUICommand.
 // IID: 5f395d50-5449-59ab-9cb2-4e3700033f03
@@ -1860,7 +2065,12 @@ type IStandardUICommandStatics struct {
 // IID_IStandardUICommandStatics is the interface identifier for IStandardUICommandStatics.
 var IID_IStandardUICommandStatics = win32.GUID{Data1: 0xab80c197, Data2: 0x85cc, Data3: 0x5d36, Data4: [8]byte{0x81, 0xaa, 0x15, 0x6c, 0xd6, 0x3b, 0xe3, 0x1a}}
 
-// slot 6: get_KindProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// KindProperty (propget get_KindProperty) dispatches through IStandardUICommandStatics's vtable slot 6.
+func (self *IStandardUICommandStatics) KindProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ITappedRoutedEventArgs is the WinRT interface Microsoft.UI.Xaml.Input.ITappedRoutedEventArgs.
 // IID: 73f74b8c-3709-547e-8e0c-51c03c89126a
@@ -1896,7 +2106,12 @@ func (self *ITappedRoutedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetPosition skipped: reference to Microsoft.UI.Xaml.UIElement crosses a severed import edge
+// GetPosition dispatches through ITappedRoutedEventArgs's vtable slot 9.
+func (self *ITappedRoutedEventArgs) GetPosition(relativeTo *uixaml.IUIElement) (wrtfoundation.Point, error) {
+	result := new(wrtfoundation.Point)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(relativeTo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IXamlUICommand is the WinRT interface Microsoft.UI.Xaml.Input.IXamlUICommand.
 // IID: a457f2cb-51e0-541c-9c42-dd1dcbdf58fb
@@ -2060,14 +2275,44 @@ type IXamlUICommandStatics struct {
 // IID_IXamlUICommandStatics is the interface identifier for IXamlUICommandStatics.
 var IID_IXamlUICommandStatics = win32.GUID{Data1: 0x981dbda6, Data2: 0xcdcb, Data3: 0x5e35, Data4: [8]byte{0xb2, 0x4b, 0xc4, 0xf6, 0x0b, 0xa1, 0x48, 0xd9}}
 
-// slot 6: get_LabelProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// LabelProperty (propget get_LabelProperty) dispatches through IXamlUICommandStatics's vtable slot 6.
+func (self *IXamlUICommandStatics) LabelProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: get_IconSourceProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// IconSourceProperty (propget get_IconSourceProperty) dispatches through IXamlUICommandStatics's vtable slot 7.
+func (self *IXamlUICommandStatics) IconSourceProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: get_KeyboardAcceleratorsProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// KeyboardAcceleratorsProperty (propget get_KeyboardAcceleratorsProperty) dispatches through IXamlUICommandStatics's vtable slot 8.
+func (self *IXamlUICommandStatics) KeyboardAcceleratorsProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: get_AccessKeyProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// AccessKeyProperty (propget get_AccessKeyProperty) dispatches through IXamlUICommandStatics's vtable slot 9.
+func (self *IXamlUICommandStatics) AccessKeyProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 10: get_DescriptionProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// DescriptionProperty (propget get_DescriptionProperty) dispatches through IXamlUICommandStatics's vtable slot 10.
+func (self *IXamlUICommandStatics) DescriptionProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 11: get_CommandProperty skipped: reference to Microsoft.UI.Xaml.DependencyProperty crosses a severed import edge
+// CommandProperty (propget get_CommandProperty) dispatches through IXamlUICommandStatics's vtable slot 11.
+func (self *IXamlUICommandStatics) CommandProperty() (*uixaml.IDependencyProperty, error) {
+	result := new(*uixaml.IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

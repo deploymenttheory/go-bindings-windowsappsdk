@@ -10,7 +10,6 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
-	uixamlinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/input"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtapplicationmodeldatatransfer "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/datatransfer"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
@@ -439,12 +438,7 @@ type IVectorOfKeyboardAccelerator struct {
 // IID_IVectorOfKeyboardAccelerator is the interface identifier for IVectorOfKeyboardAccelerator.
 var IID_IVectorOfKeyboardAccelerator = win32.GUID{Data1: 0x0db091c3, Data2: 0x8538, Data3: 0x5d25, Data4: [8]byte{0x93, 0x7f, 0xdb, 0x6e, 0x00, 0x3e, 0x1f, 0x71}}
 
-// GetAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 6.
-func (self *IVectorOfKeyboardAccelerator) GetAt(index uint32) (*uixamlinput.IKeyboardAccelerator, error) {
-	result := new(*uixamlinput.IKeyboardAccelerator)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // Size (propget get_Size) dispatches through IVectorOfKeyboardAccelerator's vtable slot 7.
 func (self *IVectorOfKeyboardAccelerator) Size() (uint32, error) {
@@ -460,24 +454,11 @@ func (self *IVectorOfKeyboardAccelerator) GetView() (*IVectorViewOfKeyboardAccel
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// IndexOf dispatches through IVectorOfKeyboardAccelerator's vtable slot 9.
-func (self *IVectorOfKeyboardAccelerator) IndexOf(value *uixamlinput.IKeyboardAccelerator, index *uint32) (bool, error) {
-	result := new(byte)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result != 0, win32.ErrIfFailed(int32(r1))
-}
+// slot 9: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
-// SetAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 10.
-func (self *IVectorOfKeyboardAccelerator) SetAt(index uint32, value *uixamlinput.IKeyboardAccelerator) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 10: SetAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
-// InsertAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 11.
-func (self *IVectorOfKeyboardAccelerator) InsertAt(index uint32, value *uixamlinput.IKeyboardAccelerator) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 11: InsertAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // RemoveAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 12.
 func (self *IVectorOfKeyboardAccelerator) RemoveAt(index uint32) error {
@@ -485,11 +466,7 @@ func (self *IVectorOfKeyboardAccelerator) RemoveAt(index uint32) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// Append dispatches through IVectorOfKeyboardAccelerator's vtable slot 13.
-func (self *IVectorOfKeyboardAccelerator) Append(value *uixamlinput.IKeyboardAccelerator) error {
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
-	return win32.ErrIfFailed(int32(r1))
-}
+// slot 13: Append skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // RemoveAtEnd dispatches through IVectorOfKeyboardAccelerator's vtable slot 14.
 func (self *IVectorOfKeyboardAccelerator) RemoveAtEnd() error {
@@ -1041,12 +1018,7 @@ type IVectorViewOfKeyboardAccelerator struct {
 // IID_IVectorViewOfKeyboardAccelerator is the interface identifier for IVectorViewOfKeyboardAccelerator.
 var IID_IVectorViewOfKeyboardAccelerator = win32.GUID{Data1: 0x4d4dfa1a, Data2: 0x7153, Data3: 0x51f3, Data4: [8]byte{0x80, 0x36, 0x6b, 0x61, 0xde, 0x68, 0xbc, 0xa8}}
 
-// GetAt dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 6.
-func (self *IVectorViewOfKeyboardAccelerator) GetAt(index uint32) (*uixamlinput.IKeyboardAccelerator, error) {
-	result := new(*uixamlinput.IKeyboardAccelerator)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // Size (propget get_Size) dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 7.
 func (self *IVectorViewOfKeyboardAccelerator) Size() (uint32, error) {
@@ -1055,12 +1027,7 @@ func (self *IVectorViewOfKeyboardAccelerator) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// IndexOf dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 8.
-func (self *IVectorViewOfKeyboardAccelerator) IndexOf(value *uixamlinput.IKeyboardAccelerator, index *uint32) (bool, error) {
-	result := new(byte)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result != 0, win32.ErrIfFailed(int32(r1))
-}
+// slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // slot 9: GetMany skipped: conformant array
 
@@ -1074,12 +1041,7 @@ type IVectorViewOfPointer struct {
 // IID_IVectorViewOfPointer is the interface identifier for IVectorViewOfPointer.
 var IID_IVectorViewOfPointer = win32.GUID{Data1: 0x81082898, Data2: 0xc342, Data3: 0x5b9f, Data4: [8]byte{0x9f, 0xcc, 0x09, 0x27, 0x88, 0x1f, 0x30, 0xad}}
 
-// GetAt dispatches through IVectorViewOfPointer's vtable slot 6.
-func (self *IVectorViewOfPointer) GetAt(index uint32) (*uixamlinput.IPointer, error) {
-	result := new(*uixamlinput.IPointer)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result, win32.ErrIfFailed(int32(r1))
-}
+// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
 // Size (propget get_Size) dispatches through IVectorViewOfPointer's vtable slot 7.
 func (self *IVectorViewOfPointer) Size() (uint32, error) {
@@ -1088,12 +1050,7 @@ func (self *IVectorViewOfPointer) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// IndexOf dispatches through IVectorViewOfPointer's vtable slot 8.
-func (self *IVectorViewOfPointer) IndexOf(value *uixamlinput.IPointer, index *uint32) (bool, error) {
-	result := new(byte)
-	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
-	return *result != 0, win32.ErrIfFailed(int32(r1))
-}
+// slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
 // slot 9: GetMany skipped: conformant array
 

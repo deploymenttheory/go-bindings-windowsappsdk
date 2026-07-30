@@ -409,3 +409,102 @@ func TestPruningLeavesHandWrittenFilesAlone(t *testing.T) {
 		t.Error("the stale generated file survived pruning")
 	}
 }
+
+// TestInheritedInterfacesAreReachable is the whole point of the base-class
+// projection, stated on the type it was built for.
+//
+// A class's InterfaceImpl list names only the interfaces declared at its own level.
+// Button's is [IButton], carrying Flyout and nothing else — so without walking
+// Extends, a generated Button could not reach Content (IContentControl),
+// Visibility (IUIElement) or Margin (IFrameworkElement), which is to say anything
+// a button is used for.
+func TestInheritedInterfacesAreReachable(t *testing.T) {
+	classes := source(t, "ui/xaml/controls/controls_classes.go")
+	block := classBlock(classes, "Button")
+	if block == "" {
+		t.Fatal("no Button class block found")
+	}
+	for _, accessor := range []string{
+		"AsContentControl",   // Content
+		"AsControl",          // FontSize, Background
+		"AsFrameworkElement", // Margin, Width, Height
+		"AsUIElement",        // Visibility, Opacity
+		"AsDependencyObject", // GetValue/SetValue
+	} {
+		if !strings.Contains(block, "func (self *Button) "+accessor+"()") {
+			t.Errorf("Button has no %s accessor", accessor)
+		}
+	}
+	// Each inherited accessor says where it came from, so a reader can tell an
+	// inherited member from a declared one without consulting the metadata.
+	if !strings.Contains(block, "// Inherited from Microsoft.UI.Xaml.FrameworkElement.") {
+		t.Error("inherited accessors do not record the base class they came from")
+	}
+	// Cross-namespace inheritance has to use the import alias, not a bare name.
+	if !strings.Contains(block, "(*uixaml.IUIElement, error)") {
+		t.Error("the inherited UIElement accessor is not package-qualified")
+	}
+}
+
+// classBlock extracts the source from a class's type declaration up to the next
+// package-level declaration that is not one of its methods.
+func classBlock(content, typeName string) string {
+	start := strings.Index(content, "type "+typeName+" struct {")
+	if start < 0 {
+		return ""
+	}
+	rest := content[start:]
+	// The class's own methods and constructors run until the next type declaration.
+	if end := strings.Index(rest[1:], "\ntype "); end >= 0 {
+		return rest[:end+1]
+	}
+	return rest
+}
+
+// TestBaseChainIsAccountedForInTheImportGraph is the regression this phase created
+// and had to fix. Projecting a base class's interfaces onto a derived class adds
+// import edges that appear nowhere in the derived namespace's own TypeRefs, so the
+// cycle breaker has to know about them — otherwise it severs by an incomplete graph
+// and the output does not compile. It did exactly that once.
+//
+// ComputeBlockedImports and the class emitter now share the Registry's chain walk,
+// which is what keeps the two graphs the same graph.
+func TestBaseChainIsAccountedForInTheImportGraph(t *testing.T) {
+	result := emit(t)
+	// Every emitted file must import only packages that exist in the tree, and the
+	// tree must be acyclic — which `go build` proves, but this catches the
+	// generator-side cause: an inherited accessor whose package was never imported.
+	for path, content := range result.files {
+		if !strings.HasSuffix(path, "_classes.go") {
+			continue
+		}
+		block, hasImports := importBlock(content)
+		aliases := map[string]bool{}
+		if hasImports {
+			for _, line := range strings.Split(block, "\n") {
+				if alias, _, ok := parseImportLine(line); ok {
+					aliases[alias] = true
+				}
+			}
+		}
+		// Any qualified type in a query method's return has to name an imported
+		// alias.
+		for _, line := range strings.Split(content, "\n") {
+			_, after, found := strings.Cut(line, ") (*")
+			if !found || !strings.HasPrefix(strings.TrimSpace(line), "func (self *") {
+				continue
+			}
+			qualified, _, ok := strings.Cut(after, ", error)")
+			if !ok {
+				continue
+			}
+			alias, _, qualifiedName := strings.Cut(qualified, ".")
+			if !qualifiedName {
+				continue // package-local, nothing to import
+			}
+			if !aliases[alias] {
+				t.Errorf("%s returns %s but does not import %q", path, qualified, alias)
+			}
+		}
+	}
+}

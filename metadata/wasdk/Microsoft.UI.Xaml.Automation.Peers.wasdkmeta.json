@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Automation.Peers",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -6607,7 +6607,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IAnimatedVisualPlayerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "AppBarAutomationPeer": {
       "default_interface": {
@@ -6645,7 +6651,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IAppBarAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "AppBarButtonAutomationPeer": {
       "default_interface": {
@@ -6671,7 +6683,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IAppBarButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "AppBarToggleButtonAutomationPeer": {
       "default_interface": {
@@ -6691,7 +6709,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IAppBarToggleButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ToggleButtonAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "AutoSuggestBoxAutomationPeer": {
       "default_interface": {
@@ -6717,7 +6741,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IAutoSuggestBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "AutomationPeer": {
       "default_interface": {
@@ -6752,7 +6782,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "AutomationPeerAnnotation": {
       "default_interface": {
@@ -6776,7 +6812,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Automation.Peers.IAutomationPeerAnnotationStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "BreadcrumbBarItemAutomationPeer": {
       "default_interface": {
@@ -6802,7 +6844,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IBreadcrumbBarItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ButtonAutomationPeer": {
       "default_interface": {
@@ -6828,7 +6876,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ButtonBaseAutomationPeer": {
       "default_interface": {
@@ -6848,7 +6902,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IButtonBaseAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "CalendarDatePickerAutomationPeer": {
       "default_interface": {
@@ -6880,7 +6940,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ICalendarDatePickerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "CheckBoxAutomationPeer": {
       "default_interface": {
@@ -6900,7 +6966,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ICheckBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ToggleButtonAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ColorPickerSliderAutomationPeer": {
       "default_interface": {
@@ -6920,7 +6992,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IColorPickerSliderAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SliderAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ColorSpectrumAutomationPeer": {
       "default_interface": {
@@ -6940,7 +7018,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IColorSpectrumAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ComboBoxAutomationPeer": {
       "default_interface": {
@@ -6978,7 +7062,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IComboBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ComboBoxItemAutomationPeer": {
       "default_interface": {
@@ -6998,7 +7088,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IComboBoxItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ComboBoxItemDataAutomationPeer": {
       "default_interface": {
@@ -7024,7 +7120,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IComboBoxItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "DatePickerAutomationPeer": {
       "default_interface": {
@@ -7044,7 +7146,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IDatePickerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "DatePickerFlyoutPresenterAutomationPeer": {
       "default_interface": {
@@ -7061,7 +7169,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "DropDownButtonAutomationPeer": {
       "default_interface": {
@@ -7087,7 +7201,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IDropDownButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ExpanderAutomationPeer": {
       "default_interface": {
@@ -7113,7 +7233,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IExpanderAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "FlipViewAutomationPeer": {
       "default_interface": {
@@ -7133,7 +7259,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IFlipViewAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "FlipViewItemAutomationPeer": {
       "default_interface": {
@@ -7153,7 +7285,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IFlipViewItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "FlipViewItemDataAutomationPeer": {
       "default_interface": {
@@ -7179,7 +7317,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IFlipViewItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "FlyoutPresenterAutomationPeer": {
       "default_interface": {
@@ -7199,7 +7343,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IFlyoutPresenterAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "FrameworkElementAutomationPeer": {
       "default_interface": {
@@ -7222,7 +7372,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IFrameworkElementAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "AutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "GridViewAutomationPeer": {
       "default_interface": {
@@ -7242,7 +7398,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IGridViewAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "GridViewHeaderItemAutomationPeer": {
       "default_interface": {
@@ -7262,7 +7424,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IGridViewHeaderItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewBaseHeaderItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "GridViewItemAutomationPeer": {
       "default_interface": {
@@ -7282,7 +7450,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IGridViewItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "GridViewItemDataAutomationPeer": {
       "default_interface": {
@@ -7308,7 +7482,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IGridViewItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "GroupItemAutomationPeer": {
       "default_interface": {
@@ -7328,7 +7508,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IGroupItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "HubAutomationPeer": {
       "default_interface": {
@@ -7348,7 +7534,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IHubAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "HubSectionAutomationPeer": {
       "default_interface": {
@@ -7374,7 +7566,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IHubSectionAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "HyperlinkButtonAutomationPeer": {
       "default_interface": {
@@ -7400,7 +7598,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IHyperlinkButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ImageAutomationPeer": {
       "default_interface": {
@@ -7420,7 +7624,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IImageAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "InfoBarAutomationPeer": {
       "default_interface": {
@@ -7440,7 +7650,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IInfoBarAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ItemAutomationPeer": {
       "default_interface": {
@@ -7466,7 +7682,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "AutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ItemContainerAutomationPeer": {
       "default_interface": {
@@ -7498,7 +7720,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IItemContainerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ItemsControlAutomationPeer": {
       "default_interface": {
@@ -7530,7 +7758,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IItemsControlAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ItemsViewAutomationPeer": {
       "default_interface": {
@@ -7556,7 +7790,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IItemsViewAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListBoxAutomationPeer": {
       "default_interface": {
@@ -7576,7 +7816,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListBoxItemAutomationPeer": {
       "default_interface": {
@@ -7596,7 +7842,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListBoxItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListBoxItemDataAutomationPeer": {
       "default_interface": {
@@ -7622,7 +7874,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListBoxItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListPickerFlyoutPresenterAutomationPeer": {
       "default_interface": {
@@ -7639,7 +7897,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListViewAutomationPeer": {
       "default_interface": {
@@ -7659,7 +7923,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListViewAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListViewBaseAutomationPeer": {
       "default_interface": {
@@ -7685,7 +7955,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListViewBaseAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListViewBaseHeaderItemAutomationPeer": {
       "default_interface": {
@@ -7705,7 +7981,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListViewBaseHeaderItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListViewHeaderItemAutomationPeer": {
       "default_interface": {
@@ -7725,7 +8007,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListViewHeaderItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewBaseHeaderItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListViewItemAutomationPeer": {
       "default_interface": {
@@ -7745,7 +8033,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListViewItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ListViewItemDataAutomationPeer": {
       "default_interface": {
@@ -7771,7 +8065,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IListViewItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SelectorItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "LoopingSelectorAutomationPeer": {
       "default_interface": {
@@ -7806,7 +8106,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "LoopingSelectorItemAutomationPeer": {
       "default_interface": {
@@ -7835,7 +8141,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "LoopingSelectorItemDataAutomationPeer": {
       "default_interface": {
@@ -7858,7 +8170,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "AutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "MediaPlayerElementAutomationPeer": {
       "default_interface": {
@@ -7878,7 +8196,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IMediaPlayerElementAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "MediaTransportControlsAutomationPeer": {
       "default_interface": {
@@ -7898,7 +8222,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IMediaTransportControlsAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "MenuBarAutomationPeer": {
       "default_interface": {
@@ -7918,7 +8248,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IMenuBarAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "MenuBarItemAutomationPeer": {
       "default_interface": {
@@ -7950,7 +8286,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IMenuBarItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "MenuFlyoutItemAutomationPeer": {
       "default_interface": {
@@ -7976,7 +8318,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IMenuFlyoutItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "MenuFlyoutPresenterAutomationPeer": {
       "default_interface": {
@@ -7996,7 +8344,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IMenuFlyoutPresenterAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemsControlAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "NavigationViewAutomationPeer": {
       "default_interface": {
@@ -8016,7 +8370,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.INavigationViewAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "NavigationViewItemAutomationPeer": {
       "default_interface": {
@@ -8042,7 +8402,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.INavigationViewItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "NumberBoxAutomationPeer": {
       "default_interface": {
@@ -8062,7 +8428,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.INumberBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PasswordBoxAutomationPeer": {
       "default_interface": {
@@ -8082,7 +8454,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IPasswordBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PersonPictureAutomationPeer": {
       "default_interface": {
@@ -8102,7 +8480,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IPersonPictureAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PickerFlyoutPresenterAutomationPeer": {
       "default_interface": {
@@ -8119,7 +8503,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PipsPagerAutomationPeer": {
       "default_interface": {
@@ -8139,7 +8529,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IPipsPagerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PivotAutomationPeer": {
       "default_interface": {
@@ -8171,7 +8567,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IPivotAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemsControlAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PivotItemAutomationPeer": {
       "default_interface": {
@@ -8191,7 +8593,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IPivotItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "PivotItemDataAutomationPeer": {
       "default_interface": {
@@ -8229,7 +8637,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IPivotItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ProgressBarAutomationPeer": {
       "default_interface": {
@@ -8249,7 +8663,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IProgressBarAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RangeBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ProgressRingAutomationPeer": {
       "default_interface": {
@@ -8275,7 +8695,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IProgressRingAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RadioButtonAutomationPeer": {
       "default_interface": {
@@ -8301,7 +8727,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRadioButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ToggleButtonAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RadioButtonsAutomationPeer": {
       "default_interface": {
@@ -8321,7 +8753,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRadioButtonsAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RangeBaseAutomationPeer": {
       "default_interface": {
@@ -8347,7 +8785,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRangeBaseAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RatingControlAutomationPeer": {
       "default_interface": {
@@ -8367,7 +8811,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRatingControlAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RepeatButtonAutomationPeer": {
       "default_interface": {
@@ -8393,7 +8843,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRepeatButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RepeaterAutomationPeer": {
       "default_interface": {
@@ -8413,7 +8869,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRepeaterAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RichEditBoxAutomationPeer": {
       "default_interface": {
@@ -8433,7 +8895,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRichEditBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RichTextBlockAutomationPeer": {
       "default_interface": {
@@ -8453,7 +8921,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRichTextBlockAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "RichTextBlockOverflowAutomationPeer": {
       "default_interface": {
@@ -8473,7 +8947,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IRichTextBlockOverflowAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ScrollBarAutomationPeer": {
       "default_interface": {
@@ -8493,7 +8973,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IScrollBarAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RangeBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ScrollPresenterAutomationPeer": {
       "default_interface": {
@@ -8513,7 +8999,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IScrollPresenterAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ScrollViewerAutomationPeer": {
       "default_interface": {
@@ -8539,7 +9031,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IScrollViewerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SelectorAutomationPeer": {
       "default_interface": {
@@ -8565,7 +9063,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISelectorAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemsControlAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SelectorBarItemAutomationPeer": {
       "default_interface": {
@@ -8585,7 +9089,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISelectorBarItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemContainerAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SelectorItemAutomationPeer": {
       "default_interface": {
@@ -8611,7 +9121,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISelectorItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SemanticZoomAutomationPeer": {
       "default_interface": {
@@ -8637,7 +9153,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISemanticZoomAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SliderAutomationPeer": {
       "default_interface": {
@@ -8657,7 +9179,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISliderAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RangeBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SplitButtonAutomationPeer": {
       "default_interface": {
@@ -8689,7 +9217,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISplitButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "SplitMenuFlyoutItemAutomationPeer": {
       "default_interface": {
@@ -8721,7 +9255,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ISplitMenuFlyoutItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TabViewAutomationPeer": {
       "default_interface": {
@@ -8741,7 +9281,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITabViewAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TabViewItemAutomationPeer": {
       "default_interface": {
@@ -8761,7 +9307,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITabViewItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TeachingTipAutomationPeer": {
       "default_interface": {
@@ -8781,7 +9333,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITeachingTipAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TextBlockAutomationPeer": {
       "default_interface": {
@@ -8801,7 +9359,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITextBlockAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TextBoxAutomationPeer": {
       "default_interface": {
@@ -8821,7 +9385,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITextBoxAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ThumbAutomationPeer": {
       "default_interface": {
@@ -8841,7 +9411,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IThumbAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TimePickerAutomationPeer": {
       "default_interface": {
@@ -8861,7 +9437,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITimePickerAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TimePickerFlyoutPresenterAutomationPeer": {
       "default_interface": {
@@ -8878,7 +9460,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ToggleButtonAutomationPeer": {
       "default_interface": {
@@ -8904,7 +9492,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IToggleButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonBaseAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ToggleMenuFlyoutItemAutomationPeer": {
       "default_interface": {
@@ -8930,7 +9524,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IToggleMenuFlyoutItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ToggleSplitButtonAutomationPeer": {
       "default_interface": {
@@ -8962,7 +9562,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IToggleSplitButtonAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "ToggleSwitchAutomationPeer": {
       "default_interface": {
@@ -8988,7 +9594,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IToggleSwitchAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TreeViewItemAutomationPeer": {
       "default_interface": {
@@ -9014,7 +9626,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITreeViewItemAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TreeViewItemDataAutomationPeer": {
       "default_interface": {
@@ -9040,7 +9658,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITreeViewItemDataAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "TreeViewListAutomationPeer": {
       "default_interface": {
@@ -9060,7 +9684,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.ITreeViewListAutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListViewAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     },
     "WebView2AutomationPeer": {
       "default_interface": {
@@ -9080,7 +9710,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Automation.Peers.IWebView2AutomationPeerFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElementAutomationPeer",
+        "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+        "target_kind": "Class"
+      }
     }
   }
 }

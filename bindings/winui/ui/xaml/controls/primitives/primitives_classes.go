@@ -8,7 +8,10 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
+	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	uixamldata "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/data"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
@@ -20,6 +23,13 @@ type AppBarButtonTemplateSettings struct {
 	IAppBarButtonTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // AppBarTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.AppBarTemplateSettings runtime class, surfaced through its
 // default interface IAppBarTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -27,11 +37,25 @@ type AppBarTemplateSettings struct {
 	IAppBarTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AppBarTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // AppBarToggleButtonTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.AppBarToggleButtonTemplateSettings runtime class, surfaced through its
 // default interface IAppBarToggleButtonTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AppBarToggleButtonTemplateSettings struct {
 	IAppBarToggleButtonTemplateSettings
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // AutoSuggestBoxHelper is the Microsoft.UI.Xaml.Controls.Primitives.AutoSuggestBoxHelper runtime class, surfaced through its
@@ -58,6 +82,111 @@ func AutoSuggestBoxHelperStatics() (*IAutoSuggestBoxHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ButtonBase struct {
 	IButtonBase
+}
+
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ButtonBaseStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IButtonBaseStatics statics of the
@@ -115,11 +244,95 @@ func NewCalendarPanel() (*CalendarPanel, error) {
 	return winrt.QueryInterface[CalendarPanel](unsafe.Pointer(instance), &IID_ICalendarPanel)
 }
 
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CalendarViewTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.CalendarViewTemplateSettings runtime class, surfaced through its
 // default interface ICalendarViewTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CalendarViewTemplateSettings struct {
 	ICalendarViewTemplateSettings
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CalendarViewTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CarouselPanel is the Microsoft.UI.Xaml.Controls.Primitives.CarouselPanel runtime class, surfaced through its
@@ -133,6 +346,104 @@ type CarouselPanel struct {
 // The returned reference is owned by the caller.
 func (self *CarouselPanel) AsScrollSnapPointsInfo() (*IScrollSnapPointsInfo, error) {
 	return winrt.QueryInterface[IScrollSnapPointsInfo](unsafe.Pointer(self), &IID_IScrollSnapPointsInfo)
+}
+
+// AsVirtualizingPanel queries the instance's uixamlcontrols.IVirtualizingPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.VirtualizingPanel.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsVirtualizingPanel() (*uixamlcontrols.IVirtualizingPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IVirtualizingPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IVirtualizingPanel)
+}
+
+// AsVirtualizingPanelProtected queries the instance's uixamlcontrols.IVirtualizingPanelProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.VirtualizingPanel.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsVirtualizingPanelProtected() (*uixamlcontrols.IVirtualizingPanelProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IVirtualizingPanelProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IVirtualizingPanelProtected)
+}
+
+// AsVirtualizingPanelOverrides queries the instance's uixamlcontrols.IVirtualizingPanelOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.VirtualizingPanel.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsVirtualizingPanelOverrides() (*uixamlcontrols.IVirtualizingPanelOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IVirtualizingPanelOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IVirtualizingPanelOverrides)
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewCarouselPanel constructs a Microsoft.UI.Xaml.Controls.Primitives.CarouselPanel instance through
@@ -165,6 +476,118 @@ func NewCarouselPanel() (*CarouselPanel, error) {
 // the embedded IInspectable → IUnknown chain).
 type ColorPickerSlider struct {
 	IColorPickerSlider
+}
+
+// AsSlider queries the instance's uixamlcontrols.ISlider interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Slider.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsSlider() (*uixamlcontrols.ISlider, error) {
+	return winrt.QueryInterface[uixamlcontrols.ISlider](unsafe.Pointer(self), &uixamlcontrols.IID_ISlider)
+}
+
+// AsRangeBase queries the instance's IRangeBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.RangeBase.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsRangeBase() (*IRangeBase, error) {
+	return winrt.QueryInterface[IRangeBase](unsafe.Pointer(self), &IID_IRangeBase)
+}
+
+// AsRangeBaseOverrides queries the instance's IRangeBaseOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.RangeBase.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsRangeBaseOverrides() (*IRangeBaseOverrides, error) {
+	return winrt.QueryInterface[IRangeBaseOverrides](unsafe.Pointer(self), &IID_IRangeBaseOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ColorPickerSliderStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IColorPickerSliderStatics statics of the
@@ -211,6 +634,97 @@ type ColorSpectrum struct {
 	IColorSpectrum
 }
 
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ColorSpectrumStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IColorSpectrumStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.ColorSpectrum runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -253,6 +767,62 @@ func NewColorSpectrum() (*ColorSpectrum, error) {
 // the embedded IInspectable → IUnknown chain).
 type ColumnMajorUniformToLargestGridLayout struct {
 	IColumnMajorUniformToLargestGridLayout
+}
+
+// AsNonVirtualizingLayout queries the instance's uixamlcontrols.INonVirtualizingLayout interface.
+// Inherited from Microsoft.UI.Xaml.Controls.NonVirtualizingLayout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsNonVirtualizingLayout() (*uixamlcontrols.INonVirtualizingLayout, error) {
+	return winrt.QueryInterface[uixamlcontrols.INonVirtualizingLayout](unsafe.Pointer(self), &uixamlcontrols.IID_INonVirtualizingLayout)
+}
+
+// AsNonVirtualizingLayoutOverrides queries the instance's uixamlcontrols.INonVirtualizingLayoutOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.NonVirtualizingLayout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsNonVirtualizingLayoutOverrides() (*uixamlcontrols.INonVirtualizingLayoutOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.INonVirtualizingLayoutOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_INonVirtualizingLayoutOverrides)
+}
+
+// AsLayout queries the instance's uixamlcontrols.ILayout interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Layout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsLayout() (*uixamlcontrols.ILayout, error) {
+	return winrt.QueryInterface[uixamlcontrols.ILayout](unsafe.Pointer(self), &uixamlcontrols.IID_ILayout)
+}
+
+// AsLayout2 queries the instance's uixamlcontrols.ILayout2 interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Layout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsLayout2() (*uixamlcontrols.ILayout2, error) {
+	return winrt.QueryInterface[uixamlcontrols.ILayout2](unsafe.Pointer(self), &uixamlcontrols.IID_ILayout2)
+}
+
+// AsLayoutProtected queries the instance's uixamlcontrols.ILayoutProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Layout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsLayoutProtected() (*uixamlcontrols.ILayoutProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.ILayoutProtected](unsafe.Pointer(self), &uixamlcontrols.IID_ILayoutProtected)
+}
+
+// AsLayoutProtected2 queries the instance's uixamlcontrols.ILayoutProtected2 interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Layout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsLayoutProtected2() (*uixamlcontrols.ILayoutProtected2, error) {
+	return winrt.QueryInterface[uixamlcontrols.ILayoutProtected2](unsafe.Pointer(self), &uixamlcontrols.IID_ILayoutProtected2)
+}
+
+// AsLayoutOverrides queries the instance's uixamlcontrols.ILayoutOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Layout.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsLayoutOverrides() (*uixamlcontrols.ILayoutOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.ILayoutOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_ILayoutOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ColumnMajorUniformToLargestGridLayoutStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IColumnMajorUniformToLargestGridLayoutStatics statics of the
@@ -318,6 +888,13 @@ type ComboBoxTemplateSettings struct {
 	IComboBoxTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ComboBoxTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CommandBarFlyoutCommandBar is the Microsoft.UI.Xaml.Controls.Primitives.CommandBarFlyoutCommandBar runtime class, surfaced through its
 // default interface ICommandBarFlyoutCommandBar. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -329,6 +906,132 @@ type CommandBarFlyoutCommandBar struct {
 // The returned reference is owned by the caller.
 func (self *CommandBarFlyoutCommandBar) AsCommandBarFlyoutCommandBar2() (*ICommandBarFlyoutCommandBar2, error) {
 	return winrt.QueryInterface[ICommandBarFlyoutCommandBar2](unsafe.Pointer(self), &IID_ICommandBarFlyoutCommandBar2)
+}
+
+// AsCommandBar queries the instance's uixamlcontrols.ICommandBar interface.
+// Inherited from Microsoft.UI.Xaml.Controls.CommandBar.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsCommandBar() (*uixamlcontrols.ICommandBar, error) {
+	return winrt.QueryInterface[uixamlcontrols.ICommandBar](unsafe.Pointer(self), &uixamlcontrols.IID_ICommandBar)
+}
+
+// AsAppBar queries the instance's uixamlcontrols.IAppBar interface.
+// Inherited from Microsoft.UI.Xaml.Controls.AppBar.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsAppBar() (*uixamlcontrols.IAppBar, error) {
+	return winrt.QueryInterface[uixamlcontrols.IAppBar](unsafe.Pointer(self), &uixamlcontrols.IID_IAppBar)
+}
+
+// AsAppBarOverrides queries the instance's uixamlcontrols.IAppBarOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.AppBar.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsAppBarOverrides() (*uixamlcontrols.IAppBarOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IAppBarOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IAppBarOverrides)
+}
+
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CommandBarFlyoutCommandBarStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ICommandBarFlyoutCommandBarStatics statics of the
@@ -387,11 +1090,25 @@ type CommandBarFlyoutCommandBarTemplateSettings struct {
 	ICommandBarFlyoutCommandBarTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBarTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CommandBarTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.CommandBarTemplateSettings runtime class, surfaced through its
 // default interface ICommandBarTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CommandBarTemplateSettings struct {
 	ICommandBarTemplateSettings
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CommandBarTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CornerRadiusFilterConverter is the Microsoft.UI.Xaml.Controls.Primitives.CornerRadiusFilterConverter runtime class, surfaced through its
@@ -416,6 +1133,13 @@ func NewCornerRadiusFilterConverter() (*CornerRadiusFilterConverter, error) {
 // The returned reference is owned by the caller.
 func (self *CornerRadiusFilterConverter) AsValueConverter() (*uixamldata.IValueConverter, error) {
 	return winrt.QueryInterface[uixamldata.IValueConverter](unsafe.Pointer(self), &uixamldata.IID_IValueConverter)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CornerRadiusFilterConverter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CornerRadiusFilterConverterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ICornerRadiusFilterConverterStatics statics of the
@@ -454,6 +1178,13 @@ func (self *CornerRadiusToThicknessConverter) AsValueConverter() (*uixamldata.IV
 	return winrt.QueryInterface[uixamldata.IValueConverter](unsafe.Pointer(self), &uixamldata.IID_IValueConverter)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CornerRadiusToThicknessConverter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // CornerRadiusToThicknessConverterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ICornerRadiusToThicknessConverterStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.CornerRadiusToThicknessConverter runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -471,6 +1202,13 @@ func CornerRadiusToThicknessConverterStatics() (*ICornerRadiusToThicknessConvert
 // the embedded IInspectable → IUnknown chain).
 type DragCompletedEventArgs struct {
 	IDragCompletedEventArgs
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *DragCompletedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // NewDragCompletedEventArgsWithHorizontalChangeVerticalChangeAndCanceled constructs a Microsoft.UI.Xaml.Controls.Primitives.DragCompletedEventArgs instance through
@@ -505,6 +1243,13 @@ type DragDeltaEventArgs struct {
 	IDragDeltaEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *DragDeltaEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // NewDragDeltaEventArgsWithHorizontalChangeAndVerticalChange constructs a Microsoft.UI.Xaml.Controls.Primitives.DragDeltaEventArgs instance through
 // Microsoft.UI.Xaml.Controls.Primitives.IDragDeltaEventArgsFactory.CreateInstanceWithHorizontalChangeAndVerticalChange with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -535,6 +1280,13 @@ func NewDragDeltaEventArgsWithHorizontalChangeAndVerticalChange(horizontalChange
 // the embedded IInspectable → IUnknown chain).
 type DragStartedEventArgs struct {
 	IDragStartedEventArgs
+}
+
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *DragStartedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
 }
 
 // NewDragStartedEventArgsWithHorizontalOffsetAndVerticalOffset constructs a Microsoft.UI.Xaml.Controls.Primitives.DragStartedEventArgs instance through
@@ -579,6 +1331,13 @@ func (self *FlyoutBase) AsFlyoutBase2() (*IFlyoutBase2, error) {
 // The returned reference is owned by the caller.
 func (self *FlyoutBase) AsFlyoutBaseOverrides() (*IFlyoutBaseOverrides, error) {
 	return winrt.QueryInterface[IFlyoutBaseOverrides](unsafe.Pointer(self), &IID_IFlyoutBaseOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *FlyoutBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // FlyoutBaseStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IFlyoutBaseStatics statics of the
@@ -695,6 +1454,90 @@ type GridViewItemPresenter struct {
 	IGridViewItemPresenter
 }
 
+// AsContentPresenter queries the instance's uixamlcontrols.IContentPresenter interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentPresenter.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsContentPresenter() (*uixamlcontrols.IContentPresenter, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentPresenter](unsafe.Pointer(self), &uixamlcontrols.IID_IContentPresenter)
+}
+
+// AsContentPresenterOverrides queries the instance's uixamlcontrols.IContentPresenterOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentPresenter.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsContentPresenterOverrides() (*uixamlcontrols.IContentPresenterOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentPresenterOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentPresenterOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // GridViewItemPresenterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IGridViewItemPresenterStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.GridViewItemPresenter runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -739,11 +1582,95 @@ type GridViewItemTemplateSettings struct {
 	IGridViewItemTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *GridViewItemTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // InfoBarPanel is the Microsoft.UI.Xaml.Controls.Primitives.InfoBarPanel runtime class, surfaced through its
 // default interface IInfoBarPanel. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InfoBarPanel struct {
 	IInfoBarPanel
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // InfoBarPanelStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IInfoBarPanelStatics statics of the
@@ -814,6 +1741,13 @@ func (self *JumpListItemBackgroundConverter) AsValueConverter() (*uixamldata.IVa
 	return winrt.QueryInterface[uixamldata.IValueConverter](unsafe.Pointer(self), &uixamldata.IID_IValueConverter)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *JumpListItemBackgroundConverter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // JumpListItemBackgroundConverterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IJumpListItemBackgroundConverterStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.JumpListItemBackgroundConverter runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -848,6 +1782,13 @@ func NewJumpListItemForegroundConverter() (*JumpListItemForegroundConverter, err
 // The returned reference is owned by the caller.
 func (self *JumpListItemForegroundConverter) AsValueConverter() (*uixamldata.IValueConverter, error) {
 	return winrt.QueryInterface[uixamldata.IValueConverter](unsafe.Pointer(self), &uixamldata.IID_IValueConverter)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *JumpListItemForegroundConverter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // JumpListItemForegroundConverterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IJumpListItemForegroundConverterStatics statics of the
@@ -886,6 +1827,90 @@ func LayoutInformationStatics() (*ILayoutInformationStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ListViewItemPresenter struct {
 	IListViewItemPresenter
+}
+
+// AsContentPresenter queries the instance's uixamlcontrols.IContentPresenter interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentPresenter.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsContentPresenter() (*uixamlcontrols.IContentPresenter, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentPresenter](unsafe.Pointer(self), &uixamlcontrols.IID_IContentPresenter)
+}
+
+// AsContentPresenterOverrides queries the instance's uixamlcontrols.IContentPresenterOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentPresenter.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsContentPresenterOverrides() (*uixamlcontrols.IContentPresenterOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentPresenterOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentPresenterOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ListViewItemPresenterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IListViewItemPresenterStatics statics of the
@@ -932,11 +1957,109 @@ type ListViewItemTemplateSettings struct {
 	IListViewItemTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ListViewItemTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LoopingSelector is the Microsoft.UI.Xaml.Controls.Primitives.LoopingSelector runtime class, surfaced through its
 // default interface ILoopingSelector. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type LoopingSelector struct {
 	ILoopingSelector
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // LoopingSelectorStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ILoopingSelectorStatics statics of the
@@ -958,6 +2081,111 @@ type LoopingSelectorItem struct {
 	ILoopingSelectorItem
 }
 
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // LoopingSelectorPanel is the Microsoft.UI.Xaml.Controls.Primitives.LoopingSelectorPanel runtime class, surfaced through its
 // default interface ILoopingSelectorPanel. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -971,11 +2199,102 @@ func (self *LoopingSelectorPanel) AsScrollSnapPointsInfo() (*IScrollSnapPointsIn
 	return winrt.QueryInterface[IScrollSnapPointsInfo](unsafe.Pointer(self), &IID_IScrollSnapPointsInfo)
 }
 
+// AsCanvas queries the instance's uixamlcontrols.ICanvas interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Canvas.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsCanvas() (*uixamlcontrols.ICanvas, error) {
+	return winrt.QueryInterface[uixamlcontrols.ICanvas](unsafe.Pointer(self), &uixamlcontrols.IID_ICanvas)
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // MenuFlyoutItemTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.MenuFlyoutItemTemplateSettings runtime class, surfaced through its
 // default interface IMenuFlyoutItemTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MenuFlyoutItemTemplateSettings struct {
 	IMenuFlyoutItemTemplateSettings
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // MenuFlyoutPresenterTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.MenuFlyoutPresenterTemplateSettings runtime class, surfaced through its
@@ -985,11 +2304,102 @@ type MenuFlyoutPresenterTemplateSettings struct {
 	IMenuFlyoutPresenterTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // MonochromaticOverlayPresenter is the Microsoft.UI.Xaml.Controls.Primitives.MonochromaticOverlayPresenter runtime class, surfaced through its
 // default interface IMonochromaticOverlayPresenter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MonochromaticOverlayPresenter struct {
 	IMonochromaticOverlayPresenter
+}
+
+// AsGrid queries the instance's uixamlcontrols.IGrid interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Grid.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsGrid() (*uixamlcontrols.IGrid, error) {
+	return winrt.QueryInterface[uixamlcontrols.IGrid](unsafe.Pointer(self), &uixamlcontrols.IID_IGrid)
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // MonochromaticOverlayPresenterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IMonochromaticOverlayPresenterStatics statics of the
@@ -1040,6 +2450,111 @@ type NavigationViewItemPresenter struct {
 // The returned reference is owned by the caller.
 func (self *NavigationViewItemPresenter) AsNavigationViewItemPresenter2() (*INavigationViewItemPresenter2, error) {
 	return winrt.QueryInterface[INavigationViewItemPresenter2](unsafe.Pointer(self), &IID_INavigationViewItemPresenter2)
+}
+
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NavigationViewItemPresenterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterStatics statics of the
@@ -1098,6 +2613,13 @@ type NavigationViewItemPresenterTemplateSettings struct {
 	INavigationViewItemPresenterTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenterTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NavigationViewItemPresenterTemplateSettingsStatics returns the Microsoft.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterTemplateSettingsStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.NavigationViewItemPresenterTemplateSettings runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1148,6 +2670,110 @@ func (self *OrientedVirtualizingPanel) AsScrollSnapPointsInfo() (*IScrollSnapPoi
 	return winrt.QueryInterface[IScrollSnapPointsInfo](unsafe.Pointer(self), &IID_IScrollSnapPointsInfo)
 }
 
+// AsInsertionPanel queries the instance's uixamlcontrols.IInsertionPanel interface.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsInsertionPanel() (*uixamlcontrols.IInsertionPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IInsertionPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IInsertionPanel)
+}
+
+// AsVirtualizingPanel queries the instance's uixamlcontrols.IVirtualizingPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.VirtualizingPanel.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsVirtualizingPanel() (*uixamlcontrols.IVirtualizingPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IVirtualizingPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IVirtualizingPanel)
+}
+
+// AsVirtualizingPanelProtected queries the instance's uixamlcontrols.IVirtualizingPanelProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.VirtualizingPanel.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsVirtualizingPanelProtected() (*uixamlcontrols.IVirtualizingPanelProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IVirtualizingPanelProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IVirtualizingPanelProtected)
+}
+
+// AsVirtualizingPanelOverrides queries the instance's uixamlcontrols.IVirtualizingPanelOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.VirtualizingPanel.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsVirtualizingPanelOverrides() (*uixamlcontrols.IVirtualizingPanelOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IVirtualizingPanelOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IVirtualizingPanelOverrides)
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PickerFlyoutBase is the Microsoft.UI.Xaml.Controls.Primitives.PickerFlyoutBase runtime class, surfaced through its
 // default interface IPickerFlyoutBase. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1159,6 +2785,34 @@ type PickerFlyoutBase struct {
 // The returned reference is owned by the caller.
 func (self *PickerFlyoutBase) AsPickerFlyoutBaseOverrides() (*IPickerFlyoutBaseOverrides, error) {
 	return winrt.QueryInterface[IPickerFlyoutBaseOverrides](unsafe.Pointer(self), &IID_IPickerFlyoutBaseOverrides)
+}
+
+// AsFlyoutBase queries the instance's IFlyoutBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutBase) AsFlyoutBase() (*IFlyoutBase, error) {
+	return winrt.QueryInterface[IFlyoutBase](unsafe.Pointer(self), &IID_IFlyoutBase)
+}
+
+// AsFlyoutBase2 queries the instance's IFlyoutBase2 interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutBase) AsFlyoutBase2() (*IFlyoutBase2, error) {
+	return winrt.QueryInterface[IFlyoutBase2](unsafe.Pointer(self), &IID_IFlyoutBase2)
+}
+
+// AsFlyoutBaseOverrides queries the instance's IFlyoutBaseOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutBase) AsFlyoutBaseOverrides() (*IFlyoutBaseOverrides, error) {
+	return winrt.QueryInterface[IFlyoutBaseOverrides](unsafe.Pointer(self), &IID_IFlyoutBaseOverrides)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PickerFlyoutBaseStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IPickerFlyoutBaseStatics statics of the
@@ -1205,6 +2859,111 @@ type PivotHeaderItem struct {
 	IPivotHeaderItem
 }
 
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewPivotHeaderItem constructs a Microsoft.UI.Xaml.Controls.Primitives.PivotHeaderItem instance through
 // Microsoft.UI.Xaml.Controls.Primitives.IPivotHeaderItemFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1248,6 +3007,90 @@ func NewPivotHeaderPanel() (*PivotHeaderPanel, error) {
 	return winrt.QueryInterface[PivotHeaderPanel](unsafe.Pointer(instance), &IID_IPivotHeaderPanel)
 }
 
+// AsCanvas queries the instance's uixamlcontrols.ICanvas interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Canvas.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsCanvas() (*uixamlcontrols.ICanvas, error) {
+	return winrt.QueryInterface[uixamlcontrols.ICanvas](unsafe.Pointer(self), &uixamlcontrols.IID_ICanvas)
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PivotPanel is the Microsoft.UI.Xaml.Controls.Primitives.PivotPanel runtime class, surfaced through its
 // default interface IPivotPanel. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1270,6 +3113,83 @@ func NewPivotPanel() (*PivotPanel, error) {
 // The returned reference is owned by the caller.
 func (self *PivotPanel) AsScrollSnapPointsInfo() (*IScrollSnapPointsInfo, error) {
 	return winrt.QueryInterface[IScrollSnapPointsInfo](unsafe.Pointer(self), &IID_IScrollSnapPointsInfo)
+}
+
+// AsPanel queries the instance's uixamlcontrols.IPanel interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Panel.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsPanel() (*uixamlcontrols.IPanel, error) {
+	return winrt.QueryInterface[uixamlcontrols.IPanel](unsafe.Pointer(self), &uixamlcontrols.IID_IPanel)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // Popup is the Microsoft.UI.Xaml.Controls.Primitives.Popup runtime class, surfaced through its
@@ -1300,6 +3220,76 @@ func (self *Popup) AsPopup2() (*IPopup2, error) {
 // The returned reference is owned by the caller.
 func (self *Popup) AsPopup3() (*IPopup3, error) {
 	return winrt.QueryInterface[IPopup3](unsafe.Pointer(self), &IID_IPopup3)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Popup) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Popup) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PopupStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IPopupStatics statics of the
@@ -1351,6 +3341,97 @@ func (self *RangeBase) AsRangeBaseOverrides() (*IRangeBaseOverrides, error) {
 	return winrt.QueryInterface[IRangeBaseOverrides](unsafe.Pointer(self), &IID_IRangeBaseOverrides)
 }
 
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // RangeBaseStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IRangeBaseStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.RangeBase runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1395,6 +3476,13 @@ type RangeBaseValueChangedEventArgs struct {
 	IRangeBaseValueChangedEventArgs
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *RangeBaseValueChangedEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // RepeatButton is the Microsoft.UI.Xaml.Controls.Primitives.RepeatButton runtime class, surfaced through its
 // default interface IRepeatButton. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1411,6 +3499,118 @@ func NewRepeatButton() (*RepeatButton, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RepeatButton](unsafe.Pointer(instance), &IID_IRepeatButton)
+}
+
+// AsButtonBase queries the instance's IButtonBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.ButtonBase.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsButtonBase() (*IButtonBase, error) {
+	return winrt.QueryInterface[IButtonBase](unsafe.Pointer(self), &IID_IButtonBase)
+}
+
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // RepeatButtonStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IRepeatButtonStatics statics of the
@@ -1430,6 +3630,20 @@ func RepeatButtonStatics() (*IRepeatButtonStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type RepeatedScrollSnapPoint struct {
 	IRepeatedScrollSnapPoint
+}
+
+// AsScrollSnapPointBase queries the instance's IScrollSnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase.
+// The returned reference is owned by the caller.
+func (self *RepeatedScrollSnapPoint) AsScrollSnapPointBase() (*IScrollSnapPointBase, error) {
+	return winrt.QueryInterface[IScrollSnapPointBase](unsafe.Pointer(self), &IID_IScrollSnapPointBase)
+}
+
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
+// The returned reference is owned by the caller.
+func (self *RepeatedScrollSnapPoint) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
 }
 
 // NewRepeatedScrollSnapPoint constructs a Microsoft.UI.Xaml.Controls.Primitives.RepeatedScrollSnapPoint instance through
@@ -1462,6 +3676,20 @@ func NewRepeatedScrollSnapPoint(offset float64, interval float64, start float64,
 // the embedded IInspectable → IUnknown chain).
 type RepeatedZoomSnapPoint struct {
 	IRepeatedZoomSnapPoint
+}
+
+// AsZoomSnapPointBase queries the instance's IZoomSnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase.
+// The returned reference is owned by the caller.
+func (self *RepeatedZoomSnapPoint) AsZoomSnapPointBase() (*IZoomSnapPointBase, error) {
+	return winrt.QueryInterface[IZoomSnapPointBase](unsafe.Pointer(self), &IID_IZoomSnapPointBase)
+}
+
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
+// The returned reference is owned by the caller.
+func (self *RepeatedZoomSnapPoint) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
 }
 
 // NewRepeatedZoomSnapPoint constructs a Microsoft.UI.Xaml.Controls.Primitives.RepeatedZoomSnapPoint instance through
@@ -1505,6 +3733,111 @@ func NewScrollBar() (*ScrollBar, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ScrollBar](unsafe.Pointer(instance), &IID_IScrollBar)
+}
+
+// AsRangeBase queries the instance's IRangeBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.RangeBase.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsRangeBase() (*IRangeBase, error) {
+	return winrt.QueryInterface[IRangeBase](unsafe.Pointer(self), &IID_IRangeBase)
+}
+
+// AsRangeBaseOverrides queries the instance's IRangeBaseOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.RangeBase.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsRangeBaseOverrides() (*IRangeBaseOverrides, error) {
+	return winrt.QueryInterface[IRangeBaseOverrides](unsafe.Pointer(self), &IID_IRangeBaseOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ScrollBarStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IScrollBarStatics statics of the
@@ -1574,11 +3907,45 @@ type ScrollControllerScrollByRequestedEventArgs struct {
 	IScrollControllerScrollByRequestedEventArgs
 }
 
+// CreateInstanceScrollControllerScrollByRequestedEventArgs constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollByRequestedEventArgs instance through
+// Microsoft.UI.Xaml.Controls.Primitives.IScrollControllerScrollByRequestedEventArgsFactory.CreateInstance. The activation factory is fetched
+// per call (a factory cache is a future optimization).
+func CreateInstanceScrollControllerScrollByRequestedEventArgs(offsetDelta float64, options *uixamlcontrols.IScrollingScrollOptions) (*ScrollControllerScrollByRequestedEventArgs, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollByRequestedEventArgs", &IID_IScrollControllerScrollByRequestedEventArgsFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IScrollControllerScrollByRequestedEventArgsFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	instance, err := factory.CreateInstance(offsetDelta, options)
+	if err != nil {
+		return nil, err
+	}
+	return (*ScrollControllerScrollByRequestedEventArgs)(unsafe.Pointer(instance)), nil
+}
+
 // ScrollControllerScrollToRequestedEventArgs is the Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollToRequestedEventArgs runtime class, surfaced through its
 // default interface IScrollControllerScrollToRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScrollControllerScrollToRequestedEventArgs struct {
 	IScrollControllerScrollToRequestedEventArgs
+}
+
+// CreateInstanceScrollControllerScrollToRequestedEventArgs constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollToRequestedEventArgs instance through
+// Microsoft.UI.Xaml.Controls.Primitives.IScrollControllerScrollToRequestedEventArgsFactory.CreateInstance. The activation factory is fetched
+// per call (a factory cache is a future optimization).
+func CreateInstanceScrollControllerScrollToRequestedEventArgs(offset float64, options *uixamlcontrols.IScrollingScrollOptions) (*ScrollControllerScrollToRequestedEventArgs, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollToRequestedEventArgs", &IID_IScrollControllerScrollToRequestedEventArgsFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IScrollControllerScrollToRequestedEventArgsFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	instance, err := factory.CreateInstance(offset, options)
+	if err != nil {
+		return nil, err
+	}
+	return (*ScrollControllerScrollToRequestedEventArgs)(unsafe.Pointer(instance)), nil
 }
 
 // ScrollEventArgs is the Microsoft.UI.Xaml.Controls.Primitives.ScrollEventArgs runtime class, surfaced through its
@@ -1599,11 +3966,94 @@ func NewScrollEventArgs() (*ScrollEventArgs, error) {
 	return winrt.QueryInterface[ScrollEventArgs](unsafe.Pointer(instance), &IID_IScrollEventArgs)
 }
 
+// AsRoutedEventArgs queries the instance's uixaml.IRoutedEventArgs interface.
+// Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
+// The returned reference is owned by the caller.
+func (self *ScrollEventArgs) AsRoutedEventArgs() (*uixaml.IRoutedEventArgs, error) {
+	return winrt.QueryInterface[uixaml.IRoutedEventArgs](unsafe.Pointer(self), &uixaml.IID_IRoutedEventArgs)
+}
+
 // ScrollPresenter is the Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter runtime class, surfaced through its
 // default interface IScrollPresenter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScrollPresenter struct {
 	IScrollPresenter
+}
+
+// AsScrollAnchorProvider queries the instance's uixamlcontrols.IScrollAnchorProvider interface.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsScrollAnchorProvider() (*uixamlcontrols.IScrollAnchorProvider, error) {
+	return winrt.QueryInterface[uixamlcontrols.IScrollAnchorProvider](unsafe.Pointer(self), &uixamlcontrols.IID_IScrollAnchorProvider)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ScrollPresenterStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IScrollPresenterStatics statics of the
@@ -1650,6 +4100,20 @@ type ScrollSnapPoint struct {
 	IScrollSnapPoint
 }
 
+// AsScrollSnapPointBase queries the instance's IScrollSnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase.
+// The returned reference is owned by the caller.
+func (self *ScrollSnapPoint) AsScrollSnapPointBase() (*IScrollSnapPointBase, error) {
+	return winrt.QueryInterface[IScrollSnapPointBase](unsafe.Pointer(self), &IID_IScrollSnapPointBase)
+}
+
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
+// The returned reference is owned by the caller.
+func (self *ScrollSnapPoint) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
+}
+
 // NewScrollSnapPoint constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPoint instance through
 // Microsoft.UI.Xaml.Controls.Primitives.IScrollSnapPointFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -1682,11 +4146,130 @@ type ScrollSnapPointBase struct {
 	IScrollSnapPointBase
 }
 
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
+// The returned reference is owned by the caller.
+func (self *ScrollSnapPointBase) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
+}
+
 // Selector is the Microsoft.UI.Xaml.Controls.Primitives.Selector runtime class, surfaced through its
 // default interface ISelector. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Selector struct {
 	ISelector
+}
+
+// AsItemsControl queries the instance's uixamlcontrols.IItemsControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
+// The returned reference is owned by the caller.
+func (self *Selector) AsItemsControl() (*uixamlcontrols.IItemsControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IItemsControl](unsafe.Pointer(self), &uixamlcontrols.IID_IItemsControl)
+}
+
+// AsItemsControlOverrides queries the instance's uixamlcontrols.IItemsControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
+// The returned reference is owned by the caller.
+func (self *Selector) AsItemsControlOverrides() (*uixamlcontrols.IItemsControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IItemsControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IItemsControlOverrides)
+}
+
+// AsItemContainerMapping queries the instance's uixamlcontrols.IItemContainerMapping interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
+// The returned reference is owned by the caller.
+func (self *Selector) AsItemContainerMapping() (*uixamlcontrols.IItemContainerMapping, error) {
+	return winrt.QueryInterface[uixamlcontrols.IItemContainerMapping](unsafe.Pointer(self), &uixamlcontrols.IID_IItemContainerMapping)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *Selector) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *Selector) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *Selector) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Selector) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Selector) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SelectorStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ISelectorStatics statics of the
@@ -1706,6 +4289,111 @@ func SelectorStatics() (*ISelectorStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type SelectorItem struct {
 	ISelectorItem
+}
+
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // SelectorItemStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ISelectorItemStatics statics of the
@@ -1759,11 +4447,158 @@ type SplitViewTemplateSettings struct {
 	ISplitViewTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *SplitViewTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // TabViewListView is the Microsoft.UI.Xaml.Controls.Primitives.TabViewListView runtime class, surfaced through its
 // default interface ITabViewListView. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TabViewListView struct {
 	ITabViewListView
+}
+
+// AsListView queries the instance's uixamlcontrols.IListView interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ListView.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsListView() (*uixamlcontrols.IListView, error) {
+	return winrt.QueryInterface[uixamlcontrols.IListView](unsafe.Pointer(self), &uixamlcontrols.IID_IListView)
+}
+
+// AsListViewBase queries the instance's uixamlcontrols.IListViewBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ListViewBase.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsListViewBase() (*uixamlcontrols.IListViewBase, error) {
+	return winrt.QueryInterface[uixamlcontrols.IListViewBase](unsafe.Pointer(self), &uixamlcontrols.IID_IListViewBase)
+}
+
+// AsSemanticZoomInformation queries the instance's uixamlcontrols.ISemanticZoomInformation interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ListViewBase.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsSemanticZoomInformation() (*uixamlcontrols.ISemanticZoomInformation, error) {
+	return winrt.QueryInterface[uixamlcontrols.ISemanticZoomInformation](unsafe.Pointer(self), &uixamlcontrols.IID_ISemanticZoomInformation)
+}
+
+// AsSelector queries the instance's ISelector interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.Selector.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsSelector() (*ISelector, error) {
+	return winrt.QueryInterface[ISelector](unsafe.Pointer(self), &IID_ISelector)
+}
+
+// AsItemsControl queries the instance's uixamlcontrols.IItemsControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsItemsControl() (*uixamlcontrols.IItemsControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IItemsControl](unsafe.Pointer(self), &uixamlcontrols.IID_IItemsControl)
+}
+
+// AsItemsControlOverrides queries the instance's uixamlcontrols.IItemsControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsItemsControlOverrides() (*uixamlcontrols.IItemsControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IItemsControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IItemsControlOverrides)
+}
+
+// AsItemContainerMapping queries the instance's uixamlcontrols.IItemContainerMapping interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsItemContainerMapping() (*uixamlcontrols.IItemContainerMapping, error) {
+	return winrt.QueryInterface[uixamlcontrols.IItemContainerMapping](unsafe.Pointer(self), &uixamlcontrols.IID_IItemContainerMapping)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewTabViewListView constructs a Microsoft.UI.Xaml.Controls.Primitives.TabViewListView instance through
@@ -1809,6 +4644,97 @@ func NewThumb() (*Thumb, error) {
 	return winrt.QueryInterface[Thumb](unsafe.Pointer(instance), &IID_IThumb)
 }
 
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ThumbStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IThumbStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.Thumb runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1839,6 +4765,76 @@ func NewTickBar() (*TickBar, error) {
 	return winrt.QueryInterface[TickBar](unsafe.Pointer(instance), &IID_ITickBar)
 }
 
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // TickBarStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ITickBarStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.TickBar runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1862,6 +4858,118 @@ type ToggleButton struct {
 // The returned reference is owned by the caller.
 func (self *ToggleButton) AsToggleButtonOverrides() (*IToggleButtonOverrides, error) {
 	return winrt.QueryInterface[IToggleButtonOverrides](unsafe.Pointer(self), &IID_IToggleButtonOverrides)
+}
+
+// AsButtonBase queries the instance's IButtonBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.ButtonBase.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsButtonBase() (*IButtonBase, error) {
+	return winrt.QueryInterface[IButtonBase](unsafe.Pointer(self), &IID_IButtonBase)
+}
+
+// AsContentControl queries the instance's uixamlcontrols.IContentControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsContentControl() (*uixamlcontrols.IContentControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControl](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControl)
+}
+
+// AsContentControlOverrides queries the instance's uixamlcontrols.IContentControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsContentControlOverrides() (*uixamlcontrols.IContentControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IContentControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IContentControlOverrides)
+}
+
+// AsControl queries the instance's uixamlcontrols.IControl interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsControl() (*uixamlcontrols.IControl, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControl](unsafe.Pointer(self), &uixamlcontrols.IID_IControl)
+}
+
+// AsControlProtected queries the instance's uixamlcontrols.IControlProtected interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsControlProtected() (*uixamlcontrols.IControlProtected, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlProtected](unsafe.Pointer(self), &uixamlcontrols.IID_IControlProtected)
+}
+
+// AsControlOverrides queries the instance's uixamlcontrols.IControlOverrides interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Control.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsControlOverrides() (*uixamlcontrols.IControlOverrides, error) {
+	return winrt.QueryInterface[uixamlcontrols.IControlOverrides](unsafe.Pointer(self), &uixamlcontrols.IID_IControlOverrides)
+}
+
+// AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsFrameworkElement() (*uixaml.IFrameworkElement, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElement](unsafe.Pointer(self), &uixaml.IID_IFrameworkElement)
+}
+
+// AsFrameworkElementProtected queries the instance's uixaml.IFrameworkElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsFrameworkElementProtected() (*uixaml.IFrameworkElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementProtected](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementProtected)
+}
+
+// AsFrameworkElementOverrides queries the instance's uixaml.IFrameworkElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.FrameworkElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsFrameworkElementOverrides() (*uixaml.IFrameworkElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IFrameworkElementOverrides](unsafe.Pointer(self), &uixaml.IID_IFrameworkElementOverrides)
+}
+
+// AsUIElement queries the instance's uixaml.IUIElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsUIElement() (*uixaml.IUIElement, error) {
+	return winrt.QueryInterface[uixaml.IUIElement](unsafe.Pointer(self), &uixaml.IID_IUIElement)
+}
+
+// AsUIElementProtected queries the instance's uixaml.IUIElementProtected interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsUIElementProtected() (*uixaml.IUIElementProtected, error) {
+	return winrt.QueryInterface[uixaml.IUIElementProtected](unsafe.Pointer(self), &uixaml.IID_IUIElementProtected)
+}
+
+// AsUIElementOverrides queries the instance's uixaml.IUIElementOverrides interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsUIElementOverrides() (*uixaml.IUIElementOverrides, error) {
+	return winrt.QueryInterface[uixaml.IUIElementOverrides](unsafe.Pointer(self), &uixaml.IID_IUIElementOverrides)
+}
+
+// AsAnimationObject queries the instance's uicomposition.IAnimationObject interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsAnimationObject() (*uicomposition.IAnimationObject, error) {
+	return winrt.QueryInterface[uicomposition.IAnimationObject](unsafe.Pointer(self), &uicomposition.IID_IAnimationObject)
+}
+
+// AsVisualElement queries the instance's uicomposition.IVisualElement interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsVisualElement() (*uicomposition.IVisualElement, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement](unsafe.Pointer(self), &uicomposition.IID_IVisualElement)
+}
+
+// AsVisualElement2 queries the instance's uicomposition.IVisualElement2 interface.
+// Inherited from Microsoft.UI.Xaml.UIElement.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsVisualElement2() (*uicomposition.IVisualElement2, error) {
+	return winrt.QueryInterface[uicomposition.IVisualElement2](unsafe.Pointer(self), &uicomposition.IID_IVisualElement2)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // ToggleButtonStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IToggleButtonStatics statics of the
@@ -1908,6 +5016,13 @@ type ToggleSwitchTemplateSettings struct {
 	IToggleSwitchTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ToolTipTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.ToolTipTemplateSettings runtime class, surfaced through its
 // default interface IToolTipTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1915,11 +5030,32 @@ type ToolTipTemplateSettings struct {
 	IToolTipTemplateSettings
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *ToolTipTemplateSettings) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // ZoomSnapPoint is the Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPoint runtime class, surfaced through its
 // default interface IZoomSnapPoint. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ZoomSnapPoint struct {
 	IZoomSnapPoint
+}
+
+// AsZoomSnapPointBase queries the instance's IZoomSnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase.
+// The returned reference is owned by the caller.
+func (self *ZoomSnapPoint) AsZoomSnapPointBase() (*IZoomSnapPointBase, error) {
+	return winrt.QueryInterface[IZoomSnapPointBase](unsafe.Pointer(self), &IID_IZoomSnapPointBase)
+}
+
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
+// The returned reference is owned by the caller.
+func (self *ZoomSnapPoint) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
 }
 
 // NewZoomSnapPoint constructs a Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPoint instance through
@@ -1952,4 +5088,11 @@ func NewZoomSnapPoint(snapPointValue float64) (*ZoomSnapPoint, error) {
 // the embedded IInspectable → IUnknown chain).
 type ZoomSnapPointBase struct {
 	IZoomSnapPointBase
+}
+
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
+// The returned reference is owned by the caller.
+func (self *ZoomSnapPointBase) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
 }

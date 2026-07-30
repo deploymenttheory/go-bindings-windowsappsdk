@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Data",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -2294,7 +2294,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Data.IBindingFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "BindingBase",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Class"
+      }
     },
     "BindingBase": {
       "default_interface": {
@@ -2314,7 +2320,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Data.IBindingBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "BindingExpression": {
       "default_interface": {
@@ -2334,7 +2346,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Data.IBindingExpressionFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "BindingExpressionBase",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Class"
+      }
     },
     "BindingExpressionBase": {
       "default_interface": {
@@ -2393,7 +2411,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Data.ICollectionViewSourceStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CurrentChangingEventArgs": {
       "default_interface": {
@@ -2489,7 +2513,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Data.IRelativeSourceFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     }
   },
   "delegates": {

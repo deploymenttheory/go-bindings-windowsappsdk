@@ -48,6 +48,13 @@ func NewAutomationAnnotation() (*AutomationAnnotation, error) {
 	return winrt.QueryInterface[AutomationAnnotation](unsafe.Pointer(instance), &IID_IAutomationAnnotation)
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *AutomationAnnotation) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // AutomationAnnotationStatics returns the Microsoft.UI.Xaml.Automation.IAutomationAnnotationStatics statics of the
 // Microsoft.UI.Xaml.Automation.AutomationAnnotation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;

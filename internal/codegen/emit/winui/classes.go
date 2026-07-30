@@ -101,50 +101,104 @@ func (g *Generator) buildClassType(meta *wasdkmeta.NamespaceMeta, name, fullName
 		}
 	}
 
-	// Query methods for the other instance interfaces, in InterfaceImpl order.
+	// Query methods, in two passes: the class's own instance interfaces, then
+	// everything inherited up the Extends chain. Own interfaces first so that if a
+	// name ever collided, the class's own member is the one that keeps it.
 	methodNames := map[string]bool{}
 	for i := range class.Interfaces {
 		target := &class.Interfaces[i]
 		if target.Namespace == class.DefaultInterface.Namespace && target.Name == class.DefaultInterface.Name {
 			continue // the default is embedded, not queried
 		}
-		asName := naming.InterfaceAsName(target.Name)
-		memberPath := fullName + "." + asName
-		resolved := g.mapper.GoType(target, context, scratch)
-		if resolved.Kind != typemap.KindInterfacePtr {
-			s := splitReason(resolved.Reason)
-			if resolved.Kind != typemap.KindUnsupported {
-				s = skip{key: "class-interface-skipped", detail: refDisplay(target) + " is not an emittable interface"}
-			}
-			g.diag(s.key, "%s (%s)", memberPath, s.detail)
-			continue
-		}
-		if target.Kind == "GenericInst" {
-			// The instantiation is package-local under its mangled name, so the
-			// query method follows that rather than the backtick-arity metadata
-			// name.
-			asName = naming.InterfaceAsName(strings.TrimPrefix(resolved.GoType, "*"))
-			memberPath = fullName + "." + asName
-		}
-		iidRef, ok := g.iidRef(target, meta.Namespace)
-		if !ok {
-			g.diag("class-interface-skipped", "%s (%s has no IID)", memberPath, refDisplay(target))
-			continue
-		}
-		if methodNames[asName] {
-			g.diag("name-collision-skipped", "%s", memberPath)
-			continue
-		}
-		methodNames[asName] = true
-		model.QueryMethods = append(model.QueryMethods, view.QueryMethodModel{
-			GoName:        asName,
-			InterfaceType: strings.TrimPrefix(resolved.GoType, "*"),
-			IIDRef:        iidRef,
-		})
+		g.addQueryMethod(&model, target, fullName, "", meta.Namespace, context, scratch, methodNames)
 	}
+	g.addInheritedQueryMethods(&model, class, fullName, meta.Namespace, context, scratch, methodNames)
 
 	imports.Merge(scratch)
 	return model, true
+}
+
+// addInheritedQueryMethods walks the class's Extends chain and projects each base
+// class's instance interfaces as query methods on the derived class.
+//
+// This is what makes the generated surface usable. A COM object implements every
+// interface in its hierarchy, so QueryInterface reaches all of them — but a class's
+// InterfaceImpl list names only the interfaces declared at its own level. Button's
+// is [IButton], which carries Flyout and nothing else: Click is on
+// Primitives.IButtonBase and Content on IContentControl, two and three levels up.
+// XAML's [ExclusiveTo] interfaces carry no Requires either, so without walking
+// Extends a generated Button could not reach anything a button is used for.
+//
+// The default interface of a BASE class is queried like any other; only the class's
+// own default is embedded.
+//
+// The traversal is the Registry's, shared with ComputeBlockedImports, so the edges
+// projected here are exactly the edges the cycle breaker accounted for.
+func (g *Generator) addInheritedQueryMethods(model *view.ClassModel, class *wasdkmeta.Class, fullName, fromNamespace string, context typemap.Context, scratch typemap.ImportSet, methodNames map[string]bool) {
+	problems := g.registry.WalkBaseChain(class, func(baseFullName string, base *wasdkmeta.Class) {
+		for i := range base.Interfaces {
+			g.addQueryMethod(model, &base.Interfaces[i], fullName, baseFullName, fromNamespace, context, scratch, methodNames)
+		}
+	})
+	for _, problem := range problems {
+		g.diag("base-chain-incomplete", "%s: %s", fullName, problem)
+	}
+}
+
+// addQueryMethod resolves one interface reference and appends its As<Interface>
+// query method, or records why it could not. inheritedFrom names the base class the
+// interface came from, and is empty for the class's own interfaces.
+func (g *Generator) addQueryMethod(model *view.ClassModel, target *wasdkmeta.TypeRef, fullName, inheritedFrom, fromNamespace string, context typemap.Context, scratch typemap.ImportSet, methodNames map[string]bool) {
+	asName := naming.InterfaceAsName(target.Name)
+	memberPath := fullName + "." + asName
+
+	resolved := g.mapper.GoType(target, context, scratch)
+	if resolved.Kind != typemap.KindInterfacePtr {
+		s := splitReason(resolved.Reason)
+		if resolved.Kind != typemap.KindUnsupported {
+			s = skip{key: "class-interface-skipped", detail: refDisplay(target) + " is not an emittable interface"}
+		}
+		key := s.key
+		if inheritedFrom != "" {
+			// Distinct key: an inherited interface lost to a severed import edge is
+			// a consequence of the cycle breaking, not of anything about this
+			// class, and conflating the two would make the counts unreadable.
+			key = "inherited-interface-skipped"
+		}
+		g.diag(key, "%s (%s)", memberPath, s.detail)
+		return
+	}
+	if target.Kind == "GenericInst" {
+		// The instantiation is package-local under its mangled name, so the query
+		// method follows that rather than the backtick-arity metadata name.
+		asName = naming.InterfaceAsName(strings.TrimPrefix(resolved.GoType, "*"))
+		memberPath = fullName + "." + asName
+	}
+	iidRef, ok := g.iidRef(target, fromNamespace)
+	if !ok {
+		g.diag("class-interface-skipped", "%s (%s has no IID)", memberPath, refDisplay(target))
+		return
+	}
+	if methodNames[asName] {
+		// Silent for an inherited duplicate: a class re-declaring an interface its
+		// base already declares is ordinary, and the derived one already won.
+		if inheritedFrom == "" {
+			g.diag("name-collision-skipped", "%s", memberPath)
+		}
+		return
+	}
+	methodNames[asName] = true
+
+	var note string
+	if inheritedFrom != "" {
+		note = "Inherited from " + inheritedFrom + "."
+	}
+	model.QueryMethods = append(model.QueryMethods, view.QueryMethodModel{
+		GoName:        asName,
+		InterfaceType: strings.TrimPrefix(resolved.GoType, "*"),
+		IIDRef:        iidRef,
+		Note:          note,
+	})
 }
 
 // buildStaticsAccessors projects a class's [Static] interfaces as package-level

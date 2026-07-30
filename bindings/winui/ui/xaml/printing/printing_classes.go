@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -70,6 +71,13 @@ func NewPaginateEventArgs() (*PaginateEventArgs, error) {
 // the embedded IInspectable → IUnknown chain).
 type PrintDocument struct {
 	IPrintDocument
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PrintDocument) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // PrintDocumentStatics returns the Microsoft.UI.Xaml.Printing.IPrintDocumentStatics statics of the

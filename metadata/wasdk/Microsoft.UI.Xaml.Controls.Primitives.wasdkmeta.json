@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -19090,7 +19090,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "AppBarTemplateSettings": {
       "default_interface": {
@@ -19107,7 +19113,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "AppBarToggleButtonTemplateSettings": {
       "default_interface": {
@@ -19124,7 +19136,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "AutoSuggestBoxHelper": {
       "default_interface": {
@@ -19166,7 +19184,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IButtonBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentControl",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "CalendarPanel": {
       "default_interface": {
@@ -19184,7 +19208,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Panel",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "CalendarViewTemplateSettings": {
       "default_interface": {
@@ -19201,7 +19231,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CarouselPanel": {
       "default_interface": {
@@ -19227,7 +19263,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.ICarouselPanelFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "VirtualizingPanel",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "ColorPickerSlider": {
       "default_interface": {
@@ -19250,7 +19292,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IColorPickerSliderFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Slider",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "ColorSpectrum": {
       "default_interface": {
@@ -19273,7 +19321,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IColorSpectrumFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Control",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "ColumnMajorUniformToLargestGridLayout": {
       "default_interface": {
@@ -19296,7 +19350,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IColumnMajorUniformToLargestGridLayoutFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "NonVirtualizingLayout",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "ComboBoxHelper": {
       "default_interface": {
@@ -19332,7 +19392,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CommandBarFlyoutCommandBar": {
       "default_interface": {
@@ -19361,7 +19427,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.ICommandBarFlyoutCommandBarFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CommandBar",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "CommandBarFlyoutCommandBarAutomationProperties": {
       "static_interfaces": [
@@ -19383,7 +19455,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CommandBarTemplateSettings": {
       "default_interface": {
@@ -19400,7 +19478,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CornerRadiusFilterConverter": {
       "default_interface": {
@@ -19427,7 +19511,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.ICornerRadiusFilterConverterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CornerRadiusToThicknessConverter": {
       "default_interface": {
@@ -19454,7 +19544,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.ICornerRadiusToThicknessConverterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DragCompletedEventArgs": {
       "default_interface": {
@@ -19474,7 +19570,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IDragCompletedEventArgsFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DragDeltaEventArgs": {
       "default_interface": {
@@ -19494,7 +19596,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IDragDeltaEventArgsFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "DragStartedEventArgs": {
       "default_interface": {
@@ -19514,7 +19622,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IDragStartedEventArgsFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "FlyoutBase": {
       "default_interface": {
@@ -19550,7 +19664,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IFlyoutBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "FlyoutBaseClosingEventArgs": {
       "default_interface": {
@@ -19627,7 +19747,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IGridViewItemPresenterFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentPresenter",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "GridViewItemTemplateSettings": {
       "default_interface": {
@@ -19644,7 +19770,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "InfoBarPanel": {
       "default_interface": {
@@ -19667,7 +19799,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IInfoBarPanelFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Panel",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "ItemsChangedEventArgs": {
       "default_interface": {
@@ -19710,7 +19848,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.IJumpListItemBackgroundConverterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "JumpListItemForegroundConverter": {
       "default_interface": {
@@ -19737,7 +19881,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.IJumpListItemForegroundConverterStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "LayoutInformation": {
       "default_interface": {
@@ -19779,7 +19929,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IListViewItemPresenterFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentPresenter",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "ListViewItemTemplateSettings": {
       "default_interface": {
@@ -19796,7 +19952,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "LoopingSelector": {
       "default_interface": {
@@ -19816,7 +19978,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.ILoopingSelectorStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Control",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "LoopingSelectorItem": {
       "default_interface": {
@@ -19833,7 +20001,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentControl",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "LoopingSelectorPanel": {
       "default_interface": {
@@ -19856,7 +20030,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Canvas",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "MenuFlyoutItemTemplateSettings": {
       "default_interface": {
@@ -19873,7 +20053,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "MenuFlyoutPresenterTemplateSettings": {
       "default_interface": {
@@ -19890,7 +20076,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "MonochromaticOverlayPresenter": {
       "default_interface": {
@@ -19913,7 +20105,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IMonochromaticOverlayPresenterFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Grid",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "NavigationViewItemPresenter": {
       "default_interface": {
@@ -19943,7 +20141,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentControl",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "NavigationViewItemPresenterTemplateSettings": {
       "default_interface": {
@@ -19966,7 +20170,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterTemplateSettingsFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "OrientedVirtualizingPanel": {
       "default_interface": {
@@ -19998,7 +20208,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IOrientedVirtualizingPanelFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "VirtualizingPanel",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "PickerFlyoutBase": {
       "default_interface": {
@@ -20027,7 +20243,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IPickerFlyoutBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FlyoutBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "PivotHeaderItem": {
       "default_interface": {
@@ -20047,7 +20269,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IPivotHeaderItemFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentControl",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "PivotHeaderPanel": {
       "default_interface": {
@@ -20065,7 +20293,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Canvas",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "PivotPanel": {
       "default_interface": {
@@ -20089,7 +20323,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Panel",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "Popup": {
       "default_interface": {
@@ -20124,7 +20364,13 @@
         "Microsoft.UI.Xaml.Controls.Primitives.IPopupStatics3",
         "Microsoft.UI.Xaml.Controls.Primitives.IPopupStatics2"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElement",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "RangeBase": {
       "default_interface": {
@@ -20153,7 +20399,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IRangeBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Control",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "RangeBaseValueChangedEventArgs": {
       "default_interface": {
@@ -20170,7 +20422,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "RepeatButton": {
       "default_interface": {
@@ -20191,7 +20449,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.IRepeatButtonStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "RepeatedScrollSnapPoint": {
       "default_interface": {
@@ -20211,7 +20475,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IRepeatedScrollSnapPointFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ScrollSnapPointBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "RepeatedZoomSnapPoint": {
       "default_interface": {
@@ -20231,7 +20501,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IRepeatedZoomSnapPointFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ZoomSnapPointBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "ScrollBar": {
       "default_interface": {
@@ -20252,7 +20528,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.IScrollBarStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RangeBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "ScrollControllerAddScrollVelocityRequestedEventArgs": {
       "default_interface": {
@@ -20346,7 +20628,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ScrollPresenter": {
       "default_interface": {
@@ -20375,7 +20663,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IScrollPresenterFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElement",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ScrollSnapPoint": {
       "default_interface": {
@@ -20395,7 +20689,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IScrollSnapPointFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ScrollSnapPointBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "ScrollSnapPointBase": {
       "default_interface": {
@@ -20415,7 +20715,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IScrollSnapPointBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SnapPointBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "Selector": {
       "default_interface": {
@@ -20438,7 +20744,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.ISelectorFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ItemsControl",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "SelectorItem": {
       "default_interface": {
@@ -20461,7 +20773,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.ISelectorItemFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContentControl",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "SnapPointBase": {
       "default_interface": {
@@ -20497,7 +20815,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TabViewListView": {
       "default_interface": {
@@ -20517,7 +20841,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.ITabViewListViewFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ListView",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "Thumb": {
       "default_interface": {
@@ -20538,7 +20868,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.IThumbStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Control",
+        "namespace": "Microsoft.UI.Xaml.Controls",
+        "target_kind": "Class"
+      }
     },
     "TickBar": {
       "default_interface": {
@@ -20559,7 +20895,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Controls.Primitives.ITickBarStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElement",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ToggleButton": {
       "default_interface": {
@@ -20588,7 +20930,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IToggleButtonFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ButtonBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "ToggleSwitchTemplateSettings": {
       "default_interface": {
@@ -20605,7 +20953,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ToolTipTemplateSettings": {
       "default_interface": {
@@ -20622,7 +20976,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ZoomSnapPoint": {
       "default_interface": {
@@ -20642,7 +21002,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IZoomSnapPointFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ZoomSnapPointBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     },
     "ZoomSnapPointBase": {
       "default_interface": {
@@ -20662,7 +21028,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Controls.Primitives.IZoomSnapPointBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SnapPointBase",
+        "namespace": "Microsoft.UI.Xaml.Controls.Primitives",
+        "target_kind": "Class"
+      }
     }
   },
   "delegates": {

@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -16,6 +17,20 @@ import (
 // the embedded IInspectable → IUnknown chain).
 type Binding struct {
 	IBinding
+}
+
+// AsBindingBase queries the instance's IBindingBase interface.
+// Inherited from Microsoft.UI.Xaml.Data.BindingBase.
+// The returned reference is owned by the caller.
+func (self *Binding) AsBindingBase() (*IBindingBase, error) {
+	return winrt.QueryInterface[IBindingBase](unsafe.Pointer(self), &IID_IBindingBase)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Binding) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewBinding constructs a Microsoft.UI.Xaml.Data.Binding instance through
@@ -50,6 +65,13 @@ type BindingBase struct {
 	IBindingBase
 }
 
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *BindingBase) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // NewBindingBase constructs a Microsoft.UI.Xaml.Data.BindingBase instance through
 // Microsoft.UI.Xaml.Data.IBindingBaseFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -80,6 +102,13 @@ func NewBindingBase() (*BindingBase, error) {
 // the embedded IInspectable → IUnknown chain).
 type BindingExpression struct {
 	IBindingExpression
+}
+
+// AsBindingExpressionBase queries the instance's IBindingExpressionBase interface.
+// Inherited from Microsoft.UI.Xaml.Data.BindingExpressionBase.
+// The returned reference is owned by the caller.
+func (self *BindingExpression) AsBindingExpressionBase() (*IBindingExpressionBase, error) {
+	return winrt.QueryInterface[IBindingExpressionBase](unsafe.Pointer(self), &IID_IBindingExpressionBase)
 }
 
 // BindingExpressionBase is the Microsoft.UI.Xaml.Data.BindingExpressionBase runtime class, surfaced through its
@@ -124,6 +153,13 @@ func NewCollectionViewSource() (*CollectionViewSource, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[CollectionViewSource](unsafe.Pointer(instance), &IID_ICollectionViewSource)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CollectionViewSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CollectionViewSourceStatics returns the Microsoft.UI.Xaml.Data.ICollectionViewSourceStatics statics of the
@@ -288,6 +324,13 @@ func NewPropertyChangedEventArgs(name string) (*PropertyChangedEventArgs, error)
 // the embedded IInspectable → IUnknown chain).
 type RelativeSource struct {
 	IRelativeSource
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *RelativeSource) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewRelativeSource constructs a Microsoft.UI.Xaml.Data.RelativeSource instance through

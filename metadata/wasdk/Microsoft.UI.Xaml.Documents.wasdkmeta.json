@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Documents",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -6335,7 +6335,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Documents.IBlockFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "TextElement",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "BlockCollection": {
       "default_interface": {
@@ -6402,7 +6408,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Span",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "Glyphs": {
       "default_interface": {
@@ -6423,7 +6435,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Documents.IGlyphsStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElement",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Hyperlink": {
       "default_interface": {
@@ -6444,7 +6462,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Documents.IHyperlinkStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Span",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "HyperlinkClickEventArgs": {
       "default_interface": {
@@ -6461,7 +6485,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "RoutedEventArgs",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Inline": {
       "default_interface": {
@@ -6481,7 +6511,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Documents.IInlineFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "TextElement",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "InlineCollection": {
       "default_interface": {
@@ -6548,7 +6584,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Inline",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "Italic": {
       "default_interface": {
@@ -6566,7 +6608,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Span",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "LineBreak": {
       "default_interface": {
@@ -6584,7 +6632,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Inline",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "Paragraph": {
       "default_interface": {
@@ -6605,7 +6659,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Documents.IParagraphStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Block",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "Run": {
       "default_interface": {
@@ -6626,7 +6686,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Documents.IRunStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Inline",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "Span": {
       "default_interface": {
@@ -6646,7 +6712,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Documents.ISpanFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Inline",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     },
     "TextElement": {
       "default_interface": {
@@ -6675,7 +6747,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Documents.ITextElementFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TextHighlighter": {
       "default_interface": {
@@ -6717,7 +6795,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Documents.ITextHighlighterBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "TextPointer": {
       "default_interface": {
@@ -6770,7 +6854,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Span",
+        "namespace": "Microsoft.UI.Xaml.Documents",
+        "target_kind": "Class"
+      }
     }
   }
 }

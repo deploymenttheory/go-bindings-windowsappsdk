@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Media.Imaging",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -1754,7 +1754,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Imaging.IBitmapImageStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "BitmapSource",
+        "namespace": "Microsoft.UI.Xaml.Media.Imaging",
+        "target_kind": "Class"
+      }
     },
     "BitmapSource": {
       "default_interface": {
@@ -1777,7 +1783,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Imaging.IBitmapSourceFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ImageSource",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "DownloadProgressEventArgs": {
       "default_interface": {
@@ -1814,7 +1826,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.Imaging.IRenderTargetBitmapStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ImageSource",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "SoftwareBitmapSource": {
       "default_interface": {
@@ -1839,7 +1857,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ImageSource",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "SurfaceImageSource": {
       "default_interface": {
@@ -1859,7 +1883,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Imaging.ISurfaceImageSourceFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ImageSource",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "SvgImageSource": {
       "default_interface": {
@@ -1882,7 +1912,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.Imaging.ISvgImageSourceFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ImageSource",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "SvgImageSourceFailedEventArgs": {
       "default_interface": {
@@ -1934,7 +1970,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Media.Imaging.IVirtualSurfaceImageSourceFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SurfaceImageSource",
+        "namespace": "Microsoft.UI.Xaml.Media.Imaging",
+        "target_kind": "Class"
+      }
     },
     "WriteableBitmap": {
       "default_interface": {
@@ -1954,7 +1996,13 @@
       "activatable_factories": [
         "Microsoft.UI.Xaml.Media.Imaging.IWriteableBitmapFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "BitmapSource",
+        "namespace": "Microsoft.UI.Xaml.Media.Imaging",
+        "target_kind": "Class"
+      }
     },
     "XamlRenderingBackgroundTask": {
       "default_interface": {

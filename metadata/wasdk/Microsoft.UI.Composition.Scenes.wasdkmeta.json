@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Composition.Scenes",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.1.3",
   "winmd_file": "Microsoft.UI.winmd",
   "enums": {
@@ -1600,7 +1600,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneComponent": {
       "default_interface": {
@@ -1620,7 +1626,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Scenes.ISceneComponentFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneComponentCollection": {
       "default_interface": {
@@ -1676,7 +1688,13 @@
           ]
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneMaterial": {
       "default_interface": {
@@ -1696,7 +1714,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Scenes.ISceneMaterialFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneMaterialInput": {
       "default_interface": {
@@ -1716,7 +1740,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Scenes.ISceneMaterialInputFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneMesh": {
       "default_interface": {
@@ -1736,7 +1766,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Scenes.ISceneMeshStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneMeshMaterialAttributeMap": {
       "default_interface": {
@@ -1800,7 +1836,13 @@
           ]
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneMeshRendererComponent": {
       "default_interface": {
@@ -1820,7 +1862,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Scenes.ISceneMeshRendererComponentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneRendererComponent",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneMetallicRoughnessMaterial": {
       "default_interface": {
@@ -1840,7 +1888,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Scenes.ISceneMetallicRoughnessMaterialStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ScenePbrMaterial",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneModelTransform": {
       "default_interface": {
@@ -1857,7 +1911,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionTransform",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "SceneNode": {
       "default_interface": {
@@ -1877,7 +1937,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Scenes.ISceneNodeStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneNodeCollection": {
       "default_interface": {
@@ -1933,7 +1999,13 @@
           ]
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneObject",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneObject": {
       "default_interface": {
@@ -1953,7 +2025,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Scenes.ISceneObjectFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "ScenePbrMaterial": {
       "default_interface": {
@@ -1973,7 +2051,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Scenes.IScenePbrMaterialFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneMaterial",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneRendererComponent": {
       "default_interface": {
@@ -1993,7 +2077,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Scenes.ISceneRendererComponentFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneComponent",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneSurfaceMaterialInput": {
       "default_interface": {
@@ -2013,7 +2103,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Scenes.ISceneSurfaceMaterialInputStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SceneMaterialInput",
+        "namespace": "Microsoft.UI.Composition.Scenes",
+        "target_kind": "Class"
+      }
     },
     "SceneVisual": {
       "default_interface": {
@@ -2033,7 +2129,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Scenes.ISceneVisualStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "ContainerVisual",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     }
   }
 }

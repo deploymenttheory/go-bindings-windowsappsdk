@@ -8,10 +8,34 @@ import (
 )
 
 // defaultEmbedWeight makes a default-interface edge expensive to sever, because
-// severing one demotes a whole runtime class: the generated class struct embeds
-// its default interface, so losing that import costs every member of the class
-// rather than one signature.
+// severing one demotes a whole runtime class: the generated class struct embeds its
+// default interface, so losing that import costs every member of the class rather
+// than one signature.
 const defaultEmbedWeight = 1000
+
+// inheritedInterfaceWeight is what one inherited-interface edge is worth: the same
+// as one plain reference, counted once per interface reachable over it.
+//
+// Weighting them higher was tried, on the reasoning that losing one removes a whole
+// As<Interface> accessor rather than one signature, and it made the output worse:
+// raising these weights only moves the cut onto other edges in the same cycles, and
+// those carry more plain references. Across the tree it took the degradation count
+// from 870 to 1040 without recovering the accessor it was aimed at
+// (Controls → Controls.Primitives, which Button needs for Click).
+//
+// The reason no weighting recovers that particular edge is that Controls ↔
+// Controls.Primitives is genuinely mutual and dense in both directions. One of them
+// has to go, and Go offers no way to express the cycle. What is NOT lost is the
+// capability: the runtime's QueryInterface is generic, so a caller whose own package
+// imports both can still reach the interface directly —
+//
+//	base, err := winrt.QueryInterface[primitives.IButtonBase](
+//	    unsafe.Pointer(button), &primitives.IID_IButtonBase)
+//
+// — because a consuming package is not part of the generated tree and closes no
+// cycle. Only the convenience accessor is absent, on about twenty edges out of the
+// whole graph.
+const inheritedInterfaceWeight = 1
 
 // ComputeBlockedImports builds the cross-namespace reference graph, detects
 // import cycles, and returns the edge set to sever: blocked[src][dst] means
@@ -41,14 +65,27 @@ func ComputeBlockedImports(registry *Registry) map[string]map[string]bool {
 		wasdkmeta.WalkRefs(meta, count)
 		for name := range meta.Classes {
 			class := meta.Classes[name]
-			if class.DefaultInterface == nil {
-				continue
+			if class.DefaultInterface != nil {
+				target := class.DefaultInterface.Namespace
+				if target != "" && target != meta.Namespace && registry.IsLocal(target) {
+					weights[target] += defaultEmbedWeight
+				}
 			}
-			target := class.DefaultInterface.Namespace
-			if target == "" || target == meta.Namespace || !registry.IsLocal(target) {
-				continue
-			}
-			weights[target] += defaultEmbedWeight
+			// Inherited-interface edges. The class emitter walks the Extends chain
+			// and projects each base class's interfaces as query methods ON THIS
+			// class, so the derived class's package imports them — an edge that
+			// exists nowhere in this namespace's own TypeRefs. Counting it here is
+			// what keeps this graph the same graph the emitter builds; without it,
+			// severing decides against edges it cannot see and the output does not
+			// compile.
+			registry.WalkBaseChain(&class, func(_ string, base *wasdkmeta.Class) {
+				for i := range base.Interfaces {
+					target := base.Interfaces[i].Namespace
+					if target != "" && target != meta.Namespace && registry.IsLocal(target) {
+						weights[target] += inheritedInterfaceWeight
+					}
+				}
+			})
 		}
 		if len(weights) > 0 {
 			edges[meta.Namespace] = weights

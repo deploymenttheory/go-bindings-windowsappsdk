@@ -10,7 +10,6 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrolsprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
 	uixamlmedia "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/media"
 	uixamlnavigation "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/navigation"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
@@ -506,41 +505,6 @@ func (h *ItemClickEventHandler) Ptr() uintptr { return h.delegate.Ptr() }
 // invoke the handler — after the event source removed it, or closed. The runtime
 // keeps its own references while the handler stays registered.
 func (h *ItemClickEventHandler) Close() { h.delegate.Release() }
-
-// ItemsChangedEventHandler is a Go-implemented handler for the WinRT delegate
-// Microsoft.UI.Xaml.Controls.Primitives.ItemsChangedEventHandler.
-// IID: 8e15e39e-23f7-5fcf-b04b-d1b7891dccc4
-type ItemsChangedEventHandler struct {
-	delegate *winrt.Delegate
-}
-
-// IID_ItemsChangedEventHandler is the delegate identifier for ItemsChangedEventHandler.
-var IID_ItemsChangedEventHandler = win32.GUID{Data1: 0x8e15e39e, Data2: 0x23f7, Data3: 0x5fcf, Data4: [8]byte{0xb0, 0x4b, 0xd1, 0xb7, 0x89, 0x1d, 0xcc, 0xc4}}
-
-// NewItemsChangedEventHandler wraps fn as a COM-callable Microsoft.UI.Xaml.Controls.Primitives.ItemsChangedEventHandler.
-// The handler starts with one Go-held reference; Close it once no native
-// code can still invoke it.
-// Pointer-typed callback arguments are BORROWED references owned by the
-// event source for the duration of the callback: do not Release them or
-// retain them past its return.
-func NewItemsChangedEventHandler(fn func(sender *syswinrt.IInspectable, e *uixamlcontrolsprimitives.IItemsChangedEventArgs)) (*ItemsChangedEventHandler, error) {
-	delegate, err := winrt.NewDelegate(IID_ItemsChangedEventHandler, 2, func(raw []uintptr) uintptr {
-		fn((*syswinrt.IInspectable)(unsafe.Pointer(raw[0])), (*uixamlcontrolsprimitives.IItemsChangedEventArgs)(unsafe.Pointer(raw[1])))
-		return 0
-	})
-	if err != nil {
-		return nil, err
-	}
-	return &ItemsChangedEventHandler{delegate: delegate}, nil
-}
-
-// Ptr is the COM object pointer an Add<Event> method registers.
-func (h *ItemsChangedEventHandler) Ptr() uintptr { return h.delegate.Ptr() }
-
-// Close releases the Go-held reference. Call it once no native code can still
-// invoke the handler — after the event source removed it, or closed. The runtime
-// keeps its own references while the handler stays registered.
-func (h *ItemsChangedEventHandler) Close() { h.delegate.Release() }
 
 // NavigatedEventHandler is a Go-implemented handler for the WinRT delegate
 // Microsoft.UI.Xaml.Navigation.NavigatedEventHandler.

@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -27,6 +28,20 @@ func NewCompositeTransform3D() (*CompositeTransform3D, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[CompositeTransform3D](unsafe.Pointer(instance), &IID_ICompositeTransform3D)
+}
+
+// AsTransform3D queries the instance's ITransform3D interface.
+// Inherited from Microsoft.UI.Xaml.Media.Media3D.Transform3D.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform3D) AsTransform3D() (*ITransform3D, error) {
+	return winrt.QueryInterface[ITransform3D](unsafe.Pointer(self), &IID_ITransform3D)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform3D) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // CompositeTransform3DStatics returns the Microsoft.UI.Xaml.Media.Media3D.ICompositeTransform3DStatics statics of the
@@ -78,6 +93,20 @@ func NewPerspectiveTransform3D() (*PerspectiveTransform3D, error) {
 	return winrt.QueryInterface[PerspectiveTransform3D](unsafe.Pointer(instance), &IID_IPerspectiveTransform3D)
 }
 
+// AsTransform3D queries the instance's ITransform3D interface.
+// Inherited from Microsoft.UI.Xaml.Media.Media3D.Transform3D.
+// The returned reference is owned by the caller.
+func (self *PerspectiveTransform3D) AsTransform3D() (*ITransform3D, error) {
+	return winrt.QueryInterface[ITransform3D](unsafe.Pointer(self), &IID_ITransform3D)
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *PerspectiveTransform3D) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
+}
+
 // PerspectiveTransform3DStatics returns the Microsoft.UI.Xaml.Media.Media3D.IPerspectiveTransform3DStatics statics of the
 // Microsoft.UI.Xaml.Media.Media3D.PerspectiveTransform3D runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -95,6 +124,13 @@ func PerspectiveTransform3DStatics() (*IPerspectiveTransform3DStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type Transform3D struct {
 	ITransform3D
+}
+
+// AsDependencyObject queries the instance's uixaml.IDependencyObject interface.
+// Inherited from Microsoft.UI.Xaml.DependencyObject.
+// The returned reference is owned by the caller.
+func (self *Transform3D) AsDependencyObject() (*uixaml.IDependencyObject, error) {
+	return winrt.QueryInterface[uixaml.IDependencyObject](unsafe.Pointer(self), &uixaml.IID_IDependencyObject)
 }
 
 // NewTransform3D constructs a Microsoft.UI.Xaml.Media.Media3D.Transform3D instance through

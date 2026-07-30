@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Composition.Interactions",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.1.3",
   "winmd_file": "Microsoft.UI.winmd",
   "enums": {
@@ -3068,7 +3068,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Interactions.ICompositionConditionalValueStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "CompositionInteractionSourceCollection": {
       "default_interface": {
@@ -3100,7 +3106,13 @@
           ]
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "InteractionSourceConfiguration": {
       "default_interface": {
@@ -3117,7 +3129,13 @@
           "target_kind": "Interface"
         }
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "InteractionTracker": {
       "default_interface": {
@@ -3162,7 +3180,13 @@
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerStatics2",
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "InteractionTrackerCustomAnimationStateEnteredArgs": {
       "default_interface": {
@@ -3226,7 +3250,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaModifierFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "InteractionTrackerInertiaMotion": {
       "default_interface": {
@@ -3246,7 +3276,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaMotionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InteractionTrackerInertiaModifier",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Class"
+      }
     },
     "InteractionTrackerInertiaNaturalMotion": {
       "default_interface": {
@@ -3266,7 +3302,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaNaturalMotionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InteractionTrackerInertiaModifier",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Class"
+      }
     },
     "InteractionTrackerInertiaRestingValue": {
       "default_interface": {
@@ -3286,7 +3328,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerInertiaRestingValueStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InteractionTrackerInertiaModifier",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Class"
+      }
     },
     "InteractionTrackerInertiaStateEnteredArgs": {
       "default_interface": {
@@ -3388,7 +3436,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerVector2InertiaModifierFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     },
     "InteractionTrackerVector2InertiaNaturalMotion": {
       "default_interface": {
@@ -3408,7 +3462,13 @@
       "static_interfaces": [
         "Microsoft.UI.Composition.Interactions.IInteractionTrackerVector2InertiaNaturalMotionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "InteractionTrackerVector2InertiaModifier",
+        "namespace": "Microsoft.UI.Composition.Interactions",
+        "target_kind": "Class"
+      }
     },
     "VisualInteractionSource": {
       "default_interface": {
@@ -3450,7 +3510,13 @@
       "composable_factories": [
         "Microsoft.UI.Composition.Interactions.IVisualInteractionSourceObjectFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CompositionObject",
+        "namespace": "Microsoft.UI.Composition",
+        "target_kind": "Class"
+      }
     }
   }
 }

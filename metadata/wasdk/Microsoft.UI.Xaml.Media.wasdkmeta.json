@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Media",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -8285,7 +8285,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IAcrylicBrushFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "XamlCompositionBrushBase",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "ArcSegment": {
       "default_interface": {
@@ -8306,7 +8312,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IArcSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "BezierSegment": {
       "default_interface": {
@@ -8327,7 +8339,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IBezierSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "BitmapCache": {
       "default_interface": {
@@ -8345,7 +8363,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "CacheMode",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "Brush": {
       "default_interface": {
@@ -8380,7 +8404,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IBrushFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "BrushCollection": {
       "default_interface": {
@@ -8450,7 +8480,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.ICacheModeFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "CompositeTransform": {
       "default_interface": {
@@ -8471,7 +8507,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ICompositeTransformStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "CompositionTarget": {
       "default_interface": {
@@ -8510,7 +8552,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IDesktopAcrylicBackdropFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SystemBackdrop",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "DoubleCollection": {
       "default_interface": {
@@ -8575,7 +8623,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IEllipseGeometryStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Geometry",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "FontFamily": {
       "default_interface": {
@@ -8623,7 +8677,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IGeneralTransformFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "Geometry": {
       "default_interface": {
@@ -8646,7 +8706,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IGeometryFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "GeometryCollection": {
       "default_interface": {
@@ -8717,7 +8783,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IGeometryGroupStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Geometry",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "GradientBrush": {
       "default_interface": {
@@ -8740,7 +8812,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IGradientBrushFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Brush",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "GradientStop": {
       "default_interface": {
@@ -8761,7 +8839,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IGradientStopStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "GradientStopCollection": {
       "default_interface": {
@@ -8832,7 +8916,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IImageBrushStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "TileBrush",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "ImageSource": {
       "default_interface": {
@@ -8852,7 +8942,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IImageSourceFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "LineGeometry": {
       "default_interface": {
@@ -8873,7 +8969,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ILineGeometryStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Geometry",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "LineSegment": {
       "default_interface": {
@@ -8894,7 +8996,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ILineSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "LinearGradientBrush": {
       "default_interface": {
@@ -8918,7 +9026,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ILinearGradientBrushStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "GradientBrush",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "LoadedImageSourceLoadCompletedEventArgs": {
       "default_interface": {
@@ -8987,7 +9101,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IMatrix3DProjectionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Projection",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "MatrixHelper": {
       "default_interface": {
@@ -9027,7 +9147,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IMatrixTransformStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "MediaTransportControlsThumbnailRequestedEventArgs": {
       "default_interface": {
@@ -9066,7 +9192,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IMicaBackdropFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "SystemBackdrop",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "PathFigure": {
       "default_interface": {
@@ -9087,7 +9219,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IPathFigureStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "PathFigureCollection": {
       "default_interface": {
@@ -9158,7 +9296,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IPathGeometryStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Geometry",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "PathSegment": {
       "default_interface": {
@@ -9178,7 +9322,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IPathSegmentFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "PathSegmentCollection": {
       "default_interface": {
@@ -9249,7 +9399,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IPlaneProjectionStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Projection",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "PointCollection": {
       "default_interface": {
@@ -9323,7 +9479,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IPolyBezierSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "PolyLineSegment": {
       "default_interface": {
@@ -9344,7 +9506,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IPolyLineSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "PolyQuadraticBezierSegment": {
       "default_interface": {
@@ -9365,7 +9533,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IPolyQuadraticBezierSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "Projection": {
       "default_interface": {
@@ -9385,7 +9559,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IProjectionFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "QuadraticBezierSegment": {
       "default_interface": {
@@ -9406,7 +9586,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IQuadraticBezierSegmentStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "PathSegment",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "RadialGradientBrush": {
       "default_interface": {
@@ -9429,7 +9615,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IRadialGradientBrushFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "XamlCompositionBrushBase",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "RectangleGeometry": {
       "default_interface": {
@@ -9450,7 +9642,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IRectangleGeometryStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Geometry",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "RenderedEventArgs": {
       "default_interface": {
@@ -9503,7 +9701,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IRotateTransformStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "ScaleTransform": {
       "default_interface": {
@@ -9524,7 +9728,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.IScaleTransformStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "Shadow": {
       "default_interface": {
@@ -9544,7 +9754,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IShadowFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "SkewTransform": {
       "default_interface": {
@@ -9565,7 +9781,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ISkewTransformStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "SolidColorBrush": {
       "default_interface": {
@@ -9589,7 +9811,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ISolidColorBrushStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Brush",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "SystemBackdrop": {
       "default_interface": {
@@ -9615,7 +9843,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.ISystemBackdropFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     },
     "ThemeShadow": {
       "default_interface": {
@@ -9635,7 +9869,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IThemeShadowFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shadow",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "TileBrush": {
       "default_interface": {
@@ -9658,7 +9898,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.ITileBrushFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Brush",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "Transform": {
       "default_interface": {
@@ -9678,7 +9924,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.ITransformFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "GeneralTransform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "TransformCollection": {
       "default_interface": {
@@ -9749,7 +10001,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ITransformGroupStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "TranslateTransform": {
       "default_interface": {
@@ -9770,7 +10028,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Media.ITranslateTransformStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Transform",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "VisualTreeHelper": {
       "default_interface": {
@@ -9824,7 +10088,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IXamlCompositionBrushBaseFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Brush",
+        "namespace": "Microsoft.UI.Xaml.Media",
+        "target_kind": "Class"
+      }
     },
     "XamlLight": {
       "default_interface": {
@@ -9859,7 +10129,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Media.IXamlLightFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "DependencyObject",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     }
   }
 }

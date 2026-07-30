@@ -125,6 +125,13 @@ type InputActivationListener struct {
 	IInputActivationListener
 }
 
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputActivationListener) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
+}
+
 // InputActivationListenerStatics returns the Microsoft.UI.Input.IInputActivationListenerStatics statics of the
 // Microsoft.UI.Input.InputActivationListener runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -188,11 +195,39 @@ type InputCustomCursor struct {
 	IInputCustomCursor
 }
 
+// AsInputCursor queries the instance's IInputCursor interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputCustomCursor) AsInputCursor() (*IInputCursor, error) {
+	return winrt.QueryInterface[IInputCursor](unsafe.Pointer(self), &IID_IInputCursor)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputCustomCursor) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
 // InputDesktopNamedResourceCursor is the Microsoft.UI.Input.InputDesktopNamedResourceCursor runtime class, surfaced through its
 // default interface IInputDesktopNamedResourceCursor. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InputDesktopNamedResourceCursor struct {
 	IInputDesktopNamedResourceCursor
+}
+
+// AsInputCursor queries the instance's IInputCursor interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputDesktopNamedResourceCursor) AsInputCursor() (*IInputCursor, error) {
+	return winrt.QueryInterface[IInputCursor](unsafe.Pointer(self), &IID_IInputCursor)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputDesktopNamedResourceCursor) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
 }
 
 // InputDesktopNamedResourceCursorStatics returns the Microsoft.UI.Input.IInputDesktopNamedResourceCursorStatics statics of the
@@ -212,6 +247,20 @@ func InputDesktopNamedResourceCursorStatics() (*IInputDesktopNamedResourceCursor
 // the embedded IInspectable → IUnknown chain).
 type InputDesktopResourceCursor struct {
 	IInputDesktopResourceCursor
+}
+
+// AsInputCursor queries the instance's IInputCursor interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputDesktopResourceCursor) AsInputCursor() (*IInputCursor, error) {
+	return winrt.QueryInterface[IInputCursor](unsafe.Pointer(self), &IID_IInputCursor)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputDesktopResourceCursor) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
 }
 
 // InputDesktopResourceCursorStatics returns the Microsoft.UI.Input.IInputDesktopResourceCursorStatics statics of the
@@ -245,6 +294,13 @@ func (self *InputFocusController) AsInputFocusController3() (*IInputFocusControl
 	return winrt.QueryInterface[IInputFocusController3](unsafe.Pointer(self), &IID_IInputFocusController3)
 }
 
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputFocusController) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
+}
+
 // InputFocusControllerStatics returns the Microsoft.UI.Input.IInputFocusControllerStatics statics of the
 // Microsoft.UI.Input.InputFocusController runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -262,6 +318,13 @@ func InputFocusControllerStatics() (*IInputFocusControllerStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type InputFocusNavigationHost struct {
 	IInputFocusNavigationHost
+}
+
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputFocusNavigationHost) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
 }
 
 // InputFocusNavigationHostStatics returns the Microsoft.UI.Input.IInputFocusNavigationHostStatics statics of the
@@ -301,6 +364,13 @@ func (self *InputKeyboardSource) AsInputKeyboardSource2() (*IInputKeyboardSource
 	return winrt.QueryInterface[IInputKeyboardSource2](unsafe.Pointer(self), &IID_IInputKeyboardSource2)
 }
 
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputKeyboardSource) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
+}
+
 // InputKeyboardSourceStatics returns the Microsoft.UI.Input.IInputKeyboardSourceStatics statics of the
 // Microsoft.UI.Input.InputKeyboardSource runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -330,6 +400,13 @@ func InputKeyboardSourceStatics2() (*IInputKeyboardSourceStatics2, error) {
 // the embedded IInspectable → IUnknown chain).
 type InputLightDismissAction struct {
 	IInputLightDismissAction
+}
+
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputLightDismissAction) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
 }
 
 // InputLightDismissActionStatics returns the Microsoft.UI.Input.IInputLightDismissActionStatics statics of the
@@ -390,6 +467,13 @@ type InputPointerSource struct {
 	IInputPointerSource
 }
 
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputPointerSource) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
+}
+
 // InputPointerSourceStatics returns the Microsoft.UI.Input.IInputPointerSourceStatics statics of the
 // Microsoft.UI.Input.InputPointerSource runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -409,6 +493,13 @@ type InputPreTranslateKeyboardSource struct {
 	IInputPreTranslateKeyboardSource
 }
 
+// AsInputObject queries the instance's IInputObject interface.
+// Inherited from Microsoft.UI.Input.InputObject.
+// The returned reference is owned by the caller.
+func (self *InputPreTranslateKeyboardSource) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
+}
+
 // InputPreTranslateKeyboardSourceStatics returns the Microsoft.UI.Input.IInputPreTranslateKeyboardSourceStatics statics of the
 // Microsoft.UI.Input.InputPreTranslateKeyboardSource runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -426,6 +517,20 @@ func InputPreTranslateKeyboardSourceStatics() (*IInputPreTranslateKeyboardSource
 // the embedded IInspectable → IUnknown chain).
 type InputSystemCursor struct {
 	IInputSystemCursor
+}
+
+// AsInputCursor queries the instance's IInputCursor interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputSystemCursor) AsInputCursor() (*IInputCursor, error) {
+	return winrt.QueryInterface[IInputCursor](unsafe.Pointer(self), &IID_IInputCursor)
+}
+
+// AsClosable queries the instance's wrtfoundation.IClosable interface.
+// Inherited from Microsoft.UI.Input.InputCursor.
+// The returned reference is owned by the caller.
+func (self *InputSystemCursor) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
 }
 
 // InputSystemCursorStatics returns the Microsoft.UI.Input.IInputSystemCursorStatics statics of the

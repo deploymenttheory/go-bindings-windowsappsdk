@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Shapes",
-  "schema_version": 1,
+  "schema_version": 2,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "interfaces": {
@@ -1326,7 +1326,13 @@
         }
       ],
       "activatable_direct": true,
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Class"
+      }
     },
     "Line": {
       "default_interface": {
@@ -1347,7 +1353,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Shapes.ILineStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Class"
+      }
     },
     "Path": {
       "default_interface": {
@@ -1370,7 +1382,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Shapes.IPathFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Class"
+      }
     },
     "Polygon": {
       "default_interface": {
@@ -1391,7 +1409,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Shapes.IPolygonStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Class"
+      }
     },
     "Polyline": {
       "default_interface": {
@@ -1412,7 +1436,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Shapes.IPolylineStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Class"
+      }
     },
     "Rectangle": {
       "default_interface": {
@@ -1433,7 +1463,13 @@
       "static_interfaces": [
         "Microsoft.UI.Xaml.Shapes.IRectangleStatics"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "Shape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Class"
+      }
     },
     "Shape": {
       "default_interface": {
@@ -1456,7 +1492,13 @@
       "composable_factories": [
         "Microsoft.UI.Xaml.Shapes.IShapeFactory"
       ],
-      "composable": true
+      "composable": true,
+      "base_class": {
+        "kind": "ApiRef",
+        "name": "FrameworkElement",
+        "namespace": "Microsoft.UI.Xaml",
+        "target_kind": "Class"
+      }
     }
   }
 }
