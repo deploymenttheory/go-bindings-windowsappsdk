@@ -20,10 +20,11 @@ package wasdkmeta
 // CurrentSchemaVersion is bumped when the IR changes incompatibly; readers reject
 // files with a different version so stale caches are re-ingested.
 //
-// Version 2 added Class.BaseClass. go-bindings-winrt's own files are still at
-// version 1 and are read through their own pinned constant (see
-// wasdkmeta/external), so this moving does not stop them being read.
-const CurrentSchemaVersion = 2
+// Version 2 added Class.BaseClass; version 3 added Param.ByRef.
+// go-bindings-winrt's own files are still at version 1 and are read through their
+// own pinned constant (see wasdkmeta/external), so this moving does not stop them
+// being read.
+const CurrentSchemaVersion = 3
 
 // NamespaceMeta is the serialized unit: the full API surface of one namespace,
 // merged across every winmd that contributes to it.
@@ -86,8 +87,9 @@ type TypeRef struct {
 	// IVector`1<T>).
 	Args []TypeRef `json:"args,omitempty"`
 
-	// Elem is the element type of an Array (WinRT conformant array;
-	// unsupported at emit, which skips the member with a diagnostic).
+	// Elem is the element type of an Array — a WinRT conformant array, which
+	// carries no length in metadata: the size travels as a separate ABI word that
+	// emit synthesizes from len(slice).
 	Elem *TypeRef `json:"elem,omitempty"`
 
 	// Index is the 0-based parameter position of a GenericParamRef.
@@ -101,6 +103,20 @@ type Param struct {
 
 	// Out is set on [out] parameters (ParamAttrOut).
 	Out bool `json:"out,omitempty"`
+
+	// ByRef records that the signature carried ELEMENT_TYPE_BYREF. Type is the
+	// pointee either way — emit adds the indirection — so for most parameters
+	// this only restates Out.
+	//
+	// It matters for exactly one shape. A WinRT array parameter is byref when the
+	// CALLEE allocates it (a receive array, `(UINT32* size, T** value)`) and not
+	// byref when the CALLER does (a fill array, `(UINT32 size, T* value)`), and
+	// the two have incompatible ABIs. Discarding the bit would leave them
+	// indistinguishable and one of them lowered wrongly — writing a pointer where
+	// the callee expects a count. There is exactly one byref array in the
+	// committed metadata, which is a reason to record the bit rather than a reason
+	// to skip it: a single silently corrupt member is the worst possible outcome.
+	ByRef bool `json:"by_ref,omitempty"`
 }
 
 // Method is one interface method in MethodDef order — THE vtable order:

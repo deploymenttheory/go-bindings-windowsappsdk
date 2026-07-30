@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.Windows.AI.Text",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.3.4",
   "winmd_file": "Microsoft.Windows.AI.Text.winmd",
   "enums": {
@@ -1702,7 +1702,8 @@
                 "kind": "Native",
                 "name": "U8"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -1732,7 +1733,8 @@
                 "kind": "Native",
                 "name": "U8"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {

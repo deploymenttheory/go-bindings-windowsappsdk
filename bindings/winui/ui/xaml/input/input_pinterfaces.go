@@ -109,9 +109,28 @@ func (self *IVectorOfInputScopeName) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfInputScopeName's vtable slot 16.
+func (self *IVectorOfInputScopeName) GetMany(startIndex uint32, items []*IInputScopeName) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfInputScopeName's vtable slot 17.
+func (self *IVectorOfInputScopeName) ReplaceAll(items []*IInputScopeName) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfKeyboardAccelerator is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Input.KeyboardAccelerator>.
 // IID: 0db091c3-8538-5d25-937f-db6e003e1f71
@@ -187,9 +206,28 @@ func (self *IVectorOfKeyboardAccelerator) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfKeyboardAccelerator's vtable slot 16.
+func (self *IVectorOfKeyboardAccelerator) GetMany(startIndex uint32, items []*IKeyboardAccelerator) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfKeyboardAccelerator's vtable slot 17.
+func (self *IVectorOfKeyboardAccelerator) ReplaceAll(items []*IKeyboardAccelerator) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfPointerPoint is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Input.PointerPoint>.
 // IID: 8220cf33-5d76-5607-bb7d-b7cd07d27f33
@@ -265,9 +303,28 @@ func (self *IVectorOfPointerPoint) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfPointerPoint's vtable slot 16.
+func (self *IVectorOfPointerPoint) GetMany(startIndex uint32, items []*uiinput.IPointerPoint) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfPointerPoint's vtable slot 17.
+func (self *IVectorOfPointerPoint) ReplaceAll(items []*uiinput.IPointerPoint) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfInputScopeName is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.InputScopeName>.
 // IID: 183ab292-d2b3-568d-8431-4e3ff18b037e
@@ -300,7 +357,17 @@ func (self *IVectorViewOfInputScopeName) IndexOf(value *IInputScopeName, index *
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfInputScopeName's vtable slot 9.
+func (self *IVectorViewOfInputScopeName) GetMany(startIndex uint32, items []*IInputScopeName) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfKeyboardAccelerator is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.KeyboardAccelerator>.
 // IID: 4d4dfa1a-7153-51f3-8036-6b61de68bca8
@@ -333,7 +400,17 @@ func (self *IVectorViewOfKeyboardAccelerator) IndexOf(value *IKeyboardAccelerato
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 9.
+func (self *IVectorViewOfKeyboardAccelerator) GetMany(startIndex uint32, items []*IKeyboardAccelerator) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPointerPoint is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Input.PointerPoint>.
 // IID: 5fbb224b-8430-5086-ab85-e71dfaa84c90
@@ -366,4 +443,14 @@ func (self *IVectorViewOfPointerPoint) IndexOf(value *uiinput.IPointerPoint, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPointerPoint's vtable slot 9.
+func (self *IVectorViewOfPointerPoint) GetMany(startIndex uint32, items []*uiinput.IPointerPoint) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

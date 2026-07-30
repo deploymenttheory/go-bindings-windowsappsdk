@@ -4,9 +4,33 @@
 
 package foundation
 
+import (
+	"unsafe"
+
+	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+)
+
 // EmbeddingVector is the Microsoft.Windows.AI.Foundation.EmbeddingVector runtime class, surfaced through its
 // default interface IEmbeddingVector. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type EmbeddingVector struct {
 	IEmbeddingVector
+}
+
+// CreateInstance constructs a Microsoft.Windows.AI.Foundation.EmbeddingVector instance through
+// Microsoft.Windows.AI.Foundation.IEmbeddingVectorFactory.CreateInstance. The activation factory is fetched
+// per call (a factory cache is a future optimization).
+func CreateInstance(data []float32, vectorSpaceID win32.GUID) (*EmbeddingVector, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.Windows.AI.Foundation.EmbeddingVector", &IID_IEmbeddingVectorFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IEmbeddingVectorFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	instance, err := factory.CreateInstance(data, vectorSpaceID)
+	if err != nil {
+		return nil, err
+	}
+	return (*EmbeddingVector)(unsafe.Pointer(instance)), nil
 }

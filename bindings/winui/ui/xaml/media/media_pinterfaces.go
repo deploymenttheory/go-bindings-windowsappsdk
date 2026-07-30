@@ -60,7 +60,17 @@ func (self *IIteratorOfUIElement) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfUIElement's vtable slot 9.
+func (self *IIteratorOfUIElement) GetMany(items []*uixaml.IUIElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IObservableVectorOfGradientStop is the WinRT interface Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>.
 // IID: 95f51f05-f191-5bc6-86b0-2a2a4d4ffab1
@@ -114,4 +124,4 @@ func (self *IVectorViewOfPopup) Size() (uint32, error) {
 
 // slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.Popup crosses a severed import edge
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Controls.Primitives.Popup crosses a severed import edge

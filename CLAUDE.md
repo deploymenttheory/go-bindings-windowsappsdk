@@ -330,6 +330,46 @@ alias, or one import path appears under two aliases, and CI runs it. Left
 unchecked this is a compile failure across roughly thirty packages on the first
 full run, naming neither the alias nor the namespaces that collided.
 
+### Conformant arrays
+
+A WinRT array crosses the ABI as two words, a count and a data pointer, and carries
+**no length in metadata** — the count is synthesized from `len(slice)`. Confirmed by
+scanning the committed winmds for `LengthIs`/`NativeArrayInfo`: zero hits, and
+go-winmd exposes no length for `SZARRAY` because there is none to expose.
+
+Which two words depends on who allocates the buffer, and that is where the care is:
+
+| Shape | ABI | Go |
+|---|---|---|
+| `[in] T[]` (pass) | `(UINT32 size, T* value)` | `M(items []T) error` |
+| `[out] T[]` (fill) | `(UINT32 size, T* value)` | `M(items []T) (uint32, error)` |
+| `[out] T[]&` (receive) | `(UINT32* size, T** value)` | refused, see below |
+| `T[]` returned | `(UINT32* size, T** value)` | `M() ([]T, error)` |
+
+Pass and fill lower **identically** — the difference is only who writes, which the
+doc comment records. So there are two lowerings, not four.
+
+The metadata separates receive from fill by `ELEMENT_TYPE_BYREF` alone, which
+`typeRefOf` collapses — hence `Param.ByRef` (schema version 3). There is exactly
+**one** byref array parameter in the whole Windows App SDK
+(`ITextRangeProvider.GetBoundingRectangles`), and that is a reason to record the bit
+rather than ignore it: passing a count where the callee writes through a pointer
+corrupts memory silently, and one such member is the worst possible outcome. It is
+refused with its own diagnostic rather than given a one-off promote-out-param-to-return
+path.
+
+Elements are admitted only when the Go representation is byte-identical to the ABI
+form, so the slice is a direct view: scalars, floats, enums, GUIDs, emittable structs,
+and interface, class and Object pointers — 92% of the arrays in the metadata. `HSTRING`
+and `Bool` elements are refused, because an HSTRING is a handle and a WinRT boolean is
+one byte with no guarantee it is 0 or 1; a direct view over either reinterprets bytes
+and compiles cleanly.
+
+A returned array is the one place generated code owns native memory: the callee
+allocated it with `CoTaskMemAlloc`, so the body copies out and calls `CoTaskMemFree`,
+after the HRESULT check — freeing a buffer that was never allocated is the obvious way
+to get this wrong.
+
 ### The base-class chain
 
 `Microsoft.UI.Xaml.Controls.IButton` carries **only** `get_Flyout`/`put_Flyout`.

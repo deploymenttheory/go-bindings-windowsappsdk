@@ -88,9 +88,28 @@ func (self *IVectorOfAutomationAnnotation) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfAutomationAnnotation's vtable slot 16.
+func (self *IVectorOfAutomationAnnotation) GetMany(startIndex uint32, items []*IAutomationAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfAutomationAnnotation's vtable slot 17.
+func (self *IVectorOfAutomationAnnotation) ReplaceAll(items []*IAutomationAnnotation) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfDependencyObject is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.DependencyObject>.
 // IID: 8e6b597a-ab20-585f-9db1-9394aac5a469
@@ -166,9 +185,28 @@ func (self *IVectorOfDependencyObject) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfDependencyObject's vtable slot 16.
+func (self *IVectorOfDependencyObject) GetMany(startIndex uint32, items []*uixaml.IDependencyObject) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfDependencyObject's vtable slot 17.
+func (self *IVectorOfDependencyObject) ReplaceAll(items []*uixaml.IDependencyObject) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfUIElement is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.UIElement>.
 // IID: ea4a1af0-4286-5f11-8142-6b0169f4e9de
@@ -244,9 +282,28 @@ func (self *IVectorOfUIElement) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfUIElement's vtable slot 16.
+func (self *IVectorOfUIElement) GetMany(startIndex uint32, items []*uixaml.IUIElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfUIElement's vtable slot 17.
+func (self *IVectorOfUIElement) ReplaceAll(items []*uixaml.IUIElement) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfAutomationAnnotation is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Automation.AutomationAnnotation>.
 // IID: 15c04825-b975-5bc5-adf9-e3b6062a7afa
@@ -279,7 +336,17 @@ func (self *IVectorViewOfAutomationAnnotation) IndexOf(value *IAutomationAnnotat
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfAutomationAnnotation's vtable slot 9.
+func (self *IVectorViewOfAutomationAnnotation) GetMany(startIndex uint32, items []*IAutomationAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfDependencyObject is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.DependencyObject>.
 // IID: 9eddd815-4420-5639-9b26-eab8013fa294
@@ -312,7 +379,17 @@ func (self *IVectorViewOfDependencyObject) IndexOf(value *uixaml.IDependencyObje
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfDependencyObject's vtable slot 9.
+func (self *IVectorViewOfDependencyObject) GetMany(startIndex uint32, items []*uixaml.IDependencyObject) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfUIElement is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.UIElement>.
 // IID: 4fdea5ee-c725-5026-ba83-24e5771357c6
@@ -345,4 +422,14 @@ func (self *IVectorViewOfUIElement) IndexOf(value *uixaml.IUIElement, index *uin
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfUIElement's vtable slot 9.
+func (self *IVectorViewOfUIElement) GetMany(startIndex uint32, items []*uixaml.IUIElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

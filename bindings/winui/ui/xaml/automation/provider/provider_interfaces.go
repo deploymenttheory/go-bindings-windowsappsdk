@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uixamlautomation "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/automation"
 	uixamlautomationtext "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/automation/text"
@@ -130,9 +131,27 @@ func (self *IDragProvider) DropEffect() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 8: get_DropEffects skipped: conformant array
+// slot 8: get_DropEffects skipped: string elements need per-element conversion
 
-// slot 9: GetGrabbedItems skipped: conformant array
+// GetGrabbedItems dispatches through IDragProvider's vtable slot 9.
+func (self *IDragProvider) GetGrabbedItems() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // IDropTargetProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.IDropTargetProvider.
 // IID: 9b2a9f3d-bbb1-510d-99e8-0e0ae14a6e3b
@@ -153,7 +172,7 @@ func (self *IDropTargetProvider) DropEffect() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 7: get_DropEffects skipped: conformant array
+// slot 7: get_DropEffects skipped: string elements need per-element conversion
 
 // IExpandCollapseProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.IExpandCollapseProvider.
 // IID: 6cef349c-b181-5d0b-b297-c3b0166120c3
@@ -314,7 +333,25 @@ func (self *IMultipleViewProvider) CurrentView() (int32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: GetSupportedViews skipped: conformant array
+// GetSupportedViews dispatches through IMultipleViewProvider's vtable slot 7.
+func (self *IMultipleViewProvider) GetSupportedViews() ([]int32, error) {
+	resultSize := new(uint32)
+	result := new(*int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]int32, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // GetViewName dispatches through IMultipleViewProvider's vtable slot 8.
 func (self *IMultipleViewProvider) GetViewName(viewId int32) (string, error) {
@@ -550,7 +587,25 @@ func (self *ISelectionProvider) IsSelectionRequired() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetSelection skipped: conformant array
+// GetSelection dispatches through ISelectionProvider's vtable slot 8.
+func (self *ISelectionProvider) GetSelection() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ISpreadsheetItemProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.ISpreadsheetItemProvider.
 // IID: 51c1ce89-b21f-592c-8768-0accdefd5738
@@ -571,9 +626,45 @@ func (self *ISpreadsheetItemProvider) Formula() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 7: GetAnnotationObjects skipped: conformant array
+// GetAnnotationObjects dispatches through ISpreadsheetItemProvider's vtable slot 7.
+func (self *ISpreadsheetItemProvider) GetAnnotationObjects() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 8: GetAnnotationTypes skipped: conformant array
+// GetAnnotationTypes dispatches through ISpreadsheetItemProvider's vtable slot 8.
+func (self *ISpreadsheetItemProvider) GetAnnotationTypes() ([]uixamlautomation.AnnotationType, error) {
+	resultSize := new(uint32)
+	result := new(*uixamlautomation.AnnotationType)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]uixamlautomation.AnnotationType, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ISpreadsheetProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.ISpreadsheetProvider.
 // IID: 1ff41bac-d9e3-5e48-b5f8-9eab0fb2d9d8
@@ -696,9 +787,45 @@ type ITableItemProvider struct {
 // IID_ITableItemProvider is the interface identifier for ITableItemProvider.
 var IID_ITableItemProvider = win32.GUID{Data1: 0x6ce6f038, Data2: 0x54d4, Data3: 0x5553, Data4: [8]byte{0xa4, 0xad, 0x03, 0xcb, 0xcf, 0x35, 0x81, 0x97}}
 
-// slot 6: GetColumnHeaderItems skipped: conformant array
+// GetColumnHeaderItems dispatches through ITableItemProvider's vtable slot 6.
+func (self *ITableItemProvider) GetColumnHeaderItems() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 7: GetRowHeaderItems skipped: conformant array
+// GetRowHeaderItems dispatches through ITableItemProvider's vtable slot 7.
+func (self *ITableItemProvider) GetRowHeaderItems() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ITableProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.ITableProvider.
 // IID: 9aba6724-b22d-5db8-8abb-81f911f18af2
@@ -716,9 +843,45 @@ func (self *ITableProvider) RowOrColumnMajor() (uixamlautomation.RowOrColumnMajo
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: GetColumnHeaders skipped: conformant array
+// GetColumnHeaders dispatches through ITableProvider's vtable slot 7.
+func (self *ITableProvider) GetColumnHeaders() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 8: GetRowHeaders skipped: conformant array
+// GetRowHeaders dispatches through ITableProvider's vtable slot 8.
+func (self *ITableProvider) GetRowHeaders() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ITextChildProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.ITextChildProvider.
 // IID: 7c72e55f-f75d-5522-aeb5-c1f82c32933b
@@ -790,9 +953,45 @@ func (self *ITextProvider) SupportedTextSelection() (uixamlautomation.SupportedT
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetSelection skipped: conformant array
+// GetSelection dispatches through ITextProvider's vtable slot 8.
+func (self *ITextProvider) GetSelection() ([]*ITextRangeProvider, error) {
+	resultSize := new(uint32)
+	result := new(**ITextRangeProvider)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*ITextRangeProvider, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 9: GetVisibleRanges skipped: conformant array
+// GetVisibleRanges dispatches through ITextProvider's vtable slot 9.
+func (self *ITextProvider) GetVisibleRanges() ([]*ITextRangeProvider, error) {
+	resultSize := new(uint32)
+	result := new(**ITextRangeProvider)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*ITextRangeProvider, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // RangeFromChild dispatches through ITextProvider's vtable slot 10.
 func (self *ITextProvider) RangeFromChild(childElement *IIRawElementProviderSimple) (*ITextRangeProvider, error) {
@@ -902,7 +1101,7 @@ func (self *ITextRangeProvider) GetAttributeValue(attributeId int32) (*syswinrt.
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 13: GetBoundingRectangles skipped: conformant array
+// slot 13: GetBoundingRectangles skipped: returnValue is a callee-allocated array; only fill arrays are lowered
 
 // GetEnclosingElement dispatches through ITextRangeProvider's vtable slot 14.
 func (self *ITextRangeProvider) GetEnclosingElement() (*IIRawElementProviderSimple, error) {
@@ -969,7 +1168,25 @@ func (self *ITextRangeProvider) ScrollIntoView(alignToTop bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 23: GetChildren skipped: conformant array
+// GetChildren dispatches through ITextRangeProvider's vtable slot 23.
+func (self *ITextRangeProvider) GetChildren() ([]*IIRawElementProviderSimple, error) {
+	resultSize := new(uint32)
+	result := new(**IIRawElementProviderSimple)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IIRawElementProviderSimple, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ITextRangeProvider2 is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.ITextRangeProvider2.
 // IID: 34d4a80e-36bb-5362-a53b-490428a8b367

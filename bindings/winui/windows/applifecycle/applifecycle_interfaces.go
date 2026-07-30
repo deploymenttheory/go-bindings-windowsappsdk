@@ -25,7 +25,7 @@ type IActivationRegistrationManagerStatics struct {
 // IID_IActivationRegistrationManagerStatics is the interface identifier for IActivationRegistrationManagerStatics.
 var IID_IActivationRegistrationManagerStatics = win32.GUID{Data1: 0x5ac4e92e, Data2: 0x017b, Data3: 0x5d68, Data4: [8]byte{0x81, 0x98, 0xf6, 0x86, 0x36, 0xab, 0x99, 0xd3}}
 
-// slot 6: RegisterForFileTypeActivation skipped: conformant array
+// slot 6: RegisterForFileTypeActivation skipped: string elements need per-element conversion
 
 // RegisterForProtocolActivation dispatches through IActivationRegistrationManagerStatics's vtable slot 7.
 func (self *IActivationRegistrationManagerStatics) RegisterForProtocolActivation(scheme string, logo string, displayName string, exePath string) error {
@@ -69,7 +69,7 @@ func (self *IActivationRegistrationManagerStatics) RegisterForStartupActivation(
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: UnregisterForFileTypeActivation skipped: conformant array
+// slot 9: UnregisterForFileTypeActivation skipped: string elements need per-element conversion
 
 // UnregisterForProtocolActivation dispatches through IActivationRegistrationManagerStatics's vtable slot 10.
 func (self *IActivationRegistrationManagerStatics) UnregisterForProtocolActivation(scheme string, exePath string) error {

@@ -307,12 +307,13 @@ func renderInto[T any](body *strings.Builder, renderFunc func(T) (string, error)
 // lowering helper that might emit one.
 func (g *Generator) fixedAliases() map[string]string {
 	return map[string]string{
-		"unsafe":   "unsafe",
-		"syscall":  "syscall",
-		"math":     "math",
-		"win32":    typemap.Win32RuntimeImport,
-		"syswinrt": typemap.SysWinRTImport,
-		"winrt":    g.mapper.RuntimeImportPath(),
+		"unsafe":    "unsafe",
+		"syscall":   "syscall",
+		"math":      "math",
+		"win32":     typemap.Win32RuntimeImport,
+		"syswinrt":  typemap.SysWinRTImport,
+		"systemcom": typemap.SystemComImport,
+		"winrt":     g.mapper.RuntimeImportPath(),
 	}
 }
 

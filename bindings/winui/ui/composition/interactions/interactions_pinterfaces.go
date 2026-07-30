@@ -108,7 +108,17 @@ func (self *IIteratorOfCompositionConditionalValue) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfCompositionConditionalValue's vtable slot 9.
+func (self *IIteratorOfCompositionConditionalValue) GetMany(items []*ICompositionConditionalValue) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfICompositionInteractionSource is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.Interactions.ICompositionInteractionSource>.
 // IID: f21f2a85-e3f0-557c-8cff-6cfbc39754bb
@@ -140,7 +150,17 @@ func (self *IIteratorOfICompositionInteractionSource) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfICompositionInteractionSource's vtable slot 9.
+func (self *IIteratorOfICompositionInteractionSource) GetMany(items []*ICompositionInteractionSource) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfInteractionTrackerInertiaModifier is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier>.
 // IID: ad8bcabc-22a3-5fea-9edc-20e8c4fa3905
@@ -172,7 +192,17 @@ func (self *IIteratorOfInteractionTrackerInertiaModifier) MoveNext() (bool, erro
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfInteractionTrackerInertiaModifier's vtable slot 9.
+func (self *IIteratorOfInteractionTrackerInertiaModifier) GetMany(items []*IInteractionTrackerInertiaModifier) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfInteractionTrackerVector2InertiaModifier is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaModifier>.
 // IID: e666655f-2a16-5a78-bd73-7f81bba7c2c4
@@ -204,7 +234,17 @@ func (self *IIteratorOfInteractionTrackerVector2InertiaModifier) MoveNext() (boo
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfInteractionTrackerVector2InertiaModifier's vtable slot 9.
+func (self *IIteratorOfInteractionTrackerVector2InertiaModifier) GetMany(items []*IInteractionTrackerVector2InertiaModifier) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IReferenceOfSingle is the WinRT interface Windows.Foundation.IReference`1<Single>.
 // IID: 719cc2ba-3e76-5def-9f1a-38d85a145ea8

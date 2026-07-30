@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.Security.Authentication.OAuth",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.3.5",
   "winmd_file": "Microsoft.Security.Authentication.OAuth.winmd",
   "enums": {

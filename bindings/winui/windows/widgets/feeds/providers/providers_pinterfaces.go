@@ -59,7 +59,17 @@ func (self *IIteratorOfIKeyValuePairOfStringAndString) MoveNext() (bool, error) 
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndString's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndString) GetMany(items []*IKeyValuePairOfStringAndString) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IKeyValuePairOfStringAndString is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, String>.
 // IID: 60310303-49c5-52e6-abc6-a9b36eccc716

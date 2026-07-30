@@ -75,7 +75,17 @@ func (self *IIteratorOfChildSiteLink) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfChildSiteLink's vtable slot 9.
+func (self *IIteratorOfChildSiteLink) GetMany(items []*IChildSiteLink) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfDesktopPopupSiteBridge is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Content.DesktopPopupSiteBridge>.
 // IID: cc9ed456-5402-5d3e-86b9-d3f25708e44d
@@ -107,7 +117,17 @@ func (self *IIteratorOfDesktopPopupSiteBridge) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfDesktopPopupSiteBridge's vtable slot 9.
+func (self *IIteratorOfDesktopPopupSiteBridge) GetMany(items []*IDesktopPopupSiteBridge) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IReferenceOfContentLayoutDirection is the WinRT interface Windows.Foundation.IReference`1<Microsoft.UI.Content.ContentLayoutDirection>.
 // IID: 76e53eed-3539-540b-8d51-4206bca63f5f

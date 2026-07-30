@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui"
 	uicontent "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/content"
@@ -1540,9 +1541,36 @@ func (self *IInputNonClientPointerSource) ClearRegionRects(region NonClientRegio
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetRegionRects skipped: conformant array
+// GetRegionRects dispatches through IInputNonClientPointerSource's vtable slot 9.
+func (self *IInputNonClientPointerSource) GetRegionRects(region NonClientRegionKind) ([]wrtgraphics.RectInt32, error) {
+	resultSize := new(uint32)
+	result := new(*wrtgraphics.RectInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(region), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]wrtgraphics.RectInt32, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 10: SetRegionRects skipped: conformant array
+// SetRegionRects dispatches through IInputNonClientPointerSource's vtable slot 10.
+func (self *IInputNonClientPointerSource) SetRegionRects(region NonClientRegionKind, rects []wrtgraphics.RectInt32) error {
+	_rectsSize := uintptr(len(rects))
+	_rectsData := uintptr(0)
+	if len(rects) > 0 {
+		_rectsData = uintptr(winrt.OutParam(unsafe.Pointer(&rects[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(region), _rectsSize, _rectsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // AddCaptionTapped (event add add_CaptionTapped) dispatches through IInputNonClientPointerSource's vtable slot 11.
 // The handler stays registered (and referenced by the runtime) until the
@@ -2404,7 +2432,25 @@ type INonClientRegionsChangedEventArgs struct {
 // IID_INonClientRegionsChangedEventArgs is the interface identifier for INonClientRegionsChangedEventArgs.
 var IID_INonClientRegionsChangedEventArgs = win32.GUID{Data1: 0xfe97ee95, Data2: 0x1824, Data3: 0x51b2, Data4: [8]byte{0xb8, 0xeb, 0x10, 0xff, 0x06, 0x65, 0xce, 0x23}}
 
-// slot 6: get_ChangedRegions skipped: conformant array
+// ChangedRegions (propget get_ChangedRegions) dispatches through INonClientRegionsChangedEventArgs's vtable slot 6.
+func (self *INonClientRegionsChangedEventArgs) ChangedRegions() ([]NonClientRegionKind, error) {
+	resultSize := new(uint32)
+	result := new(*NonClientRegionKind)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]NonClientRegionKind, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // IPointerEventArgs is the WinRT interface Microsoft.UI.Input.IPointerEventArgs.
 // IID: 865b188c-2ed5-5df8-829f-ac0701d5c51a
@@ -2756,7 +2802,25 @@ func (self *IPointerPredictor) SetPredictionTime(value wrtfoundation.TimeSpan) e
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetPredictedPoints skipped: conformant array
+// GetPredictedPoints dispatches through IPointerPredictor's vtable slot 8.
+func (self *IPointerPredictor) GetPredictedPoints(point *IPointerPoint) ([]*IPointerPoint, error) {
+	resultSize := new(uint32)
+	result := new(**IPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(point)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IPointerPoint, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // IPointerPredictorStatics is the WinRT interface Microsoft.UI.Input.IPointerPredictorStatics.
 // IID: 78a8ef30-3e5c-55cd-8f85-65ac09b1a987

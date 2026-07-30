@@ -175,9 +175,28 @@ func (self *IVectorOfObject) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfObject's vtable slot 16.
+func (self *IVectorOfObject) GetMany(startIndex uint32, items []*syswinrt.IInspectable) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfObject's vtable slot 17.
+func (self *IVectorOfObject) ReplaceAll(items []*syswinrt.IInspectable) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfScrollSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase>.
 // IID: 44786fbd-d376-5b07-b4fd-54113268d3a6
@@ -253,9 +272,28 @@ func (self *IVectorOfScrollSnapPointBase) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfScrollSnapPointBase's vtable slot 16.
+func (self *IVectorOfScrollSnapPointBase) GetMany(startIndex uint32, items []*IScrollSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfScrollSnapPointBase's vtable slot 17.
+func (self *IVectorOfScrollSnapPointBase) ReplaceAll(items []*IScrollSnapPointBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfZoomSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase>.
 // IID: 2705789a-e69c-5274-b15b-ca245be267e2
@@ -331,9 +369,28 @@ func (self *IVectorOfZoomSnapPointBase) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfZoomSnapPointBase's vtable slot 16.
+func (self *IVectorOfZoomSnapPointBase) GetMany(startIndex uint32, items []*IZoomSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfZoomSnapPointBase's vtable slot 17.
+func (self *IVectorOfZoomSnapPointBase) ReplaceAll(items []*IZoomSnapPointBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfObject is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Object>.
 // IID: a6487363-b074-5c60-ab16-866dce4ee54d
@@ -366,7 +423,17 @@ func (self *IVectorViewOfObject) IndexOf(value *syswinrt.IInspectable, index *ui
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfObject's vtable slot 9.
+func (self *IVectorViewOfObject) GetMany(startIndex uint32, items []*syswinrt.IInspectable) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfScrollSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase>.
 // IID: ffd69432-94da-50ae-ac63-1dadc0e9900f
@@ -399,7 +466,17 @@ func (self *IVectorViewOfScrollSnapPointBase) IndexOf(value *IScrollSnapPointBas
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfScrollSnapPointBase's vtable slot 9.
+func (self *IVectorViewOfScrollSnapPointBase) GetMany(startIndex uint32, items []*IScrollSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfSingle is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Single>.
 // IID: 7bca64fd-150c-5d50-b56b-9f4f474c5930
@@ -433,7 +510,17 @@ func (self *IVectorViewOfSingle) IndexOf(value float32, index *uint32) (bool, er
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfSingle's vtable slot 9.
+func (self *IVectorViewOfSingle) GetMany(startIndex uint32, items []float32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfZoomSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase>.
 // IID: 09386c00-10c1-5ae0-8e62-3dfb5198c489
@@ -466,4 +553,14 @@ func (self *IVectorViewOfZoomSnapPointBase) IndexOf(value *IZoomSnapPointBase, i
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfZoomSnapPointBase's vtable slot 9.
+func (self *IVectorViewOfZoomSnapPointBase) GetMany(startIndex uint32, items []*IZoomSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

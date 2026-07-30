@@ -23,7 +23,16 @@ type IEmbeddingVector struct {
 // IID_IEmbeddingVector is the interface identifier for IEmbeddingVector.
 var IID_IEmbeddingVector = win32.GUID{Data1: 0x07bdaa90, Data2: 0xb3d2, Data3: 0x5701, Data4: [8]byte{0x97, 0xd1, 0xc3, 0x90, 0xec, 0x62, 0x79, 0x9c}}
 
-// slot 6: GetValues skipped: conformant array
+// GetValues dispatches through IEmbeddingVector's vtable slot 6.
+func (self *IEmbeddingVector) GetValues(values []float32) error {
+	_valuesSize := uintptr(len(values))
+	_valuesData := uintptr(0)
+	if len(values) > 0 {
+		_valuesData = uintptr(winrt.OutParam(unsafe.Pointer(&values[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _valuesSize, _valuesData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // Size (propget get_Size) dispatches through IEmbeddingVector's vtable slot 7.
 func (self *IEmbeddingVector) Size() (uint32, error) {
@@ -49,4 +58,14 @@ type IEmbeddingVectorFactory struct {
 // IID_IEmbeddingVectorFactory is the interface identifier for IEmbeddingVectorFactory.
 var IID_IEmbeddingVectorFactory = win32.GUID{Data1: 0x16b72758, Data2: 0x2b69, Data3: 0x5e97, Data4: [8]byte{0xb8, 0x65, 0x6a, 0x6a, 0x71, 0x68, 0x3d, 0xd0}}
 
-// slot 6: CreateInstance skipped: conformant array
+// CreateInstance dispatches through IEmbeddingVectorFactory's vtable slot 6.
+func (self *IEmbeddingVectorFactory) CreateInstance(data []float32, vectorSpaceID win32.GUID) (*IEmbeddingVector, error) {
+	_dataSize := uintptr(len(data))
+	_dataData := uintptr(0)
+	if len(data) > 0 {
+		_dataData = uintptr(winrt.OutParam(unsafe.Pointer(&data[0])))
+	}
+	result := new(*IEmbeddingVector)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _dataSize, _dataData, uintptr(winrt.OutParam(unsafe.Pointer(&vectorSpaceID))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

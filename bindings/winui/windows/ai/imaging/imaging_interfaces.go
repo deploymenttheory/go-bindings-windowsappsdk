@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	graphicsimaging "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/graphics/imaging"
 	windowsai "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/ai"
@@ -346,7 +347,25 @@ func (self *IRecognizedLine) BoundingBox() (RecognizedTextBoundingBox, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: get_Words skipped: conformant array
+// Words (propget get_Words) dispatches through IRecognizedLine's vtable slot 8.
+func (self *IRecognizedLine) Words() ([]*IRecognizedWord, error) {
+	resultSize := new(uint32)
+	result := new(**IRecognizedWord)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IRecognizedWord, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // Style (propget get_Style) dispatches through IRecognizedLine's vtable slot 9.
 func (self *IRecognizedLine) Style() (RecognizedLineStyle, error) {
@@ -372,7 +391,25 @@ type IRecognizedText struct {
 // IID_IRecognizedText is the interface identifier for IRecognizedText.
 var IID_IRecognizedText = win32.GUID{Data1: 0xae4766d3, Data2: 0x2924, Data3: 0x57a6, Data4: [8]byte{0xb3, 0xd3, 0xb8, 0x66, 0xf5, 0x9b, 0x99, 0x72}}
 
-// slot 6: get_Lines skipped: conformant array
+// Lines (propget get_Lines) dispatches through IRecognizedText's vtable slot 6.
+func (self *IRecognizedText) Lines() ([]*IRecognizedLine, error) {
+	resultSize := new(uint32)
+	result := new(**IRecognizedLine)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IRecognizedLine, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // TextAngle (propget get_TextAngle) dispatches through IRecognizedText's vtable slot 7.
 func (self *IRecognizedText) TextAngle() (float32, error) {

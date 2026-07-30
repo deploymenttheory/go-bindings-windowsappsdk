@@ -59,7 +59,17 @@ func (self *IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic) MoveNext(
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndSceneAttributeSemantic) GetMany(items []*IKeyValuePairOfStringAndSceneAttributeSemantic) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IKeyValuePairOfStringAndSceneAttributeSemantic is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.Scenes.SceneAttributeSemantic>.
 // IID: 109a063e-257f-5701-b780-e50bd9912b50

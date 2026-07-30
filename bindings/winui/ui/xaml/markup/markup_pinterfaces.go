@@ -88,9 +88,28 @@ func (self *IVectorOfIRandomAccessStream) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfIRandomAccessStream's vtable slot 16.
+func (self *IVectorOfIRandomAccessStream) GetMany(startIndex uint32, items []*wrtstoragestreams.IRandomAccessStream) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfIRandomAccessStream's vtable slot 17.
+func (self *IVectorOfIRandomAccessStream) ReplaceAll(items []*wrtstoragestreams.IRandomAccessStream) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfIRandomAccessStream is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Windows.Storage.Streams.IRandomAccessStream>.
 // IID: 92cd0a46-2266-5cd6-9293-e111299f2793
@@ -123,4 +142,14 @@ func (self *IVectorViewOfIRandomAccessStream) IndexOf(value *wrtstoragestreams.I
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfIRandomAccessStream's vtable slot 9.
+func (self *IVectorViewOfIRandomAccessStream) GetMany(startIndex uint32, items []*wrtstoragestreams.IRandomAccessStream) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

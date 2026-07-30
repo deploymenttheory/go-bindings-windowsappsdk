@@ -221,9 +221,9 @@ func (p *fileProjector) typeRefOf(sig *winmd.TypeSig) wasdkmeta.TypeRef {
 		return p.namedTypeRef(sig.Namespace, sig.Name)
 
 	case winmd.SigPointer:
-		// ELEMENT_TYPE_BYREF: a WinRT [out]/fill parameter. The logical type
-		// is the pointee — direction is recorded on Param.Out — and emit adds
-		// the indirection when lowering to the ABI.
+		// ELEMENT_TYPE_BYREF. The logical type is the pointee — direction is
+		// recorded on Param.Out, and the byref-ness itself on Param.ByRef — and
+		// emit adds the indirection when lowering to the ABI.
 		return p.typeRefOf(sig.Child)
 
 	case winmd.SigGenericInst:
@@ -378,6 +378,10 @@ func (p *fileProjector) paramsOf(methodDef *winmd.MethodDefRow, sig *winmd.Metho
 		params[i] = wasdkmeta.Param{
 			Name: fmt.Sprintf("param%d", i),
 			Type: p.typeRefOf(&sig.Params[i]),
+			// Read before typeRefOf collapses it: for an array parameter this is
+			// the only thing separating a callee-allocated receive array from a
+			// caller-allocated fill array, and their ABIs are incompatible.
+			ByRef: sig.Params[i].Kind == winmd.SigPointer,
 		}
 	}
 	tables := &p.file.Tables

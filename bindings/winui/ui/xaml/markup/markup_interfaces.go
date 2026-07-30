@@ -569,7 +569,7 @@ func (self *IXamlMetadataProvider) GetXamlTypeByFullName(fullName string) (*IXam
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetXmlnsDefinitions skipped: conformant array
+// slot 8: GetXmlnsDefinitions skipped: element: skipped-struct-ref: reference to skipped struct Microsoft.UI.Xaml.Markup.XmlnsDefinition
 
 // IXamlReader is the WinRT interface Microsoft.UI.Xaml.Markup.IXamlReader.
 // IID: 54ce54c8-38c6-50d9-ac98-4b03eddbde9f

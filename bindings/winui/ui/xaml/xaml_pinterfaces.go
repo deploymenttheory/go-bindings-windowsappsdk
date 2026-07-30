@@ -147,7 +147,17 @@ func (self *IIteratorOfDependencyObject) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfDependencyObject's vtable slot 9.
+func (self *IIteratorOfDependencyObject) GetMany(items []*IDependencyObject) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfIIterableOfPoint is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Point>>.
 // IID: 377f6162-6e4d-574e-bf01-77f4fd021d0e
@@ -179,7 +189,17 @@ func (self *IIteratorOfIIterableOfPoint) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfIIterableOfPoint's vtable slot 9.
+func (self *IIteratorOfIIterableOfPoint) GetMany(items []*IIterableOfPoint) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfIKeyValuePairOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>>.
 // IID: 31e55e8a-0f05-52fd-90d3-b04aa331aaa4
@@ -211,7 +231,17 @@ func (self *IIteratorOfIKeyValuePairOfObjectAndObject) MoveNext() (bool, error) 
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfIKeyValuePairOfObjectAndObject's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfObjectAndObject) GetMany(items []*IKeyValuePairOfObjectAndObject) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfPoint is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Point>.
 // IID: c602b59e-0a8e-5e99-b478-2b564585278d
@@ -243,7 +273,17 @@ func (self *IIteratorOfPoint) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfPoint's vtable slot 9.
+func (self *IIteratorOfPoint) GetMany(items []wrtfoundation.Point) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfSetterBase is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Xaml.SetterBase>.
 // IID: 555894a1-cc82-5af0-b220-53e73b2dba33
@@ -275,7 +315,17 @@ func (self *IIteratorOfSetterBase) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfSetterBase's vtable slot 9.
+func (self *IIteratorOfSetterBase) GetMany(items []*ISetterBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IKeyValuePairOfObjectAndObject is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<Object, Object>.
 // IID: 59e7ae0c-c29d-5ad6-bef5-dedb52a198e1
@@ -480,9 +530,9 @@ func (self *IVectorOfKeyboardAccelerator) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// slot 16: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
-// slot 17: ReplaceAll skipped: conformant array
+// slot 17: ReplaceAll skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // IVectorOfResourceDictionary is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.ResourceDictionary>.
 // IID: c6fbfe1a-f015-5b23-8e7e-14497e9707a1
@@ -558,9 +608,28 @@ func (self *IVectorOfResourceDictionary) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfResourceDictionary's vtable slot 16.
+func (self *IVectorOfResourceDictionary) GetMany(startIndex uint32, items []*IResourceDictionary) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfResourceDictionary's vtable slot 17.
+func (self *IVectorOfResourceDictionary) ReplaceAll(items []*IResourceDictionary) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfSetterBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.SetterBase>.
 // IID: 4357f913-f457-553b-8475-52acd4ab3599
@@ -636,9 +705,28 @@ func (self *IVectorOfSetterBase) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfSetterBase's vtable slot 16.
+func (self *IVectorOfSetterBase) GetMany(startIndex uint32, items []*ISetterBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfSetterBase's vtable slot 17.
+func (self *IVectorOfSetterBase) ReplaceAll(items []*ISetterBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfStateTriggerBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.StateTriggerBase>.
 // IID: df1e41c3-5b3e-55be-86cf-c9242a9a0293
@@ -714,9 +802,28 @@ func (self *IVectorOfStateTriggerBase) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfStateTriggerBase's vtable slot 16.
+func (self *IVectorOfStateTriggerBase) GetMany(startIndex uint32, items []*IStateTriggerBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfStateTriggerBase's vtable slot 17.
+func (self *IVectorOfStateTriggerBase) ReplaceAll(items []*IStateTriggerBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfVisualState is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.VisualState>.
 // IID: d9a7e4ce-6753-58d9-9314-983be67762fc
@@ -792,9 +899,28 @@ func (self *IVectorOfVisualState) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfVisualState's vtable slot 16.
+func (self *IVectorOfVisualState) GetMany(startIndex uint32, items []*IVisualState) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfVisualState's vtable slot 17.
+func (self *IVectorOfVisualState) ReplaceAll(items []*IVisualState) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfVisualStateGroup is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.VisualStateGroup>.
 // IID: 533324a4-e624-5041-ba1a-69eb5d006acf
@@ -870,9 +996,28 @@ func (self *IVectorOfVisualStateGroup) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfVisualStateGroup's vtable slot 16.
+func (self *IVectorOfVisualStateGroup) GetMany(startIndex uint32, items []*IVisualStateGroup) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfVisualStateGroup's vtable slot 17.
+func (self *IVectorOfVisualStateGroup) ReplaceAll(items []*IVisualStateGroup) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfVisualTransition is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.VisualTransition>.
 // IID: 937ffd52-1b1e-5700-adef-8fd156d58003
@@ -948,9 +1093,28 @@ func (self *IVectorOfVisualTransition) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfVisualTransition's vtable slot 16.
+func (self *IVectorOfVisualTransition) GetMany(startIndex uint32, items []*IVisualTransition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfVisualTransition's vtable slot 17.
+func (self *IVectorOfVisualTransition) ReplaceAll(items []*IVisualTransition) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfXamlLight is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Media.XamlLight>.
 // IID: fb6065bb-83e0-57c0-ae7f-418fd763b0ce
@@ -1004,9 +1168,9 @@ func (self *IVectorOfXamlLight) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// slot 16: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
 
-// slot 17: ReplaceAll skipped: conformant array
+// slot 17: ReplaceAll skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
 
 // IVectorViewOfKeyboardAccelerator is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.KeyboardAccelerator>.
 // IID: 4d4dfa1a-7153-51f3-8036-6b61de68bca8
@@ -1029,7 +1193,7 @@ func (self *IVectorViewOfKeyboardAccelerator) Size() (uint32, error) {
 
 // slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
 
 // IVectorViewOfPointer is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.Pointer>.
 // IID: 81082898-c342-5b9f-9fcc-0927881f30ad
@@ -1052,7 +1216,7 @@ func (self *IVectorViewOfPointer) Size() (uint32, error) {
 
 // slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
 
 // IVectorViewOfResourceDictionary is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.ResourceDictionary>.
 // IID: 1afc35b6-d46b-5d29-a9f6-e21e68b05846
@@ -1085,7 +1249,17 @@ func (self *IVectorViewOfResourceDictionary) IndexOf(value *IResourceDictionary,
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfResourceDictionary's vtable slot 9.
+func (self *IVectorViewOfResourceDictionary) GetMany(startIndex uint32, items []*IResourceDictionary) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfSetterBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.SetterBase>.
 // IID: 01f305aa-8ef8-5237-8767-5adaa3b4a524
@@ -1118,7 +1292,17 @@ func (self *IVectorViewOfSetterBase) IndexOf(value *ISetterBase, index *uint32) 
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfSetterBase's vtable slot 9.
+func (self *IVectorViewOfSetterBase) GetMany(startIndex uint32, items []*ISetterBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfStateTriggerBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.StateTriggerBase>.
 // IID: 00c2e28d-9e12-5d23-af85-a4d9919168bf
@@ -1151,7 +1335,17 @@ func (self *IVectorViewOfStateTriggerBase) IndexOf(value *IStateTriggerBase, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfStateTriggerBase's vtable slot 9.
+func (self *IVectorViewOfStateTriggerBase) GetMany(startIndex uint32, items []*IStateTriggerBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfVisualState is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.VisualState>.
 // IID: 5c9df898-d0f9-5196-96a4-28722acca2a2
@@ -1184,7 +1378,17 @@ func (self *IVectorViewOfVisualState) IndexOf(value *IVisualState, index *uint32
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfVisualState's vtable slot 9.
+func (self *IVectorViewOfVisualState) GetMany(startIndex uint32, items []*IVisualState) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfVisualStateGroup is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.VisualStateGroup>.
 // IID: 7d50bfbc-971e-53d7-8bff-bf3519d7349c
@@ -1217,7 +1421,17 @@ func (self *IVectorViewOfVisualStateGroup) IndexOf(value *IVisualStateGroup, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfVisualStateGroup's vtable slot 9.
+func (self *IVectorViewOfVisualStateGroup) GetMany(startIndex uint32, items []*IVisualStateGroup) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfVisualTransition is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.VisualTransition>.
 // IID: 94a2368c-5ab9-58d5-b917-e201ba8643fd
@@ -1250,7 +1464,17 @@ func (self *IVectorViewOfVisualTransition) IndexOf(value *IVisualTransition, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfVisualTransition's vtable slot 9.
+func (self *IVectorViewOfVisualTransition) GetMany(startIndex uint32, items []*IVisualTransition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfXamlLight is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Media.XamlLight>.
 // IID: cf393ba1-2605-543e-8b4e-e800eb179492
@@ -1273,4 +1497,4 @@ func (self *IVectorViewOfXamlLight) Size() (uint32, error) {
 
 // slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge

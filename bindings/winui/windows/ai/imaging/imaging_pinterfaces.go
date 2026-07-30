@@ -264,9 +264,28 @@ func (self *IVectorOfPointInt32) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfPointInt32's vtable slot 16.
+func (self *IVectorOfPointInt32) GetMany(startIndex uint32, items []wrtgraphics.PointInt32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfPointInt32's vtable slot 17.
+func (self *IVectorOfPointInt32) ReplaceAll(items []wrtgraphics.PointInt32) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfRectInt32 is the WinRT interface Windows.Foundation.Collections.IVector`1<Windows.Graphics.RectInt32>.
 // IID: b4c6b283-6002-5af2-afa2-88a5be7ff16f
@@ -337,9 +356,28 @@ func (self *IVectorOfRectInt32) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfRectInt32's vtable slot 16.
+func (self *IVectorOfRectInt32) GetMany(startIndex uint32, items []wrtgraphics.RectInt32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfRectInt32's vtable slot 17.
+func (self *IVectorOfRectInt32) ReplaceAll(items []wrtgraphics.RectInt32) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPointInt32 is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Windows.Graphics.PointInt32>.
 // IID: 3c3a4b61-a864-5cb4-a996-2bbee4922757
@@ -373,7 +411,17 @@ func (self *IVectorViewOfPointInt32) IndexOf(value wrtgraphics.PointInt32, index
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPointInt32's vtable slot 9.
+func (self *IVectorViewOfPointInt32) GetMany(startIndex uint32, items []wrtgraphics.PointInt32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfRectInt32 is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Windows.Graphics.RectInt32>.
 // IID: 4f5e243f-3812-5200-b70c-30dcfc61717b
@@ -406,4 +454,14 @@ func (self *IVectorViewOfRectInt32) IndexOf(value wrtgraphics.RectInt32, index *
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfRectInt32's vtable slot 9.
+func (self *IVectorViewOfRectInt32) GetMany(startIndex uint32, items []wrtgraphics.RectInt32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

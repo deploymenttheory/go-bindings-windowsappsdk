@@ -510,3 +510,80 @@ func TestDiagnosticSummaryIsSortedAndCounted(t *testing.T) {
 		t.Errorf("second line = %q, want zebra", lines[1])
 	}
 }
+
+// TestByRefDistinguishesArrayOwnership pins the one metadata bit that separates two
+// array shapes with incompatible ABIs.
+//
+// A WinRT array parameter is byref when the CALLEE allocates it — the ABI is
+// (UINT32* size, T** value) — and not byref when the CALLER does, where it is
+// (UINT32 size, T* value). typeRefOf collapses byref to its pointee, so without
+// Param.ByRef the two are indistinguishable and one of them gets lowered as the
+// other: a count word passed where the callee writes through a pointer.
+//
+// There is exactly one byref array in the committed metadata. That is a reason to
+// record the bit, not to ignore it — a single silently corrupt member is the worst
+// available outcome.
+func TestByRefDistinguishesArrayOwnership(t *testing.T) {
+	result := run(t)
+
+	// CopyToByteArray's values is a caller-allocated fill array: [out] and NOT byref.
+	fill := findParam(t, result, "Microsoft.Graphics.Imaging", "IImageBuffer", "CopyToByteArray", "values")
+	if fill != nil {
+		if !fill.Out {
+			t.Error("IImageBuffer.CopyToByteArray values is not [out]")
+		}
+		if fill.ByRef {
+			t.Error("IImageBuffer.CopyToByteArray values is byref; it is a caller-allocated fill array")
+		}
+		if fill.Type.Kind != "Array" {
+			t.Errorf("IImageBuffer.CopyToByteArray values is %q, want Array", fill.Type.Kind)
+		}
+	}
+
+	// GetBoundingRectangles' returnValue is callee-allocated: [out] AND byref. This
+	// is the only one in the metadata.
+	receive := findParam(t, result, "Microsoft.UI.Xaml.Automation.Provider",
+		"ITextRangeProvider", "GetBoundingRectangles", "returnValue")
+	if receive == nil {
+		t.Fatal("ITextRangeProvider.GetBoundingRectangles returnValue not found")
+	}
+	if !receive.Out || !receive.ByRef {
+		t.Errorf("GetBoundingRectangles returnValue: out=%v byref=%v, want both true",
+			receive.Out, receive.ByRef)
+	}
+
+	// And the bit must not be set indiscriminately: an input parameter is never byref.
+	in := findParam(t, result, "Microsoft.UI.Input", "IInputNonClientPointerSource", "SetRegionRects", "rects")
+	if in != nil && (in.ByRef || in.Out) {
+		t.Errorf("SetRegionRects rects: out=%v byref=%v, want both false for an input array",
+			in.Out, in.ByRef)
+	}
+}
+
+// findParam locates one parameter of one method, or nil with a t.Error when the
+// interface or method is absent (a metadata change, not a code defect).
+func findParam(t *testing.T, result *ingested, namespace, iface, method, param string) *wasdkmeta.Param {
+	t.Helper()
+	meta := result.byName[namespace]
+	if meta == nil {
+		t.Errorf("%s was not ingested", namespace)
+		return nil
+	}
+	definition, ok := meta.Interfaces[iface]
+	if !ok {
+		t.Errorf("%s.%s not found", namespace, iface)
+		return nil
+	}
+	for i := range definition.Methods {
+		if definition.Methods[i].Name != method {
+			continue
+		}
+		for j := range definition.Methods[i].Params {
+			if definition.Methods[i].Params[j].Name == param {
+				return &definition.Methods[i].Params[j]
+			}
+		}
+	}
+	t.Errorf("%s.%s.%s(%s) not found", namespace, iface, method, param)
+	return nil
+}

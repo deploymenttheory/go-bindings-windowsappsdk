@@ -19,6 +19,6 @@ type ISecurityDescriptorHelpersStatics struct {
 // IID_ISecurityDescriptorHelpersStatics is the interface identifier for ISecurityDescriptorHelpersStatics.
 var IID_ISecurityDescriptorHelpersStatics = win32.GUID{Data1: 0x14fa9e8d, Data2: 0x59f0, Data3: 0x5017, Data4: [8]byte{0x85, 0x2f, 0x3a, 0xe2, 0x4f, 0xd5, 0xeb, 0xb1}}
 
-// slot 6: GetSddlForAppContainerNames skipped: conformant array
+// slot 6: GetSddlForAppContainerNames skipped: element: skipped-struct-ref: reference to skipped struct Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess
 
-// slot 7: GetSecurityDescriptorBytesFromAppContainerNames skipped: conformant array
+// slot 7: GetSecurityDescriptorBytesFromAppContainerNames skipped: element: skipped-struct-ref: reference to skipped struct Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess

@@ -46,6 +46,23 @@ func CreateInstance(kind ResourceCandidateKind, data string) (*ResourceCandidate
 	return (*ResourceCandidate)(unsafe.Pointer(instance)), nil
 }
 
+// CreateInstance2 constructs a Microsoft.Windows.ApplicationModel.Resources.ResourceCandidate instance through
+// Microsoft.Windows.ApplicationModel.Resources.IResourceCandidateFactory.CreateInstance2. The activation factory is fetched
+// per call (a factory cache is a future optimization).
+func CreateInstance2(data []byte) (*ResourceCandidate, error) {
+	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.Windows.ApplicationModel.Resources.ResourceCandidate", &IID_IResourceCandidateFactory)
+	if err != nil {
+		return nil, err
+	}
+	factory := (*IResourceCandidateFactory)(unsafe.Pointer(factoryUnknown))
+	defer factory.Release()
+	instance, err := factory.CreateInstance2(data)
+	if err != nil {
+		return nil, err
+	}
+	return (*ResourceCandidate)(unsafe.Pointer(instance)), nil
+}
+
 // ResourceContext is the Microsoft.Windows.ApplicationModel.Resources.ResourceContext runtime class, surfaced through its
 // default interface IResourceContext. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -106,10 +123,10 @@ func CreateInstanceResourceLoader(fileName string) (*ResourceLoader, error) {
 	return (*ResourceLoader)(unsafe.Pointer(instance)), nil
 }
 
-// CreateInstance2 constructs a Microsoft.Windows.ApplicationModel.Resources.ResourceLoader instance through
+// CreateInstance2ResourceLoader constructs a Microsoft.Windows.ApplicationModel.Resources.ResourceLoader instance through
 // Microsoft.Windows.ApplicationModel.Resources.IResourceLoaderFactory.CreateInstance2. The activation factory is fetched
 // per call (a factory cache is a future optimization).
-func CreateInstance2(fileName string, resourceMap string) (*ResourceLoader, error) {
+func CreateInstance2ResourceLoader(fileName string, resourceMap string) (*ResourceLoader, error) {
 	factoryUnknown, err := winrt.GetActivationFactory("Microsoft.Windows.ApplicationModel.Resources.ResourceLoader", &IID_IResourceLoaderFactory)
 	if err != nil {
 		return nil, err

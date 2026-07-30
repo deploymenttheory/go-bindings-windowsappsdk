@@ -182,7 +182,17 @@ func (self *IIteratorOfEmbeddingVector) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfEmbeddingVector's vtable slot 9.
+func (self *IIteratorOfEmbeddingVector) GetMany(items []*windowsaifoundation.IEmbeddingVector) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfConversationItem is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.AI.Text.ConversationItem>.
 // IID: 639207c3-ae0c-5851-a501-2668decf1448
@@ -215,7 +225,17 @@ func (self *IVectorViewOfConversationItem) IndexOf(value *IConversationItem, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfConversationItem's vtable slot 9.
+func (self *IVectorViewOfConversationItem) GetMany(startIndex uint32, items []*IConversationItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfEmbeddingVector is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.AI.Foundation.EmbeddingVector>.
 // IID: 30811f60-718e-550e-b121-4ee1e955b472
@@ -248,4 +268,14 @@ func (self *IVectorViewOfEmbeddingVector) IndexOf(value *windowsaifoundation.IEm
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfEmbeddingVector's vtable slot 9.
+func (self *IVectorViewOfEmbeddingVector) GetMany(startIndex uint32, items []*windowsaifoundation.IEmbeddingVector) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Text",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Text.winmd",
   "enums": {
@@ -2590,7 +2590,8 @@
                 "kind": "Native",
                 "name": "HString"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         },
@@ -2835,7 +2836,8 @@
                 "kind": "Native",
                 "name": "HString"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         },
@@ -3330,7 +3332,8 @@
                 "kind": "Native",
                 "name": "F32"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             },
             {
               "name": "align",
@@ -3340,7 +3343,8 @@
                 "namespace": "Microsoft.UI.Text",
                 "target_kind": "Enum"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             },
             {
               "name": "leader",
@@ -3350,7 +3354,8 @@
                 "namespace": "Microsoft.UI.Text",
                 "target_kind": "Enum"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         },
@@ -4015,7 +4020,8 @@
                 "kind": "Native",
                 "name": "U4"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             },
             {
               "name": "offset",
@@ -4092,7 +4098,8 @@
                 "target_kind": "Struct",
                 "external": true
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         },
@@ -4117,7 +4124,8 @@
                 "target_kind": "Struct",
                 "external": true
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             },
             {
               "name": "hit",
@@ -4125,7 +4133,8 @@
                 "kind": "Native",
                 "name": "I4"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         },
@@ -4147,7 +4156,8 @@
                 "kind": "Native",
                 "name": "HString"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         },

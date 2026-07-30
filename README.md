@@ -74,7 +74,7 @@ external: 4500 references resolved against github.com/deploymenttheory/go-bindin
 
 $ go run ./cmd/generate bindings
 severed 19 import edges across 9 namespaces (references over them degrade)
-emitted 77 packages → bindings\winui (870 diagnostics)
+emitted 77 packages → bindings\winui (639 diagnostics)
 
 $ go build ./...
 ```
@@ -85,16 +85,36 @@ only references that go nowhere are to `Microsoft.Web.WebView2.Core`, which ship
 in its own NuGet package and has no Go bindings — recorded as a permanent absence
 rather than left to look like a bug.
 
-The 870 diagnostics are members that cannot be represented, each with a reason, and
+The 639 diagnostics are members that cannot be represented, each with a reason, and
 each leaving an audit comment at its own vtable slot so nothing renumbers. The largest
-groups are conformant arrays (256), severed import cycles (185) and open generics
-(108). CI ratchets the set: a new one fails the build.
+groups are severed import cycles (185), open generics (108) and event delegates whose
+Invoke cannot be adapted (78). CI ratchets the set: a new one fails the build.
 
-Only some of that is burn-down. The import-cycle group is a Go language limit, not a
-gap — Go rejects import cycles, so one direction of a mutual reference has to go.
-Conformant arrays are real, implementable work and the next thing to do. And 59 of
-them are not defects at all: delegate TypeDefs are deliberately not emitted in their
-home namespace, because consumers ground their own copies.
+Little of what remains is burn-down. The import-cycle group is a Go language limit,
+not a gap — Go rejects import cycles, so one direction of a mutual reference has to
+go, and `inherited-interface-skipped` (75) is the same limit seen from the derived
+class. Another 59 are not defects at all: delegate TypeDefs are deliberately not
+emitted in their home namespace, because consumers ground their own copies.
+
+**Conformant arrays used to be the largest group at 256, and are now gone.** A WinRT
+array crosses as two ABI words, a count and a data pointer, and which two depends on
+who allocates the buffer:
+
+| Shape | ABI | Go |
+|---|---|---|
+| `[in] T[]` | `(UINT32 size, T* value)` | `M(items []T) error` |
+| `[out] T[]` fill | `(UINT32 size, T* value)` | `M(items []T) (uint32, error)` |
+| `T[]` returned | `(UINT32* size, T** value)` | `M() ([]T, error)` |
+
+The metadata distinguishes the third from the second by `ELEMENT_TYPE_BYREF` alone,
+and there is exactly **one** byref array parameter in the whole Windows App SDK — which
+is a reason to record the bit rather than ignore it, since passing a count where the
+callee writes through a pointer corrupts memory silently. That one member is refused
+rather than guessed at.
+
+What is left of arrays is 27 members whose elements are `HSTRING` or `Bool`. Those need
+per-element conversion — an HSTRING is a handle, not a string — and a direct slice view
+over them would reinterpret bytes and still compile.
 
 Inherited members are reachable. A class's metadata lists only the interfaces
 declared at its own level — `Button`'s is just `IButton`, carrying `Flyout` — so the

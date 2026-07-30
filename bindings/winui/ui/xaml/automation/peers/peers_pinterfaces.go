@@ -59,7 +59,17 @@ func (self *IIteratorOfAutomationPeer) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfAutomationPeer's vtable slot 9.
+func (self *IIteratorOfAutomationPeer) GetMany(items []*IAutomationPeer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfAutomationPeer is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
 // IID: 91d7782f-c53a-5620-8ce1-0d9419249322
@@ -130,9 +140,28 @@ func (self *IVectorOfAutomationPeer) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfAutomationPeer's vtable slot 16.
+func (self *IVectorOfAutomationPeer) GetMany(startIndex uint32, items []*IAutomationPeer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfAutomationPeer's vtable slot 17.
+func (self *IVectorOfAutomationPeer) ReplaceAll(items []*IAutomationPeer) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfAutomationPeerAnnotation is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation>.
 // IID: fe9ed1b7-7185-52e9-b037-bf9902ac3561
@@ -208,9 +237,28 @@ func (self *IVectorOfAutomationPeerAnnotation) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 16.
+func (self *IVectorOfAutomationPeerAnnotation) GetMany(startIndex uint32, items []*IAutomationPeerAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 17.
+func (self *IVectorOfAutomationPeerAnnotation) ReplaceAll(items []*IAutomationPeerAnnotation) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfAutomationPeer is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
 // IID: 26501cc8-81ab-54e0-8049-2bbd47c9ff36
@@ -243,7 +291,17 @@ func (self *IVectorViewOfAutomationPeer) IndexOf(value *IAutomationPeer, index *
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfAutomationPeer's vtable slot 9.
+func (self *IVectorViewOfAutomationPeer) GetMany(startIndex uint32, items []*IAutomationPeer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfAutomationPeerAnnotation is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation>.
 // IID: 7a5622c2-354b-5d4e-b86d-3482eb35513e
@@ -276,4 +334,14 @@ func (self *IVectorViewOfAutomationPeerAnnotation) IndexOf(value *IAutomationPee
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfAutomationPeerAnnotation's vtable slot 9.
+func (self *IVectorViewOfAutomationPeerAnnotation) GetMany(startIndex uint32, items []*IAutomationPeerAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

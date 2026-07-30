@@ -774,7 +774,16 @@ func (self *IAppWindowTitleBar) ResetToDefault() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 38: SetDragRectangles skipped: conformant array
+// SetDragRectangles dispatches through IAppWindowTitleBar's vtable slot 38.
+func (self *IAppWindowTitleBar) SetDragRectangles(value []wrtgraphics.RectInt32) error {
+	_valueSize := uintptr(len(value))
+	_valueData := uintptr(0)
+	if len(value) > 0 {
+		_valueData = uintptr(winrt.OutParam(unsafe.Pointer(&value[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[38], uintptr(unsafe.Pointer(self)), _valueSize, _valueData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IAppWindowTitleBar2 is the WinRT interface Microsoft.UI.Windowing.IAppWindowTitleBar2.
 // IID: 86faed38-748a-5b4b-9ccf-3ba0496c9041
