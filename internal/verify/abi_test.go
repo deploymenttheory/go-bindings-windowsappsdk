@@ -48,7 +48,14 @@ var pinnedIIDs = map[string]string{
 	// callback creates.
 	"Microsoft.UI.Xaml.IApplicationStatics": "4e0d09f5-4358-512c-a987-503b52848e95",
 	"Microsoft.UI.Xaml.IApplicationFactory": "9fd96657-5294-5a65-a1db-4fea143597da",
+	"Microsoft.UI.Xaml.IApplication":        "06a8f4e7-1146-55af-820d-ebd55643b021",
 	"Microsoft.UI.Xaml.IWindow":             "61f0ec79-5d52-56b5-86fb-40fa4af288b0",
+
+	// The interface a Go application cannot answer QueryInterface for, which is
+	// the leading suspect for XamlControlsResources failing to activate. Pinned
+	// so the suspicion is at least anchored to a real IID and a real slot layout
+	// rather than to prose. See acceptance/TestApplicationHasNoXamlMetadataProvider.
+	"Microsoft.UI.Xaml.Markup.IXamlMetadataProvider": "a96251f0-2214-5d53-8746-ce99a2593cd7",
 
 	// The only legal way to move work onto the UI thread from another
 	// goroutine.
@@ -112,6 +119,20 @@ var pinnedSlots = []struct {
 	{"Microsoft.UI.Xaml.IApplicationStatics", "get_Current", 6},
 	{"Microsoft.UI.Xaml.IApplicationStatics", "Start", 7},
 
+	// get_Resources is the call that fails with E_UNEXPECTED when it is made
+	// before the first Window exists. app.AddControlsResources says the slot is
+	// pinned here, so it had better be: an unpinned claim of verification is
+	// worse than no claim, because it stops anyone checking. Exit is pinned
+	// beside it because it is the only way a Go callback can end the message
+	// loop, and it is what proves the same interface pointer is sound.
+	{"Microsoft.UI.Xaml.IApplication", "get_Resources", 6},
+	{"Microsoft.UI.Xaml.IApplication", "get_DebugSettings", 8},
+	{"Microsoft.UI.Xaml.IApplication", "Exit", 17},
+
+	// The metadata provider's last slot; the first two are overloads, covered by
+	// TestXamlMetadataProviderIsOverloaded.
+	{"Microsoft.UI.Xaml.Markup.IXamlMetadataProvider", "GetXmlnsDefinitions", 8},
+
 	// The composable constructor a Go-derived Application would go through
 	// (M6). Its shape — controlling outer in, inner out — is what needs COM
 	// aggregation support in go-bindings-winrt.
@@ -155,6 +176,24 @@ func TestPinnedSlots(t *testing.T) {
 		if got != pin.slot {
 			t.Errorf("%s.%s is slot %d, pinned as %d", pin.iface, pin.method, got, pin.slot)
 		}
+	}
+}
+
+// TestXamlMetadataProviderIsOverloaded pins the shape any Go implementation of the
+// interface has to match, because getting it wrong is not a compile error.
+//
+// GetXamlType occupies TWO consecutive slots: the metadata declares it twice, once
+// taking a TypeName and once a string. A vtable built on the assumption of one
+// method per name would leave slot 7 unfilled and the framework would call through
+// whatever happened to be there.
+func TestXamlMetadataProviderIsOverloaded(t *testing.T) {
+	const iface = "Microsoft.UI.Xaml.Markup.IXamlMetadataProvider"
+	slots, err := metadata(t).SlotsNamed(iface, "GetXamlType")
+	if err != nil {
+		t.Fatalf("GetXamlType: %v", err)
+	}
+	if len(slots) != 2 || slots[0] != 6 || slots[1] != 7 {
+		t.Errorf("GetXamlType slots = %v, want [6 7]", slots)
 	}
 }
 

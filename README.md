@@ -7,9 +7,9 @@ interface can be written in Go.
 
 No Visual Studio, no .NET SDK, no XAML compiler, no cgo. Just `go build`.
 
-> **Status: early, but it works.** 77 packages of generated Go, and a real WinUI 3
-> window on screen from a Go program, in CI. See [Where this is](#where-this-is)
-> for the one thing that does not work yet and why.
+> **Status: early.** 77 packages of generated Go, and a real WinUI 3 window on screen
+> from a Go program, in CI — but the controls in it are invisible, for a reason not yet
+> established. See [Where this is](#where-this-is).
 
 ## The family
 
@@ -73,8 +73,8 @@ validate: 77 namespaces, 0 errors, 0 warnings
 external: 4500 references resolved against github.com/deploymenttheory/go-bindings-winrt v0.4.0
 
 $ go run ./cmd/generate bindings
-severed 18 import edges across 8 namespaces (references over them degrade)
-emitted 77 packages → bindings\winui (755 diagnostics)
+severed 19 import edges across 9 namespaces (references over them degrade)
+emitted 77 packages → bindings\winui (870 diagnostics)
 
 $ go build ./...
 ```
@@ -85,10 +85,16 @@ only references that go nowhere are to `Microsoft.Web.WebView2.Core`, which ship
 in its own NuGet package and has no Go bindings — recorded as a permanent absence
 rather than left to look like a bug.
 
-The 755 diagnostics are members that cannot be represented, each with a reason,
-and each leaving an audit comment at its own vtable slot so nothing renumbers.
-The largest groups are conformant arrays (255), severed import cycles (191) and
-open generics (123). CI ratchets the set: a new one fails the build.
+The 870 diagnostics are members that cannot be represented, each with a reason, and
+each leaving an audit comment at its own vtable slot so nothing renumbers. The largest
+groups are conformant arrays (256), severed import cycles (185) and open generics
+(108). CI ratchets the set: a new one fails the build.
+
+Only some of that is burn-down. The import-cycle group is a Go language limit, not a
+gap — Go rejects import cycles, so one direction of a mutual reference has to go.
+Conformant arrays are real, implementable work and the next thing to do. And 59 of
+them are not defects at all: delegate TypeDefs are deliberately not emitted in their
+home namespace, because consumers ground their own copies.
 
 Inherited members are reachable. A class's metadata lists only the interfaces
 declared at its own level — `Button`'s is just `IButton`, carrying `Flyout` — so the
@@ -114,11 +120,12 @@ accessor is absent. The capability is not: a consuming package closes no cycle, 
 `acceptance/` puts one there and CI runs it, on a runner with the Windows App SDK
 runtime installed. `app.Run` handles the startup order, which is not
 interchangeable — lock the thread, enter a single-threaded apartment, register the
-thread delegate bodies run on, bootstrap, then `Application.Start`:
+thread delegate bodies run on, bootstrap, `Application.Start`, then create the first
+window:
 
 ```go
-app.Run(func(application *uixaml.IApplication) error {
-    window, _ := uixaml.NewWindow()
+app.Run(func(ready *app.Ready) error {
+    window := ready.Window
     window.SetTitle("Hello from Go")
 
     button, _ := uixamlcontrols.NewButton()
@@ -136,13 +143,18 @@ app.Run(func(application *uixaml.IApplication) error {
 }, app.Options{})
 ```
 
-The one thing that does not work is merging `XamlControlsResources`, so controls
-render unstyled. `Application.Resources` returns `E_UNEXPECTED` on an application
-created with a null controlling outer, which is the only way this module can create
-one yet. It is not a projection bug — `get_Resources` is slot 6, that is pinned
-against the winmd, and every other member of the same interface pointer works — it
-is the first concrete thing that needs **deriving** from a WinRT class, which is
-M7. A test asserts the failure, so the day it starts working is visible.
+`Run` creates the window because the order is not discoverable:
+`Application.Resources` is unavailable until the XAML core is up, and the first
+`Window` is what brings it up. Getting that wrong returns `E_UNEXPECTED`, which reads
+like a broken binding and is not one.
+
+**The controls are invisible.** `XamlControlsResources` cannot be activated —
+`E_FAIL`, at every point tried — so a `Button` has no template and measures 0×0. It
+is in the tree and it renders nothing. **Why is not established.** The leading
+suspicion is that a Go application cannot answer `QueryInterface` for
+`IXamlMetadataProvider`, which a compiled C#/C++ app's `App` class implements; that
+would need COM aggregation, which is M7. But that is inference from one observation,
+and the next piece of work is a spike to settle it rather than a build on top of it.
 
 The order of work, and why:
 
@@ -155,7 +167,7 @@ The order of work, and why:
 | M4 | `bindings` | done — JSON → 77 packages of compiling Go. |
 | M5 | Class hierarchy | done — the `Extends` chain, without which a `Button` could not reach `Content`. |
 | M6 | Runtime layer | done — apartment control and the application loop; a window on screen in CI. |
-| **M7** | Deriving from WinRT classes | ← you are here. Needed for custom controls, and for `Application.Resources`; requires COM aggregation in go-bindings-winrt first. |
+| **M7** | Deriving from WinRT classes | ← you are here, gated on a spike. Needed for custom controls, and the suspected reason `XamlControlsResources` cannot activate; requires COM aggregation in go-bindings-winrt. |
 
 M1 was a gate rather than a step. Everything after it depended on questions
 only it could answer, so it came before any generator work: if a Go executable
