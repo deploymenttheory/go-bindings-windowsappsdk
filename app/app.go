@@ -31,19 +31,18 @@ type Options struct {
 	// SkipControlsResources suppresses merging XamlControlsResources into the
 	// application's resources.
 	//
-	// Merging is attempted by default because it is what a WinUI application
-	// wants: without those resources controls render unstyled. It does not
-	// currently succeed — see AddControlsResources for what is known and what
-	// is not — so the failure is reported through OnControlsResourcesError
-	// rather than aborting startup.
+	// Merging is attempted by default, and currently fails; see
+	// AddControlsResources. Nothing depends on it — controls are styled by the
+	// framework package regardless — so the failure is reported through
+	// OnControlsResourcesError rather than aborting startup.
 	SkipControlsResources bool
 
 	// OnControlsResourcesError observes a failed XamlControlsResources merge.
 	//
-	// It exists because the failure is real but not fatal: an application still
-	// runs, with unstyled controls. A nil hook ignores it, which is the right
-	// default for a caller who cannot act on it, and a test or a diagnostic
-	// build can supply one.
+	// It exists because the failure is real but inconsequential: an application
+	// runs, and its controls are styled, without those resources. A nil hook
+	// ignores it, which is the right default for a caller who cannot act on it,
+	// and a diagnostic build can supply one.
 	OnControlsResourcesError func(error)
 }
 
@@ -200,21 +199,22 @@ func initialize(statics *uixaml.IApplicationStatics, onReady func(*Ready) error,
 // reason; a caller invoking this directly must do the same.
 // TestResourcesRequireTheXamlCore pins both halves of that transition.
 //
-// What still does not work, and what is not known about it. With the ordering
-// correct, Resources succeeds and the next call fails instead: activating
-// XamlControlsResources returns E_FAIL (0x80004005), at every point tried — before
-// Application.Start, inside the callback, after the first Window, after Activate.
+// What does not work, and what that turned out not to mean. Activating
+// XamlControlsResources returns E_FAIL, at every point tried. The cause is still
+// unknown, but a spike established what it is NOT: a plain ResourceDictionary and
+// ordinary controls activate fine, and XamlReader resolves and instantiates framework
+// types from markup, so neither the projection nor the absence of an
+// application-provided IXamlMetadataProvider explains it.
 //
-// The cause is NOT established. The leading suspicion is that a Go application
-// cannot answer QueryInterface for Microsoft.UI.Xaml.Markup.IXamlMetadataProvider —
-// TestApplicationHasNoXamlMetadataProvider pins that it returns E_NOINTERFACE, where
-// a compiled C# or C++ application's App class implements it — and that without a
-// metadata provider the resource dictionary cannot resolve the XAML types it names.
-// That is inference from one observation, not a demonstrated chain, and it should not
-// be repeated as fact until something tests it.
+// It also turns out not to matter. WinUI 3 ships its default styles in the framework
+// package — unlike WinUI 2, where they came from a NuGet library and had to be merged
+// — so controls are templated and sized without it.
+// TestControlsAreStyledWithoutXamlControlsResources measures a Button at Loaded and
+// finds both. XamlControlsResources' remaining job in WinUI 3 is UseCompactResources.
 //
-// The observable consequence either way: a Button in an activated window has a nil
-// Template and measures 0x0. It is in the tree and invisible.
+// So this is a gap worth noting, not a blocker. Merging is attempted by default
+// because it is the right thing to want; the failure is reported through
+// Options.OnControlsResourcesError and nothing depends on it succeeding.
 func AddControlsResources(application *uixaml.IApplication) error {
 	resources, err := application.Resources()
 	if err != nil {

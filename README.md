@@ -7,9 +7,9 @@ interface can be written in Go.
 
 No Visual Studio, no .NET SDK, no XAML compiler, no cgo. Just `go build`.
 
-> **Status: early.** 77 packages of generated Go, and a real WinUI 3 window on screen
-> from a Go program, in CI — but the controls in it are invisible, for a reason not yet
-> established. See [Where this is](#where-this-is).
+> **Status: early, and it works.** 77 packages of generated Go, and a real WinUI 3
+> window with styled controls on screen from a Go program, in CI. See
+> [Where this is](#where-this-is).
 
 ## The family
 
@@ -168,13 +168,20 @@ app.Run(func(ready *app.Ready) error {
 `Window` is what brings it up. Getting that wrong returns `E_UNEXPECTED`, which reads
 like a broken binding and is not one.
 
-**The controls are invisible.** `XamlControlsResources` cannot be activated —
-`E_FAIL`, at every point tried — so a `Button` has no template and measures 0×0. It
-is in the tree and it renders nothing. **Why is not established.** The leading
-suspicion is that a Go application cannot answer `QueryInterface` for
-`IXamlMetadataProvider`, which a compiled C#/C++ app's `App` class implements; that
-would need COM aggregation, which is M7. But that is inference from one observation,
-and the next piece of work is a spike to settle it rather than a build on top of it.
+**The controls are styled.** Measured at `Loaded` — the earliest point at which a size
+means anything — a `Button` has a real template and a real size, with no
+`XamlControlsResources` merged. WinUI 3 ships its default styles in the framework
+package, unlike WinUI 2 where they came from a NuGet library and had to be merged.
+
+One thing genuinely does not work: activating `XamlControlsResources` returns `E_FAIL`.
+The cause is unknown, but it is **not** the projection (a plain `ResourceDictionary`
+and ordinary controls activate fine) and **not** a missing `IXamlMetadataProvider`
+(`XamlReader` resolves and instantiates framework types from markup). Its remaining job
+in WinUI 3 is `UseCompactResources`, so this is a gap to note rather than a blocker.
+
+That conclusion cost two wrong answers before a spike settled it, which is why
+`acceptance/styling_test.go` keeps the discriminators as tests. The practical upshot:
+**COM aggregation is not needed for a working UI.**
 
 The order of work, and why:
 
@@ -187,7 +194,13 @@ The order of work, and why:
 | M4 | `bindings` | done — JSON → 77 packages of compiling Go. |
 | M5 | Class hierarchy | done — the `Extends` chain, without which a `Button` could not reach `Content`. |
 | M6 | Runtime layer | done — apartment control and the application loop; a window on screen in CI. |
-| **M7** | Deriving from WinRT classes | ← you are here, gated on a spike. Needed for custom controls, and the suspected reason `XamlControlsResources` cannot activate; requires COM aggregation in go-bindings-winrt. |
+| M7 | Deriving from WinRT classes | Needed for custom controls and for XAML types an application defines itself — **not** for a working UI, which a spike established. Requires COM aggregation in go-bindings-winrt. |
+
+M0 through M6 are done: the pipeline runs end to end and produces a usable UI. What is
+left is not a blocker but a queue — the ergonomic layer over the generated bindings,
+the remaining diagnostic burn-down (event delegates with unadaptable `Invoke`
+signatures, 78; array elements needing per-element conversion, 27), and M7 for anyone
+who needs a custom control.
 
 M1 was a gate rather than a step. Everything after it depended on questions
 only it could answer, so it came before any generator work: if a Go executable

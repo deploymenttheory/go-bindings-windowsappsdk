@@ -21,7 +21,6 @@ import (
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	uixamlprimitives "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/primitives"
-	uixamlmarkup "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/markup"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
@@ -59,8 +58,8 @@ func skipIfUnavailable(t *testing.T, err error) {
 // the framework itself invokes. That the test returns at all is therefore part of
 // what it proves.
 //
-// The Button is untemplated and measures 0x0; see
-// TestApplicationHasNoXamlMetadataProvider. It is in the tree and invisible.
+// The Button really renders: TestControlsAreStyledWithoutXamlControlsResources
+// measures it at Loaded and finds a template and a size.
 func TestWindowOnScreenWithAGoClickHandler(t *testing.T) {
 	var (
 		readyRan       bool
@@ -295,101 +294,5 @@ func TestRunSequencesResourcesAfterTheWindow(t *testing.T) {
 	}
 	if resourcesErr != nil {
 		t.Errorf("Application.Resources failed inside onReady: %v — Run's ordering is wrong", resourcesErr)
-	}
-}
-
-// TestApplicationHasNoXamlMetadataProvider records what actually does not work, as an
-// observation rather than an explanation.
-//
-// A compiled C# or C++ application's App class implements IXamlMetadataProvider —
-// that is what App.xaml.g.cs generates — and the framework QueryInterfaces the
-// application for it to resolve XAML types by name. A Go application cannot answer,
-// because answering means the framework calling into our object, which needs COM
-// aggregation.
-//
-// Whether that is what makes XamlControlsResources fail to activate is NOT
-// established. This test asserts only what was observed: the QI fails, and a Button
-// in an activated window ends up with no template and no size. The explanation is
-// deliberately absent — a previous version of this file stated one confidently and it
-// was wrong.
-func TestApplicationHasNoXamlMetadataProvider(t *testing.T) {
-	var (
-		providerErr   error
-		templateIsNil bool
-		width, height float64
-		measured      bool
-	)
-
-	err := app.Run(func(ready *app.Ready) error {
-		_, providerErr = winrt.QueryInterface[uixamlmarkup.IXamlMetadataProvider](
-			unsafe.Pointer(ready.Application), &uixamlmarkup.IID_IXamlMetadataProvider)
-
-		button, err := uixamlcontrols.NewButton()
-		if err != nil {
-			return err
-		}
-		element, err := button.AsUIElement()
-		if err != nil {
-			return err
-		}
-		defer element.Release()
-		if err := ready.Window.SetContent(element); err != nil {
-			return err
-		}
-		if err := ready.Window.Activate(); err != nil {
-			return err
-		}
-
-		// Measure after a layout pass, not at construction: a template is applied at
-		// measure time, so a nil template before then would prove nothing.
-		queue, err := ready.Window.DispatcherQueue()
-		if err != nil {
-			return err
-		}
-		defer queue.Release()
-		done, err := uidispatching.NewDispatcherQueueHandler(func() {
-			measured = true
-			if control, err := button.AsControl(); err == nil {
-				template, _ := control.Template()
-				templateIsNil = template == nil
-				if template != nil {
-					template.Release()
-				}
-				control.Release()
-			}
-			if frameworkElement, err := button.AsFrameworkElement(); err == nil {
-				width, _ = frameworkElement.ActualWidth()
-				height, _ = frameworkElement.ActualHeight()
-				frameworkElement.Release()
-			}
-			_ = ready.Application.Exit()
-		})
-		if err != nil {
-			return err
-		}
-		defer done.Close()
-		if enqueued, err := queue.TryEnqueue(done); err != nil || !enqueued {
-			return errors.New("TryEnqueue failed; the application would never exit")
-		}
-		return nil
-	}, app.Options{})
-
-	skipIfUnavailable(t, err)
-	if err != nil {
-		t.Fatalf("app.Run: %v", err)
-	}
-	if providerErr == nil {
-		t.Error("the Application now answers IXamlMetadataProvider: aggregation has landed, " +
-			"or the framework no longer needs it — re-test whether XamlControlsResources activates")
-	}
-	if !measured {
-		t.Fatal("the layout pass never ran")
-	}
-	if !templateIsNil || width != 0 || height != 0 {
-		t.Errorf("Button now has a template (nil=%v) and measures %.1fx%.1f: controls are being "+
-			"styled, so the resources problem is solved and this test should be replaced by one "+
-			"asserting that", templateIsNil, width, height)
-	} else {
-		t.Logf("Button is untemplated and measures %.1fx%.1f — in the tree and invisible", width, height)
 	}
 }
