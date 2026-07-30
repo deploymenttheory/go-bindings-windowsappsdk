@@ -98,8 +98,13 @@ jobs:
       # These make real WinRT calls. They are what proves this module composes
       # with the pinned go-bindings-winrt and go-bindings-win32 at runtime and
       # not merely at compile time.
+      #
+      # The acceptance tests go further: they put a real WinUI 3 window on screen
+      # and let the framework call back into Go. A timeout is set explicitly
+      # because Application.Start runs a message loop, and a startup that fails to
+      # arrange its own shutdown would otherwise hang rather than fail.
       - name: Tests
-        run: go test ./...
+        run: go test -timeout 5m ./...
 
   regen:
     name: Regeneration determinism gate

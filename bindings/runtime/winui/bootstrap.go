@@ -285,8 +285,20 @@ func findBootstrapDLL(explicit string) (string, error) {
 	return "", &ErrBootstrapDLLNotFound{Searched: searched}
 }
 
-// bootstrapCandidates lists where the bootstrapper may be, most explicit
-// first.
+// fetchedSearchDepth is how many parent directories are searched for the fetched
+// copy. `go test` runs with the working directory set to the package under test, so
+// the repository root is however deep that package sits — three for
+// bindings/runtime/winui, one for acceptance. Walking up covers every case instead
+// of enumerating them, and the walk stops well before it could reach a directory the
+// developer did not intend.
+const fetchedSearchDepth = 4
+
+// bootstrapCandidates lists where the bootstrapper may be, most explicit first.
+//
+// A deployed application ships it beside the executable, which is the case that
+// matters in production. The others exist for development, where `go test` and
+// `go run` put the executable in a temporary directory and the fetched copy is in
+// the repository.
 func bootstrapCandidates(explicit string) ([]string, error) {
 	if explicit != "" {
 		return []string{explicit}, nil
@@ -298,12 +310,13 @@ func bootstrapCandidates(explicit string) ([]string, error) {
 	if executable, err := os.Executable(); err == nil {
 		candidates = append(candidates, filepath.Join(filepath.Dir(executable), bootstrapDLLName))
 	}
-	// Where cmd/fetch-bootstrap puts it, for `go test` and `go run` where the
-	// executable lives in a temporary directory.
-	candidates = append(candidates,
-		filepath.Join("metadata", "bootstrap", bootstrapDLLName),
-		filepath.Join("..", "..", "..", "metadata", "bootstrap", bootstrapDLLName),
-	)
+	// Where `generate fetch-bootstrap` puts it, searched from the working directory
+	// upwards.
+	prefix := ""
+	for range fetchedSearchDepth + 1 {
+		candidates = append(candidates, filepath.Join(prefix, "metadata", "bootstrap", bootstrapDLLName))
+		prefix = filepath.Join(prefix, "..")
+	}
 	return candidates, nil
 }
 
