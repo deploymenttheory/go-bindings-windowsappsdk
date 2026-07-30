@@ -180,7 +180,7 @@ func (g *Generator) addQueryMethod(model *view.ClassModel, target *wasdkmeta.Typ
 		return
 	}
 	if methodNames[asName] {
-		// Silent for an inherited duplicate: a class re-declaring an interface its
+		// Silent for an inherited duplicate: a class that declares an interface its
 		// base already declares is ordinary, and the derived one already won.
 		if inheritedFrom == "" {
 			g.diag("name-collision-skipped", "%s", memberPath)
