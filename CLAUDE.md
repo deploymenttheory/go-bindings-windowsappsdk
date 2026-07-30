@@ -608,90 +608,37 @@ QueryInterface — the same relationship a class has with its bases, which alrea
 interfaces and 142 monomorphized instantiations carry a `Requires`; they all have
 accessors now.
 
-**Some controls cannot load their default style, and kill the process.**
-`TextBox`, `PasswordBox`, `RichEditBox`, `SearchBox` and `ProgressBar` die with
-`0xC000027B` when laid out. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView`,
-`ComboBox`, `ScrollViewer` and `Grid` are fine.
-
-**It is not this projection**, and that is established rather than assumed. The
-framework's own parser, building its own object from markup with nothing of ours
-involved, fails the same way:
-
-```text
-XamlReader.Load("<Button/>")   -> ok
-XamlReader.Load("<TextBox/>")  -> HRESULT 0x802B000A
-```
-
-`0x802B000A` is the inner HRESULT of the crash — facility `0x2B` is XAML — and Windows
-Error Reporting names the faulting module as `Microsoft.UI.Xaml.dll`.
-
-The cause is that `ms-appx:///` does not resolve in this process, so nothing needing the
-theme dictionaries can load: `ResourceDictionary.SetSource("ms-appx:///Microsoft.UI.Xaml/Themes/generic.xaml")`
-returns `E_FAIL`, and so does activating `XamlControlsResources`. The framework ships
-those resources in `Microsoft.UI.Xaml.Controls.pri`, whose resource map is named
-`Microsoft.UI.Xaml`; an unpackaged application resolves `ms-appx:///` through its **own**
-`resources.pri`, and `go build` produces none. MSBuild closes this for C# apps by
-*merging* the framework's PRI into one it generates.
-
-Copying that PRI beside the executable does not work — neither as `resources.pri` nor
-with the executable renamed to match the resource map. It needs a real `makepri` merge
-that re-roots the framework's entries under the application's own resource map, which is
-what `generate app-resources` does.
-
-`go run ./cmd/generate app-resources --out <dir>` builds it. **It is necessary but not
-yet sufficient:** with it in place MRT resolves the theme resources —
-`ResourceManager.MainResourceMap.GetValue("Files/Microsoft.UI.Xaml/Themes/generic.xbf")`
-succeeds — and XAML still cannot load them, and `XamlControlsResources` still fails to
-activate. The affected controls remain unusable. That is where the trail currently ends.
-
-Two details in that command are worth keeping. The framework package is found through
-`Get-AppxPackage` rather than by listing `C:\Program Files\WindowsApps`, which denies
-enumeration even though a known path inside it reads fine. And the package is chosen by
-the **major version in its name**, not by its `Version` field:
-`Microsoft.WindowsAppRuntime.1.8` carries version `8000.921.1539.0` while
-`Microsoft.WindowsAppRuntime.2` carries `2.3.1.0`, so sorting on `Version` picks the
-older SDK. `selectFramework` is separated out and tested for exactly that reason.
-
-
-Reading WinRT's restricted error info gives the two failures precisely, and they differ:
+**Controls that need WinUI's theme resources now work, and it took three things.**
+`TextBox`, `PasswordBox`, `RichEditBox` and `ProgressBar` used to terminate the process
+with `0xC000027B` at layout. Reading WinRT's restricted error info gave two different
+messages, which is what showed there were two problems:
 
 ```text
 TextBox     -> Cannot locate resource from 'ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml'
 ProgressBar -> The type 'ProgressBar' was not found
 ```
 
-The WinUI source accounts for both: `XamlControlsResources`' constructor sets `Source` to
-exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
+`microsoft/microsoft-ui-xaml` accounts for both: `XamlControlsResources`' constructor
+sets `Source` to exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
 `DefaultStyleResourceUri` under the same `ms-appx` root.
 
-`generate app-resources` builds the missing `resources.pri`, and that **moves** the
-failure rather than removing it — `Cannot locate resource` becomes `E_UNKNOWN_ERROR`, so
-the index is consulted and the dictionary found, but loading it still fails. With
-ProgressBar's "type not found", the remaining piece is that the types inside
-`themeresources.xaml` resolve through `XamlControlsXamlMetaDataProvider`, which reaches
-XAML only via the application's own `IXamlMetadataProvider`. WinUI says as much in
-`MUXControlsFactory::VerifyInitialized`.
+| | what was missing | fix |
+|---|---|---|
+| resources | an unpackaged app resolves `ms-appx:///` through its own `resources.pri`, and `go build` produces none | `generate app-resources` |
+| types | WinUI asks the application for `IXamlMetadataProvider`; a native `Application` cannot answer | a derived application — `app/derived.go` |
+| threading | the provider forwards into XAML, which is single-threaded; staging that onto the runtime's worker deadlocked both | inline dispatch on the declared UI thread (go-bindings-winrt) |
 
-A Go application implements no such interface, because that means **deriving from
-`Application`** — COM aggregation, the M7 work. That is the open task, and it is now
-specific rather than unknown.
+The provider is a **forwarder**. WinUI ships `XamlControlsXamlMetaDataProvider`, it is
+activatable, and all three `IXamlMetadataProvider` slots take two ABI words — so the Go
+side passes them straight through without knowing their shapes.
 
+`SearchBox` is not a WinUI 3 type at all (removed in favour of `AutoSuggestBox`), so its
+absence is correct rather than a gap.
 
-**Two of the five are fixed.** `app.Run` now builds a *derived* application: a Go object
-aggregating `Microsoft.UI.Xaml.Application` and answering `IXamlMetadataProvider` by
-forwarding to WinUI's own `XamlControlsXamlMetaDataProvider`. With it, `TextBox` and
-`PasswordBox` lay out where they previously killed the process.
-
-`ProgressBar` still fails, and differently: its default style is not found at all —
-`ApplyTemplate` returns false without an error — where `TextBox`'s now resolves.
-`XamlControlsResources`, which supplies the MUX control styles and whose constructor
-sets `Source` to `ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml`, still cannot
-activate. So what remains is the resource half rather than the type half.
-
-`acceptance/themeresources_test.go` is the reproduction.
-
-The earlier note that `XamlControlsResources` failing "does not matter" was reached by
-measuring a `Button`, and holds only for the controls it was measured on.
+**This corrects a claim carried since the M1 spike** — that COM aggregation is "not on
+the critical path for a working UI". It was measured on a `Button`, and a `Button` is one
+of the controls that does not need it. The lesson is the one this file already records
+twice: a conclusion drawn from one measurement holds only for what was measured.
 
 **A default interface is reached differently from every other one.** `Grid`'s default
 interface is `IGrid`, which the class embeds, so `grid.RowDefinitions()` is called

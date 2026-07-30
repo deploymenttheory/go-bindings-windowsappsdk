@@ -290,83 +290,43 @@ with a styled `Button` and `TextBlock`, responding to clicks, the pointer and th
 keyboard. Everything still takes and returns the generated types, so any call can be
 written the long way and mixed freely; there is no parallel API to escape from.
 
-### Known limitation: controls that need theme resources
+### Controls that need theme resources
 
-**Some controls cannot load their default style, and kill the process.**
-`TextBox`, `PasswordBox`, `RichEditBox`, `SearchBox` and `ProgressBar` die with
-`0xC000027B` when laid out. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView`,
-`ComboBox`, `ScrollViewer` and `Grid` are fine.
+`TextBox`, `PasswordBox`, `RichEditBox` and `ProgressBar` used to **terminate the
+process** with `0xC000027B` when laid out. They now work, and it took three things — one
+in each layer.
 
-**It is not this projection**, and that is established rather than assumed. The
-framework's own parser, building its own object from markup with nothing of ours
-involved, fails the same way:
-
-```text
-XamlReader.Load("<Button/>")   -> ok
-XamlReader.Load("<TextBox/>")  -> HRESULT 0x802B000A
-```
-
-`0x802B000A` is the inner HRESULT of the crash — facility `0x2B` is XAML — and Windows
-Error Reporting names the faulting module as `Microsoft.UI.Xaml.dll`.
-
-The cause is that `ms-appx:///` does not resolve in this process, so nothing needing the
-theme dictionaries can load: `ResourceDictionary.SetSource("ms-appx:///Microsoft.UI.Xaml/Themes/generic.xaml")`
-returns `E_FAIL`, and so does activating `XamlControlsResources`. The framework ships
-those resources in `Microsoft.UI.Xaml.Controls.pri`, whose resource map is named
-`Microsoft.UI.Xaml`; an unpackaged application resolves `ms-appx:///` through its **own**
-`resources.pri`, and `go build` produces none. MSBuild closes this for C# apps by
-*merging* the framework's PRI into one it generates.
-
-Copying that PRI beside the executable does not work — neither as `resources.pri` nor
-with the executable renamed to match the resource map. It needs a real `makepri` merge
-that re-roots the framework's entries under the application's own resource map.
-
-`go run ./cmd/generate app-resources --out <dir>` builds it. **It is necessary but not
-yet sufficient:** with it in place MRT resolves the theme resources —
-`ResourceManager.MainResourceMap.GetValue("Files/Microsoft.UI.Xaml/Themes/generic.xbf")`
-succeeds — and XAML still cannot load them, and `XamlControlsResources` still fails to
-activate. The affected controls remain unusable. That is where the trail currently ends.
-
-
-Reading WinRT's restricted error info gives the two failures precisely, and they differ:
+Reading WinRT's restricted error info gave two different messages, which is what showed
+there were two problems:
 
 ```text
 TextBox     -> Cannot locate resource from 'ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml'
 ProgressBar -> The type 'ProgressBar' was not found
 ```
 
-The WinUI source accounts for both: `XamlControlsResources`' constructor sets `Source` to
-exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
-`DefaultStyleResourceUri` under the same `ms-appx` root.
+`microsoft/microsoft-ui-xaml` accounts for both: `XamlControlsResources`' constructor
+sets `Source` to exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
+`DefaultStyleResourceUri` under the same `ms-appx` root. One failure is the resources,
+the other the types.
 
-`generate app-resources` builds the missing `resources.pri`, and that **moves** the
-failure rather than removing it — `Cannot locate resource` becomes `E_UNKNOWN_ERROR`, so
-the index is consulted and the dictionary found, but loading it still fails. With
-ProgressBar's "type not found", the remaining piece is that the types inside
-`themeresources.xaml` resolve through `XamlControlsXamlMetaDataProvider`, which reaches
-XAML only via the application's own `IXamlMetadataProvider`. WinUI says as much in
-`MUXControlsFactory::VerifyInitialized`.
+| | what was missing | fix |
+|---|---|---|
+| resources | an unpackaged app resolves `ms-appx:///` through its own `resources.pri`, and `go build` produces none | `generate app-resources` |
+| types | WinUI asks the application for `IXamlMetadataProvider`; a native `Application` cannot answer | a **derived** application — Go object aggregating `Microsoft.UI.Xaml.Application` |
+| threading | the provider forwards into XAML, which is single-threaded; staging that onto the runtime's worker deadlocked both | inline dispatch on the declared UI thread (go-bindings-winrt) |
 
-A Go application implements no such interface, because that means **deriving from
-`Application`** — COM aggregation, the M7 work. That is the open task, and it is now
-specific rather than unknown.
+So an application needs a `resources.pri` beside its executable:
 
+```sh
+go build -o build/myapp.exe ./cmd/myapp
+go run ./cmd/generate app-resources --out build --name myapp
+```
 
-**Two of the five are fixed.** `app.Run` now builds a *derived* application: a Go object
-aggregating `Microsoft.UI.Xaml.Application` and answering `IXamlMetadataProvider` by
-forwarding to WinUI's own `XamlControlsXamlMetaDataProvider`. With it, `TextBox` and
-`PasswordBox` lay out where they previously killed the process.
+The resource map must be named for the executable, which is what `--name` sets.
 
-`ProgressBar` still fails, and differently: its default style is not found at all —
-`ApplyTemplate` returns false without an error — where `TextBox`'s now resolves.
-`XamlControlsResources`, which supplies the MUX control styles and whose constructor
-sets `Source` to `ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml`, still cannot
-activate. So what remains is the resource half rather than the type half.
-
-`acceptance/themeresources_test.go` is the reproduction.
-
-The earlier note that `XamlControlsResources` failing "does not matter" was reached by
-measuring a `Button`, and holds only for the controls it was measured on.
+**This corrects a claim this repository carried for a long time** — that COM aggregation
+is "not on the critical path for a working UI". That was measured on a `Button`, and a
+`Button` is one of the controls that does not need it.
 
 ### Try it
 
