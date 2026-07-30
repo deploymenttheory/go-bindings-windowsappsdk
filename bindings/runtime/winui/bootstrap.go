@@ -121,6 +121,33 @@ func (e *ErrBootstrapDLLNotFound) Error() string {
 
 const bootstrapDLLName = "Microsoft.WindowsAppRuntime.Bootstrap.dll"
 
+// hrNoMatchingFrameworkPackage is what MddBootstrapInitialize2 returns when the
+// bootstrapper loaded and ran but found no installed framework package matching
+// the requested version line: "Package dependency criteria could not be
+// resolved."
+//
+// It is worth naming because it is the one failure with a completely different
+// cause from the rest. Nothing is wrong with the call, the DLL or the arguments
+// — the machine simply does not have the Windows App SDK runtime installed, and
+// no amount of reading this package's code reveals that.
+const hrNoMatchingFrameworkPackage = 0x80670016
+
+// ErrNoMatchingFrameworkPackage reports that no installed Windows App SDK
+// framework package matches the requested version.
+type ErrNoMatchingFrameworkPackage struct {
+	// MajorMinor is the version line that was asked for.
+	MajorMinor MajorMinorVersion
+	// MinVersion is the minimum acceptable framework package version.
+	MinVersion PackageVersion
+}
+
+func (e *ErrNoMatchingFrameworkPackage) Error() string {
+	return fmt.Sprintf("winui: no installed Windows App SDK framework package matches %#08x "+
+		"(minimum %s); install the runtime from "+
+		"https://aka.ms/windowsappsdk/2.3/latest/windowsappruntimeinstall-x64.exe",
+		uint32(e.MajorMinor), e.MinVersion)
+}
+
 var (
 	bootstrapMu       sync.Mutex
 	bootstrapModule   foundation.HMODULE
@@ -166,6 +193,9 @@ func Bootstrap(options BootstrapOptions) error {
 		uintptr(options.Options),
 	)
 	if err := win32.ErrIfFailed(int32(result)); err != nil {
+		if uint32(result) == hrNoMatchingFrameworkPackage {
+			return &ErrNoMatchingFrameworkPackage{MajorMinor: majorMinor, MinVersion: options.MinVersion}
+		}
 		return fmt.Errorf("winui: MddBootstrapInitialize2(%#08x, %q, %s): %w",
 			uint32(majorMinor), options.VersionTag, options.MinVersion, err)
 	}

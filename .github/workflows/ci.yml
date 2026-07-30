@@ -16,9 +16,15 @@ jobs:
     # Linux runner would compile nothing and pass without checking anything.
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v7
+      # SHA-pinned, and with the checkout token dropped after use, matching
+      # every other workflow here. This one had drifted to floating tags, which
+      # zizmor flags as unpinned-uses and artipacked (a persisted credential can
+      # leave the runner inside an uploaded artifact).
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-go@v7
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: go.mod
           cache: true
@@ -41,17 +47,14 @@ jobs:
             exit 1
           fi
 
-      # These make real WinRT calls. They are what proves this module composes
-      # with the pinned go-bindings-winrt and go-bindings-win32 at runtime and
-      # not merely at compile time.
-      - name: Tests
-        run: go test ./...
-
       # arm64 is deliberately excluded rather than generated for: Go's
       # asm_windows_arm64.s never loads the V registers, so floats and
       # all-float structs crossing syscall.SyscallN would be silently
       # corrupted. Assert the constraint holds, because a wildcard
       # `GOARCH=arm64 go build` would pass by building nothing at all.
+      #
+      # Placed before the tests so a static check is never skipped by a
+      # runtime failure downstream of it.
       - name: Assert amd64-only build constraints
         shell: bash
         run: |
@@ -59,3 +62,36 @@ jobs:
             echo "::error::a file claims an architecture this module excludes"
             exit 1
           fi
+
+      # The bootstrap path needs two things the repository cannot carry, and
+      # they fail differently, so both are set up explicitly.
+      #
+      # First the bootstrapper itself: a Microsoft binary that ships only in the
+      # NuGet package, for redistribution beside the executable. .gitignore
+      # excludes it on purpose, so the runner fetches it.
+      - name: Fetch the Windows App SDK bootstrapper
+        run: go run ./cmd/fetch-bootstrap
+
+      # Then the framework package it looks for. A bare runner has no Windows
+      # App SDK runtime installed, so MddBootstrapInitialize2 returns
+      # 0x80670016 ("package dependency criteria could not be resolved") — the
+      # call is fine, the machine is simply missing the dependency. Installing
+      # it is what makes the bootstrap tests test anything.
+      - name: Install the Windows App SDK 2.3 runtime
+        shell: pwsh
+        run: |
+          $installer = Join-Path $env:RUNNER_TEMP 'WindowsAppRuntimeInstall-x64.exe'
+          Invoke-WebRequest -Uri 'https://aka.ms/windowsappsdk/2.3/latest/windowsappruntimeinstall-x64.exe' -OutFile $installer
+          & $installer --quiet
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "WindowsAppRuntimeInstall exited $LASTEXITCODE"
+            exit 1
+          }
+          Get-AppxPackage -Name 'Microsoft.WindowsAppRuntime.*' |
+            Select-Object Name, Version | Format-Table -AutoSize
+
+      # These make real WinRT calls. They are what proves this module composes
+      # with the pinned go-bindings-winrt and go-bindings-win32 at runtime and
+      # not merely at compile time.
+      - name: Tests
+        run: go test ./...
