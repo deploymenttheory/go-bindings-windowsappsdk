@@ -311,9 +311,19 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 			model.ReturnKind = view.RetArray
 			model.ReturnSig = "(" + resolved.GoType + ", error)"
 			model.ResultSizeDecl = "resultSize := new(uint32)"
-			model.ResultDecl = "result := new(*" + resolved.Elem.GoType + ")"
 			model.ResultElemType = resolved.Elem.GoType
 			model.ZeroReturn = "nil"
+			// A []string is not a view of the callee's buffer: that buffer holds
+			// HSTRING handles. The retval pointer is therefore typed to the handle,
+			// and the body converts each element instead of copying the block. The
+			// handles are the caller's — the callee allocated both them and the
+			// buffer — so each is taken, and the buffer freed, exactly once.
+			rawElem := resolved.Elem.GoType
+			if resolved.Elem.Kind == typemap.KindString {
+				rawElem = "syswinrt.HSTRING"
+				model.ResultElemRawType = rawElem
+			}
+			model.ResultDecl = "result := new(*" + rawElem + ")"
 		default:
 			return view.MethodModel{}, &skip{key: "unsupported-return", detail: resolved.GoType}
 		}
@@ -427,8 +437,14 @@ func lowerOutParam(paramName string, param *wasdkmeta.Param, resolved typemap.Re
 				detail: fmt.Sprintf("%s is a callee-allocated array; only fill arrays are lowered", paramName)}, nil
 		}
 		// A non-byref [out] array is a FILL array: the CALLER allocates and the
-		// callee writes into it. The lowering is identical to an input array — the
-		// difference is only who writes, which the doc comment records.
+		// callee writes into it. For a direct-view element the lowering is identical
+		// to an input array and the difference is only who writes, which the doc
+		// comment records. For strings the difference is ownership as well: the
+		// callee's handles become the caller's, so they are taken rather than built.
+		if resolved.Elem != nil && resolved.Elem.Kind == typemap.KindString {
+			decl, preamble, args, postamble := lowerStringArrayWords(paramName, true, taken, "")
+			return decl, preamble, args, nil, postamble
+		}
 		decl, preamble, args, skipped = lowerArrayWords(paramName, resolved, taken)
 		return decl, preamble, args, skipped, nil
 
@@ -490,6 +506,61 @@ func lowerArrayWords(paramName string, resolved typemap.Resolved, taken map[stri
 		"}",
 	}
 	return paramName + " " + resolved.GoType, preamble, []string{size, data}, nil
+}
+
+// lowerStringArrayWords lowers a []string array parameter, which cannot be a direct
+// view: the ABI buffer holds HSTRING handles and a Go string header is a different
+// shape entirely. A parallel []syswinrt.HSTRING is built beside the caller's slice
+// and the conversion runs across it.
+//
+// The two directions differ only in who creates the handles, and that difference is
+// the whole ownership story:
+//
+//   - [in]: this side creates each handle from the caller's string and must delete
+//     them all once the call returns. A deferred Close per element does that, and
+//     also unwinds correctly when a later element fails to convert.
+//   - [out] fill: the CALLEE writes handles into the buffer and the caller owns them
+//     afterwards, so the postamble takes each one — reading it and deleting it — into
+//     the caller's slice.
+//
+// Slots the callee did not write stay zero, and winrt.TakeHString of a null handle
+// yields "" without deleting anything, so the fill conversion covers the whole slice
+// without needing to know how many elements were actually written.
+func lowerStringArrayWords(paramName string, isOut bool, taken map[string]bool, errReturn string) (decl string, preamble []string, args []string, postamble []string) {
+	raw := freshLocal("_"+paramName+"Raw", taken)
+	size := freshLocal("_"+paramName+"Size", taken)
+	data := freshLocal("_"+paramName+"Data", taken)
+
+	preamble = append(preamble, raw+" := make([]syswinrt.HSTRING, len("+paramName+"))")
+	if !isOut {
+		handle := freshLocal("_"+paramName+"Handle", taken)
+		index := freshLocal("_"+paramName+"Index", taken)
+		preamble = append(preamble,
+			"for "+index+", "+handle+"Source := range "+paramName+" {",
+			handle+", err := winrt.NewHString("+handle+"Source)",
+			"if err != nil {",
+			errReturn,
+			"}",
+			"defer "+handle+".Close()",
+			raw+"["+index+"] = "+handle+".Raw()",
+			"}")
+	}
+	preamble = append(preamble,
+		size+" := uintptr(len("+raw+"))",
+		data+" := uintptr(0)",
+		"if len("+raw+") > 0 {",
+		data+" = uintptr(winrt.OutParam(unsafe.Pointer(&"+raw+"[0])))",
+		"}")
+
+	if isOut {
+		index := freshLocal("_"+paramName+"Index", taken)
+		postamble = []string{
+			"for " + index + " := range " + paramName + " {",
+			paramName + "[" + index + "] = winrt.TakeHString(" + raw + "[" + index + "])",
+			"}",
+		}
+	}
+	return paramName + " []string", preamble, []string{size, data}, postamble
 }
 
 // guidByValueSize is sizeof(win32.GUID): sixteen bytes, so a by-value GUID
@@ -588,6 +659,13 @@ func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resol
 		return lowerByValueAggregate(paramName, resolved.GoType, guidByValueSize, taken)
 
 	case typemap.KindArray:
+		if resolved.Elem != nil && resolved.Elem.Kind == typemap.KindString {
+			// This side creates the handles, so this side deletes them; the lowering
+			// defers a Close per element, which also unwinds correctly if a later
+			// element fails to convert.
+			decl, preamble, args, _ := lowerStringArrayWords(paramName, false, taken, errReturn)
+			return decl, preamble, args, nil
+		}
 		return lowerArrayWords(paramName, resolved, taken)
 
 	case typemap.KindInterfacePtr, typemap.KindObjectPtr:

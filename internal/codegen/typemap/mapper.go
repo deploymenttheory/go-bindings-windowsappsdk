@@ -219,14 +219,19 @@ func (m *Mapper) GoType(ref *wasdkmeta.TypeRef, ctx Context, imports ImportSet) 
 // slice is therefore a direct view of the same memory, which only works when the
 // element's Go representation is byte-identical to its ABI form.
 //
-// Admitted: scalars, floats, enums, GUIDs, emittable structs, and interface, class
-// and Object pointers. Together these are 92% of the arrays in the committed
-// metadata.
+// Admitted as a DIRECT VIEW: scalars, floats, enums, GUIDs, emittable structs, and
+// interface, class and Object pointers. Together these are 92% of the arrays in the
+// committed metadata.
 //
-// Refused: HSTRING and Bool elements, which need per-element conversion (an HSTRING
-// is a handle, not a string, and a WinRT boolean is one byte with no guarantee it is
-// 0 or 1), and nested arrays. Emitting a direct view over those would be a silent
-// memcpy of the wrong thing, which is worse than an absent member.
+// Admitted with PER-ELEMENT CONVERSION: HSTRING elements. A []string cannot be a view
+// of a buffer of handles, so the emitter builds a parallel []syswinrt.HSTRING and
+// converts across it. Which direction that conversion runs, and who owns the handles
+// afterwards, differs per array shape — see lowerStringArrayWords.
+//
+// Refused: Bool elements, which are one byte with no guarantee they are 0 or 1, so a
+// direct view would produce Go bools that are neither true nor false in comparisons;
+// and nested arrays. Emitting a direct view over either would be a silent memcpy of
+// the wrong thing, which is worse than an absent member.
 func (m *Mapper) resolveArray(ref *wasdkmeta.TypeRef, ctx Context, imports ImportSet) Resolved {
 	if ref.Elem == nil {
 		return unsupported("array-element-skipped", "array with no element type")
@@ -238,6 +243,11 @@ func (m *Mapper) resolveArray(ref *wasdkmeta.TypeRef, ctx Context, imports Impor
 	switch elem.Kind {
 	case KindScalar, KindFloat, KindEnum, KindGUID, KindStruct,
 		KindInterfacePtr, KindObjectPtr:
+	case KindString:
+		// Converted element by element rather than viewed. The import is the handle's,
+		// not the string's, because the parallel buffer the conversion runs over is
+		// typed syswinrt.HSTRING.
+		scratch["syswinrt"] = Import{Path: SysWinRTImport}
 	case KindUnsupported:
 		return unsupported("array-element-skipped", "element: %s", elem.Reason)
 	default:

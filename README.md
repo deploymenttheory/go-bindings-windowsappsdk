@@ -74,7 +74,7 @@ external: 4500 references resolved against github.com/deploymenttheory/go-bindin
 
 $ go run ./cmd/generate bindings
 merged 14 mutually recursive namespaces into one package: Microsoft.UI.Xaml
-emitted 64 packages → bindings\winui (185 diagnostics)
+emitted 64 packages → bindings\winui (135 diagnostics)
 
 $ go build ./...
 ```
@@ -85,10 +85,10 @@ only references that go nowhere are to `Microsoft.Web.WebView2.Core`, which ship
 in its own NuGet package and has no Go bindings — recorded as a permanent absence
 rather than left to look like a bug.
 
-The 185 diagnostics are members that cannot be represented, each with a reason, and
+The 135 diagnostics are members that cannot be represented, each with a reason, and
 each leaving an audit comment at its own vtable slot so nothing renumbers. The largest
-groups are delegate TypeDefs (59), returned delegates (55) and struct references (32).
-CI ratchets the set: a new one fails the build.
+groups are delegate TypeDefs (59) and returned delegates (55). CI ratchets the set: a
+new one fails the build.
 
 Most of that is not burn-down at all. The 59 delegate TypeDefs are deliberately not
 emitted in their home namespace, because consumers ground their own copies. The 55
@@ -171,9 +171,24 @@ is a reason to record the bit rather than ignore it, since passing a count where
 callee writes through a pointer corrupts memory silently. That one member is refused
 rather than guessed at.
 
-What is left of arrays is 16 members whose elements are `HSTRING`. Those need
-per-element conversion with a per-direction ownership rule, and a direct slice view over
-them would reinterpret bytes and still compile.
+**String arrays convert element by element**, because a `[]string` can never be a view
+of a buffer of `HSTRING` handles. The emitter builds a parallel handle buffer beside the
+caller's slice, and who owns the handles differs per shape — which is the whole of it:
+
+| Shape | Who creates the handles | What the body does |
+|---|---|---|
+| `[in] String[]` | this side | `NewHString` per element, `defer Close` each |
+| `[out] String[]` fill | the callee | `TakeHString` each into the caller's slice |
+| `String[]` returned | the callee, buffer included | `TakeHString` each, then `CoTaskMemFree` the buffer |
+
+Slots the callee never wrote stay null, and taking a null handle yields `""` without
+deleting anything, so the fill conversion covers the whole slice without needing the
+count first. `acceptance/` drives all of this against live objects — a real
+`Calendar.Languages()` and a six-element vector including an empty string and a
+non-ASCII one — because a leak, a double free and an off-by-one all compile.
+
+The one array still refused is `ITextRangeProvider.GetBoundingRectangles`, the single
+callee-allocated `[out]` array in the metadata.
 
 **`[out]` parameters convert both ways now.** An `HSTRING` out-parameter transfers
 ownership, so the generated body declares the raw slot, calls, and takes the handle:
@@ -211,11 +226,16 @@ That change surfaced a wrong assumption worth recording. This module resolved a
 `Windows.*` reference on the strength of the type appearing in go-bindings-winrt's
 committed metadata — but the metadata says what a type *is*, and only the emitted source
 says whether there is a Go declaration to name. `Windows.UI.Xaml.Interop.TypeName` is
-`{ HSTRING; TypeKind }` and that module skips it for the same reason this one did, so the
-moment this one stopped refusing `HSTRING` fields, 31 members named an undeclared type and
-the tree stopped compiling. The generator now checks the dependency's emitted packages,
-and those 31 are skipped for a verified reason rather than by luck. Clearing them needs a
-change in go-bindings-winrt and a pin bump.
+`{ HSTRING; TypeKind }` and that module skipped it for the same reason this one did, so
+the moment this one stopped refusing `HSTRING` fields, 31 members named an undeclared type
+and the tree stopped compiling. The generator now checks the dependency's emitted packages
+rather than its metadata.
+
+go-bindings-winrt v0.4.1 emits `TypeName`, and the pin here moved with it, so those 31 are
+back — `Frame.Navigate` and `ControlTemplate.TargetType` among them. The check stays: it is
+what turns "the dependency does not provide this" from a build failure into a diagnostic,
+and `Windows.Web.Http.HttpProgress` is still skipped over there, so it keeps a live
+example.
 
 Inherited members are reachable. A class's metadata lists only the interfaces
 declared at its own level — `Button`'s is just `IButton`, carrying `Flyout` — so the
@@ -313,10 +333,9 @@ The order of work, and why:
 | M7 | Deriving from WinRT classes | Needed for custom controls and for XAML types an application defines itself — **not** for a working UI, which a spike established. Requires COM aggregation in go-bindings-winrt. |
 
 M0 through M6 are done: the pipeline runs end to end and produces a usable UI. What is
-left is not a blocker but a queue — the ergonomic layer over the generated bindings,
-the remaining diagnostic burn-down (`HSTRING` array elements, 16, which need a
-per-direction ownership rule; and 31 members blocked on go-bindings-winrt emitting
-`TypeName`), and M7 for anyone who needs a custom control.
+left is not a blocker but a queue — the ergonomic layer over the generated bindings, a
+thin residue of diagnostics (135, of which 114 are deliberate policy rather than gaps),
+and M7 for anyone who needs a custom control.
 
 M1 was a gate rather than a step. Everything after it depended on questions
 only it could answer, so it came before any generator work: if a Go executable

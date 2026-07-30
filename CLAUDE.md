@@ -37,7 +37,7 @@ The controls in it are **styled and rendered**: a `Button` measured at `Loaded` 
 template and a size. The one thing that does not work is activating
 `XamlControlsResources`, which turns out not to be needed; see below.
 
-185 diagnostics remain, down from 870. The largest categories were cleared by
+135 diagnostics remain, down from 870. The largest categories were cleared by
 [conformant arrays](#conformant-arrays) (256), [namespace
 clusters](#namespace-clusters) (185 import cycles, 75 inherited interfaces, 70 event
 delegates) and [generic instantiations](#generic-instantiations) (72 wrongly-rejected
@@ -471,12 +471,28 @@ corrupts memory silently, and one such member is the worst possible outcome. It 
 refused with its own diagnostic rather than given a one-off promote-out-param-to-return
 path.
 
-Elements are admitted only when the Go representation is byte-identical to the ABI
-form, so the slice is a direct view: scalars, floats, enums, GUIDs, emittable structs,
-and interface, class and Object pointers — 92% of the arrays in the metadata. `HSTRING`
-and `Bool` elements are refused, because an HSTRING is a handle and a WinRT boolean is
-one byte with no guarantee it is 0 or 1; a direct view over either reinterprets bytes
-and compiles cleanly.
+Elements are admitted as a DIRECT VIEW only when the Go representation is byte-identical
+to the ABI form: scalars, floats, enums, GUIDs, emittable structs, and interface, class
+and Object pointers — 92% of the arrays in the metadata.
+
+`HSTRING` elements are converted instead, one at a time, over a parallel
+`[]syswinrt.HSTRING` built beside the caller's slice. Who owns the handles is the whole
+of it, and it differs per shape:
+
+| Shape | Who creates them | The body |
+|---|---|---|
+| `[in]` | this side | `NewHString` per element, `defer Close` each |
+| `[out]` fill | the callee | `TakeHString` each into the caller's slice |
+| returned | the callee, buffer included | `TakeHString` each, then `CoTaskMemFree` |
+
+Slots the callee never wrote stay null, and `TakeHString` of a null handle yields `""`
+and deletes nothing — which is what lets the fill conversion run across the whole slice
+without first knowing how many elements were written.
+
+`Bool` elements are still refused: one byte with no guarantee it is 0 or 1, so a direct
+view produces Go bools that are neither true nor false in comparisons. It could be given
+the same per-element treatment and is not, because no array of `Bool` occurs anywhere in
+the metadata — an unexercised conversion is a worse bet than a refusal.
 
 A returned array is the one place generated code owns native memory: the callee
 allocated it with `CoTaskMemAlloc`, so the body copies out and calls `CoTaskMemFree`,
@@ -533,9 +549,11 @@ from a namespace — so it is consistent rather than new, and it answers the que
 reading the artefact that decides it. Conservative on any read failure: a false degrades
 a member, while a wrong true breaks every consumer's build.
 
-Those 31 members clear when go-bindings-winrt emits `TypeName` and the pin moves. The
-representation to use there is the one above — the handle as the field — because that
-module has the same absence of a boundary.
+go-bindings-winrt v0.4.1 emits `TypeName` — using the same representation, the handle as
+the field, because that module has the same absence of a boundary — and the pin here
+moved with it, so those 31 members are back. The check stays: it is what turns "the
+dependency does not provide this" from a build failure into a diagnostic, and
+`Windows.Web.Http.HttpProgress` is still skipped over there, so it keeps a live example.
 
 ### The base-class chain
 

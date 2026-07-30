@@ -42,6 +42,7 @@ import (
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 	wrtuicore "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/core"
 	wrtuitext "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/text"
+	wrtuixamlinterop "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/xaml/interop"
 )
 
 // IAdaptiveTrigger is the WinRT interface Microsoft.UI.Xaml.IAdaptiveTrigger.
@@ -1498,7 +1499,12 @@ type IDependencyProperty struct {
 // IID_IDependencyProperty is the interface identifier for IDependencyProperty.
 var IID_IDependencyProperty = win32.GUID{Data1: 0x960eab49, Data2: 0x9672, Data3: 0x58a0, Data4: [8]byte{0x99, 0x5b, 0x3a, 0x42, 0xe5, 0xea, 0x62, 0x78}}
 
-// slot 6: GetMetadata skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// GetMetadata dispatches through IDependencyProperty's vtable slot 6.
+func (self *IDependencyProperty) GetMetadata(forType wrtuixamlinterop.TypeName) (*IPropertyMetadata, error) {
+	result := new(*IPropertyMetadata)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&forType))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IDependencyPropertyChangedEventArgs is the WinRT interface Microsoft.UI.Xaml.IDependencyPropertyChangedEventArgs.
 // IID: 84ead020-7849-5e98-8030-488a80d164ec
@@ -1548,9 +1554,29 @@ func (self *IDependencyPropertyStatics) UnsetValue() (*syswinrt.IInspectable, er
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: Register skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Register dispatches through IDependencyPropertyStatics's vtable slot 7.
+func (self *IDependencyPropertyStatics) Register(name string, propertyType wrtuixamlinterop.TypeName, ownerType wrtuixamlinterop.TypeName, typeMetadata *IPropertyMetadata) (*IDependencyProperty, error) {
+	hName, err := winrt.NewHString(name)
+	if err != nil {
+		return nil, err
+	}
+	defer hName.Close()
+	result := new(*IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(hName.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(&propertyType))), uintptr(winrt.OutParam(unsafe.Pointer(&ownerType))), uintptr(unsafe.Pointer(typeMetadata)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: RegisterAttached skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// RegisterAttached dispatches through IDependencyPropertyStatics's vtable slot 8.
+func (self *IDependencyPropertyStatics) RegisterAttached(name string, propertyType wrtuixamlinterop.TypeName, ownerType wrtuixamlinterop.TypeName, defaultMetadata *IPropertyMetadata) (*IDependencyProperty, error) {
+	hName, err := winrt.NewHString(name)
+	if err != nil {
+		return nil, err
+	}
+	defer hName.Close()
+	result := new(*IDependencyProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(hName.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(&propertyType))), uintptr(winrt.OutParam(unsafe.Pointer(&ownerType))), uintptr(unsafe.Pointer(defaultMetadata)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IDispatcherTimer is the WinRT interface Microsoft.UI.Xaml.IDispatcherTimer.
 // IID: 58a4abf1-a4a3-53dd-ae21-08f43231e817
@@ -4108,9 +4134,18 @@ func (self *IStyle) Setters() (*ISetterBaseCollection, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: get_TargetType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// TargetType (propget get_TargetType) dispatches through IStyle's vtable slot 8.
+func (self *IStyle) TargetType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: put_TargetType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SetTargetType (propput put_TargetType) dispatches through IStyle's vtable slot 9.
+func (self *IStyle) SetTargetType(value wrtuixamlinterop.TypeName) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&value))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // BasedOn (propget get_BasedOn) dispatches through IStyle's vtable slot 10.
 func (self *IStyle) BasedOn() (*IStyle, error) {
@@ -4141,7 +4176,12 @@ type IStyleFactory struct {
 // IID_IStyleFactory is the interface identifier for IStyleFactory.
 var IID_IStyleFactory = win32.GUID{Data1: 0xc2d924a2, Data2: 0x3862, Data3: 0x517c, Data4: [8]byte{0xb0, 0x83, 0x9a, 0x91, 0x20, 0xd7, 0x30, 0x2d}}
 
-// slot 6: CreateInstance skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// CreateInstance dispatches through IStyleFactory's vtable slot 6.
+func (self *IStyleFactory) CreateInstance(targetType wrtuixamlinterop.TypeName) (*IStyle, error) {
+	result := new(*IStyle)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&targetType))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ITargetPropertyPath is the WinRT interface Microsoft.UI.Xaml.ITargetPropertyPath.
 // IID: b1442f0e-f66b-531c-979b-193fd344e2a8
@@ -7710,7 +7750,12 @@ type IXamlServiceProvider struct {
 // IID_IXamlServiceProvider is the interface identifier for IXamlServiceProvider.
 var IID_IXamlServiceProvider = win32.GUID{Data1: 0x68b3a2df, Data2: 0x8173, Data3: 0x539f, Data4: [8]byte{0xb5, 0x24, 0xc8, 0xa2, 0x34, 0x8f, 0x5a, 0xfb}}
 
-// slot 6: GetService skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// GetService dispatches through IXamlServiceProvider's vtable slot 6.
+func (self *IXamlServiceProvider) GetService(type_ wrtuixamlinterop.TypeName) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&type_))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IAnnotationPatternIdentifiers is the WinRT interface Microsoft.UI.Xaml.Automation.IAnnotationPatternIdentifiers.
 // IID: 92d76915-0cd3-59cd-8ae0-c9004628ba1e
@@ -13497,7 +13542,30 @@ func (self *IDragProvider) DropEffect() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 8: get_DropEffects skipped: string elements need per-element conversion
+// DropEffects (propget get_DropEffects) dispatches through IDragProvider's vtable slot 8.
+func (self *IDragProvider) DropEffects() ([]string, error) {
+	resultSize := new(uint32)
+	result := new(*syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]string, *resultSize)
+	// Converted element by element: the buffer holds HSTRING handles, and the callee
+	// allocated the strings as well as the buffer, so each handle is taken (read and
+	// deleted) exactly once before the buffer itself is freed.
+	for i, raw := range unsafe.Slice(*result, *resultSize) {
+		items[i] = winrt.TakeHString(raw)
+	}
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // GetGrabbedItems dispatches through IDragProvider's vtable slot 9.
 func (self *IDragProvider) GetGrabbedItems() ([]*IIRawElementProviderSimple, error) {
@@ -13538,7 +13606,30 @@ func (self *IDropTargetProvider) DropEffect() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 7: get_DropEffects skipped: string elements need per-element conversion
+// DropEffects (propget get_DropEffects) dispatches through IDropTargetProvider's vtable slot 7.
+func (self *IDropTargetProvider) DropEffects() ([]string, error) {
+	resultSize := new(uint32)
+	result := new(*syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]string, *resultSize)
+	// Converted element by element: the buffer holds HSTRING handles, and the callee
+	// allocated the strings as well as the buffer, so each handle is taken (read and
+	// deleted) exactly once before the buffer itself is freed.
+	for i, raw := range unsafe.Slice(*result, *resultSize) {
+		items[i] = winrt.TakeHString(raw)
+	}
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // IExpandCollapseProvider is the WinRT interface Microsoft.UI.Xaml.Automation.Provider.IExpandCollapseProvider.
 // IID: 6cef349c-b181-5d0b-b297-c3b0166120c3
@@ -23861,9 +23952,18 @@ type IControlTemplate struct {
 // IID_IControlTemplate is the interface identifier for IControlTemplate.
 var IID_IControlTemplate = win32.GUID{Data1: 0x3a192751, Data2: 0x2106, Data3: 0x547a, Data4: [8]byte{0xac, 0xa0, 0xf1, 0x5a, 0xe8, 0x92, 0x6e, 0xa0}}
 
-// slot 6: get_TargetType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// TargetType (propget get_TargetType) dispatches through IControlTemplate's vtable slot 6.
+func (self *IControlTemplate) TargetType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: put_TargetType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SetTargetType (propput put_TargetType) dispatches through IControlTemplate's vtable slot 7.
+func (self *IControlTemplate) SetTargetType(value wrtuixamlinterop.TypeName) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&value))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ICoreWebView2InitializedEventArgs is the WinRT interface Microsoft.UI.Xaml.Controls.ICoreWebView2InitializedEventArgs.
 // IID: ee59d277-8b2e-57ab-8631-91d27b12ebd9
@@ -25894,11 +25994,25 @@ func (self *IFrame) CanGoForward() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 10: get_CurrentSourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// CurrentSourcePageType (propget get_CurrentSourcePageType) dispatches through IFrame's vtable slot 10.
+func (self *IFrame) CurrentSourcePageType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 11: get_SourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SourcePageType (propget get_SourcePageType) dispatches through IFrame's vtable slot 11.
+func (self *IFrame) SourcePageType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 12: put_SourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SetSourcePageType (propput put_SourcePageType) dispatches through IFrame's vtable slot 12.
+func (self *IFrame) SetSourcePageType(value wrtuixamlinterop.TypeName) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&value))))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // BackStackDepth (propget get_BackStackDepth) dispatches through IFrame's vtable slot 13.
 func (self *IFrame) BackStackDepth() (int32, error) {
@@ -26020,11 +26134,26 @@ func (self *IFrame) GoForward() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 29: Navigate skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Navigate dispatches through IFrame's vtable slot 29.
+func (self *IFrame) Navigate(sourcePageType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[29], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&sourcePageType))), uintptr(unsafe.Pointer(parameter)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 30: Navigate skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// NavigateWithTransitionInfo dispatches through IFrame's vtable slot 30.
+func (self *IFrame) NavigateWithTransitionInfo(sourcePageType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable, infoOverride *INavigationTransitionInfo) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[30], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&sourcePageType))), uintptr(unsafe.Pointer(parameter)), uintptr(unsafe.Pointer(infoOverride)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 31: NavigateToType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// NavigateToType dispatches through IFrame's vtable slot 31.
+func (self *IFrame) NavigateToType(sourcePageType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable, navigationOptions *IFrameNavigationOptions) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[31], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&sourcePageType))), uintptr(unsafe.Pointer(parameter)), uintptr(unsafe.Pointer(navigationOptions)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // GetNavigationState dispatches through IFrame's vtable slot 32.
 func (self *IFrame) GetNavigationState() (string, error) {
@@ -34247,7 +34376,12 @@ type INavigate struct {
 // IID_INavigate is the interface identifier for INavigate.
 var IID_INavigate = win32.GUID{Data1: 0xdd06f030, Data2: 0x5d47, Data3: 0x533c, Data4: [8]byte{0x95, 0xcf, 0xde, 0x25, 0x6a, 0x0f, 0x37, 0x3a}}
 
-// slot 6: Navigate skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Navigate dispatches through INavigate's vtable slot 6.
+func (self *INavigate) Navigate(sourcePageType wrtuixamlinterop.TypeName) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&sourcePageType))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // INavigationView is the WinRT interface Microsoft.UI.Xaml.Controls.INavigationView.
 // IID: e77a4b36-3dd1-53d9-9f97-65dccaa74a5c
@@ -65180,7 +65314,12 @@ type ICustomProperty struct {
 // IID_ICustomProperty is the interface identifier for ICustomProperty.
 var IID_ICustomProperty = win32.GUID{Data1: 0x30da92c0, Data2: 0x23e8, Data3: 0x42a0, Data4: [8]byte{0xae, 0x7c, 0x73, 0x4a, 0x0e, 0x5d, 0x27, 0x82}}
 
-// slot 6: get_Type skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Type (propget get_Type) dispatches through ICustomProperty's vtable slot 6.
+func (self *ICustomProperty) Type() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Name (propget get_Name) dispatches through ICustomProperty's vtable slot 7.
 func (self *ICustomProperty) Name() (string, error) {
@@ -65253,7 +65392,17 @@ func (self *ICustomPropertyProvider) GetCustomProperty(name string) (*ICustomPro
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: GetIndexedProperty skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// GetIndexedProperty dispatches through ICustomPropertyProvider's vtable slot 7.
+func (self *ICustomPropertyProvider) GetIndexedProperty(name string, type_ wrtuixamlinterop.TypeName) (*ICustomProperty, error) {
+	hName, err := winrt.NewHString(name)
+	if err != nil {
+		return nil, err
+	}
+	defer hName.Close()
+	result := new(*ICustomProperty)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(hName.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(&type_))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // GetStringRepresentation dispatches through ICustomPropertyProvider's vtable slot 8.
 func (self *ICustomPropertyProvider) GetStringRepresentation() (string, error) {
@@ -65265,7 +65414,12 @@ func (self *ICustomPropertyProvider) GetStringRepresentation() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 9: get_Type skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Type (propget get_Type) dispatches through ICustomPropertyProvider's vtable slot 9.
+func (self *ICustomPropertyProvider) Type() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IDataErrorsChangedEventArgs is the WinRT interface Microsoft.UI.Xaml.Data.IDataErrorsChangedEventArgs.
 // IID: d026dd64-5f26-5f15-a86a-0dec8a431796
@@ -65602,9 +65756,29 @@ type IValueConverter struct {
 // IID_IValueConverter is the interface identifier for IValueConverter.
 var IID_IValueConverter = win32.GUID{Data1: 0xafdd2bff, Data2: 0x10f5, Data3: 0x5173, Data4: [8]byte{0xb7, 0xc0, 0x35, 0x90, 0xbd, 0x96, 0xcb, 0x35}}
 
-// slot 6: Convert skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Convert dispatches through IValueConverter's vtable slot 6.
+func (self *IValueConverter) Convert(value *syswinrt.IInspectable, targetType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable, language string) (*syswinrt.IInspectable, error) {
+	hLanguage, err := winrt.NewHString(language)
+	if err != nil {
+		return nil, err
+	}
+	defer hLanguage.Close()
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(&targetType))), uintptr(unsafe.Pointer(parameter)), uintptr(hLanguage.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 7: ConvertBack skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// ConvertBack dispatches through IValueConverter's vtable slot 7.
+func (self *IValueConverter) ConvertBack(value *syswinrt.IInspectable, targetType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable, language string) (*syswinrt.IInspectable, error) {
+	hLanguage, err := winrt.NewHString(language)
+	if err != nil {
+		return nil, err
+	}
+	defer hLanguage.Close()
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(&targetType))), uintptr(unsafe.Pointer(parameter)), uintptr(hLanguage.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IBlock is the WinRT interface Microsoft.UI.Xaml.Documents.IBlock.
 // IID: 8149d507-672f-5fd5-a10a-351389ba9659
@@ -80546,7 +80720,12 @@ func (self *INavigatingCancelEventArgs) NavigationMode() (NavigationMode, error)
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: get_SourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SourcePageType (propget get_SourcePageType) dispatches through INavigatingCancelEventArgs's vtable slot 9.
+func (self *INavigatingCancelEventArgs) SourcePageType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Parameter (propget get_Parameter) dispatches through INavigatingCancelEventArgs's vtable slot 10.
 func (self *INavigatingCancelEventArgs) Parameter() (*syswinrt.IInspectable, error) {
@@ -80593,7 +80772,12 @@ func (self *INavigationEventArgs) NavigationTransitionInfo() (*INavigationTransi
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: get_SourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SourcePageType (propget get_SourcePageType) dispatches through INavigationEventArgs's vtable slot 9.
+func (self *INavigationEventArgs) SourcePageType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // NavigationMode (propget get_NavigationMode) dispatches through INavigationEventArgs's vtable slot 10.
 func (self *INavigationEventArgs) NavigationMode() (NavigationMode, error) {
@@ -80649,7 +80833,12 @@ func (self *INavigationFailedEventArgs) SetHandled(value bool) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: get_SourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SourcePageType (propget get_SourcePageType) dispatches through INavigationFailedEventArgs's vtable slot 9.
+func (self *INavigationFailedEventArgs) SourcePageType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IPageStackEntry is the WinRT interface Microsoft.UI.Xaml.Navigation.IPageStackEntry.
 // IID: d591f56e-4262-5c91-9d79-29165cd82100
@@ -80661,7 +80850,12 @@ type IPageStackEntry struct {
 // IID_IPageStackEntry is the interface identifier for IPageStackEntry.
 var IID_IPageStackEntry = win32.GUID{Data1: 0xd591f56e, Data2: 0x4262, Data3: 0x5c91, Data4: [8]byte{0x9d, 0x79, 0x29, 0x16, 0x5c, 0xd8, 0x21, 0x00}}
 
-// slot 6: get_SourcePageType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// SourcePageType (propget get_SourcePageType) dispatches through IPageStackEntry's vtable slot 6.
+func (self *IPageStackEntry) SourcePageType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Parameter (propget get_Parameter) dispatches through IPageStackEntry's vtable slot 7.
 func (self *IPageStackEntry) Parameter() (*syswinrt.IInspectable, error) {
@@ -80687,7 +80881,12 @@ type IPageStackEntryFactory struct {
 // IID_IPageStackEntryFactory is the interface identifier for IPageStackEntryFactory.
 var IID_IPageStackEntryFactory = win32.GUID{Data1: 0x7e5a9469, Data2: 0x6108, Data3: 0x5e92, Data4: [8]byte{0xa4, 0x99, 0x5e, 0xe9, 0xf0, 0x65, 0xa6, 0x8a}}
 
-// slot 6: CreateInstance skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// CreateInstance dispatches through IPageStackEntryFactory's vtable slot 6.
+func (self *IPageStackEntryFactory) CreateInstance(sourcePageType wrtuixamlinterop.TypeName, parameter *syswinrt.IInspectable, navigationTransitionInfo *INavigationTransitionInfo) (*IPageStackEntry, error) {
+	result := new(*IPageStackEntry)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&sourcePageType))), uintptr(unsafe.Pointer(parameter)), uintptr(unsafe.Pointer(navigationTransitionInfo)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IPageStackEntryStatics is the WinRT interface Microsoft.UI.Xaml.Navigation.IPageStackEntryStatics.
 // IID: 2f1d4cb7-923b-59bb-bfc4-750933f28385

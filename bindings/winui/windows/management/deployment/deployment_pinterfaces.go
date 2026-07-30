@@ -638,9 +638,46 @@ func (self *IVectorOfString) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: string elements need per-element conversion
+// GetMany dispatches through IVectorOfString's vtable slot 16.
+func (self *IVectorOfString) GetMany(startIndex uint32, items []string) (uint32, error) {
+	_itemsRaw := make([]syswinrt.HSTRING, len(items))
+	_itemsSize := uintptr(len(_itemsRaw))
+	_itemsData := uintptr(0)
+	if len(_itemsRaw) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&_itemsRaw[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return 0, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	for _itemsIndex := range items {
+		items[_itemsIndex] = winrt.TakeHString(_itemsRaw[_itemsIndex])
+	}
+	return *result, nil
+}
 
-// slot 17: ReplaceAll skipped: string elements need per-element conversion
+// ReplaceAll dispatches through IVectorOfString's vtable slot 17.
+func (self *IVectorOfString) ReplaceAll(items []string) error {
+	_itemsRaw := make([]syswinrt.HSTRING, len(items))
+	for _itemsIndex, _itemsHandleSource := range items {
+		_itemsHandle, err := winrt.NewHString(_itemsHandleSource)
+		if err != nil {
+			return err
+		}
+		defer _itemsHandle.Close()
+		_itemsRaw[_itemsIndex] = _itemsHandle.Raw()
+	}
+	_itemsSize := uintptr(len(_itemsRaw))
+	_itemsData := uintptr(0)
+	if len(_itemsRaw) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&_itemsRaw[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfUri is the WinRT interface Windows.Foundation.Collections.IVector`1<Windows.Foundation.Uri>.
 // IID: 0d82bd8d-fe62-5d67-a7b9-7886dd75bc4e
@@ -907,7 +944,26 @@ func (self *IVectorViewOfString) IndexOf(value string, index *uint32) (bool, err
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: string elements need per-element conversion
+// GetMany dispatches through IVectorViewOfString's vtable slot 9.
+func (self *IVectorViewOfString) GetMany(startIndex uint32, items []string) (uint32, error) {
+	_itemsRaw := make([]syswinrt.HSTRING, len(items))
+	_itemsSize := uintptr(len(_itemsRaw))
+	_itemsData := uintptr(0)
+	if len(_itemsRaw) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&_itemsRaw[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return 0, err
+	}
+	// Out-parameter conversions run only on success: a failed call wrote nothing, and
+	// converting an unwritten slot would overwrite the caller's variable with a zero.
+	for _itemsIndex := range items {
+		items[_itemsIndex] = winrt.TakeHString(_itemsRaw[_itemsIndex])
+	}
+	return *result, nil
+}
 
 // IVectorViewOfUri is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Windows.Foundation.Uri>.
 // IID: 4b8385bd-a2cd-5ff1-bf74-7ea580423e50

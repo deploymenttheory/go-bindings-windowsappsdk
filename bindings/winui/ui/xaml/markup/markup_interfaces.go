@@ -16,6 +16,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
+	wrtuixamlinterop "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/xaml/interop"
 )
 
 // IComponentConnector is the WinRT interface Microsoft.UI.Xaml.Markup.IComponentConnector.
@@ -155,9 +156,19 @@ func (self *IProvideValueTargetProperty) Name() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 7: get_Type skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Type (propget get_Type) dispatches through IProvideValueTargetProperty's vtable slot 7.
+func (self *IProvideValueTargetProperty) Type() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 8: get_DeclaringType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// DeclaringType (propget get_DeclaringType) dispatches through IProvideValueTargetProperty's vtable slot 8.
+func (self *IProvideValueTargetProperty) DeclaringType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IRootObjectProvider is the WinRT interface Microsoft.UI.Xaml.Markup.IRootObjectProvider.
 // IID: 13d63599-352f-5eb8-81c1-bc62fb12d6da
@@ -285,7 +296,12 @@ func (self *IXamlBindingHelperStatics) ResumeRendering(target *uixaml.IUIElement
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 11: ConvertValue skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// ConvertValue dispatches through IXamlBindingHelperStatics's vtable slot 11.
+func (self *IXamlBindingHelperStatics) ConvertValue(type_ wrtuixamlinterop.TypeName, value *syswinrt.IInspectable) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&type_))), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // SetPropertyFromString dispatches through IXamlBindingHelperStatics's vtable slot 12.
 func (self *IXamlBindingHelperStatics) SetPropertyFromString(dependencyObject *syswinrt.IInspectable, propertyToSet *uixaml.IDependencyProperty, value string) error {
@@ -556,7 +572,12 @@ type IXamlMetadataProvider struct {
 // IID_IXamlMetadataProvider is the interface identifier for IXamlMetadataProvider.
 var IID_IXamlMetadataProvider = win32.GUID{Data1: 0xa96251f0, Data2: 0x2214, Data3: 0x5d53, Data4: [8]byte{0x87, 0x46, 0xce, 0x99, 0xa2, 0x59, 0x3c, 0xd7}}
 
-// slot 6: GetXamlType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// GetXamlType dispatches through IXamlMetadataProvider's vtable slot 6.
+func (self *IXamlMetadataProvider) GetXamlType(type_ wrtuixamlinterop.TypeName) (*IXamlType, error) {
+	result := new(*IXamlType)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(&type_))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // GetXamlTypeByFullName dispatches through IXamlMetadataProvider's vtable slot 7.
 func (self *IXamlMetadataProvider) GetXamlTypeByFullName(fullName string) (*IXamlType, error) {
@@ -730,7 +751,12 @@ func (self *IXamlType) BoxedType() (*IXamlType, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 18: get_UnderlyingType skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// UnderlyingType (propget get_UnderlyingType) dispatches through IXamlType's vtable slot 18.
+func (self *IXamlType) UnderlyingType() (wrtuixamlinterop.TypeName, error) {
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // ActivateInstance dispatches through IXamlType's vtable slot 19.
 func (self *IXamlType) ActivateInstance() (*syswinrt.IInspectable, error) {
@@ -790,4 +816,14 @@ type IXamlTypeResolver struct {
 // IID_IXamlTypeResolver is the interface identifier for IXamlTypeResolver.
 var IID_IXamlTypeResolver = win32.GUID{Data1: 0x3fa15615, Data2: 0xcacf, Data3: 0x547f, Data4: [8]byte{0xb1, 0xed, 0x89, 0xda, 0xe8, 0xc6, 0x74, 0x52}}
 
-// slot 6: Resolve skipped: reference to skipped struct Windows.UI.Xaml.Interop.TypeName
+// Resolve dispatches through IXamlTypeResolver's vtable slot 6.
+func (self *IXamlTypeResolver) Resolve(qualifiedTypeName string) (wrtuixamlinterop.TypeName, error) {
+	hQualifiedTypeName, err := winrt.NewHString(qualifiedTypeName)
+	if err != nil {
+		return wrtuixamlinterop.TypeName{}, err
+	}
+	defer hQualifiedTypeName.Close()
+	result := new(wrtuixamlinterop.TypeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(hQualifiedTypeName.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
