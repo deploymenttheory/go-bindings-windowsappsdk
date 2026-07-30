@@ -1,0 +1,220 @@
+{
+  "namespace": "Microsoft.Windows.System",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.System.winmd",
+  "structs": {
+    "EnvironmentManagerContract": {}
+  },
+  "interfaces": {
+    "IEnvironmentManager": {
+      "guid": "d1b239bb-7013-5176-b02a-63477410d986",
+      "exclusive_to": "Microsoft.Windows.System.EnvironmentManager",
+      "methods": [
+        {
+          "name": "GetEnvironmentVariables",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        },
+        {
+          "name": "GetEnvironmentVariable",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetEnvironmentVariable",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "AppendToPath",
+          "params": [
+            {
+              "name": "path",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RemoveFromPath",
+          "params": [
+            {
+              "name": "path",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "AddExecutableFileExtension",
+          "params": [
+            {
+              "name": "pathExt",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RemoveExecutableFileExtension",
+          "params": [
+            {
+              "name": "pathExt",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IEnvironmentManager2": {
+      "guid": "cfc0ad51-02b7-57ff-8ca7-e015251737cb",
+      "exclusive_to": "Microsoft.Windows.System.EnvironmentManager",
+      "methods": [
+        {
+          "name": "get_AreChangesTracked",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AreChangesTracked",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_AreChangesTracked"
+        }
+      ]
+    },
+    "IEnvironmentManagerStatics": {
+      "guid": "407b1522-6156-5398-93fd-d6411c35e7b1",
+      "exclusive_to": "Microsoft.Windows.System.EnvironmentManager",
+      "methods": [
+        {
+          "name": "GetForProcess",
+          "return": {
+            "kind": "ApiRef",
+            "name": "EnvironmentManager",
+            "namespace": "Microsoft.Windows.System",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetForUser",
+          "return": {
+            "kind": "ApiRef",
+            "name": "EnvironmentManager",
+            "namespace": "Microsoft.Windows.System",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetForMachine",
+          "return": {
+            "kind": "ApiRef",
+            "name": "EnvironmentManager",
+            "namespace": "Microsoft.Windows.System",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsSupported",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsSupported",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSupported"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "EnvironmentManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IEnvironmentManager",
+        "namespace": "Microsoft.Windows.System",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IEnvironmentManager",
+          "namespace": "Microsoft.Windows.System",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IEnvironmentManager2",
+          "namespace": "Microsoft.Windows.System",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.System.IEnvironmentManagerStatics"
+      ]
+    }
+  }
+}

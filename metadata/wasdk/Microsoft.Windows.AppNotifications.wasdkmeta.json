@@ -1,0 +1,1122 @@
+{
+  "namespace": "Microsoft.Windows.AppNotifications",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.AppNotifications.winmd",
+  "enums": {
+    "AppNotificationPriority": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "High",
+          "value": "1"
+        }
+      ]
+    },
+    "AppNotificationProgressResult": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Succeeded",
+          "value": "0"
+        },
+        {
+          "name": "AppNotificationNotFound",
+          "value": "1"
+        },
+        {
+          "name": "Unsupported",
+          "value": "2"
+        }
+      ]
+    },
+    "AppNotificationSetting": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Enabled",
+          "value": "0"
+        },
+        {
+          "name": "DisabledForApplication",
+          "value": "1"
+        },
+        {
+          "name": "DisabledForUser",
+          "value": "2"
+        },
+        {
+          "name": "DisabledByGroupPolicy",
+          "value": "3"
+        },
+        {
+          "name": "DisabledByManifest",
+          "value": "4"
+        },
+        {
+          "name": "Unsupported",
+          "value": "5"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "AppNotificationsContract": {}
+  },
+  "interfaces": {
+    "IAppNotification": {
+      "guid": "373a6917-4116-5657-936a-15f99afdd667",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotification",
+      "methods": [
+        {
+          "name": "get_Tag",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Tag",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Group",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Group",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Id",
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "get_Payload",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Progress",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppNotificationProgressData",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Progress",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AppNotificationProgressData",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Expiration",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DateTime",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Expiration",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DateTime",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ExpiresOnReboot",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ExpiresOnReboot",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Priority",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppNotificationPriority",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Priority",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AppNotificationPriority",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SuppressDisplay",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_SuppressDisplay",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Expiration",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DateTime",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Expiration",
+          "setter": "put_Expiration"
+        },
+        {
+          "name": "ExpiresOnReboot",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ExpiresOnReboot",
+          "setter": "put_ExpiresOnReboot"
+        },
+        {
+          "name": "Group",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Group",
+          "setter": "put_Group"
+        },
+        {
+          "name": "Id",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          },
+          "getter": "get_Id"
+        },
+        {
+          "name": "Payload",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Payload"
+        },
+        {
+          "name": "Priority",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AppNotificationPriority",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Priority",
+          "setter": "put_Priority"
+        },
+        {
+          "name": "Progress",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AppNotificationProgressData",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Class"
+          },
+          "getter": "get_Progress",
+          "setter": "put_Progress"
+        },
+        {
+          "name": "SuppressDisplay",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_SuppressDisplay",
+          "setter": "put_SuppressDisplay"
+        },
+        {
+          "name": "Tag",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Tag",
+          "setter": "put_Tag"
+        }
+      ]
+    },
+    "IAppNotificationActivatedEventArgs": {
+      "guid": "7a8afaf9-31cb-51d5-82be-db6bd5878b77",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationActivatedEventArgs",
+      "methods": [
+        {
+          "name": "get_Argument",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_UserInput",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Argument",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Argument"
+        },
+        {
+          "name": "UserInput",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_UserInput"
+        }
+      ]
+    },
+    "IAppNotificationActivatedEventArgs2": {
+      "guid": "52c06b9b-2c50-5037-9416-a3be47b9d5bd",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationActivatedEventArgs",
+      "methods": [
+        {
+          "name": "get_Arguments",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Arguments",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_Arguments"
+        }
+      ]
+    },
+    "IAppNotificationFactory": {
+      "guid": "9ffee485-184a-5c65-87a9-c1d94469dbe7",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotification",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "payload",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppNotification",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IAppNotificationManager": {
+      "guid": "55129688-b4bd-550b-ae6b-c24061954d91",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationManager",
+      "methods": [
+        {
+          "name": "Register"
+        },
+        {
+          "name": "Unregister"
+        },
+        {
+          "name": "UnregisterAll"
+        },
+        {
+          "name": "add_NotificationInvoked",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "AppNotificationManager",
+                    "namespace": "Microsoft.Windows.AppNotifications",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "AppNotificationActivatedEventArgs",
+                    "namespace": "Microsoft.Windows.AppNotifications",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_NotificationInvoked",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "Show",
+          "params": [
+            {
+              "name": "notification",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AppNotification",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "UpdateAsync",
+          "overload": "UpdateAsync",
+          "params": [
+            {
+              "name": "data",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AppNotificationProgressData",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "tag",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "group",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AppNotificationProgressResult",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Enum"
+              }
+            ]
+          }
+        },
+        {
+          "name": "UpdateAsync",
+          "overload": "UpdateAsync2",
+          "params": [
+            {
+              "name": "data",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AppNotificationProgressData",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "tag",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AppNotificationProgressResult",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Enum"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_Setting",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppNotificationSetting",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "RemoveByIdAsync",
+          "params": [
+            {
+              "name": "notificationId",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "RemoveByTagAsync",
+          "params": [
+            {
+              "name": "tag",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "RemoveByTagAndGroupAsync",
+          "params": [
+            {
+              "name": "tag",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "group",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "RemoveByGroupAsync",
+          "params": [
+            {
+              "name": "group",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "RemoveAllAsync",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "GetAllAsync",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "GenericInst",
+                "name": "IVector`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "AppNotification",
+                    "namespace": "Microsoft.Windows.AppNotifications",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Setting",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AppNotificationSetting",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Setting"
+        }
+      ],
+      "events": [
+        {
+          "name": "NotificationInvoked",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AppNotificationManager",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "AppNotificationActivatedEventArgs",
+                "namespace": "Microsoft.Windows.AppNotifications",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_NotificationInvoked",
+          "remove_method": "remove_NotificationInvoked"
+        }
+      ]
+    },
+    "IAppNotificationManager2": {
+      "guid": "38ba268d-e0c7-522e-a79d-8a29dcdd7135",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationManager",
+      "methods": [
+        {
+          "name": "Register",
+          "params": [
+            {
+              "name": "displayName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "iconUri",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IAppNotificationManagerStatics": {
+      "guid": "6cfc0d8d-84a3-5592-b4c6-e3e7e7c680e4",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationManager",
+      "methods": [
+        {
+          "name": "get_Default",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppNotificationManager",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Default",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AppNotificationManager",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Class"
+          },
+          "getter": "get_Default"
+        }
+      ]
+    },
+    "IAppNotificationManagerStatics2": {
+      "guid": "6eb42a35-e82f-5732-98f1-129705602f2e",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationManager",
+      "methods": [
+        {
+          "name": "IsSupported",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ]
+    },
+    "IAppNotificationProgressData": {
+      "guid": "4debfac0-809d-55cb-b879-924821876b97",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationProgressData",
+      "methods": [
+        {
+          "name": "get_SequenceNumber",
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "put_SequenceNumber",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Title",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Title",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Value",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_Value",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ValueStringOverride",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_ValueStringOverride",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Status",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Status",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "SequenceNumber",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          },
+          "getter": "get_SequenceNumber",
+          "setter": "put_SequenceNumber"
+        },
+        {
+          "name": "Status",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Status",
+          "setter": "put_Status"
+        },
+        {
+          "name": "Title",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Title",
+          "setter": "put_Title"
+        },
+        {
+          "name": "Value",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_Value",
+          "setter": "put_Value"
+        },
+        {
+          "name": "ValueStringOverride",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ValueStringOverride",
+          "setter": "put_ValueStringOverride"
+        }
+      ]
+    },
+    "IAppNotificationProgressDataFactory": {
+      "guid": "c08e4a0f-3a75-55d6-8c3e-14f03ae46046",
+      "exclusive_to": "Microsoft.Windows.AppNotifications.AppNotificationProgressData",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "sequenceNumber",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppNotificationProgressData",
+            "namespace": "Microsoft.Windows.AppNotifications",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "AppNotification": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAppNotification",
+        "namespace": "Microsoft.Windows.AppNotifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAppNotification",
+          "namespace": "Microsoft.Windows.AppNotifications",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.AppNotifications.IAppNotificationFactory"
+      ]
+    },
+    "AppNotificationActivatedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAppNotificationActivatedEventArgs",
+        "namespace": "Microsoft.Windows.AppNotifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAppNotificationActivatedEventArgs",
+          "namespace": "Microsoft.Windows.AppNotifications",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAppNotificationActivatedEventArgs2",
+          "namespace": "Microsoft.Windows.AppNotifications",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "AppNotificationManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAppNotificationManager",
+        "namespace": "Microsoft.Windows.AppNotifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAppNotificationManager",
+          "namespace": "Microsoft.Windows.AppNotifications",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IAppNotificationManager2",
+          "namespace": "Microsoft.Windows.AppNotifications",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.AppNotifications.IAppNotificationManagerStatics",
+        "Microsoft.Windows.AppNotifications.IAppNotificationManagerStatics2"
+      ]
+    },
+    "AppNotificationProgressData": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAppNotificationProgressData",
+        "namespace": "Microsoft.Windows.AppNotifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAppNotificationProgressData",
+          "namespace": "Microsoft.Windows.AppNotifications",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.AppNotifications.IAppNotificationProgressDataFactory"
+      ]
+    }
+  }
+}

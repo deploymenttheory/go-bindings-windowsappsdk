@@ -1,0 +1,2545 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Data",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "enums": {
+    "BindingMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "OneWay",
+          "value": "1"
+        },
+        {
+          "name": "OneTime",
+          "value": "2"
+        },
+        {
+          "name": "TwoWay",
+          "value": "3"
+        }
+      ]
+    },
+    "RelativeSourceMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "TemplatedParent",
+          "value": "1"
+        },
+        {
+          "name": "Self",
+          "value": "2"
+        }
+      ]
+    },
+    "UpdateSourceTrigger": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "PropertyChanged",
+          "value": "1"
+        },
+        {
+          "name": "Explicit",
+          "value": "2"
+        },
+        {
+          "name": "LostFocus",
+          "value": "3"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "LoadMoreItemsResult": {
+      "fields": [
+        {
+          "name": "Count",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IBinding": {
+      "guid": "501ea0e8-edd4-59de-8845-76af2eabbe00",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.Binding",
+      "methods": [
+        {
+          "name": "get_Path",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PropertyPath",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Path",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PropertyPath",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Mode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "BindingMode",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Mode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "BindingMode",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Source",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_Source",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RelativeSource",
+          "return": {
+            "kind": "ApiRef",
+            "name": "RelativeSource",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_RelativeSource",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "RelativeSource",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ElementName",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_ElementName",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Converter",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IValueConverter",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          }
+        },
+        {
+          "name": "put_Converter",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IValueConverter",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Interface"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ConverterParameter",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_ConverterParameter",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ConverterLanguage",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_ConverterLanguage",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_FallbackValue",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_FallbackValue",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_TargetNullValue",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_TargetNullValue",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_UpdateSourceTrigger",
+          "return": {
+            "kind": "ApiRef",
+            "name": "UpdateSourceTrigger",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_UpdateSourceTrigger",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UpdateSourceTrigger",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Converter",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IValueConverter",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          },
+          "getter": "get_Converter",
+          "setter": "put_Converter"
+        },
+        {
+          "name": "ConverterLanguage",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ConverterLanguage",
+          "setter": "put_ConverterLanguage"
+        },
+        {
+          "name": "ConverterParameter",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_ConverterParameter",
+          "setter": "put_ConverterParameter"
+        },
+        {
+          "name": "ElementName",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ElementName",
+          "setter": "put_ElementName"
+        },
+        {
+          "name": "FallbackValue",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_FallbackValue",
+          "setter": "put_FallbackValue"
+        },
+        {
+          "name": "Mode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "BindingMode",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Mode",
+          "setter": "put_Mode"
+        },
+        {
+          "name": "Path",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PropertyPath",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_Path",
+          "setter": "put_Path"
+        },
+        {
+          "name": "RelativeSource",
+          "type": {
+            "kind": "ApiRef",
+            "name": "RelativeSource",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          },
+          "getter": "get_RelativeSource",
+          "setter": "put_RelativeSource"
+        },
+        {
+          "name": "Source",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_Source",
+          "setter": "put_Source"
+        },
+        {
+          "name": "TargetNullValue",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_TargetNullValue",
+          "setter": "put_TargetNullValue"
+        },
+        {
+          "name": "UpdateSourceTrigger",
+          "type": {
+            "kind": "ApiRef",
+            "name": "UpdateSourceTrigger",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Enum"
+          },
+          "getter": "get_UpdateSourceTrigger",
+          "setter": "put_UpdateSourceTrigger"
+        }
+      ]
+    },
+    "IBindingBase": {
+      "guid": "91ddd141-5944-50ef-b85e-218e463f7a73",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingBase"
+    },
+    "IBindingBaseFactory": {
+      "guid": "c8a866c5-f6f3-5f7a-9592-d385af48bd8f",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingBase",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "BindingBase",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IBindingExpression": {
+      "guid": "4c023916-37bc-5b07-bc9d-15c547bd9b26",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingExpression",
+      "methods": [
+        {
+          "name": "get_DataItem",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "get_ParentBinding",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Binding",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "UpdateSource"
+        }
+      ],
+      "properties": [
+        {
+          "name": "DataItem",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_DataItem"
+        },
+        {
+          "name": "ParentBinding",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Binding",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          },
+          "getter": "get_ParentBinding"
+        }
+      ]
+    },
+    "IBindingExpressionBase": {
+      "guid": "8825e5a9-d9a3-5e87-bcd8-c63133d29029",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingExpressionBase"
+    },
+    "IBindingExpressionBaseFactory": {
+      "guid": "41d643b9-2629-5451-a716-596c0848b5dc",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingExpressionBase"
+    },
+    "IBindingExpressionFactory": {
+      "guid": "086cae14-81a1-588b-b619-05ee84c0f089",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingExpression"
+    },
+    "IBindingFactory": {
+      "guid": "cb2de749-b115-5f67-b64a-797d54885d5c",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.Binding",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Binding",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IBindingOperations": {
+      "guid": "9a319b95-aabe-5075-b227-8eb07e443d8b",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingOperations"
+    },
+    "IBindingOperationsStatics": {
+      "guid": "1e1bdbd3-fca5-5c85-b87d-b504cd8fa8ac",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.BindingOperations",
+      "methods": [
+        {
+          "name": "SetBinding",
+          "params": [
+            {
+              "name": "target",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "dp",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyProperty",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "binding",
+              "type": {
+                "kind": "ApiRef",
+                "name": "BindingBase",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ICollectionView": {
+      "guid": "f8bb90d8-e008-5d65-8c97-7bb790a4230c",
+      "requires": [
+        {
+          "kind": "GenericInst",
+          "name": "IObservableVector`1",
+          "namespace": "Windows.Foundation.Collections",
+          "target_kind": "Interface",
+          "external": true,
+          "args": [
+            {
+              "kind": "Native",
+              "name": "Object"
+            }
+          ]
+        },
+        {
+          "kind": "GenericInst",
+          "name": "IVector`1",
+          "namespace": "Windows.Foundation.Collections",
+          "target_kind": "Interface",
+          "external": true,
+          "args": [
+            {
+              "kind": "Native",
+              "name": "Object"
+            }
+          ]
+        },
+        {
+          "kind": "GenericInst",
+          "name": "IIterable`1",
+          "namespace": "Windows.Foundation.Collections",
+          "target_kind": "Interface",
+          "external": true,
+          "args": [
+            {
+              "kind": "Native",
+              "name": "Object"
+            }
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "get_CurrentItem",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "get_CurrentPosition",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "get_IsCurrentAfterLast",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsCurrentBeforeFirst",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_CollectionGroups",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IObservableVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_HasMoreItems",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "add_CurrentChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_CurrentChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_CurrentChanging",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CurrentChangingEventHandler",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Delegate"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_CurrentChanging",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "MoveCurrentTo",
+          "params": [
+            {
+              "name": "item",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "MoveCurrentToPosition",
+          "params": [
+            {
+              "name": "index",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "MoveCurrentToFirst",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "MoveCurrentToLast",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "MoveCurrentToNext",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "MoveCurrentToPrevious",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "LoadMoreItemsAsync",
+          "params": [
+            {
+              "name": "count",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "LoadMoreItemsResult",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Struct"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CollectionGroups",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IObservableVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "getter": "get_CollectionGroups"
+        },
+        {
+          "name": "CurrentItem",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_CurrentItem"
+        },
+        {
+          "name": "CurrentPosition",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_CurrentPosition"
+        },
+        {
+          "name": "HasMoreItems",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_HasMoreItems"
+        },
+        {
+          "name": "IsCurrentAfterLast",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsCurrentAfterLast"
+        },
+        {
+          "name": "IsCurrentBeforeFirst",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsCurrentBeforeFirst"
+        }
+      ],
+      "events": [
+        {
+          "name": "CurrentChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_CurrentChanged",
+          "remove_method": "remove_CurrentChanged"
+        },
+        {
+          "name": "CurrentChanging",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CurrentChangingEventHandler",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Delegate"
+          },
+          "add_method": "add_CurrentChanging",
+          "remove_method": "remove_CurrentChanging"
+        }
+      ]
+    },
+    "ICollectionViewFactory": {
+      "guid": "d971f795-5728-5bef-9602-43f2c4250e56",
+      "methods": [
+        {
+          "name": "CreateView",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ICollectionView",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          }
+        }
+      ]
+    },
+    "ICollectionViewGroup": {
+      "guid": "96a08da8-be38-5ae0-903d-6fb6111e61f5",
+      "methods": [
+        {
+          "name": "get_Group",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "get_GroupItems",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IObservableVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Group",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_Group"
+        },
+        {
+          "name": "GroupItems",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IObservableVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "getter": "get_GroupItems"
+        }
+      ]
+    },
+    "ICollectionViewSource": {
+      "guid": "a45e3b3a-f31e-5bbb-8a7c-70cf5c64bc3f",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.CollectionViewSource",
+      "methods": [
+        {
+          "name": "get_Source",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_Source",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_View",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ICollectionView",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          }
+        },
+        {
+          "name": "get_IsSourceGrouped",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsSourceGrouped",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ItemsPath",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PropertyPath",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_ItemsPath",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PropertyPath",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsSourceGrouped",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSourceGrouped",
+          "setter": "put_IsSourceGrouped"
+        },
+        {
+          "name": "ItemsPath",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PropertyPath",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ItemsPath",
+          "setter": "put_ItemsPath"
+        },
+        {
+          "name": "Source",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_Source",
+          "setter": "put_Source"
+        },
+        {
+          "name": "View",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ICollectionView",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          },
+          "getter": "get_View"
+        }
+      ]
+    },
+    "ICollectionViewSourceStatics": {
+      "guid": "e282f10f-d4b1-5769-8a11-30f739e6113b",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.CollectionViewSource",
+      "methods": [
+        {
+          "name": "get_SourceProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ViewProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsSourceGroupedProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ItemsPathProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsSourceGroupedProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsSourceGroupedProperty"
+        },
+        {
+          "name": "ItemsPathProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ItemsPathProperty"
+        },
+        {
+          "name": "SourceProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_SourceProperty"
+        },
+        {
+          "name": "ViewProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ViewProperty"
+        }
+      ]
+    },
+    "ICurrentChangingEventArgs": {
+      "guid": "63e42ed6-e14a-51ea-9cb1-72f9c907dc80",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.CurrentChangingEventArgs",
+      "methods": [
+        {
+          "name": "get_Cancel",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_Cancel",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsCancelable",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Cancel",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_Cancel",
+          "setter": "put_Cancel"
+        },
+        {
+          "name": "IsCancelable",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsCancelable"
+        }
+      ]
+    },
+    "ICurrentChangingEventArgsFactory": {
+      "guid": "3670f48a-ac2c-5352-8a4b-6b977a08e5f8",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.CurrentChangingEventArgs",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CurrentChangingEventArgs",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateWithCancelableParameter",
+          "params": [
+            {
+              "name": "isCancelable",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            },
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CurrentChangingEventArgs",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ICustomProperty": {
+      "guid": "30da92c0-23e8-42a0-ae7c-734a0e5d2782",
+      "methods": [
+        {
+          "name": "get_Type",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TypeName",
+            "namespace": "Windows.UI.Xaml.Interop",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Name",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "GetValue",
+          "params": [
+            {
+              "name": "target",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "SetValue",
+          "params": [
+            {
+              "name": "target",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetIndexedValue",
+          "params": [
+            {
+              "name": "target",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "index",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "SetIndexedValue",
+          "params": [
+            {
+              "name": "target",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "index",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CanWrite",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_CanRead",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CanRead",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_CanRead"
+        },
+        {
+          "name": "CanWrite",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_CanWrite"
+        },
+        {
+          "name": "Name",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Name"
+        },
+        {
+          "name": "Type",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TypeName",
+            "namespace": "Windows.UI.Xaml.Interop",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Type"
+        }
+      ]
+    },
+    "ICustomPropertyProvider": {
+      "guid": "7c925755-3e48-42b4-8677-76372267033f",
+      "methods": [
+        {
+          "name": "GetCustomProperty",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ICustomProperty",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          }
+        },
+        {
+          "name": "GetIndexedProperty",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TypeName",
+                "namespace": "Windows.UI.Xaml.Interop",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ICustomProperty",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Interface"
+          }
+        },
+        {
+          "name": "GetStringRepresentation",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Type",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TypeName",
+            "namespace": "Windows.UI.Xaml.Interop",
+            "target_kind": "Struct",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Type",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TypeName",
+            "namespace": "Windows.UI.Xaml.Interop",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Type"
+        }
+      ]
+    },
+    "IDataErrorsChangedEventArgs": {
+      "guid": "d026dd64-5f26-5f15-a86a-0dec8a431796",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_PropertyName",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_PropertyName",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "PropertyName",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_PropertyName",
+          "setter": "put_PropertyName"
+        }
+      ]
+    },
+    "IDataErrorsChangedEventArgsFactory": {
+      "guid": "62d0bd1e-b85f-5fcc-842a-7cb0dda37fe5",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DataErrorsChangedEventArgs",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IItemIndexRange": {
+      "guid": "eba09846-2554-5b86-ac17-614f05105fa2",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.ItemIndexRange",
+      "methods": [
+        {
+          "name": "get_FirstIndex",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "get_Length",
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "get_LastIndex",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FirstIndex",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_FirstIndex"
+        },
+        {
+          "name": "LastIndex",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_LastIndex"
+        },
+        {
+          "name": "Length",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          },
+          "getter": "get_Length"
+        }
+      ]
+    },
+    "IItemIndexRangeFactory": {
+      "guid": "9fc73213-eda0-5238-aa2c-401c9921f0f9",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.ItemIndexRange",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "firstIndex",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            },
+            {
+              "name": "length",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            },
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ItemIndexRange",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IItemsRangeInfo": {
+      "guid": "b8376d08-85fb-563b-8273-39ef2d138256",
+      "requires": [
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "methods": [
+        {
+          "name": "RangesChanged",
+          "params": [
+            {
+              "name": "visibleRange",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ItemIndexRange",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "trackedItems",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IVectorView`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ItemIndexRange",
+                    "namespace": "Microsoft.UI.Xaml.Data",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "INotifyDataErrorInfo": {
+      "guid": "0ee6c2cc-273e-567d-bc0a-1dd87ee51eba",
+      "methods": [
+        {
+          "name": "get_HasErrors",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "add_ErrorsChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DataErrorsChangedEventArgs",
+                    "namespace": "Microsoft.UI.Xaml.Data",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_ErrorsChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetErrors",
+          "params": [
+            {
+              "name": "propertyName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "HasErrors",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_HasErrors"
+        }
+      ],
+      "events": [
+        {
+          "name": "ErrorsChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DataErrorsChangedEventArgs",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_ErrorsChanged",
+          "remove_method": "remove_ErrorsChanged"
+        }
+      ]
+    },
+    "INotifyPropertyChanged": {
+      "guid": "90b17601-b065-586e-83d9-9adc3a695284",
+      "methods": [
+        {
+          "name": "add_PropertyChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PropertyChangedEventHandler",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Delegate"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_PropertyChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "PropertyChanged",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PropertyChangedEventHandler",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Delegate"
+          },
+          "add_method": "add_PropertyChanged",
+          "remove_method": "remove_PropertyChanged"
+        }
+      ]
+    },
+    "IPropertyChangedEventArgs": {
+      "guid": "63d0c952-396b-54f4-af8c-ba8724a427bf",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.PropertyChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_PropertyName",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "PropertyName",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_PropertyName"
+        }
+      ]
+    },
+    "IPropertyChangedEventArgsFactory": {
+      "guid": "7c0c27a8-0b41-5070-b160-fc9ae960a36c",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.PropertyChangedEventArgs",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "name",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "PropertyChangedEventArgs",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IRelativeSource": {
+      "guid": "7ffc8126-5dd8-58bb-b686-c71eddea07b2",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.RelativeSource",
+      "methods": [
+        {
+          "name": "get_Mode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "RelativeSourceMode",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Mode",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "RelativeSourceMode",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Mode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "RelativeSourceMode",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Mode",
+          "setter": "put_Mode"
+        }
+      ]
+    },
+    "IRelativeSourceFactory": {
+      "guid": "8518522c-85e3-5ae1-b9e9-28ea43c2051e",
+      "exclusive_to": "Microsoft.UI.Xaml.Data.RelativeSource",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "RelativeSource",
+            "namespace": "Microsoft.UI.Xaml.Data",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ISelectionInfo": {
+      "guid": "1b84c26b-9532-5803-935b-a03bf7e875dc",
+      "methods": [
+        {
+          "name": "SelectRange",
+          "params": [
+            {
+              "name": "itemIndexRange",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ItemIndexRange",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "DeselectRange",
+          "params": [
+            {
+              "name": "itemIndexRange",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ItemIndexRange",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "IsSelected",
+          "params": [
+            {
+              "name": "index",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "GetSelectedRanges",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVectorView`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ItemIndexRange",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ISupportIncrementalLoading": {
+      "guid": "d8f9b586-a64a-5ff8-868e-204e144f2cf4",
+      "methods": [
+        {
+          "name": "LoadMoreItemsAsync",
+          "params": [
+            {
+              "name": "count",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "LoadMoreItemsResult",
+                "namespace": "Microsoft.UI.Xaml.Data",
+                "target_kind": "Struct"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_HasMoreItems",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "HasMoreItems",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_HasMoreItems"
+        }
+      ]
+    },
+    "IValueConverter": {
+      "guid": "afdd2bff-10f5-5173-b7c0-3590bd96cb35",
+      "methods": [
+        {
+          "name": "Convert",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "targetType",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TypeName",
+                "namespace": "Windows.UI.Xaml.Interop",
+                "target_kind": "Struct",
+                "external": true
+              }
+            },
+            {
+              "name": "parameter",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "language",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "ConvertBack",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "targetType",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TypeName",
+                "namespace": "Windows.UI.Xaml.Interop",
+                "target_kind": "Struct",
+                "external": true
+              }
+            },
+            {
+              "name": "parameter",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "language",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "Binding": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBinding",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBinding",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IBindingFactory"
+      ],
+      "composable": true
+    },
+    "BindingBase": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBindingBase",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBindingBase",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IBindingBaseFactory"
+      ],
+      "composable": true
+    },
+    "BindingExpression": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBindingExpression",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBindingExpression",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IBindingExpressionFactory"
+      ],
+      "composable": true
+    },
+    "BindingExpressionBase": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBindingExpressionBase",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBindingExpressionBase",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IBindingExpressionBaseFactory"
+      ]
+    },
+    "BindingOperations": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBindingOperations",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBindingOperations",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Data.IBindingOperationsStatics"
+      ]
+    },
+    "CollectionViewSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICollectionViewSource",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICollectionViewSource",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Data.ICollectionViewSourceStatics"
+      ],
+      "composable": true
+    },
+    "CurrentChangingEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICurrentChangingEventArgs",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICurrentChangingEventArgs",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.ICurrentChangingEventArgsFactory"
+      ]
+    },
+    "DataErrorsChangedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDataErrorsChangedEventArgs",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDataErrorsChangedEventArgs",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.UI.Xaml.Data.IDataErrorsChangedEventArgsFactory"
+      ]
+    },
+    "ItemIndexRange": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IItemIndexRange",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IItemIndexRange",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IItemIndexRangeFactory"
+      ]
+    },
+    "PropertyChangedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IPropertyChangedEventArgs",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IPropertyChangedEventArgs",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IPropertyChangedEventArgsFactory"
+      ]
+    },
+    "RelativeSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IRelativeSource",
+        "namespace": "Microsoft.UI.Xaml.Data",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IRelativeSource",
+          "namespace": "Microsoft.UI.Xaml.Data",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Data.IRelativeSourceFactory"
+      ],
+      "composable": true
+    }
+  },
+  "delegates": {
+    "CurrentChangingEventHandler": {
+      "guid": "3d2a98dd-95b3-5fd5-93b4-a1a2599f225c",
+      "invoke": {
+        "name": "Invoke",
+        "params": [
+          {
+            "name": "sender",
+            "type": {
+              "kind": "Native",
+              "name": "Object"
+            }
+          },
+          {
+            "name": "e",
+            "type": {
+              "kind": "ApiRef",
+              "name": "CurrentChangingEventArgs",
+              "namespace": "Microsoft.UI.Xaml.Data",
+              "target_kind": "Class"
+            }
+          }
+        ]
+      }
+    },
+    "PropertyChangedEventHandler": {
+      "guid": "e3de52f6-1e32-5da6-bb2d-b5b6096c962d",
+      "invoke": {
+        "name": "Invoke",
+        "params": [
+          {
+            "name": "sender",
+            "type": {
+              "kind": "Native",
+              "name": "Object"
+            }
+          },
+          {
+            "name": "e",
+            "type": {
+              "kind": "ApiRef",
+              "name": "PropertyChangedEventArgs",
+              "namespace": "Microsoft.UI.Xaml.Data",
+              "target_kind": "Class"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

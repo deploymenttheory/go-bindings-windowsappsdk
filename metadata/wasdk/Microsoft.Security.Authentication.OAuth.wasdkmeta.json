@@ -1,0 +1,2012 @@
+{
+  "namespace": "Microsoft.Security.Authentication.OAuth",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Security.Authentication.OAuth.winmd",
+  "enums": {
+    "CodeChallengeMethodKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "S256",
+          "value": "1"
+        },
+        {
+          "name": "Plain",
+          "value": "2"
+        }
+      ]
+    },
+    "TokenFailureKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "ErrorResponse",
+          "value": "0"
+        },
+        {
+          "name": "HttpFailure",
+          "value": "1"
+        },
+        {
+          "name": "InvalidResponse",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "OAuthContract": {}
+  },
+  "interfaces": {
+    "IAuthFailure": {
+      "guid": "ec55ed5f-0497-53cb-976b-abd146350175",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.AuthFailure",
+      "methods": [
+        {
+          "name": "get_Error",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ErrorDescription",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ErrorUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "get_State",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AdditionalParams",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AdditionalParams",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_AdditionalParams"
+        },
+        {
+          "name": "Error",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Error"
+        },
+        {
+          "name": "ErrorDescription",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ErrorDescription"
+        },
+        {
+          "name": "ErrorUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_ErrorUri"
+        },
+        {
+          "name": "State",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_State"
+        }
+      ]
+    },
+    "IAuthRequestParams": {
+      "guid": "aac61e23-9155-551a-ac37-cdb2995f88d2",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.AuthRequestParams",
+      "methods": [
+        {
+          "name": "get_ResponseType",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_ResponseType",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ClientId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_ClientId",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RedirectUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_RedirectUri",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_State",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_State",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Scope",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Scope",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CodeChallenge",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_CodeChallenge",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CodeChallengeMethod",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CodeChallengeMethodKind",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_CodeChallengeMethod",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CodeChallengeMethodKind",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AdditionalParams",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AdditionalParams",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_AdditionalParams"
+        },
+        {
+          "name": "ClientId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ClientId",
+          "setter": "put_ClientId"
+        },
+        {
+          "name": "CodeChallenge",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CodeChallenge",
+          "setter": "put_CodeChallenge"
+        },
+        {
+          "name": "CodeChallengeMethod",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CodeChallengeMethodKind",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Enum"
+          },
+          "getter": "get_CodeChallengeMethod",
+          "setter": "put_CodeChallengeMethod"
+        },
+        {
+          "name": "RedirectUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_RedirectUri",
+          "setter": "put_RedirectUri"
+        },
+        {
+          "name": "ResponseType",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ResponseType",
+          "setter": "put_ResponseType"
+        },
+        {
+          "name": "Scope",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Scope",
+          "setter": "put_Scope"
+        },
+        {
+          "name": "State",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_State",
+          "setter": "put_State"
+        }
+      ]
+    },
+    "IAuthRequestParamsFactory": {
+      "guid": "539bdca7-bde4-5a63-85d1-33403f6e3452",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.AuthRequestParams",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "responseType",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "clientId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AuthRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateInstance2",
+          "params": [
+            {
+              "name": "responseType",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "clientId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "redirectUri",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AuthRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IAuthRequestParamsStatics": {
+      "guid": "0befd4f0-6864-5bf4-bd8e-2f3bf98906b5",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.AuthRequestParams",
+      "methods": [
+        {
+          "name": "CreateForAuthorizationCodeRequest",
+          "overload": "CreateForAuthorizationCodeRequest",
+          "params": [
+            {
+              "name": "clientId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AuthRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateForAuthorizationCodeRequest",
+          "overload": "CreateForAuthorizationCodeRequest2",
+          "params": [
+            {
+              "name": "clientId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "redirectUri",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AuthRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IAuthRequestResult": {
+      "guid": "10f8b804-04cf-5651-bd52-7da9346debc1",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.AuthRequestResult",
+      "methods": [
+        {
+          "name": "get_ResponseUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Response",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AuthResponse",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Failure",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AuthFailure",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Failure",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AuthFailure",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          },
+          "getter": "get_Failure"
+        },
+        {
+          "name": "Response",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AuthResponse",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          },
+          "getter": "get_Response"
+        },
+        {
+          "name": "ResponseUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_ResponseUri"
+        }
+      ]
+    },
+    "IAuthResponse": {
+      "guid": "5bc1fa62-fded-5769-9d40-ded1eea90d72",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.AuthResponse",
+      "methods": [
+        {
+          "name": "get_State",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Code",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AccessToken",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_TokenType",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ExpiresIn",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Scope",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AdditionalParams",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AccessToken",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AccessToken"
+        },
+        {
+          "name": "AdditionalParams",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_AdditionalParams"
+        },
+        {
+          "name": "Code",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Code"
+        },
+        {
+          "name": "ExpiresIn",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ExpiresIn"
+        },
+        {
+          "name": "Scope",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Scope"
+        },
+        {
+          "name": "State",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_State"
+        },
+        {
+          "name": "TokenType",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_TokenType"
+        }
+      ]
+    },
+    "IClientAuthentication": {
+      "guid": "ef99342d-d597-5eff-878a-8de0cb597172",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.ClientAuthentication",
+      "methods": [
+        {
+          "name": "get_Authorization",
+          "return": {
+            "kind": "ApiRef",
+            "name": "HttpCredentialsHeaderValue",
+            "namespace": "Windows.Web.Http.Headers",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Authorization",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "HttpCredentialsHeaderValue",
+                "namespace": "Windows.Web.Http.Headers",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ProxyAuthorization",
+          "return": {
+            "kind": "ApiRef",
+            "name": "HttpCredentialsHeaderValue",
+            "namespace": "Windows.Web.Http.Headers",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_ProxyAuthorization",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "HttpCredentialsHeaderValue",
+                "namespace": "Windows.Web.Http.Headers",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AdditionalHeaders",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AdditionalHeaders",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_AdditionalHeaders"
+        },
+        {
+          "name": "Authorization",
+          "type": {
+            "kind": "ApiRef",
+            "name": "HttpCredentialsHeaderValue",
+            "namespace": "Windows.Web.Http.Headers",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_Authorization",
+          "setter": "put_Authorization"
+        },
+        {
+          "name": "ProxyAuthorization",
+          "type": {
+            "kind": "ApiRef",
+            "name": "HttpCredentialsHeaderValue",
+            "namespace": "Windows.Web.Http.Headers",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_ProxyAuthorization",
+          "setter": "put_ProxyAuthorization"
+        }
+      ]
+    },
+    "IClientAuthenticationFactory": {
+      "guid": "0d50e9f5-c37f-57cc-b9ec-2b193b0f9cec",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.ClientAuthentication",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "authorization",
+              "type": {
+                "kind": "ApiRef",
+                "name": "HttpCredentialsHeaderValue",
+                "namespace": "Windows.Web.Http.Headers",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ClientAuthentication",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IClientAuthenticationStatics": {
+      "guid": "65613560-2b6f-52fd-a479-3a96624682ae",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.ClientAuthentication",
+      "methods": [
+        {
+          "name": "CreateForBasicAuthorization",
+          "params": [
+            {
+              "name": "clientId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "clientSecret",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ClientAuthentication",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IOAuth2ManagerStatics": {
+      "guid": "ac9d0dd1-c07e-5302-8150-199c7d343f57",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.OAuth2Manager",
+      "methods": [
+        {
+          "name": "RequestAuthWithParamsAsync",
+          "params": [
+            {
+              "name": "parentWindowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "authEndpoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            },
+            {
+              "name": "params",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AuthRequestParams",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AuthRequestResult",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "CompleteAuthRequest",
+          "params": [
+            {
+              "name": "responseUri",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "RequestTokenAsync",
+          "overload": "RequestTokenAsync",
+          "params": [
+            {
+              "name": "tokenEndpoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            },
+            {
+              "name": "params",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TokenRequestParams",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "TokenRequestResult",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "RequestTokenAsync",
+          "overload": "RequestTokenAsync2",
+          "params": [
+            {
+              "name": "tokenEndpoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            },
+            {
+              "name": "params",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TokenRequestParams",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "clientAuth",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ClientAuthentication",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "TokenRequestResult",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ITokenFailure": {
+      "guid": "60f8d417-ea6a-51d2-8ad7-f0e5177aef0a",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.TokenFailure",
+      "methods": [
+        {
+          "name": "get_Kind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenFailureKind",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_ErrorCode",
+          "return": {
+            "kind": "ApiRef",
+            "name": "HResult",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Error",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ErrorDescription",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ErrorUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "get_AdditionalParams",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "IJsonValue",
+                "namespace": "Windows.Data.Json",
+                "target_kind": "Interface",
+                "external": true
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AdditionalParams",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "IJsonValue",
+                "namespace": "Windows.Data.Json",
+                "target_kind": "Interface",
+                "external": true
+              }
+            ]
+          },
+          "getter": "get_AdditionalParams"
+        },
+        {
+          "name": "Error",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Error"
+        },
+        {
+          "name": "ErrorCode",
+          "type": {
+            "kind": "ApiRef",
+            "name": "HResult",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ErrorCode"
+        },
+        {
+          "name": "ErrorDescription",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ErrorDescription"
+        },
+        {
+          "name": "ErrorUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_ErrorUri"
+        },
+        {
+          "name": "Kind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TokenFailureKind",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Kind"
+        }
+      ]
+    },
+    "ITokenRequestParams": {
+      "guid": "49134dbc-aab5-5ba4-bcdf-950214d81182",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.TokenRequestParams",
+      "methods": [
+        {
+          "name": "get_GrantType",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_GrantType",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Code",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Code",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RedirectUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_RedirectUri",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CodeVerifier",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_CodeVerifier",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ClientId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_ClientId",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Username",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Username",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Password",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Password",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Scope",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Scope",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RefreshToken",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_RefreshToken",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AdditionalParams",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AdditionalParams",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_AdditionalParams"
+        },
+        {
+          "name": "ClientId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ClientId",
+          "setter": "put_ClientId"
+        },
+        {
+          "name": "Code",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Code",
+          "setter": "put_Code"
+        },
+        {
+          "name": "CodeVerifier",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CodeVerifier",
+          "setter": "put_CodeVerifier"
+        },
+        {
+          "name": "GrantType",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_GrantType",
+          "setter": "put_GrantType"
+        },
+        {
+          "name": "Password",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Password",
+          "setter": "put_Password"
+        },
+        {
+          "name": "RedirectUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_RedirectUri",
+          "setter": "put_RedirectUri"
+        },
+        {
+          "name": "RefreshToken",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_RefreshToken",
+          "setter": "put_RefreshToken"
+        },
+        {
+          "name": "Scope",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Scope",
+          "setter": "put_Scope"
+        },
+        {
+          "name": "Username",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Username",
+          "setter": "put_Username"
+        }
+      ]
+    },
+    "ITokenRequestParamsFactory": {
+      "guid": "2bf39c30-2f30-5788-98d2-a8ba622be809",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.TokenRequestParams",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "grantType",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ITokenRequestParamsStatics": {
+      "guid": "68b7af65-4381-5593-8820-f74a605b9f3b",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.TokenRequestParams",
+      "methods": [
+        {
+          "name": "CreateForAuthorizationCodeRequest",
+          "params": [
+            {
+              "name": "authResponse",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AuthResponse",
+                "namespace": "Microsoft.Security.Authentication.OAuth",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateForClientCredentials",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateForExtension",
+          "params": [
+            {
+              "name": "extensionUri",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateForRefreshToken",
+          "params": [
+            {
+              "name": "refreshToken",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenRequestParams",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ITokenRequestResult": {
+      "guid": "35b31f77-f166-50df-a837-ec0460215166",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.TokenRequestResult",
+      "methods": [
+        {
+          "name": "get_ResponseMessage",
+          "return": {
+            "kind": "ApiRef",
+            "name": "HttpResponseMessage",
+            "namespace": "Windows.Web.Http",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Response",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenResponse",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Failure",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TokenFailure",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Failure",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TokenFailure",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          },
+          "getter": "get_Failure"
+        },
+        {
+          "name": "Response",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TokenResponse",
+            "namespace": "Microsoft.Security.Authentication.OAuth",
+            "target_kind": "Class"
+          },
+          "getter": "get_Response"
+        },
+        {
+          "name": "ResponseMessage",
+          "type": {
+            "kind": "ApiRef",
+            "name": "HttpResponseMessage",
+            "namespace": "Windows.Web.Http",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_ResponseMessage"
+        }
+      ]
+    },
+    "ITokenResponse": {
+      "guid": "9d9d8cd3-04b2-5df6-bfd2-e8a6859745da",
+      "exclusive_to": "Microsoft.Security.Authentication.OAuth.TokenResponse",
+      "methods": [
+        {
+          "name": "get_AccessToken",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_TokenType",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ExpiresIn",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "get_RefreshToken",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Scope",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AdditionalParams",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "IJsonValue",
+                "namespace": "Windows.Data.Json",
+                "target_kind": "Interface",
+                "external": true
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AccessToken",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AccessToken"
+        },
+        {
+          "name": "AdditionalParams",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMapView`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "IJsonValue",
+                "namespace": "Windows.Data.Json",
+                "target_kind": "Interface",
+                "external": true
+              }
+            ]
+          },
+          "getter": "get_AdditionalParams"
+        },
+        {
+          "name": "ExpiresIn",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_ExpiresIn"
+        },
+        {
+          "name": "RefreshToken",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_RefreshToken"
+        },
+        {
+          "name": "Scope",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Scope"
+        },
+        {
+          "name": "TokenType",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_TokenType"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "AuthFailure": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAuthFailure",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAuthFailure",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "AuthRequestParams": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAuthRequestParams",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAuthRequestParams",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Security.Authentication.OAuth.IAuthRequestParamsFactory"
+      ],
+      "static_interfaces": [
+        "Microsoft.Security.Authentication.OAuth.IAuthRequestParamsStatics"
+      ]
+    },
+    "AuthRequestResult": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAuthRequestResult",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAuthRequestResult",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "AuthResponse": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAuthResponse",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAuthResponse",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ClientAuthentication": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IClientAuthentication",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IClientAuthentication",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "activatable_factories": [
+        "Microsoft.Security.Authentication.OAuth.IClientAuthenticationFactory"
+      ],
+      "static_interfaces": [
+        "Microsoft.Security.Authentication.OAuth.IClientAuthenticationStatics"
+      ]
+    },
+    "OAuth2Manager": {
+      "static_interfaces": [
+        "Microsoft.Security.Authentication.OAuth.IOAuth2ManagerStatics"
+      ]
+    },
+    "TokenFailure": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITokenFailure",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITokenFailure",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "TokenRequestParams": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITokenRequestParams",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITokenRequestParams",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Security.Authentication.OAuth.ITokenRequestParamsFactory"
+      ],
+      "static_interfaces": [
+        "Microsoft.Security.Authentication.OAuth.ITokenRequestParamsStatics"
+      ]
+    },
+    "TokenRequestResult": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITokenRequestResult",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITokenRequestResult",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "TokenResponse": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITokenResponse",
+        "namespace": "Microsoft.Security.Authentication.OAuth",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITokenResponse",
+          "namespace": "Microsoft.Security.Authentication.OAuth",
+          "target_kind": "Interface"
+        }
+      ]
+    }
+  }
+}

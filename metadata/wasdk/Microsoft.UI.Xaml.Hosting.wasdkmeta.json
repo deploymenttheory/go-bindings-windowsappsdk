@@ -1,0 +1,1159 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Hosting",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "enums": {
+    "XamlSourceFocusNavigationReason": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Programmatic",
+          "value": "0"
+        },
+        {
+          "name": "Restore",
+          "value": "1"
+        },
+        {
+          "name": "First",
+          "value": "3"
+        },
+        {
+          "name": "Last",
+          "value": "4"
+        },
+        {
+          "name": "Left",
+          "value": "7"
+        },
+        {
+          "name": "Up",
+          "value": "8"
+        },
+        {
+          "name": "Right",
+          "value": "9"
+        },
+        {
+          "name": "Down",
+          "value": "10"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IDesktopWindowXamlSource": {
+      "guid": "553af92c-1381-51d6-bee0-f34beb042ea8",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.DesktopWindowXamlSource",
+      "methods": [
+        {
+          "name": "get_Content",
+          "return": {
+            "kind": "ApiRef",
+            "name": "UIElement",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Content",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_HasFocus",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_SystemBackdrop",
+          "return": {
+            "kind": "ApiRef",
+            "name": "SystemBackdrop",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_SystemBackdrop",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "SystemBackdrop",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SiteBridge",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopChildSiteBridge",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "add_TakeFocusRequested",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DesktopWindowXamlSource",
+                    "namespace": "Microsoft.UI.Xaml.Hosting",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "DesktopWindowXamlSourceTakeFocusRequestedEventArgs",
+                    "namespace": "Microsoft.UI.Xaml.Hosting",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_TakeFocusRequested",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_GotFocus",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DesktopWindowXamlSource",
+                    "namespace": "Microsoft.UI.Xaml.Hosting",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "DesktopWindowXamlSourceGotFocusEventArgs",
+                    "namespace": "Microsoft.UI.Xaml.Hosting",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_GotFocus",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "NavigateFocus",
+          "params": [
+            {
+              "name": "request",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlSourceFocusNavigationRequest",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationResult",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "Initialize",
+          "params": [
+            {
+              "name": "parentWindowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Content",
+          "type": {
+            "kind": "ApiRef",
+            "name": "UIElement",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_Content",
+          "setter": "put_Content"
+        },
+        {
+          "name": "HasFocus",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_HasFocus"
+        },
+        {
+          "name": "SiteBridge",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DesktopChildSiteBridge",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_SiteBridge"
+        },
+        {
+          "name": "SystemBackdrop",
+          "type": {
+            "kind": "ApiRef",
+            "name": "SystemBackdrop",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_SystemBackdrop",
+          "setter": "put_SystemBackdrop"
+        }
+      ],
+      "events": [
+        {
+          "name": "GotFocus",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DesktopWindowXamlSource",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "DesktopWindowXamlSourceGotFocusEventArgs",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_GotFocus",
+          "remove_method": "remove_GotFocus"
+        },
+        {
+          "name": "TakeFocusRequested",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DesktopWindowXamlSource",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "DesktopWindowXamlSourceTakeFocusRequestedEventArgs",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_TakeFocusRequested",
+          "remove_method": "remove_TakeFocusRequested"
+        }
+      ]
+    },
+    "IDesktopWindowXamlSource2": {
+      "guid": "fb02b9f1-8588-5bd3-8951-4664a675d872",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.DesktopWindowXamlSource",
+      "methods": [
+        {
+          "name": "get_ShouldConstrainPopupsToWorkArea",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ShouldConstrainPopupsToWorkArea",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "ShouldConstrainPopupsToWorkArea",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ShouldConstrainPopupsToWorkArea",
+          "setter": "put_ShouldConstrainPopupsToWorkArea"
+        }
+      ]
+    },
+    "IDesktopWindowXamlSourceFactory": {
+      "guid": "7d2db617-14e7-5d49-aeec-ae10887e595d",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.DesktopWindowXamlSource",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopWindowXamlSource",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDesktopWindowXamlSourceGotFocusEventArgs": {
+      "guid": "cc63d863-2071-5f6b-aef9-c0ba35f3b8df",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.DesktopWindowXamlSourceGotFocusEventArgs",
+      "methods": [
+        {
+          "name": "get_Request",
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Request",
+          "type": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          },
+          "getter": "get_Request"
+        }
+      ]
+    },
+    "IDesktopWindowXamlSourceTakeFocusRequestedEventArgs": {
+      "guid": "4f5a0e2c-4ddc-5c03-939f-6f3bda560363",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.DesktopWindowXamlSourceTakeFocusRequestedEventArgs",
+      "methods": [
+        {
+          "name": "get_Request",
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Request",
+          "type": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          },
+          "getter": "get_Request"
+        }
+      ]
+    },
+    "IElementCompositionPreview": {
+      "guid": "c8ad1ef4-a93f-5a25-85bd-7c498d9856d3",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.ElementCompositionPreview"
+    },
+    "IElementCompositionPreviewStatics": {
+      "guid": "84da5a6c-0cfa-532b-9b15-ccd986374342",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.ElementCompositionPreview",
+      "methods": [
+        {
+          "name": "GetElementVisual",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Visual",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetElementChildVisual",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Visual",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "SetElementChildVisual",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "visual",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetScrollViewerManipulationPropertySet",
+          "params": [
+            {
+              "name": "scrollViewer",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ScrollViewer",
+                "namespace": "Microsoft.UI.Xaml.Controls",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionPropertySet",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "SetImplicitShowAnimation",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "animation",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ICompositionAnimationBase",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Interface"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SetImplicitHideAnimation",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "animation",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ICompositionAnimationBase",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Interface"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SetIsTranslationEnabled",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetPointerPositionPropertySet",
+          "params": [
+            {
+              "name": "targetElement",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionPropertySet",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IWindowsXamlManager": {
+      "guid": "85a2e562-7e8f-5333-a104-a3e672a2ffee",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.WindowsXamlManager"
+    },
+    "IWindowsXamlManager2": {
+      "guid": "bd67cff5-b887-56da-b0a2-dad10a6520e9",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.WindowsXamlManager",
+      "methods": [
+        {
+          "name": "add_XamlShutdownCompletedOnThread",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "WindowsXamlManager",
+                    "namespace": "Microsoft.UI.Xaml.Hosting",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "XamlShutdownCompletedOnThreadEventArgs",
+                    "namespace": "Microsoft.UI.Xaml.Hosting",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_XamlShutdownCompletedOnThread",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "XamlShutdownCompletedOnThread",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "WindowsXamlManager",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "XamlShutdownCompletedOnThreadEventArgs",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_XamlShutdownCompletedOnThread",
+          "remove_method": "remove_XamlShutdownCompletedOnThread"
+        }
+      ]
+    },
+    "IWindowsXamlManagerStatics": {
+      "guid": "56cb591d-de97-539f-881d-8ccdc44fa6c4",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.WindowsXamlManager",
+      "methods": [
+        {
+          "name": "InitializeForCurrentThread",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowsXamlManager",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IWindowsXamlManagerStatics2": {
+      "guid": "1062430e-0898-5240-ba52-89d9225e7e58",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.WindowsXamlManager",
+      "methods": [
+        {
+          "name": "GetForCurrentThread",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowsXamlManager",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IXamlShutdownCompletedOnThreadEventArgs": {
+      "guid": "accd20e5-3576-5262-a3dd-990657681f1f",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.XamlShutdownCompletedOnThreadEventArgs",
+      "methods": [
+        {
+          "name": "GetDispatcherQueueDeferral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Deferral",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        }
+      ]
+    },
+    "IXamlSourceFocusNavigationRequest": {
+      "guid": "c883ea8b-4ce2-58be-b547-66dedf620312",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationRequest",
+      "methods": [
+        {
+          "name": "get_Reason",
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationReason",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_HintRect",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Rect",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_CorrelationId",
+          "return": {
+            "kind": "Native",
+            "name": "Guid"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CorrelationId",
+          "type": {
+            "kind": "Native",
+            "name": "Guid"
+          },
+          "getter": "get_CorrelationId"
+        },
+        {
+          "name": "HintRect",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Rect",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_HintRect"
+        },
+        {
+          "name": "Reason",
+          "type": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationReason",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Reason"
+        }
+      ]
+    },
+    "IXamlSourceFocusNavigationRequestFactory": {
+      "guid": "7a5124dd-2876-5ed8-b564-5867731d7f1e",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationRequest",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "reason",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlSourceFocusNavigationReason",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateInstanceWithHintRect",
+          "params": [
+            {
+              "name": "reason",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlSourceFocusNavigationReason",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "hintRect",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Rect",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateInstanceWithHintRectAndCorrelationId",
+          "params": [
+            {
+              "name": "reason",
+              "type": {
+                "kind": "ApiRef",
+                "name": "XamlSourceFocusNavigationReason",
+                "namespace": "Microsoft.UI.Xaml.Hosting",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "hintRect",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Rect",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            },
+            {
+              "name": "correlationId",
+              "type": {
+                "kind": "Native",
+                "name": "Guid"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationRequest",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IXamlSourceFocusNavigationResult": {
+      "guid": "d6bf378e-2aac-5e5b-ac8a-6c5d9a4c1cb8",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationResult",
+      "methods": [
+        {
+          "name": "get_WasFocusMoved",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "WasFocusMoved",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_WasFocusMoved"
+        }
+      ]
+    },
+    "IXamlSourceFocusNavigationResultFactory": {
+      "guid": "f533f53b-5c00-5c88-9a41-3888cb86e495",
+      "exclusive_to": "Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationResult",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "focusMoved",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "XamlSourceFocusNavigationResult",
+            "namespace": "Microsoft.UI.Xaml.Hosting",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "DesktopWindowXamlSource": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopWindowXamlSource",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopWindowXamlSource",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopWindowXamlSource2",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Hosting.IDesktopWindowXamlSourceFactory"
+      ]
+    },
+    "DesktopWindowXamlSourceGotFocusEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopWindowXamlSourceGotFocusEventArgs",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopWindowXamlSourceGotFocusEventArgs",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "DesktopWindowXamlSourceTakeFocusRequestedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopWindowXamlSourceTakeFocusRequestedEventArgs",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopWindowXamlSourceTakeFocusRequestedEventArgs",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ElementCompositionPreview": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IElementCompositionPreview",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IElementCompositionPreview",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Hosting.IElementCompositionPreviewStatics"
+      ]
+    },
+    "WindowsXamlManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWindowsXamlManager",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWindowsXamlManager",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IWindowsXamlManager2",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Hosting.IWindowsXamlManagerStatics2",
+        "Microsoft.UI.Xaml.Hosting.IWindowsXamlManagerStatics"
+      ]
+    },
+    "XamlShutdownCompletedOnThreadEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IXamlShutdownCompletedOnThreadEventArgs",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IXamlShutdownCompletedOnThreadEventArgs",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "XamlSourceFocusNavigationRequest": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IXamlSourceFocusNavigationRequest",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IXamlSourceFocusNavigationRequest",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.UI.Xaml.Hosting.IXamlSourceFocusNavigationRequestFactory"
+      ]
+    },
+    "XamlSourceFocusNavigationResult": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IXamlSourceFocusNavigationResult",
+        "namespace": "Microsoft.UI.Xaml.Hosting",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IXamlSourceFocusNavigationResult",
+          "namespace": "Microsoft.UI.Xaml.Hosting",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.UI.Xaml.Hosting.IXamlSourceFocusNavigationResultFactory"
+      ]
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "namespace": "Microsoft.Windows.BadgeNotifications",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.BadgeNotifications.winmd",
+  "enums": {
+    "BadgeNotificationGlyph": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "Activity",
+          "value": "1"
+        },
+        {
+          "name": "Alarm",
+          "value": "2"
+        },
+        {
+          "name": "Alert",
+          "value": "3"
+        },
+        {
+          "name": "Attention",
+          "value": "4"
+        },
+        {
+          "name": "Available",
+          "value": "5"
+        },
+        {
+          "name": "Away",
+          "value": "6"
+        },
+        {
+          "name": "Busy",
+          "value": "7"
+        },
+        {
+          "name": "Error",
+          "value": "8"
+        },
+        {
+          "name": "NewMessage",
+          "value": "9"
+        },
+        {
+          "name": "Paused",
+          "value": "10"
+        },
+        {
+          "name": "Playing",
+          "value": "11"
+        },
+        {
+          "name": "Unavailable",
+          "value": "12"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "BadgeNotificationsContract": {}
+  },
+  "interfaces": {
+    "IBadgeNotificationManager": {
+      "guid": "11cb6e8f-11ca-53f8-80f6-5330d44ba908",
+      "exclusive_to": "Microsoft.Windows.BadgeNotifications.BadgeNotificationManager",
+      "methods": [
+        {
+          "name": "SetBadgeAsCount",
+          "params": [
+            {
+              "name": "notificationCount",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SetBadgeAsGlyph",
+          "params": [
+            {
+              "name": "glyphValue",
+              "type": {
+                "kind": "ApiRef",
+                "name": "BadgeNotificationGlyph",
+                "namespace": "Microsoft.Windows.BadgeNotifications",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ClearBadge"
+        }
+      ]
+    },
+    "IBadgeNotificationManagerStatics": {
+      "guid": "a6e71616-7c9f-5d22-ad1c-f4ab874087b5",
+      "exclusive_to": "Microsoft.Windows.BadgeNotifications.BadgeNotificationManager",
+      "methods": [
+        {
+          "name": "get_Current",
+          "return": {
+            "kind": "ApiRef",
+            "name": "BadgeNotificationManager",
+            "namespace": "Microsoft.Windows.BadgeNotifications",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Current",
+          "type": {
+            "kind": "ApiRef",
+            "name": "BadgeNotificationManager",
+            "namespace": "Microsoft.Windows.BadgeNotifications",
+            "target_kind": "Class"
+          },
+          "getter": "get_Current"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "BadgeNotificationManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IBadgeNotificationManager",
+        "namespace": "Microsoft.Windows.BadgeNotifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IBadgeNotificationManager",
+          "namespace": "Microsoft.Windows.BadgeNotifications",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.BadgeNotifications.IBadgeNotificationManagerStatics"
+      ]
+    }
+  }
+}

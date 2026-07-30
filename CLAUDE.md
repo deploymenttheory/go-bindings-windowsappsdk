@@ -27,18 +27,37 @@ generated for it.
 
 ## Status
 
-M0. The module, its pinned dependencies and CI exist. Nothing is generated
-yet. `README.md` has the milestone order; the detail below describes the
-design being built toward, and is written down now so it does not have to be
-rediscovered.
+M3. The winmds are committed (36 files, 77 namespaces, 4,374 API types) and
+ingest projects them into committed JSON with every reference resolved — no
+unresolved type references at all, and 4,500 `Windows.*` references resolving
+into go-bindings-winrt. Nothing is emitted as Go yet. `README.md` has the
+milestone order; the detail below describes the design being built toward, and
+is written down now so it does not have to be rediscovered.
 
 ## Commands
 
 ```sh
+go run ./cmd/generate fetch-metadata     # winmds ← NuGet meta-package fan-out
+go run ./cmd/generate fetch-bootstrap    # the redistributable bootstrapper
+go run ./cmd/generate ingest             # winmds → metadata/wasdk/*.json
+go run ./cmd/generate validate --external
+go run ./cmd/generate list
+go run ./cmd/inspect --dir metadata/winmd --namespaces
+
 go build ./...
 go vet ./...
 go test ./...    # makes real WinRT calls; needs Windows
 ```
+
+The bootstrap tests need two things the repository cannot carry, and they fail
+differently:
+
+- **The bootstrapper DLL**, which is not committed. Its absence is *skipped*,
+  because not having fetched it is a fact about the checkout.
+- **An installed Windows App SDK framework package.** Without one,
+  `MddBootstrapInitialize2` returns `0x80670016` — nothing is wrong with the
+  call, the machine is missing the dependency. That gets its own error type
+  naming the installer. CI installs the 2.3 runtime.
 
 ## Why this repository is not like the sibling ones
 
@@ -65,8 +84,16 @@ the older layout suggests. Verified against 2.3.1:
 
 `Microsoft.UI.winmd` — which carries `Microsoft.UI.Dispatching`,
 `.Composition`, `.Windowing`, `.Content` and `.Input` — is in neither of the
-first two; it is most likely in `InteractiveExperiences`, and that needs
-confirming before M2 is finished.
+first two. **Confirmed: it is in `InteractiveExperiences`**, which pins to
+2.1.3 while the meta-package is at 2.3.1. Components version independently, so
+each namespace's provenance is recorded per namespace rather than once for the
+tree.
+
+That component also ships each winmd once per Windows SDK target version —
+`metadata/10.0.17763.0/` and `metadata/10.0.18362.0/`, with differing contents,
+because each describes the surface available at that minimum OS version. The
+highest is kept: a caller needing an older floor can decide that for itself,
+whereas API missing from the bindings cannot be recovered at all.
 
 ### The types are not registered with the operating system
 
@@ -137,14 +164,17 @@ resources problem wearing a parser's clothes.
 
 ```text
 cmd/generate/          fetch-metadata | fetch-bootstrap | ingest | validate | bindings | diff | list
+cmd/inspect/           read a winmd directly: namespaces, types, IIDs, slots
 internal/
+  metaquery/           IID and vtable-slot lookup straight from the winmds
   wasdkmeta/           the metadata model, and the code that produces it
+    external/          the Windows.* universe, read from the pinned module
+    ingest/            winmds → the model
   codegen/             typemap, naming, pipeline, fileasm, the emitter
   diagnostics/         the list of members that cannot be generated
   verify/              slot and IID checks against the committed winmds
 metadata/
-  winmd/               committed winmds + PROVENANCE.json
-  winmd-roots.txt      which winmds to read (excludes *Internal*, *Private*)
+  winmd/               committed winmds + PROVENANCE.json (which IS the pin)
   emit-roots.txt       which namespaces to generate
   wasdk/               committed JSON, one file per namespace
   bootstrap/           NOT committed: the bootstrapper DLL and SDK headers
@@ -158,33 +188,60 @@ acceptance/            tests against live WinRT
 Namespaces drop the `Microsoft.` prefix: `Microsoft.UI.Xaml.Controls` becomes
 `bindings/winui/ui/xaml/controls`, package `controls`.
 
+There is no `winmd-roots.txt`. An earlier sketch had one, but it would say
+twice what is already decided elsewhere: `fetch-metadata` excludes
+`*Internal*`/`*Private*` when downloading, and `PROVENANCE.json` records
+exactly which files were kept, with the component and version each came from.
+Ingest reads that list rather than globbing the directory, so a file dropped in
+by hand is not silently projected.
+
 ### Two different kinds of external reference
 
 These look alike and are not.
 
 **Sibling winmds are not external.** `Microsoft.UI.Xaml.winmd` references
 `Microsoft.UI.Dispatching`, `.Composition`, `.Input`, `.Windowing` and
-`.Text`, which live in other winmds *in this repository*. Ingest has to run in
-two passes: classify every type in every winmd, then re-read each one with the
-union of those classifications available.
+`.Text`, which live in other winmds *in this repository*. Ingest classifies
+every type in every winmd before projecting any of them, because a TypeRef
+gives no hint whether its target is local — read one file at a time these are
+indistinguishable from `Windows.*` references, and projecting a sibling as
+foreign would be silent.
 
 **`Windows.*` is genuinely external**, and resolves into go-bindings-winrt.
 The type universe for it comes from that module's committed JSON, read out of
-the module cache — which means `go.mod` is the version pin, and the metadata
-this repository generates against is exactly the metadata that produced the
-bindings it imports.
+the module cache via `go list -m -f '{{.Dir}}'` — which means `go.mod` is the
+version pin, and the metadata this repository generates against is exactly the
+metadata that produced the bindings it imports. `go list` is asked rather than
+the cache path assembled by hand, because the answer differs with `GOMODCACHE`,
+with a `replace` directive and with vendoring.
+
+That universe is loaded *first* and seeds the classification index, so both
+kinds of external reference are settled in one pass. The decision is then
+recorded on each `TypeRef` as `external: true` and committed, rather than
+re-derived at emit from the namespace prefix: `Windows.*` is external while
+`Microsoft.Windows.*` is local, and prefix logic is exactly the sort of thing
+that goes subtly wrong.
+
+A local winmd defining a `Windows.*` type is a hard error. It would give this
+module a second, incompatible definition of a type every signature already
+shares.
 
 A worry that turns out not to apply: matching contract versions. WinRT
 contracts only ever add, so a newer contract always resolves an older
 assembly's references. What does need checking is that every external
-reference resolves at all, which `validate --external` should enforce as a
-hard error.
+reference resolves at all, which `validate --external` enforces as a hard
+error — a miss means the Windows App SDK metadata is newer than the pin, and
+the fix is to bump it rather than work around the reference.
 
 **`Microsoft.Web.WebView2.Core`** is referenced by the XAML metadata but is
 neither a Windows App SDK winmd nor part of the WinRT contracts. It has no Go
-equivalent, and members using it must be skipped with a distinct reason
-rather than quietly turned into `uintptr` — a binding that compiles and then
-crashes is worse than one that is absent.
+equivalent, so it is listed in `ingest.KnownForeignNamespaces` and its
+references arrive at emit with neither `external` nor a `target_kind`: an
+emitter seeing the first would import a package that does not exist, and one
+seeing the second would name a type that was never generated. Members using it
+must be skipped with a distinct reason rather than quietly turned into
+`uintptr` — a binding that compiles and then crashes is worse than one that is
+absent.
 
 ### An import alias collision to avoid
 

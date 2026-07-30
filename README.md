@@ -7,7 +7,7 @@ interface can be written in Go.
 
 No Visual Studio, no .NET SDK, no XAML compiler, no cgo. Just `go build`.
 
-> **Status: early.** The generator is not written yet. See
+> **Status: early.** The metadata pipeline works; no Go is emitted yet. See
 > [Where this is](#where-this-is) for what works today and what does not.
 
 ## The family
@@ -58,28 +58,47 @@ without which `DispatcherQueue.TryEnqueue` could not be called at all.
 
 ## Where this is
 
-Nothing is generated yet. What exists is the module, its pinned dependencies,
-and a test proving the layers compose at the versions pinned: it activates a
-real WinRT class, checks that apartment initialization is per thread, and
-reaches the ABI foundation.
+The metadata pipeline is done; nothing is emitted as Go yet.
+
+36 winmds are committed, covering **77 namespaces and 4,374 types** — 2,568
+interfaces, 1,286 classes, 392 enums, 69 structs, 59 delegates. `ingest`
+projects them into one committed JSON file per namespace, and **every reference
+resolves**: no unresolved type references at all, and 4,500 `Windows.*`
+references resolving into the pinned go-bindings-winrt.
+
+```console
+$ go run ./cmd/generate ingest
+Windows.* universe: 12643 types from github.com/deploymenttheory/go-bindings-winrt v0.4.0
+ingested 77 namespaces → metadata\wasdk (32 diagnostics)
+  attribute-type-skipped       18
+  foreign-namespace-ref        14
+
+$ go run ./cmd/generate validate --external
+validate: 77 namespaces, 0 errors, 0 warnings
+external: 4500 references resolved against github.com/deploymenttheory/go-bindings-winrt v0.4.0
+```
+
+The 14 remaining references are all to `Microsoft.Web.WebView2.Core`, which
+ships in its own NuGet package and has no Go bindings; they are recorded as a
+permanent absence rather than left to look like a bug.
 
 The order of work, and why:
 
 | | Milestone | Notes |
 |---|---|---|
-| **M0** | Module, dependencies, CI | ← you are here |
-| **M1** | **Feasibility spike** | Hand-written Go that puts a real WinUI 3 window on screen. |
-| M2 | `fetch-metadata` | Resolve the nine-package fan-out; download the winmds and the bootstrapper. |
-| M3 | `ingest` | winmds → committed JSON, with `Windows.*` references resolved against go-bindings-winrt. |
-| M4 | `bindings` | JSON → Go. |
-| M5 | Runtime layer | Bootstrapping, apartment control, the application loop. |
-| M6 | Deriving from WinRT classes | Needed for custom controls; requires work in go-bindings-winrt first. |
-| M7 | Hardening | Slot and IID checks, docs, automated metadata updates. |
+| M0 | Module, dependencies, CI | done |
+| M1 | **Feasibility spike** | done — a Go executable bootstraps the SDK and activates `Microsoft.UI.Xaml` types, in CI. |
+| M2 | `fetch-metadata` | done — resolves the nine-package fan-out from the `.nuspec`; winmds and bootstrapper. |
+| M3 | `ingest` | done — winmds → committed JSON, `Windows.*` resolved against go-bindings-winrt. |
+| **M4** | `bindings` | ← you are here. JSON → Go. |
+| M5 | Class hierarchy | The base-class chain, without which a `Button` cannot reach `Click`. |
+| M6 | Runtime layer | Apartment control and the application loop, over generated bindings. |
+| M7 | Deriving from WinRT classes | Needed for custom controls; requires work in go-bindings-winrt first. |
 
-M1 is a gate rather than a step. Everything after it depends on questions only
-it can answer, so it comes before any generator work: if a Go executable
-cannot bootstrap the Windows App SDK and obtain a working `Application`, the
-approach needs rethinking — and that is much better learned from a few hundred
+M1 was a gate rather than a step. Everything after it depended on questions
+only it could answer, so it came before any generator work: if a Go executable
+could not bootstrap the Windows App SDK and reach an activation factory, the
+approach would have needed rethinking — much better learned from a few hundred
 lines than after building a generator.
 
 ## Requirements

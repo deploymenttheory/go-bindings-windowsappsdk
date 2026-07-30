@@ -1,0 +1,213 @@
+{
+  "namespace": "Microsoft.UI.Composition.Diagnostics",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "enums": {
+    "CompositionDebugOverdrawContentKinds": {
+      "base_type": "uint32",
+      "is_flags": true,
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "OffscreenRendered",
+          "value": "1"
+        },
+        {
+          "name": "Colors",
+          "value": "2"
+        },
+        {
+          "name": "Effects",
+          "value": "4"
+        },
+        {
+          "name": "Shadows",
+          "value": "8"
+        },
+        {
+          "name": "Lights",
+          "value": "16"
+        },
+        {
+          "name": "Surfaces",
+          "value": "32"
+        },
+        {
+          "name": "SwapChains",
+          "value": "64"
+        },
+        {
+          "name": "All",
+          "value": "4294967295"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "ICompositionDebugHeatMaps": {
+      "guid": "815016b8-f645-5c55-87b5-fe2167282b6f",
+      "exclusive_to": "Microsoft.UI.Composition.Diagnostics.CompositionDebugHeatMaps",
+      "methods": [
+        {
+          "name": "Hide",
+          "params": [
+            {
+              "name": "subtree",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ShowMemoryUsage",
+          "params": [
+            {
+              "name": "subtree",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ShowOverdraw",
+          "params": [
+            {
+              "name": "subtree",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "contentKinds",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CompositionDebugOverdrawContentKinds",
+                "namespace": "Microsoft.UI.Composition.Diagnostics",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ShowRedraw",
+          "params": [
+            {
+              "name": "subtree",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ICompositionDebugSettings": {
+      "guid": "f4c0c0f6-7f5f-5014-a0d6-c8c7eeecace6",
+      "exclusive_to": "Microsoft.UI.Composition.Diagnostics.CompositionDebugSettings",
+      "methods": [
+        {
+          "name": "get_HeatMaps",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionDebugHeatMaps",
+            "namespace": "Microsoft.UI.Composition.Diagnostics",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "HeatMaps",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CompositionDebugHeatMaps",
+            "namespace": "Microsoft.UI.Composition.Diagnostics",
+            "target_kind": "Class"
+          },
+          "getter": "get_HeatMaps"
+        }
+      ]
+    },
+    "ICompositionDebugSettingsStatics": {
+      "guid": "b56f8aab-2b8c-51aa-b974-10e5c517f50e",
+      "exclusive_to": "Microsoft.UI.Composition.Diagnostics.CompositionDebugSettings",
+      "methods": [
+        {
+          "name": "TryGetSettings",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionDebugSettings",
+            "namespace": "Microsoft.UI.Composition.Diagnostics",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "CompositionDebugHeatMaps": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICompositionDebugHeatMaps",
+        "namespace": "Microsoft.UI.Composition.Diagnostics",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICompositionDebugHeatMaps",
+          "namespace": "Microsoft.UI.Composition.Diagnostics",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "CompositionDebugSettings": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICompositionDebugSettings",
+        "namespace": "Microsoft.UI.Composition.Diagnostics",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICompositionDebugSettings",
+          "namespace": "Microsoft.UI.Composition.Diagnostics",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Composition.Diagnostics.ICompositionDebugSettingsStatics"
+      ]
+    }
+  }
+}

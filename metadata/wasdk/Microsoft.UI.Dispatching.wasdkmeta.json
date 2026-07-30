@@ -1,0 +1,868 @@
+{
+  "namespace": "Microsoft.UI.Dispatching",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "enums": {
+    "DispatcherQueuePriority": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Low",
+          "value": "-10"
+        },
+        {
+          "name": "Normal",
+          "value": "0"
+        },
+        {
+          "name": "High",
+          "value": "10"
+        }
+      ]
+    },
+    "DispatcherRunOptions": {
+      "base_type": "uint32",
+      "is_flags": true,
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "ContinueOnQuit",
+          "value": "1"
+        },
+        {
+          "name": "QuitOnlyLocalLoop",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IDispatcherExitDeferral": {
+      "guid": "910b5aac-3310-563e-8418-f3005579729e",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherExitDeferral",
+      "methods": [
+        {
+          "name": "Complete"
+        }
+      ]
+    },
+    "IDispatcherQueue": {
+      "guid": "f6ebf8fa-be1c-5bf6-a467-73da28738ae8",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueue",
+      "methods": [
+        {
+          "name": "CreateTimer",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueueTimer",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "TryEnqueue",
+          "overload": "TryEnqueue",
+          "params": [
+            {
+              "name": "callback",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherQueueHandler",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Delegate"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "TryEnqueue",
+          "overload": "TryEnqueueWithPriority",
+          "params": [
+            {
+              "name": "priority",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherQueuePriority",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "callback",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherQueueHandler",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Delegate"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "add_ShutdownStarting",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueue",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueueShutdownStartingEventArgs",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_ShutdownStarting",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_ShutdownCompleted",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueue",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_ShutdownCompleted",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "ShutdownCompleted",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_ShutdownCompleted",
+          "remove_method": "remove_ShutdownCompleted"
+        },
+        {
+          "name": "ShutdownStarting",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueueShutdownStartingEventArgs",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_ShutdownStarting",
+          "remove_method": "remove_ShutdownStarting"
+        }
+      ]
+    },
+    "IDispatcherQueue2": {
+      "guid": "0cf48751-f1ac-59b8-ba52-6ce7a1444d6f",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueue",
+      "methods": [
+        {
+          "name": "get_HasThreadAccess",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "HasThreadAccess",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_HasThreadAccess"
+        }
+      ]
+    },
+    "IDispatcherQueue3": {
+      "guid": "14a7a175-5c27-5a35-b079-21960cf764a8",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueue",
+      "methods": [
+        {
+          "name": "EnqueueEventLoopExit"
+        },
+        {
+          "name": "EnsureSystemDispatcherQueue"
+        },
+        {
+          "name": "RunEventLoop",
+          "overload": "RunEventLoop"
+        },
+        {
+          "name": "RunEventLoop",
+          "overload": "RunEventLoopWithOptions",
+          "params": [
+            {
+              "name": "options",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherRunOptions",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "deferral",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherExitDeferral",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_FrameworkShutdownStarting",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueue",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueueShutdownStartingEventArgs",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_FrameworkShutdownStarting",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_FrameworkShutdownCompleted",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueue",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_FrameworkShutdownCompleted",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "FrameworkShutdownCompleted",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_FrameworkShutdownCompleted",
+          "remove_method": "remove_FrameworkShutdownCompleted"
+        },
+        {
+          "name": "FrameworkShutdownStarting",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueueShutdownStartingEventArgs",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_FrameworkShutdownStarting",
+          "remove_method": "remove_FrameworkShutdownStarting"
+        }
+      ]
+    },
+    "IDispatcherQueueController": {
+      "guid": "bce8178d-2183-584c-9e5b-f9366f6ae484",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueueController",
+      "methods": [
+        {
+          "name": "get_DispatcherQueue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "ShutdownQueueAsync",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DispatcherQueue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          },
+          "getter": "get_DispatcherQueue"
+        }
+      ]
+    },
+    "IDispatcherQueueController2": {
+      "guid": "4c68ee2a-1cb1-5591-a3a2-9b590b8f8b9a",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueueController",
+      "methods": [
+        {
+          "name": "ShutdownQueue"
+        }
+      ]
+    },
+    "IDispatcherQueueControllerStatics": {
+      "guid": "f18d6145-722b-593d-bcf2-a61e713f0037",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueueController",
+      "methods": [
+        {
+          "name": "CreateOnDedicatedThread",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueueController",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateOnCurrentThread",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueueController",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDispatcherQueueShutdownStartingEventArgs": {
+      "guid": "32519be5-072b-5660-a70e-8835c9b8157d",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueueShutdownStartingEventArgs",
+      "methods": [
+        {
+          "name": "GetDeferral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Deferral",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        }
+      ]
+    },
+    "IDispatcherQueueStatics": {
+      "guid": "cd3382ea-a455-5124-b63a-ca40d34ca23c",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueue",
+      "methods": [
+        {
+          "name": "GetForCurrentThread",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDispatcherQueueTimer": {
+      "guid": "ad4d63fd-88fe-541f-ac11-bf2dc1ed2ce5",
+      "exclusive_to": "Microsoft.UI.Dispatching.DispatcherQueueTimer",
+      "methods": [
+        {
+          "name": "get_Interval",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TimeSpan",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Interval",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TimeSpan",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsRunning",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsRepeating",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsRepeating",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Start"
+        },
+        {
+          "name": "Stop"
+        },
+        {
+          "name": "add_Tick",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "DispatcherQueueTimer",
+                    "namespace": "Microsoft.UI.Dispatching",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_Tick",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Interval",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TimeSpan",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Interval",
+          "setter": "put_Interval"
+        },
+        {
+          "name": "IsRepeating",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsRepeating",
+          "setter": "put_IsRepeating"
+        },
+        {
+          "name": "IsRunning",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsRunning"
+        }
+      ],
+      "events": [
+        {
+          "name": "Tick",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DispatcherQueueTimer",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_Tick",
+          "remove_method": "remove_Tick"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "DispatcherExitDeferral": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDispatcherExitDeferral",
+        "namespace": "Microsoft.UI.Dispatching",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherExitDeferral",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "DispatcherQueue": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDispatcherQueue",
+        "namespace": "Microsoft.UI.Dispatching",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueue",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueue2",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueue3",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Dispatching.IDispatcherQueueStatics"
+      ]
+    },
+    "DispatcherQueueController": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDispatcherQueueController",
+        "namespace": "Microsoft.UI.Dispatching",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueueController",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueueController2",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Dispatching.IDispatcherQueueControllerStatics"
+      ]
+    },
+    "DispatcherQueueShutdownStartingEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDispatcherQueueShutdownStartingEventArgs",
+        "namespace": "Microsoft.UI.Dispatching",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueueShutdownStartingEventArgs",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "DispatcherQueueTimer": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDispatcherQueueTimer",
+        "namespace": "Microsoft.UI.Dispatching",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDispatcherQueueTimer",
+          "namespace": "Microsoft.UI.Dispatching",
+          "target_kind": "Interface"
+        }
+      ]
+    }
+  },
+  "delegates": {
+    "DispatcherQueueHandler": {
+      "guid": "2e0872a9-4e29-5f14-b688-fb96d5f9d5f8",
+      "invoke": {
+        "name": "Invoke"
+      }
+    }
+  }
+}

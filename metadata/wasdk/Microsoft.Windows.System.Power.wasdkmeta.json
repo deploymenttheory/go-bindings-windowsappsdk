@@ -1,0 +1,1091 @@
+{
+  "namespace": "Microsoft.Windows.System.Power",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.System.Power.winmd",
+  "enums": {
+    "BatteryStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "NotPresent",
+          "value": "0"
+        },
+        {
+          "name": "Discharging",
+          "value": "1"
+        },
+        {
+          "name": "Idle",
+          "value": "2"
+        },
+        {
+          "name": "Charging",
+          "value": "3"
+        }
+      ]
+    },
+    "DisplayStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Off",
+          "value": "0"
+        },
+        {
+          "name": "On",
+          "value": "1"
+        },
+        {
+          "name": "Dimmed",
+          "value": "2"
+        }
+      ]
+    },
+    "EffectivePowerMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "BatterySaver",
+          "value": "0"
+        },
+        {
+          "name": "BetterBattery",
+          "value": "1"
+        },
+        {
+          "name": "Balanced",
+          "value": "2"
+        },
+        {
+          "name": "HighPerformance",
+          "value": "3"
+        },
+        {
+          "name": "MaxPerformance",
+          "value": "4"
+        },
+        {
+          "name": "GameMode",
+          "value": "5"
+        },
+        {
+          "name": "MixedReality",
+          "value": "6"
+        }
+      ]
+    },
+    "EnergySaverStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Uninitialized",
+          "value": "0"
+        },
+        {
+          "name": "Disabled",
+          "value": "1"
+        },
+        {
+          "name": "Off",
+          "value": "2"
+        },
+        {
+          "name": "On",
+          "value": "3"
+        }
+      ]
+    },
+    "PowerSourceKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "AC",
+          "value": "0"
+        },
+        {
+          "name": "DC",
+          "value": "1"
+        }
+      ]
+    },
+    "PowerSupplyStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "NotPresent",
+          "value": "0"
+        },
+        {
+          "name": "Inadequate",
+          "value": "1"
+        },
+        {
+          "name": "Adequate",
+          "value": "2"
+        }
+      ]
+    },
+    "SystemSuspendStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Uninitialized",
+          "value": "0"
+        },
+        {
+          "name": "Entering",
+          "value": "1"
+        },
+        {
+          "name": "AutoResume",
+          "value": "2"
+        },
+        {
+          "name": "ManualResume",
+          "value": "3"
+        }
+      ]
+    },
+    "UserPresenceStatus": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Present",
+          "value": "0"
+        },
+        {
+          "name": "Absent",
+          "value": "1"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "PowerNotificationsContract": {}
+  },
+  "interfaces": {
+    "IPowerManagerStatics": {
+      "guid": "fa3554cc-be1c-534c-bff8-72df78e9f4a4",
+      "exclusive_to": "Microsoft.Windows.System.Power.PowerManager",
+      "methods": [
+        {
+          "name": "get_EnergySaverStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "EnergySaverStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_EnergySaverStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_EnergySaverStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_BatteryStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "BatteryStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_BatteryStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_BatteryStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PowerSupplyStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PowerSupplyStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_PowerSupplyStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_PowerSupplyStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RemainingChargePercent",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "add_RemainingChargePercentChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_RemainingChargePercentChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RemainingDischargeTime",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TimeSpan",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "add_RemainingDischargeTimeChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_RemainingDischargeTimeChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PowerSourceKind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PowerSourceKind",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_PowerSourceKindChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_PowerSourceKindChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_DisplayStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DisplayStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_DisplayStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_DisplayStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_SystemIdleStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_SystemIdleStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_EffectivePowerMode",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "EffectivePowerMode",
+                "namespace": "Microsoft.Windows.System.Power",
+                "target_kind": "Enum"
+              }
+            ]
+          }
+        },
+        {
+          "name": "add_EffectivePowerModeChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_EffectivePowerModeChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_UserPresenceStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "UserPresenceStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_UserPresenceStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_UserPresenceStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SystemSuspendStatus",
+          "return": {
+            "kind": "ApiRef",
+            "name": "SystemSuspendStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "add_SystemSuspendStatusChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_SystemSuspendStatusChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "BatteryStatus",
+          "type": {
+            "kind": "ApiRef",
+            "name": "BatteryStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_BatteryStatus"
+        },
+        {
+          "name": "DisplayStatus",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DisplayStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_DisplayStatus"
+        },
+        {
+          "name": "EffectivePowerMode",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "EffectivePowerMode",
+                "namespace": "Microsoft.Windows.System.Power",
+                "target_kind": "Enum"
+              }
+            ]
+          },
+          "getter": "get_EffectivePowerMode"
+        },
+        {
+          "name": "EnergySaverStatus",
+          "type": {
+            "kind": "ApiRef",
+            "name": "EnergySaverStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_EnergySaverStatus"
+        },
+        {
+          "name": "PowerSourceKind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PowerSourceKind",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PowerSourceKind"
+        },
+        {
+          "name": "PowerSupplyStatus",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PowerSupplyStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PowerSupplyStatus"
+        },
+        {
+          "name": "RemainingChargePercent",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_RemainingChargePercent"
+        },
+        {
+          "name": "RemainingDischargeTime",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TimeSpan",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_RemainingDischargeTime"
+        },
+        {
+          "name": "SystemSuspendStatus",
+          "type": {
+            "kind": "ApiRef",
+            "name": "SystemSuspendStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_SystemSuspendStatus"
+        },
+        {
+          "name": "UserPresenceStatus",
+          "type": {
+            "kind": "ApiRef",
+            "name": "UserPresenceStatus",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_UserPresenceStatus"
+        }
+      ],
+      "events": [
+        {
+          "name": "BatteryStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_BatteryStatusChanged",
+          "remove_method": "remove_BatteryStatusChanged"
+        },
+        {
+          "name": "DisplayStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_DisplayStatusChanged",
+          "remove_method": "remove_DisplayStatusChanged"
+        },
+        {
+          "name": "EffectivePowerModeChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_EffectivePowerModeChanged",
+          "remove_method": "remove_EffectivePowerModeChanged"
+        },
+        {
+          "name": "EnergySaverStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_EnergySaverStatusChanged",
+          "remove_method": "remove_EnergySaverStatusChanged"
+        },
+        {
+          "name": "PowerSourceKindChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_PowerSourceKindChanged",
+          "remove_method": "remove_PowerSourceKindChanged"
+        },
+        {
+          "name": "PowerSupplyStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_PowerSupplyStatusChanged",
+          "remove_method": "remove_PowerSupplyStatusChanged"
+        },
+        {
+          "name": "RemainingChargePercentChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_RemainingChargePercentChanged",
+          "remove_method": "remove_RemainingChargePercentChanged"
+        },
+        {
+          "name": "RemainingDischargeTimeChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_RemainingDischargeTimeChanged",
+          "remove_method": "remove_RemainingDischargeTimeChanged"
+        },
+        {
+          "name": "SystemIdleStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_SystemIdleStatusChanged",
+          "remove_method": "remove_SystemIdleStatusChanged"
+        },
+        {
+          "name": "SystemSuspendStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_SystemSuspendStatusChanged",
+          "remove_method": "remove_SystemSuspendStatusChanged"
+        },
+        {
+          "name": "UserPresenceStatusChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_UserPresenceStatusChanged",
+          "remove_method": "remove_UserPresenceStatusChanged"
+        }
+      ]
+    },
+    "IPowerManagerStatics2": {
+      "guid": "61f3cc25-65b4-5def-9c9b-990cef3b0833",
+      "exclusive_to": "Microsoft.Windows.System.Power.PowerManager",
+      "methods": [
+        {
+          "name": "get_EffectivePowerMode2",
+          "return": {
+            "kind": "ApiRef",
+            "name": "EffectivePowerMode",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "EffectivePowerMode2",
+          "type": {
+            "kind": "ApiRef",
+            "name": "EffectivePowerMode",
+            "namespace": "Microsoft.Windows.System.Power",
+            "target_kind": "Enum"
+          },
+          "getter": "get_EffectivePowerMode2"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "PowerManager": {
+      "static_interfaces": [
+        "Microsoft.Windows.System.Power.IPowerManagerStatics2",
+        "Microsoft.Windows.System.Power.IPowerManagerStatics"
+      ]
+    }
+  }
+}

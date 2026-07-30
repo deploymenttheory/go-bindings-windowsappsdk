@@ -1,0 +1,3258 @@
+{
+  "namespace": "Microsoft.UI",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "structs": {
+    "DisplayId": {
+      "fields": [
+        {
+          "name": "Value",
+          "type": {
+            "kind": "Native",
+            "name": "U8"
+          }
+        }
+      ]
+    },
+    "IconId": {
+      "fields": [
+        {
+          "name": "Value",
+          "type": {
+            "kind": "Native",
+            "name": "U8"
+          }
+        }
+      ]
+    },
+    "WindowId": {
+      "fields": [
+        {
+          "name": "Value",
+          "type": {
+            "kind": "Native",
+            "name": "U8"
+          }
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IClosableNotifier": {
+      "guid": "2989e93b-ed0f-5e79-90f2-eac592fc6e6a",
+      "methods": [
+        {
+          "name": "get_IsClosed",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "add_Closed",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ClosableNotifierHandler",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Delegate"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_Closed",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_FrameworkClosed",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ClosableNotifierHandler",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Delegate"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_FrameworkClosed",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsClosed",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsClosed"
+        }
+      ],
+      "events": [
+        {
+          "name": "Closed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ClosableNotifierHandler",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Delegate"
+          },
+          "add_method": "add_Closed",
+          "remove_method": "remove_Closed"
+        },
+        {
+          "name": "FrameworkClosed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ClosableNotifierHandler",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Delegate"
+          },
+          "add_method": "add_FrameworkClosed",
+          "remove_method": "remove_FrameworkClosed"
+        }
+      ]
+    },
+    "IColorHelper": {
+      "guid": "3adddccd-3949-585b-a566-ccb8350dd221",
+      "exclusive_to": "Microsoft.UI.ColorHelper"
+    },
+    "IColorHelperStatics": {
+      "guid": "1d1d85a1-eb63-538a-84f0-019210bc406b",
+      "exclusive_to": "Microsoft.UI.ColorHelper",
+      "methods": [
+        {
+          "name": "FromArgb",
+          "params": [
+            {
+              "name": "a",
+              "type": {
+                "kind": "Native",
+                "name": "U1"
+              }
+            },
+            {
+              "name": "r",
+              "type": {
+                "kind": "Native",
+                "name": "U1"
+              }
+            },
+            {
+              "name": "g",
+              "type": {
+                "kind": "Native",
+                "name": "U1"
+              }
+            },
+            {
+              "name": "b",
+              "type": {
+                "kind": "Native",
+                "name": "U1"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        }
+      ]
+    },
+    "IColorHelperStatics2": {
+      "guid": "982a2d93-0ec4-56b7-9c20-0b5c77949066",
+      "exclusive_to": "Microsoft.UI.ColorHelper",
+      "methods": [
+        {
+          "name": "ToDisplayName",
+          "params": [
+            {
+              "name": "color",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ]
+    },
+    "IColors": {
+      "guid": "8cf15863-8411-5afd-946c-328e04da2f2f",
+      "exclusive_to": "Microsoft.UI.Colors"
+    },
+    "IColorsStatics": {
+      "guid": "8620a5b0-015a-57ac-a3f3-895d0b1269ae",
+      "exclusive_to": "Microsoft.UI.Colors",
+      "methods": [
+        {
+          "name": "get_AliceBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_AntiqueWhite",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Aqua",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Aquamarine",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Azure",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Beige",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Bisque",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Black",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_BlanchedAlmond",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Blue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_BlueViolet",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Brown",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_BurlyWood",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_CadetBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Chartreuse",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Chocolate",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Coral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_CornflowerBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Cornsilk",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Crimson",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Cyan",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkCyan",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkGoldenrod",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkGray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkKhaki",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkMagenta",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkOliveGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkOrange",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkOrchid",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkRed",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkSalmon",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkSeaGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkSlateBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkSlateGray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkTurquoise",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DarkViolet",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DeepPink",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DeepSkyBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DimGray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DodgerBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Firebrick",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_FloralWhite",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_ForestGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Fuchsia",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Gainsboro",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_GhostWhite",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Gold",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Goldenrod",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Gray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Green",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_GreenYellow",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Honeydew",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_HotPink",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_IndianRed",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Indigo",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Ivory",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Khaki",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Lavender",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LavenderBlush",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LawnGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LemonChiffon",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightCoral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightCyan",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightGoldenrodYellow",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightGray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightPink",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightSalmon",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightSeaGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightSkyBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightSlateGray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightSteelBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LightYellow",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Lime",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LimeGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Linen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Magenta",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Maroon",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumAquamarine",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumOrchid",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumPurple",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumSeaGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumSlateBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumSpringGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumTurquoise",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MediumVioletRed",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MidnightBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MintCream",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_MistyRose",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Moccasin",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_NavajoWhite",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Navy",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_OldLace",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Olive",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_OliveDrab",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Orange",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_OrangeRed",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Orchid",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PaleGoldenrod",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PaleGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PaleTurquoise",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PaleVioletRed",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PapayaWhip",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PeachPuff",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Peru",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Pink",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Plum",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_PowderBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Purple",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Red",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_RosyBrown",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_RoyalBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SaddleBrown",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Salmon",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SandyBrown",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SeaGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SeaShell",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Sienna",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Silver",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SkyBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SlateBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SlateGray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Snow",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SpringGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_SteelBlue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Tan",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Teal",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Thistle",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Tomato",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Transparent",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Turquoise",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Violet",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Wheat",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_White",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_WhiteSmoke",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Yellow",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_YellowGreen",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AliceBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_AliceBlue"
+        },
+        {
+          "name": "AntiqueWhite",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_AntiqueWhite"
+        },
+        {
+          "name": "Aqua",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Aqua"
+        },
+        {
+          "name": "Aquamarine",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Aquamarine"
+        },
+        {
+          "name": "Azure",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Azure"
+        },
+        {
+          "name": "Beige",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Beige"
+        },
+        {
+          "name": "Bisque",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Bisque"
+        },
+        {
+          "name": "Black",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Black"
+        },
+        {
+          "name": "BlanchedAlmond",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_BlanchedAlmond"
+        },
+        {
+          "name": "Blue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Blue"
+        },
+        {
+          "name": "BlueViolet",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_BlueViolet"
+        },
+        {
+          "name": "Brown",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Brown"
+        },
+        {
+          "name": "BurlyWood",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_BurlyWood"
+        },
+        {
+          "name": "CadetBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_CadetBlue"
+        },
+        {
+          "name": "Chartreuse",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Chartreuse"
+        },
+        {
+          "name": "Chocolate",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Chocolate"
+        },
+        {
+          "name": "Coral",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Coral"
+        },
+        {
+          "name": "CornflowerBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_CornflowerBlue"
+        },
+        {
+          "name": "Cornsilk",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Cornsilk"
+        },
+        {
+          "name": "Crimson",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Crimson"
+        },
+        {
+          "name": "Cyan",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Cyan"
+        },
+        {
+          "name": "DarkBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkBlue"
+        },
+        {
+          "name": "DarkCyan",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkCyan"
+        },
+        {
+          "name": "DarkGoldenrod",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkGoldenrod"
+        },
+        {
+          "name": "DarkGray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkGray"
+        },
+        {
+          "name": "DarkGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkGreen"
+        },
+        {
+          "name": "DarkKhaki",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkKhaki"
+        },
+        {
+          "name": "DarkMagenta",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkMagenta"
+        },
+        {
+          "name": "DarkOliveGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkOliveGreen"
+        },
+        {
+          "name": "DarkOrange",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkOrange"
+        },
+        {
+          "name": "DarkOrchid",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkOrchid"
+        },
+        {
+          "name": "DarkRed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkRed"
+        },
+        {
+          "name": "DarkSalmon",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkSalmon"
+        },
+        {
+          "name": "DarkSeaGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkSeaGreen"
+        },
+        {
+          "name": "DarkSlateBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkSlateBlue"
+        },
+        {
+          "name": "DarkSlateGray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkSlateGray"
+        },
+        {
+          "name": "DarkTurquoise",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkTurquoise"
+        },
+        {
+          "name": "DarkViolet",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DarkViolet"
+        },
+        {
+          "name": "DeepPink",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DeepPink"
+        },
+        {
+          "name": "DeepSkyBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DeepSkyBlue"
+        },
+        {
+          "name": "DimGray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DimGray"
+        },
+        {
+          "name": "DodgerBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_DodgerBlue"
+        },
+        {
+          "name": "Firebrick",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Firebrick"
+        },
+        {
+          "name": "FloralWhite",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_FloralWhite"
+        },
+        {
+          "name": "ForestGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ForestGreen"
+        },
+        {
+          "name": "Fuchsia",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Fuchsia"
+        },
+        {
+          "name": "Gainsboro",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Gainsboro"
+        },
+        {
+          "name": "GhostWhite",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_GhostWhite"
+        },
+        {
+          "name": "Gold",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Gold"
+        },
+        {
+          "name": "Goldenrod",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Goldenrod"
+        },
+        {
+          "name": "Gray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Gray"
+        },
+        {
+          "name": "Green",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Green"
+        },
+        {
+          "name": "GreenYellow",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_GreenYellow"
+        },
+        {
+          "name": "Honeydew",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Honeydew"
+        },
+        {
+          "name": "HotPink",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_HotPink"
+        },
+        {
+          "name": "IndianRed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_IndianRed"
+        },
+        {
+          "name": "Indigo",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Indigo"
+        },
+        {
+          "name": "Ivory",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Ivory"
+        },
+        {
+          "name": "Khaki",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Khaki"
+        },
+        {
+          "name": "Lavender",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Lavender"
+        },
+        {
+          "name": "LavenderBlush",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LavenderBlush"
+        },
+        {
+          "name": "LawnGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LawnGreen"
+        },
+        {
+          "name": "LemonChiffon",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LemonChiffon"
+        },
+        {
+          "name": "LightBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightBlue"
+        },
+        {
+          "name": "LightCoral",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightCoral"
+        },
+        {
+          "name": "LightCyan",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightCyan"
+        },
+        {
+          "name": "LightGoldenrodYellow",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightGoldenrodYellow"
+        },
+        {
+          "name": "LightGray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightGray"
+        },
+        {
+          "name": "LightGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightGreen"
+        },
+        {
+          "name": "LightPink",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightPink"
+        },
+        {
+          "name": "LightSalmon",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightSalmon"
+        },
+        {
+          "name": "LightSeaGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightSeaGreen"
+        },
+        {
+          "name": "LightSkyBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightSkyBlue"
+        },
+        {
+          "name": "LightSlateGray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightSlateGray"
+        },
+        {
+          "name": "LightSteelBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightSteelBlue"
+        },
+        {
+          "name": "LightYellow",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LightYellow"
+        },
+        {
+          "name": "Lime",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Lime"
+        },
+        {
+          "name": "LimeGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LimeGreen"
+        },
+        {
+          "name": "Linen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Linen"
+        },
+        {
+          "name": "Magenta",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Magenta"
+        },
+        {
+          "name": "Maroon",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Maroon"
+        },
+        {
+          "name": "MediumAquamarine",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumAquamarine"
+        },
+        {
+          "name": "MediumBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumBlue"
+        },
+        {
+          "name": "MediumOrchid",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumOrchid"
+        },
+        {
+          "name": "MediumPurple",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumPurple"
+        },
+        {
+          "name": "MediumSeaGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumSeaGreen"
+        },
+        {
+          "name": "MediumSlateBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumSlateBlue"
+        },
+        {
+          "name": "MediumSpringGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumSpringGreen"
+        },
+        {
+          "name": "MediumTurquoise",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumTurquoise"
+        },
+        {
+          "name": "MediumVioletRed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MediumVioletRed"
+        },
+        {
+          "name": "MidnightBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MidnightBlue"
+        },
+        {
+          "name": "MintCream",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MintCream"
+        },
+        {
+          "name": "MistyRose",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_MistyRose"
+        },
+        {
+          "name": "Moccasin",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Moccasin"
+        },
+        {
+          "name": "NavajoWhite",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_NavajoWhite"
+        },
+        {
+          "name": "Navy",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Navy"
+        },
+        {
+          "name": "OldLace",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_OldLace"
+        },
+        {
+          "name": "Olive",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Olive"
+        },
+        {
+          "name": "OliveDrab",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_OliveDrab"
+        },
+        {
+          "name": "Orange",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Orange"
+        },
+        {
+          "name": "OrangeRed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_OrangeRed"
+        },
+        {
+          "name": "Orchid",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Orchid"
+        },
+        {
+          "name": "PaleGoldenrod",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PaleGoldenrod"
+        },
+        {
+          "name": "PaleGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PaleGreen"
+        },
+        {
+          "name": "PaleTurquoise",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PaleTurquoise"
+        },
+        {
+          "name": "PaleVioletRed",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PaleVioletRed"
+        },
+        {
+          "name": "PapayaWhip",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PapayaWhip"
+        },
+        {
+          "name": "PeachPuff",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PeachPuff"
+        },
+        {
+          "name": "Peru",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Peru"
+        },
+        {
+          "name": "Pink",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Pink"
+        },
+        {
+          "name": "Plum",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Plum"
+        },
+        {
+          "name": "PowderBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_PowderBlue"
+        },
+        {
+          "name": "Purple",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Purple"
+        },
+        {
+          "name": "Red",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Red"
+        },
+        {
+          "name": "RosyBrown",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_RosyBrown"
+        },
+        {
+          "name": "RoyalBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_RoyalBlue"
+        },
+        {
+          "name": "SaddleBrown",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SaddleBrown"
+        },
+        {
+          "name": "Salmon",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Salmon"
+        },
+        {
+          "name": "SandyBrown",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SandyBrown"
+        },
+        {
+          "name": "SeaGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SeaGreen"
+        },
+        {
+          "name": "SeaShell",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SeaShell"
+        },
+        {
+          "name": "Sienna",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Sienna"
+        },
+        {
+          "name": "Silver",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Silver"
+        },
+        {
+          "name": "SkyBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SkyBlue"
+        },
+        {
+          "name": "SlateBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SlateBlue"
+        },
+        {
+          "name": "SlateGray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SlateGray"
+        },
+        {
+          "name": "Snow",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Snow"
+        },
+        {
+          "name": "SpringGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SpringGreen"
+        },
+        {
+          "name": "SteelBlue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_SteelBlue"
+        },
+        {
+          "name": "Tan",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Tan"
+        },
+        {
+          "name": "Teal",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Teal"
+        },
+        {
+          "name": "Thistle",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Thistle"
+        },
+        {
+          "name": "Tomato",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Tomato"
+        },
+        {
+          "name": "Transparent",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Transparent"
+        },
+        {
+          "name": "Turquoise",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Turquoise"
+        },
+        {
+          "name": "Violet",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Violet"
+        },
+        {
+          "name": "Wheat",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Wheat"
+        },
+        {
+          "name": "White",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_White"
+        },
+        {
+          "name": "WhiteSmoke",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_WhiteSmoke"
+        },
+        {
+          "name": "Yellow",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Yellow"
+        },
+        {
+          "name": "YellowGreen",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_YellowGreen"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "ColorHelper": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IColorHelper",
+        "namespace": "Microsoft.UI",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IColorHelper",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.IColorHelperStatics",
+        "Microsoft.UI.IColorHelperStatics2"
+      ]
+    },
+    "Colors": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IColors",
+        "namespace": "Microsoft.UI",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IColors",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.IColorsStatics"
+      ]
+    }
+  },
+  "delegates": {
+    "ClosableNotifierHandler": {
+      "guid": "478cec68-ea8e-52fc-87e2-c819de000f92",
+      "invoke": {
+        "name": "Invoke"
+      }
+    }
+  }
+}

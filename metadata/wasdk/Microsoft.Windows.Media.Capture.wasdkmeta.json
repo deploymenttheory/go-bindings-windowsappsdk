@@ -1,0 +1,577 @@
+{
+  "namespace": "Microsoft.Windows.Media.Capture",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.Media.Capture.winmd",
+  "enums": {
+    "CameraCaptureUIMaxPhotoResolution": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "HighestAvailable",
+          "value": "0"
+        },
+        {
+          "name": "VerySmallQvga",
+          "value": "1"
+        },
+        {
+          "name": "SmallVga",
+          "value": "2"
+        },
+        {
+          "name": "MediumXga",
+          "value": "3"
+        },
+        {
+          "name": "Large3M",
+          "value": "4"
+        },
+        {
+          "name": "VeryLarge5M",
+          "value": "5"
+        }
+      ]
+    },
+    "CameraCaptureUIMaxVideoResolution": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "HighestAvailable",
+          "value": "0"
+        },
+        {
+          "name": "LowDefinition",
+          "value": "1"
+        },
+        {
+          "name": "StandardDefinition",
+          "value": "2"
+        },
+        {
+          "name": "HighDefinition",
+          "value": "3"
+        }
+      ]
+    },
+    "CameraCaptureUIMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "PhotoOrVideo",
+          "value": "0"
+        },
+        {
+          "name": "Photo",
+          "value": "1"
+        },
+        {
+          "name": "Video",
+          "value": "2"
+        }
+      ]
+    },
+    "CameraCaptureUIPhotoFormat": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Jpeg",
+          "value": "0"
+        },
+        {
+          "name": "Png",
+          "value": "1"
+        },
+        {
+          "name": "JpegXR",
+          "value": "2"
+        }
+      ]
+    },
+    "CameraCaptureUIVideoFormat": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Mp4",
+          "value": "0"
+        },
+        {
+          "name": "Wmv",
+          "value": "1"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "CameraCaptureUIContract": {}
+  },
+  "interfaces": {
+    "ICameraCaptureUI": {
+      "guid": "c001d024-c617-5742-9ae1-8fd31be07f6c",
+      "exclusive_to": "Microsoft.Windows.Media.Capture.CameraCaptureUI",
+      "methods": [
+        {
+          "name": "get_PhotoSettings",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIPhotoCaptureSettings",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_VideoSettings",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIVideoCaptureSettings",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CaptureFileAsync",
+          "params": [
+            {
+              "name": "mode",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CameraCaptureUIMode",
+                "namespace": "Microsoft.Windows.Media.Capture",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IAsyncOperation`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "StorageFile",
+                "namespace": "Windows.Storage",
+                "target_kind": "Class",
+                "external": true
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "PhotoSettings",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIPhotoCaptureSettings",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Class"
+          },
+          "getter": "get_PhotoSettings"
+        },
+        {
+          "name": "VideoSettings",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIVideoCaptureSettings",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Class"
+          },
+          "getter": "get_VideoSettings"
+        }
+      ]
+    },
+    "ICameraCaptureUIFactory": {
+      "guid": "2b49623d-5f22-5fee-991f-14f24592a3c2",
+      "exclusive_to": "Microsoft.Windows.Media.Capture.CameraCaptureUI",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUI",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ICameraCaptureUIPhotoCaptureSettings": {
+      "guid": "19fe2155-d018-53fc-bbdc-5781a94687a0",
+      "exclusive_to": "Microsoft.Windows.Media.Capture.CameraCaptureUIPhotoCaptureSettings",
+      "methods": [
+        {
+          "name": "get_AllowCropping",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_AllowCropping",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CroppedAspectRatio",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Size",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_CroppedAspectRatio",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Size",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CroppedSizeInPixels",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Size",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_CroppedSizeInPixels",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Size",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Format",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIPhotoFormat",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Format",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CameraCaptureUIPhotoFormat",
+                "namespace": "Microsoft.Windows.Media.Capture",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_MaxResolution",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIMaxPhotoResolution",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_MaxResolution",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CameraCaptureUIMaxPhotoResolution",
+                "namespace": "Microsoft.Windows.Media.Capture",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AllowCropping",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_AllowCropping",
+          "setter": "put_AllowCropping"
+        },
+        {
+          "name": "CroppedAspectRatio",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Size",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_CroppedAspectRatio",
+          "setter": "put_CroppedAspectRatio"
+        },
+        {
+          "name": "CroppedSizeInPixels",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Size",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_CroppedSizeInPixels",
+          "setter": "put_CroppedSizeInPixels"
+        },
+        {
+          "name": "Format",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIPhotoFormat",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Format",
+          "setter": "put_Format"
+        },
+        {
+          "name": "MaxResolution",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIMaxPhotoResolution",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          },
+          "getter": "get_MaxResolution",
+          "setter": "put_MaxResolution"
+        }
+      ]
+    },
+    "ICameraCaptureUIVideoCaptureSettings": {
+      "guid": "47dd74f6-83b7-5123-bbdf-d757201d1ee8",
+      "exclusive_to": "Microsoft.Windows.Media.Capture.CameraCaptureUIVideoCaptureSettings",
+      "methods": [
+        {
+          "name": "get_AllowTrimming",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_AllowTrimming",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Format",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIVideoFormat",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Format",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CameraCaptureUIVideoFormat",
+                "namespace": "Microsoft.Windows.Media.Capture",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_MaxDurationInSeconds",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_MaxDurationInSeconds",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_MaxResolution",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIMaxVideoResolution",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_MaxResolution",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CameraCaptureUIMaxVideoResolution",
+                "namespace": "Microsoft.Windows.Media.Capture",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AllowTrimming",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_AllowTrimming",
+          "setter": "put_AllowTrimming"
+        },
+        {
+          "name": "Format",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIVideoFormat",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Format",
+          "setter": "put_Format"
+        },
+        {
+          "name": "MaxDurationInSeconds",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_MaxDurationInSeconds",
+          "setter": "put_MaxDurationInSeconds"
+        },
+        {
+          "name": "MaxResolution",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CameraCaptureUIMaxVideoResolution",
+            "namespace": "Microsoft.Windows.Media.Capture",
+            "target_kind": "Enum"
+          },
+          "getter": "get_MaxResolution",
+          "setter": "put_MaxResolution"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "CameraCaptureUI": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICameraCaptureUI",
+        "namespace": "Microsoft.Windows.Media.Capture",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICameraCaptureUI",
+          "namespace": "Microsoft.Windows.Media.Capture",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.Media.Capture.ICameraCaptureUIFactory"
+      ]
+    },
+    "CameraCaptureUIPhotoCaptureSettings": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICameraCaptureUIPhotoCaptureSettings",
+        "namespace": "Microsoft.Windows.Media.Capture",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICameraCaptureUIPhotoCaptureSettings",
+          "namespace": "Microsoft.Windows.Media.Capture",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    },
+    "CameraCaptureUIVideoCaptureSettings": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICameraCaptureUIVideoCaptureSettings",
+        "namespace": "Microsoft.Windows.Media.Capture",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICameraCaptureUIVideoCaptureSettings",
+          "namespace": "Microsoft.Windows.Media.Capture",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    }
+  }
+}

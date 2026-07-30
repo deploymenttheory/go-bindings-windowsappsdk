@@ -1,0 +1,149 @@
+{
+  "namespace": "Microsoft.UI.Composition.Core",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "interfaces": {
+    "ICompositorController": {
+      "guid": "cc107cdc-558f-5d1a-96a5-a735ac04386b",
+      "exclusive_to": "Microsoft.UI.Composition.Core.CompositorController",
+      "methods": [
+        {
+          "name": "get_Compositor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Compositor",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "Commit"
+        },
+        {
+          "name": "EnsurePreviousCommitCompletedAsync",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "add_CommitNeeded",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "CompositorController",
+                    "namespace": "Microsoft.UI.Composition.Core",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_CommitNeeded",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Compositor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Compositor",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          },
+          "getter": "get_Compositor"
+        }
+      ],
+      "events": [
+        {
+          "name": "CommitNeeded",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "CompositorController",
+                "namespace": "Microsoft.UI.Composition.Core",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_CommitNeeded",
+          "remove_method": "remove_CommitNeeded"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "CompositorController": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICompositorController",
+        "namespace": "Microsoft.UI.Composition.Core",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICompositorController",
+          "namespace": "Microsoft.UI.Composition.Core",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "activatable_direct": true
+    }
+  }
+}

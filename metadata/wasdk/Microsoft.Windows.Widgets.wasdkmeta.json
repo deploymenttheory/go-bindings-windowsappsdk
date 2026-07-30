@@ -1,0 +1,28 @@
+{
+  "namespace": "Microsoft.Windows.Widgets",
+  "schema_version": 1,
+  "winmd_version": "2.0.5",
+  "winmd_file": "Microsoft.Windows.Widgets.winmd",
+  "enums": {
+    "WidgetSize": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Small",
+          "value": "0"
+        },
+        {
+          "name": "Medium",
+          "value": "1"
+        },
+        {
+          "name": "Large",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "WidgetContract": {}
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "namespace": "Microsoft.Windows.Globalization",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.Globalization.winmd",
+  "interfaces": {
+    "IApplicationLanguagesStatics": {
+      "guid": "58dfcef9-08ec-5086-8af1-d5beab79250a",
+      "exclusive_to": "Microsoft.Windows.Globalization.ApplicationLanguages",
+      "methods": [
+        {
+          "name": "get_Languages",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVectorView`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_ManifestLanguages",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVectorView`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_PrimaryLanguageOverride",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_PrimaryLanguageOverride",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Languages",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IVectorView`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_Languages"
+        },
+        {
+          "name": "ManifestLanguages",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IVectorView`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_ManifestLanguages"
+        },
+        {
+          "name": "PrimaryLanguageOverride",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_PrimaryLanguageOverride",
+          "setter": "put_PrimaryLanguageOverride"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "ApplicationLanguages": {
+      "static_interfaces": [
+        "Microsoft.Windows.Globalization.IApplicationLanguagesStatics"
+      ]
+    }
+  }
+}

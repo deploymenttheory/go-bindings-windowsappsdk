@@ -1,0 +1,1462 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Shapes",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "interfaces": {
+    "IEllipse": {
+      "guid": "805c39aa-fa8a-5e0b-9847-4ab81b42a3df",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Ellipse"
+    },
+    "ILine": {
+      "guid": "507b3858-af7e-559b-a87e-4cc6a5d8ba96",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Line",
+      "methods": [
+        {
+          "name": "get_X1",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_X1",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Y1",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_Y1",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_X2",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_X2",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Y2",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_Y2",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "X1",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_X1",
+          "setter": "put_X1"
+        },
+        {
+          "name": "X2",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_X2",
+          "setter": "put_X2"
+        },
+        {
+          "name": "Y1",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_Y1",
+          "setter": "put_Y1"
+        },
+        {
+          "name": "Y2",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_Y2",
+          "setter": "put_Y2"
+        }
+      ]
+    },
+    "ILineStatics": {
+      "guid": "a425bf93-f1f3-5dcb-997e-b6a26f7ae8c0",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Line",
+      "methods": [
+        {
+          "name": "get_X1Property",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Y1Property",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_X2Property",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Y2Property",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "X1Property",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_X1Property"
+        },
+        {
+          "name": "X2Property",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_X2Property"
+        },
+        {
+          "name": "Y1Property",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_Y1Property"
+        },
+        {
+          "name": "Y2Property",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_Y2Property"
+        }
+      ]
+    },
+    "IPath": {
+      "guid": "757d1cd8-0ec0-55c5-b400-66657e493e78",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Path",
+      "methods": [
+        {
+          "name": "get_Data",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Geometry",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Data",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Geometry",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Data",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Geometry",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_Data",
+          "setter": "put_Data"
+        }
+      ]
+    },
+    "IPathFactory": {
+      "guid": "5e82e4c9-7502-5b1f-b940-c3346a71362a",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Path",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Path",
+            "namespace": "Microsoft.UI.Xaml.Shapes",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IPathStatics": {
+      "guid": "2146d36f-721c-5b54-af7d-60f3adc4fbca",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Path",
+      "methods": [
+        {
+          "name": "get_DataProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DataProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_DataProperty"
+        }
+      ]
+    },
+    "IPolygon": {
+      "guid": "fa126347-d1d4-54dd-b1a4-c35019397944",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Polygon",
+      "methods": [
+        {
+          "name": "get_FillRule",
+          "return": {
+            "kind": "ApiRef",
+            "name": "FillRule",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_FillRule",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FillRule",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Points",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PointCollection",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Points",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PointCollection",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "FillRule",
+          "type": {
+            "kind": "ApiRef",
+            "name": "FillRule",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_FillRule",
+          "setter": "put_FillRule"
+        },
+        {
+          "name": "Points",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PointCollection",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_Points",
+          "setter": "put_Points"
+        }
+      ]
+    },
+    "IPolygonStatics": {
+      "guid": "85ddbada-9e37-5971-a9aa-dce31f9cf67a",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Polygon",
+      "methods": [
+        {
+          "name": "get_FillRuleProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_PointsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FillRuleProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_FillRuleProperty"
+        },
+        {
+          "name": "PointsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_PointsProperty"
+        }
+      ]
+    },
+    "IPolyline": {
+      "guid": "c7f0bec6-184c-5d96-8102-04dd211e100c",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Polyline",
+      "methods": [
+        {
+          "name": "get_FillRule",
+          "return": {
+            "kind": "ApiRef",
+            "name": "FillRule",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_FillRule",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FillRule",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Points",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PointCollection",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Points",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PointCollection",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "FillRule",
+          "type": {
+            "kind": "ApiRef",
+            "name": "FillRule",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_FillRule",
+          "setter": "put_FillRule"
+        },
+        {
+          "name": "Points",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PointCollection",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_Points",
+          "setter": "put_Points"
+        }
+      ]
+    },
+    "IPolylineStatics": {
+      "guid": "48840fe7-d735-5080-9c6d-2862665cdda0",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Polyline",
+      "methods": [
+        {
+          "name": "get_FillRuleProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_PointsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FillRuleProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_FillRuleProperty"
+        },
+        {
+          "name": "PointsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_PointsProperty"
+        }
+      ]
+    },
+    "IRectangle": {
+      "guid": "bf7d30b9-152c-556e-9f10-d0b7eba4e52f",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Rectangle",
+      "methods": [
+        {
+          "name": "get_RadiusX",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_RadiusX",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RadiusY",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_RadiusY",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "RadiusX",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_RadiusX",
+          "setter": "put_RadiusX"
+        },
+        {
+          "name": "RadiusY",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_RadiusY",
+          "setter": "put_RadiusY"
+        }
+      ]
+    },
+    "IRectangleStatics": {
+      "guid": "3cc3cc79-c332-5ad0-8743-1f1b1e670a86",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Rectangle",
+      "methods": [
+        {
+          "name": "get_RadiusXProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RadiusYProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "RadiusXProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_RadiusXProperty"
+        },
+        {
+          "name": "RadiusYProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_RadiusYProperty"
+        }
+      ]
+    },
+    "IShape": {
+      "guid": "9941aad3-6af2-5ba2-9085-8506d5f2485e",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Shape",
+      "methods": [
+        {
+          "name": "get_Fill",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Brush",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Fill",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Brush",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Stroke",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Brush",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Stroke",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Brush",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeMiterLimit",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_StrokeMiterLimit",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeThickness",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_StrokeThickness",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeStartLineCap",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PenLineCap",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_StrokeStartLineCap",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PenLineCap",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeEndLineCap",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PenLineCap",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_StrokeEndLineCap",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PenLineCap",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeLineJoin",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PenLineJoin",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_StrokeLineJoin",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PenLineJoin",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeDashOffset",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "put_StrokeDashOffset",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeDashCap",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PenLineCap",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_StrokeDashCap",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PenLineCap",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_StrokeDashArray",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DoubleCollection",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_StrokeDashArray",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DoubleCollection",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Stretch",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Stretch",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Stretch",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Stretch",
+                "namespace": "Microsoft.UI.Xaml.Media",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_GeometryTransform",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Transform",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAlphaMask",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CompositionBrush",
+            "namespace": "Microsoft.UI.Composition",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Fill",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Brush",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_Fill",
+          "setter": "put_Fill"
+        },
+        {
+          "name": "GeometryTransform",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Transform",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_GeometryTransform"
+        },
+        {
+          "name": "Stretch",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Stretch",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Stretch",
+          "setter": "put_Stretch"
+        },
+        {
+          "name": "Stroke",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Brush",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_Stroke",
+          "setter": "put_Stroke"
+        },
+        {
+          "name": "StrokeDashArray",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DoubleCollection",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeDashArray",
+          "setter": "put_StrokeDashArray"
+        },
+        {
+          "name": "StrokeDashCap",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PenLineCap",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_StrokeDashCap",
+          "setter": "put_StrokeDashCap"
+        },
+        {
+          "name": "StrokeDashOffset",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_StrokeDashOffset",
+          "setter": "put_StrokeDashOffset"
+        },
+        {
+          "name": "StrokeEndLineCap",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PenLineCap",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_StrokeEndLineCap",
+          "setter": "put_StrokeEndLineCap"
+        },
+        {
+          "name": "StrokeLineJoin",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PenLineJoin",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_StrokeLineJoin",
+          "setter": "put_StrokeLineJoin"
+        },
+        {
+          "name": "StrokeMiterLimit",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_StrokeMiterLimit",
+          "setter": "put_StrokeMiterLimit"
+        },
+        {
+          "name": "StrokeStartLineCap",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PenLineCap",
+            "namespace": "Microsoft.UI.Xaml.Media",
+            "target_kind": "Enum"
+          },
+          "getter": "get_StrokeStartLineCap",
+          "setter": "put_StrokeStartLineCap"
+        },
+        {
+          "name": "StrokeThickness",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_StrokeThickness",
+          "setter": "put_StrokeThickness"
+        }
+      ]
+    },
+    "IShapeFactory": {
+      "guid": "4fecafaf-8265-5252-ba5c-f43639f974a5",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Shape",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Shape",
+            "namespace": "Microsoft.UI.Xaml.Shapes",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IShapeStatics": {
+      "guid": "ea407c43-8a09-587a-958a-4dd17d217ce1",
+      "exclusive_to": "Microsoft.UI.Xaml.Shapes.Shape",
+      "methods": [
+        {
+          "name": "get_FillProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeMiterLimitProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeThicknessProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeStartLineCapProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeEndLineCapProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeLineJoinProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeDashOffsetProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeDashCapProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StrokeDashArrayProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StretchProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FillProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_FillProperty"
+        },
+        {
+          "name": "StretchProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StretchProperty"
+        },
+        {
+          "name": "StrokeDashArrayProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeDashArrayProperty"
+        },
+        {
+          "name": "StrokeDashCapProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeDashCapProperty"
+        },
+        {
+          "name": "StrokeDashOffsetProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeDashOffsetProperty"
+        },
+        {
+          "name": "StrokeEndLineCapProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeEndLineCapProperty"
+        },
+        {
+          "name": "StrokeLineJoinProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeLineJoinProperty"
+        },
+        {
+          "name": "StrokeMiterLimitProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeMiterLimitProperty"
+        },
+        {
+          "name": "StrokeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeProperty"
+        },
+        {
+          "name": "StrokeStartLineCapProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeStartLineCapProperty"
+        },
+        {
+          "name": "StrokeThicknessProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_StrokeThicknessProperty"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "Ellipse": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IEllipse",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IEllipse",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "composable": true
+    },
+    "Line": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ILine",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ILine",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Shapes.ILineStatics"
+      ],
+      "composable": true
+    },
+    "Path": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IPath",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IPath",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Shapes.IPathStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Shapes.IPathFactory"
+      ],
+      "composable": true
+    },
+    "Polygon": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IPolygon",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IPolygon",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Shapes.IPolygonStatics"
+      ],
+      "composable": true
+    },
+    "Polyline": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IPolyline",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IPolyline",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Shapes.IPolylineStatics"
+      ],
+      "composable": true
+    },
+    "Rectangle": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IRectangle",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IRectangle",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Shapes.IRectangleStatics"
+      ],
+      "composable": true
+    },
+    "Shape": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IShape",
+        "namespace": "Microsoft.UI.Xaml.Shapes",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IShape",
+          "namespace": "Microsoft.UI.Xaml.Shapes",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Shapes.IShapeStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Shapes.IShapeFactory"
+      ],
+      "composable": true
+    }
+  }
+}

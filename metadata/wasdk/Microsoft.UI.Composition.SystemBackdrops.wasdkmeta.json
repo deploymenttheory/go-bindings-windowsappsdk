@@ -1,0 +1,1004 @@
+{
+  "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "enums": {
+    "DesktopAcrylicKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "Base",
+          "value": "1"
+        },
+        {
+          "name": "Thin",
+          "value": "2"
+        }
+      ]
+    },
+    "MicaKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Base",
+          "value": "0"
+        },
+        {
+          "name": "BaseAlt",
+          "value": "1"
+        }
+      ]
+    },
+    "SystemBackdropState": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Active",
+          "value": "0"
+        },
+        {
+          "name": "Fallback",
+          "value": "1"
+        },
+        {
+          "name": "HighContrast",
+          "value": "2"
+        }
+      ]
+    },
+    "SystemBackdropTheme": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "Light",
+          "value": "1"
+        },
+        {
+          "name": "Dark",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IDesktopAcrylicController": {
+      "guid": "7c20a6af-8eb3-5f08-bdfc-6d35e35dfe45",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController",
+      "methods": [
+        {
+          "name": "get_FallbackColor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_FallbackColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LuminosityOpacity",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_LuminosityOpacity",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_TintColor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_TintColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_TintOpacity",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_TintOpacity",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "FallbackColor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_FallbackColor",
+          "setter": "put_FallbackColor"
+        },
+        {
+          "name": "LuminosityOpacity",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_LuminosityOpacity",
+          "setter": "put_LuminosityOpacity"
+        },
+        {
+          "name": "TintColor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_TintColor",
+          "setter": "put_TintColor"
+        },
+        {
+          "name": "TintOpacity",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_TintOpacity",
+          "setter": "put_TintOpacity"
+        }
+      ]
+    },
+    "IDesktopAcrylicController2": {
+      "guid": "88e0a368-dfc7-5971-a50b-40df5aa5f5c2",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController",
+      "methods": [
+        {
+          "name": "ResetProperties"
+        }
+      ]
+    },
+    "IDesktopAcrylicController3": {
+      "guid": "30d917e6-02d3-59ca-b440-bf9d2e7cc140",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController",
+      "methods": [
+        {
+          "name": "get_Kind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopAcrylicKind",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Kind",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DesktopAcrylicKind",
+                "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Kind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DesktopAcrylicKind",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Kind",
+          "setter": "put_Kind"
+        }
+      ]
+    },
+    "IDesktopAcrylicControllerStatics": {
+      "guid": "a9e8f790-79ef-5416-9b67-6bcfe867c8b7",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController",
+      "methods": [
+        {
+          "name": "IsSupported",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ]
+    },
+    "IMicaController": {
+      "guid": "2de996a9-0a2a-5889-a89c-1f84060a8cab",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.MicaController",
+      "methods": [
+        {
+          "name": "get_FallbackColor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_FallbackColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LuminosityOpacity",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_LuminosityOpacity",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_TintColor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_TintColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_TintOpacity",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_TintOpacity",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "FallbackColor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_FallbackColor",
+          "setter": "put_FallbackColor"
+        },
+        {
+          "name": "LuminosityOpacity",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_LuminosityOpacity",
+          "setter": "put_LuminosityOpacity"
+        },
+        {
+          "name": "TintColor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Color",
+            "namespace": "Windows.UI",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_TintColor",
+          "setter": "put_TintColor"
+        },
+        {
+          "name": "TintOpacity",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_TintOpacity",
+          "setter": "put_TintOpacity"
+        }
+      ]
+    },
+    "IMicaController2": {
+      "guid": "f1ed4a52-d9ca-506e-9586-caaefd3aa971",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.MicaController",
+      "methods": [
+        {
+          "name": "get_Kind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "MicaKind",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Kind",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "MicaKind",
+                "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ResetProperties"
+        }
+      ],
+      "properties": [
+        {
+          "name": "Kind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "MicaKind",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Kind",
+          "setter": "put_Kind"
+        }
+      ]
+    },
+    "IMicaControllerStatics": {
+      "guid": "7d85d834-d514-5250-b7c4-0b7850d1efdc",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.MicaController",
+      "methods": [
+        {
+          "name": "IsSupported",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ]
+    },
+    "ISystemBackdropConfiguration": {
+      "guid": "ebcce1b9-0e0c-5431-ab0e-00f3f0669962",
+      "exclusive_to": "Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration",
+      "methods": [
+        {
+          "name": "get_HighContrastBackgroundColor",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_HighContrastBackgroundColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IReference`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "Color",
+                    "namespace": "Windows.UI",
+                    "target_kind": "Struct",
+                    "external": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsHighContrast",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsHighContrast",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsInputActive",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsInputActive",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Theme",
+          "return": {
+            "kind": "ApiRef",
+            "name": "SystemBackdropTheme",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Theme",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "SystemBackdropTheme",
+                "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "HighContrastBackgroundColor",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "Color",
+                "namespace": "Windows.UI",
+                "target_kind": "Struct",
+                "external": true
+              }
+            ]
+          },
+          "getter": "get_HighContrastBackgroundColor",
+          "setter": "put_HighContrastBackgroundColor"
+        },
+        {
+          "name": "IsHighContrast",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsHighContrast",
+          "setter": "put_IsHighContrast"
+        },
+        {
+          "name": "IsInputActive",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsInputActive",
+          "setter": "put_IsInputActive"
+        },
+        {
+          "name": "Theme",
+          "type": {
+            "kind": "ApiRef",
+            "name": "SystemBackdropTheme",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Theme",
+          "setter": "put_Theme"
+        }
+      ]
+    },
+    "ISystemBackdropController": {
+      "guid": "5632d76c-0b74-5b52-aa33-80262068aeb2",
+      "requires": [
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "methods": [
+        {
+          "name": "SetTarget",
+          "overload": "SetTargetWithWindowId",
+          "is_default_overload": true,
+          "params": [
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "desktopWindowTarget",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CompositionTarget",
+                "namespace": "Windows.UI.Composition",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "SetTarget",
+          "overload": "SetTargetWithCoreWindow",
+          "params": [
+            {
+              "name": "coreWindow",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CoreWindow",
+                "namespace": "Windows.UI.Core",
+                "target_kind": "Class",
+                "external": true
+              }
+            },
+            {
+              "name": "compositionTarget",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CompositionTarget",
+                "namespace": "Windows.UI.Composition",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ]
+    },
+    "ISystemBackdropControllerWithTargets": {
+      "guid": "9c56fe7c-98eb-5f89-ad97-dad57fc30c8c",
+      "requires": [
+        {
+          "kind": "ApiRef",
+          "name": "ISystemBackdropController",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "methods": [
+        {
+          "name": "get_State",
+          "return": {
+            "kind": "ApiRef",
+            "name": "SystemBackdropState",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "AddSystemBackdropTarget",
+          "params": [
+            {
+              "name": "systemBackdropTarget",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ICompositionSupportsSystemBackdrop",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Interface"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "RemoveAllSystemBackdropTargets"
+        },
+        {
+          "name": "RemoveSystemBackdropTarget",
+          "params": [
+            {
+              "name": "systemBackdropTarget",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ICompositionSupportsSystemBackdrop",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Interface"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "SetSystemBackdropConfiguration",
+          "params": [
+            {
+              "name": "configuration",
+              "type": {
+                "kind": "ApiRef",
+                "name": "SystemBackdropConfiguration",
+                "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_StateChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ISystemBackdropControllerWithTargets",
+                    "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+                    "target_kind": "Interface"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_StateChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "State",
+          "type": {
+            "kind": "ApiRef",
+            "name": "SystemBackdropState",
+            "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+            "target_kind": "Enum"
+          },
+          "getter": "get_State"
+        }
+      ],
+      "events": [
+        {
+          "name": "StateChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ISystemBackdropControllerWithTargets",
+                "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+                "target_kind": "Interface"
+              },
+              {
+                "kind": "Native",
+                "name": "Object"
+              }
+            ]
+          },
+          "add_method": "add_StateChanged",
+          "remove_method": "remove_StateChanged"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "DesktopAcrylicController": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopAcrylicController",
+        "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopAcrylicController",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopAcrylicController2",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopAcrylicController3",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ISystemBackdropController",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ISystemBackdropControllerWithTargets",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Composition.SystemBackdrops.IDesktopAcrylicControllerStatics"
+      ]
+    },
+    "MicaController": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IMicaController",
+        "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IMicaController",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IMicaController2",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ISystemBackdropController",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ISystemBackdropControllerWithTargets",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "static_interfaces": [
+        "Microsoft.UI.Composition.SystemBackdrops.IMicaControllerStatics"
+      ]
+    },
+    "SystemBackdropConfiguration": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ISystemBackdropConfiguration",
+        "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ISystemBackdropConfiguration",
+          "namespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true
+    }
+  }
+}

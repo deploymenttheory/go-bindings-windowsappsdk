@@ -1,0 +1,1398 @@
+{
+  "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+  "schema_version": 1,
+  "winmd_version": "2.0.5",
+  "winmd_file": "Microsoft.Windows.Widgets.winmd",
+  "interfaces": {
+    "ICustomQueryParametersRequestedArgs": {
+      "guid": "dc2b0cd8-7936-5346-9371-b21484c7d859",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.CustomQueryParametersRequestedArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "ICustomQueryParametersUpdateOptions": {
+      "guid": "753f1177-4909-568a-b070-98a3139205ec",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.CustomQueryParametersUpdateOptions",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_CustomQueryParameters",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CustomQueryParameters",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CustomQueryParameters"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "ICustomQueryParametersUpdateOptionsFactory": {
+      "guid": "34e318cd-3884-53c0-911c-225f32228fae",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.CustomQueryParametersUpdateOptions",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "feedProviderDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "customQueryParameters",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CustomQueryParametersUpdateOptions",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IFeedAnalyticsInfoReportedArgs": {
+      "guid": "3c0e3d65-ed47-5b8a-b650-39a7edf18942",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedAnalyticsInfoReportedArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AnalyticsJson",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AnalyticsJson",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AnalyticsJson"
+        },
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedAnnouncementInvokedTarget": {
+      "guid": "5d44ae2a-072c-4df9-9fe5-34d5d2e9ff63",
+      "methods": [
+        {
+          "name": "OnAnnouncementInvoked",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedAnnouncementInvokedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Notifications",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedDisabledArgs": {
+      "guid": "95300612-aca7-53c0-9cf6-d803689132c1",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedDisabledArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedEnabledArgs": {
+      "guid": "eff4b2d7-7347-5969-a77d-cac433f0fdae",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedEnabledArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedErrorInfoReportedArgs": {
+      "guid": "62de018c-161e-52d0-9dbe-aec106fb6600",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedErrorInfoReportedArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ErrorJson",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ErrorJson",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ErrorJson"
+        },
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedManager": {
+      "guid": "87df6a84-15aa-45cb-8911-5cafab57f723",
+      "methods": [
+        {
+          "name": "GetEnabledFeedProviders",
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "FeedProviderInfo",
+              "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+              "target_kind": "Class"
+            }
+          }
+        },
+        {
+          "name": "SetCustomQueryParameters",
+          "params": [
+            {
+              "name": "options",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CustomQueryParametersUpdateOptions",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedManager2": {
+      "guid": "5838300a-a069-455d-9943-ba078ada00d8",
+      "methods": [
+        {
+          "name": "SendMessageToContent",
+          "params": [
+            {
+              "name": "feedProviderDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "feedDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "message",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "TryShowAnnouncement",
+          "params": [
+            {
+              "name": "feedProviderDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "feedDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "announcement",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedAnnouncement",
+                "namespace": "Microsoft.Windows.Widgets.Notifications",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedManager3": {
+      "guid": "a6af915b-0cdc-46f1-a4d6-10d8c644984a",
+      "methods": [
+        {
+          "name": "TryRemoveAnnouncementById",
+          "params": [
+            {
+              "name": "feedProviderDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "feedDefinitionId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "announcementId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedManagerStatics": {
+      "guid": "4baf5174-77d6-5e2a-94ea-4f14ccdb1f2c",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedManager",
+      "methods": [
+        {
+          "name": "GetDefault",
+          "return": {
+            "kind": "ApiRef",
+            "name": "FeedManager",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IFeedMessageReceivedArgs": {
+      "guid": "4ed6ecf9-4c74-5a0b-ae04-bef6dd776f8a",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedMessageReceivedArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Message",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        },
+        {
+          "name": "Message",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Message"
+        }
+      ]
+    },
+    "IFeedProvider": {
+      "guid": "7293a12b-0329-458d-ac25-5332be478fde",
+      "methods": [
+        {
+          "name": "OnFeedProviderEnabled",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedProviderEnabledArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OnFeedProviderDisabled",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedProviderDisabledArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OnFeedEnabled",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedEnabledArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OnFeedDisabled",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedDisabledArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OnCustomQueryParametersRequested",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CustomQueryParametersRequestedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedProviderAnalytics": {
+      "guid": "f6885791-3085-4bd7-9cb1-4f1354c3a687",
+      "methods": [
+        {
+          "name": "OnAnalyticsInfoReported",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedAnalyticsInfoReportedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedProviderDisabledArgs": {
+      "guid": "19b65aec-e01d-5e8c-ab5f-324212e7cd30",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedProviderDisabledArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedProviderEnabledArgs": {
+      "guid": "821fc9af-0de6-5a9b-9ae6-e179117b40e4",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedProviderEnabledArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedProviderErrors": {
+      "guid": "6611e00a-d86c-49a3-9381-b7da67ee62dc",
+      "methods": [
+        {
+          "name": "OnErrorInfoReported",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedErrorInfoReportedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedProviderInfo": {
+      "guid": "73c37049-3c03-5896-8532-f9dfdaeb723f",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedProviderInfo",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_EnabledFeedDefinitionIds",
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "Native",
+              "name": "HString"
+            }
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "EnabledFeedDefinitionIds",
+          "type": {
+            "kind": "Array",
+            "elem": {
+              "kind": "Native",
+              "name": "HString"
+            }
+          },
+          "getter": "get_EnabledFeedDefinitionIds"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    },
+    "IFeedProviderMessage": {
+      "guid": "60c2442a-4c9d-4880-ba26-caca9e567dd4",
+      "methods": [
+        {
+          "name": "OnMessageReceived",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedMessageReceivedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedResourceProvider": {
+      "guid": "e1b6266d-88a0-416c-9440-e341cb047cd3",
+      "methods": [
+        {
+          "name": "OnResourceRequested",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedResourceRequestedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IFeedResourceRequest": {
+      "guid": "e62e479c-e21f-5863-b4c9-df1be2227981",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceRequest",
+      "methods": [
+        {
+          "name": "get_Uri",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Method",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Method",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Content",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Content",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IRandomAccessStreamReference",
+                "namespace": "Windows.Storage.Streams",
+                "target_kind": "Interface",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Headers",
+          "return": {
+            "kind": "ApiRef",
+            "name": "StringMap",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Headers",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "StringMap",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Content",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          },
+          "getter": "get_Content",
+          "setter": "put_Content"
+        },
+        {
+          "name": "Headers",
+          "type": {
+            "kind": "ApiRef",
+            "name": "StringMap",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_Headers",
+          "setter": "put_Headers"
+        },
+        {
+          "name": "Method",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Method",
+          "setter": "put_Method"
+        },
+        {
+          "name": "Uri",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Uri"
+        }
+      ]
+    },
+    "IFeedResourceRequestedArgs": {
+      "guid": "360eb709-0bc9-52c1-9c70-3c7d413173d8",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceRequestedArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Request",
+          "return": {
+            "kind": "ApiRef",
+            "name": "FeedResourceRequest",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Response",
+          "return": {
+            "kind": "ApiRef",
+            "name": "FeedResourceResponse",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Response",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "FeedResourceResponse",
+                "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetDeferral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Deferral",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        },
+        {
+          "name": "Request",
+          "type": {
+            "kind": "ApiRef",
+            "name": "FeedResourceRequest",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_Request"
+        },
+        {
+          "name": "Response",
+          "type": {
+            "kind": "ApiRef",
+            "name": "FeedResourceResponse",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_Response",
+          "setter": "put_Response"
+        }
+      ]
+    },
+    "IFeedResourceResponse": {
+      "guid": "f831824e-7aef-53fc-b7ee-32ade675a3ad",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceResponse",
+      "methods": [
+        {
+          "name": "get_Content",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Headers",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "GenericInst",
+                "name": "IKeyValuePair`2",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "HString"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "HString"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_Headers",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IIterable`1",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "GenericInst",
+                    "name": "IKeyValuePair`2",
+                    "namespace": "Windows.Foundation.Collections",
+                    "target_kind": "Interface",
+                    "external": true,
+                    "args": [
+                      {
+                        "kind": "Native",
+                        "name": "HString"
+                      },
+                      {
+                        "kind": "Native",
+                        "name": "HString"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ReasonPhrase",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_StatusCode",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Content",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          },
+          "getter": "get_Content"
+        },
+        {
+          "name": "Headers",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "GenericInst",
+                "name": "IKeyValuePair`2",
+                "namespace": "Windows.Foundation.Collections",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "HString"
+                  },
+                  {
+                    "kind": "Native",
+                    "name": "HString"
+                  }
+                ]
+              }
+            ]
+          },
+          "getter": "get_Headers",
+          "setter": "put_Headers"
+        },
+        {
+          "name": "ReasonPhrase",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ReasonPhrase"
+        },
+        {
+          "name": "StatusCode",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_StatusCode"
+        }
+      ]
+    },
+    "IFeedResourceResponseFactory": {
+      "guid": "db01690d-2547-5d7a-b625-d1629f443c5c",
+      "exclusive_to": "Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceResponse",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "content",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IRandomAccessStreamReference",
+                "namespace": "Windows.Storage.Streams",
+                "target_kind": "Interface",
+                "external": true
+              }
+            },
+            {
+              "name": "reasonPhrase",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "statusCode",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "FeedResourceResponse",
+            "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "CustomQueryParametersRequestedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICustomQueryParametersRequestedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICustomQueryParametersRequestedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "CustomQueryParametersUpdateOptions": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICustomQueryParametersUpdateOptions",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICustomQueryParametersUpdateOptions",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.Widgets.Feeds.Providers.ICustomQueryParametersUpdateOptionsFactory"
+      ]
+    },
+    "FeedAnalyticsInfoReportedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedAnalyticsInfoReportedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedAnalyticsInfoReportedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedDisabledArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedDisabledArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedDisabledArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedEnabledArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedEnabledArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedEnabledArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedErrorInfoReportedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedErrorInfoReportedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedErrorInfoReportedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedManager",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedManager",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IFeedManager2",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IFeedManager3",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.Widgets.Feeds.Providers.IFeedManagerStatics"
+      ]
+    },
+    "FeedMessageReceivedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedMessageReceivedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedMessageReceivedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedProviderDisabledArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedProviderDisabledArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedProviderDisabledArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedProviderEnabledArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedProviderEnabledArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedProviderEnabledArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedProviderInfo": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedProviderInfo",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedProviderInfo",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedResourceRequest": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedResourceRequest",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedResourceRequest",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedResourceRequestedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedResourceRequestedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedResourceRequestedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "FeedResourceResponse": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedResourceResponse",
+        "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedResourceResponse",
+          "namespace": "Microsoft.Windows.Widgets.Feeds.Providers",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.Widgets.Feeds.Providers.IFeedResourceResponseFactory"
+      ]
+    }
+  }
+}

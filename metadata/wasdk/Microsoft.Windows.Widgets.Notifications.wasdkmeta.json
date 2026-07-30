@@ -1,0 +1,615 @@
+{
+  "namespace": "Microsoft.Windows.Widgets.Notifications",
+  "schema_version": 1,
+  "winmd_version": "2.0.5",
+  "winmd_file": "Microsoft.Windows.Widgets.winmd",
+  "enums": {
+    "AnnouncementActionKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Shown",
+          "value": "0"
+        },
+        {
+          "name": "Engaged",
+          "value": "1"
+        }
+      ]
+    },
+    "AnnouncementTextColor": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "Dark",
+          "value": "1"
+        },
+        {
+          "name": "Light",
+          "value": "2"
+        },
+        {
+          "name": "Accent",
+          "value": "3"
+        },
+        {
+          "name": "Good",
+          "value": "4"
+        },
+        {
+          "name": "Warning",
+          "value": "5"
+        },
+        {
+          "name": "Attention",
+          "value": "6"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IFeedAnnouncement": {
+      "guid": "b88e8c2c-d251-5344-acc2-8cf9ba07ec15",
+      "exclusive_to": "Microsoft.Windows.Widgets.Notifications.FeedAnnouncement",
+      "methods": [
+        {
+          "name": "get_Id",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Id",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PrimaryText",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_PrimaryText",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SecondaryText",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_SecondaryText",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LightModeIconUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_LightModeIconUri",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_DarkModeIconUri",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        },
+        {
+          "name": "put_DarkModeIconUri",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_PrimaryTextColor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AnnouncementTextColor",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_PrimaryTextColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AnnouncementTextColor",
+                "namespace": "Microsoft.Windows.Widgets.Notifications",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SecondaryTextColor",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AnnouncementTextColor",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_SecondaryTextColor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AnnouncementTextColor",
+                "namespace": "Microsoft.Windows.Widgets.Notifications",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CustomAccessibilityText",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_CustomAccessibilityText",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsSecondaryTextSubtle",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsSecondaryTextSubtle",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ShowBadgeIfUserNotEngaged",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ShowBadgeIfUserNotEngaged",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ExpirationTime",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DateTime",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_ExpirationTime",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DateTime",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Duration",
+          "return": {
+            "kind": "ApiRef",
+            "name": "TimeSpan",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Duration",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "TimeSpan",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "CustomAccessibilityText",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CustomAccessibilityText",
+          "setter": "put_CustomAccessibilityText"
+        },
+        {
+          "name": "DarkModeIconUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_DarkModeIconUri",
+          "setter": "put_DarkModeIconUri"
+        },
+        {
+          "name": "Duration",
+          "type": {
+            "kind": "ApiRef",
+            "name": "TimeSpan",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_Duration",
+          "setter": "put_Duration"
+        },
+        {
+          "name": "ExpirationTime",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DateTime",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ExpirationTime",
+          "setter": "put_ExpirationTime"
+        },
+        {
+          "name": "Id",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Id",
+          "setter": "put_Id"
+        },
+        {
+          "name": "IsSecondaryTextSubtle",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSecondaryTextSubtle",
+          "setter": "put_IsSecondaryTextSubtle"
+        },
+        {
+          "name": "LightModeIconUri",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Uri",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          },
+          "getter": "get_LightModeIconUri",
+          "setter": "put_LightModeIconUri"
+        },
+        {
+          "name": "PrimaryText",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_PrimaryText",
+          "setter": "put_PrimaryText"
+        },
+        {
+          "name": "PrimaryTextColor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AnnouncementTextColor",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Enum"
+          },
+          "getter": "get_PrimaryTextColor",
+          "setter": "put_PrimaryTextColor"
+        },
+        {
+          "name": "SecondaryText",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_SecondaryText",
+          "setter": "put_SecondaryText"
+        },
+        {
+          "name": "SecondaryTextColor",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AnnouncementTextColor",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Enum"
+          },
+          "getter": "get_SecondaryTextColor",
+          "setter": "put_SecondaryTextColor"
+        },
+        {
+          "name": "ShowBadgeIfUserNotEngaged",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ShowBadgeIfUserNotEngaged",
+          "setter": "put_ShowBadgeIfUserNotEngaged"
+        }
+      ]
+    },
+    "IFeedAnnouncementFactory": {
+      "guid": "22074243-46d8-5af2-8715-1c76d1cb774c",
+      "exclusive_to": "Microsoft.Windows.Widgets.Notifications.FeedAnnouncement",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "id",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "primaryText",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "secondaryText",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "lightModeIcon",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            },
+            {
+              "name": "darkModeIcon",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Uri",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "FeedAnnouncement",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IFeedAnnouncementInvokedArgs": {
+      "guid": "70a48d98-323d-5f19-a1e1-b63fe36edbf2",
+      "exclusive_to": "Microsoft.Windows.Widgets.Notifications.FeedAnnouncementInvokedArgs",
+      "methods": [
+        {
+          "name": "get_FeedProviderDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_FeedDefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_AnnouncementId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_ActionKind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AnnouncementActionKind",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Enum"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ActionKind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AnnouncementActionKind",
+            "namespace": "Microsoft.Windows.Widgets.Notifications",
+            "target_kind": "Enum"
+          },
+          "getter": "get_ActionKind"
+        },
+        {
+          "name": "AnnouncementId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AnnouncementId"
+        },
+        {
+          "name": "FeedDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedDefinitionId"
+        },
+        {
+          "name": "FeedProviderDefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_FeedProviderDefinitionId"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "FeedAnnouncement": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedAnnouncement",
+        "namespace": "Microsoft.Windows.Widgets.Notifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedAnnouncement",
+          "namespace": "Microsoft.Windows.Widgets.Notifications",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.Widgets.Notifications.IFeedAnnouncementFactory"
+      ]
+    },
+    "FeedAnnouncementInvokedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IFeedAnnouncementInvokedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Notifications",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IFeedAnnouncementInvokedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Notifications",
+          "target_kind": "Interface"
+        }
+      ]
+    }
+  }
+}

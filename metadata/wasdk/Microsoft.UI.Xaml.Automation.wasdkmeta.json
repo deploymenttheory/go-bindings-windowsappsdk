@@ -1,0 +1,5308 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Automation",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "enums": {
+    "AnnotationType": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Unknown",
+          "value": "60000"
+        },
+        {
+          "name": "SpellingError",
+          "value": "60001"
+        },
+        {
+          "name": "GrammarError",
+          "value": "60002"
+        },
+        {
+          "name": "Comment",
+          "value": "60003"
+        },
+        {
+          "name": "FormulaError",
+          "value": "60004"
+        },
+        {
+          "name": "TrackChanges",
+          "value": "60005"
+        },
+        {
+          "name": "Header",
+          "value": "60006"
+        },
+        {
+          "name": "Footer",
+          "value": "60007"
+        },
+        {
+          "name": "Highlighted",
+          "value": "60008"
+        },
+        {
+          "name": "Endnote",
+          "value": "60009"
+        },
+        {
+          "name": "Footnote",
+          "value": "60010"
+        },
+        {
+          "name": "InsertionChange",
+          "value": "60011"
+        },
+        {
+          "name": "DeletionChange",
+          "value": "60012"
+        },
+        {
+          "name": "MoveChange",
+          "value": "60013"
+        },
+        {
+          "name": "FormatChange",
+          "value": "60014"
+        },
+        {
+          "name": "UnsyncedChange",
+          "value": "60015"
+        },
+        {
+          "name": "EditingLockedChange",
+          "value": "60016"
+        },
+        {
+          "name": "ExternalChange",
+          "value": "60017"
+        },
+        {
+          "name": "ConflictingChange",
+          "value": "60018"
+        },
+        {
+          "name": "Author",
+          "value": "60019"
+        },
+        {
+          "name": "AdvancedProofingIssue",
+          "value": "60020"
+        },
+        {
+          "name": "DataValidationError",
+          "value": "60021"
+        },
+        {
+          "name": "CircularReferenceError",
+          "value": "60022"
+        }
+      ]
+    },
+    "AutomationActiveEnd": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "Start",
+          "value": "1"
+        },
+        {
+          "name": "End",
+          "value": "2"
+        }
+      ]
+    },
+    "AutomationAnimationStyle": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "LasVegasLights",
+          "value": "1"
+        },
+        {
+          "name": "BlinkingBackground",
+          "value": "2"
+        },
+        {
+          "name": "SparkleText",
+          "value": "3"
+        },
+        {
+          "name": "MarchingBlackAnts",
+          "value": "4"
+        },
+        {
+          "name": "MarchingRedAnts",
+          "value": "5"
+        },
+        {
+          "name": "Shimmer",
+          "value": "6"
+        },
+        {
+          "name": "Other",
+          "value": "7"
+        }
+      ]
+    },
+    "AutomationBulletStyle": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "HollowRoundBullet",
+          "value": "1"
+        },
+        {
+          "name": "FilledRoundBullet",
+          "value": "2"
+        },
+        {
+          "name": "HollowSquareBullet",
+          "value": "3"
+        },
+        {
+          "name": "FilledSquareBullet",
+          "value": "4"
+        },
+        {
+          "name": "DashBullet",
+          "value": "5"
+        },
+        {
+          "name": "Other",
+          "value": "6"
+        }
+      ]
+    },
+    "AutomationCaretBidiMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "LTR",
+          "value": "0"
+        },
+        {
+          "name": "RTL",
+          "value": "1"
+        }
+      ]
+    },
+    "AutomationCaretPosition": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Unknown",
+          "value": "0"
+        },
+        {
+          "name": "EndOfLine",
+          "value": "1"
+        },
+        {
+          "name": "BeginningOfLine",
+          "value": "2"
+        }
+      ]
+    },
+    "AutomationFlowDirections": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Default",
+          "value": "0"
+        },
+        {
+          "name": "RightToLeft",
+          "value": "1"
+        },
+        {
+          "name": "BottomToTop",
+          "value": "2"
+        },
+        {
+          "name": "Vertical",
+          "value": "3"
+        }
+      ]
+    },
+    "AutomationOutlineStyles": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "Outline",
+          "value": "1"
+        },
+        {
+          "name": "Shadow",
+          "value": "2"
+        },
+        {
+          "name": "Engraved",
+          "value": "3"
+        },
+        {
+          "name": "Embossed",
+          "value": "4"
+        }
+      ]
+    },
+    "AutomationStyleId": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Heading1",
+          "value": "70001"
+        },
+        {
+          "name": "Heading2",
+          "value": "70002"
+        },
+        {
+          "name": "Heading3",
+          "value": "70003"
+        },
+        {
+          "name": "Heading4",
+          "value": "70004"
+        },
+        {
+          "name": "Heading5",
+          "value": "70005"
+        },
+        {
+          "name": "Heading6",
+          "value": "70006"
+        },
+        {
+          "name": "Heading7",
+          "value": "70007"
+        },
+        {
+          "name": "Heading8",
+          "value": "70008"
+        },
+        {
+          "name": "Heading9",
+          "value": "70009"
+        },
+        {
+          "name": "Title",
+          "value": "70010"
+        },
+        {
+          "name": "Subtitle",
+          "value": "70011"
+        },
+        {
+          "name": "Normal",
+          "value": "70012"
+        },
+        {
+          "name": "Emphasis",
+          "value": "70013"
+        },
+        {
+          "name": "Quote",
+          "value": "70014"
+        },
+        {
+          "name": "BulletedList",
+          "value": "70015"
+        }
+      ]
+    },
+    "AutomationTextDecorationLineStyle": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "Single",
+          "value": "1"
+        },
+        {
+          "name": "WordsOnly",
+          "value": "2"
+        },
+        {
+          "name": "Double",
+          "value": "3"
+        },
+        {
+          "name": "Dot",
+          "value": "4"
+        },
+        {
+          "name": "Dash",
+          "value": "5"
+        },
+        {
+          "name": "DashDot",
+          "value": "6"
+        },
+        {
+          "name": "DashDotDot",
+          "value": "7"
+        },
+        {
+          "name": "Wavy",
+          "value": "8"
+        },
+        {
+          "name": "ThickSingle",
+          "value": "9"
+        },
+        {
+          "name": "DoubleWavy",
+          "value": "10"
+        },
+        {
+          "name": "ThickWavy",
+          "value": "11"
+        },
+        {
+          "name": "LongDash",
+          "value": "12"
+        },
+        {
+          "name": "ThickDash",
+          "value": "13"
+        },
+        {
+          "name": "ThickDashDot",
+          "value": "14"
+        },
+        {
+          "name": "ThickDashDotDot",
+          "value": "15"
+        },
+        {
+          "name": "ThickDot",
+          "value": "16"
+        },
+        {
+          "name": "ThickLongDash",
+          "value": "17"
+        },
+        {
+          "name": "Other",
+          "value": "18"
+        }
+      ]
+    },
+    "AutomationTextEditChangeType": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "AutoCorrect",
+          "value": "1"
+        },
+        {
+          "name": "Composition",
+          "value": "2"
+        },
+        {
+          "name": "CompositionFinalized",
+          "value": "3"
+        }
+      ]
+    },
+    "DockPosition": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Top",
+          "value": "0"
+        },
+        {
+          "name": "Left",
+          "value": "1"
+        },
+        {
+          "name": "Bottom",
+          "value": "2"
+        },
+        {
+          "name": "Right",
+          "value": "3"
+        },
+        {
+          "name": "Fill",
+          "value": "4"
+        },
+        {
+          "name": "None",
+          "value": "5"
+        }
+      ]
+    },
+    "ExpandCollapseState": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Collapsed",
+          "value": "0"
+        },
+        {
+          "name": "Expanded",
+          "value": "1"
+        },
+        {
+          "name": "PartiallyExpanded",
+          "value": "2"
+        },
+        {
+          "name": "LeafNode",
+          "value": "3"
+        }
+      ]
+    },
+    "RowOrColumnMajor": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "RowMajor",
+          "value": "0"
+        },
+        {
+          "name": "ColumnMajor",
+          "value": "1"
+        },
+        {
+          "name": "Indeterminate",
+          "value": "2"
+        }
+      ]
+    },
+    "ScrollAmount": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "LargeDecrement",
+          "value": "0"
+        },
+        {
+          "name": "SmallDecrement",
+          "value": "1"
+        },
+        {
+          "name": "NoAmount",
+          "value": "2"
+        },
+        {
+          "name": "LargeIncrement",
+          "value": "3"
+        },
+        {
+          "name": "SmallIncrement",
+          "value": "4"
+        }
+      ]
+    },
+    "SupportedTextSelection": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "Single",
+          "value": "1"
+        },
+        {
+          "name": "Multiple",
+          "value": "2"
+        }
+      ]
+    },
+    "SynchronizedInputType": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "KeyUp",
+          "value": "1"
+        },
+        {
+          "name": "KeyDown",
+          "value": "2"
+        },
+        {
+          "name": "LeftMouseUp",
+          "value": "4"
+        },
+        {
+          "name": "LeftMouseDown",
+          "value": "8"
+        },
+        {
+          "name": "RightMouseUp",
+          "value": "16"
+        },
+        {
+          "name": "RightMouseDown",
+          "value": "32"
+        }
+      ]
+    },
+    "ToggleState": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Off",
+          "value": "0"
+        },
+        {
+          "name": "On",
+          "value": "1"
+        },
+        {
+          "name": "Indeterminate",
+          "value": "2"
+        }
+      ]
+    },
+    "WindowInteractionState": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Running",
+          "value": "0"
+        },
+        {
+          "name": "Closing",
+          "value": "1"
+        },
+        {
+          "name": "ReadyForUserInteraction",
+          "value": "2"
+        },
+        {
+          "name": "BlockedByModalWindow",
+          "value": "3"
+        },
+        {
+          "name": "NotResponding",
+          "value": "4"
+        }
+      ]
+    },
+    "WindowVisualState": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Normal",
+          "value": "0"
+        },
+        {
+          "name": "Maximized",
+          "value": "1"
+        },
+        {
+          "name": "Minimized",
+          "value": "2"
+        }
+      ]
+    },
+    "ZoomUnit": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "NoAmount",
+          "value": "0"
+        },
+        {
+          "name": "LargeDecrement",
+          "value": "1"
+        },
+        {
+          "name": "SmallDecrement",
+          "value": "2"
+        },
+        {
+          "name": "LargeIncrement",
+          "value": "3"
+        },
+        {
+          "name": "SmallIncrement",
+          "value": "4"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IAnnotationPatternIdentifiers": {
+      "guid": "92d76915-0cd3-59cd-8ae0-c9004628ba1e",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AnnotationPatternIdentifiers"
+    },
+    "IAnnotationPatternIdentifiersStatics": {
+      "guid": "20a136e2-4a47-5de5-9e1e-ecfc6d92f52a",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AnnotationPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_AnnotationTypeIdProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_AnnotationTypeNameProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_AuthorProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_DateTimeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_TargetProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AnnotationTypeIdProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AnnotationTypeIdProperty"
+        },
+        {
+          "name": "AnnotationTypeNameProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AnnotationTypeNameProperty"
+        },
+        {
+          "name": "AuthorProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AuthorProperty"
+        },
+        {
+          "name": "DateTimeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DateTimeProperty"
+        },
+        {
+          "name": "TargetProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_TargetProperty"
+        }
+      ]
+    },
+    "IAutomationAnnotation": {
+      "guid": "c2cc46ad-1414-5f1b-808a-89e5d53d82fe",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationAnnotation",
+      "methods": [
+        {
+          "name": "get_Type",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AnnotationType",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_Type",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AnnotationType",
+                "namespace": "Microsoft.UI.Xaml.Automation",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Element",
+          "return": {
+            "kind": "ApiRef",
+            "name": "UIElement",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Element",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Element",
+          "type": {
+            "kind": "ApiRef",
+            "name": "UIElement",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_Element",
+          "setter": "put_Element"
+        },
+        {
+          "name": "Type",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AnnotationType",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Type",
+          "setter": "put_Type"
+        }
+      ]
+    },
+    "IAutomationAnnotationFactory": {
+      "guid": "95f82773-eac5-572e-87de-24d9514b9a89",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationAnnotation",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "type",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AnnotationType",
+                "namespace": "Microsoft.UI.Xaml.Automation",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationAnnotation",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateWithElementParameter",
+          "params": [
+            {
+              "name": "type",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AnnotationType",
+                "namespace": "Microsoft.UI.Xaml.Automation",
+                "target_kind": "Enum"
+              }
+            },
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationAnnotation",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IAutomationAnnotationStatics": {
+      "guid": "c5abdc1e-fc26-5444-a8b3-59b2c0a95578",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationAnnotation",
+      "methods": [
+        {
+          "name": "get_TypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ElementProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ElementProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ElementProperty"
+        },
+        {
+          "name": "TypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_TypeProperty"
+        }
+      ]
+    },
+    "IAutomationElementIdentifiers": {
+      "guid": "2fb51a33-b0cf-5a4c-9ed3-267eca7aeefc",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationElementIdentifiers"
+    },
+    "IAutomationElementIdentifiersStatics": {
+      "guid": "72af6b8c-3e12-5e7a-a2ec-26dc193f9df9",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationElementIdentifiers",
+      "methods": [
+        {
+          "name": "get_AcceleratorKeyProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_AccessKeyProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_AutomationIdProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_BoundingRectangleProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ClassNameProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ClickablePointProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ControlTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_HasKeyboardFocusProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_HelpTextProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsContentElementProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsControlElementProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsEnabledProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsKeyboardFocusableProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsOffscreenProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsPasswordProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsRequiredForFormProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ItemStatusProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ItemTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LabeledByProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LocalizedControlTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_NameProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_OrientationProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LiveSettingProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ControlledPeersProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_PositionInSetProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_SizeOfSetProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LevelProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_AnnotationsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LandmarkTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LocalizedLandmarkTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsPeripheralProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsDataValidForFormProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_FullDescriptionProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_DescribedByProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_FlowsToProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_FlowsFromProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_CultureProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_HeadingLevelProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsDialogProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AcceleratorKeyProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AcceleratorKeyProperty"
+        },
+        {
+          "name": "AccessKeyProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AccessKeyProperty"
+        },
+        {
+          "name": "AnnotationsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AnnotationsProperty"
+        },
+        {
+          "name": "AutomationIdProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_AutomationIdProperty"
+        },
+        {
+          "name": "BoundingRectangleProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_BoundingRectangleProperty"
+        },
+        {
+          "name": "ClassNameProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ClassNameProperty"
+        },
+        {
+          "name": "ClickablePointProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ClickablePointProperty"
+        },
+        {
+          "name": "ControlTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ControlTypeProperty"
+        },
+        {
+          "name": "ControlledPeersProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ControlledPeersProperty"
+        },
+        {
+          "name": "CultureProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CultureProperty"
+        },
+        {
+          "name": "DescribedByProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DescribedByProperty"
+        },
+        {
+          "name": "FlowsFromProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FlowsFromProperty"
+        },
+        {
+          "name": "FlowsToProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FlowsToProperty"
+        },
+        {
+          "name": "FullDescriptionProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FullDescriptionProperty"
+        },
+        {
+          "name": "HasKeyboardFocusProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_HasKeyboardFocusProperty"
+        },
+        {
+          "name": "HeadingLevelProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_HeadingLevelProperty"
+        },
+        {
+          "name": "HelpTextProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_HelpTextProperty"
+        },
+        {
+          "name": "IsContentElementProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsContentElementProperty"
+        },
+        {
+          "name": "IsControlElementProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsControlElementProperty"
+        },
+        {
+          "name": "IsDataValidForFormProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsDataValidForFormProperty"
+        },
+        {
+          "name": "IsDialogProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsDialogProperty"
+        },
+        {
+          "name": "IsEnabledProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsEnabledProperty"
+        },
+        {
+          "name": "IsKeyboardFocusableProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsKeyboardFocusableProperty"
+        },
+        {
+          "name": "IsOffscreenProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsOffscreenProperty"
+        },
+        {
+          "name": "IsPasswordProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsPasswordProperty"
+        },
+        {
+          "name": "IsPeripheralProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsPeripheralProperty"
+        },
+        {
+          "name": "IsRequiredForFormProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsRequiredForFormProperty"
+        },
+        {
+          "name": "ItemStatusProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ItemStatusProperty"
+        },
+        {
+          "name": "ItemTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ItemTypeProperty"
+        },
+        {
+          "name": "LabeledByProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LabeledByProperty"
+        },
+        {
+          "name": "LandmarkTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LandmarkTypeProperty"
+        },
+        {
+          "name": "LevelProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LevelProperty"
+        },
+        {
+          "name": "LiveSettingProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LiveSettingProperty"
+        },
+        {
+          "name": "LocalizedControlTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LocalizedControlTypeProperty"
+        },
+        {
+          "name": "LocalizedLandmarkTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LocalizedLandmarkTypeProperty"
+        },
+        {
+          "name": "NameProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_NameProperty"
+        },
+        {
+          "name": "OrientationProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_OrientationProperty"
+        },
+        {
+          "name": "PositionInSetProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_PositionInSetProperty"
+        },
+        {
+          "name": "SizeOfSetProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_SizeOfSetProperty"
+        }
+      ]
+    },
+    "IAutomationProperties": {
+      "guid": "525c6a71-dd8a-52a0-977b-db1b02f8e896",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationProperties"
+    },
+    "IAutomationPropertiesStatics": {
+      "guid": "b1e3e0f3-112f-5966-87dc-7862d4ad50e5",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationProperties",
+      "methods": [
+        {
+          "name": "get_AcceleratorKeyProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAcceleratorKey",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetAcceleratorKey",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AccessKeyProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAccessKey",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetAccessKey",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AutomationIdProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAutomationId",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetAutomationId",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_HelpTextProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetHelpText",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetHelpText",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsRequiredForFormProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetIsRequiredForForm",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "SetIsRequiredForForm",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ItemStatusProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetItemStatus",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetItemStatus",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ItemTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetItemType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetItemType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LabeledByProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetLabeledBy",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "UIElement",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "SetLabeledBy",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_NameProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetName",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetName",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LiveSettingProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetLiveSetting",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationLiveSetting",
+            "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "SetLiveSetting",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AutomationLiveSetting",
+                "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AccessibilityViewProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAccessibilityView",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AccessibilityView",
+            "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "SetAccessibilityView",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AccessibilityView",
+                "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ControlledPeersProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetControlledPeers",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_PositionInSetProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetPositionInSet",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "SetPositionInSet",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SizeOfSetProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetSizeOfSet",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "SetSizeOfSet",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LevelProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetLevel",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "SetLevel",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AnnotationsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAnnotations",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AutomationAnnotation",
+                "namespace": "Microsoft.UI.Xaml.Automation",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_LandmarkTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetLandmarkType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationLandmarkType",
+            "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "SetLandmarkType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AutomationLandmarkType",
+                "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LocalizedLandmarkTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetLocalizedLandmarkType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetLocalizedLandmarkType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsPeripheralProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetIsPeripheral",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "SetIsPeripheral",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsDataValidForFormProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetIsDataValidForForm",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "SetIsDataValidForForm",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_FullDescriptionProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetFullDescription",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetFullDescription",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LocalizedControlTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetLocalizedControlType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "SetLocalizedControlType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_DescribedByProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetDescribedBy",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_FlowsToProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetFlowsTo",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_FlowsFromProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetFlowsFrom",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_CultureProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetCulture",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "SetCulture",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_HeadingLevelProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetHeadingLevel",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationHeadingLevel",
+            "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "SetHeadingLevel",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AutomationHeadingLevel",
+                "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsDialogProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetIsDialog",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "SetIsDialog",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DependencyObject",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AcceleratorKeyProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_AcceleratorKeyProperty"
+        },
+        {
+          "name": "AccessKeyProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_AccessKeyProperty"
+        },
+        {
+          "name": "AccessibilityViewProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_AccessibilityViewProperty"
+        },
+        {
+          "name": "AnnotationsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_AnnotationsProperty"
+        },
+        {
+          "name": "AutomationIdProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_AutomationIdProperty"
+        },
+        {
+          "name": "ControlledPeersProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ControlledPeersProperty"
+        },
+        {
+          "name": "CultureProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_CultureProperty"
+        },
+        {
+          "name": "DescribedByProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_DescribedByProperty"
+        },
+        {
+          "name": "FlowsFromProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_FlowsFromProperty"
+        },
+        {
+          "name": "FlowsToProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_FlowsToProperty"
+        },
+        {
+          "name": "FullDescriptionProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_FullDescriptionProperty"
+        },
+        {
+          "name": "HeadingLevelProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_HeadingLevelProperty"
+        },
+        {
+          "name": "HelpTextProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_HelpTextProperty"
+        },
+        {
+          "name": "IsDataValidForFormProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsDataValidForFormProperty"
+        },
+        {
+          "name": "IsDialogProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsDialogProperty"
+        },
+        {
+          "name": "IsPeripheralProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsPeripheralProperty"
+        },
+        {
+          "name": "IsRequiredForFormProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsRequiredForFormProperty"
+        },
+        {
+          "name": "ItemStatusProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ItemStatusProperty"
+        },
+        {
+          "name": "ItemTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_ItemTypeProperty"
+        },
+        {
+          "name": "LabeledByProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_LabeledByProperty"
+        },
+        {
+          "name": "LandmarkTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_LandmarkTypeProperty"
+        },
+        {
+          "name": "LevelProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_LevelProperty"
+        },
+        {
+          "name": "LiveSettingProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_LiveSettingProperty"
+        },
+        {
+          "name": "LocalizedControlTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_LocalizedControlTypeProperty"
+        },
+        {
+          "name": "LocalizedLandmarkTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_LocalizedLandmarkTypeProperty"
+        },
+        {
+          "name": "NameProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_NameProperty"
+        },
+        {
+          "name": "PositionInSetProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_PositionInSetProperty"
+        },
+        {
+          "name": "SizeOfSetProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_SizeOfSetProperty"
+        }
+      ]
+    },
+    "IAutomationPropertiesStatics2": {
+      "guid": "d933a3ed-e90a-5df0-853d-cad17a0b9ec8",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationProperties",
+      "methods": [
+        {
+          "name": "get_AutomationControlTypeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetAutomationControlType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationControlType",
+            "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "SetAutomationControlType",
+          "params": [
+            {
+              "name": "element",
+              "type": {
+                "kind": "ApiRef",
+                "name": "UIElement",
+                "namespace": "Microsoft.UI.Xaml",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AutomationControlType",
+                "namespace": "Microsoft.UI.Xaml.Automation.Peers",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AutomationControlTypeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DependencyProperty",
+            "namespace": "Microsoft.UI.Xaml",
+            "target_kind": "Class"
+          },
+          "getter": "get_AutomationControlTypeProperty"
+        }
+      ]
+    },
+    "IAutomationProperty": {
+      "guid": "5ca6b2c8-ff86-5a41-aa18-6948fae592cf",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.AutomationProperty"
+    },
+    "IDockPatternIdentifiers": {
+      "guid": "75574f99-d145-547e-972b-7d879f93c03e",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.DockPatternIdentifiers"
+    },
+    "IDockPatternIdentifiersStatics": {
+      "guid": "02d5a72c-f49d-53a9-b9fb-af2719d16ccf",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.DockPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_DockPositionProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DockPositionProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DockPositionProperty"
+        }
+      ]
+    },
+    "IDragPatternIdentifiers": {
+      "guid": "aa2fdfd5-fb45-5d2b-8d92-a8e7b07061c2",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.DragPatternIdentifiers"
+    },
+    "IDragPatternIdentifiersStatics": {
+      "guid": "482eee70-0bfc-5552-9e7d-8dffc526b2f7",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.DragPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_DropEffectProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_DropEffectsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_GrabbedItemsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsGrabbedProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DropEffectProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DropEffectProperty"
+        },
+        {
+          "name": "DropEffectsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DropEffectsProperty"
+        },
+        {
+          "name": "GrabbedItemsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_GrabbedItemsProperty"
+        },
+        {
+          "name": "IsGrabbedProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsGrabbedProperty"
+        }
+      ]
+    },
+    "IDropTargetPatternIdentifiers": {
+      "guid": "133e8ff3-1ddd-5cbb-b908-1484d7c04da7",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.DropTargetPatternIdentifiers"
+    },
+    "IDropTargetPatternIdentifiersStatics": {
+      "guid": "6da6f0bd-b942-5283-be35-501ae87f88c7",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.DropTargetPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_DropTargetEffectProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_DropTargetEffectsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DropTargetEffectProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DropTargetEffectProperty"
+        },
+        {
+          "name": "DropTargetEffectsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_DropTargetEffectsProperty"
+        }
+      ]
+    },
+    "IExpandCollapsePatternIdentifiers": {
+      "guid": "cec15d9f-8630-569a-86a0-524bbea618ff",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.ExpandCollapsePatternIdentifiers"
+    },
+    "IExpandCollapsePatternIdentifiersStatics": {
+      "guid": "283101f4-c40c-55bf-a23b-d62b73b6aa35",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.ExpandCollapsePatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ExpandCollapseStateProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ExpandCollapseStateProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ExpandCollapseStateProperty"
+        }
+      ]
+    },
+    "IGridItemPatternIdentifiers": {
+      "guid": "93609087-1114-557d-b17b-f801e41cebbb",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.GridItemPatternIdentifiers"
+    },
+    "IGridItemPatternIdentifiersStatics": {
+      "guid": "8072bc18-87d0-5a02-a0a1-f9aec968c0e7",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.GridItemPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ColumnProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ColumnSpanProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ContainingGridProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RowProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RowSpanProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ColumnProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ColumnProperty"
+        },
+        {
+          "name": "ColumnSpanProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ColumnSpanProperty"
+        },
+        {
+          "name": "ContainingGridProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ContainingGridProperty"
+        },
+        {
+          "name": "RowProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_RowProperty"
+        },
+        {
+          "name": "RowSpanProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_RowSpanProperty"
+        }
+      ]
+    },
+    "IGridPatternIdentifiers": {
+      "guid": "e5e1e250-c37c-54a2-8c61-1d9ccd3bb39c",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.GridPatternIdentifiers"
+    },
+    "IGridPatternIdentifiersStatics": {
+      "guid": "e861604c-101f-5a6d-a308-3714f510f744",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.GridPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ColumnCountProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RowCountProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ColumnCountProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ColumnCountProperty"
+        },
+        {
+          "name": "RowCountProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_RowCountProperty"
+        }
+      ]
+    },
+    "IMultipleViewPatternIdentifiers": {
+      "guid": "70e4c847-2b82-5ecf-b808-e9d453c1fe53",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.MultipleViewPatternIdentifiers"
+    },
+    "IMultipleViewPatternIdentifiersStatics": {
+      "guid": "ac71daef-d094-5c90-94af-1fa474ab45fe",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.MultipleViewPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_CurrentViewProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_SupportedViewsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CurrentViewProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CurrentViewProperty"
+        },
+        {
+          "name": "SupportedViewsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_SupportedViewsProperty"
+        }
+      ]
+    },
+    "IRangeValuePatternIdentifiers": {
+      "guid": "c114db37-6a75-5ef1-a542-d3b13f92cbfe",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.RangeValuePatternIdentifiers"
+    },
+    "IRangeValuePatternIdentifiersStatics": {
+      "guid": "0aaa9ad7-f9b8-52a1-bc96-2a97fe389ed0",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.RangeValuePatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_IsReadOnlyProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LargeChangeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_MaximumProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_MinimumProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_SmallChangeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ValueProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsReadOnlyProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsReadOnlyProperty"
+        },
+        {
+          "name": "LargeChangeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_LargeChangeProperty"
+        },
+        {
+          "name": "MaximumProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_MaximumProperty"
+        },
+        {
+          "name": "MinimumProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_MinimumProperty"
+        },
+        {
+          "name": "SmallChangeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_SmallChangeProperty"
+        },
+        {
+          "name": "ValueProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ValueProperty"
+        }
+      ]
+    },
+    "IScrollPatternIdentifiers": {
+      "guid": "04f1a4b8-edc7-55f2-96df-a9c7e809372e",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.ScrollPatternIdentifiers"
+    },
+    "IScrollPatternIdentifiersStatics": {
+      "guid": "0f94f2f0-e0d2-5a24-b415-8d1506ce47aa",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.ScrollPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_HorizontallyScrollableProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_HorizontalScrollPercentProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_HorizontalViewSizeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_NoScroll",
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "get_VerticallyScrollableProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_VerticalScrollPercentProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_VerticalViewSizeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "HorizontalScrollPercentProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_HorizontalScrollPercentProperty"
+        },
+        {
+          "name": "HorizontalViewSizeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_HorizontalViewSizeProperty"
+        },
+        {
+          "name": "HorizontallyScrollableProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_HorizontallyScrollableProperty"
+        },
+        {
+          "name": "NoScroll",
+          "type": {
+            "kind": "Native",
+            "name": "F64"
+          },
+          "getter": "get_NoScroll"
+        },
+        {
+          "name": "VerticalScrollPercentProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_VerticalScrollPercentProperty"
+        },
+        {
+          "name": "VerticalViewSizeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_VerticalViewSizeProperty"
+        },
+        {
+          "name": "VerticallyScrollableProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_VerticallyScrollableProperty"
+        }
+      ]
+    },
+    "ISelectionItemPatternIdentifiers": {
+      "guid": "ce3a549d-a2cb-594d-a2a4-44778c09cca5",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.SelectionItemPatternIdentifiers"
+    },
+    "ISelectionItemPatternIdentifiersStatics": {
+      "guid": "2b8ead7c-4e03-5b84-9e34-8b7384cbd862",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.SelectionItemPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_IsSelectedProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_SelectionContainerProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsSelectedProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsSelectedProperty"
+        },
+        {
+          "name": "SelectionContainerProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_SelectionContainerProperty"
+        }
+      ]
+    },
+    "ISelectionPatternIdentifiers": {
+      "guid": "401743d2-1fba-5d05-b89f-631676453237",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.SelectionPatternIdentifiers"
+    },
+    "ISelectionPatternIdentifiersStatics": {
+      "guid": "f3ed111b-b20a-5e5e-a232-07f607fd5c07",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.SelectionPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_CanSelectMultipleProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsSelectionRequiredProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_SelectionProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CanSelectMultipleProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanSelectMultipleProperty"
+        },
+        {
+          "name": "IsSelectionRequiredProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsSelectionRequiredProperty"
+        },
+        {
+          "name": "SelectionProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_SelectionProperty"
+        }
+      ]
+    },
+    "ISpreadsheetItemPatternIdentifiers": {
+      "guid": "dca2ec46-8564-5c9c-ba90-2c08455f697b",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.SpreadsheetItemPatternIdentifiers"
+    },
+    "ISpreadsheetItemPatternIdentifiersStatics": {
+      "guid": "7eb10f80-8d3a-59ad-a2b9-05d8cecf18db",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.SpreadsheetItemPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_FormulaProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "FormulaProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FormulaProperty"
+        }
+      ]
+    },
+    "IStylesPatternIdentifiers": {
+      "guid": "13aeca5e-b496-5df5-aea5-330e1f0490eb",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.StylesPatternIdentifiers"
+    },
+    "IStylesPatternIdentifiersStatics": {
+      "guid": "b232287a-bc4c-581e-a33c-3d6aee10d04b",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.StylesPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ExtendedPropertiesProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_FillColorProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_FillPatternColorProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_FillPatternStyleProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ShapeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StyleIdProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_StyleNameProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ExtendedPropertiesProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ExtendedPropertiesProperty"
+        },
+        {
+          "name": "FillColorProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FillColorProperty"
+        },
+        {
+          "name": "FillPatternColorProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FillPatternColorProperty"
+        },
+        {
+          "name": "FillPatternStyleProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_FillPatternStyleProperty"
+        },
+        {
+          "name": "ShapeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ShapeProperty"
+        },
+        {
+          "name": "StyleIdProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_StyleIdProperty"
+        },
+        {
+          "name": "StyleNameProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_StyleNameProperty"
+        }
+      ]
+    },
+    "ITableItemPatternIdentifiers": {
+      "guid": "b4de5d03-a5b4-5ca1-8715-16c8c6a10fcc",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TableItemPatternIdentifiers"
+    },
+    "ITableItemPatternIdentifiersStatics": {
+      "guid": "81d24bd7-66fb-53ef-9b32-d00f9c240a14",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TableItemPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ColumnHeaderItemsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RowHeaderItemsProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ColumnHeaderItemsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ColumnHeaderItemsProperty"
+        },
+        {
+          "name": "RowHeaderItemsProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_RowHeaderItemsProperty"
+        }
+      ]
+    },
+    "ITablePatternIdentifiers": {
+      "guid": "3d7f9c0b-ff8f-50fa-bc01-2cc3c2e06e2c",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TablePatternIdentifiers"
+    },
+    "ITablePatternIdentifiersStatics": {
+      "guid": "3660935e-bcbb-5848-8e9a-264854f7a19a",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TablePatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ColumnHeadersProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RowHeadersProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_RowOrColumnMajorProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ColumnHeadersProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ColumnHeadersProperty"
+        },
+        {
+          "name": "RowHeadersProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_RowHeadersProperty"
+        },
+        {
+          "name": "RowOrColumnMajorProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_RowOrColumnMajorProperty"
+        }
+      ]
+    },
+    "ITogglePatternIdentifiers": {
+      "guid": "a0d2df4c-ba59-51d9-9c01-034d7941c280",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TogglePatternIdentifiers"
+    },
+    "ITogglePatternIdentifiersStatics": {
+      "guid": "862920b5-dcb3-5691-a456-c2f15c476dfb",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TogglePatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_ToggleStateProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ToggleStateProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ToggleStateProperty"
+        }
+      ]
+    },
+    "ITransformPattern2Identifiers": {
+      "guid": "6ef7595c-db8c-51b0-878b-34b7ef12f4da",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TransformPattern2Identifiers"
+    },
+    "ITransformPattern2IdentifiersStatics": {
+      "guid": "d9876ff5-89ed-5333-8111-ad25a28bee8b",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TransformPattern2Identifiers",
+      "methods": [
+        {
+          "name": "get_CanZoomProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ZoomLevelProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_MaxZoomProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_MinZoomProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CanZoomProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanZoomProperty"
+        },
+        {
+          "name": "MaxZoomProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_MaxZoomProperty"
+        },
+        {
+          "name": "MinZoomProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_MinZoomProperty"
+        },
+        {
+          "name": "ZoomLevelProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ZoomLevelProperty"
+        }
+      ]
+    },
+    "ITransformPatternIdentifiers": {
+      "guid": "2348187b-c50f-5a0e-bc05-305ac71b3b6b",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TransformPatternIdentifiers"
+    },
+    "ITransformPatternIdentifiersStatics": {
+      "guid": "cb7d84e4-5429-5188-8aa0-5f96558a8790",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.TransformPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_CanMoveProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_CanResizeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_CanRotateProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CanMoveProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanMoveProperty"
+        },
+        {
+          "name": "CanResizeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanResizeProperty"
+        },
+        {
+          "name": "CanRotateProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanRotateProperty"
+        }
+      ]
+    },
+    "IValuePatternIdentifiers": {
+      "guid": "fb493395-fb97-59d5-9323-4651ce964b55",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.ValuePatternIdentifiers"
+    },
+    "IValuePatternIdentifiersStatics": {
+      "guid": "2019faf5-ce64-59a7-bc13-0677c3146724",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.ValuePatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_IsReadOnlyProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ValueProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsReadOnlyProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsReadOnlyProperty"
+        },
+        {
+          "name": "ValueProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_ValueProperty"
+        }
+      ]
+    },
+    "IWindowPatternIdentifiers": {
+      "guid": "bec579e1-91be-5d8f-aaca-6ad8839872d2",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.WindowPatternIdentifiers"
+    },
+    "IWindowPatternIdentifiersStatics": {
+      "guid": "06762744-d3d7-5441-b879-373681d47f64",
+      "exclusive_to": "Microsoft.UI.Xaml.Automation.WindowPatternIdentifiers",
+      "methods": [
+        {
+          "name": "get_CanMaximizeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_CanMinimizeProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsModalProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsTopmostProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_WindowInteractionStateProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_WindowVisualStateProperty",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CanMaximizeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanMaximizeProperty"
+        },
+        {
+          "name": "CanMinimizeProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_CanMinimizeProperty"
+        },
+        {
+          "name": "IsModalProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsModalProperty"
+        },
+        {
+          "name": "IsTopmostProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_IsTopmostProperty"
+        },
+        {
+          "name": "WindowInteractionStateProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_WindowInteractionStateProperty"
+        },
+        {
+          "name": "WindowVisualStateProperty",
+          "type": {
+            "kind": "ApiRef",
+            "name": "AutomationProperty",
+            "namespace": "Microsoft.UI.Xaml.Automation",
+            "target_kind": "Class"
+          },
+          "getter": "get_WindowVisualStateProperty"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "AnnotationPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAnnotationPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAnnotationPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IAnnotationPatternIdentifiersStatics"
+      ]
+    },
+    "AutomationAnnotation": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAutomationAnnotation",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAutomationAnnotation",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_direct": true,
+      "activatable_factories": [
+        "Microsoft.UI.Xaml.Automation.IAutomationAnnotationFactory"
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IAutomationAnnotationStatics"
+      ],
+      "composable": true
+    },
+    "AutomationElementIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAutomationElementIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAutomationElementIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IAutomationElementIdentifiersStatics"
+      ]
+    },
+    "AutomationProperties": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAutomationProperties",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAutomationProperties",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IAutomationPropertiesStatics2",
+        "Microsoft.UI.Xaml.Automation.IAutomationPropertiesStatics"
+      ]
+    },
+    "AutomationProperty": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAutomationProperty",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAutomationProperty",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "DockPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDockPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDockPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IDockPatternIdentifiersStatics"
+      ]
+    },
+    "DragPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDragPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDragPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IDragPatternIdentifiersStatics"
+      ]
+    },
+    "DropTargetPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDropTargetPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDropTargetPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IDropTargetPatternIdentifiersStatics"
+      ]
+    },
+    "ExpandCollapsePatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IExpandCollapsePatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IExpandCollapsePatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IExpandCollapsePatternIdentifiersStatics"
+      ]
+    },
+    "GridItemPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IGridItemPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IGridItemPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IGridItemPatternIdentifiersStatics"
+      ]
+    },
+    "GridPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IGridPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IGridPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IGridPatternIdentifiersStatics"
+      ]
+    },
+    "MultipleViewPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IMultipleViewPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IMultipleViewPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IMultipleViewPatternIdentifiersStatics"
+      ]
+    },
+    "RangeValuePatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IRangeValuePatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IRangeValuePatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IRangeValuePatternIdentifiersStatics"
+      ]
+    },
+    "ScrollPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IScrollPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IScrollPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IScrollPatternIdentifiersStatics"
+      ]
+    },
+    "SelectionItemPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ISelectionItemPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ISelectionItemPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ISelectionItemPatternIdentifiersStatics"
+      ]
+    },
+    "SelectionPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ISelectionPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ISelectionPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ISelectionPatternIdentifiersStatics"
+      ]
+    },
+    "SpreadsheetItemPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ISpreadsheetItemPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ISpreadsheetItemPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ISpreadsheetItemPatternIdentifiersStatics"
+      ]
+    },
+    "StylesPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IStylesPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IStylesPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IStylesPatternIdentifiersStatics"
+      ]
+    },
+    "TableItemPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITableItemPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITableItemPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ITableItemPatternIdentifiersStatics"
+      ]
+    },
+    "TablePatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITablePatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITablePatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ITablePatternIdentifiersStatics"
+      ]
+    },
+    "TogglePatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITogglePatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITogglePatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ITogglePatternIdentifiersStatics"
+      ]
+    },
+    "TransformPattern2Identifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITransformPattern2Identifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITransformPattern2Identifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ITransformPattern2IdentifiersStatics"
+      ]
+    },
+    "TransformPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ITransformPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ITransformPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.ITransformPatternIdentifiersStatics"
+      ]
+    },
+    "ValuePatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IValuePatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IValuePatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IValuePatternIdentifiersStatics"
+      ]
+    },
+    "WindowPatternIdentifiers": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWindowPatternIdentifiers",
+        "namespace": "Microsoft.UI.Xaml.Automation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWindowPatternIdentifiers",
+          "namespace": "Microsoft.UI.Xaml.Automation",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Automation.IWindowPatternIdentifiersStatics"
+      ]
+    }
+  }
+}

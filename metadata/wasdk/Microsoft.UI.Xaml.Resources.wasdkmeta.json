@@ -1,0 +1,159 @@
+{
+  "namespace": "Microsoft.UI.Xaml.Resources",
+  "schema_version": 1,
+  "winmd_version": "2.3.0",
+  "winmd_file": "Microsoft.UI.Xaml.winmd",
+  "interfaces": {
+    "ICustomXamlResourceLoader": {
+      "guid": "2832c2e5-2ace-5993-a173-3c9c3b992b2e",
+      "exclusive_to": "Microsoft.UI.Xaml.Resources.CustomXamlResourceLoader"
+    },
+    "ICustomXamlResourceLoaderFactory": {
+      "guid": "174d49a6-e1e2-5f7b-a618-a8a953d1b5a0",
+      "exclusive_to": "Microsoft.UI.Xaml.Resources.CustomXamlResourceLoader",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "baseInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            },
+            {
+              "name": "innerInterface",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "CustomXamlResourceLoader",
+            "namespace": "Microsoft.UI.Xaml.Resources",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "ICustomXamlResourceLoaderOverrides": {
+      "guid": "84bb504c-6730-586a-bd04-9198264b2dc7",
+      "exclusive_to": "Microsoft.UI.Xaml.Resources.CustomXamlResourceLoader",
+      "methods": [
+        {
+          "name": "GetResource",
+          "params": [
+            {
+              "name": "resourceId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "objectType",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "propertyName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "propertyType",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        }
+      ]
+    },
+    "ICustomXamlResourceLoaderStatics": {
+      "guid": "e08a5a92-b1a2-539a-9d4a-7994e4468cd7",
+      "exclusive_to": "Microsoft.UI.Xaml.Resources.CustomXamlResourceLoader",
+      "methods": [
+        {
+          "name": "get_Current",
+          "return": {
+            "kind": "ApiRef",
+            "name": "CustomXamlResourceLoader",
+            "namespace": "Microsoft.UI.Xaml.Resources",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Current",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "CustomXamlResourceLoader",
+                "namespace": "Microsoft.UI.Xaml.Resources",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Current",
+          "type": {
+            "kind": "ApiRef",
+            "name": "CustomXamlResourceLoader",
+            "namespace": "Microsoft.UI.Xaml.Resources",
+            "target_kind": "Class"
+          },
+          "getter": "get_Current",
+          "setter": "put_Current"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "CustomXamlResourceLoader": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "ICustomXamlResourceLoader",
+        "namespace": "Microsoft.UI.Xaml.Resources",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "ICustomXamlResourceLoader",
+          "namespace": "Microsoft.UI.Xaml.Resources",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ICustomXamlResourceLoaderOverrides",
+          "namespace": "Microsoft.UI.Xaml.Resources",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Xaml.Resources.ICustomXamlResourceLoaderStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Xaml.Resources.ICustomXamlResourceLoaderFactory"
+      ]
+    }
+  }
+}

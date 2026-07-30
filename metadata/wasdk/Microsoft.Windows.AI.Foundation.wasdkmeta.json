@@ -1,0 +1,120 @@
+{
+  "namespace": "Microsoft.Windows.AI.Foundation",
+  "schema_version": 1,
+  "winmd_version": "2.3.4",
+  "winmd_file": "Microsoft.Windows.AI.Foundation.winmd",
+  "structs": {
+    "AIFoundationContract": {}
+  },
+  "interfaces": {
+    "IEmbeddingVector": {
+      "guid": "07bdaa90-b3d2-5701-97d1-c390ec62799c",
+      "exclusive_to": "Microsoft.Windows.AI.Foundation.EmbeddingVector",
+      "methods": [
+        {
+          "name": "GetValues",
+          "params": [
+            {
+              "name": "values",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "Native",
+                  "name": "F32"
+                }
+              },
+              "out": true
+            }
+          ]
+        },
+        {
+          "name": "get_Size",
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "get_VectorSpaceId",
+          "return": {
+            "kind": "Native",
+            "name": "Guid"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Size",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          },
+          "getter": "get_Size"
+        },
+        {
+          "name": "VectorSpaceId",
+          "type": {
+            "kind": "Native",
+            "name": "Guid"
+          },
+          "getter": "get_VectorSpaceId"
+        }
+      ]
+    },
+    "IEmbeddingVectorFactory": {
+      "guid": "16b72758-2b69-5e97-b865-6a6a71683dd0",
+      "exclusive_to": "Microsoft.Windows.AI.Foundation.EmbeddingVector",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "data",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "Native",
+                  "name": "F32"
+                }
+              }
+            },
+            {
+              "name": "vectorSpaceID",
+              "type": {
+                "kind": "Native",
+                "name": "Guid"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EmbeddingVector",
+            "namespace": "Microsoft.Windows.AI.Foundation",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "EmbeddingVector": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IEmbeddingVector",
+        "namespace": "Microsoft.Windows.AI.Foundation",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IEmbeddingVector",
+          "namespace": "Microsoft.Windows.AI.Foundation",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.AI.Foundation.IEmbeddingVectorFactory"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1097 @@
+{
+  "namespace": "Microsoft.Windows.Foundation",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.Foundation.winmd",
+  "structs": {
+    "DecimalContract": {},
+    "DecimalValue": {
+      "fields": [
+        {
+          "name": "Reserved",
+          "type": {
+            "kind": "Native",
+            "name": "U2"
+          }
+        },
+        {
+          "name": "Scale",
+          "type": {
+            "kind": "Native",
+            "name": "U1"
+          }
+        },
+        {
+          "name": "Sign",
+          "type": {
+            "kind": "Native",
+            "name": "U1"
+          }
+        },
+        {
+          "name": "Hi32",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "Lo64",
+          "type": {
+            "kind": "Native",
+            "name": "U8"
+          }
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IDecimalHelperStatics": {
+      "guid": "ba09a415-e26c-55b3-9b76-b3affd556a7f",
+      "exclusive_to": "Microsoft.Windows.Foundation.DecimalHelper",
+      "methods": [
+        {
+          "name": "FromBoolean",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromInt16",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I2"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromInt32",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromInt64",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "I8"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromUInt8",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "U1"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromUInt16",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "U2"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromUInt32",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "U4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromUInt64",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "U8"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromSingle",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromDouble",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F64"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromString",
+          "overload": "FromString",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromStringInvariant",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "FromString",
+          "overload": "FromStringWithLocale",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "localeName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "TryFromString",
+          "overload": "TryFromString",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "TryFromStringInvariant",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "TryFromString",
+          "overload": "TryFromStringWithLocale",
+          "params": [
+            {
+              "name": "source",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "localeName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              },
+              "out": true
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "ToBoolean",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "ToInt16",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I2"
+          }
+        },
+        {
+          "name": "ToInt32",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "ToInt64",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I8"
+          }
+        },
+        {
+          "name": "ToUInt8",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "U1"
+          }
+        },
+        {
+          "name": "ToUInt16",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "U2"
+          }
+        },
+        {
+          "name": "ToUInt32",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "ToUInt64",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "U8"
+          }
+        },
+        {
+          "name": "ToSingle",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "ToDouble",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "F64"
+          }
+        },
+        {
+          "name": "ToString",
+          "overload": "ToString",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "ToStringInvariant",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "ToString",
+          "overload": "ToStringWithLocale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "localeName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "Equals",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "Compare",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "IsValid",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "IsInteger",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "Scale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "U1"
+          }
+        },
+        {
+          "name": "Sign",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        },
+        {
+          "name": "MaxScale",
+          "return": {
+            "kind": "Native",
+            "name": "U1"
+          }
+        },
+        {
+          "name": "MaxValue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "MinValue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Negate",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Abs",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Truncate",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Floor",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Ceiling",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Round",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "decimalPlaces",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Clamp",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "min",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "max",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Add",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Subtract",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Multiply",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Divide",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Modulo",
+          "params": [
+            {
+              "name": "left",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            },
+            {
+              "name": "right",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DecimalValue",
+                "namespace": "Microsoft.Windows.Foundation",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DecimalValue",
+            "namespace": "Microsoft.Windows.Foundation",
+            "target_kind": "Struct"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "DecimalHelper": {
+      "static_interfaces": [
+        "Microsoft.Windows.Foundation.IDecimalHelperStatics"
+      ]
+    }
+  }
+}

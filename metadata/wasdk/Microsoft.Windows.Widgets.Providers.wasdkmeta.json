@@ -1,0 +1,1675 @@
+{
+  "namespace": "Microsoft.Windows.Widgets.Providers",
+  "schema_version": 1,
+  "winmd_version": "2.0.5",
+  "winmd_file": "Microsoft.Windows.Widgets.winmd",
+  "interfaces": {
+    "IWidgetActionInvokedArgs": {
+      "guid": "c593cc57-04b9-52ca-88ad-46fea21ea340",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetActionInvokedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Verb",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Data",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_CustomState",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CustomState",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CustomState"
+        },
+        {
+          "name": "Data",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Data"
+        },
+        {
+          "name": "Verb",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Verb"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetAnalyticsInfoReportedArgs": {
+      "guid": "1d9e5fb5-2bce-5350-87b1-d63199526639",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetAnalyticsInfoReportedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_AnalyticsJson",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AnalyticsJson",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_AnalyticsJson"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetContext": {
+      "guid": "903c518b-40bc-5bc6-88f7-af9d81c0cdc1",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetContext",
+      "methods": [
+        {
+          "name": "get_Id",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_DefinitionId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Size",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetSize",
+            "namespace": "Microsoft.Windows.Widgets",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_IsActive",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DefinitionId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_DefinitionId"
+        },
+        {
+          "name": "Id",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Id"
+        },
+        {
+          "name": "IsActive",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsActive"
+        },
+        {
+          "name": "Size",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetSize",
+            "namespace": "Microsoft.Windows.Widgets",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Size"
+        }
+      ]
+    },
+    "IWidgetContextChangedArgs": {
+      "guid": "2c226d54-2252-576b-a197-370b28d25c2f",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetContextChangedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetCustomizationRequestedArgs": {
+      "guid": "41dea311-dd9b-5b8b-b493-3a30552116b8",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetCustomizationRequestedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_CustomState",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CustomState",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CustomState"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetErrorInfoReportedArgs": {
+      "guid": "30efa627-b21f-55d5-b91a-b23b4aa13645",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetErrorInfoReportedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_ErrorJson",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ErrorJson",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ErrorJson"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetInfo": {
+      "guid": "cea11f42-a020-5db5-89e2-b7dece4ae5cb",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetInfo",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Template",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Data",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_CustomState",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_LastUpdateTime",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DateTime",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "CustomState",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CustomState"
+        },
+        {
+          "name": "Data",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Data"
+        },
+        {
+          "name": "LastUpdateTime",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DateTime",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LastUpdateTime"
+        },
+        {
+          "name": "Template",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Template"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetInfo2": {
+      "guid": "081b0a6f-d784-5408-bb29-252fef2926d4",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetInfo",
+      "methods": [
+        {
+          "name": "get_IsPlaceholderContent",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsPlaceholderContent",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsPlaceholderContent"
+        }
+      ]
+    },
+    "IWidgetInfo3": {
+      "guid": "965538cd-289d-54ab-916e-9315ebf97ea4",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetInfo",
+      "methods": [
+        {
+          "name": "get_Rank",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Rank",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_Rank"
+        }
+      ]
+    },
+    "IWidgetManager": {
+      "guid": "71cb10c0-671e-48e3-b995-207940397123",
+      "methods": [
+        {
+          "name": "UpdateWidget",
+          "params": [
+            {
+              "name": "widgetUpdateRequestOptions",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetUpdateRequestOptions",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetWidgetIds",
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "Native",
+              "name": "HString"
+            }
+          }
+        },
+        {
+          "name": "GetWidgetInfo",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetInfo",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetWidgetInfos",
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "WidgetInfo",
+              "namespace": "Microsoft.Windows.Widgets.Providers",
+              "target_kind": "Class"
+            }
+          }
+        },
+        {
+          "name": "DeleteWidget",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetManager2": {
+      "guid": "55c65a27-8845-406c-9ee1-1e79f0556bef",
+      "methods": [
+        {
+          "name": "SendMessageToContent",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "message",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetManagerStatics": {
+      "guid": "7f233b06-28e5-5e2b-8c04-a4fa747c28c7",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetManager",
+      "methods": [
+        {
+          "name": "GetDefault",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetManager",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IWidgetMessageReceivedArgs": {
+      "guid": "2261cb2b-c741-5f96-9adb-fb3a7667bcb6",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetMessageReceivedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Message",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Message",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Message"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetProvider": {
+      "guid": "5c5774cc-72a0-452d-b9ed-075c0dd25eed",
+      "methods": [
+        {
+          "name": "CreateWidget",
+          "params": [
+            {
+              "name": "widgetContext",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetContext",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "DeleteWidget",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "customState",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OnActionInvoked",
+          "params": [
+            {
+              "name": "actionInvokedArgs",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetActionInvokedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OnWidgetContextChanged",
+          "params": [
+            {
+              "name": "contextChangedArgs",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetContextChangedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Activate",
+          "params": [
+            {
+              "name": "widgetContext",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetContext",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Deactivate",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetProvider2": {
+      "guid": "38c3a963-dd93-479d-9276-04bf84ee1816",
+      "methods": [
+        {
+          "name": "OnCustomizationRequested",
+          "params": [
+            {
+              "name": "customizationRequestedArgs",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetCustomizationRequestedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetProviderAnalytics": {
+      "guid": "661985a5-d187-482d-9eef-6fda05d21845",
+      "methods": [
+        {
+          "name": "OnAnalyticsInfoReported",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetAnalyticsInfoReportedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetProviderErrors": {
+      "guid": "90c1b5f0-0d3a-4ac6-abb7-c97b367b8fcc",
+      "methods": [
+        {
+          "name": "OnErrorInfoReported",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetErrorInfoReportedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetProviderMessage": {
+      "guid": "ea4dc186-9e24-4b35-a5ef-a9f5df72d6ac",
+      "methods": [
+        {
+          "name": "OnMessageReceived",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetMessageReceivedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetResourceProvider": {
+      "guid": "dcf328c0-012c-40f5-bb28-3a1c714d027d",
+      "methods": [
+        {
+          "name": "OnResourceRequested",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetResourceRequestedArgs",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IWidgetResourceRequest": {
+      "guid": "113d249f-82d9-57cb-8cea-9a5291f2fe22",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetResourceRequest",
+      "methods": [
+        {
+          "name": "get_Uri",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Method",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Method",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Content",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "put_Content",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IRandomAccessStreamReference",
+                "namespace": "Windows.Storage.Streams",
+                "target_kind": "Interface",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Headers",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Content",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          },
+          "getter": "get_Content",
+          "setter": "put_Content"
+        },
+        {
+          "name": "Headers",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_Headers"
+        },
+        {
+          "name": "Method",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Method",
+          "setter": "put_Method"
+        },
+        {
+          "name": "Uri",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Uri"
+        }
+      ]
+    },
+    "IWidgetResourceRequestedArgs": {
+      "guid": "2bb30f4d-0166-58e3-aaf6-31b2ae970bcd",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetResourceRequestedArgs",
+      "methods": [
+        {
+          "name": "get_WidgetContext",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Request",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetResourceRequest",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Response",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetResourceResponse",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "put_Response",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WidgetResourceResponse",
+                "namespace": "Microsoft.Windows.Widgets.Providers",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetDeferral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Deferral",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Class",
+            "external": true
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Request",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetResourceRequest",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_Request"
+        },
+        {
+          "name": "Response",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetResourceResponse",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_Response",
+          "setter": "put_Response"
+        },
+        {
+          "name": "WidgetContext",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WidgetContext",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          },
+          "getter": "get_WidgetContext"
+        }
+      ]
+    },
+    "IWidgetResourceResponse": {
+      "guid": "03a2d32c-2e9e-54a3-b084-1479d5060f80",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetResourceResponse",
+      "methods": [
+        {
+          "name": "get_Content",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Headers",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_ReasonPhrase",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_StatusCode",
+          "return": {
+            "kind": "Native",
+            "name": "I4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Content",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IRandomAccessStreamReference",
+            "namespace": "Windows.Storage.Streams",
+            "target_kind": "Interface",
+            "external": true
+          },
+          "getter": "get_Content"
+        },
+        {
+          "name": "Headers",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IMap`2",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "HString"
+              },
+              {
+                "kind": "Native",
+                "name": "HString"
+              }
+            ]
+          },
+          "getter": "get_Headers"
+        },
+        {
+          "name": "ReasonPhrase",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_ReasonPhrase"
+        },
+        {
+          "name": "StatusCode",
+          "type": {
+            "kind": "Native",
+            "name": "I4"
+          },
+          "getter": "get_StatusCode"
+        }
+      ]
+    },
+    "IWidgetResourceResponseFactory": {
+      "guid": "08881ef1-a78a-5804-b070-9153a8657f85",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetResourceResponse",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "content",
+              "type": {
+                "kind": "ApiRef",
+                "name": "IRandomAccessStreamReference",
+                "namespace": "Windows.Storage.Streams",
+                "target_kind": "Interface",
+                "external": true
+              }
+            },
+            {
+              "name": "reasonPhrase",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "statusCode",
+              "type": {
+                "kind": "Native",
+                "name": "I4"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetResourceResponse",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IWidgetUpdateRequestOptions": {
+      "guid": "b09ca8f7-7424-5687-baaf-7dd6fa639672",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetUpdateRequestOptions",
+      "methods": [
+        {
+          "name": "get_WidgetId",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_Template",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Template",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Data",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_Data",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CustomState",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "put_CustomState",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "CustomState",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_CustomState",
+          "setter": "put_CustomState"
+        },
+        {
+          "name": "Data",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Data",
+          "setter": "put_Data"
+        },
+        {
+          "name": "Template",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Template",
+          "setter": "put_Template"
+        },
+        {
+          "name": "WidgetId",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_WidgetId"
+        }
+      ]
+    },
+    "IWidgetUpdateRequestOptions2": {
+      "guid": "77c4efc4-38f3-57a5-aba1-f83f257b899e",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetUpdateRequestOptions",
+      "methods": [
+        {
+          "name": "get_IsPlaceholderContent",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_IsPlaceholderContent",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IReference`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "Bool"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsPlaceholderContent",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            ]
+          },
+          "getter": "get_IsPlaceholderContent",
+          "setter": "put_IsPlaceholderContent"
+        }
+      ]
+    },
+    "IWidgetUpdateRequestOptions3": {
+      "guid": "a78e2a8b-a26c-596a-ade3-db8f4c72fe02",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetUpdateRequestOptions",
+      "methods": [
+        {
+          "name": "get_Rank",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "I4"
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_Rank",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IReference`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "Native",
+                    "name": "I4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "Rank",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "Native",
+                "name": "I4"
+              }
+            ]
+          },
+          "getter": "get_Rank",
+          "setter": "put_Rank"
+        }
+      ]
+    },
+    "IWidgetUpdateRequestOptionsFactory": {
+      "guid": "e0e00af8-1d10-57a8-9419-3f568e854daa",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetUpdateRequestOptions",
+      "methods": [
+        {
+          "name": "CreateInstance",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "WidgetUpdateRequestOptions",
+            "namespace": "Microsoft.Windows.Widgets.Providers",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IWidgetUpdateRequestOptionsStatics": {
+      "guid": "4645b5e3-d332-5d11-82f0-3607e5df6018",
+      "exclusive_to": "Microsoft.Windows.Widgets.Providers.WidgetUpdateRequestOptions",
+      "methods": [
+        {
+          "name": "get_UnsetValue",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "UnsetValue",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_UnsetValue"
+        }
+      ]
+    }
+  },
+  "classes": {
+    "WidgetActionInvokedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetActionInvokedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetActionInvokedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetAnalyticsInfoReportedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetAnalyticsInfoReportedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetAnalyticsInfoReportedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetContext": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetContext",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetContext",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetContextChangedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetContextChangedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetContextChangedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetCustomizationRequestedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetCustomizationRequestedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetCustomizationRequestedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetErrorInfoReportedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetErrorInfoReportedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetErrorInfoReportedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetInfo": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetInfo",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetInfo",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetInfo2",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetInfo3",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetManager": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetManager",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetManager",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetManager2",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.Widgets.Providers.IWidgetManagerStatics"
+      ]
+    },
+    "WidgetMessageReceivedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetMessageReceivedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetMessageReceivedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetResourceRequest": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetResourceRequest",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetResourceRequest",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetResourceRequestedArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetResourceRequestedArgs",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetResourceRequestedArgs",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "WidgetResourceResponse": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetResourceResponse",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetResourceResponse",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.Widgets.Providers.IWidgetResourceResponseFactory"
+      ]
+    },
+    "WidgetUpdateRequestOptions": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IWidgetUpdateRequestOptions",
+        "namespace": "Microsoft.Windows.Widgets.Providers",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetUpdateRequestOptions",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetUpdateRequestOptions2",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IWidgetUpdateRequestOptions3",
+          "namespace": "Microsoft.Windows.Widgets.Providers",
+          "target_kind": "Interface"
+        }
+      ],
+      "activatable_factories": [
+        "Microsoft.Windows.Widgets.Providers.IWidgetUpdateRequestOptionsFactory"
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.Widgets.Providers.IWidgetUpdateRequestOptionsStatics"
+      ]
+    }
+  }
+}

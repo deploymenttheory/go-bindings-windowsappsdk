@@ -1,0 +1,4956 @@
+{
+  "namespace": "Microsoft.UI.Content",
+  "schema_version": 1,
+  "winmd_version": "2.1.3",
+  "winmd_file": "Microsoft.UI.winmd",
+  "enums": {
+    "ContentAutomationOptions": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "FrameworkBased",
+          "value": "1"
+        },
+        {
+          "name": "FragmentBased",
+          "value": "2"
+        }
+      ]
+    },
+    "ContentCoordinateRoundingMode": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Auto",
+          "value": "0"
+        },
+        {
+          "name": "Floor",
+          "value": "1"
+        },
+        {
+          "name": "Round",
+          "value": "2"
+        },
+        {
+          "name": "Ceiling",
+          "value": "3"
+        }
+      ]
+    },
+    "ContentLayoutDirection": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "LeftToRight",
+          "value": "0"
+        },
+        {
+          "name": "RightToLeft",
+          "value": "1"
+        }
+      ]
+    },
+    "ContentSizePolicy": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "ResizeContentToParentWindow",
+          "value": "1"
+        },
+        {
+          "name": "ResizeParentWindowToContent",
+          "value": "2"
+        }
+      ]
+    },
+    "PopupAnchor": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "None",
+          "value": "0"
+        },
+        {
+          "name": "TopLevelWindow",
+          "value": "1"
+        },
+        {
+          "name": "ParentIsland",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "interfaces": {
+    "IChildSiteLink": {
+      "guid": "b5a64814-608b-5fb7-a7cb-eb628fd588cd",
+      "exclusive_to": "Microsoft.UI.Content.ChildSiteLink",
+      "methods": [
+        {
+          "name": "get_ActualSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_ActualSize",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector2",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_DispatcherQueue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LocalToParentTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_LocalToParentTransformMatrix",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Matrix4x4",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SiteView",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "Connect",
+          "params": [
+            {
+              "name": "content",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "ActualSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ActualSize",
+          "setter": "put_ActualSize"
+        },
+        {
+          "name": "DispatcherQueue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          },
+          "getter": "get_DispatcherQueue"
+        },
+        {
+          "name": "LocalToParentTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToParentTransformMatrix",
+          "setter": "put_LocalToParentTransformMatrix"
+        },
+        {
+          "name": "SiteView",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_SiteView"
+        }
+      ]
+    },
+    "IChildSiteLinkStatics": {
+      "guid": "28edc98a-4f94-50b1-8a87-9e7169ebf4b7",
+      "exclusive_to": "Microsoft.UI.Content.ChildSiteLink",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "parent",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "placementVisual",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContainerVisual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ChildSiteLink",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "CreateForSystemVisual",
+          "params": [
+            {
+              "name": "parent",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "placementVisual",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContainerVisual",
+                "namespace": "Windows.UI.Composition",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ChildSiteLink",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IContentCoordinateConverter": {
+      "guid": "10a11230-5eb4-5840-a346-570f4a49040f",
+      "exclusive_to": "Microsoft.UI.Content.ContentCoordinateConverter",
+      "methods": [
+        {
+          "name": "ConvertLocalToScreen",
+          "overload": "ConvertLocalToScreenWithPoint",
+          "is_default_overload": true,
+          "params": [
+            {
+              "name": "localPoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Point",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "PointInt32",
+            "namespace": "Windows.Graphics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "ConvertLocalToScreen",
+          "overload": "ConvertLocalToScreenWithPoints",
+          "params": [
+            {
+              "name": "localPoints",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "ApiRef",
+                  "name": "Point",
+                  "namespace": "Windows.Foundation",
+                  "target_kind": "Struct",
+                  "external": true
+                }
+              }
+            }
+          ],
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "PointInt32",
+              "namespace": "Windows.Graphics",
+              "target_kind": "Struct",
+              "external": true
+            }
+          }
+        },
+        {
+          "name": "ConvertLocalToScreen",
+          "overload": "ConvertLocalToScreenWithPointsAndRoundingMode",
+          "params": [
+            {
+              "name": "localPoints",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "ApiRef",
+                  "name": "Point",
+                  "namespace": "Windows.Foundation",
+                  "target_kind": "Struct",
+                  "external": true
+                }
+              }
+            },
+            {
+              "name": "roundingMode",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentCoordinateRoundingMode",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "PointInt32",
+              "namespace": "Windows.Graphics",
+              "target_kind": "Struct",
+              "external": true
+            }
+          }
+        },
+        {
+          "name": "ConvertLocalToScreen",
+          "overload": "ConvertLocalToScreenWithRect",
+          "params": [
+            {
+              "name": "localRect",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Rect",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "RectInt32",
+            "namespace": "Windows.Graphics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "ConvertScreenToLocal",
+          "overload": "ConvertScreenToLocalWithPoint",
+          "is_default_overload": true,
+          "params": [
+            {
+              "name": "screenPoint",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PointInt32",
+                "namespace": "Windows.Graphics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Point",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "ConvertScreenToLocal",
+          "overload": "ConvertScreenToLocalWithPoints",
+          "params": [
+            {
+              "name": "screenPoints",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "ApiRef",
+                  "name": "PointInt32",
+                  "namespace": "Windows.Graphics",
+                  "target_kind": "Struct",
+                  "external": true
+                }
+              }
+            }
+          ],
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "Point",
+              "namespace": "Windows.Foundation",
+              "target_kind": "Struct",
+              "external": true
+            }
+          }
+        },
+        {
+          "name": "ConvertScreenToLocal",
+          "overload": "ConvertScreenToLocalWithRect",
+          "params": [
+            {
+              "name": "screenRect",
+              "type": {
+                "kind": "ApiRef",
+                "name": "RectInt32",
+                "namespace": "Windows.Graphics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "Rect",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        }
+      ]
+    },
+    "IContentCoordinateConverterFactory": {
+      "guid": "a4b216ee-0e26-56bd-9209-a75cf9d80f27",
+      "exclusive_to": "Microsoft.UI.Content.ContentCoordinateConverter"
+    },
+    "IContentCoordinateConverterStatics": {
+      "guid": "f56374ce-b6df-5b42-a58f-4e3bb039e3a9",
+      "exclusive_to": "Microsoft.UI.Content.ContentCoordinateConverter",
+      "methods": [
+        {
+          "name": "CreateForWindowId",
+          "params": [
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IContentDeferral": {
+      "guid": "470529f5-cd93-599b-968e-f8a689bc3a07",
+      "exclusive_to": "Microsoft.UI.Content.ContentDeferral",
+      "methods": [
+        {
+          "name": "Complete"
+        }
+      ]
+    },
+    "IContentEnvironmentSettingChangedEventArgs": {
+      "guid": "76478051-fc80-5eec-a3f3-62606abe06b7",
+      "exclusive_to": "Microsoft.UI.Content.ContentEnvironmentSettingChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_SettingName",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "SettingName",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_SettingName"
+        }
+      ]
+    },
+    "IContentEnvironmentStateChangedEventArgs": {
+      "guid": "8970fa4f-10ba-5f67-970b-8c72bc009b67",
+      "exclusive_to": "Microsoft.UI.Content.ContentEnvironmentStateChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_DidAppWindowIdChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_DidDisplayIdChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DidAppWindowIdChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidAppWindowIdChange"
+        },
+        {
+          "name": "DidDisplayIdChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidDisplayIdChange"
+        }
+      ]
+    },
+    "IContentEnvironmentStateChangedEventArgs2": {
+      "guid": "cec0497d-76c7-544b-bf6e-816c9b16c99f",
+      "exclusive_to": "Microsoft.UI.Content.ContentEnvironmentStateChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_DidDisplayScaleChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DidDisplayScaleChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidDisplayScaleChange"
+        }
+      ]
+    },
+    "IContentIsland": {
+      "guid": "5b2504ba-361c-50aa-bd6e-4122c6d93889",
+      "exclusive_to": "Microsoft.UI.Content.ContentIsland",
+      "methods": [
+        {
+          "name": "get_ActualSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_AppData",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_AppData",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CoordinateConverter",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_CustomProperties",
+          "return": {
+            "kind": "ApiRef",
+            "name": "IPropertySet",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "get_DispatcherQueue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Environment",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIslandEnvironment",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Id",
+          "return": {
+            "kind": "Native",
+            "name": "U8"
+          }
+        },
+        {
+          "name": "get_IsConnected",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsHitTestVisibleWhenTransparent",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsHitTestVisibleWhenTransparent",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsIslandEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsIslandEnabled",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsIslandVisible",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsIslandVisible",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsSiteEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsSiteVisible",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_LayoutDirection",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentLayoutDirection",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_RasterizationScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "GetAutomationHostProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "GetStateChangeDeferral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentDeferral",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "RequestSize",
+          "params": [
+            {
+              "name": "size",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector2",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_AutomationProviderRequested",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentIsland",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentIslandAutomationProviderRequestedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_AutomationProviderRequested",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_StateChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentIsland",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentIslandStateChangedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_StateChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "ActualSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ActualSize"
+        },
+        {
+          "name": "AppData",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_AppData",
+          "setter": "put_AppData"
+        },
+        {
+          "name": "CoordinateConverter",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_CoordinateConverter"
+        },
+        {
+          "name": "CustomProperties",
+          "type": {
+            "kind": "ApiRef",
+            "name": "IPropertySet",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true
+          },
+          "getter": "get_CustomProperties"
+        },
+        {
+          "name": "DispatcherQueue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          },
+          "getter": "get_DispatcherQueue"
+        },
+        {
+          "name": "Environment",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentIslandEnvironment",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_Environment"
+        },
+        {
+          "name": "Id",
+          "type": {
+            "kind": "Native",
+            "name": "U8"
+          },
+          "getter": "get_Id"
+        },
+        {
+          "name": "IsConnected",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsConnected"
+        },
+        {
+          "name": "IsHitTestVisibleWhenTransparent",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsHitTestVisibleWhenTransparent",
+          "setter": "put_IsHitTestVisibleWhenTransparent"
+        },
+        {
+          "name": "IsIslandEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsIslandEnabled",
+          "setter": "put_IsIslandEnabled"
+        },
+        {
+          "name": "IsIslandVisible",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsIslandVisible",
+          "setter": "put_IsIslandVisible"
+        },
+        {
+          "name": "IsSiteEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSiteEnabled"
+        },
+        {
+          "name": "IsSiteVisible",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSiteVisible"
+        },
+        {
+          "name": "LayoutDirection",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentLayoutDirection",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_LayoutDirection"
+        },
+        {
+          "name": "RasterizationScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_RasterizationScale"
+        }
+      ],
+      "events": [
+        {
+          "name": "AutomationProviderRequested",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentIslandAutomationProviderRequestedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_AutomationProviderRequested",
+          "remove_method": "remove_AutomationProviderRequested"
+        },
+        {
+          "name": "StateChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentIslandStateChangedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_StateChanged",
+          "remove_method": "remove_StateChanged"
+        }
+      ]
+    },
+    "IContentIsland2": {
+      "guid": "9f891825-4f83-5ada-9ebd-9d329460aede",
+      "exclusive_to": "Microsoft.UI.Content.ContentIsland",
+      "methods": [
+        {
+          "name": "get_Children",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ChildSiteLink",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_LocalToClientTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LocalToParentTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_Popups",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DesktopPopupSiteBridge",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_ProcessesKeyboardInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_ProcessesPointerInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Children",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ChildSiteLink",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "getter": "get_Children"
+        },
+        {
+          "name": "LocalToClientTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToClientTransformMatrix"
+        },
+        {
+          "name": "LocalToParentTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToParentTransformMatrix"
+        },
+        {
+          "name": "Popups",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IIterable`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "DesktopPopupSiteBridge",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "getter": "get_Popups"
+        },
+        {
+          "name": "ProcessesKeyboardInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesKeyboardInput"
+        },
+        {
+          "name": "ProcessesPointerInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesPointerInput"
+        }
+      ]
+    },
+    "IContentIslandAutomation": {
+      "guid": "8752c11e-1896-565a-bfb0-2b0770030e97",
+      "exclusive_to": "Microsoft.UI.Content.ContentIsland",
+      "methods": [
+        {
+          "name": "get_AutomationOption",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentAutomationOptions",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_FragmentRootAutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "get_NextSiblingAutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "get_ParentAutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "get_PreviousSiblingAutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AutomationOption",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentAutomationOptions",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_AutomationOption"
+        },
+        {
+          "name": "FragmentRootAutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_FragmentRootAutomationProvider"
+        },
+        {
+          "name": "NextSiblingAutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_NextSiblingAutomationProvider"
+        },
+        {
+          "name": "ParentAutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_ParentAutomationProvider"
+        },
+        {
+          "name": "PreviousSiblingAutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_PreviousSiblingAutomationProvider"
+        }
+      ]
+    },
+    "IContentIslandAutomationProviderRequestedEventArgs": {
+      "guid": "9fe24bed-2b9c-5137-887f-403c94841824",
+      "exclusive_to": "Microsoft.UI.Content.ContentIslandAutomationProviderRequestedEventArgs",
+      "methods": [
+        {
+          "name": "get_AutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_AutomationProvider",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Handled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_Handled",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_AutomationProvider",
+          "setter": "put_AutomationProvider"
+        },
+        {
+          "name": "Handled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_Handled",
+          "setter": "put_Handled"
+        }
+      ]
+    },
+    "IContentIslandEnvironment": {
+      "guid": "c334236d-da88-566d-811d-74aef2eba978",
+      "exclusive_to": "Microsoft.UI.Content.ContentIslandEnvironment",
+      "methods": [
+        {
+          "name": "get_AppWindowId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "get_DisplayId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DisplayId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "add_SettingChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentIslandEnvironment",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentEnvironmentSettingChangedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_SettingChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_StateChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentIslandEnvironment",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentEnvironmentStateChangedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_StateChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AppWindowId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_AppWindowId"
+        },
+        {
+          "name": "DisplayId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DisplayId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_DisplayId"
+        }
+      ],
+      "events": [
+        {
+          "name": "SettingChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentIslandEnvironment",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentEnvironmentSettingChangedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_SettingChanged",
+          "remove_method": "remove_SettingChanged"
+        },
+        {
+          "name": "StateChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentIslandEnvironment",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentEnvironmentStateChangedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_StateChanged",
+          "remove_method": "remove_StateChanged"
+        }
+      ]
+    },
+    "IContentIslandEnvironment2": {
+      "guid": "6bf81a71-c1e4-54d6-ac0d-02bcff5297e7",
+      "exclusive_to": "Microsoft.UI.Content.ContentIslandEnvironment",
+      "methods": [
+        {
+          "name": "get_DisplayScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DisplayScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_DisplayScale"
+        }
+      ]
+    },
+    "IContentIslandEnvironmentFactory": {
+      "guid": "47a782d6-b177-5c1e-bf87-90437dd809d0",
+      "exclusive_to": "Microsoft.UI.Content.ContentIslandEnvironment"
+    },
+    "IContentIslandFactory": {
+      "guid": "82383f52-e81a-5ec9-a954-bac8a931ba7d",
+      "exclusive_to": "Microsoft.UI.Content.ContentIsland"
+    },
+    "IContentIslandStateChangedEventArgs": {
+      "guid": "c828eeb2-0c62-5b40-9d48-77c06083c278",
+      "exclusive_to": "Microsoft.UI.Content.ContentIslandStateChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_DidActualSizeChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_DidSiteEnabledChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_DidSiteVisibleChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_DidLayoutDirectionChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_DidRasterizationScaleChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DidActualSizeChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidActualSizeChange"
+        },
+        {
+          "name": "DidLayoutDirectionChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidLayoutDirectionChange"
+        },
+        {
+          "name": "DidRasterizationScaleChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidRasterizationScaleChange"
+        },
+        {
+          "name": "DidSiteEnabledChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidSiteEnabledChange"
+        },
+        {
+          "name": "DidSiteVisibleChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidSiteVisibleChange"
+        }
+      ]
+    },
+    "IContentIslandStateChangedEventArgs2": {
+      "guid": "8ad25be1-a89a-5872-896e-8298dd20eb0d",
+      "exclusive_to": "Microsoft.UI.Content.ContentIslandStateChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_DidLocalToClientTransformMatrixChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_DidLocalToParentTransformMatrixChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DidLocalToClientTransformMatrixChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidLocalToClientTransformMatrixChange"
+        },
+        {
+          "name": "DidLocalToParentTransformMatrixChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidLocalToParentTransformMatrixChange"
+        }
+      ]
+    },
+    "IContentIslandStatics": {
+      "guid": "7b9eb7cc-8c43-5e0a-ab23-ab48628fd223",
+      "exclusive_to": "Microsoft.UI.Content.ContentIsland",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "Root",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "FindAllForCompositor",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "ContentIsland",
+              "namespace": "Microsoft.UI.Content",
+              "target_kind": "Class"
+            }
+          }
+        },
+        {
+          "name": "FindAllForCurrentThread",
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "ContentIsland",
+              "namespace": "Microsoft.UI.Content",
+              "target_kind": "Class"
+            }
+          }
+        },
+        {
+          "name": "GetByVisual",
+          "params": [
+            {
+              "name": "child",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetFromId",
+          "params": [
+            {
+              "name": "id",
+              "type": {
+                "kind": "Native",
+                "name": "U8"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IContentIslandStatics2": {
+      "guid": "b2c6fa77-13c9-5064-bb1d-f878d86acc65",
+      "exclusive_to": "Microsoft.UI.Content.ContentIsland",
+      "methods": [
+        {
+          "name": "CreateForSystemVisual",
+          "params": [
+            {
+              "name": "queue",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "root",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Windows.UI.Composition",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "FindAllForSystemCompositor",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Windows.UI.Composition",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "Array",
+            "elem": {
+              "kind": "ApiRef",
+              "name": "ContentIsland",
+              "namespace": "Microsoft.UI.Content",
+              "target_kind": "Class"
+            }
+          }
+        },
+        {
+          "name": "GetBySystemVisual",
+          "params": [
+            {
+              "name": "child",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Visual",
+                "namespace": "Windows.UI.Composition",
+                "target_kind": "Class",
+                "external": true
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IContentSite": {
+      "guid": "996c60c4-02b2-5eef-93b0-dd6b1ec2fd7b",
+      "exclusive_to": "Microsoft.UI.Content.ContentSite",
+      "methods": [
+        {
+          "name": "get_ActualSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_ActualSize",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Vector2",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ClientSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "SizeInt32",
+            "namespace": "Windows.Graphics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_ClientSize",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "SizeInt32",
+                "namespace": "Windows.Graphics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_CoordinateConverter",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_DispatcherQueue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_Environment",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteEnvironment",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsConnected",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsSiteEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsSiteEnabled",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_IsSiteVisible",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_IsSiteVisible",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_LayoutDirection",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentLayoutDirection",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_LayoutDirection",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentLayoutDirection",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_OverrideScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_OverrideScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ParentScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_ParentScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_RasterizationScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_RequestedSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_ShouldApplyRasterizationScale",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ShouldApplyRasterizationScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_View",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetIslandStateChangeDeferral",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentDeferral",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "add_RequestedStateChanged",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentSite",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentSiteRequestedStateChangedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_RequestedStateChanged",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "ActualSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ActualSize",
+          "setter": "put_ActualSize"
+        },
+        {
+          "name": "ClientSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "SizeInt32",
+            "namespace": "Windows.Graphics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ClientSize",
+          "setter": "put_ClientSize"
+        },
+        {
+          "name": "CoordinateConverter",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_CoordinateConverter"
+        },
+        {
+          "name": "DispatcherQueue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          },
+          "getter": "get_DispatcherQueue"
+        },
+        {
+          "name": "Environment",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteEnvironment",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_Environment"
+        },
+        {
+          "name": "IsConnected",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsConnected"
+        },
+        {
+          "name": "IsSiteEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSiteEnabled",
+          "setter": "put_IsSiteEnabled"
+        },
+        {
+          "name": "IsSiteVisible",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSiteVisible",
+          "setter": "put_IsSiteVisible"
+        },
+        {
+          "name": "LayoutDirection",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentLayoutDirection",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_LayoutDirection",
+          "setter": "put_LayoutDirection"
+        },
+        {
+          "name": "OverrideScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_OverrideScale",
+          "setter": "put_OverrideScale"
+        },
+        {
+          "name": "ParentScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_ParentScale",
+          "setter": "put_ParentScale"
+        },
+        {
+          "name": "RasterizationScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_RasterizationScale"
+        },
+        {
+          "name": "RequestedSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_RequestedSize"
+        },
+        {
+          "name": "ShouldApplyRasterizationScale",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ShouldApplyRasterizationScale",
+          "setter": "put_ShouldApplyRasterizationScale"
+        },
+        {
+          "name": "View",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_View"
+        }
+      ],
+      "events": [
+        {
+          "name": "RequestedStateChanged",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentSite",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentSiteRequestedStateChangedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_RequestedStateChanged",
+          "remove_method": "remove_RequestedStateChanged"
+        }
+      ]
+    },
+    "IContentSite2": {
+      "guid": "c3f0149e-3f8c-5961-9d04-cd6c8a7f6026",
+      "exclusive_to": "Microsoft.UI.Content.ContentSite",
+      "methods": [
+        {
+          "name": "get_LocalToClientTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LocalToParentTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "put_LocalToParentTransformMatrix",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Matrix4x4",
+                "namespace": "Windows.Foundation.Numerics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ProcessesKeyboardInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ProcessesKeyboardInput",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ProcessesPointerInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ProcessesPointerInput",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "LocalToClientTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToClientTransformMatrix"
+        },
+        {
+          "name": "LocalToParentTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToParentTransformMatrix",
+          "setter": "put_LocalToParentTransformMatrix"
+        },
+        {
+          "name": "ProcessesKeyboardInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesKeyboardInput",
+          "setter": "put_ProcessesKeyboardInput"
+        },
+        {
+          "name": "ProcessesPointerInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesPointerInput",
+          "setter": "put_ProcessesPointerInput"
+        }
+      ]
+    },
+    "IContentSiteAutomation": {
+      "guid": "db4f4683-cd76-50d0-9ae1-044ceb3d3c7a",
+      "methods": [
+        {
+          "name": "get_AutomationOption",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentAutomationOptions",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_AutomationOption",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentAutomationOptions",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "add_FragmentRootAutomationProviderRequested",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "IContentSiteAutomation",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Interface"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_FragmentRootAutomationProviderRequested",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_NextSiblingAutomationProviderRequested",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "IContentSiteAutomation",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Interface"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_NextSiblingAutomationProviderRequested",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_ParentAutomationProviderRequested",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "IContentSiteAutomation",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Interface"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_ParentAutomationProviderRequested",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "add_PreviousSiblingAutomationProviderRequested",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "TypedEventHandler`2",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "IContentSiteAutomation",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Interface"
+                  },
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_PreviousSiblingAutomationProviderRequested",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AutomationOption",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentAutomationOptions",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_AutomationOption",
+          "setter": "put_AutomationOption"
+        },
+        {
+          "name": "AutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_AutomationProvider"
+        }
+      ],
+      "events": [
+        {
+          "name": "FragmentRootAutomationProviderRequested",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "IContentSiteAutomation",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Interface"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_FragmentRootAutomationProviderRequested",
+          "remove_method": "remove_FragmentRootAutomationProviderRequested"
+        },
+        {
+          "name": "NextSiblingAutomationProviderRequested",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "IContentSiteAutomation",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Interface"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_NextSiblingAutomationProviderRequested",
+          "remove_method": "remove_NextSiblingAutomationProviderRequested"
+        },
+        {
+          "name": "ParentAutomationProviderRequested",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "IContentSiteAutomation",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Interface"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_ParentAutomationProviderRequested",
+          "remove_method": "remove_ParentAutomationProviderRequested"
+        },
+        {
+          "name": "PreviousSiblingAutomationProviderRequested",
+          "type": {
+            "kind": "GenericInst",
+            "name": "TypedEventHandler`2",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "IContentSiteAutomation",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Interface"
+              },
+              {
+                "kind": "ApiRef",
+                "name": "ContentSiteAutomationProviderRequestedEventArgs",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_PreviousSiblingAutomationProviderRequested",
+          "remove_method": "remove_PreviousSiblingAutomationProviderRequested"
+        }
+      ]
+    },
+    "IContentSiteAutomationProviderRequestedEventArgs": {
+      "guid": "73a093b9-55d4-5598-b70e-6250b732f821",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteAutomationProviderRequestedEventArgs",
+      "methods": [
+        {
+          "name": "get_AutomationProvider",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        },
+        {
+          "name": "put_AutomationProvider",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Handled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_Handled",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AutomationProvider",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_AutomationProvider",
+          "setter": "put_AutomationProvider"
+        },
+        {
+          "name": "Handled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_Handled",
+          "setter": "put_Handled"
+        }
+      ]
+    },
+    "IContentSiteBridge": {
+      "guid": "faaab99e-a42b-549c-92df-3b6d6e1e368b",
+      "requires": [
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "methods": [
+        {
+          "name": "get_DispatcherQueue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_LayoutDirectionOverride",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentLayoutDirection",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            ]
+          }
+        },
+        {
+          "name": "put_LayoutDirectionOverride",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "GenericInst",
+                "name": "IReference`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Interface",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "ContentLayoutDirection",
+                    "namespace": "Microsoft.UI.Content",
+                    "target_kind": "Enum"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_OverrideScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_OverrideScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "DispatcherQueue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          },
+          "getter": "get_DispatcherQueue"
+        },
+        {
+          "name": "LayoutDirectionOverride",
+          "type": {
+            "kind": "GenericInst",
+            "name": "IReference`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "ContentLayoutDirection",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            ]
+          },
+          "getter": "get_LayoutDirectionOverride",
+          "setter": "put_LayoutDirectionOverride"
+        },
+        {
+          "name": "OverrideScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_OverrideScale",
+          "setter": "put_OverrideScale"
+        }
+      ]
+    },
+    "IContentSiteEnvironment": {
+      "guid": "685d085d-be53-55d1-aec4-ba2273d5468b",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteEnvironment",
+      "methods": [
+        {
+          "name": "get_AppWindowId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "put_AppWindowId",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_DisplayId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DisplayId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "put_DisplayId",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DisplayId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_View",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteEnvironmentView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "NotifySettingChanged",
+          "params": [
+            {
+              "name": "setting",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AppWindowId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_AppWindowId",
+          "setter": "put_AppWindowId"
+        },
+        {
+          "name": "DisplayId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DisplayId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_DisplayId",
+          "setter": "put_DisplayId"
+        },
+        {
+          "name": "View",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteEnvironmentView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_View"
+        }
+      ]
+    },
+    "IContentSiteEnvironment2": {
+      "guid": "381ae3cd-c780-5a69-ba6a-0ead8560a31f",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteEnvironment",
+      "methods": [
+        {
+          "name": "get_DisplayScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "put_DisplayScale",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "F32"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "DisplayScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_DisplayScale",
+          "setter": "put_DisplayScale"
+        }
+      ]
+    },
+    "IContentSiteEnvironmentFactory": {
+      "guid": "0befa998-cb15-5f16-a4a5-c0ed1674e186",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteEnvironment"
+    },
+    "IContentSiteEnvironmentView": {
+      "guid": "5b6fe420-0bb3-54dd-8589-786cf02e38f1",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteEnvironmentView",
+      "methods": [
+        {
+          "name": "get_AppWindowId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "get_DisplayId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DisplayId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AppWindowId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_AppWindowId"
+        },
+        {
+          "name": "DisplayId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DisplayId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_DisplayId"
+        }
+      ]
+    },
+    "IContentSiteEnvironmentView2": {
+      "guid": "0b43c89a-9196-5a64-a078-eb150acae527",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteEnvironmentView",
+      "methods": [
+        {
+          "name": "get_DisplayScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DisplayScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_DisplayScale"
+        }
+      ]
+    },
+    "IContentSiteEnvironmentViewFactory": {
+      "guid": "c901edf2-f184-5a64-8d58-8cf8efa8b678",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteEnvironmentView"
+    },
+    "IContentSiteFactory": {
+      "guid": "72fb98d5-b28a-57f1-91fa-24c014a342c1",
+      "exclusive_to": "Microsoft.UI.Content.ContentSite"
+    },
+    "IContentSiteInput": {
+      "guid": "0ead8189-10d3-550d-b747-8847bd7c9d21",
+      "methods": [
+        {
+          "name": "get_ProcessesKeyboardInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ProcessesKeyboardInput",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_ProcessesPointerInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "put_ProcessesPointerInput",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "Native",
+                "name": "Bool"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "ProcessesKeyboardInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesKeyboardInput",
+          "setter": "put_ProcessesKeyboardInput"
+        },
+        {
+          "name": "ProcessesPointerInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesPointerInput",
+          "setter": "put_ProcessesPointerInput"
+        }
+      ]
+    },
+    "IContentSiteLink": {
+      "guid": "d9247341-f5d0-5084-af66-f5df5f314fc0",
+      "methods": [
+        {
+          "name": "get_Parent",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Parent",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentIsland",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_Parent"
+        }
+      ]
+    },
+    "IContentSiteRequestedStateChangedEventArgs": {
+      "guid": "1b55fd1d-7292-562b-b4a1-d4de7972e684",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteRequestedStateChangedEventArgs",
+      "methods": [
+        {
+          "name": "get_DidRequestedSizeChange",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "DidRequestedSizeChange",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_DidRequestedSizeChange"
+        }
+      ]
+    },
+    "IContentSiteView": {
+      "guid": "2d5d8dd5-358e-5b05-993b-b2666d1786b3",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteView",
+      "methods": [
+        {
+          "name": "get_ActualSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_ClientSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "SizeInt32",
+            "namespace": "Windows.Graphics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_CoordinateConverter",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_DispatcherQueue",
+          "return": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_EnvironmentView",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteEnvironmentView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_IsConnected",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsSiteEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsSiteVisible",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_LayoutDirection",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentLayoutDirection",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_OverrideScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_ParentScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_RasterizationScale",
+          "return": {
+            "kind": "Native",
+            "name": "F32"
+          }
+        },
+        {
+          "name": "get_RequestedSize",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_ShouldApplyRasterizationScale",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ActualSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ActualSize"
+        },
+        {
+          "name": "ClientSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "SizeInt32",
+            "namespace": "Windows.Graphics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_ClientSize"
+        },
+        {
+          "name": "CoordinateConverter",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateConverter",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_CoordinateConverter"
+        },
+        {
+          "name": "DispatcherQueue",
+          "type": {
+            "kind": "ApiRef",
+            "name": "DispatcherQueue",
+            "namespace": "Microsoft.UI.Dispatching",
+            "target_kind": "Class"
+          },
+          "getter": "get_DispatcherQueue"
+        },
+        {
+          "name": "EnvironmentView",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteEnvironmentView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_EnvironmentView"
+        },
+        {
+          "name": "IsConnected",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsConnected"
+        },
+        {
+          "name": "IsSiteEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSiteEnabled"
+        },
+        {
+          "name": "IsSiteVisible",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsSiteVisible"
+        },
+        {
+          "name": "LayoutDirection",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentLayoutDirection",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_LayoutDirection"
+        },
+        {
+          "name": "OverrideScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_OverrideScale"
+        },
+        {
+          "name": "ParentScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_ParentScale"
+        },
+        {
+          "name": "RasterizationScale",
+          "type": {
+            "kind": "Native",
+            "name": "F32"
+          },
+          "getter": "get_RasterizationScale"
+        },
+        {
+          "name": "RequestedSize",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Vector2",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_RequestedSize"
+        },
+        {
+          "name": "ShouldApplyRasterizationScale",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ShouldApplyRasterizationScale"
+        }
+      ]
+    },
+    "IContentSiteView2": {
+      "guid": "628adce3-820f-57de-bdc8-3720ff73014b",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteView",
+      "methods": [
+        {
+          "name": "get_LocalToClientTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_LocalToParentTransformMatrix",
+          "return": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "get_ProcessesKeyboardInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_ProcessesPointerInput",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "LocalToClientTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToClientTransformMatrix"
+        },
+        {
+          "name": "LocalToParentTransformMatrix",
+          "type": {
+            "kind": "ApiRef",
+            "name": "Matrix4x4",
+            "namespace": "Windows.Foundation.Numerics",
+            "target_kind": "Struct",
+            "external": true
+          },
+          "getter": "get_LocalToParentTransformMatrix"
+        },
+        {
+          "name": "ProcessesKeyboardInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesKeyboardInput"
+        },
+        {
+          "name": "ProcessesPointerInput",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_ProcessesPointerInput"
+        }
+      ]
+    },
+    "IContentSiteViewAutomation": {
+      "guid": "f9d1d5ff-9669-5553-a875-aee03e11edd8",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteView",
+      "methods": [
+        {
+          "name": "get_AutomationOption",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentAutomationOptions",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "AutomationOption",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentAutomationOptions",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_AutomationOption"
+        }
+      ]
+    },
+    "IContentSiteViewFactory": {
+      "guid": "9efd72f0-63ef-5b6a-a50c-5685bd8100f1",
+      "exclusive_to": "Microsoft.UI.Content.ContentSiteView"
+    },
+    "IDesktopAttachedSiteBridge": {
+      "guid": "c8ad3758-c8d3-5ea5-a274-ce12d9cf6845",
+      "exclusive_to": "Microsoft.UI.Content.DesktopAttachedSiteBridge",
+      "methods": [
+        {
+          "name": "get_SiteView",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_WindowId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Connect",
+          "params": [
+            {
+              "name": "content",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "SiteView",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_SiteView"
+        },
+        {
+          "name": "WindowId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_WindowId"
+        }
+      ]
+    },
+    "IDesktopAttachedSiteBridgeStatics": {
+      "guid": "41f6930f-310e-5680-812c-6dac16dfff44",
+      "exclusive_to": "Microsoft.UI.Content.DesktopAttachedSiteBridge",
+      "methods": [
+        {
+          "name": "CreateFromWindowId",
+          "params": [
+            {
+              "name": "queue",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopAttachedSiteBridge",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDesktopChildSiteBridge": {
+      "guid": "b2f2ff7b-1825-51b0-b80b-7599889c569f",
+      "exclusive_to": "Microsoft.UI.Content.DesktopChildSiteBridge",
+      "methods": [
+        {
+          "name": "get_ResizePolicy",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSizePolicy",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_ResizePolicy",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentSizePolicy",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_SiteView",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ResizePolicy",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSizePolicy",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_ResizePolicy",
+          "setter": "put_ResizePolicy"
+        },
+        {
+          "name": "SiteView",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_SiteView"
+        }
+      ]
+    },
+    "IDesktopChildSiteBridgeStatics": {
+      "guid": "ab6b82de-6a47-5de3-a860-613c8db679ab",
+      "exclusive_to": "Microsoft.UI.Content.DesktopChildSiteBridge",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "compositor",
+              "type": {
+                "kind": "ApiRef",
+                "name": "Compositor",
+                "namespace": "Microsoft.UI.Composition",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "parentWindowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopChildSiteBridge",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDesktopChildSiteBridgeStatics2": {
+      "guid": "aae99407-e378-5c53-9aff-5a3b53e194a8",
+      "exclusive_to": "Microsoft.UI.Content.DesktopChildSiteBridge",
+      "methods": [
+        {
+          "name": "CreateWithDispatcherQueue",
+          "params": [
+            {
+              "name": "queue",
+              "type": {
+                "kind": "ApiRef",
+                "name": "DispatcherQueue",
+                "namespace": "Microsoft.UI.Dispatching",
+                "target_kind": "Class"
+              }
+            },
+            {
+              "name": "parentWindowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopChildSiteBridge",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDesktopPopupSiteBridge": {
+      "guid": "84eaab23-f716-5ad8-ac00-3d77c01d42cc",
+      "exclusive_to": "Microsoft.UI.Content.DesktopPopupSiteBridge",
+      "methods": [
+        {
+          "name": "get_IsEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsVisible",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_SiteView",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "get_WindowId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Connect",
+          "params": [
+            {
+              "name": "content",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Disable"
+        },
+        {
+          "name": "Enable"
+        },
+        {
+          "name": "Hide"
+        },
+        {
+          "name": "MoveAndResize",
+          "params": [
+            {
+              "name": "rect",
+              "type": {
+                "kind": "ApiRef",
+                "name": "RectInt32",
+                "namespace": "Windows.Graphics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "MoveInZOrderAtBottom"
+        },
+        {
+          "name": "MoveInZOrderAtTop"
+        },
+        {
+          "name": "MoveInZOrderBelow",
+          "params": [
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Show"
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsEnabled"
+        },
+        {
+          "name": "IsVisible",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsVisible"
+        },
+        {
+          "name": "SiteView",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentSiteView",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          },
+          "getter": "get_SiteView"
+        },
+        {
+          "name": "WindowId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_WindowId"
+        }
+      ]
+    },
+    "IDesktopPopupSiteBridge2": {
+      "guid": "4559ff0e-4326-5038-b18d-37b66b242eb3",
+      "exclusive_to": "Microsoft.UI.Content.DesktopPopupSiteBridge",
+      "methods": [
+        {
+          "name": "get_AnchoringBehavior",
+          "return": {
+            "kind": "ApiRef",
+            "name": "PopupAnchor",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_AnchoringBehavior",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "PopupAnchor",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_AnchoringPixelAlignment",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateRoundingMode",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "put_AnchoringPixelAlignment",
+          "params": [
+            {
+              "name": "value",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentCoordinateRoundingMode",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Enum"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "AnchoringBehavior",
+          "type": {
+            "kind": "ApiRef",
+            "name": "PopupAnchor",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_AnchoringBehavior",
+          "setter": "put_AnchoringBehavior"
+        },
+        {
+          "name": "AnchoringPixelAlignment",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ContentCoordinateRoundingMode",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Enum"
+          },
+          "getter": "get_AnchoringPixelAlignment",
+          "setter": "put_AnchoringPixelAlignment"
+        }
+      ]
+    },
+    "IDesktopPopupSiteBridgeStatics": {
+      "guid": "4ea2b77b-3177-5e5b-8d0d-a76e15c6d080",
+      "exclusive_to": "Microsoft.UI.Content.DesktopPopupSiteBridge",
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            {
+              "name": "parent",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "DesktopPopupSiteBridge",
+            "namespace": "Microsoft.UI.Content",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IDesktopSiteBridge": {
+      "guid": "f0ae8750-905c-50a2-8a12-4545c6245bb4",
+      "exclusive_to": "Microsoft.UI.Content.DesktopSiteBridge",
+      "methods": [
+        {
+          "name": "get_IsEnabled",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_IsVisible",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_WindowId",
+          "return": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          }
+        },
+        {
+          "name": "Connect",
+          "params": [
+            {
+              "name": "content",
+              "type": {
+                "kind": "ApiRef",
+                "name": "ContentIsland",
+                "namespace": "Microsoft.UI.Content",
+                "target_kind": "Class"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Disable"
+        },
+        {
+          "name": "Enable"
+        },
+        {
+          "name": "Hide"
+        },
+        {
+          "name": "MoveAndResize",
+          "params": [
+            {
+              "name": "rect",
+              "type": {
+                "kind": "ApiRef",
+                "name": "RectInt32",
+                "namespace": "Windows.Graphics",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "MoveInZOrderAtBottom"
+        },
+        {
+          "name": "MoveInZOrderAtTop"
+        },
+        {
+          "name": "MoveInZOrderBelow",
+          "params": [
+            {
+              "name": "windowId",
+              "type": {
+                "kind": "ApiRef",
+                "name": "WindowId",
+                "namespace": "Microsoft.UI",
+                "target_kind": "Struct"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Show"
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsEnabled",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsEnabled"
+        },
+        {
+          "name": "IsVisible",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsVisible"
+        },
+        {
+          "name": "WindowId",
+          "type": {
+            "kind": "ApiRef",
+            "name": "WindowId",
+            "namespace": "Microsoft.UI",
+            "target_kind": "Struct"
+          },
+          "getter": "get_WindowId"
+        }
+      ]
+    },
+    "IDesktopSiteBridgeFactory": {
+      "guid": "d94ee1ff-3af1-54d0-9311-652b29c57c5b",
+      "exclusive_to": "Microsoft.UI.Content.DesktopSiteBridge"
+    },
+    "IDesktopSiteBridgeStatics": {
+      "guid": "e0b38daf-9cd4-50c5-83ee-c76e3cf34eba",
+      "exclusive_to": "Microsoft.UI.Content.DesktopSiteBridge",
+      "methods": [
+        {
+          "name": "IsSupported",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "ChildSiteLink": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IChildSiteLink",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IChildSiteLink",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteAutomation",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteInput",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteLink",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IChildSiteLinkStatics"
+      ]
+    },
+    "ContentCoordinateConverter": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentCoordinateConverter",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentCoordinateConverter",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IContentCoordinateConverterStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentCoordinateConverterFactory"
+      ]
+    },
+    "ContentDeferral": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentDeferral",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentDeferral",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentEnvironmentSettingChangedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentEnvironmentSettingChangedEventArgs",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentEnvironmentSettingChangedEventArgs",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentEnvironmentStateChangedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentEnvironmentStateChangedEventArgs",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentEnvironmentStateChangedEventArgs",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentEnvironmentStateChangedEventArgs2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentIsland": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentIsland",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentIsland",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentIsland2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentIslandAutomation",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "ICompositionSupportsSystemBackdrop",
+          "namespace": "Microsoft.UI.Composition",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IContentIslandStatics2",
+        "Microsoft.UI.Content.IContentIslandStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentIslandFactory"
+      ]
+    },
+    "ContentIslandAutomationProviderRequestedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentIslandAutomationProviderRequestedEventArgs",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentIslandAutomationProviderRequestedEventArgs",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentIslandEnvironment": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentIslandEnvironment",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentIslandEnvironment",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentIslandEnvironment2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentIslandEnvironmentFactory"
+      ]
+    },
+    "ContentIslandStateChangedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentIslandStateChangedEventArgs",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentIslandStateChangedEventArgs",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentIslandStateChangedEventArgs2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentSite": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentSite",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentSite",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSite2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentSiteFactory"
+      ]
+    },
+    "ContentSiteAutomationProviderRequestedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentSiteAutomationProviderRequestedEventArgs",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteAutomationProviderRequestedEventArgs",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentSiteEnvironment": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentSiteEnvironment",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteEnvironment",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteEnvironment2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentSiteEnvironmentFactory"
+      ]
+    },
+    "ContentSiteEnvironmentView": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentSiteEnvironmentView",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteEnvironmentView",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteEnvironmentView2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentSiteEnvironmentViewFactory"
+      ]
+    },
+    "ContentSiteRequestedStateChangedEventArgs": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentSiteRequestedStateChangedEventArgs",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteRequestedStateChangedEventArgs",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "ContentSiteView": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IContentSiteView",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteView",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteView2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteViewAutomation",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IContentSiteViewFactory"
+      ]
+    },
+    "DesktopAttachedSiteBridge": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopAttachedSiteBridge",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopAttachedSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteInput",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IDesktopAttachedSiteBridgeStatics"
+      ]
+    },
+    "DesktopChildSiteBridge": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopChildSiteBridge",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopChildSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IDesktopChildSiteBridgeStatics",
+        "Microsoft.UI.Content.IDesktopChildSiteBridgeStatics2"
+      ],
+      "composable": true
+    },
+    "DesktopPopupSiteBridge": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopPopupSiteBridge",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopPopupSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopPopupSiteBridge2",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteAutomation",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteLink",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IDesktopPopupSiteBridgeStatics"
+      ]
+    },
+    "DesktopSiteBridge": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IDesktopSiteBridge",
+        "namespace": "Microsoft.UI.Content",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IDesktopSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosableNotifier",
+          "namespace": "Microsoft.UI",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IContentSiteBridge",
+          "namespace": "Microsoft.UI.Content",
+          "target_kind": "Interface"
+        },
+        {
+          "kind": "ApiRef",
+          "name": "IClosable",
+          "namespace": "Windows.Foundation",
+          "target_kind": "Interface",
+          "external": true
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.UI.Content.IDesktopSiteBridgeStatics"
+      ],
+      "composable_factories": [
+        "Microsoft.UI.Content.IDesktopSiteBridgeFactory"
+      ]
+    }
+  }
+}

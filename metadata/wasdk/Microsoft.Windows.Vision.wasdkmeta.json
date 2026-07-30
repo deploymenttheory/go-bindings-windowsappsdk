@@ -1,0 +1,88 @@
+{
+  "namespace": "Microsoft.Windows.Vision",
+  "schema_version": 1,
+  "winmd_version": "2.3.4",
+  "winmd_file": "Microsoft.Windows.Vision.winmd",
+  "enums": {
+    "ScreenRegionLabel": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Text",
+          "value": "0"
+        },
+        {
+          "name": "Image",
+          "value": "1"
+        },
+        {
+          "name": "Table",
+          "value": "2"
+        },
+        {
+          "name": "Container",
+          "value": "3"
+        },
+        {
+          "name": "Menu",
+          "value": "4"
+        },
+        {
+          "name": "ToolBar",
+          "value": "5"
+        },
+        {
+          "name": "AddressBar",
+          "value": "6"
+        },
+        {
+          "name": "Toolpane",
+          "value": "7"
+        },
+        {
+          "name": "TabBar",
+          "value": "8"
+        },
+        {
+          "name": "TitleBar",
+          "value": "9"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "ScreenRegionBoundingBox": {
+      "fields": [
+        {
+          "name": "Left",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "Top",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "Right",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        },
+        {
+          "name": "Bottom",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        }
+      ]
+    },
+    "ScreenRegionDetectionContract": {}
+  }
+}

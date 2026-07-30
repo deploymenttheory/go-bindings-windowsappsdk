@@ -1,0 +1,673 @@
+{
+  "namespace": "Microsoft.Windows.AppLifecycle",
+  "schema_version": 1,
+  "winmd_version": "2.3.5",
+  "winmd_file": "Microsoft.Windows.AppLifecycle.winmd",
+  "enums": {
+    "ExtendedActivationKind": {
+      "base_type": "int32",
+      "members": [
+        {
+          "name": "Launch",
+          "value": "0"
+        },
+        {
+          "name": "Search",
+          "value": "1"
+        },
+        {
+          "name": "ShareTarget",
+          "value": "2"
+        },
+        {
+          "name": "File",
+          "value": "3"
+        },
+        {
+          "name": "Protocol",
+          "value": "4"
+        },
+        {
+          "name": "FileOpenPicker",
+          "value": "5"
+        },
+        {
+          "name": "FileSavePicker",
+          "value": "6"
+        },
+        {
+          "name": "CachedFileUpdater",
+          "value": "7"
+        },
+        {
+          "name": "ContactPicker",
+          "value": "8"
+        },
+        {
+          "name": "Device",
+          "value": "9"
+        },
+        {
+          "name": "PrintTaskSettings",
+          "value": "10"
+        },
+        {
+          "name": "CameraSettings",
+          "value": "11"
+        },
+        {
+          "name": "RestrictedLaunch",
+          "value": "12"
+        },
+        {
+          "name": "AppointmentsProvider",
+          "value": "13"
+        },
+        {
+          "name": "Contact",
+          "value": "14"
+        },
+        {
+          "name": "LockScreenCall",
+          "value": "15"
+        },
+        {
+          "name": "VoiceCommand",
+          "value": "16"
+        },
+        {
+          "name": "LockScreen",
+          "value": "17"
+        },
+        {
+          "name": "PickerReturned",
+          "value": "1000"
+        },
+        {
+          "name": "WalletAction",
+          "value": "1001"
+        },
+        {
+          "name": "PickFileContinuation",
+          "value": "1002"
+        },
+        {
+          "name": "PickSaveFileContinuation",
+          "value": "1003"
+        },
+        {
+          "name": "PickFolderContinuation",
+          "value": "1004"
+        },
+        {
+          "name": "WebAuthenticationBrokerContinuation",
+          "value": "1005"
+        },
+        {
+          "name": "WebAccountProvider",
+          "value": "1006"
+        },
+        {
+          "name": "ComponentUI",
+          "value": "1007"
+        },
+        {
+          "name": "ProtocolForResults",
+          "value": "1009"
+        },
+        {
+          "name": "ToastNotification",
+          "value": "1010"
+        },
+        {
+          "name": "Print3DWorkflow",
+          "value": "1011"
+        },
+        {
+          "name": "DialReceiver",
+          "value": "1012"
+        },
+        {
+          "name": "DevicePairing",
+          "value": "1013"
+        },
+        {
+          "name": "UserDataAccountsProvider",
+          "value": "1014"
+        },
+        {
+          "name": "FilePickerExperience",
+          "value": "1015"
+        },
+        {
+          "name": "LockScreenComponent",
+          "value": "1016"
+        },
+        {
+          "name": "ContactPanel",
+          "value": "1017"
+        },
+        {
+          "name": "PrintWorkflowForegroundTask",
+          "value": "1018"
+        },
+        {
+          "name": "GameUIProvider",
+          "value": "1019"
+        },
+        {
+          "name": "StartupTask",
+          "value": "1020"
+        },
+        {
+          "name": "CommandLineLaunch",
+          "value": "1021"
+        },
+        {
+          "name": "BarcodeScannerProvider",
+          "value": "1022"
+        },
+        {
+          "name": "PrintSupportJobUI",
+          "value": "1023"
+        },
+        {
+          "name": "PrintSupportSettingsUI",
+          "value": "1024"
+        },
+        {
+          "name": "PhoneCallActivation",
+          "value": "1025"
+        },
+        {
+          "name": "VpnForeground",
+          "value": "1026"
+        },
+        {
+          "name": "Push",
+          "value": "5000"
+        },
+        {
+          "name": "AppNotification",
+          "value": "5001"
+        }
+      ]
+    }
+  },
+  "structs": {
+    "AppLifecycleContract": {}
+  },
+  "interfaces": {
+    "IActivationRegistrationManagerStatics": {
+      "guid": "5ac4e92e-017b-5d68-8198-f68636ab99d3",
+      "exclusive_to": "Microsoft.Windows.AppLifecycle.ActivationRegistrationManager",
+      "methods": [
+        {
+          "name": "RegisterForFileTypeActivation",
+          "params": [
+            {
+              "name": "supportedFileTypes",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "Native",
+                  "name": "HString"
+                }
+              }
+            },
+            {
+              "name": "logo",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "displayName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "supportedVerbs",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "Native",
+                  "name": "HString"
+                }
+              }
+            },
+            {
+              "name": "exePath",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RegisterForProtocolActivation",
+          "params": [
+            {
+              "name": "scheme",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "logo",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "displayName",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "exePath",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RegisterForStartupActivation",
+          "params": [
+            {
+              "name": "taskId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "exePath",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "UnregisterForFileTypeActivation",
+          "params": [
+            {
+              "name": "fileTypes",
+              "type": {
+                "kind": "Array",
+                "elem": {
+                  "kind": "Native",
+                  "name": "HString"
+                }
+              }
+            },
+            {
+              "name": "exePath",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "UnregisterForProtocolActivation",
+          "params": [
+            {
+              "name": "scheme",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            },
+            {
+              "name": "exePath",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        },
+        {
+          "name": "UnregisterForStartupActivation",
+          "params": [
+            {
+              "name": "taskId",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "IAppActivationArguments": {
+      "guid": "14f99eaf-1580-5062-bdc8-d5d1c31138fb",
+      "exclusive_to": "Microsoft.Windows.AppLifecycle.AppActivationArguments",
+      "methods": [
+        {
+          "name": "get_Kind",
+          "return": {
+            "kind": "ApiRef",
+            "name": "ExtendedActivationKind",
+            "namespace": "Microsoft.Windows.AppLifecycle",
+            "target_kind": "Enum"
+          }
+        },
+        {
+          "name": "get_Data",
+          "return": {
+            "kind": "Native",
+            "name": "Object"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "Data",
+          "type": {
+            "kind": "Native",
+            "name": "Object"
+          },
+          "getter": "get_Data"
+        },
+        {
+          "name": "Kind",
+          "type": {
+            "kind": "ApiRef",
+            "name": "ExtendedActivationKind",
+            "namespace": "Microsoft.Windows.AppLifecycle",
+            "target_kind": "Enum"
+          },
+          "getter": "get_Kind"
+        }
+      ]
+    },
+    "IAppInstance": {
+      "guid": "75766ae4-0239-5a26-b9da-d5bfc75a4866",
+      "exclusive_to": "Microsoft.Windows.AppLifecycle.AppInstance",
+      "methods": [
+        {
+          "name": "UnregisterKey"
+        },
+        {
+          "name": "RedirectActivationToAsync",
+          "params": [
+            {
+              "name": "args",
+              "type": {
+                "kind": "ApiRef",
+                "name": "AppActivationArguments",
+                "namespace": "Microsoft.Windows.AppLifecycle",
+                "target_kind": "Class"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "IAsyncAction",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Interface",
+            "external": true
+          }
+        },
+        {
+          "name": "GetActivatedEventArgs",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppActivationArguments",
+            "namespace": "Microsoft.Windows.AppLifecycle",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "add_Activated",
+          "params": [
+            {
+              "name": "handler",
+              "type": {
+                "kind": "GenericInst",
+                "name": "EventHandler`1",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Delegate",
+                "external": true,
+                "args": [
+                  {
+                    "kind": "ApiRef",
+                    "name": "AppActivationArguments",
+                    "namespace": "Microsoft.Windows.AppLifecycle",
+                    "target_kind": "Class"
+                  }
+                ]
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "EventRegistrationToken",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Struct",
+            "external": true
+          }
+        },
+        {
+          "name": "remove_Activated",
+          "params": [
+            {
+              "name": "token",
+              "type": {
+                "kind": "ApiRef",
+                "name": "EventRegistrationToken",
+                "namespace": "Windows.Foundation",
+                "target_kind": "Struct",
+                "external": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "get_Key",
+          "return": {
+            "kind": "Native",
+            "name": "HString"
+          }
+        },
+        {
+          "name": "get_IsCurrent",
+          "return": {
+            "kind": "Native",
+            "name": "Bool"
+          }
+        },
+        {
+          "name": "get_ProcessId",
+          "return": {
+            "kind": "Native",
+            "name": "U4"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "IsCurrent",
+          "type": {
+            "kind": "Native",
+            "name": "Bool"
+          },
+          "getter": "get_IsCurrent"
+        },
+        {
+          "name": "Key",
+          "type": {
+            "kind": "Native",
+            "name": "HString"
+          },
+          "getter": "get_Key"
+        },
+        {
+          "name": "ProcessId",
+          "type": {
+            "kind": "Native",
+            "name": "U4"
+          },
+          "getter": "get_ProcessId"
+        }
+      ],
+      "events": [
+        {
+          "name": "Activated",
+          "type": {
+            "kind": "GenericInst",
+            "name": "EventHandler`1",
+            "namespace": "Windows.Foundation",
+            "target_kind": "Delegate",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AppActivationArguments",
+                "namespace": "Microsoft.Windows.AppLifecycle",
+                "target_kind": "Class"
+              }
+            ]
+          },
+          "add_method": "add_Activated",
+          "remove_method": "remove_Activated"
+        }
+      ]
+    },
+    "IAppInstanceStatics": {
+      "guid": "4f414b25-8330-5a9b-bbc1-8229d479649d",
+      "exclusive_to": "Microsoft.Windows.AppLifecycle.AppInstance",
+      "methods": [
+        {
+          "name": "GetCurrent",
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppInstance",
+            "namespace": "Microsoft.Windows.AppLifecycle",
+            "target_kind": "Class"
+          }
+        },
+        {
+          "name": "GetInstances",
+          "return": {
+            "kind": "GenericInst",
+            "name": "IVector`1",
+            "namespace": "Windows.Foundation.Collections",
+            "target_kind": "Interface",
+            "external": true,
+            "args": [
+              {
+                "kind": "ApiRef",
+                "name": "AppInstance",
+                "namespace": "Microsoft.Windows.AppLifecycle",
+                "target_kind": "Class"
+              }
+            ]
+          }
+        },
+        {
+          "name": "FindOrRegisterForKey",
+          "params": [
+            {
+              "name": "key",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppInstance",
+            "namespace": "Microsoft.Windows.AppLifecycle",
+            "target_kind": "Class"
+          }
+        }
+      ]
+    },
+    "IAppInstanceStatics2": {
+      "guid": "fe9f1885-7160-5397-ba9b-5890b24fdc04",
+      "exclusive_to": "Microsoft.Windows.AppLifecycle.AppInstance",
+      "methods": [
+        {
+          "name": "Restart",
+          "params": [
+            {
+              "name": "arguments",
+              "type": {
+                "kind": "Native",
+                "name": "HString"
+              }
+            }
+          ],
+          "return": {
+            "kind": "ApiRef",
+            "name": "AppRestartFailureReason",
+            "namespace": "Windows.ApplicationModel.Core",
+            "target_kind": "Enum",
+            "external": true
+          }
+        }
+      ]
+    }
+  },
+  "classes": {
+    "ActivationRegistrationManager": {
+      "static_interfaces": [
+        "Microsoft.Windows.AppLifecycle.IActivationRegistrationManagerStatics"
+      ]
+    },
+    "AppActivationArguments": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAppActivationArguments",
+        "namespace": "Microsoft.Windows.AppLifecycle",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAppActivationArguments",
+          "namespace": "Microsoft.Windows.AppLifecycle",
+          "target_kind": "Interface"
+        }
+      ]
+    },
+    "AppInstance": {
+      "default_interface": {
+        "kind": "ApiRef",
+        "name": "IAppInstance",
+        "namespace": "Microsoft.Windows.AppLifecycle",
+        "target_kind": "Interface"
+      },
+      "interfaces": [
+        {
+          "kind": "ApiRef",
+          "name": "IAppInstance",
+          "namespace": "Microsoft.Windows.AppLifecycle",
+          "target_kind": "Interface"
+        }
+      ],
+      "static_interfaces": [
+        "Microsoft.Windows.AppLifecycle.IAppInstanceStatics",
+        "Microsoft.Windows.AppLifecycle.IAppInstanceStatics2"
+      ]
+    }
+  }
+}
