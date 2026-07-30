@@ -1,0 +1,93 @@
+# The committed emit roots: the single pinned definition of the generated
+# surface. `go run ./cmd/generate bindings` reads this file when --namespace is
+# not given (--namespace stays an ad-hoc override), and the committed
+# bindings/winui tree is these roots plus the transitive closure of every
+# namespace their emitted members reference.
+#
+# This is the FULL surface: every namespace in the ingested IR, listed
+# explicitly. Explicit beats an implicit emit-everything fallback, because a
+# winmd update that adds or removes a namespace then shows up as a reviewable
+# diff here rather than silently changing the published API.
+#
+# Regenerate the list after `go run ./cmd/generate ingest` with:
+#
+#   ls metadata/wasdk | sed 's/\.wasdkmeta\.json$//' | LC_ALL=C sort
+#
+# and paste it below this header.
+Microsoft.Foundation
+Microsoft.Graphics.DirectX
+Microsoft.Graphics.Display
+Microsoft.Graphics.Imaging
+Microsoft.Security.Authentication.OAuth
+Microsoft.UI
+Microsoft.UI.Composition
+Microsoft.UI.Composition.Core
+Microsoft.UI.Composition.Diagnostics
+Microsoft.UI.Composition.Effects
+Microsoft.UI.Composition.Interactions
+Microsoft.UI.Composition.Scenes
+Microsoft.UI.Composition.SystemBackdrops
+Microsoft.UI.Content
+Microsoft.UI.Dispatching
+Microsoft.UI.Input
+Microsoft.UI.Input.DragDrop
+Microsoft.UI.Input.Interop
+Microsoft.UI.System
+Microsoft.UI.Text
+Microsoft.UI.Windowing
+Microsoft.UI.Xaml
+Microsoft.UI.Xaml.Automation
+Microsoft.UI.Xaml.Automation.Peers
+Microsoft.UI.Xaml.Automation.Provider
+Microsoft.UI.Xaml.Automation.Text
+Microsoft.UI.Xaml.Controls
+Microsoft.UI.Xaml.Controls.AnimatedVisuals
+Microsoft.UI.Xaml.Controls.Primitives
+Microsoft.UI.Xaml.Data
+Microsoft.UI.Xaml.Documents
+Microsoft.UI.Xaml.Hosting
+Microsoft.UI.Xaml.Input
+Microsoft.UI.Xaml.Interop
+Microsoft.UI.Xaml.Markup
+Microsoft.UI.Xaml.Media
+Microsoft.UI.Xaml.Media.Animation
+Microsoft.UI.Xaml.Media.Imaging
+Microsoft.UI.Xaml.Media.Media3D
+Microsoft.UI.Xaml.Navigation
+Microsoft.UI.Xaml.Printing
+Microsoft.UI.Xaml.Resources
+Microsoft.UI.Xaml.Settings
+Microsoft.UI.Xaml.Shapes
+Microsoft.UI.Xaml.XamlTypeInfo
+Microsoft.Windows.AI
+Microsoft.Windows.AI.ContentSafety
+Microsoft.Windows.AI.Foundation
+Microsoft.Windows.AI.Imaging
+Microsoft.Windows.AI.Text
+Microsoft.Windows.AI.Video
+Microsoft.Windows.AppLifecycle
+Microsoft.Windows.AppNotifications
+Microsoft.Windows.AppNotifications.Builder
+Microsoft.Windows.ApplicationModel.Background
+Microsoft.Windows.ApplicationModel.Background.UniversalBGTask
+Microsoft.Windows.ApplicationModel.DynamicDependency
+Microsoft.Windows.ApplicationModel.Resources
+Microsoft.Windows.ApplicationModel.WindowsAppRuntime
+Microsoft.Windows.BadgeNotifications
+Microsoft.Windows.Foundation
+Microsoft.Windows.Globalization
+Microsoft.Windows.Management.Deployment
+Microsoft.Windows.Media.Capture
+Microsoft.Windows.PushNotifications
+Microsoft.Windows.Security.AccessControl
+Microsoft.Windows.SemanticSearch
+Microsoft.Windows.Storage
+Microsoft.Windows.Storage.Pickers
+Microsoft.Windows.System
+Microsoft.Windows.System.Power
+Microsoft.Windows.Vision
+Microsoft.Windows.Widgets
+Microsoft.Windows.Widgets.Feeds.Providers
+Microsoft.Windows.Widgets.Notifications
+Microsoft.Windows.Widgets.Providers
+Microsoft.Windows.Workloads
