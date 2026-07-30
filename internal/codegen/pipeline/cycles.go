@@ -37,38 +37,52 @@ const defaultEmbedWeight = 1000
 // whole graph.
 const inheritedInterfaceWeight = 1
 
-// ComputeBlockedImports builds the cross-namespace reference graph, detects
-// import cycles, and returns the edge set to sever: blocked[src][dst] means
-// references from src to dst must degrade to a raw type instead of importing.
+// ComputeBlockedImports builds the cross-PACKAGE reference graph, detects import
+// cycles, and returns the edge set to sever: blocked[src][dst] means references from
+// package src to package dst must degrade to a raw type instead of importing.
 //
-// Go rejects an import cycle outright, and WinRT namespaces reference each other
-// freely in both directions — Microsoft.UI.Xaml and Microsoft.UI.Xaml.Controls
-// each name types in the other. Something has to give, so the cheapest edge in
-// each cycle is cut: fewest references degraded, ties broken by name so the
-// result is the same on every run.
+// Since mutually recursive namespaces are merged into single packages (see
+// ComputeClusters), the package graph is acyclic by construction and this returns an
+// empty set. It is kept as a backstop rather than deleted: a future metadata shape
+// that reintroduced a package cycle would otherwise surface as a compile failure
+// across the whole tree instead of as diagnostics naming the members lost.
 //
-// Only LOCAL namespaces participate. An import into go-bindings-winrt can never
-// close a cycle, because nothing in that module imports this one.
-func ComputeBlockedImports(registry *Registry) map[string]map[string]bool {
+// Only LOCAL namespaces participate. An import into go-bindings-winrt can never close
+// a cycle, because nothing in that module imports this one.
+func ComputeBlockedImports(registry *Registry, clusters *Clusters) map[string]map[string]bool {
+	packageOf := func(namespace string) string {
+		if clusters == nil {
+			return namespace
+		}
+		return clusters.PackageOf(namespace)
+	}
 	edges := map[string]map[string]int{}
 	for _, meta := range registry.Namespaces {
-		weights := map[string]int{}
+		source := packageOf(meta.Namespace)
+		weights := edges[source]
+		if weights == nil {
+			weights = map[string]int{}
+		}
 		count := func(ref *wasdkmeta.TypeRef) {
-			if ref.Kind == "Native" || ref.Namespace == "" || ref.Namespace == meta.Namespace {
+			if ref.Kind == "Native" || ref.Namespace == "" {
 				return
 			}
 			if !registry.IsLocal(ref.Namespace) {
 				return
 			}
-			weights[ref.Namespace]++
+			if target := packageOf(ref.Namespace); target != source {
+				weights[target]++
+			}
 		}
 		wasdkmeta.WalkRefs(meta, count)
 		for name := range meta.Classes {
 			class := meta.Classes[name]
 			if class.DefaultInterface != nil {
-				target := class.DefaultInterface.Namespace
-				if target != "" && target != meta.Namespace && registry.IsLocal(target) {
-					weights[target] += defaultEmbedWeight
+				namespace := class.DefaultInterface.Namespace
+				if namespace != "" && registry.IsLocal(namespace) {
+					if target := packageOf(namespace); target != source {
+						weights[target] += defaultEmbedWeight
+					}
 				}
 			}
 			// Inherited-interface edges. The class emitter walks the Extends chain
@@ -80,15 +94,17 @@ func ComputeBlockedImports(registry *Registry) map[string]map[string]bool {
 			// compile.
 			registry.WalkBaseChain(&class, func(_ string, base *wasdkmeta.Class) {
 				for i := range base.Interfaces {
-					target := base.Interfaces[i].Namespace
-					if target != "" && target != meta.Namespace && registry.IsLocal(target) {
-						weights[target] += inheritedInterfaceWeight
+					namespace := base.Interfaces[i].Namespace
+					if namespace != "" && registry.IsLocal(namespace) {
+						if target := packageOf(namespace); target != source {
+							weights[target] += inheritedInterfaceWeight
+						}
 					}
 				}
 			})
 		}
 		if len(weights) > 0 {
-			edges[meta.Namespace] = weights
+			edges[source] = weights
 		}
 	}
 

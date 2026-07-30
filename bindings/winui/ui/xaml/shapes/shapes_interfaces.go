@@ -13,7 +13,6 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlmedia "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/media"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -142,14 +141,14 @@ type IPath struct {
 var IID_IPath = win32.GUID{Data1: 0x757d1cd8, Data2: 0x0ec0, Data3: 0x55c5, Data4: [8]byte{0xb4, 0x00, 0x66, 0x65, 0x7e, 0x49, 0x3e, 0x78}}
 
 // Data (propget get_Data) dispatches through IPath's vtable slot 6.
-func (self *IPath) Data() (*uixamlmedia.IGeometry, error) {
-	result := new(*uixamlmedia.IGeometry)
+func (self *IPath) Data() (*uixaml.IGeometry, error) {
+	result := new(*uixaml.IGeometry)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetData (propput put_Data) dispatches through IPath's vtable slot 7.
-func (self *IPath) SetData(value *uixamlmedia.IGeometry) error {
+func (self *IPath) SetData(value *uixaml.IGeometry) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -199,14 +198,14 @@ type IPolygon struct {
 var IID_IPolygon = win32.GUID{Data1: 0xfa126347, Data2: 0xd1d4, Data3: 0x54dd, Data4: [8]byte{0xb1, 0xa4, 0xc3, 0x50, 0x19, 0x39, 0x79, 0x44}}
 
 // FillRule (propget get_FillRule) dispatches through IPolygon's vtable slot 6.
-func (self *IPolygon) FillRule() (uixamlmedia.FillRule, error) {
-	result := new(uixamlmedia.FillRule)
+func (self *IPolygon) FillRule() (uixaml.FillRule, error) {
+	result := new(uixaml.FillRule)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetFillRule (propput put_FillRule) dispatches through IPolygon's vtable slot 7.
-func (self *IPolygon) SetFillRule(value uixamlmedia.FillRule) error {
+func (self *IPolygon) SetFillRule(value uixaml.FillRule) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -261,14 +260,14 @@ type IPolyline struct {
 var IID_IPolyline = win32.GUID{Data1: 0xc7f0bec6, Data2: 0x184c, Data3: 0x5d96, Data4: [8]byte{0x81, 0x02, 0x04, 0xdd, 0x21, 0x1e, 0x10, 0x0c}}
 
 // FillRule (propget get_FillRule) dispatches through IPolyline's vtable slot 6.
-func (self *IPolyline) FillRule() (uixamlmedia.FillRule, error) {
-	result := new(uixamlmedia.FillRule)
+func (self *IPolyline) FillRule() (uixaml.FillRule, error) {
+	result := new(uixaml.FillRule)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetFillRule (propput put_FillRule) dispatches through IPolyline's vtable slot 7.
-func (self *IPolyline) SetFillRule(value uixamlmedia.FillRule) error {
+func (self *IPolyline) SetFillRule(value uixaml.FillRule) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -385,27 +384,27 @@ type IShape struct {
 var IID_IShape = win32.GUID{Data1: 0x9941aad3, Data2: 0x6af2, Data3: 0x5ba2, Data4: [8]byte{0x90, 0x85, 0x85, 0x06, 0xd5, 0xf2, 0x48, 0x5e}}
 
 // Fill (propget get_Fill) dispatches through IShape's vtable slot 6.
-func (self *IShape) Fill() (*uixamlmedia.IBrush, error) {
-	result := new(*uixamlmedia.IBrush)
+func (self *IShape) Fill() (*uixaml.IBrush, error) {
+	result := new(*uixaml.IBrush)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetFill (propput put_Fill) dispatches through IShape's vtable slot 7.
-func (self *IShape) SetFill(value *uixamlmedia.IBrush) error {
+func (self *IShape) SetFill(value *uixaml.IBrush) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
 
 // Stroke (propget get_Stroke) dispatches through IShape's vtable slot 8.
-func (self *IShape) Stroke() (*uixamlmedia.IBrush, error) {
-	result := new(*uixamlmedia.IBrush)
+func (self *IShape) Stroke() (*uixaml.IBrush, error) {
+	result := new(*uixaml.IBrush)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStroke (propput put_Stroke) dispatches through IShape's vtable slot 9.
-func (self *IShape) SetStroke(value *uixamlmedia.IBrush) error {
+func (self *IShape) SetStroke(value *uixaml.IBrush) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -439,40 +438,40 @@ func (self *IShape) SetStrokeThickness(value float64) error {
 }
 
 // StrokeStartLineCap (propget get_StrokeStartLineCap) dispatches through IShape's vtable slot 14.
-func (self *IShape) StrokeStartLineCap() (uixamlmedia.PenLineCap, error) {
-	result := new(uixamlmedia.PenLineCap)
+func (self *IShape) StrokeStartLineCap() (uixaml.PenLineCap, error) {
+	result := new(uixaml.PenLineCap)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStrokeStartLineCap (propput put_StrokeStartLineCap) dispatches through IShape's vtable slot 15.
-func (self *IShape) SetStrokeStartLineCap(value uixamlmedia.PenLineCap) error {
+func (self *IShape) SetStrokeStartLineCap(value uixaml.PenLineCap) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
 
 // StrokeEndLineCap (propget get_StrokeEndLineCap) dispatches through IShape's vtable slot 16.
-func (self *IShape) StrokeEndLineCap() (uixamlmedia.PenLineCap, error) {
-	result := new(uixamlmedia.PenLineCap)
+func (self *IShape) StrokeEndLineCap() (uixaml.PenLineCap, error) {
+	result := new(uixaml.PenLineCap)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStrokeEndLineCap (propput put_StrokeEndLineCap) dispatches through IShape's vtable slot 17.
-func (self *IShape) SetStrokeEndLineCap(value uixamlmedia.PenLineCap) error {
+func (self *IShape) SetStrokeEndLineCap(value uixaml.PenLineCap) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
 
 // StrokeLineJoin (propget get_StrokeLineJoin) dispatches through IShape's vtable slot 18.
-func (self *IShape) StrokeLineJoin() (uixamlmedia.PenLineJoin, error) {
-	result := new(uixamlmedia.PenLineJoin)
+func (self *IShape) StrokeLineJoin() (uixaml.PenLineJoin, error) {
+	result := new(uixaml.PenLineJoin)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[18], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStrokeLineJoin (propput put_StrokeLineJoin) dispatches through IShape's vtable slot 19.
-func (self *IShape) SetStrokeLineJoin(value uixamlmedia.PenLineJoin) error {
+func (self *IShape) SetStrokeLineJoin(value uixaml.PenLineJoin) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[19], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -492,14 +491,14 @@ func (self *IShape) SetStrokeDashOffset(value float64) error {
 }
 
 // StrokeDashCap (propget get_StrokeDashCap) dispatches through IShape's vtable slot 22.
-func (self *IShape) StrokeDashCap() (uixamlmedia.PenLineCap, error) {
-	result := new(uixamlmedia.PenLineCap)
+func (self *IShape) StrokeDashCap() (uixaml.PenLineCap, error) {
+	result := new(uixaml.PenLineCap)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[22], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStrokeDashCap (propput put_StrokeDashCap) dispatches through IShape's vtable slot 23.
-func (self *IShape) SetStrokeDashCap(value uixamlmedia.PenLineCap) error {
+func (self *IShape) SetStrokeDashCap(value uixaml.PenLineCap) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[23], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
@@ -520,21 +519,21 @@ func (self *IShape) SetStrokeDashArray(value *syswinrt.IInspectable) error {
 }
 
 // Stretch (propget get_Stretch) dispatches through IShape's vtable slot 26.
-func (self *IShape) Stretch() (uixamlmedia.Stretch, error) {
-	result := new(uixamlmedia.Stretch)
+func (self *IShape) Stretch() (uixaml.Stretch, error) {
+	result := new(uixaml.Stretch)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[26], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
 // SetStretch (propput put_Stretch) dispatches through IShape's vtable slot 27.
-func (self *IShape) SetStretch(value uixamlmedia.Stretch) error {
+func (self *IShape) SetStretch(value uixaml.Stretch) error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[27], uintptr(unsafe.Pointer(self)), uintptr(value))
 	return win32.ErrIfFailed(int32(r1))
 }
 
 // GeometryTransform (propget get_GeometryTransform) dispatches through IShape's vtable slot 28.
-func (self *IShape) GeometryTransform() (*uixamlmedia.ITransform, error) {
-	result := new(*uixamlmedia.ITransform)
+func (self *IShape) GeometryTransform() (*uixaml.ITransform, error) {
+	result := new(*uixaml.ITransform)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[28], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }

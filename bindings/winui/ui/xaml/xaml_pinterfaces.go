@@ -5,16 +5,62 @@
 package xaml
 
 import (
+	"math"
 	"syscall"
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtapplicationmodeldatatransfer "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/datatransfer"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
+	wrtfoundationnumerics "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation/numerics"
+	wrtstoragestreams "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/storage/streams"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 )
+
+// IAsyncOperationOfBool is the WinRT interface Windows.Foundation.IAsyncOperation`1<Bool>.
+// IID: cdb5efb3-5788-509d-9be1-71ccb8a3362a
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfBool struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfBool is the interface identifier for IAsyncOperationOfBool.
+var IID_IAsyncOperationOfBool = win32.GUID{Data1: 0xcdb5efb3, Data2: 0x5788, Data3: 0x509d, Data4: [8]byte{0x9b, 0xe1, 0x71, 0xcc, 0xb8, 0xa3, 0x36, 0x2a}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfBool's vtable slot 8.
+func (self *IAsyncOperationOfBool) GetResults() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfContentDialogResult is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.UI.Xaml.Controls.ContentDialogResult>.
+// IID: d3ad3641-8227-59de-bac8-85d3795c6610
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfContentDialogResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfContentDialogResult is the interface identifier for IAsyncOperationOfContentDialogResult.
+var IID_IAsyncOperationOfContentDialogResult = win32.GUID{Data1: 0xd3ad3641, Data2: 0x8227, Data3: 0x59de, Data4: [8]byte{0xba, 0xc8, 0x85, 0xd3, 0x79, 0x5c, 0x66, 0x10}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfContentDialogResult's vtable slot 8.
+func (self *IAsyncOperationOfContentDialogResult) GetResults() (ContentDialogResult, error) {
+	result := new(ContentDialogResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IAsyncOperationOfDataPackageOperation is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.ApplicationModel.DataTransfer.DataPackageOperation>.
 // IID: 8b98aea9-64f0-5672-b30e-dfd9c2e4f6fe
@@ -34,6 +80,230 @@ var IID_IAsyncOperationOfDataPackageOperation = win32.GUID{Data1: 0x8b98aea9, Da
 func (self *IAsyncOperationOfDataPackageOperation) GetResults() (wrtapplicationmodeldatatransfer.DataPackageOperation, error) {
 	result := new(wrtapplicationmodeldatatransfer.DataPackageOperation)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfFocusMovementResult is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.UI.Xaml.Input.FocusMovementResult>.
+// IID: edc8359c-34db-5065-b37e-c8dc44da81c1
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfFocusMovementResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfFocusMovementResult is the interface identifier for IAsyncOperationOfFocusMovementResult.
+var IID_IAsyncOperationOfFocusMovementResult = win32.GUID{Data1: 0xedc8359c, Data2: 0x34db, Data3: 0x5065, Data4: [8]byte{0xb3, 0x7e, 0xc8, 0xdc, 0x44, 0xda, 0x81, 0xc1}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfFocusMovementResult's vtable slot 8.
+func (self *IAsyncOperationOfFocusMovementResult) GetResults() (*IFocusMovementResult, error) {
+	result := new(*IFocusMovementResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfIBuffer is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.Storage.Streams.IBuffer>.
+// IID: 3bee8834-b9a7-5a80-a746-5ef097227878
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfIBuffer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfIBuffer is the interface identifier for IAsyncOperationOfIBuffer.
+var IID_IAsyncOperationOfIBuffer = win32.GUID{Data1: 0x3bee8834, Data2: 0xb9a7, Data3: 0x5a80, Data4: [8]byte{0xa7, 0x46, 0x5e, 0xf0, 0x97, 0x22, 0x78, 0x78}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfIBuffer's vtable slot 8.
+func (self *IAsyncOperationOfIBuffer) GetResults() (*wrtstoragestreams.IBuffer, error) {
+	result := new(*wrtstoragestreams.IBuffer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfIReferenceOfDateTime is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.Foundation.IReference`1<Windows.Foundation.DateTime>>.
+// IID: 2025b34f-4214-56ab-abfe-2fbe6595da9d
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfIReferenceOfDateTime struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfIReferenceOfDateTime is the interface identifier for IAsyncOperationOfIReferenceOfDateTime.
+var IID_IAsyncOperationOfIReferenceOfDateTime = win32.GUID{Data1: 0x2025b34f, Data2: 0x4214, Data3: 0x56ab, Data4: [8]byte{0xab, 0xfe, 0x2f, 0xbe, 0x65, 0x95, 0xda, 0x9d}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfIReferenceOfDateTime's vtable slot 8.
+func (self *IAsyncOperationOfIReferenceOfDateTime) GetResults() (*IReferenceOfDateTime, error) {
+	result := new(*IReferenceOfDateTime)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfIReferenceOfTimeSpan is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.Foundation.IReference`1<Windows.Foundation.TimeSpan>>.
+// IID: 24a901ad-910f-5c0f-b23c-67007577a558
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfIReferenceOfTimeSpan struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfIReferenceOfTimeSpan is the interface identifier for IAsyncOperationOfIReferenceOfTimeSpan.
+var IID_IAsyncOperationOfIReferenceOfTimeSpan = win32.GUID{Data1: 0x24a901ad, Data2: 0x910f, Data3: 0x5c0f, Data4: [8]byte{0xb2, 0x3c, 0x67, 0x00, 0x75, 0x77, 0xa5, 0x58}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfIReferenceOfTimeSpan's vtable slot 8.
+func (self *IAsyncOperationOfIReferenceOfTimeSpan) GetResults() (*IReferenceOfTimeSpan, error) {
+	result := new(*IReferenceOfTimeSpan)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfIVectorViewOfObject is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.Foundation.Collections.IVectorView`1<Object>>.
+// IID: d671d332-22aa-5597-8dcc-2459eab49418
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfIVectorViewOfObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfIVectorViewOfObject is the interface identifier for IAsyncOperationOfIVectorViewOfObject.
+var IID_IAsyncOperationOfIVectorViewOfObject = win32.GUID{Data1: 0xd671d332, Data2: 0x22aa, Data3: 0x5597, Data4: [8]byte{0x8d, 0xcc, 0x24, 0x59, 0xea, 0xb4, 0x94, 0x18}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfIVectorViewOfObject's vtable slot 8.
+func (self *IAsyncOperationOfIVectorViewOfObject) GetResults() (*IVectorViewOfObject, error) {
+	result := new(*IVectorViewOfObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfIVectorViewOfString is the WinRT interface Windows.Foundation.IAsyncOperation`1<Windows.Foundation.Collections.IVectorView`1<String>>.
+// IID: 2f92b529-119b-575a-a419-3904b4e41af2
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfIVectorViewOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfIVectorViewOfString is the interface identifier for IAsyncOperationOfIVectorViewOfString.
+var IID_IAsyncOperationOfIVectorViewOfString = win32.GUID{Data1: 0x2f92b529, Data2: 0x119b, Data3: 0x575a, Data4: [8]byte{0xa4, 0x19, 0x39, 0x04, 0xb4, 0xe4, 0x1a, 0xf2}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfIVectorViewOfString's vtable slot 8.
+func (self *IAsyncOperationOfIVectorViewOfString) GetResults() (*IVectorViewOfString, error) {
+	result := new(*IVectorViewOfString)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfLoadMoreItemsResult is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.UI.Xaml.Data.LoadMoreItemsResult>.
+// IID: 87c6d0a7-9748-5f9c-b359-1e12759cf3ce
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfLoadMoreItemsResult struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfLoadMoreItemsResult is the interface identifier for IAsyncOperationOfLoadMoreItemsResult.
+var IID_IAsyncOperationOfLoadMoreItemsResult = win32.GUID{Data1: 0x87c6d0a7, Data2: 0x9748, Data3: 0x5f9c, Data4: [8]byte{0xb3, 0x59, 0x1e, 0x12, 0x75, 0x9c, 0xf3, 0xce}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfLoadMoreItemsResult's vtable slot 8.
+func (self *IAsyncOperationOfLoadMoreItemsResult) GetResults() (LoadMoreItemsResult, error) {
+	result := new(LoadMoreItemsResult)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IAsyncOperationOfString is the WinRT interface Windows.Foundation.IAsyncOperation`1<String>.
+// IID: 3e1fe603-f897-5263-b328-0806426b8a79
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfString is the interface identifier for IAsyncOperationOfString.
+var IID_IAsyncOperationOfString = win32.GUID{Data1: 0x3e1fe603, Data2: 0xf897, Data3: 0x5263, Data4: [8]byte{0xb3, 0x28, 0x08, 0x06, 0x42, 0x6b, 0x8a, 0x79}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfString's vtable slot 8.
+func (self *IAsyncOperationOfString) GetResults() (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// IAsyncOperationOfSvgImageSourceLoadStatus is the WinRT interface Windows.Foundation.IAsyncOperation`1<Microsoft.UI.Xaml.Media.Imaging.SvgImageSourceLoadStatus>.
+// IID: 04fe49a9-ed47-56ca-93ea-eaa7032271c5
+// Requires: Windows.Foundation.IAsyncInfo.
+type IAsyncOperationOfSvgImageSourceLoadStatus struct {
+	syswinrt.IInspectable
+}
+
+// IID_IAsyncOperationOfSvgImageSourceLoadStatus is the interface identifier for IAsyncOperationOfSvgImageSourceLoadStatus.
+var IID_IAsyncOperationOfSvgImageSourceLoadStatus = win32.GUID{Data1: 0x04fe49a9, Data2: 0xed47, Data3: 0x56ca, Data4: [8]byte{0x93, 0xea, 0xea, 0xa7, 0x03, 0x22, 0x71, 0xc5}}
+
+// slot 6: put_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// slot 7: get_Completed skipped: parameterized type Windows.Foundation.AsyncOperationCompletedHandler`1
+
+// GetResults dispatches through IAsyncOperationOfSvgImageSourceLoadStatus's vtable slot 8.
+func (self *IAsyncOperationOfSvgImageSourceLoadStatus) GetResults() (SvgImageSourceLoadStatus, error) {
+	result := new(SvgImageSourceLoadStatus)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfAutomationPeer is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
+// IID: 3513d61b-ff0f-523d-872c-a496adb9bca2
+type IIterableOfAutomationPeer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfAutomationPeer is the interface identifier for IIterableOfAutomationPeer.
+var IID_IIterableOfAutomationPeer = win32.GUID{Data1: 0x3513d61b, Data2: 0xff0f, Data3: 0x523d, Data4: [8]byte{0x87, 0x2c, 0xa4, 0x96, 0xad, 0xb9, 0xbc, 0xa2}}
+
+// First dispatches through IIterableOfAutomationPeer's vtable slot 6.
+func (self *IIterableOfAutomationPeer) First() (*IIteratorOfAutomationPeer, error) {
+	result := new(*IIteratorOfAutomationPeer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfColor is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.UI.Color>.
+// IID: 932eef5e-2c2f-5eae-929a-74e973b57c27
+type IIterableOfColor struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfColor is the interface identifier for IIterableOfColor.
+var IID_IIterableOfColor = win32.GUID{Data1: 0x932eef5e, Data2: 0x2c2f, Data3: 0x5eae, Data4: [8]byte{0x92, 0x9a, 0x74, 0xe9, 0x73, 0xb5, 0x7c, 0x27}}
+
+// First dispatches through IIterableOfColor's vtable slot 6.
+func (self *IIterableOfColor) First() (*IIteratorOfColor, error) {
+	result := new(*IIteratorOfColor)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
@@ -85,6 +355,22 @@ func (self *IIterableOfIKeyValuePairOfObjectAndObject) First() (*IIteratorOfIKey
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfObject is the WinRT interface Windows.Foundation.Collections.IIterable`1<Object>.
+// IID: 092b849b-60b1-52be-a44a-6fe8e933cbe4
+type IIterableOfObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfObject is the interface identifier for IIterableOfObject.
+var IID_IIterableOfObject = win32.GUID{Data1: 0x092b849b, Data2: 0x60b1, Data3: 0x52be, Data4: [8]byte{0xa4, 0x4a, 0x6f, 0xe8, 0xe9, 0x33, 0xcb, 0xe4}}
+
+// First dispatches through IIterableOfObject's vtable slot 6.
+func (self *IIterableOfObject) First() (*IIteratorOfObject, error) {
+	result := new(*IIteratorOfObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIterableOfPoint is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Point>.
 // IID: c192280d-3a09-5423-9dc5-67b83ebde41d
 type IIterableOfPoint struct {
@@ -114,6 +400,122 @@ var IID_IIterableOfSetterBase = win32.GUID{Data1: 0x9fa9cd08, Data2: 0x8676, Dat
 func (self *IIterableOfSetterBase) First() (*IIteratorOfSetterBase, error) {
 	result := new(*IIteratorOfSetterBase)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfSwipeItem is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
+// IID: fcf9493a-8108-554a-939f-140b9efe9a34
+type IIterableOfSwipeItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfSwipeItem is the interface identifier for IIterableOfSwipeItem.
+var IID_IIterableOfSwipeItem = win32.GUID{Data1: 0xfcf9493a, Data2: 0x8108, Data3: 0x554a, Data4: [8]byte{0x93, 0x9f, 0x14, 0x0b, 0x9e, 0xfe, 0x9a, 0x34}}
+
+// First dispatches through IIterableOfSwipeItem's vtable slot 6.
+func (self *IIterableOfSwipeItem) First() (*IIteratorOfSwipeItem, error) {
+	result := new(*IIteratorOfSwipeItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfUIElement is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.UIElement>.
+// IID: 459bb954-42a3-5c74-8f87-42458f19aeaa
+type IIterableOfUIElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfUIElement is the interface identifier for IIterableOfUIElement.
+var IID_IIterableOfUIElement = win32.GUID{Data1: 0x459bb954, Data2: 0x42a3, Data3: 0x5c74, Data4: [8]byte{0x8f, 0x87, 0x42, 0x45, 0x8f, 0x19, 0xae, 0xaa}}
+
+// First dispatches through IIterableOfUIElement's vtable slot 6.
+func (self *IIterableOfUIElement) First() (*IIteratorOfUIElement, error) {
+	result := new(*IIteratorOfUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfAutomationPeer is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
+// IID: f5322c8c-bc0a-56cf-812c-5fe140021f62
+type IIteratorOfAutomationPeer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfAutomationPeer is the interface identifier for IIteratorOfAutomationPeer.
+var IID_IIteratorOfAutomationPeer = win32.GUID{Data1: 0xf5322c8c, Data2: 0xbc0a, Data3: 0x56cf, Data4: [8]byte{0x81, 0x2c, 0x5f, 0xe1, 0x40, 0x02, 0x1f, 0x62}}
+
+// Current (propget get_Current) dispatches through IIteratorOfAutomationPeer's vtable slot 6.
+func (self *IIteratorOfAutomationPeer) Current() (*IAutomationPeer, error) {
+	result := new(*IAutomationPeer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfAutomationPeer's vtable slot 7.
+func (self *IIteratorOfAutomationPeer) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfAutomationPeer's vtable slot 8.
+func (self *IIteratorOfAutomationPeer) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfAutomationPeer's vtable slot 9.
+func (self *IIteratorOfAutomationPeer) GetMany(items []*IAutomationPeer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfColor is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.UI.Color>.
+// IID: c4310b12-7ac2-5e5b-b511-e546eea473b4
+type IIteratorOfColor struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfColor is the interface identifier for IIteratorOfColor.
+var IID_IIteratorOfColor = win32.GUID{Data1: 0xc4310b12, Data2: 0x7ac2, Data3: 0x5e5b, Data4: [8]byte{0xb5, 0x11, 0xe5, 0x46, 0xee, 0xa4, 0x73, 0xb4}}
+
+// Current (propget get_Current) dispatches through IIteratorOfColor's vtable slot 6.
+func (self *IIteratorOfColor) Current() (wrtui.Color, error) {
+	result := new(wrtui.Color)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfColor's vtable slot 7.
+func (self *IIteratorOfColor) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfColor's vtable slot 8.
+func (self *IIteratorOfColor) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfColor's vtable slot 9.
+func (self *IIteratorOfColor) GetMany(items []wrtui.Color) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
@@ -243,6 +645,48 @@ func (self *IIteratorOfIKeyValuePairOfObjectAndObject) GetMany(items []*IKeyValu
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIteratorOfObject is the WinRT interface Windows.Foundation.Collections.IIterator`1<Object>.
+// IID: 44a94f2d-04f8-5091-b336-be7892dd10be
+type IIteratorOfObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfObject is the interface identifier for IIteratorOfObject.
+var IID_IIteratorOfObject = win32.GUID{Data1: 0x44a94f2d, Data2: 0x04f8, Data3: 0x5091, Data4: [8]byte{0xb3, 0x36, 0xbe, 0x78, 0x92, 0xdd, 0x10, 0xbe}}
+
+// Current (propget get_Current) dispatches through IIteratorOfObject's vtable slot 6.
+func (self *IIteratorOfObject) Current() (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfObject's vtable slot 7.
+func (self *IIteratorOfObject) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfObject's vtable slot 8.
+func (self *IIteratorOfObject) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfObject's vtable slot 9.
+func (self *IIteratorOfObject) GetMany(items []*syswinrt.IInspectable) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IIteratorOfPoint is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Point>.
 // IID: c602b59e-0a8e-5e99-b478-2b564585278d
 type IIteratorOfPoint struct {
@@ -317,6 +761,90 @@ func (self *IIteratorOfSetterBase) MoveNext() (bool, error) {
 
 // GetMany dispatches through IIteratorOfSetterBase's vtable slot 9.
 func (self *IIteratorOfSetterBase) GetMany(items []*ISetterBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfSwipeItem is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
+// IID: 52d8e6e5-cc6e-5ea0-9cea-0bd3447274b0
+type IIteratorOfSwipeItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfSwipeItem is the interface identifier for IIteratorOfSwipeItem.
+var IID_IIteratorOfSwipeItem = win32.GUID{Data1: 0x52d8e6e5, Data2: 0xcc6e, Data3: 0x5ea0, Data4: [8]byte{0x9c, 0xea, 0x0b, 0xd3, 0x44, 0x72, 0x74, 0xb0}}
+
+// Current (propget get_Current) dispatches through IIteratorOfSwipeItem's vtable slot 6.
+func (self *IIteratorOfSwipeItem) Current() (*ISwipeItem, error) {
+	result := new(*ISwipeItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfSwipeItem's vtable slot 7.
+func (self *IIteratorOfSwipeItem) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfSwipeItem's vtable slot 8.
+func (self *IIteratorOfSwipeItem) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfSwipeItem's vtable slot 9.
+func (self *IIteratorOfSwipeItem) GetMany(items []*ISwipeItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfUIElement is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Xaml.UIElement>.
+// IID: c5f188b0-c653-5209-909a-eb97ca691617
+type IIteratorOfUIElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfUIElement is the interface identifier for IIteratorOfUIElement.
+var IID_IIteratorOfUIElement = win32.GUID{Data1: 0xc5f188b0, Data2: 0xc653, Data3: 0x5209, Data4: [8]byte{0x90, 0x9a, 0xeb, 0x97, 0xca, 0x69, 0x16, 0x17}}
+
+// Current (propget get_Current) dispatches through IIteratorOfUIElement's vtable slot 6.
+func (self *IIteratorOfUIElement) Current() (*IUIElement, error) {
+	result := new(*IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfUIElement's vtable slot 7.
+func (self *IIteratorOfUIElement) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfUIElement's vtable slot 8.
+func (self *IIteratorOfUIElement) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfUIElement's vtable slot 9.
+func (self *IIteratorOfUIElement) GetMany(items []*IUIElement) (uint32, error) {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -444,6 +972,122 @@ func (self *IMapViewOfObjectAndObject) Split(first **IMapViewOfObjectAndObject, 
 	return win32.ErrIfFailed(int32(r1))
 }
 
+// IMapViewOfStringAndDouble is the WinRT interface Windows.Foundation.Collections.IMapView`2<String, Double>.
+// IID: d18743cf-94d6-54ac-9da2-f4755fa8e4f2
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Double>>.
+type IMapViewOfStringAndDouble struct {
+	syswinrt.IInspectable
+}
+
+// IID_IMapViewOfStringAndDouble is the interface identifier for IMapViewOfStringAndDouble.
+var IID_IMapViewOfStringAndDouble = win32.GUID{Data1: 0xd18743cf, Data2: 0x94d6, Data3: 0x54ac, Data4: [8]byte{0x9d, 0xa2, 0xf4, 0x75, 0x5f, 0xa8, 0xe4, 0xf2}}
+
+// Lookup dispatches through IMapViewOfStringAndDouble's vtable slot 6.
+func (self *IMapViewOfStringAndDouble) Lookup(key string) (float64, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return 0, err
+	}
+	defer hKey.Close()
+	result := new(float64)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IMapViewOfStringAndDouble's vtable slot 7.
+func (self *IMapViewOfStringAndDouble) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasKey dispatches through IMapViewOfStringAndDouble's vtable slot 8.
+func (self *IMapViewOfStringAndDouble) HasKey(key string) (bool, error) {
+	hKey, err := winrt.NewHString(key)
+	if err != nil {
+		return false, err
+	}
+	defer hKey.Close()
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(hKey.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 9: Split skipped: parameterized type Windows.Foundation.Collections.IMapView`2
+
+// IObservableVectorOfGradientStop is the WinRT interface Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>.
+// IID: 95f51f05-f191-5bc6-86b0-2a2a4d4ffab1
+// Requires: Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Media.GradientStop>.
+type IObservableVectorOfGradientStop struct {
+	syswinrt.IInspectable
+}
+
+// IID_IObservableVectorOfGradientStop is the interface identifier for IObservableVectorOfGradientStop.
+var IID_IObservableVectorOfGradientStop = win32.GUID{Data1: 0x95f51f05, Data2: 0xf191, Data3: 0x5bc6, Data4: [8]byte{0x86, 0xb0, 0x2a, 0x2a, 0x4d, 0x4f, 0xfa, 0xb1}}
+
+// slot 6: add_VectorChanged skipped: Windows.Foundation.Collections.VectorChangedEventHandler`1<Microsoft.UI.Xaml.Media.GradientStop> Invoke parameter sender: parameterized type Windows.Foundation.Collections.IObservableVector`1
+
+// slot 7: remove_VectorChanged skipped: VectorChanged has no grounded handler
+
+// IObservableVectorOfGroupStyle is the WinRT interface Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Controls.GroupStyle>.
+// IID: 80dae4e3-4fce-5788-923b-c1b75b82a611
+// Requires: Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.GroupStyle>.
+type IObservableVectorOfGroupStyle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IObservableVectorOfGroupStyle is the interface identifier for IObservableVectorOfGroupStyle.
+var IID_IObservableVectorOfGroupStyle = win32.GUID{Data1: 0x80dae4e3, Data2: 0x4fce, Data3: 0x5788, Data4: [8]byte{0x92, 0x3b, 0xc1, 0xb7, 0x5b, 0x82, 0xa6, 0x11}}
+
+// slot 6: add_VectorChanged skipped: Windows.Foundation.Collections.VectorChangedEventHandler`1<Microsoft.UI.Xaml.Controls.GroupStyle> Invoke parameter sender: parameterized type Windows.Foundation.Collections.IObservableVector`1
+
+// slot 7: remove_VectorChanged skipped: VectorChanged has no grounded handler
+
+// IObservableVectorOfICommandBarElement is the WinRT interface Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Controls.ICommandBarElement>.
+// IID: 4fc6ce4e-919e-5b90-a071-507b7cc3273c
+// Requires: Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.ICommandBarElement>.
+type IObservableVectorOfICommandBarElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IObservableVectorOfICommandBarElement is the interface identifier for IObservableVectorOfICommandBarElement.
+var IID_IObservableVectorOfICommandBarElement = win32.GUID{Data1: 0x4fc6ce4e, Data2: 0x919e, Data3: 0x5b90, Data4: [8]byte{0xa0, 0x71, 0x50, 0x7b, 0x7c, 0xc3, 0x27, 0x3c}}
+
+// slot 6: add_VectorChanged skipped: Windows.Foundation.Collections.VectorChangedEventHandler`1<Microsoft.UI.Xaml.Controls.ICommandBarElement> Invoke parameter sender: parameterized type Windows.Foundation.Collections.IObservableVector`1
+
+// slot 7: remove_VectorChanged skipped: VectorChanged has no grounded handler
+
+// IObservableVectorOfObject is the WinRT interface Windows.Foundation.Collections.IObservableVector`1<Object>.
+// IID: 7b81c56a-0985-518d-baa9-0da9ae009f65
+// Requires: Windows.Foundation.Collections.IVector`1<Object>.
+type IObservableVectorOfObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IObservableVectorOfObject is the interface identifier for IObservableVectorOfObject.
+var IID_IObservableVectorOfObject = win32.GUID{Data1: 0x7b81c56a, Data2: 0x0985, Data3: 0x518d, Data4: [8]byte{0xba, 0xa9, 0x0d, 0xa9, 0xae, 0x00, 0x9f, 0x65}}
+
+// slot 6: add_VectorChanged skipped: Windows.Foundation.Collections.VectorChangedEventHandler`1<Object> Invoke parameter sender: parameterized type Windows.Foundation.Collections.IObservableVector`1
+
+// slot 7: remove_VectorChanged skipped: VectorChanged has no grounded handler
+
+// IReferenceOfBool is the WinRT interface Windows.Foundation.IReference`1<Bool>.
+// IID: 3c00fd60-2950-5939-a21a-2d12c5a01b8a
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfBool struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfBool is the interface identifier for IReferenceOfBool.
+var IID_IReferenceOfBool = win32.GUID{Data1: 0x3c00fd60, Data2: 0x2950, Data3: 0x5939, Data4: [8]byte{0xa2, 0x1a, 0x2d, 0x12, 0xc5, 0xa0, 0x1b, 0x8a}}
+
+// Value (propget get_Value) dispatches through IReferenceOfBool's vtable slot 6.
+func (self *IReferenceOfBool) Value() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
 // IReferenceOfColor is the WinRT interface Windows.Foundation.IReference`1<Windows.UI.Color>.
 // IID: ab8e5d11-b0c1-5a21-95ae-f16bf3a37624
 // Requires: Windows.Foundation.IPropertyValue.
@@ -457,6 +1101,74 @@ var IID_IReferenceOfColor = win32.GUID{Data1: 0xab8e5d11, Data2: 0xb0c1, Data3: 
 // Value (propget get_Value) dispatches through IReferenceOfColor's vtable slot 6.
 func (self *IReferenceOfColor) Value() (wrtui.Color, error) {
 	result := new(wrtui.Color)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IReferenceOfDateTime is the WinRT interface Windows.Foundation.IReference`1<Windows.Foundation.DateTime>.
+// IID: 5541d8a7-497c-5aa4-86fc-7713adbf2a2c
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfDateTime struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfDateTime is the interface identifier for IReferenceOfDateTime.
+var IID_IReferenceOfDateTime = win32.GUID{Data1: 0x5541d8a7, Data2: 0x497c, Data3: 0x5aa4, Data4: [8]byte{0x86, 0xfc, 0x77, 0x13, 0xad, 0xbf, 0x2a, 0x2c}}
+
+// Value (propget get_Value) dispatches through IReferenceOfDateTime's vtable slot 6.
+func (self *IReferenceOfDateTime) Value() (wrtfoundation.DateTime, error) {
+	result := new(wrtfoundation.DateTime)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IReferenceOfDouble is the WinRT interface Windows.Foundation.IReference`1<Double>.
+// IID: 2f2d6c29-5473-5f3e-92e7-96572bb990e2
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfDouble struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfDouble is the interface identifier for IReferenceOfDouble.
+var IID_IReferenceOfDouble = win32.GUID{Data1: 0x2f2d6c29, Data2: 0x5473, Data3: 0x5f3e, Data4: [8]byte{0x92, 0xe7, 0x96, 0x57, 0x2b, 0xb9, 0x90, 0xe2}}
+
+// Value (propget get_Value) dispatches through IReferenceOfDouble's vtable slot 6.
+func (self *IReferenceOfDouble) Value() (float64, error) {
+	result := new(float64)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IReferenceOfInt32 is the WinRT interface Windows.Foundation.IReference`1<Int32>.
+// IID: 548cefbd-bc8a-5fa0-8df2-957440fc8bf4
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfInt32 is the interface identifier for IReferenceOfInt32.
+var IID_IReferenceOfInt32 = win32.GUID{Data1: 0x548cefbd, Data2: 0xbc8a, Data3: 0x5fa0, Data4: [8]byte{0x8d, 0xf2, 0x95, 0x74, 0x40, 0xfc, 0x8b, 0xf4}}
+
+// Value (propget get_Value) dispatches through IReferenceOfInt32's vtable slot 6.
+func (self *IReferenceOfInt32) Value() (int32, error) {
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IReferenceOfPoint is the WinRT interface Windows.Foundation.IReference`1<Windows.Foundation.Point>.
+// IID: 84f14c22-a00a-5272-8d3d-82112e66df00
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfPoint is the interface identifier for IReferenceOfPoint.
+var IID_IReferenceOfPoint = win32.GUID{Data1: 0x84f14c22, Data2: 0xa00a, Data3: 0x5272, Data4: [8]byte{0x8d, 0x3d, 0x82, 0x11, 0x2e, 0x66, 0xdf, 0x00}}
+
+// Value (propget get_Value) dispatches through IReferenceOfPoint's vtable slot 6.
+func (self *IReferenceOfPoint) Value() (wrtfoundation.Point, error) {
+	result := new(wrtfoundation.Point)
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
 	return *result, win32.ErrIfFailed(int32(r1))
 }
@@ -478,6 +1190,1021 @@ func (self *IReferenceOfRect) Value() (wrtfoundation.Rect, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IReferenceOfSingle is the WinRT interface Windows.Foundation.IReference`1<Single>.
+// IID: 719cc2ba-3e76-5def-9f1a-38d85a145ea8
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfSingle is the interface identifier for IReferenceOfSingle.
+var IID_IReferenceOfSingle = win32.GUID{Data1: 0x719cc2ba, Data2: 0x3e76, Data3: 0x5def, Data4: [8]byte{0x9f, 0x1a, 0x38, 0xd8, 0x5a, 0x14, 0x5e, 0xa8}}
+
+// Value (propget get_Value) dispatches through IReferenceOfSingle's vtable slot 6.
+func (self *IReferenceOfSingle) Value() (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IReferenceOfTimeSpan is the WinRT interface Windows.Foundation.IReference`1<Windows.Foundation.TimeSpan>.
+// IID: 604d0c4c-91de-5c2a-935f-362f13eaf800
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfTimeSpan struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfTimeSpan is the interface identifier for IReferenceOfTimeSpan.
+var IID_IReferenceOfTimeSpan = win32.GUID{Data1: 0x604d0c4c, Data2: 0x91de, Data3: 0x5c2a, Data4: [8]byte{0x93, 0x5f, 0x36, 0x2f, 0x13, 0xea, 0xf8, 0x00}}
+
+// Value (propget get_Value) dispatches through IReferenceOfTimeSpan's vtable slot 6.
+func (self *IReferenceOfTimeSpan) Value() (wrtfoundation.TimeSpan, error) {
+	result := new(wrtfoundation.TimeSpan)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IReferenceOfVector2 is the WinRT interface Windows.Foundation.IReference`1<Windows.Foundation.Numerics.Vector2>.
+// IID: 48f6a69e-8465-57ae-9400-9764087f65ad
+// Requires: Windows.Foundation.IPropertyValue.
+type IReferenceOfVector2 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IReferenceOfVector2 is the interface identifier for IReferenceOfVector2.
+var IID_IReferenceOfVector2 = win32.GUID{Data1: 0x48f6a69e, Data2: 0x8465, Data3: 0x57ae, Data4: [8]byte{0x94, 0x00, 0x97, 0x64, 0x08, 0x7f, 0x65, 0xad}}
+
+// Value (propget get_Value) dispatches through IReferenceOfVector2's vtable slot 6.
+func (self *IReferenceOfVector2) Value() (wrtfoundationnumerics.Vector2, error) {
+	result := new(wrtfoundationnumerics.Vector2)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfAnnotatedScrollBarLabel is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.AnnotatedScrollBarLabel>.
+// IID: a33434c4-43d2-574e-8929-db658a740b5e
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.AnnotatedScrollBarLabel>.
+type IVectorOfAnnotatedScrollBarLabel struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfAnnotatedScrollBarLabel is the interface identifier for IVectorOfAnnotatedScrollBarLabel.
+var IID_IVectorOfAnnotatedScrollBarLabel = win32.GUID{Data1: 0xa33434c4, Data2: 0x43d2, Data3: 0x574e, Data4: [8]byte{0x89, 0x29, 0xdb, 0x65, 0x8a, 0x74, 0x0b, 0x5e}}
+
+// GetAt dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 6.
+func (self *IVectorOfAnnotatedScrollBarLabel) GetAt(index uint32) (*IAnnotatedScrollBarLabel, error) {
+	result := new(*IAnnotatedScrollBarLabel)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 7.
+func (self *IVectorOfAnnotatedScrollBarLabel) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 8.
+func (self *IVectorOfAnnotatedScrollBarLabel) GetView() (*IVectorViewOfAnnotatedScrollBarLabel, error) {
+	result := new(*IVectorViewOfAnnotatedScrollBarLabel)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 9.
+func (self *IVectorOfAnnotatedScrollBarLabel) IndexOf(value *IAnnotatedScrollBarLabel, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 10.
+func (self *IVectorOfAnnotatedScrollBarLabel) SetAt(index uint32, value *IAnnotatedScrollBarLabel) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 11.
+func (self *IVectorOfAnnotatedScrollBarLabel) InsertAt(index uint32, value *IAnnotatedScrollBarLabel) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 12.
+func (self *IVectorOfAnnotatedScrollBarLabel) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 13.
+func (self *IVectorOfAnnotatedScrollBarLabel) Append(value *IAnnotatedScrollBarLabel) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 14.
+func (self *IVectorOfAnnotatedScrollBarLabel) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 15.
+func (self *IVectorOfAnnotatedScrollBarLabel) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 16.
+func (self *IVectorOfAnnotatedScrollBarLabel) GetMany(startIndex uint32, items []*IAnnotatedScrollBarLabel) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfAnnotatedScrollBarLabel's vtable slot 17.
+func (self *IVectorOfAnnotatedScrollBarLabel) ReplaceAll(items []*IAnnotatedScrollBarLabel) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfAutomationAnnotation is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Automation.AutomationAnnotation>.
+// IID: e047e428-66a6-5759-a751-84f2bf6fdb30
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.AutomationAnnotation>.
+type IVectorOfAutomationAnnotation struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfAutomationAnnotation is the interface identifier for IVectorOfAutomationAnnotation.
+var IID_IVectorOfAutomationAnnotation = win32.GUID{Data1: 0xe047e428, Data2: 0x66a6, Data3: 0x5759, Data4: [8]byte{0xa7, 0x51, 0x84, 0xf2, 0xbf, 0x6f, 0xdb, 0x30}}
+
+// GetAt dispatches through IVectorOfAutomationAnnotation's vtable slot 6.
+func (self *IVectorOfAutomationAnnotation) GetAt(index uint32) (*IAutomationAnnotation, error) {
+	result := new(*IAutomationAnnotation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfAutomationAnnotation's vtable slot 7.
+func (self *IVectorOfAutomationAnnotation) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfAutomationAnnotation's vtable slot 8.
+func (self *IVectorOfAutomationAnnotation) GetView() (*IVectorViewOfAutomationAnnotation, error) {
+	result := new(*IVectorViewOfAutomationAnnotation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfAutomationAnnotation's vtable slot 9.
+func (self *IVectorOfAutomationAnnotation) IndexOf(value *IAutomationAnnotation, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfAutomationAnnotation's vtable slot 10.
+func (self *IVectorOfAutomationAnnotation) SetAt(index uint32, value *IAutomationAnnotation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfAutomationAnnotation's vtable slot 11.
+func (self *IVectorOfAutomationAnnotation) InsertAt(index uint32, value *IAutomationAnnotation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfAutomationAnnotation's vtable slot 12.
+func (self *IVectorOfAutomationAnnotation) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfAutomationAnnotation's vtable slot 13.
+func (self *IVectorOfAutomationAnnotation) Append(value *IAutomationAnnotation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfAutomationAnnotation's vtable slot 14.
+func (self *IVectorOfAutomationAnnotation) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfAutomationAnnotation's vtable slot 15.
+func (self *IVectorOfAutomationAnnotation) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfAutomationAnnotation's vtable slot 16.
+func (self *IVectorOfAutomationAnnotation) GetMany(startIndex uint32, items []*IAutomationAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfAutomationAnnotation's vtable slot 17.
+func (self *IVectorOfAutomationAnnotation) ReplaceAll(items []*IAutomationAnnotation) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfAutomationPeer is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
+// IID: 91d7782f-c53a-5620-8ce1-0d9419249322
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
+type IVectorOfAutomationPeer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfAutomationPeer is the interface identifier for IVectorOfAutomationPeer.
+var IID_IVectorOfAutomationPeer = win32.GUID{Data1: 0x91d7782f, Data2: 0xc53a, Data3: 0x5620, Data4: [8]byte{0x8c, 0xe1, 0x0d, 0x94, 0x19, 0x24, 0x93, 0x22}}
+
+// GetAt dispatches through IVectorOfAutomationPeer's vtable slot 6.
+func (self *IVectorOfAutomationPeer) GetAt(index uint32) (*IAutomationPeer, error) {
+	result := new(*IAutomationPeer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfAutomationPeer's vtable slot 7.
+func (self *IVectorOfAutomationPeer) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+
+// IndexOf dispatches through IVectorOfAutomationPeer's vtable slot 9.
+func (self *IVectorOfAutomationPeer) IndexOf(value *IAutomationPeer, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfAutomationPeer's vtable slot 10.
+func (self *IVectorOfAutomationPeer) SetAt(index uint32, value *IAutomationPeer) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfAutomationPeer's vtable slot 11.
+func (self *IVectorOfAutomationPeer) InsertAt(index uint32, value *IAutomationPeer) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfAutomationPeer's vtable slot 12.
+func (self *IVectorOfAutomationPeer) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfAutomationPeer's vtable slot 13.
+func (self *IVectorOfAutomationPeer) Append(value *IAutomationPeer) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfAutomationPeer's vtable slot 14.
+func (self *IVectorOfAutomationPeer) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfAutomationPeer's vtable slot 15.
+func (self *IVectorOfAutomationPeer) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfAutomationPeer's vtable slot 16.
+func (self *IVectorOfAutomationPeer) GetMany(startIndex uint32, items []*IAutomationPeer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfAutomationPeer's vtable slot 17.
+func (self *IVectorOfAutomationPeer) ReplaceAll(items []*IAutomationPeer) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfAutomationPeerAnnotation is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation>.
+// IID: fe9ed1b7-7185-52e9-b037-bf9902ac3561
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation>.
+type IVectorOfAutomationPeerAnnotation struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfAutomationPeerAnnotation is the interface identifier for IVectorOfAutomationPeerAnnotation.
+var IID_IVectorOfAutomationPeerAnnotation = win32.GUID{Data1: 0xfe9ed1b7, Data2: 0x7185, Data3: 0x52e9, Data4: [8]byte{0xb0, 0x37, 0xbf, 0x99, 0x02, 0xac, 0x35, 0x61}}
+
+// GetAt dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 6.
+func (self *IVectorOfAutomationPeerAnnotation) GetAt(index uint32) (*IAutomationPeerAnnotation, error) {
+	result := new(*IAutomationPeerAnnotation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 7.
+func (self *IVectorOfAutomationPeerAnnotation) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 8.
+func (self *IVectorOfAutomationPeerAnnotation) GetView() (*IVectorViewOfAutomationPeerAnnotation, error) {
+	result := new(*IVectorViewOfAutomationPeerAnnotation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 9.
+func (self *IVectorOfAutomationPeerAnnotation) IndexOf(value *IAutomationPeerAnnotation, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 10.
+func (self *IVectorOfAutomationPeerAnnotation) SetAt(index uint32, value *IAutomationPeerAnnotation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 11.
+func (self *IVectorOfAutomationPeerAnnotation) InsertAt(index uint32, value *IAutomationPeerAnnotation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 12.
+func (self *IVectorOfAutomationPeerAnnotation) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 13.
+func (self *IVectorOfAutomationPeerAnnotation) Append(value *IAutomationPeerAnnotation) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 14.
+func (self *IVectorOfAutomationPeerAnnotation) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 15.
+func (self *IVectorOfAutomationPeerAnnotation) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 16.
+func (self *IVectorOfAutomationPeerAnnotation) GetMany(startIndex uint32, items []*IAutomationPeerAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfAutomationPeerAnnotation's vtable slot 17.
+func (self *IVectorOfAutomationPeerAnnotation) ReplaceAll(items []*IAutomationPeerAnnotation) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfDateTime is the WinRT interface Windows.Foundation.Collections.IVector`1<Windows.Foundation.DateTime>.
+// IID: 94390dc5-e442-5870-88b6-007e232f902c
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.DateTime>.
+type IVectorOfDateTime struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfDateTime is the interface identifier for IVectorOfDateTime.
+var IID_IVectorOfDateTime = win32.GUID{Data1: 0x94390dc5, Data2: 0xe442, Data3: 0x5870, Data4: [8]byte{0x88, 0xb6, 0x00, 0x7e, 0x23, 0x2f, 0x90, 0x2c}}
+
+// GetAt dispatches through IVectorOfDateTime's vtable slot 6.
+func (self *IVectorOfDateTime) GetAt(index uint32) (wrtfoundation.DateTime, error) {
+	result := new(wrtfoundation.DateTime)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfDateTime's vtable slot 7.
+func (self *IVectorOfDateTime) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+
+// IndexOf dispatches through IVectorOfDateTime's vtable slot 9.
+func (self *IVectorOfDateTime) IndexOf(value wrtfoundation.DateTime, index *uint32) (bool, error) {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfDateTime's vtable slot 10.
+func (self *IVectorOfDateTime) SetAt(index uint32, value wrtfoundation.DateTime) error {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfDateTime's vtable slot 11.
+func (self *IVectorOfDateTime) InsertAt(index uint32, value wrtfoundation.DateTime) error {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfDateTime's vtable slot 12.
+func (self *IVectorOfDateTime) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfDateTime's vtable slot 13.
+func (self *IVectorOfDateTime) Append(value wrtfoundation.DateTime) error {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfDateTime's vtable slot 14.
+func (self *IVectorOfDateTime) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfDateTime's vtable slot 15.
+func (self *IVectorOfDateTime) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfDateTime's vtable slot 16.
+func (self *IVectorOfDateTime) GetMany(startIndex uint32, items []wrtfoundation.DateTime) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfDateTime's vtable slot 17.
+func (self *IVectorOfDateTime) ReplaceAll(items []wrtfoundation.DateTime) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfDependencyObject is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.DependencyObject>.
+// IID: 8e6b597a-ab20-585f-9db1-9394aac5a469
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.DependencyObject>.
+type IVectorOfDependencyObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfDependencyObject is the interface identifier for IVectorOfDependencyObject.
+var IID_IVectorOfDependencyObject = win32.GUID{Data1: 0x8e6b597a, Data2: 0xab20, Data3: 0x585f, Data4: [8]byte{0x9d, 0xb1, 0x93, 0x94, 0xaa, 0xc5, 0xa4, 0x69}}
+
+// GetAt dispatches through IVectorOfDependencyObject's vtable slot 6.
+func (self *IVectorOfDependencyObject) GetAt(index uint32) (*IDependencyObject, error) {
+	result := new(*IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfDependencyObject's vtable slot 7.
+func (self *IVectorOfDependencyObject) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfDependencyObject's vtable slot 8.
+func (self *IVectorOfDependencyObject) GetView() (*IVectorViewOfDependencyObject, error) {
+	result := new(*IVectorViewOfDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfDependencyObject's vtable slot 9.
+func (self *IVectorOfDependencyObject) IndexOf(value *IDependencyObject, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfDependencyObject's vtable slot 10.
+func (self *IVectorOfDependencyObject) SetAt(index uint32, value *IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfDependencyObject's vtable slot 11.
+func (self *IVectorOfDependencyObject) InsertAt(index uint32, value *IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfDependencyObject's vtable slot 12.
+func (self *IVectorOfDependencyObject) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfDependencyObject's vtable slot 13.
+func (self *IVectorOfDependencyObject) Append(value *IDependencyObject) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfDependencyObject's vtable slot 14.
+func (self *IVectorOfDependencyObject) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfDependencyObject's vtable slot 15.
+func (self *IVectorOfDependencyObject) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfDependencyObject's vtable slot 16.
+func (self *IVectorOfDependencyObject) GetMany(startIndex uint32, items []*IDependencyObject) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfDependencyObject's vtable slot 17.
+func (self *IVectorOfDependencyObject) ReplaceAll(items []*IDependencyObject) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfHubSection is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.HubSection>.
+// IID: a58a47df-14c0-58d8-ae0c-ed2db20aa05f
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.HubSection>.
+type IVectorOfHubSection struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfHubSection is the interface identifier for IVectorOfHubSection.
+var IID_IVectorOfHubSection = win32.GUID{Data1: 0xa58a47df, Data2: 0x14c0, Data3: 0x58d8, Data4: [8]byte{0xae, 0x0c, 0xed, 0x2d, 0xb2, 0x0a, 0xa0, 0x5f}}
+
+// GetAt dispatches through IVectorOfHubSection's vtable slot 6.
+func (self *IVectorOfHubSection) GetAt(index uint32) (*IHubSection, error) {
+	result := new(*IHubSection)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfHubSection's vtable slot 7.
+func (self *IVectorOfHubSection) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfHubSection's vtable slot 8.
+func (self *IVectorOfHubSection) GetView() (*IVectorViewOfHubSection, error) {
+	result := new(*IVectorViewOfHubSection)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfHubSection's vtable slot 9.
+func (self *IVectorOfHubSection) IndexOf(value *IHubSection, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfHubSection's vtable slot 10.
+func (self *IVectorOfHubSection) SetAt(index uint32, value *IHubSection) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfHubSection's vtable slot 11.
+func (self *IVectorOfHubSection) InsertAt(index uint32, value *IHubSection) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfHubSection's vtable slot 12.
+func (self *IVectorOfHubSection) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfHubSection's vtable slot 13.
+func (self *IVectorOfHubSection) Append(value *IHubSection) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfHubSection's vtable slot 14.
+func (self *IVectorOfHubSection) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfHubSection's vtable slot 15.
+func (self *IVectorOfHubSection) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfHubSection's vtable slot 16.
+func (self *IVectorOfHubSection) GetMany(startIndex uint32, items []*IHubSection) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfHubSection's vtable slot 17.
+func (self *IVectorOfHubSection) ReplaceAll(items []*IHubSection) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfInputScopeName is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Input.InputScopeName>.
+// IID: fe4c93e9-d6fa-5b96-9c74-de968c79c36e
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Input.InputScopeName>.
+type IVectorOfInputScopeName struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfInputScopeName is the interface identifier for IVectorOfInputScopeName.
+var IID_IVectorOfInputScopeName = win32.GUID{Data1: 0xfe4c93e9, Data2: 0xd6fa, Data3: 0x5b96, Data4: [8]byte{0x9c, 0x74, 0xde, 0x96, 0x8c, 0x79, 0xc3, 0x6e}}
+
+// GetAt dispatches through IVectorOfInputScopeName's vtable slot 6.
+func (self *IVectorOfInputScopeName) GetAt(index uint32) (*IInputScopeName, error) {
+	result := new(*IInputScopeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfInputScopeName's vtable slot 7.
+func (self *IVectorOfInputScopeName) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfInputScopeName's vtable slot 8.
+func (self *IVectorOfInputScopeName) GetView() (*IVectorViewOfInputScopeName, error) {
+	result := new(*IVectorViewOfInputScopeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfInputScopeName's vtable slot 9.
+func (self *IVectorOfInputScopeName) IndexOf(value *IInputScopeName, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfInputScopeName's vtable slot 10.
+func (self *IVectorOfInputScopeName) SetAt(index uint32, value *IInputScopeName) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfInputScopeName's vtable slot 11.
+func (self *IVectorOfInputScopeName) InsertAt(index uint32, value *IInputScopeName) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfInputScopeName's vtable slot 12.
+func (self *IVectorOfInputScopeName) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfInputScopeName's vtable slot 13.
+func (self *IVectorOfInputScopeName) Append(value *IInputScopeName) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfInputScopeName's vtable slot 14.
+func (self *IVectorOfInputScopeName) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfInputScopeName's vtable slot 15.
+func (self *IVectorOfInputScopeName) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfInputScopeName's vtable slot 16.
+func (self *IVectorOfInputScopeName) GetMany(startIndex uint32, items []*IInputScopeName) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfInputScopeName's vtable slot 17.
+func (self *IVectorOfInputScopeName) ReplaceAll(items []*IInputScopeName) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfInt32 is the WinRT interface Windows.Foundation.Collections.IVector`1<Int32>.
+// IID: b939af5b-b45d-5489-9149-61442c1905fe
+// Requires: Windows.Foundation.Collections.IIterable`1<Int32>.
+type IVectorOfInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfInt32 is the interface identifier for IVectorOfInt32.
+var IID_IVectorOfInt32 = win32.GUID{Data1: 0xb939af5b, Data2: 0xb45d, Data3: 0x5489, Data4: [8]byte{0x91, 0x49, 0x61, 0x44, 0x2c, 0x19, 0x05, 0xfe}}
+
+// GetAt dispatches through IVectorOfInt32's vtable slot 6.
+func (self *IVectorOfInt32) GetAt(index uint32) (int32, error) {
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfInt32's vtable slot 7.
+func (self *IVectorOfInt32) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfInt32's vtable slot 8.
+func (self *IVectorOfInt32) GetView() (*IVectorViewOfInt32, error) {
+	result := new(*IVectorViewOfInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfInt32's vtable slot 9.
+func (self *IVectorOfInt32) IndexOf(value int32, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(value), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfInt32's vtable slot 10.
+func (self *IVectorOfInt32) SetAt(index uint32, value int32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfInt32's vtable slot 11.
+func (self *IVectorOfInt32) InsertAt(index uint32, value int32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfInt32's vtable slot 12.
+func (self *IVectorOfInt32) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfInt32's vtable slot 13.
+func (self *IVectorOfInt32) Append(value int32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(value))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfInt32's vtable slot 14.
+func (self *IVectorOfInt32) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfInt32's vtable slot 15.
+func (self *IVectorOfInt32) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfInt32's vtable slot 16.
+func (self *IVectorOfInt32) GetMany(startIndex uint32, items []int32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfInt32's vtable slot 17.
+func (self *IVectorOfInt32) ReplaceAll(items []int32) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfItemCollectionTransition is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.ItemCollectionTransition>.
+// IID: 93000c75-6549-5d11-b1bb-c47c777276b5
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.ItemCollectionTransition>.
+type IVectorOfItemCollectionTransition struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfItemCollectionTransition is the interface identifier for IVectorOfItemCollectionTransition.
+var IID_IVectorOfItemCollectionTransition = win32.GUID{Data1: 0x93000c75, Data2: 0x6549, Data3: 0x5d11, Data4: [8]byte{0xb1, 0xbb, 0xc4, 0x7c, 0x77, 0x72, 0x76, 0xb5}}
+
+// GetAt dispatches through IVectorOfItemCollectionTransition's vtable slot 6.
+func (self *IVectorOfItemCollectionTransition) GetAt(index uint32) (*IItemCollectionTransition, error) {
+	result := new(*IItemCollectionTransition)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfItemCollectionTransition's vtable slot 7.
+func (self *IVectorOfItemCollectionTransition) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfItemCollectionTransition's vtable slot 8.
+func (self *IVectorOfItemCollectionTransition) GetView() (*IVectorViewOfItemCollectionTransition, error) {
+	result := new(*IVectorViewOfItemCollectionTransition)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfItemCollectionTransition's vtable slot 9.
+func (self *IVectorOfItemCollectionTransition) IndexOf(value *IItemCollectionTransition, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfItemCollectionTransition's vtable slot 10.
+func (self *IVectorOfItemCollectionTransition) SetAt(index uint32, value *IItemCollectionTransition) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfItemCollectionTransition's vtable slot 11.
+func (self *IVectorOfItemCollectionTransition) InsertAt(index uint32, value *IItemCollectionTransition) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfItemCollectionTransition's vtable slot 12.
+func (self *IVectorOfItemCollectionTransition) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfItemCollectionTransition's vtable slot 13.
+func (self *IVectorOfItemCollectionTransition) Append(value *IItemCollectionTransition) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfItemCollectionTransition's vtable slot 14.
+func (self *IVectorOfItemCollectionTransition) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfItemCollectionTransition's vtable slot 15.
+func (self *IVectorOfItemCollectionTransition) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfItemCollectionTransition's vtable slot 16.
+func (self *IVectorOfItemCollectionTransition) GetMany(startIndex uint32, items []*IItemCollectionTransition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfItemCollectionTransition's vtable slot 17.
+func (self *IVectorOfItemCollectionTransition) ReplaceAll(items []*IItemCollectionTransition) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfKeyboardAccelerator is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Input.KeyboardAccelerator>.
 // IID: 0db091c3-8538-5d25-937f-db6e003e1f71
 // Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Input.KeyboardAccelerator>.
@@ -488,7 +2215,12 @@ type IVectorOfKeyboardAccelerator struct {
 // IID_IVectorOfKeyboardAccelerator is the interface identifier for IVectorOfKeyboardAccelerator.
 var IID_IVectorOfKeyboardAccelerator = win32.GUID{Data1: 0x0db091c3, Data2: 0x8538, Data3: 0x5d25, Data4: [8]byte{0x93, 0x7f, 0xdb, 0x6e, 0x00, 0x3e, 0x1f, 0x71}}
 
-// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// GetAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 6.
+func (self *IVectorOfKeyboardAccelerator) GetAt(index uint32) (*IKeyboardAccelerator, error) {
+	result := new(*IKeyboardAccelerator)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Size (propget get_Size) dispatches through IVectorOfKeyboardAccelerator's vtable slot 7.
 func (self *IVectorOfKeyboardAccelerator) Size() (uint32, error) {
@@ -504,11 +2236,24 @@ func (self *IVectorOfKeyboardAccelerator) GetView() (*IVectorViewOfKeyboardAccel
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// IndexOf dispatches through IVectorOfKeyboardAccelerator's vtable slot 9.
+func (self *IVectorOfKeyboardAccelerator) IndexOf(value *IKeyboardAccelerator, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 10: SetAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// SetAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 10.
+func (self *IVectorOfKeyboardAccelerator) SetAt(index uint32, value *IKeyboardAccelerator) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 11: InsertAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// InsertAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 11.
+func (self *IVectorOfKeyboardAccelerator) InsertAt(index uint32, value *IKeyboardAccelerator) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // RemoveAt dispatches through IVectorOfKeyboardAccelerator's vtable slot 12.
 func (self *IVectorOfKeyboardAccelerator) RemoveAt(index uint32) error {
@@ -516,7 +2261,11 @@ func (self *IVectorOfKeyboardAccelerator) RemoveAt(index uint32) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 13: Append skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// Append dispatches through IVectorOfKeyboardAccelerator's vtable slot 13.
+func (self *IVectorOfKeyboardAccelerator) Append(value *IKeyboardAccelerator) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // RemoveAtEnd dispatches through IVectorOfKeyboardAccelerator's vtable slot 14.
 func (self *IVectorOfKeyboardAccelerator) RemoveAtEnd() error {
@@ -530,9 +2279,702 @@ func (self *IVectorOfKeyboardAccelerator) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// GetMany dispatches through IVectorOfKeyboardAccelerator's vtable slot 16.
+func (self *IVectorOfKeyboardAccelerator) GetMany(startIndex uint32, items []*IKeyboardAccelerator) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// ReplaceAll dispatches through IVectorOfKeyboardAccelerator's vtable slot 17.
+func (self *IVectorOfKeyboardAccelerator) ReplaceAll(items []*IKeyboardAccelerator) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfMapElement is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.MapElement>.
+// IID: 4e9cf077-6478-5620-82f7-84f2e28ebc8a
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MapElement>.
+type IVectorOfMapElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfMapElement is the interface identifier for IVectorOfMapElement.
+var IID_IVectorOfMapElement = win32.GUID{Data1: 0x4e9cf077, Data2: 0x6478, Data3: 0x5620, Data4: [8]byte{0x82, 0xf7, 0x84, 0xf2, 0xe2, 0x8e, 0xbc, 0x8a}}
+
+// GetAt dispatches through IVectorOfMapElement's vtable slot 6.
+func (self *IVectorOfMapElement) GetAt(index uint32) (*IMapElement, error) {
+	result := new(*IMapElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfMapElement's vtable slot 7.
+func (self *IVectorOfMapElement) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfMapElement's vtable slot 8.
+func (self *IVectorOfMapElement) GetView() (*IVectorViewOfMapElement, error) {
+	result := new(*IVectorViewOfMapElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfMapElement's vtable slot 9.
+func (self *IVectorOfMapElement) IndexOf(value *IMapElement, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfMapElement's vtable slot 10.
+func (self *IVectorOfMapElement) SetAt(index uint32, value *IMapElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfMapElement's vtable slot 11.
+func (self *IVectorOfMapElement) InsertAt(index uint32, value *IMapElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfMapElement's vtable slot 12.
+func (self *IVectorOfMapElement) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfMapElement's vtable slot 13.
+func (self *IVectorOfMapElement) Append(value *IMapElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfMapElement's vtable slot 14.
+func (self *IVectorOfMapElement) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfMapElement's vtable slot 15.
+func (self *IVectorOfMapElement) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfMapElement's vtable slot 16.
+func (self *IVectorOfMapElement) GetMany(startIndex uint32, items []*IMapElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfMapElement's vtable slot 17.
+func (self *IVectorOfMapElement) ReplaceAll(items []*IMapElement) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfMapLayer is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.MapLayer>.
+// IID: dc7a274a-59cb-5318-88e9-592e12ca1584
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MapLayer>.
+type IVectorOfMapLayer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfMapLayer is the interface identifier for IVectorOfMapLayer.
+var IID_IVectorOfMapLayer = win32.GUID{Data1: 0xdc7a274a, Data2: 0x59cb, Data3: 0x5318, Data4: [8]byte{0x88, 0xe9, 0x59, 0x2e, 0x12, 0xca, 0x15, 0x84}}
+
+// GetAt dispatches through IVectorOfMapLayer's vtable slot 6.
+func (self *IVectorOfMapLayer) GetAt(index uint32) (*IMapLayer, error) {
+	result := new(*IMapLayer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfMapLayer's vtable slot 7.
+func (self *IVectorOfMapLayer) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfMapLayer's vtable slot 8.
+func (self *IVectorOfMapLayer) GetView() (*IVectorViewOfMapLayer, error) {
+	result := new(*IVectorViewOfMapLayer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfMapLayer's vtable slot 9.
+func (self *IVectorOfMapLayer) IndexOf(value *IMapLayer, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfMapLayer's vtable slot 10.
+func (self *IVectorOfMapLayer) SetAt(index uint32, value *IMapLayer) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfMapLayer's vtable slot 11.
+func (self *IVectorOfMapLayer) InsertAt(index uint32, value *IMapLayer) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfMapLayer's vtable slot 12.
+func (self *IVectorOfMapLayer) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfMapLayer's vtable slot 13.
+func (self *IVectorOfMapLayer) Append(value *IMapLayer) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfMapLayer's vtable slot 14.
+func (self *IVectorOfMapLayer) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfMapLayer's vtable slot 15.
+func (self *IVectorOfMapLayer) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfMapLayer's vtable slot 16.
+func (self *IVectorOfMapLayer) GetMany(startIndex uint32, items []*IMapLayer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfMapLayer's vtable slot 17.
+func (self *IVectorOfMapLayer) ReplaceAll(items []*IMapLayer) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfMenuBarItem is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.MenuBarItem>.
+// IID: 94c4dfcf-1af2-5621-8b99-4e5643d1b52f
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MenuBarItem>.
+type IVectorOfMenuBarItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfMenuBarItem is the interface identifier for IVectorOfMenuBarItem.
+var IID_IVectorOfMenuBarItem = win32.GUID{Data1: 0x94c4dfcf, Data2: 0x1af2, Data3: 0x5621, Data4: [8]byte{0x8b, 0x99, 0x4e, 0x56, 0x43, 0xd1, 0xb5, 0x2f}}
+
+// GetAt dispatches through IVectorOfMenuBarItem's vtable slot 6.
+func (self *IVectorOfMenuBarItem) GetAt(index uint32) (*IMenuBarItem, error) {
+	result := new(*IMenuBarItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfMenuBarItem's vtable slot 7.
+func (self *IVectorOfMenuBarItem) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfMenuBarItem's vtable slot 8.
+func (self *IVectorOfMenuBarItem) GetView() (*IVectorViewOfMenuBarItem, error) {
+	result := new(*IVectorViewOfMenuBarItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfMenuBarItem's vtable slot 9.
+func (self *IVectorOfMenuBarItem) IndexOf(value *IMenuBarItem, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfMenuBarItem's vtable slot 10.
+func (self *IVectorOfMenuBarItem) SetAt(index uint32, value *IMenuBarItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfMenuBarItem's vtable slot 11.
+func (self *IVectorOfMenuBarItem) InsertAt(index uint32, value *IMenuBarItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfMenuBarItem's vtable slot 12.
+func (self *IVectorOfMenuBarItem) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfMenuBarItem's vtable slot 13.
+func (self *IVectorOfMenuBarItem) Append(value *IMenuBarItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfMenuBarItem's vtable slot 14.
+func (self *IVectorOfMenuBarItem) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfMenuBarItem's vtable slot 15.
+func (self *IVectorOfMenuBarItem) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfMenuBarItem's vtable slot 16.
+func (self *IVectorOfMenuBarItem) GetMany(startIndex uint32, items []*IMenuBarItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfMenuBarItem's vtable slot 17.
+func (self *IVectorOfMenuBarItem) ReplaceAll(items []*IMenuBarItem) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfMenuFlyoutItemBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.MenuFlyoutItemBase>.
+// IID: ebe273f7-4731-5ac8-8513-de764868fb9b
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MenuFlyoutItemBase>.
+type IVectorOfMenuFlyoutItemBase struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfMenuFlyoutItemBase is the interface identifier for IVectorOfMenuFlyoutItemBase.
+var IID_IVectorOfMenuFlyoutItemBase = win32.GUID{Data1: 0xebe273f7, Data2: 0x4731, Data3: 0x5ac8, Data4: [8]byte{0x85, 0x13, 0xde, 0x76, 0x48, 0x68, 0xfb, 0x9b}}
+
+// GetAt dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 6.
+func (self *IVectorOfMenuFlyoutItemBase) GetAt(index uint32) (*IMenuFlyoutItemBase, error) {
+	result := new(*IMenuFlyoutItemBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 7.
+func (self *IVectorOfMenuFlyoutItemBase) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 8.
+func (self *IVectorOfMenuFlyoutItemBase) GetView() (*IVectorViewOfMenuFlyoutItemBase, error) {
+	result := new(*IVectorViewOfMenuFlyoutItemBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 9.
+func (self *IVectorOfMenuFlyoutItemBase) IndexOf(value *IMenuFlyoutItemBase, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 10.
+func (self *IVectorOfMenuFlyoutItemBase) SetAt(index uint32, value *IMenuFlyoutItemBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 11.
+func (self *IVectorOfMenuFlyoutItemBase) InsertAt(index uint32, value *IMenuFlyoutItemBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 12.
+func (self *IVectorOfMenuFlyoutItemBase) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 13.
+func (self *IVectorOfMenuFlyoutItemBase) Append(value *IMenuFlyoutItemBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 14.
+func (self *IVectorOfMenuFlyoutItemBase) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 15.
+func (self *IVectorOfMenuFlyoutItemBase) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 16.
+func (self *IVectorOfMenuFlyoutItemBase) GetMany(startIndex uint32, items []*IMenuFlyoutItemBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfMenuFlyoutItemBase's vtable slot 17.
+func (self *IVectorOfMenuFlyoutItemBase) ReplaceAll(items []*IMenuFlyoutItemBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfObject is the WinRT interface Windows.Foundation.Collections.IVector`1<Object>.
+// IID: b32bdca4-5e52-5b27-bc5d-d66a1a268c2a
+// Requires: Windows.Foundation.Collections.IIterable`1<Object>.
+type IVectorOfObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfObject is the interface identifier for IVectorOfObject.
+var IID_IVectorOfObject = win32.GUID{Data1: 0xb32bdca4, Data2: 0x5e52, Data3: 0x5b27, Data4: [8]byte{0xbc, 0x5d, 0xd6, 0x6a, 0x1a, 0x26, 0x8c, 0x2a}}
+
+// GetAt dispatches through IVectorOfObject's vtable slot 6.
+func (self *IVectorOfObject) GetAt(index uint32) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfObject's vtable slot 7.
+func (self *IVectorOfObject) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+
+// IndexOf dispatches through IVectorOfObject's vtable slot 9.
+func (self *IVectorOfObject) IndexOf(value *syswinrt.IInspectable, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfObject's vtable slot 10.
+func (self *IVectorOfObject) SetAt(index uint32, value *syswinrt.IInspectable) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfObject's vtable slot 11.
+func (self *IVectorOfObject) InsertAt(index uint32, value *syswinrt.IInspectable) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfObject's vtable slot 12.
+func (self *IVectorOfObject) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfObject's vtable slot 13.
+func (self *IVectorOfObject) Append(value *syswinrt.IInspectable) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfObject's vtable slot 14.
+func (self *IVectorOfObject) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfObject's vtable slot 15.
+func (self *IVectorOfObject) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfObject's vtable slot 16.
+func (self *IVectorOfObject) GetMany(startIndex uint32, items []*syswinrt.IInspectable) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfObject's vtable slot 17.
+func (self *IVectorOfObject) ReplaceAll(items []*syswinrt.IInspectable) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfPageStackEntry is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Navigation.PageStackEntry>.
+// IID: 866bb888-10b1-5413-adb4-3d3b197ada8b
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Navigation.PageStackEntry>.
+type IVectorOfPageStackEntry struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfPageStackEntry is the interface identifier for IVectorOfPageStackEntry.
+var IID_IVectorOfPageStackEntry = win32.GUID{Data1: 0x866bb888, Data2: 0x10b1, Data3: 0x5413, Data4: [8]byte{0xad, 0xb4, 0x3d, 0x3b, 0x19, 0x7a, 0xda, 0x8b}}
+
+// GetAt dispatches through IVectorOfPageStackEntry's vtable slot 6.
+func (self *IVectorOfPageStackEntry) GetAt(index uint32) (*IPageStackEntry, error) {
+	result := new(*IPageStackEntry)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfPageStackEntry's vtable slot 7.
+func (self *IVectorOfPageStackEntry) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfPageStackEntry's vtable slot 8.
+func (self *IVectorOfPageStackEntry) GetView() (*IVectorViewOfPageStackEntry, error) {
+	result := new(*IVectorViewOfPageStackEntry)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfPageStackEntry's vtable slot 9.
+func (self *IVectorOfPageStackEntry) IndexOf(value *IPageStackEntry, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfPageStackEntry's vtable slot 10.
+func (self *IVectorOfPageStackEntry) SetAt(index uint32, value *IPageStackEntry) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfPageStackEntry's vtable slot 11.
+func (self *IVectorOfPageStackEntry) InsertAt(index uint32, value *IPageStackEntry) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfPageStackEntry's vtable slot 12.
+func (self *IVectorOfPageStackEntry) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfPageStackEntry's vtable slot 13.
+func (self *IVectorOfPageStackEntry) Append(value *IPageStackEntry) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfPageStackEntry's vtable slot 14.
+func (self *IVectorOfPageStackEntry) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfPageStackEntry's vtable slot 15.
+func (self *IVectorOfPageStackEntry) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfPageStackEntry's vtable slot 16.
+func (self *IVectorOfPageStackEntry) GetMany(startIndex uint32, items []*IPageStackEntry) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfPageStackEntry's vtable slot 17.
+func (self *IVectorOfPageStackEntry) ReplaceAll(items []*IPageStackEntry) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfPointerPoint is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Input.PointerPoint>.
+// IID: 8220cf33-5d76-5607-bb7d-b7cd07d27f33
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Input.PointerPoint>.
+type IVectorOfPointerPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfPointerPoint is the interface identifier for IVectorOfPointerPoint.
+var IID_IVectorOfPointerPoint = win32.GUID{Data1: 0x8220cf33, Data2: 0x5d76, Data3: 0x5607, Data4: [8]byte{0xbb, 0x7d, 0xb7, 0xcd, 0x07, 0xd2, 0x7f, 0x33}}
+
+// GetAt dispatches through IVectorOfPointerPoint's vtable slot 6.
+func (self *IVectorOfPointerPoint) GetAt(index uint32) (*uiinput.IPointerPoint, error) {
+	result := new(*uiinput.IPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfPointerPoint's vtable slot 7.
+func (self *IVectorOfPointerPoint) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfPointerPoint's vtable slot 8.
+func (self *IVectorOfPointerPoint) GetView() (*IVectorViewOfPointerPoint, error) {
+	result := new(*IVectorViewOfPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfPointerPoint's vtable slot 9.
+func (self *IVectorOfPointerPoint) IndexOf(value *uiinput.IPointerPoint, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfPointerPoint's vtable slot 10.
+func (self *IVectorOfPointerPoint) SetAt(index uint32, value *uiinput.IPointerPoint) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfPointerPoint's vtable slot 11.
+func (self *IVectorOfPointerPoint) InsertAt(index uint32, value *uiinput.IPointerPoint) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfPointerPoint's vtable slot 12.
+func (self *IVectorOfPointerPoint) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfPointerPoint's vtable slot 13.
+func (self *IVectorOfPointerPoint) Append(value *uiinput.IPointerPoint) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfPointerPoint's vtable slot 14.
+func (self *IVectorOfPointerPoint) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfPointerPoint's vtable slot 15.
+func (self *IVectorOfPointerPoint) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfPointerPoint's vtable slot 16.
+func (self *IVectorOfPointerPoint) GetMany(startIndex uint32, items []*uiinput.IPointerPoint) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfPointerPoint's vtable slot 17.
+func (self *IVectorOfPointerPoint) ReplaceAll(items []*uiinput.IPointerPoint) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfResourceDictionary is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.ResourceDictionary>.
 // IID: c6fbfe1a-f015-5b23-8e7e-14497e9707a1
@@ -622,6 +3064,200 @@ func (self *IVectorOfResourceDictionary) GetMany(startIndex uint32, items []*IRe
 
 // ReplaceAll dispatches through IVectorOfResourceDictionary's vtable slot 17.
 func (self *IVectorOfResourceDictionary) ReplaceAll(items []*IResourceDictionary) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfScrollSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase>.
+// IID: 44786fbd-d376-5b07-b4fd-54113268d3a6
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase>.
+type IVectorOfScrollSnapPointBase struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfScrollSnapPointBase is the interface identifier for IVectorOfScrollSnapPointBase.
+var IID_IVectorOfScrollSnapPointBase = win32.GUID{Data1: 0x44786fbd, Data2: 0xd376, Data3: 0x5b07, Data4: [8]byte{0xb4, 0xfd, 0x54, 0x11, 0x32, 0x68, 0xd3, 0xa6}}
+
+// GetAt dispatches through IVectorOfScrollSnapPointBase's vtable slot 6.
+func (self *IVectorOfScrollSnapPointBase) GetAt(index uint32) (*IScrollSnapPointBase, error) {
+	result := new(*IScrollSnapPointBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfScrollSnapPointBase's vtable slot 7.
+func (self *IVectorOfScrollSnapPointBase) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfScrollSnapPointBase's vtable slot 8.
+func (self *IVectorOfScrollSnapPointBase) GetView() (*IVectorViewOfScrollSnapPointBase, error) {
+	result := new(*IVectorViewOfScrollSnapPointBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfScrollSnapPointBase's vtable slot 9.
+func (self *IVectorOfScrollSnapPointBase) IndexOf(value *IScrollSnapPointBase, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfScrollSnapPointBase's vtable slot 10.
+func (self *IVectorOfScrollSnapPointBase) SetAt(index uint32, value *IScrollSnapPointBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfScrollSnapPointBase's vtable slot 11.
+func (self *IVectorOfScrollSnapPointBase) InsertAt(index uint32, value *IScrollSnapPointBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfScrollSnapPointBase's vtable slot 12.
+func (self *IVectorOfScrollSnapPointBase) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfScrollSnapPointBase's vtable slot 13.
+func (self *IVectorOfScrollSnapPointBase) Append(value *IScrollSnapPointBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfScrollSnapPointBase's vtable slot 14.
+func (self *IVectorOfScrollSnapPointBase) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfScrollSnapPointBase's vtable slot 15.
+func (self *IVectorOfScrollSnapPointBase) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfScrollSnapPointBase's vtable slot 16.
+func (self *IVectorOfScrollSnapPointBase) GetMany(startIndex uint32, items []*IScrollSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfScrollSnapPointBase's vtable slot 17.
+func (self *IVectorOfScrollSnapPointBase) ReplaceAll(items []*IScrollSnapPointBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfSelectorBarItem is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.SelectorBarItem>.
+// IID: 08401dbe-6afd-5878-b1dc-692bbbfc2eff
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.SelectorBarItem>.
+type IVectorOfSelectorBarItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfSelectorBarItem is the interface identifier for IVectorOfSelectorBarItem.
+var IID_IVectorOfSelectorBarItem = win32.GUID{Data1: 0x08401dbe, Data2: 0x6afd, Data3: 0x5878, Data4: [8]byte{0xb1, 0xdc, 0x69, 0x2b, 0xbb, 0xfc, 0x2e, 0xff}}
+
+// GetAt dispatches through IVectorOfSelectorBarItem's vtable slot 6.
+func (self *IVectorOfSelectorBarItem) GetAt(index uint32) (*ISelectorBarItem, error) {
+	result := new(*ISelectorBarItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfSelectorBarItem's vtable slot 7.
+func (self *IVectorOfSelectorBarItem) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfSelectorBarItem's vtable slot 8.
+func (self *IVectorOfSelectorBarItem) GetView() (*IVectorViewOfSelectorBarItem, error) {
+	result := new(*IVectorViewOfSelectorBarItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfSelectorBarItem's vtable slot 9.
+func (self *IVectorOfSelectorBarItem) IndexOf(value *ISelectorBarItem, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfSelectorBarItem's vtable slot 10.
+func (self *IVectorOfSelectorBarItem) SetAt(index uint32, value *ISelectorBarItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfSelectorBarItem's vtable slot 11.
+func (self *IVectorOfSelectorBarItem) InsertAt(index uint32, value *ISelectorBarItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfSelectorBarItem's vtable slot 12.
+func (self *IVectorOfSelectorBarItem) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfSelectorBarItem's vtable slot 13.
+func (self *IVectorOfSelectorBarItem) Append(value *ISelectorBarItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfSelectorBarItem's vtable slot 14.
+func (self *IVectorOfSelectorBarItem) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfSelectorBarItem's vtable slot 15.
+func (self *IVectorOfSelectorBarItem) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfSelectorBarItem's vtable slot 16.
+func (self *IVectorOfSelectorBarItem) GetMany(startIndex uint32, items []*ISelectorBarItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfSelectorBarItem's vtable slot 17.
+func (self *IVectorOfSelectorBarItem) ReplaceAll(items []*ISelectorBarItem) error {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -728,6 +3364,102 @@ func (self *IVectorOfSetterBase) ReplaceAll(items []*ISetterBase) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
+// IVectorOfSingle is the WinRT interface Windows.Foundation.Collections.IVector`1<Single>.
+// IID: 61cf693f-db4c-579f-b905-5dd3d23cfd4d
+// Requires: Windows.Foundation.Collections.IIterable`1<Single>.
+type IVectorOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfSingle is the interface identifier for IVectorOfSingle.
+var IID_IVectorOfSingle = win32.GUID{Data1: 0x61cf693f, Data2: 0xdb4c, Data3: 0x579f, Data4: [8]byte{0xb9, 0x05, 0x5d, 0xd3, 0xd2, 0x3c, 0xfd, 0x4d}}
+
+// GetAt dispatches through IVectorOfSingle's vtable slot 6.
+func (self *IVectorOfSingle) GetAt(index uint32) (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfSingle's vtable slot 7.
+func (self *IVectorOfSingle) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+
+// IndexOf dispatches through IVectorOfSingle's vtable slot 9.
+func (self *IVectorOfSingle) IndexOf(value float32, index *uint32) (bool, error) {
+	_value := uintptr(math.Float32bits(value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfSingle's vtable slot 10.
+func (self *IVectorOfSingle) SetAt(index uint32, value float32) error {
+	_value := uintptr(math.Float32bits(value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfSingle's vtable slot 11.
+func (self *IVectorOfSingle) InsertAt(index uint32, value float32) error {
+	_value := uintptr(math.Float32bits(value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfSingle's vtable slot 12.
+func (self *IVectorOfSingle) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfSingle's vtable slot 13.
+func (self *IVectorOfSingle) Append(value float32) error {
+	_value := uintptr(math.Float32bits(value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfSingle's vtable slot 14.
+func (self *IVectorOfSingle) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfSingle's vtable slot 15.
+func (self *IVectorOfSingle) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfSingle's vtable slot 16.
+func (self *IVectorOfSingle) GetMany(startIndex uint32, items []float32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfSingle's vtable slot 17.
+func (self *IVectorOfSingle) ReplaceAll(items []float32) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfStateTriggerBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.StateTriggerBase>.
 // IID: df1e41c3-5b3e-55be-86cf-c9242a9a0293
 // Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.StateTriggerBase>.
@@ -816,6 +3548,490 @@ func (self *IVectorOfStateTriggerBase) GetMany(startIndex uint32, items []*IStat
 
 // ReplaceAll dispatches through IVectorOfStateTriggerBase's vtable slot 17.
 func (self *IVectorOfStateTriggerBase) ReplaceAll(items []*IStateTriggerBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfSwipeItem is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
+// IID: c6f0dd71-2a0d-522a-b7d6-db13395d0a7f
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
+type IVectorOfSwipeItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfSwipeItem is the interface identifier for IVectorOfSwipeItem.
+var IID_IVectorOfSwipeItem = win32.GUID{Data1: 0xc6f0dd71, Data2: 0x2a0d, Data3: 0x522a, Data4: [8]byte{0xb7, 0xd6, 0xdb, 0x13, 0x39, 0x5d, 0x0a, 0x7f}}
+
+// GetAt dispatches through IVectorOfSwipeItem's vtable slot 6.
+func (self *IVectorOfSwipeItem) GetAt(index uint32) (*ISwipeItem, error) {
+	result := new(*ISwipeItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfSwipeItem's vtable slot 7.
+func (self *IVectorOfSwipeItem) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfSwipeItem's vtable slot 8.
+func (self *IVectorOfSwipeItem) GetView() (*IVectorViewOfSwipeItem, error) {
+	result := new(*IVectorViewOfSwipeItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfSwipeItem's vtable slot 9.
+func (self *IVectorOfSwipeItem) IndexOf(value *ISwipeItem, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfSwipeItem's vtable slot 10.
+func (self *IVectorOfSwipeItem) SetAt(index uint32, value *ISwipeItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfSwipeItem's vtable slot 11.
+func (self *IVectorOfSwipeItem) InsertAt(index uint32, value *ISwipeItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfSwipeItem's vtable slot 12.
+func (self *IVectorOfSwipeItem) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfSwipeItem's vtable slot 13.
+func (self *IVectorOfSwipeItem) Append(value *ISwipeItem) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfSwipeItem's vtable slot 14.
+func (self *IVectorOfSwipeItem) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfSwipeItem's vtable slot 15.
+func (self *IVectorOfSwipeItem) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfSwipeItem's vtable slot 16.
+func (self *IVectorOfSwipeItem) GetMany(startIndex uint32, items []*ISwipeItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfSwipeItem's vtable slot 17.
+func (self *IVectorOfSwipeItem) ReplaceAll(items []*ISwipeItem) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfTextHighlighter is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Documents.TextHighlighter>.
+// IID: 6d576f67-1548-51c9-83a8-2b5401b0281b
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Documents.TextHighlighter>.
+type IVectorOfTextHighlighter struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfTextHighlighter is the interface identifier for IVectorOfTextHighlighter.
+var IID_IVectorOfTextHighlighter = win32.GUID{Data1: 0x6d576f67, Data2: 0x1548, Data3: 0x51c9, Data4: [8]byte{0x83, 0xa8, 0x2b, 0x54, 0x01, 0xb0, 0x28, 0x1b}}
+
+// GetAt dispatches through IVectorOfTextHighlighter's vtable slot 6.
+func (self *IVectorOfTextHighlighter) GetAt(index uint32) (*ITextHighlighter, error) {
+	result := new(*ITextHighlighter)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfTextHighlighter's vtable slot 7.
+func (self *IVectorOfTextHighlighter) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfTextHighlighter's vtable slot 8.
+func (self *IVectorOfTextHighlighter) GetView() (*IVectorViewOfTextHighlighter, error) {
+	result := new(*IVectorViewOfTextHighlighter)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfTextHighlighter's vtable slot 9.
+func (self *IVectorOfTextHighlighter) IndexOf(value *ITextHighlighter, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfTextHighlighter's vtable slot 10.
+func (self *IVectorOfTextHighlighter) SetAt(index uint32, value *ITextHighlighter) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfTextHighlighter's vtable slot 11.
+func (self *IVectorOfTextHighlighter) InsertAt(index uint32, value *ITextHighlighter) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfTextHighlighter's vtable slot 12.
+func (self *IVectorOfTextHighlighter) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfTextHighlighter's vtable slot 13.
+func (self *IVectorOfTextHighlighter) Append(value *ITextHighlighter) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfTextHighlighter's vtable slot 14.
+func (self *IVectorOfTextHighlighter) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfTextHighlighter's vtable slot 15.
+func (self *IVectorOfTextHighlighter) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfTextHighlighter's vtable slot 16.
+func (self *IVectorOfTextHighlighter) GetMany(startIndex uint32, items []*ITextHighlighter) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfTextHighlighter's vtable slot 17.
+func (self *IVectorOfTextHighlighter) ReplaceAll(items []*ITextHighlighter) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfTextRange is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Documents.TextRange>.
+// IID: 5338571c-77b4-560e-8dfd-a59dad270ebb
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Documents.TextRange>.
+type IVectorOfTextRange struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfTextRange is the interface identifier for IVectorOfTextRange.
+var IID_IVectorOfTextRange = win32.GUID{Data1: 0x5338571c, Data2: 0x77b4, Data3: 0x560e, Data4: [8]byte{0x8d, 0xfd, 0xa5, 0x9d, 0xad, 0x27, 0x0e, 0xbb}}
+
+// GetAt dispatches through IVectorOfTextRange's vtable slot 6.
+func (self *IVectorOfTextRange) GetAt(index uint32) (TextRange, error) {
+	result := new(TextRange)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfTextRange's vtable slot 7.
+func (self *IVectorOfTextRange) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfTextRange's vtable slot 8.
+func (self *IVectorOfTextRange) GetView() (*IVectorViewOfTextRange, error) {
+	result := new(*IVectorViewOfTextRange)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfTextRange's vtable slot 9.
+func (self *IVectorOfTextRange) IndexOf(value TextRange, index *uint32) (bool, error) {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfTextRange's vtable slot 10.
+func (self *IVectorOfTextRange) SetAt(index uint32, value TextRange) error {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfTextRange's vtable slot 11.
+func (self *IVectorOfTextRange) InsertAt(index uint32, value TextRange) error {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfTextRange's vtable slot 12.
+func (self *IVectorOfTextRange) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfTextRange's vtable slot 13.
+func (self *IVectorOfTextRange) Append(value TextRange) error {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), _value)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfTextRange's vtable slot 14.
+func (self *IVectorOfTextRange) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfTextRange's vtable slot 15.
+func (self *IVectorOfTextRange) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfTextRange's vtable slot 16.
+func (self *IVectorOfTextRange) GetMany(startIndex uint32, items []TextRange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfTextRange's vtable slot 17.
+func (self *IVectorOfTextRange) ReplaceAll(items []TextRange) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfTreeViewNode is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.TreeViewNode>.
+// IID: fb11ab97-9ea3-5e29-977b-3ce47dac68de
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.TreeViewNode>.
+type IVectorOfTreeViewNode struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfTreeViewNode is the interface identifier for IVectorOfTreeViewNode.
+var IID_IVectorOfTreeViewNode = win32.GUID{Data1: 0xfb11ab97, Data2: 0x9ea3, Data3: 0x5e29, Data4: [8]byte{0x97, 0x7b, 0x3c, 0xe4, 0x7d, 0xac, 0x68, 0xde}}
+
+// GetAt dispatches through IVectorOfTreeViewNode's vtable slot 6.
+func (self *IVectorOfTreeViewNode) GetAt(index uint32) (*ITreeViewNode, error) {
+	result := new(*ITreeViewNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfTreeViewNode's vtable slot 7.
+func (self *IVectorOfTreeViewNode) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfTreeViewNode's vtable slot 8.
+func (self *IVectorOfTreeViewNode) GetView() (*IVectorViewOfTreeViewNode, error) {
+	result := new(*IVectorViewOfTreeViewNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfTreeViewNode's vtable slot 9.
+func (self *IVectorOfTreeViewNode) IndexOf(value *ITreeViewNode, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfTreeViewNode's vtable slot 10.
+func (self *IVectorOfTreeViewNode) SetAt(index uint32, value *ITreeViewNode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfTreeViewNode's vtable slot 11.
+func (self *IVectorOfTreeViewNode) InsertAt(index uint32, value *ITreeViewNode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfTreeViewNode's vtable slot 12.
+func (self *IVectorOfTreeViewNode) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfTreeViewNode's vtable slot 13.
+func (self *IVectorOfTreeViewNode) Append(value *ITreeViewNode) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfTreeViewNode's vtable slot 14.
+func (self *IVectorOfTreeViewNode) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfTreeViewNode's vtable slot 15.
+func (self *IVectorOfTreeViewNode) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfTreeViewNode's vtable slot 16.
+func (self *IVectorOfTreeViewNode) GetMany(startIndex uint32, items []*ITreeViewNode) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfTreeViewNode's vtable slot 17.
+func (self *IVectorOfTreeViewNode) ReplaceAll(items []*ITreeViewNode) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfUIElement is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.UIElement>.
+// IID: ea4a1af0-4286-5f11-8142-6b0169f4e9de
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.UIElement>.
+type IVectorOfUIElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfUIElement is the interface identifier for IVectorOfUIElement.
+var IID_IVectorOfUIElement = win32.GUID{Data1: 0xea4a1af0, Data2: 0x4286, Data3: 0x5f11, Data4: [8]byte{0x81, 0x42, 0x6b, 0x01, 0x69, 0xf4, 0xe9, 0xde}}
+
+// GetAt dispatches through IVectorOfUIElement's vtable slot 6.
+func (self *IVectorOfUIElement) GetAt(index uint32) (*IUIElement, error) {
+	result := new(*IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfUIElement's vtable slot 7.
+func (self *IVectorOfUIElement) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 8: GetView skipped: parameterized type Windows.Foundation.Collections.IVectorView`1
+
+// IndexOf dispatches through IVectorOfUIElement's vtable slot 9.
+func (self *IVectorOfUIElement) IndexOf(value *IUIElement, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfUIElement's vtable slot 10.
+func (self *IVectorOfUIElement) SetAt(index uint32, value *IUIElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfUIElement's vtable slot 11.
+func (self *IVectorOfUIElement) InsertAt(index uint32, value *IUIElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfUIElement's vtable slot 12.
+func (self *IVectorOfUIElement) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfUIElement's vtable slot 13.
+func (self *IVectorOfUIElement) Append(value *IUIElement) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfUIElement's vtable slot 14.
+func (self *IVectorOfUIElement) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfUIElement's vtable slot 15.
+func (self *IVectorOfUIElement) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfUIElement's vtable slot 16.
+func (self *IVectorOfUIElement) GetMany(startIndex uint32, items []*IUIElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfUIElement's vtable slot 17.
+func (self *IVectorOfUIElement) ReplaceAll(items []*IUIElement) error {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -1126,7 +4342,12 @@ type IVectorOfXamlLight struct {
 // IID_IVectorOfXamlLight is the interface identifier for IVectorOfXamlLight.
 var IID_IVectorOfXamlLight = win32.GUID{Data1: 0xfb6065bb, Data2: 0x83e0, Data3: 0x57c0, Data4: [8]byte{0xae, 0x7f, 0x41, 0x8f, 0xd7, 0x63, 0xb0, 0xce}}
 
-// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// GetAt dispatches through IVectorOfXamlLight's vtable slot 6.
+func (self *IVectorOfXamlLight) GetAt(index uint32) (*IXamlLight, error) {
+	result := new(*IXamlLight)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Size (propget get_Size) dispatches through IVectorOfXamlLight's vtable slot 7.
 func (self *IVectorOfXamlLight) Size() (uint32, error) {
@@ -1142,11 +4363,24 @@ func (self *IVectorOfXamlLight) GetView() (*IVectorViewOfXamlLight, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: IndexOf skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// IndexOf dispatches through IVectorOfXamlLight's vtable slot 9.
+func (self *IVectorOfXamlLight) IndexOf(value *IXamlLight, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 10: SetAt skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// SetAt dispatches through IVectorOfXamlLight's vtable slot 10.
+func (self *IVectorOfXamlLight) SetAt(index uint32, value *IXamlLight) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 11: InsertAt skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// InsertAt dispatches through IVectorOfXamlLight's vtable slot 11.
+func (self *IVectorOfXamlLight) InsertAt(index uint32, value *IXamlLight) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // RemoveAt dispatches through IVectorOfXamlLight's vtable slot 12.
 func (self *IVectorOfXamlLight) RemoveAt(index uint32) error {
@@ -1154,7 +4388,11 @@ func (self *IVectorOfXamlLight) RemoveAt(index uint32) error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 13: Append skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// Append dispatches through IVectorOfXamlLight's vtable slot 13.
+func (self *IVectorOfXamlLight) Append(value *IXamlLight) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // RemoveAtEnd dispatches through IVectorOfXamlLight's vtable slot 14.
 func (self *IVectorOfXamlLight) RemoveAtEnd() error {
@@ -1168,9 +4406,599 @@ func (self *IVectorOfXamlLight) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// GetMany dispatches through IVectorOfXamlLight's vtable slot 16.
+func (self *IVectorOfXamlLight) GetMany(startIndex uint32, items []*IXamlLight) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// ReplaceAll dispatches through IVectorOfXamlLight's vtable slot 17.
+func (self *IVectorOfXamlLight) ReplaceAll(items []*IXamlLight) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorOfZoomSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase>.
+// IID: 2705789a-e69c-5274-b15b-ca245be267e2
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase>.
+type IVectorOfZoomSnapPointBase struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorOfZoomSnapPointBase is the interface identifier for IVectorOfZoomSnapPointBase.
+var IID_IVectorOfZoomSnapPointBase = win32.GUID{Data1: 0x2705789a, Data2: 0xe69c, Data3: 0x5274, Data4: [8]byte{0xb1, 0x5b, 0xca, 0x24, 0x5b, 0xe2, 0x67, 0xe2}}
+
+// GetAt dispatches through IVectorOfZoomSnapPointBase's vtable slot 6.
+func (self *IVectorOfZoomSnapPointBase) GetAt(index uint32) (*IZoomSnapPointBase, error) {
+	result := new(*IZoomSnapPointBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorOfZoomSnapPointBase's vtable slot 7.
+func (self *IVectorOfZoomSnapPointBase) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// GetView dispatches through IVectorOfZoomSnapPointBase's vtable slot 8.
+func (self *IVectorOfZoomSnapPointBase) GetView() (*IVectorViewOfZoomSnapPointBase, error) {
+	result := new(*IVectorViewOfZoomSnapPointBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorOfZoomSnapPointBase's vtable slot 9.
+func (self *IVectorOfZoomSnapPointBase) IndexOf(value *IZoomSnapPointBase, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// SetAt dispatches through IVectorOfZoomSnapPointBase's vtable slot 10.
+func (self *IVectorOfZoomSnapPointBase) SetAt(index uint32, value *IZoomSnapPointBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[10], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// InsertAt dispatches through IVectorOfZoomSnapPointBase's vtable slot 11.
+func (self *IVectorOfZoomSnapPointBase) InsertAt(index uint32, value *IZoomSnapPointBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAt dispatches through IVectorOfZoomSnapPointBase's vtable slot 12.
+func (self *IVectorOfZoomSnapPointBase) RemoveAt(index uint32) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[12], uintptr(unsafe.Pointer(self)), uintptr(index))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Append dispatches through IVectorOfZoomSnapPointBase's vtable slot 13.
+func (self *IVectorOfZoomSnapPointBase) Append(value *IZoomSnapPointBase) error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// RemoveAtEnd dispatches through IVectorOfZoomSnapPointBase's vtable slot 14.
+func (self *IVectorOfZoomSnapPointBase) RemoveAtEnd() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// Clear dispatches through IVectorOfZoomSnapPointBase's vtable slot 15.
+func (self *IVectorOfZoomSnapPointBase) Clear() error {
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)))
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorOfZoomSnapPointBase's vtable slot 16.
+func (self *IVectorOfZoomSnapPointBase) GetMany(startIndex uint32, items []*IZoomSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// ReplaceAll dispatches through IVectorOfZoomSnapPointBase's vtable slot 17.
+func (self *IVectorOfZoomSnapPointBase) ReplaceAll(items []*IZoomSnapPointBase) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfAnnotatedScrollBarLabel is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.AnnotatedScrollBarLabel>.
+// IID: 83d3310c-1efb-5d37-9a55-132859e72aed
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.AnnotatedScrollBarLabel>.
+type IVectorViewOfAnnotatedScrollBarLabel struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfAnnotatedScrollBarLabel is the interface identifier for IVectorViewOfAnnotatedScrollBarLabel.
+var IID_IVectorViewOfAnnotatedScrollBarLabel = win32.GUID{Data1: 0x83d3310c, Data2: 0x1efb, Data3: 0x5d37, Data4: [8]byte{0x9a, 0x55, 0x13, 0x28, 0x59, 0xe7, 0x2a, 0xed}}
+
+// GetAt dispatches through IVectorViewOfAnnotatedScrollBarLabel's vtable slot 6.
+func (self *IVectorViewOfAnnotatedScrollBarLabel) GetAt(index uint32) (*IAnnotatedScrollBarLabel, error) {
+	result := new(*IAnnotatedScrollBarLabel)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfAnnotatedScrollBarLabel's vtable slot 7.
+func (self *IVectorViewOfAnnotatedScrollBarLabel) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfAnnotatedScrollBarLabel's vtable slot 8.
+func (self *IVectorViewOfAnnotatedScrollBarLabel) IndexOf(value *IAnnotatedScrollBarLabel, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfAnnotatedScrollBarLabel's vtable slot 9.
+func (self *IVectorViewOfAnnotatedScrollBarLabel) GetMany(startIndex uint32, items []*IAnnotatedScrollBarLabel) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfAutomationAnnotation is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Automation.AutomationAnnotation>.
+// IID: 15c04825-b975-5bc5-adf9-e3b6062a7afa
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.AutomationAnnotation>.
+type IVectorViewOfAutomationAnnotation struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfAutomationAnnotation is the interface identifier for IVectorViewOfAutomationAnnotation.
+var IID_IVectorViewOfAutomationAnnotation = win32.GUID{Data1: 0x15c04825, Data2: 0xb975, Data3: 0x5bc5, Data4: [8]byte{0xad, 0xf9, 0xe3, 0xb6, 0x06, 0x2a, 0x7a, 0xfa}}
+
+// GetAt dispatches through IVectorViewOfAutomationAnnotation's vtable slot 6.
+func (self *IVectorViewOfAutomationAnnotation) GetAt(index uint32) (*IAutomationAnnotation, error) {
+	result := new(*IAutomationAnnotation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfAutomationAnnotation's vtable slot 7.
+func (self *IVectorViewOfAutomationAnnotation) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfAutomationAnnotation's vtable slot 8.
+func (self *IVectorViewOfAutomationAnnotation) IndexOf(value *IAutomationAnnotation, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfAutomationAnnotation's vtable slot 9.
+func (self *IVectorViewOfAutomationAnnotation) GetMany(startIndex uint32, items []*IAutomationAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfAutomationPeer is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
+// IID: 26501cc8-81ab-54e0-8049-2bbd47c9ff36
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeer>.
+type IVectorViewOfAutomationPeer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfAutomationPeer is the interface identifier for IVectorViewOfAutomationPeer.
+var IID_IVectorViewOfAutomationPeer = win32.GUID{Data1: 0x26501cc8, Data2: 0x81ab, Data3: 0x54e0, Data4: [8]byte{0x80, 0x49, 0x2b, 0xbd, 0x47, 0xc9, 0xff, 0x36}}
+
+// GetAt dispatches through IVectorViewOfAutomationPeer's vtable slot 6.
+func (self *IVectorViewOfAutomationPeer) GetAt(index uint32) (*IAutomationPeer, error) {
+	result := new(*IAutomationPeer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfAutomationPeer's vtable slot 7.
+func (self *IVectorViewOfAutomationPeer) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfAutomationPeer's vtable slot 8.
+func (self *IVectorViewOfAutomationPeer) IndexOf(value *IAutomationPeer, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfAutomationPeer's vtable slot 9.
+func (self *IVectorViewOfAutomationPeer) GetMany(startIndex uint32, items []*IAutomationPeer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfAutomationPeerAnnotation is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation>.
+// IID: 7a5622c2-354b-5d4e-b86d-3482eb35513e
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Automation.Peers.AutomationPeerAnnotation>.
+type IVectorViewOfAutomationPeerAnnotation struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfAutomationPeerAnnotation is the interface identifier for IVectorViewOfAutomationPeerAnnotation.
+var IID_IVectorViewOfAutomationPeerAnnotation = win32.GUID{Data1: 0x7a5622c2, Data2: 0x354b, Data3: 0x5d4e, Data4: [8]byte{0xb8, 0x6d, 0x34, 0x82, 0xeb, 0x35, 0x51, 0x3e}}
+
+// GetAt dispatches through IVectorViewOfAutomationPeerAnnotation's vtable slot 6.
+func (self *IVectorViewOfAutomationPeerAnnotation) GetAt(index uint32) (*IAutomationPeerAnnotation, error) {
+	result := new(*IAutomationPeerAnnotation)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfAutomationPeerAnnotation's vtable slot 7.
+func (self *IVectorViewOfAutomationPeerAnnotation) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfAutomationPeerAnnotation's vtable slot 8.
+func (self *IVectorViewOfAutomationPeerAnnotation) IndexOf(value *IAutomationPeerAnnotation, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfAutomationPeerAnnotation's vtable slot 9.
+func (self *IVectorViewOfAutomationPeerAnnotation) GetMany(startIndex uint32, items []*IAutomationPeerAnnotation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfDateTime is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Windows.Foundation.DateTime>.
+// IID: 135a5f72-a818-54a8-b955-dff2593a3bf5
+// Requires: Windows.Foundation.Collections.IIterable`1<Windows.Foundation.DateTime>.
+type IVectorViewOfDateTime struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfDateTime is the interface identifier for IVectorViewOfDateTime.
+var IID_IVectorViewOfDateTime = win32.GUID{Data1: 0x135a5f72, Data2: 0xa818, Data3: 0x54a8, Data4: [8]byte{0xb9, 0x55, 0xdf, 0xf2, 0x59, 0x3a, 0x3b, 0xf5}}
+
+// GetAt dispatches through IVectorViewOfDateTime's vtable slot 6.
+func (self *IVectorViewOfDateTime) GetAt(index uint32) (wrtfoundation.DateTime, error) {
+	result := new(wrtfoundation.DateTime)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfDateTime's vtable slot 7.
+func (self *IVectorViewOfDateTime) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfDateTime's vtable slot 8.
+func (self *IVectorViewOfDateTime) IndexOf(value wrtfoundation.DateTime, index *uint32) (bool, error) {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfDateTime's vtable slot 9.
+func (self *IVectorViewOfDateTime) GetMany(startIndex uint32, items []wrtfoundation.DateTime) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfDependencyObject is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.DependencyObject>.
+// IID: 9eddd815-4420-5639-9b26-eab8013fa294
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.DependencyObject>.
+type IVectorViewOfDependencyObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfDependencyObject is the interface identifier for IVectorViewOfDependencyObject.
+var IID_IVectorViewOfDependencyObject = win32.GUID{Data1: 0x9eddd815, Data2: 0x4420, Data3: 0x5639, Data4: [8]byte{0x9b, 0x26, 0xea, 0xb8, 0x01, 0x3f, 0xa2, 0x94}}
+
+// GetAt dispatches through IVectorViewOfDependencyObject's vtable slot 6.
+func (self *IVectorViewOfDependencyObject) GetAt(index uint32) (*IDependencyObject, error) {
+	result := new(*IDependencyObject)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfDependencyObject's vtable slot 7.
+func (self *IVectorViewOfDependencyObject) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfDependencyObject's vtable slot 8.
+func (self *IVectorViewOfDependencyObject) IndexOf(value *IDependencyObject, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfDependencyObject's vtable slot 9.
+func (self *IVectorViewOfDependencyObject) GetMany(startIndex uint32, items []*IDependencyObject) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfHubSection is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.HubSection>.
+// IID: f8cc2c57-b061-5a88-b4ae-21e4a5f6dc32
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.HubSection>.
+type IVectorViewOfHubSection struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfHubSection is the interface identifier for IVectorViewOfHubSection.
+var IID_IVectorViewOfHubSection = win32.GUID{Data1: 0xf8cc2c57, Data2: 0xb061, Data3: 0x5a88, Data4: [8]byte{0xb4, 0xae, 0x21, 0xe4, 0xa5, 0xf6, 0xdc, 0x32}}
+
+// GetAt dispatches through IVectorViewOfHubSection's vtable slot 6.
+func (self *IVectorViewOfHubSection) GetAt(index uint32) (*IHubSection, error) {
+	result := new(*IHubSection)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfHubSection's vtable slot 7.
+func (self *IVectorViewOfHubSection) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfHubSection's vtable slot 8.
+func (self *IVectorViewOfHubSection) IndexOf(value *IHubSection, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfHubSection's vtable slot 9.
+func (self *IVectorViewOfHubSection) GetMany(startIndex uint32, items []*IHubSection) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfInputScopeName is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.InputScopeName>.
+// IID: 183ab292-d2b3-568d-8431-4e3ff18b037e
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Input.InputScopeName>.
+type IVectorViewOfInputScopeName struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfInputScopeName is the interface identifier for IVectorViewOfInputScopeName.
+var IID_IVectorViewOfInputScopeName = win32.GUID{Data1: 0x183ab292, Data2: 0xd2b3, Data3: 0x568d, Data4: [8]byte{0x84, 0x31, 0x4e, 0x3f, 0xf1, 0x8b, 0x03, 0x7e}}
+
+// GetAt dispatches through IVectorViewOfInputScopeName's vtable slot 6.
+func (self *IVectorViewOfInputScopeName) GetAt(index uint32) (*IInputScopeName, error) {
+	result := new(*IInputScopeName)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfInputScopeName's vtable slot 7.
+func (self *IVectorViewOfInputScopeName) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfInputScopeName's vtable slot 8.
+func (self *IVectorViewOfInputScopeName) IndexOf(value *IInputScopeName, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfInputScopeName's vtable slot 9.
+func (self *IVectorViewOfInputScopeName) GetMany(startIndex uint32, items []*IInputScopeName) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfInt32 is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Int32>.
+// IID: 8d720cdf-3934-5d3f-9a55-40e8063b086a
+// Requires: Windows.Foundation.Collections.IIterable`1<Int32>.
+type IVectorViewOfInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfInt32 is the interface identifier for IVectorViewOfInt32.
+var IID_IVectorViewOfInt32 = win32.GUID{Data1: 0x8d720cdf, Data2: 0x3934, Data3: 0x5d3f, Data4: [8]byte{0x9a, 0x55, 0x40, 0xe8, 0x06, 0x3b, 0x08, 0x6a}}
+
+// GetAt dispatches through IVectorViewOfInt32's vtable slot 6.
+func (self *IVectorViewOfInt32) GetAt(index uint32) (int32, error) {
+	result := new(int32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfInt32's vtable slot 7.
+func (self *IVectorViewOfInt32) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfInt32's vtable slot 8.
+func (self *IVectorViewOfInt32) IndexOf(value int32, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(value), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfInt32's vtable slot 9.
+func (self *IVectorViewOfInt32) GetMany(startIndex uint32, items []int32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfItemCollectionTransition is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.ItemCollectionTransition>.
+// IID: 801b0b89-28ef-5e3c-b618-a92b285b3099
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.ItemCollectionTransition>.
+type IVectorViewOfItemCollectionTransition struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfItemCollectionTransition is the interface identifier for IVectorViewOfItemCollectionTransition.
+var IID_IVectorViewOfItemCollectionTransition = win32.GUID{Data1: 0x801b0b89, Data2: 0x28ef, Data3: 0x5e3c, Data4: [8]byte{0xb6, 0x18, 0xa9, 0x2b, 0x28, 0x5b, 0x30, 0x99}}
+
+// GetAt dispatches through IVectorViewOfItemCollectionTransition's vtable slot 6.
+func (self *IVectorViewOfItemCollectionTransition) GetAt(index uint32) (*IItemCollectionTransition, error) {
+	result := new(*IItemCollectionTransition)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfItemCollectionTransition's vtable slot 7.
+func (self *IVectorViewOfItemCollectionTransition) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfItemCollectionTransition's vtable slot 8.
+func (self *IVectorViewOfItemCollectionTransition) IndexOf(value *IItemCollectionTransition, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfItemCollectionTransition's vtable slot 9.
+func (self *IVectorViewOfItemCollectionTransition) GetMany(startIndex uint32, items []*IItemCollectionTransition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfItemIndexRange is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Data.ItemIndexRange>.
+// IID: 465af292-d97c-5407-9cbe-6d35d67a030f
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Data.ItemIndexRange>.
+type IVectorViewOfItemIndexRange struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfItemIndexRange is the interface identifier for IVectorViewOfItemIndexRange.
+var IID_IVectorViewOfItemIndexRange = win32.GUID{Data1: 0x465af292, Data2: 0xd97c, Data3: 0x5407, Data4: [8]byte{0x9c, 0xbe, 0x6d, 0x35, 0xd6, 0x7a, 0x03, 0x0f}}
+
+// GetAt dispatches through IVectorViewOfItemIndexRange's vtable slot 6.
+func (self *IVectorViewOfItemIndexRange) GetAt(index uint32) (*IItemIndexRange, error) {
+	result := new(*IItemIndexRange)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfItemIndexRange's vtable slot 7.
+func (self *IVectorViewOfItemIndexRange) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfItemIndexRange's vtable slot 8.
+func (self *IVectorViewOfItemIndexRange) IndexOf(value *IItemIndexRange, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfItemIndexRange's vtable slot 9.
+func (self *IVectorViewOfItemIndexRange) GetMany(startIndex uint32, items []*IItemIndexRange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfKeyboardAccelerator is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.KeyboardAccelerator>.
 // IID: 4d4dfa1a-7153-51f3-8036-6b61de68bca8
@@ -1182,7 +5010,12 @@ type IVectorViewOfKeyboardAccelerator struct {
 // IID_IVectorViewOfKeyboardAccelerator is the interface identifier for IVectorViewOfKeyboardAccelerator.
 var IID_IVectorViewOfKeyboardAccelerator = win32.GUID{Data1: 0x4d4dfa1a, Data2: 0x7153, Data3: 0x51f3, Data4: [8]byte{0x80, 0x36, 0x6b, 0x61, 0xde, 0x68, 0xbc, 0xa8}}
 
-// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// GetAt dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 6.
+func (self *IVectorViewOfKeyboardAccelerator) GetAt(index uint32) (*IKeyboardAccelerator, error) {
+	result := new(*IKeyboardAccelerator)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Size (propget get_Size) dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 7.
 func (self *IVectorViewOfKeyboardAccelerator) Size() (uint32, error) {
@@ -1191,9 +5024,282 @@ func (self *IVectorViewOfKeyboardAccelerator) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// IndexOf dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 8.
+func (self *IVectorViewOfKeyboardAccelerator) IndexOf(value *IKeyboardAccelerator, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.KeyboardAccelerator crosses a severed import edge
+// GetMany dispatches through IVectorViewOfKeyboardAccelerator's vtable slot 9.
+func (self *IVectorViewOfKeyboardAccelerator) GetMany(startIndex uint32, items []*IKeyboardAccelerator) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfMapElement is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.MapElement>.
+// IID: 7330beb3-014a-54aa-9d15-681475b2201d
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MapElement>.
+type IVectorViewOfMapElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfMapElement is the interface identifier for IVectorViewOfMapElement.
+var IID_IVectorViewOfMapElement = win32.GUID{Data1: 0x7330beb3, Data2: 0x014a, Data3: 0x54aa, Data4: [8]byte{0x9d, 0x15, 0x68, 0x14, 0x75, 0xb2, 0x20, 0x1d}}
+
+// GetAt dispatches through IVectorViewOfMapElement's vtable slot 6.
+func (self *IVectorViewOfMapElement) GetAt(index uint32) (*IMapElement, error) {
+	result := new(*IMapElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfMapElement's vtable slot 7.
+func (self *IVectorViewOfMapElement) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfMapElement's vtable slot 8.
+func (self *IVectorViewOfMapElement) IndexOf(value *IMapElement, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfMapElement's vtable slot 9.
+func (self *IVectorViewOfMapElement) GetMany(startIndex uint32, items []*IMapElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfMapLayer is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.MapLayer>.
+// IID: 7d1b4d33-f5d7-5e5d-94d2-6514ec661d7e
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MapLayer>.
+type IVectorViewOfMapLayer struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfMapLayer is the interface identifier for IVectorViewOfMapLayer.
+var IID_IVectorViewOfMapLayer = win32.GUID{Data1: 0x7d1b4d33, Data2: 0xf5d7, Data3: 0x5e5d, Data4: [8]byte{0x94, 0xd2, 0x65, 0x14, 0xec, 0x66, 0x1d, 0x7e}}
+
+// GetAt dispatches through IVectorViewOfMapLayer's vtable slot 6.
+func (self *IVectorViewOfMapLayer) GetAt(index uint32) (*IMapLayer, error) {
+	result := new(*IMapLayer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfMapLayer's vtable slot 7.
+func (self *IVectorViewOfMapLayer) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfMapLayer's vtable slot 8.
+func (self *IVectorViewOfMapLayer) IndexOf(value *IMapLayer, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfMapLayer's vtable slot 9.
+func (self *IVectorViewOfMapLayer) GetMany(startIndex uint32, items []*IMapLayer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfMenuBarItem is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.MenuBarItem>.
+// IID: d99a99f0-d72d-5172-8781-3de6ee292749
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MenuBarItem>.
+type IVectorViewOfMenuBarItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfMenuBarItem is the interface identifier for IVectorViewOfMenuBarItem.
+var IID_IVectorViewOfMenuBarItem = win32.GUID{Data1: 0xd99a99f0, Data2: 0xd72d, Data3: 0x5172, Data4: [8]byte{0x87, 0x81, 0x3d, 0xe6, 0xee, 0x29, 0x27, 0x49}}
+
+// GetAt dispatches through IVectorViewOfMenuBarItem's vtable slot 6.
+func (self *IVectorViewOfMenuBarItem) GetAt(index uint32) (*IMenuBarItem, error) {
+	result := new(*IMenuBarItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfMenuBarItem's vtable slot 7.
+func (self *IVectorViewOfMenuBarItem) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfMenuBarItem's vtable slot 8.
+func (self *IVectorViewOfMenuBarItem) IndexOf(value *IMenuBarItem, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfMenuBarItem's vtable slot 9.
+func (self *IVectorViewOfMenuBarItem) GetMany(startIndex uint32, items []*IMenuBarItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfMenuFlyoutItemBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.MenuFlyoutItemBase>.
+// IID: f817bdda-4853-503a-86c3-062db99d0419
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.MenuFlyoutItemBase>.
+type IVectorViewOfMenuFlyoutItemBase struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfMenuFlyoutItemBase is the interface identifier for IVectorViewOfMenuFlyoutItemBase.
+var IID_IVectorViewOfMenuFlyoutItemBase = win32.GUID{Data1: 0xf817bdda, Data2: 0x4853, Data3: 0x503a, Data4: [8]byte{0x86, 0xc3, 0x06, 0x2d, 0xb9, 0x9d, 0x04, 0x19}}
+
+// GetAt dispatches through IVectorViewOfMenuFlyoutItemBase's vtable slot 6.
+func (self *IVectorViewOfMenuFlyoutItemBase) GetAt(index uint32) (*IMenuFlyoutItemBase, error) {
+	result := new(*IMenuFlyoutItemBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfMenuFlyoutItemBase's vtable slot 7.
+func (self *IVectorViewOfMenuFlyoutItemBase) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfMenuFlyoutItemBase's vtable slot 8.
+func (self *IVectorViewOfMenuFlyoutItemBase) IndexOf(value *IMenuFlyoutItemBase, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfMenuFlyoutItemBase's vtable slot 9.
+func (self *IVectorViewOfMenuFlyoutItemBase) GetMany(startIndex uint32, items []*IMenuFlyoutItemBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfObject is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Object>.
+// IID: a6487363-b074-5c60-ab16-866dce4ee54d
+// Requires: Windows.Foundation.Collections.IIterable`1<Object>.
+type IVectorViewOfObject struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfObject is the interface identifier for IVectorViewOfObject.
+var IID_IVectorViewOfObject = win32.GUID{Data1: 0xa6487363, Data2: 0xb074, Data3: 0x5c60, Data4: [8]byte{0xab, 0x16, 0x86, 0x6d, 0xce, 0x4e, 0xe5, 0x4d}}
+
+// GetAt dispatches through IVectorViewOfObject's vtable slot 6.
+func (self *IVectorViewOfObject) GetAt(index uint32) (*syswinrt.IInspectable, error) {
+	result := new(*syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfObject's vtable slot 7.
+func (self *IVectorViewOfObject) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfObject's vtable slot 8.
+func (self *IVectorViewOfObject) IndexOf(value *syswinrt.IInspectable, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfObject's vtable slot 9.
+func (self *IVectorViewOfObject) GetMany(startIndex uint32, items []*syswinrt.IInspectable) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfPageStackEntry is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Navigation.PageStackEntry>.
+// IID: 1a07e864-47dd-50bc-8948-7d2afb8c332f
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Navigation.PageStackEntry>.
+type IVectorViewOfPageStackEntry struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfPageStackEntry is the interface identifier for IVectorViewOfPageStackEntry.
+var IID_IVectorViewOfPageStackEntry = win32.GUID{Data1: 0x1a07e864, Data2: 0x47dd, Data3: 0x50bc, Data4: [8]byte{0x89, 0x48, 0x7d, 0x2a, 0xfb, 0x8c, 0x33, 0x2f}}
+
+// GetAt dispatches through IVectorViewOfPageStackEntry's vtable slot 6.
+func (self *IVectorViewOfPageStackEntry) GetAt(index uint32) (*IPageStackEntry, error) {
+	result := new(*IPageStackEntry)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfPageStackEntry's vtable slot 7.
+func (self *IVectorViewOfPageStackEntry) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfPageStackEntry's vtable slot 8.
+func (self *IVectorViewOfPageStackEntry) IndexOf(value *IPageStackEntry, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfPageStackEntry's vtable slot 9.
+func (self *IVectorViewOfPageStackEntry) GetMany(startIndex uint32, items []*IPageStackEntry) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPointer is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Input.Pointer>.
 // IID: 81082898-c342-5b9f-9fcc-0927881f30ad
@@ -1205,7 +5311,12 @@ type IVectorViewOfPointer struct {
 // IID_IVectorViewOfPointer is the interface identifier for IVectorViewOfPointer.
 var IID_IVectorViewOfPointer = win32.GUID{Data1: 0x81082898, Data2: 0xc342, Data3: 0x5b9f, Data4: [8]byte{0x9f, 0xcc, 0x09, 0x27, 0x88, 0x1f, 0x30, 0xad}}
 
-// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
+// GetAt dispatches through IVectorViewOfPointer's vtable slot 6.
+func (self *IVectorViewOfPointer) GetAt(index uint32) (*IPointer, error) {
+	result := new(*IPointer)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Size (propget get_Size) dispatches through IVectorViewOfPointer's vtable slot 7.
 func (self *IVectorViewOfPointer) Size() (uint32, error) {
@@ -1214,9 +5325,110 @@ func (self *IVectorViewOfPointer) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
+// IndexOf dispatches through IVectorViewOfPointer's vtable slot 8.
+func (self *IVectorViewOfPointer) IndexOf(value *IPointer, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Input.Pointer crosses a severed import edge
+// GetMany dispatches through IVectorViewOfPointer's vtable slot 9.
+func (self *IVectorViewOfPointer) GetMany(startIndex uint32, items []*IPointer) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfPointerPoint is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Input.PointerPoint>.
+// IID: 5fbb224b-8430-5086-ab85-e71dfaa84c90
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Input.PointerPoint>.
+type IVectorViewOfPointerPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfPointerPoint is the interface identifier for IVectorViewOfPointerPoint.
+var IID_IVectorViewOfPointerPoint = win32.GUID{Data1: 0x5fbb224b, Data2: 0x8430, Data3: 0x5086, Data4: [8]byte{0xab, 0x85, 0xe7, 0x1d, 0xfa, 0xa8, 0x4c, 0x90}}
+
+// GetAt dispatches through IVectorViewOfPointerPoint's vtable slot 6.
+func (self *IVectorViewOfPointerPoint) GetAt(index uint32) (*uiinput.IPointerPoint, error) {
+	result := new(*uiinput.IPointerPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfPointerPoint's vtable slot 7.
+func (self *IVectorViewOfPointerPoint) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfPointerPoint's vtable slot 8.
+func (self *IVectorViewOfPointerPoint) IndexOf(value *uiinput.IPointerPoint, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfPointerPoint's vtable slot 9.
+func (self *IVectorViewOfPointerPoint) GetMany(startIndex uint32, items []*uiinput.IPointerPoint) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfPopup is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.Primitives.Popup>.
+// IID: ef55f12e-1ca7-51f3-9955-46de4622f0aa
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.Primitives.Popup>.
+type IVectorViewOfPopup struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfPopup is the interface identifier for IVectorViewOfPopup.
+var IID_IVectorViewOfPopup = win32.GUID{Data1: 0xef55f12e, Data2: 0x1ca7, Data3: 0x51f3, Data4: [8]byte{0x99, 0x55, 0x46, 0xde, 0x46, 0x22, 0xf0, 0xaa}}
+
+// GetAt dispatches through IVectorViewOfPopup's vtable slot 6.
+func (self *IVectorViewOfPopup) GetAt(index uint32) (*IPopup, error) {
+	result := new(*IPopup)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfPopup's vtable slot 7.
+func (self *IVectorViewOfPopup) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfPopup's vtable slot 8.
+func (self *IVectorViewOfPopup) IndexOf(value *IPopup, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfPopup's vtable slot 9.
+func (self *IVectorViewOfPopup) GetMany(startIndex uint32, items []*IPopup) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfResourceDictionary is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.ResourceDictionary>.
 // IID: 1afc35b6-d46b-5d29-a9f6-e21e68b05846
@@ -1251,6 +5463,92 @@ func (self *IVectorViewOfResourceDictionary) IndexOf(value *IResourceDictionary,
 
 // GetMany dispatches through IVectorViewOfResourceDictionary's vtable slot 9.
 func (self *IVectorViewOfResourceDictionary) GetMany(startIndex uint32, items []*IResourceDictionary) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfScrollSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase>.
+// IID: ffd69432-94da-50ae-ac63-1dadc0e9900f
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase>.
+type IVectorViewOfScrollSnapPointBase struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfScrollSnapPointBase is the interface identifier for IVectorViewOfScrollSnapPointBase.
+var IID_IVectorViewOfScrollSnapPointBase = win32.GUID{Data1: 0xffd69432, Data2: 0x94da, Data3: 0x50ae, Data4: [8]byte{0xac, 0x63, 0x1d, 0xad, 0xc0, 0xe9, 0x90, 0x0f}}
+
+// GetAt dispatches through IVectorViewOfScrollSnapPointBase's vtable slot 6.
+func (self *IVectorViewOfScrollSnapPointBase) GetAt(index uint32) (*IScrollSnapPointBase, error) {
+	result := new(*IScrollSnapPointBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfScrollSnapPointBase's vtable slot 7.
+func (self *IVectorViewOfScrollSnapPointBase) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfScrollSnapPointBase's vtable slot 8.
+func (self *IVectorViewOfScrollSnapPointBase) IndexOf(value *IScrollSnapPointBase, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfScrollSnapPointBase's vtable slot 9.
+func (self *IVectorViewOfScrollSnapPointBase) GetMany(startIndex uint32, items []*IScrollSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfSelectorBarItem is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.SelectorBarItem>.
+// IID: 112555bc-e0a5-5846-af1f-31819298262a
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.SelectorBarItem>.
+type IVectorViewOfSelectorBarItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfSelectorBarItem is the interface identifier for IVectorViewOfSelectorBarItem.
+var IID_IVectorViewOfSelectorBarItem = win32.GUID{Data1: 0x112555bc, Data2: 0xe0a5, Data3: 0x5846, Data4: [8]byte{0xaf, 0x1f, 0x31, 0x81, 0x92, 0x98, 0x26, 0x2a}}
+
+// GetAt dispatches through IVectorViewOfSelectorBarItem's vtable slot 6.
+func (self *IVectorViewOfSelectorBarItem) GetAt(index uint32) (*ISelectorBarItem, error) {
+	result := new(*ISelectorBarItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfSelectorBarItem's vtable slot 7.
+func (self *IVectorViewOfSelectorBarItem) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfSelectorBarItem's vtable slot 8.
+func (self *IVectorViewOfSelectorBarItem) IndexOf(value *ISelectorBarItem, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfSelectorBarItem's vtable slot 9.
+func (self *IVectorViewOfSelectorBarItem) GetMany(startIndex uint32, items []*ISelectorBarItem) (uint32, error) {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -1304,6 +5602,50 @@ func (self *IVectorViewOfSetterBase) GetMany(startIndex uint32, items []*ISetter
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IVectorViewOfSingle is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Single>.
+// IID: 7bca64fd-150c-5d50-b56b-9f4f474c5930
+// Requires: Windows.Foundation.Collections.IIterable`1<Single>.
+type IVectorViewOfSingle struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfSingle is the interface identifier for IVectorViewOfSingle.
+var IID_IVectorViewOfSingle = win32.GUID{Data1: 0x7bca64fd, Data2: 0x150c, Data3: 0x5d50, Data4: [8]byte{0xb5, 0x6b, 0x9f, 0x4f, 0x47, 0x4c, 0x59, 0x30}}
+
+// GetAt dispatches through IVectorViewOfSingle's vtable slot 6.
+func (self *IVectorViewOfSingle) GetAt(index uint32) (float32, error) {
+	result := new(float32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfSingle's vtable slot 7.
+func (self *IVectorViewOfSingle) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfSingle's vtable slot 8.
+func (self *IVectorViewOfSingle) IndexOf(value float32, index *uint32) (bool, error) {
+	_value := uintptr(math.Float32bits(value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfSingle's vtable slot 9.
+func (self *IVectorViewOfSingle) GetMany(startIndex uint32, items []float32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorViewOfStateTriggerBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.StateTriggerBase>.
 // IID: 00c2e28d-9e12-5d23-af85-a4d9919168bf
 // Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.StateTriggerBase>.
@@ -1337,6 +5679,263 @@ func (self *IVectorViewOfStateTriggerBase) IndexOf(value *IStateTriggerBase, ind
 
 // GetMany dispatches through IVectorViewOfStateTriggerBase's vtable slot 9.
 func (self *IVectorViewOfStateTriggerBase) GetMany(startIndex uint32, items []*IStateTriggerBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfString is the WinRT interface Windows.Foundation.Collections.IVectorView`1<String>.
+// IID: 2f13c006-a03a-5f69-b090-75a43e33423e
+// Requires: Windows.Foundation.Collections.IIterable`1<String>.
+type IVectorViewOfString struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfString is the interface identifier for IVectorViewOfString.
+var IID_IVectorViewOfString = win32.GUID{Data1: 0x2f13c006, Data2: 0xa03a, Data3: 0x5f69, Data4: [8]byte{0xb0, 0x90, 0x75, 0xa4, 0x3e, 0x33, 0x42, 0x3e}}
+
+// GetAt dispatches through IVectorViewOfString's vtable slot 6.
+func (self *IVectorViewOfString) GetAt(index uint32) (string, error) {
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfString's vtable slot 7.
+func (self *IVectorViewOfString) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfString's vtable slot 8.
+func (self *IVectorViewOfString) IndexOf(value string, index *uint32) (bool, error) {
+	hValue, err := winrt.NewHString(value)
+	if err != nil {
+		return false, err
+	}
+	defer hValue.Close()
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(hValue.Raw()), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// slot 9: GetMany skipped: string elements need per-element conversion
+
+// IVectorViewOfSwipeItem is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
+// IID: c2efaae9-0147-5768-a6b8-9637094a7521
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.SwipeItem>.
+type IVectorViewOfSwipeItem struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfSwipeItem is the interface identifier for IVectorViewOfSwipeItem.
+var IID_IVectorViewOfSwipeItem = win32.GUID{Data1: 0xc2efaae9, Data2: 0x0147, Data3: 0x5768, Data4: [8]byte{0xa6, 0xb8, 0x96, 0x37, 0x09, 0x4a, 0x75, 0x21}}
+
+// GetAt dispatches through IVectorViewOfSwipeItem's vtable slot 6.
+func (self *IVectorViewOfSwipeItem) GetAt(index uint32) (*ISwipeItem, error) {
+	result := new(*ISwipeItem)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfSwipeItem's vtable slot 7.
+func (self *IVectorViewOfSwipeItem) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfSwipeItem's vtable slot 8.
+func (self *IVectorViewOfSwipeItem) IndexOf(value *ISwipeItem, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfSwipeItem's vtable slot 9.
+func (self *IVectorViewOfSwipeItem) GetMany(startIndex uint32, items []*ISwipeItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfTextHighlighter is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Documents.TextHighlighter>.
+// IID: 20f348a9-4ef5-5f8f-a3ce-bdc1d83a2fda
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Documents.TextHighlighter>.
+type IVectorViewOfTextHighlighter struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfTextHighlighter is the interface identifier for IVectorViewOfTextHighlighter.
+var IID_IVectorViewOfTextHighlighter = win32.GUID{Data1: 0x20f348a9, Data2: 0x4ef5, Data3: 0x5f8f, Data4: [8]byte{0xa3, 0xce, 0xbd, 0xc1, 0xd8, 0x3a, 0x2f, 0xda}}
+
+// GetAt dispatches through IVectorViewOfTextHighlighter's vtable slot 6.
+func (self *IVectorViewOfTextHighlighter) GetAt(index uint32) (*ITextHighlighter, error) {
+	result := new(*ITextHighlighter)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfTextHighlighter's vtable slot 7.
+func (self *IVectorViewOfTextHighlighter) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfTextHighlighter's vtable slot 8.
+func (self *IVectorViewOfTextHighlighter) IndexOf(value *ITextHighlighter, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfTextHighlighter's vtable slot 9.
+func (self *IVectorViewOfTextHighlighter) GetMany(startIndex uint32, items []*ITextHighlighter) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfTextRange is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Documents.TextRange>.
+// IID: 9d4ea607-632b-50f1-9539-dde98c1eed29
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Documents.TextRange>.
+type IVectorViewOfTextRange struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfTextRange is the interface identifier for IVectorViewOfTextRange.
+var IID_IVectorViewOfTextRange = win32.GUID{Data1: 0x9d4ea607, Data2: 0x632b, Data3: 0x50f1, Data4: [8]byte{0x95, 0x39, 0xdd, 0xe9, 0x8c, 0x1e, 0xed, 0x29}}
+
+// GetAt dispatches through IVectorViewOfTextRange's vtable slot 6.
+func (self *IVectorViewOfTextRange) GetAt(index uint32) (TextRange, error) {
+	result := new(TextRange)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfTextRange's vtable slot 7.
+func (self *IVectorViewOfTextRange) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfTextRange's vtable slot 8.
+func (self *IVectorViewOfTextRange) IndexOf(value TextRange, index *uint32) (bool, error) {
+	_value := *(*uintptr)(unsafe.Pointer(&value))
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _value, uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfTextRange's vtable slot 9.
+func (self *IVectorViewOfTextRange) GetMany(startIndex uint32, items []TextRange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfTreeViewNode is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.TreeViewNode>.
+// IID: f3c71a15-7999-5201-83e7-e019d76277cb
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.TreeViewNode>.
+type IVectorViewOfTreeViewNode struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfTreeViewNode is the interface identifier for IVectorViewOfTreeViewNode.
+var IID_IVectorViewOfTreeViewNode = win32.GUID{Data1: 0xf3c71a15, Data2: 0x7999, Data3: 0x5201, Data4: [8]byte{0x83, 0xe7, 0xe0, 0x19, 0xd7, 0x62, 0x77, 0xcb}}
+
+// GetAt dispatches through IVectorViewOfTreeViewNode's vtable slot 6.
+func (self *IVectorViewOfTreeViewNode) GetAt(index uint32) (*ITreeViewNode, error) {
+	result := new(*ITreeViewNode)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfTreeViewNode's vtable slot 7.
+func (self *IVectorViewOfTreeViewNode) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfTreeViewNode's vtable slot 8.
+func (self *IVectorViewOfTreeViewNode) IndexOf(value *ITreeViewNode, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfTreeViewNode's vtable slot 9.
+func (self *IVectorViewOfTreeViewNode) GetMany(startIndex uint32, items []*ITreeViewNode) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfUIElement is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.UIElement>.
+// IID: 4fdea5ee-c725-5026-ba83-24e5771357c6
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.UIElement>.
+type IVectorViewOfUIElement struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfUIElement is the interface identifier for IVectorViewOfUIElement.
+var IID_IVectorViewOfUIElement = win32.GUID{Data1: 0x4fdea5ee, Data2: 0xc725, Data3: 0x5026, Data4: [8]byte{0xba, 0x83, 0x24, 0xe5, 0x77, 0x13, 0x57, 0xc6}}
+
+// GetAt dispatches through IVectorViewOfUIElement's vtable slot 6.
+func (self *IVectorViewOfUIElement) GetAt(index uint32) (*IUIElement, error) {
+	result := new(*IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfUIElement's vtable slot 7.
+func (self *IVectorViewOfUIElement) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfUIElement's vtable slot 8.
+func (self *IVectorViewOfUIElement) IndexOf(value *IUIElement, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfUIElement's vtable slot 9.
+func (self *IVectorViewOfUIElement) GetMany(startIndex uint32, items []*IUIElement) (uint32, error) {
 	_itemsSize := uintptr(len(items))
 	_itemsData := uintptr(0)
 	if len(items) > 0 {
@@ -1486,7 +6085,12 @@ type IVectorViewOfXamlLight struct {
 // IID_IVectorViewOfXamlLight is the interface identifier for IVectorViewOfXamlLight.
 var IID_IVectorViewOfXamlLight = win32.GUID{Data1: 0xcf393ba1, Data2: 0x2605, Data3: 0x543e, Data4: [8]byte{0x8b, 0x4e, 0xe8, 0x00, 0xeb, 0x17, 0x94, 0x92}}
 
-// slot 6: GetAt skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// GetAt dispatches through IVectorViewOfXamlLight's vtable slot 6.
+func (self *IVectorViewOfXamlLight) GetAt(index uint32) (*IXamlLight, error) {
+	result := new(*IXamlLight)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // Size (propget get_Size) dispatches through IVectorViewOfXamlLight's vtable slot 7.
 func (self *IVectorViewOfXamlLight) Size() (uint32, error) {
@@ -1495,6 +6099,64 @@ func (self *IVectorViewOfXamlLight) Size() (uint32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: IndexOf skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// IndexOf dispatches through IVectorViewOfXamlLight's vtable slot 8.
+func (self *IVectorViewOfXamlLight) IndexOf(value *IXamlLight, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 9: GetMany skipped: element: import-cycle-skipped: reference to Microsoft.UI.Xaml.Media.XamlLight crosses a severed import edge
+// GetMany dispatches through IVectorViewOfXamlLight's vtable slot 9.
+func (self *IVectorViewOfXamlLight) GetMany(startIndex uint32, items []*IXamlLight) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IVectorViewOfZoomSnapPointBase is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase>.
+// IID: 09386c00-10c1-5ae0-8e62-3dfb5198c489
+// Requires: Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Xaml.Controls.Primitives.ZoomSnapPointBase>.
+type IVectorViewOfZoomSnapPointBase struct {
+	syswinrt.IInspectable
+}
+
+// IID_IVectorViewOfZoomSnapPointBase is the interface identifier for IVectorViewOfZoomSnapPointBase.
+var IID_IVectorViewOfZoomSnapPointBase = win32.GUID{Data1: 0x09386c00, Data2: 0x10c1, Data3: 0x5ae0, Data4: [8]byte{0x8e, 0x62, 0x3d, 0xfb, 0x51, 0x98, 0xc4, 0x89}}
+
+// GetAt dispatches through IVectorViewOfZoomSnapPointBase's vtable slot 6.
+func (self *IVectorViewOfZoomSnapPointBase) GetAt(index uint32) (*IZoomSnapPointBase, error) {
+	result := new(*IZoomSnapPointBase)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(index), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// Size (propget get_Size) dispatches through IVectorViewOfZoomSnapPointBase's vtable slot 7.
+func (self *IVectorViewOfZoomSnapPointBase) Size() (uint32, error) {
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IndexOf dispatches through IVectorViewOfZoomSnapPointBase's vtable slot 8.
+func (self *IVectorViewOfZoomSnapPointBase) IndexOf(value *IZoomSnapPointBase, index *uint32) (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(value)), uintptr(winrt.OutParam(unsafe.Pointer(index))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IVectorViewOfZoomSnapPointBase's vtable slot 9.
+func (self *IVectorViewOfZoomSnapPointBase) GetMany(startIndex uint32, items []*IZoomSnapPointBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

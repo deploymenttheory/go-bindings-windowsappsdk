@@ -103,100 +103,159 @@ func TestUnknownTypesResolveToNil(t *testing.T) {
 	}
 }
 
-// TestBlockedImportsBreakEveryCycle is the property that has to hold: Go rejects
-// an import cycle outright, so after severing, the remaining graph must be
-// acyclic. Rebuild the graph minus the severed edges and confirm.
-func TestBlockedImportsBreakEveryCycle(t *testing.T) {
-	reg := registry(t)
-	blocked := ComputeBlockedImports(reg)
+// xamlCluster is the one mutually recursive group in the Windows App SDK metadata: the
+// XAML core, whose namespaces reference each other in every direction.
+var xamlCluster = []string{
+	"Microsoft.UI.Xaml",
+	"Microsoft.UI.Xaml.Automation",
+	"Microsoft.UI.Xaml.Automation.Peers",
+	"Microsoft.UI.Xaml.Automation.Provider",
+	"Microsoft.UI.Xaml.Controls",
+	"Microsoft.UI.Xaml.Controls.Primitives",
+	"Microsoft.UI.Xaml.Data",
+	"Microsoft.UI.Xaml.Documents",
+	"Microsoft.UI.Xaml.Input",
+	"Microsoft.UI.Xaml.Media",
+	"Microsoft.UI.Xaml.Media.Animation",
+	"Microsoft.UI.Xaml.Media.Imaging",
+	"Microsoft.UI.Xaml.Media.Media3D",
+	"Microsoft.UI.Xaml.Navigation",
+}
 
-	edges := map[string]map[string]int{}
+// TestXamlNamespacesFormOneCluster pins the shape of the metadata that motivates
+// clustering at all. Written out in full rather than derived, so a servicing release
+// that changes the recursion is a reviewed diff and not a silent repackaging: a
+// namespace joining or leaving this list MOVES types between Go packages.
+func TestXamlNamespacesFormOneCluster(t *testing.T) {
+	clusters := ComputeClusters(registry(t))
+
+	merged := clusters.Merged()
+	if len(merged) != 1 {
+		t.Fatalf("%d merged packages, want exactly 1: %v", len(merged), merged)
+	}
+	if merged[0] != "Microsoft.UI.Xaml" {
+		t.Errorf("the cluster is named %s, want Microsoft.UI.Xaml — the common root, which is\n"+
+			"also the package name users import", merged[0])
+	}
+
+	members := clusters.Members(merged[0])
+	if len(members) != len(xamlCluster) {
+		t.Fatalf("cluster has %d namespaces, want %d:\n got %v\nwant %v",
+			len(members), len(xamlCluster), members, xamlCluster)
+	}
+	for i := range xamlCluster {
+		if members[i] != xamlCluster[i] {
+			t.Errorf("member %d is %s, want %s", i, members[i], xamlCluster[i])
+		}
+	}
+	for _, namespace := range xamlCluster {
+		if got := clusters.PackageOf(namespace); got != "Microsoft.UI.Xaml" {
+			t.Errorf("PackageOf(%s) = %s, want Microsoft.UI.Xaml", namespace, got)
+		}
+	}
+}
+
+// TestAcyclicNamespacesKeepTheirOwnPackage is the other half: clustering must not
+// collapse namespaces that had no reason to merge. 63 of the 77 stay independent.
+func TestAcyclicNamespacesKeepTheirOwnPackage(t *testing.T) {
+	reg := registry(t)
+	clusters := ComputeClusters(reg)
+
+	inCluster := map[string]bool{}
+	for _, namespace := range xamlCluster {
+		inCluster[namespace] = true
+	}
+	var independent int
 	for _, meta := range reg.Namespaces {
-		weights := map[string]int{}
-		wasdkmeta.WalkRefs(meta, func(ref *wasdkmeta.TypeRef) {
-			if ref.Kind == "Native" || ref.Namespace == "" || ref.Namespace == meta.Namespace {
-				return
-			}
-			if !reg.IsLocal(ref.Namespace) || blocked[meta.Namespace][ref.Namespace] {
-				return
-			}
-			weights[ref.Namespace]++
-		})
-		if len(weights) > 0 {
-			edges[meta.Namespace] = weights
+		if inCluster[meta.Namespace] {
+			continue
+		}
+		independent++
+		if got := clusters.PackageOf(meta.Namespace); got != meta.Namespace {
+			t.Errorf("%s was merged into %s, but it is not part of a reference cycle",
+				meta.Namespace, got)
 		}
 	}
-	if cycle := findCycle(edges); cycle != nil {
-		t.Errorf("a cycle survives the severed edges: %v", cycle)
-	}
-	t.Logf("%d source namespaces have severed edges", len(blocked))
-}
-
-// TestBlockedImportsAreDeterministic guards regeneration: the same metadata must
-// sever the same edges, or the emitted tree would differ between runs.
-func TestBlockedImportsAreDeterministic(t *testing.T) {
-	reg := registry(t)
-	first := ComputeBlockedImports(reg)
-	second := ComputeBlockedImports(reg)
-	if len(first) != len(second) {
-		t.Fatalf("%d vs %d source namespaces", len(first), len(second))
-	}
-	for src, targets := range first {
-		for dst := range targets {
-			if !second[src][dst] {
-				t.Errorf("%s → %s was severed on one run only", src, dst)
-			}
-		}
+	if independent != len(reg.Namespaces)-len(xamlCluster) {
+		t.Errorf("%d independent namespaces, want %d", independent, len(reg.Namespaces)-len(xamlCluster))
 	}
 }
 
-// TestExternalEdgesAreNeverSevered matters because an import into
-// go-bindings-winrt cannot close a cycle — nothing there imports this module — so
-// degrading such a reference would lose a member for no reason.
-func TestExternalEdgesAreNeverSevered(t *testing.T) {
+// TestClusteringLeavesNothingToSever is the payoff, stated as an invariant.
+//
+// Collapsing every strongly-connected component makes the package graph acyclic by
+// construction, so the cycle breaker finds nothing. That matters because severing was
+// never cost-free: the cheapest edge by reference count was
+// Microsoft.UI.Xaml -> Microsoft.UI.Xaml.Input, and cutting it removed every pointer,
+// keyboard and manipulation event on UIElement, because their argument types live
+// there.
+//
+// If this ever fails, some reference edge is not being counted when components are
+// computed — which is a bug in localReferenceGraph, not a reason to start severing
+// again.
+func TestClusteringLeavesNothingToSever(t *testing.T) {
 	reg := registry(t)
-	for src, targets := range ComputeBlockedImports(reg) {
-		for dst := range targets {
-			if reg.IsExternal(dst) {
-				t.Errorf("%s → %s was severed, but an external import cannot form a cycle", src, dst)
-			}
-			if !reg.IsLocal(src) || !reg.IsLocal(dst) {
-				t.Errorf("%s → %s involves a namespace this module does not emit", src, dst)
+	clusters := ComputeClusters(reg)
+	blocked := ComputeBlockedImports(reg, clusters)
+	if len(blocked) != 0 {
+		for src, targets := range blocked {
+			for dst := range targets {
+				t.Errorf("package %s -> %s was severed; an edge is missing from the component "+
+					"computation", src, dst)
 			}
 		}
 	}
 }
 
-// TestDefaultInterfaceEdgesResistSevering checks the weighting. Severing the edge
-// a class's default interface crosses demotes the whole class, since the generated
-// struct embeds that interface — so those edges carry a large bonus and should
-// survive whenever a lighter edge in the same cycle can go instead.
-func TestDefaultInterfaceEdgesResistSevering(t *testing.T) {
+// TestClustersAreDeterministic guards regeneration: the same metadata must produce the
+// same packages, or the committed tree would differ between runs.
+func TestClustersAreDeterministic(t *testing.T) {
 	reg := registry(t)
-	blocked := ComputeBlockedImports(reg)
-
-	var severedEmbeds int
+	first, second := ComputeClusters(reg), ComputeClusters(reg)
 	for _, meta := range reg.Namespaces {
-		for name := range meta.Classes {
-			class := meta.Classes[name]
-			if class.DefaultInterface == nil {
-				continue
-			}
-			target := class.DefaultInterface.Namespace
-			if target == "" || target == meta.Namespace || !reg.IsLocal(target) {
-				continue
-			}
-			if blocked[meta.Namespace][target] {
-				severedEmbeds++
-			}
+		if a, b := first.PackageOf(meta.Namespace), second.PackageOf(meta.Namespace); a != b {
+			t.Errorf("%s mapped to %s then %s", meta.Namespace, a, b)
 		}
 	}
-	// Not zero-by-construction — a cycle made only of embedding edges would force
-	// one — but it should be a small fraction of the classes, not routine.
-	if severedEmbeds > 50 {
-		t.Errorf("%d classes lost their default-interface import; the embed weight is not doing its job", severedEmbeds)
+	if len(first.Merged()) != len(second.Merged()) {
+		t.Error("the merged-package set differs between runs")
 	}
-	t.Logf("%d classes affected by a severed default-interface edge", severedEmbeds)
+}
+
+// TestExternalNamespacesAreNeverClustered matters because a reference into
+// go-bindings-winrt cannot close a cycle here — nothing in that module imports this one
+// — and merging one of its namespaces into a local package would be nonsense: this
+// module cannot add files to it.
+func TestExternalNamespacesAreNeverClustered(t *testing.T) {
+	reg := registry(t)
+	clusters := ComputeClusters(reg)
+	for _, namespace := range []string{
+		"Windows.Foundation",
+		"Windows.Foundation.Collections",
+		"Windows.UI.Xaml.Interop",
+	} {
+		if got := clusters.PackageOf(namespace); got != namespace {
+			t.Errorf("external namespace %s was clustered into %s", namespace, got)
+		}
+	}
+}
+
+// TestSamePackageIsWhatMakesReferencesLocal covers the predicate the typemap keys on:
+// two namespaces in one cluster need no import between them, which is the whole
+// mechanism by which the cycles stop mattering.
+func TestSamePackageIsWhatMakesReferencesLocal(t *testing.T) {
+	clusters := ComputeClusters(registry(t))
+	if !clusters.SamePackage("Microsoft.UI.Xaml", "Microsoft.UI.Xaml.Input") {
+		t.Error("Microsoft.UI.Xaml and .Input are not in one package, so UIElement's input " +
+			"events cannot name their argument types")
+	}
+	if !clusters.SamePackage("Microsoft.UI.Xaml.Controls", "Microsoft.UI.Xaml.Controls.Primitives") {
+		t.Error("Controls and Controls.Primitives are not in one package, so Button cannot " +
+			"reach ButtonBase")
+	}
+	if clusters.SamePackage("Microsoft.UI.Xaml", "Microsoft.UI.Dispatching") {
+		t.Error("Microsoft.UI.Dispatching was merged with the XAML cluster; it has no cycle with it")
+	}
 }
 
 func TestReadRootsFile(t *testing.T) {

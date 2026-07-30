@@ -18,7 +18,6 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/runtime/winui"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
@@ -228,7 +227,7 @@ func AddControlsResources(application *uixaml.IApplication) error {
 	}
 	defer merged.Release()
 
-	controlsResources, err := uixamlcontrols.NewXamlControlsResources()
+	controlsResources, err := uixaml.NewXamlControlsResources()
 	if err != nil {
 		return fmt.Errorf("app: XamlControlsResources: %w", err)
 	}

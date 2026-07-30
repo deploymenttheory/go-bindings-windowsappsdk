@@ -128,7 +128,12 @@ func ExternalPackagePath(namespace string) string {
 }
 
 // PackageName returns the Go package name for a namespace: the lowercased final
-// segment ("Microsoft.UI.Xaml.Controls" → "controls"), keyword-escaped.
+// segment ("Microsoft.UI.Dispatching" → "dispatching"), keyword-escaped.
+//
+// Callers pass the namespace that *represents a package*, which since clustering is
+// not every namespace: the fourteen mutually recursive XAML namespaces are all
+// represented by "Microsoft.UI.Xaml", so the package is "xaml" and there is no
+// "controls". See internal/codegen/pipeline/clusters.go.
 func PackageName(namespace string) string {
 	segments := strings.Split(namespace, ".")
 	return packageSegment(segments[len(segments)-1])

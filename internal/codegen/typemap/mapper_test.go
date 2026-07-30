@@ -33,10 +33,12 @@ func mapper(t *testing.T) *Mapper {
 	if err != nil {
 		t.Fatalf("loading the committed metadata: %v", err)
 	}
+	clusters := pipeline.ComputeClusters(registry)
 	cachedMapper = &Mapper{
 		Registry:   registry,
 		ModulePath: modulePath,
-		Blocked:    pipeline.ComputeBlockedImports(registry),
+		Clusters:   clusters,
+		Blocked:    pipeline.ComputeBlockedImports(registry, clusters),
 	}
 	return cachedMapper
 }
@@ -99,26 +101,56 @@ func TestLocalReferenceIsUnqualifiedInItsOwnNamespace(t *testing.T) {
 	}
 }
 
-// TestLocalCrossNamespaceReference checks the alias and the import path together:
+// TestLocalCrossPackageReference checks the alias and the import path together:
 // getting either wrong produces code that does not compile, and getting the path
 // subtly wrong produces code that compiles against the wrong package.
-func TestLocalCrossNamespaceReference(t *testing.T) {
+func TestLocalCrossPackageReference(t *testing.T) {
 	got, imports := resolve(t,
-		apiRef("Microsoft.UI.Xaml.Controls", "Symbol", "Enum", false),
-		"Microsoft.UI.Xaml.Media")
-	if got.GoType != "uixamlcontrols.Symbol" {
-		t.Errorf("GoType = %q, want uixamlcontrols.Symbol", got.GoType)
+		apiRef("Microsoft.UI.Dispatching", "DispatcherQueuePriority", "Enum", false),
+		"Microsoft.UI.Xaml")
+	if got.GoType != "uidispatching.DispatcherQueuePriority" {
+		t.Errorf("GoType = %q, want uidispatching.DispatcherQueuePriority", got.GoType)
 	}
-	entry, ok := imports["uixamlcontrols"]
+	entry, ok := imports["uidispatching"]
 	if !ok {
-		t.Fatalf("no uixamlcontrols import recorded; got %v", imports)
+		t.Fatalf("no uidispatching import recorded; got %v", imports)
 	}
-	if want := modulePath + "/bindings/winui/ui/xaml/controls"; entry.Path != want {
+	if want := modulePath + "/bindings/winui/ui/dispatching"; entry.Path != want {
 		t.Errorf("import path = %q, want %q", entry.Path, want)
 	}
 	// Local namespaces feed the emit closure so the generated package exists.
-	if entry.Namespace != "Microsoft.UI.Xaml.Controls" {
+	if entry.Namespace != "Microsoft.UI.Dispatching" {
 		t.Errorf("import namespace = %q, want the namespace to be chased", entry.Namespace)
+	}
+}
+
+// TestSameClusterReferencesAreUnqualified is the behaviour clustering exists to
+// produce: two mutually recursive namespaces share one Go package, so a reference
+// between them needs neither a qualifier nor an import.
+//
+// This is what makes UIElement's input events expressible. They are declared in
+// Microsoft.UI.Xaml and take argument types from Microsoft.UI.Xaml.Input; when those
+// were separate packages the reference crossed a severed edge and every one of those
+// events was dropped.
+func TestSameClusterReferencesAreUnqualified(t *testing.T) {
+	for _, check := range []struct{ from, namespace, name, kind string }{
+		{"Microsoft.UI.Xaml", "Microsoft.UI.Xaml.Input", "IPointerRoutedEventArgs", "Interface"},
+		{"Microsoft.UI.Xaml.Controls", "Microsoft.UI.Xaml.Controls.Primitives", "IButtonBase", "Interface"},
+		{"Microsoft.UI.Xaml.Media", "Microsoft.UI.Xaml.Controls", "Symbol", "Enum"},
+	} {
+		got, imports := resolve(t, apiRef(check.namespace, check.name, check.kind, false), check.from)
+		if got.Kind == KindUnsupported {
+			t.Errorf("%s -> %s.%s degraded: %s", check.from, check.namespace, check.name, got.Reason)
+			continue
+		}
+		if strings.Contains(got.GoType, ".") {
+			t.Errorf("%s -> %s.%s resolved to %q; a same-package reference must not be qualified",
+				check.from, check.namespace, check.name, got.GoType)
+		}
+		if len(imports) != 0 {
+			t.Errorf("%s -> %s.%s recorded imports %v; it is in the same package",
+				check.from, check.namespace, check.name, imports)
+		}
 	}
 }
 
@@ -471,16 +503,26 @@ func TestInstantiationSeamRefusalDegrades(t *testing.T) {
 // path means code compiled against the wrong package.
 func TestImportPathsForBothModules(t *testing.T) {
 	m := mapper(t)
+	// Microsoft.UI.Xaml.Controls is part of the XAML cluster, so its types live in the
+	// cluster's package — not in a controls package of their own.
 	if got, want := m.ImportPathFor("Microsoft.UI.Xaml.Controls"),
-		modulePath+"/bindings/winui/ui/xaml/controls"; got != want {
-		t.Errorf("local path = %q, want %q", got, want)
+		modulePath+"/bindings/winui/ui/xaml"; got != want {
+		t.Errorf("clustered path = %q, want %q", got, want)
+	}
+	// An acyclic namespace keeps its own package.
+	if got, want := m.ImportPathFor("Microsoft.UI.Dispatching"),
+		modulePath+"/bindings/winui/ui/dispatching"; got != want {
+		t.Errorf("independent path = %q, want %q", got, want)
 	}
 	if got, want := m.ImportPathFor("Windows.Foundation.Collections"),
 		external.BindingsImportRoot+"/foundation/collections"; got != want {
 		t.Errorf("external path = %q, want %q", got, want)
 	}
-	if got := m.AliasFor("Microsoft.UI.Xaml.Controls"); got != "uixamlcontrols" {
-		t.Errorf("local alias = %q", got)
+	if got := m.AliasFor("Microsoft.UI.Xaml.Controls"); got != "uixaml" {
+		t.Errorf("clustered alias = %q, want uixaml", got)
+	}
+	if got := m.AliasFor("Microsoft.UI.Dispatching"); got != "uidispatching" {
+		t.Errorf("independent alias = %q", got)
 	}
 	if got := m.AliasFor("Windows.Foundation.Collections"); got != "wrtfoundationcollections" {
 		t.Errorf("external alias = %q", got)

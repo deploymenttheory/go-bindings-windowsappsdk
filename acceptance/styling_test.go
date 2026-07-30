@@ -9,7 +9,6 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
-	uixamlcontrols "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls"
 	uixamlmarkup "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/markup"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
@@ -38,7 +37,7 @@ func TestControlsAreStyledWithoutXamlControlsResources(t *testing.T) {
 	)
 
 	err := app.Run(func(ready *app.Ready) error {
-		button, err := uixamlcontrols.NewButton()
+		button, err := uixaml.NewButton()
 		if err != nil {
 			return err
 		}
@@ -131,13 +130,13 @@ func TestXamlControlsResourcesCannotBeActivated(t *testing.T) {
 		if dictionary != nil {
 			dictionary.Release()
 		}
-		panel, panelErr2 := uixamlcontrols.NewStackPanel()
+		panel, panelErr2 := uixaml.NewStackPanel()
 		panelErr = panelErr2
 		if panel != nil {
 			panel.Release()
 		}
 
-		resources, resourcesErr2 := uixamlcontrols.NewXamlControlsResources()
+		resources, resourcesErr2 := uixaml.NewXamlControlsResources()
 		resourcesErr = resourcesErr2
 		if resources != nil {
 			resources.Release()
