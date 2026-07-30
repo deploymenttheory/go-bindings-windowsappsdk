@@ -286,26 +286,37 @@ func describe(file *winmd.File, row *winmd.TypeDefRow, rowIndex uint32, from str
 		fmt.Printf("  attrs: %s\n", strings.Join(names, ", "))
 	}
 
-	// Slot numbering: IInspectable occupies 0-5, so an interface's first
-	// method is slot 6, in MethodDef order. Runtime classes have no vtable of
-	// their own - they are reached through their interfaces - so the numbers
-	// are only meaningful for interfaces and delegates.
+	// Slot numbering differs by kind, and getting it wrong is a call into the
+	// wrong function rather than an error:
+	//
+	//   - An interface derives from IInspectable, which occupies slots 0-5, so
+	//     its own methods start at 6 in MethodDef order.
+	//   - A delegate derives from IUnknown only. Its vtable is
+	//     {QueryInterface, AddRef, Release, Invoke}, so Invoke is slot 3 — and
+	//     the .ctor the metadata also declares is never dispatched at all.
+	//   - A runtime class has no vtable of its own. It is reached through its
+	//     interfaces, so its members are listed without slots.
 	first, end := row.MethodFirst, row.MethodEnd
 	if first == 0 || end <= first {
 		fmt.Println("  methods: none")
 		return
 	}
-	showSlots := kind == kindInterface || kind == kindDelegate
-	if showSlots {
-		fmt.Printf("  methods (%d), slot = 6 + MethodDef index:\n", end-first)
-	} else {
-		fmt.Printf("  methods (%d):\n", end-first)
+	switch kind {
+	case kindInterface:
+		fmt.Printf("  methods (%d), slot = 6 + MethodDef index (past IInspectable):\n", end-first)
+	case kindDelegate:
+		fmt.Printf("  methods (%d), Invoke at slot 3 (past IUnknown):\n", end-first)
+	default:
+		fmt.Printf("  methods (%d), no vtable of its own:\n", end-first)
 	}
 	for index := first; index < end; index++ {
 		method := &file.Tables.Methods[index-1]
-		if showSlots {
+		switch {
+		case kind == kindInterface:
 			fmt.Printf("    slot %-3d %s\n", 6+(index-first), method.Name)
-		} else {
+		case kind == kindDelegate && method.Name == "Invoke":
+			fmt.Printf("    slot %-3d %s\n", 3, method.Name)
+		default:
 			fmt.Printf("             %s\n", method.Name)
 		}
 	}
