@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 // IIterableOfChildSiteLink is the WinRT interface Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Content.ChildSiteLink>.
@@ -138,6 +139,13 @@ type IReferenceOfContentLayoutDirection struct {
 
 // IID_IReferenceOfContentLayoutDirection is the interface identifier for IReferenceOfContentLayoutDirection.
 var IID_IReferenceOfContentLayoutDirection = win32.GUID{Data1: 0x76e53eed, Data2: 0x3539, Data3: 0x540b, Data4: [8]byte{0x8d, 0x51, 0x42, 0x06, 0xbc, 0xa6, 0x3f, 0x5f}}
+
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfContentLayoutDirection requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfContentLayoutDirection) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
 
 // Value (propget get_Value) dispatches through IReferenceOfContentLayoutDirection's vtable slot 6.
 func (self *IReferenceOfContentLayoutDirection) Value() (ContentLayoutDirection, error) {

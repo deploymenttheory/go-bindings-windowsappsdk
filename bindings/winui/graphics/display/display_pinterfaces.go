@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtstoragestreams "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/storage/streams"
 )
 
@@ -23,6 +24,13 @@ type IAsyncOperationOfIRandomAccessStream struct {
 
 // IID_IAsyncOperationOfIRandomAccessStream is the interface identifier for IAsyncOperationOfIRandomAccessStream.
 var IID_IAsyncOperationOfIRandomAccessStream = win32.GUID{Data1: 0x430ecece, Data2: 0x1418, Data3: 0x5d19, Data4: [8]byte{0x81, 0xb2, 0x5d, 0xdb, 0x38, 0x16, 0x03, 0xcc}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfIRandomAccessStream requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfIRandomAccessStream) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfIRandomAccessStream's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).

@@ -12,6 +12,7 @@ import (
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	windowsai "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/ai"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtgraphics "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/graphics"
 )
 
@@ -24,6 +25,13 @@ type IAsyncOperationOfImageDescriptionGenerator struct {
 
 // IID_IAsyncOperationOfImageDescriptionGenerator is the interface identifier for IAsyncOperationOfImageDescriptionGenerator.
 var IID_IAsyncOperationOfImageDescriptionGenerator = win32.GUID{Data1: 0x1ebb676d, Data2: 0xc291, Data3: 0x55ef, Data4: [8]byte{0x8d, 0x3f, 0x84, 0x7f, 0xf7, 0x01, 0xef, 0x72}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfImageDescriptionGenerator requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfImageDescriptionGenerator) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageDescriptionGenerator's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -55,6 +63,13 @@ type IAsyncOperationOfImageObjectExtractor struct {
 // IID_IAsyncOperationOfImageObjectExtractor is the interface identifier for IAsyncOperationOfImageObjectExtractor.
 var IID_IAsyncOperationOfImageObjectExtractor = win32.GUID{Data1: 0x0f52d3c6, Data2: 0x6444, Data3: 0x5bc9, Data4: [8]byte{0xa7, 0xf2, 0xb8, 0xa6, 0x00, 0x69, 0x34, 0xaa}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfImageObjectExtractor requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfImageObjectExtractor) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageObjectExtractor's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfImageObjectExtractor) SetCompleted(handler *AsyncOperationCompletedHandlerOfImageObjectExtractor) error {
@@ -84,6 +99,13 @@ type IAsyncOperationOfImageObjectRemover struct {
 
 // IID_IAsyncOperationOfImageObjectRemover is the interface identifier for IAsyncOperationOfImageObjectRemover.
 var IID_IAsyncOperationOfImageObjectRemover = win32.GUID{Data1: 0x2ae992c6, Data2: 0xca47, Data3: 0x51bc, Data4: [8]byte{0x8a, 0x4d, 0x65, 0xfd, 0x3b, 0x2a, 0x2e, 0xc2}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfImageObjectRemover requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfImageObjectRemover) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageObjectRemover's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -115,6 +137,13 @@ type IAsyncOperationOfImageScaler struct {
 // IID_IAsyncOperationOfImageScaler is the interface identifier for IAsyncOperationOfImageScaler.
 var IID_IAsyncOperationOfImageScaler = win32.GUID{Data1: 0xafbdba2c, Data2: 0xfa3c, Data3: 0x551c, Data4: [8]byte{0x85, 0x70, 0x35, 0x0a, 0xae, 0x1c, 0x53, 0xab}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfImageScaler requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfImageScaler) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfImageScaler's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfImageScaler) SetCompleted(handler *AsyncOperationCompletedHandlerOfImageScaler) error {
@@ -144,6 +173,13 @@ type IAsyncOperationOfRecognizedText struct {
 
 // IID_IAsyncOperationOfRecognizedText is the interface identifier for IAsyncOperationOfRecognizedText.
 var IID_IAsyncOperationOfRecognizedText = win32.GUID{Data1: 0x3103ec71, Data2: 0x2340, Data3: 0x5b2b, Data4: [8]byte{0x88, 0x33, 0xcc, 0x4e, 0xd6, 0x39, 0xe9, 0x36}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfRecognizedText requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfRecognizedText) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfRecognizedText's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -175,6 +211,13 @@ type IAsyncOperationOfTextRecognizer struct {
 // IID_IAsyncOperationOfTextRecognizer is the interface identifier for IAsyncOperationOfTextRecognizer.
 var IID_IAsyncOperationOfTextRecognizer = win32.GUID{Data1: 0x740b5d43, Data2: 0x1472, Data3: 0x53d9, Data4: [8]byte{0x92, 0xec, 0x84, 0x65, 0xf6, 0x78, 0xd0, 0xc3}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfTextRecognizer requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfTextRecognizer) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfTextRecognizer's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationOfTextRecognizer) SetCompleted(handler *AsyncOperationCompletedHandlerOfTextRecognizer) error {
@@ -204,6 +247,13 @@ type IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble struct {
 
 // IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble is the interface identifier for IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble.
 var IID_IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble = win32.GUID{Data1: 0x39c32af0, Data2: 0xc9b4, Data3: 0x595f, Data4: [8]byte{0x9e, 0x9b, 0xc6, 0xc2, 0x89, 0xad, 0x9e, 0xa1}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfAIFeatureReadyResultAndDouble) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // slot 6: put_Progress skipped: parameterized type Windows.Foundation.AsyncOperationProgressHandler`2
 
@@ -239,6 +289,13 @@ type IAsyncOperationWithProgressOfImageDescriptionResultAndString struct {
 // IID_IAsyncOperationWithProgressOfImageDescriptionResultAndString is the interface identifier for IAsyncOperationWithProgressOfImageDescriptionResultAndString.
 var IID_IAsyncOperationWithProgressOfImageDescriptionResultAndString = win32.GUID{Data1: 0xcb8eead4, Data2: 0xf793, Data3: 0x58c5, Data4: [8]byte{0x96, 0xcc, 0x08, 0xb5, 0x6d, 0x59, 0x5f, 0x39}}
 
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationWithProgressOfImageDescriptionResultAndString requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationWithProgressOfImageDescriptionResultAndString) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
+
 // SetProgress (propput put_Progress) dispatches through IAsyncOperationWithProgressOfImageDescriptionResultAndString's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
 func (self *IAsyncOperationWithProgressOfImageDescriptionResultAndString) SetProgress(handler *AsyncOperationProgressHandlerOfImageDescriptionResultAndString) error {
@@ -272,6 +329,122 @@ func (self *IAsyncOperationWithProgressOfImageDescriptionResultAndString) GetRes
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
+// IIterableOfPointInt32 is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Graphics.PointInt32>.
+// IID: 5802f68e-f696-5c18-9f52-169f079dbba3
+type IIterableOfPointInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPointInt32 is the interface identifier for IIterableOfPointInt32.
+var IID_IIterableOfPointInt32 = win32.GUID{Data1: 0x5802f68e, Data2: 0xf696, Data3: 0x5c18, Data4: [8]byte{0x9f, 0x52, 0x16, 0x9f, 0x07, 0x9d, 0xbb, 0xa3}}
+
+// First dispatches through IIterableOfPointInt32's vtable slot 6.
+func (self *IIterableOfPointInt32) First() (*IIteratorOfPointInt32, error) {
+	result := new(*IIteratorOfPointInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfRectInt32 is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Graphics.RectInt32>.
+// IID: d6222360-b82e-5eed-9eab-2e275b36e47e
+type IIterableOfRectInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfRectInt32 is the interface identifier for IIterableOfRectInt32.
+var IID_IIterableOfRectInt32 = win32.GUID{Data1: 0xd6222360, Data2: 0xb82e, Data3: 0x5eed, Data4: [8]byte{0x9e, 0xab, 0x2e, 0x27, 0x5b, 0x36, 0xe4, 0x7e}}
+
+// First dispatches through IIterableOfRectInt32's vtable slot 6.
+func (self *IIterableOfRectInt32) First() (*IIteratorOfRectInt32, error) {
+	result := new(*IIteratorOfRectInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPointInt32 is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Graphics.PointInt32>.
+// IID: c4c6f428-e11f-5266-a012-783e25ad266f
+type IIteratorOfPointInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPointInt32 is the interface identifier for IIteratorOfPointInt32.
+var IID_IIteratorOfPointInt32 = win32.GUID{Data1: 0xc4c6f428, Data2: 0xe11f, Data3: 0x5266, Data4: [8]byte{0xa0, 0x12, 0x78, 0x3e, 0x25, 0xad, 0x26, 0x6f}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPointInt32's vtable slot 6.
+func (self *IIteratorOfPointInt32) Current() (wrtgraphics.PointInt32, error) {
+	result := new(wrtgraphics.PointInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPointInt32's vtable slot 7.
+func (self *IIteratorOfPointInt32) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPointInt32's vtable slot 8.
+func (self *IIteratorOfPointInt32) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPointInt32's vtable slot 9.
+func (self *IIteratorOfPointInt32) GetMany(items []wrtgraphics.PointInt32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfRectInt32 is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Graphics.RectInt32>.
+// IID: 1abdf3f6-23f1-55ad-babd-f4cd908406e7
+type IIteratorOfRectInt32 struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfRectInt32 is the interface identifier for IIteratorOfRectInt32.
+var IID_IIteratorOfRectInt32 = win32.GUID{Data1: 0x1abdf3f6, Data2: 0x23f1, Data3: 0x55ad, Data4: [8]byte{0xba, 0xbd, 0xf4, 0xcd, 0x90, 0x84, 0x06, 0xe7}}
+
+// Current (propget get_Current) dispatches through IIteratorOfRectInt32's vtable slot 6.
+func (self *IIteratorOfRectInt32) Current() (wrtgraphics.RectInt32, error) {
+	result := new(wrtgraphics.RectInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfRectInt32's vtable slot 7.
+func (self *IIteratorOfRectInt32) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfRectInt32's vtable slot 8.
+func (self *IIteratorOfRectInt32) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfRectInt32's vtable slot 9.
+func (self *IIteratorOfRectInt32) GetMany(items []wrtgraphics.RectInt32) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfPointInt32 is the WinRT interface Windows.Foundation.Collections.IVector`1<Windows.Graphics.PointInt32>.
 // IID: 0a15cbe9-ee02-5823-8a2b-fca63940e84f
 // Requires: Windows.Foundation.Collections.IIterable`1<Windows.Graphics.PointInt32>.
@@ -281,6 +454,13 @@ type IVectorOfPointInt32 struct {
 
 // IID_IVectorOfPointInt32 is the interface identifier for IVectorOfPointInt32.
 var IID_IVectorOfPointInt32 = win32.GUID{Data1: 0x0a15cbe9, Data2: 0xee02, Data3: 0x5823, Data4: [8]byte{0x8a, 0x2b, 0xfc, 0xa6, 0x39, 0x40, 0xe8, 0x4f}}
+
+// AsIterableOfPointInt32 queries the required IIterableOfPointInt32 interface.
+// IVectorOfPointInt32 requires Windows.Foundation.Collections.IIterable`1<Windows.Graphics.PointInt32>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfPointInt32) AsIterableOfPointInt32() (*IIterableOfPointInt32, error) {
+	return winrt.QueryInterface[IIterableOfPointInt32](unsafe.Pointer(self), &IID_IIterableOfPointInt32)
+}
 
 // GetAt dispatches through IVectorOfPointInt32's vtable slot 6.
 func (self *IVectorOfPointInt32) GetAt(index uint32) (wrtgraphics.PointInt32, error) {
@@ -383,6 +563,13 @@ type IVectorOfRectInt32 struct {
 // IID_IVectorOfRectInt32 is the interface identifier for IVectorOfRectInt32.
 var IID_IVectorOfRectInt32 = win32.GUID{Data1: 0xb4c6b283, Data2: 0x6002, Data3: 0x5af2, Data4: [8]byte{0xaf, 0xa2, 0x88, 0xa5, 0xbe, 0x7f, 0xf1, 0x6f}}
 
+// AsIterableOfRectInt32 queries the required IIterableOfRectInt32 interface.
+// IVectorOfRectInt32 requires Windows.Foundation.Collections.IIterable`1<Windows.Graphics.RectInt32>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfRectInt32) AsIterableOfRectInt32() (*IIterableOfRectInt32, error) {
+	return winrt.QueryInterface[IIterableOfRectInt32](unsafe.Pointer(self), &IID_IIterableOfRectInt32)
+}
+
 // GetAt dispatches through IVectorOfRectInt32's vtable slot 6.
 func (self *IVectorOfRectInt32) GetAt(index uint32) (wrtgraphics.RectInt32, error) {
 	result := new(wrtgraphics.RectInt32)
@@ -480,6 +667,13 @@ type IVectorViewOfPointInt32 struct {
 // IID_IVectorViewOfPointInt32 is the interface identifier for IVectorViewOfPointInt32.
 var IID_IVectorViewOfPointInt32 = win32.GUID{Data1: 0x3c3a4b61, Data2: 0xa864, Data3: 0x5cb4, Data4: [8]byte{0xa9, 0x96, 0x2b, 0xbe, 0xe4, 0x92, 0x27, 0x57}}
 
+// AsIterableOfPointInt32 queries the required IIterableOfPointInt32 interface.
+// IVectorViewOfPointInt32 requires Windows.Foundation.Collections.IIterable`1<Windows.Graphics.PointInt32>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPointInt32) AsIterableOfPointInt32() (*IIterableOfPointInt32, error) {
+	return winrt.QueryInterface[IIterableOfPointInt32](unsafe.Pointer(self), &IID_IIterableOfPointInt32)
+}
+
 // GetAt dispatches through IVectorViewOfPointInt32's vtable slot 6.
 func (self *IVectorViewOfPointInt32) GetAt(index uint32) (wrtgraphics.PointInt32, error) {
 	result := new(wrtgraphics.PointInt32)
@@ -523,6 +717,13 @@ type IVectorViewOfRectInt32 struct {
 
 // IID_IVectorViewOfRectInt32 is the interface identifier for IVectorViewOfRectInt32.
 var IID_IVectorViewOfRectInt32 = win32.GUID{Data1: 0x4f5e243f, Data2: 0x3812, Data3: 0x5200, Data4: [8]byte{0xb7, 0x0c, 0x30, 0xdc, 0xfc, 0x61, 0x71, 0x7b}}
+
+// AsIterableOfRectInt32 queries the required IIterableOfRectInt32 interface.
+// IVectorViewOfRectInt32 requires Windows.Foundation.Collections.IIterable`1<Windows.Graphics.RectInt32>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfRectInt32) AsIterableOfRectInt32() (*IIterableOfRectInt32, error) {
+	return winrt.QueryInterface[IIterableOfRectInt32](unsafe.Pointer(self), &IID_IIterableOfRectInt32)
+}
 
 // GetAt dispatches through IVectorViewOfRectInt32's vtable slot 6.
 func (self *IVectorViewOfRectInt32) GetAt(index uint32) (wrtgraphics.RectInt32, error) {

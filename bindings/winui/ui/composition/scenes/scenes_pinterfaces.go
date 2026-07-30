@@ -223,6 +223,13 @@ type IMapOfStringAndSceneAttributeSemantic struct {
 // IID_IMapOfStringAndSceneAttributeSemantic is the interface identifier for IMapOfStringAndSceneAttributeSemantic.
 var IID_IMapOfStringAndSceneAttributeSemantic = win32.GUID{Data1: 0xe024c948, Data2: 0xc902, Data3: 0x5dd9, Data4: [8]byte{0x97, 0x68, 0xae, 0x33, 0x2a, 0xe0, 0xbe, 0x14}}
 
+// AsIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic queries the required IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic interface.
+// IMapOfStringAndSceneAttributeSemantic requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.Scenes.SceneAttributeSemantic>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndSceneAttributeSemantic) AsIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic() (*IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic)
+}
+
 // Lookup dispatches through IMapOfStringAndSceneAttributeSemantic's vtable slot 6.
 func (self *IMapOfStringAndSceneAttributeSemantic) Lookup(key string) (SceneAttributeSemantic, error) {
 	hKey, err := winrt.NewHString(key)
@@ -300,6 +307,13 @@ type IMapViewOfStringAndSceneAttributeSemantic struct {
 // IID_IMapViewOfStringAndSceneAttributeSemantic is the interface identifier for IMapViewOfStringAndSceneAttributeSemantic.
 var IID_IMapViewOfStringAndSceneAttributeSemantic = win32.GUID{Data1: 0xa0015c14, Data2: 0xa54e, Data3: 0x5da8, Data4: [8]byte{0xbd, 0x55, 0xac, 0x76, 0xea, 0x83, 0x85, 0x17}}
 
+// AsIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic queries the required IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic interface.
+// IMapViewOfStringAndSceneAttributeSemantic requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.Scenes.SceneAttributeSemantic>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndSceneAttributeSemantic) AsIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic() (*IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndSceneAttributeSemantic)
+}
+
 // Lookup dispatches through IMapViewOfStringAndSceneAttributeSemantic's vtable slot 6.
 func (self *IMapViewOfStringAndSceneAttributeSemantic) Lookup(key string) (SceneAttributeSemantic, error) {
 	hKey, err := winrt.NewHString(key)
@@ -346,6 +360,13 @@ type IVectorOfSceneComponent struct {
 
 // IID_IVectorOfSceneComponent is the interface identifier for IVectorOfSceneComponent.
 var IID_IVectorOfSceneComponent = win32.GUID{Data1: 0x9c16c63a, Data2: 0xf909, Data3: 0x56c7, Data4: [8]byte{0x87, 0x78, 0xd7, 0xeb, 0xc9, 0x48, 0x08, 0xd9}}
+
+// AsIterableOfSceneComponent queries the required IIterableOfSceneComponent interface.
+// IVectorOfSceneComponent requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneComponent>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfSceneComponent) AsIterableOfSceneComponent() (*IIterableOfSceneComponent, error) {
+	return winrt.QueryInterface[IIterableOfSceneComponent](unsafe.Pointer(self), &IID_IIterableOfSceneComponent)
+}
 
 // GetAt dispatches through IVectorOfSceneComponent's vtable slot 6.
 func (self *IVectorOfSceneComponent) GetAt(index uint32) (*ISceneComponent, error) {
@@ -444,6 +465,13 @@ type IVectorOfSceneNode struct {
 // IID_IVectorOfSceneNode is the interface identifier for IVectorOfSceneNode.
 var IID_IVectorOfSceneNode = win32.GUID{Data1: 0x15c6abb0, Data2: 0xbf50, Data3: 0x5a9b, Data4: [8]byte{0x81, 0x90, 0x16, 0xb6, 0x31, 0xf1, 0x27, 0x05}}
 
+// AsIterableOfSceneNode queries the required IIterableOfSceneNode interface.
+// IVectorOfSceneNode requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneNode>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfSceneNode) AsIterableOfSceneNode() (*IIterableOfSceneNode, error) {
+	return winrt.QueryInterface[IIterableOfSceneNode](unsafe.Pointer(self), &IID_IIterableOfSceneNode)
+}
+
 // GetAt dispatches through IVectorOfSceneNode's vtable slot 6.
 func (self *IVectorOfSceneNode) GetAt(index uint32) (*ISceneNode, error) {
 	result := new(*ISceneNode)
@@ -541,6 +569,13 @@ type IVectorViewOfSceneComponent struct {
 // IID_IVectorViewOfSceneComponent is the interface identifier for IVectorViewOfSceneComponent.
 var IID_IVectorViewOfSceneComponent = win32.GUID{Data1: 0x6817b7fd, Data2: 0x1182, Data3: 0x58b7, Data4: [8]byte{0xaa, 0x8a, 0x11, 0x03, 0x37, 0x63, 0x9e, 0x4b}}
 
+// AsIterableOfSceneComponent queries the required IIterableOfSceneComponent interface.
+// IVectorViewOfSceneComponent requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneComponent>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfSceneComponent) AsIterableOfSceneComponent() (*IIterableOfSceneComponent, error) {
+	return winrt.QueryInterface[IIterableOfSceneComponent](unsafe.Pointer(self), &IID_IIterableOfSceneComponent)
+}
+
 // GetAt dispatches through IVectorViewOfSceneComponent's vtable slot 6.
 func (self *IVectorViewOfSceneComponent) GetAt(index uint32) (*ISceneComponent, error) {
 	result := new(*ISceneComponent)
@@ -583,6 +618,13 @@ type IVectorViewOfSceneNode struct {
 
 // IID_IVectorViewOfSceneNode is the interface identifier for IVectorViewOfSceneNode.
 var IID_IVectorViewOfSceneNode = win32.GUID{Data1: 0xbe91d459, Data2: 0x5f24, Data3: 0x5044, Data4: [8]byte{0xbb, 0x9b, 0x79, 0x78, 0x7c, 0x1b, 0x3d, 0xfd}}
+
+// AsIterableOfSceneNode queries the required IIterableOfSceneNode interface.
+// IVectorViewOfSceneNode requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.Scenes.SceneNode>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfSceneNode) AsIterableOfSceneNode() (*IIterableOfSceneNode, error) {
+	return winrt.QueryInterface[IIterableOfSceneNode](unsafe.Pointer(self), &IID_IIterableOfSceneNode)
+}
 
 // GetAt dispatches through IVectorViewOfSceneNode's vtable slot 6.
 func (self *IVectorViewOfSceneNode) GetAt(index uint32) (*ISceneNode, error) {

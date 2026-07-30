@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 )
 
@@ -23,6 +24,13 @@ type IReferenceOfColor struct {
 
 // IID_IReferenceOfColor is the interface identifier for IReferenceOfColor.
 var IID_IReferenceOfColor = win32.GUID{Data1: 0xab8e5d11, Data2: 0xb0c1, Data3: 0x5a21, Data4: [8]byte{0x95, 0xae, 0xf1, 0x6b, 0xf3, 0xa3, 0x76, 0x24}}
+
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfColor requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfColor) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
 
 // Value (propget get_Value) dispatches through IReferenceOfColor's vtable slot 6.
 func (self *IReferenceOfColor) Value() (wrtui.Color, error) {

@@ -69,6 +69,20 @@ type IBindableObservableVector struct {
 // IID_IBindableObservableVector is the interface identifier for IBindableObservableVector.
 var IID_IBindableObservableVector = win32.GUID{Data1: 0xfe1eb536, Data2: 0x7e7f, Data3: 0x4f90, Data4: [8]byte{0xac, 0x9a, 0x47, 0x49, 0x84, 0xaa, 0xe5, 0x12}}
 
+// AsBindableVector queries the required IBindableVector interface.
+// IBindableObservableVector requires Microsoft.UI.Xaml.Interop.IBindableVector, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IBindableObservableVector) AsBindableVector() (*IBindableVector, error) {
+	return winrt.QueryInterface[IBindableVector](unsafe.Pointer(self), &IID_IBindableVector)
+}
+
+// AsBindableIterable queries the required IBindableIterable interface.
+// IBindableObservableVector requires Microsoft.UI.Xaml.Interop.IBindableIterable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IBindableObservableVector) AsBindableIterable() (*IBindableIterable, error) {
+	return winrt.QueryInterface[IBindableIterable](unsafe.Pointer(self), &IID_IBindableIterable)
+}
+
 // AddVectorChanged (event add add_VectorChanged) dispatches through IBindableObservableVector's vtable slot 6.
 // The handler stays registered (and referenced by the runtime) until the
 // returned token is passed to RemoveVectorChanged.
@@ -94,6 +108,13 @@ type IBindableVector struct {
 
 // IID_IBindableVector is the interface identifier for IBindableVector.
 var IID_IBindableVector = win32.GUID{Data1: 0x393de7de, Data2: 0x6fd0, Data3: 0x4c0d, Data4: [8]byte{0xbb, 0x71, 0x47, 0x24, 0x4a, 0x11, 0x3e, 0x93}}
+
+// AsBindableIterable queries the required IBindableIterable interface.
+// IBindableVector requires Microsoft.UI.Xaml.Interop.IBindableIterable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IBindableVector) AsBindableIterable() (*IBindableIterable, error) {
+	return winrt.QueryInterface[IBindableIterable](unsafe.Pointer(self), &IID_IBindableIterable)
+}
 
 // GetAt dispatches through IBindableVector's vtable slot 6.
 func (self *IBindableVector) GetAt(index uint32) (*syswinrt.IInspectable, error) {
@@ -168,6 +189,13 @@ type IBindableVectorView struct {
 
 // IID_IBindableVectorView is the interface identifier for IBindableVectorView.
 var IID_IBindableVectorView = win32.GUID{Data1: 0x346dd6e7, Data2: 0x976e, Data3: 0x4bc3, Data4: [8]byte{0x81, 0x5d, 0xec, 0xe2, 0x43, 0xbc, 0x0f, 0x33}}
+
+// AsBindableIterable queries the required IBindableIterable interface.
+// IBindableVectorView requires Microsoft.UI.Xaml.Interop.IBindableIterable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IBindableVectorView) AsBindableIterable() (*IBindableIterable, error) {
+	return winrt.QueryInterface[IBindableIterable](unsafe.Pointer(self), &IID_IBindableIterable)
+}
 
 // GetAt dispatches through IBindableVectorView's vtable slot 6.
 func (self *IBindableVectorView) GetAt(index uint32) (*syswinrt.IInspectable, error) {

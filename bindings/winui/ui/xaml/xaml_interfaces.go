@@ -14373,6 +14373,13 @@ type ITextEditProvider struct {
 // IID_ITextEditProvider is the interface identifier for ITextEditProvider.
 var IID_ITextEditProvider = win32.GUID{Data1: 0x7f09bbe8, Data2: 0xbea7, Data3: 0x5dd3, Data4: [8]byte{0xba, 0x6b, 0x28, 0xdb, 0xb4, 0x02, 0xfa, 0xd4}}
 
+// AsTextProvider queries the required ITextProvider interface.
+// ITextEditProvider requires Microsoft.UI.Xaml.Automation.Provider.ITextProvider, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ITextEditProvider) AsTextProvider() (*ITextProvider, error) {
+	return winrt.QueryInterface[ITextProvider](unsafe.Pointer(self), &IID_ITextProvider)
+}
+
 // GetActiveComposition dispatches through ITextEditProvider's vtable slot 6.
 func (self *ITextEditProvider) GetActiveComposition() (*ITextRangeProvider, error) {
 	result := new(*ITextRangeProvider)
@@ -14474,6 +14481,13 @@ type ITextProvider2 struct {
 
 // IID_ITextProvider2 is the interface identifier for ITextProvider2.
 var IID_ITextProvider2 = win32.GUID{Data1: 0x6844f012, Data2: 0xc7e6, Data3: 0x5763, Data4: [8]byte{0xba, 0x04, 0x5b, 0x6d, 0xb9, 0x10, 0xcd, 0x34}}
+
+// AsTextProvider queries the required ITextProvider interface.
+// ITextProvider2 requires Microsoft.UI.Xaml.Automation.Provider.ITextProvider, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ITextProvider2) AsTextProvider() (*ITextProvider, error) {
+	return winrt.QueryInterface[ITextProvider](unsafe.Pointer(self), &IID_ITextProvider)
+}
 
 // RangeFromAnnotation dispatches through ITextProvider2's vtable slot 6.
 func (self *ITextProvider2) RangeFromAnnotation(annotationElement *IIRawElementProviderSimple) (*ITextRangeProvider, error) {
@@ -14667,6 +14681,13 @@ type ITextRangeProvider2 struct {
 // IID_ITextRangeProvider2 is the interface identifier for ITextRangeProvider2.
 var IID_ITextRangeProvider2 = win32.GUID{Data1: 0x34d4a80e, Data2: 0x36bb, Data3: 0x5362, Data4: [8]byte{0xa5, 0x3b, 0x49, 0x04, 0x28, 0xa8, 0xb3, 0x67}}
 
+// AsTextRangeProvider queries the required ITextRangeProvider interface.
+// ITextRangeProvider2 requires Microsoft.UI.Xaml.Automation.Provider.ITextRangeProvider, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ITextRangeProvider2) AsTextRangeProvider() (*ITextRangeProvider, error) {
+	return winrt.QueryInterface[ITextRangeProvider](unsafe.Pointer(self), &IID_ITextRangeProvider)
+}
+
 // ShowContextMenu dispatches through ITextRangeProvider2's vtable slot 6.
 func (self *ITextRangeProvider2) ShowContextMenu() error {
 	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)))
@@ -14757,6 +14778,13 @@ type ITransformProvider2 struct {
 
 // IID_ITransformProvider2 is the interface identifier for ITransformProvider2.
 var IID_ITransformProvider2 = win32.GUID{Data1: 0x7d91d02d, Data2: 0x8401, Data3: 0x5cf8, Data4: [8]byte{0xbb, 0xc4, 0x47, 0x39, 0x1a, 0x52, 0x42, 0x15}}
+
+// AsTransformProvider queries the required ITransformProvider interface.
+// ITransformProvider2 requires Microsoft.UI.Xaml.Automation.Provider.ITransformProvider, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ITransformProvider2) AsTransformProvider() (*ITransformProvider, error) {
+	return winrt.QueryInterface[ITransformProvider](unsafe.Pointer(self), &IID_ITransformProvider)
+}
 
 // CanZoom (propget get_CanZoom) dispatches through ITransformProvider2's vtable slot 6.
 func (self *ITransformProvider2) CanZoom() (bool, error) {
@@ -15191,6 +15219,13 @@ type IAnimatedVisual struct {
 // IID_IAnimatedVisual is the interface identifier for IAnimatedVisual.
 var IID_IAnimatedVisual = win32.GUID{Data1: 0x645ff609, Data2: 0xfd6b, Data3: 0x5fef, Data4: [8]byte{0xbd, 0xc0, 0x9c, 0x34, 0xef, 0xf3, 0x3c, 0x64}}
 
+// AsClosable queries the required wrtfoundation.IClosable interface.
+// IAnimatedVisual requires Windows.Foundation.IClosable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAnimatedVisual) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
+
 // RootVisual (propget get_RootVisual) dispatches through IAnimatedVisual's vtable slot 6.
 func (self *IAnimatedVisual) RootVisual() (*uicomposition.IVisual, error) {
 	result := new(*uicomposition.IVisual)
@@ -15221,6 +15256,20 @@ type IAnimatedVisual2 struct {
 
 // IID_IAnimatedVisual2 is the interface identifier for IAnimatedVisual2.
 var IID_IAnimatedVisual2 = win32.GUID{Data1: 0x763a3f0b, Data2: 0x95cc, Data3: 0x59ef, Data4: [8]byte{0x98, 0x90, 0x14, 0x78, 0x68, 0x59, 0x9d, 0xe9}}
+
+// AsAnimatedVisual queries the required IAnimatedVisual interface.
+// IAnimatedVisual2 requires Microsoft.UI.Xaml.Controls.IAnimatedVisual, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAnimatedVisual2) AsAnimatedVisual() (*IAnimatedVisual, error) {
+	return winrt.QueryInterface[IAnimatedVisual](unsafe.Pointer(self), &IID_IAnimatedVisual)
+}
+
+// AsClosable queries the required wrtfoundation.IClosable interface.
+// IAnimatedVisual2 requires Windows.Foundation.IClosable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAnimatedVisual2) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
 
 // CreateAnimations dispatches through IAnimatedVisual2's vtable slot 6.
 func (self *IAnimatedVisual2) CreateAnimations() error {
@@ -15542,6 +15591,13 @@ type IAnimatedVisualSource2 struct {
 
 // IID_IAnimatedVisualSource2 is the interface identifier for IAnimatedVisualSource2.
 var IID_IAnimatedVisualSource2 = win32.GUID{Data1: 0x1a3b53a7, Data2: 0xa8fe, Data3: 0x59a1, Data4: [8]byte{0xb5, 0x44, 0x43, 0xa4, 0xd9, 0xc8, 0x1e, 0xf2}}
+
+// AsAnimatedVisualSource queries the required IAnimatedVisualSource interface.
+// IAnimatedVisualSource2 requires Microsoft.UI.Xaml.Controls.IAnimatedVisualSource, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAnimatedVisualSource2) AsAnimatedVisualSource() (*IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[IAnimatedVisualSource](unsafe.Pointer(self), &IID_IAnimatedVisualSource)
+}
 
 // Markers (propget get_Markers) dispatches through IAnimatedVisualSource2's vtable slot 6.
 func (self *IAnimatedVisualSource2) Markers() (*IMapViewOfStringAndDouble, error) {
@@ -25046,6 +25102,13 @@ type IDynamicAnimatedVisualSource struct {
 
 // IID_IDynamicAnimatedVisualSource is the interface identifier for IDynamicAnimatedVisualSource.
 var IID_IDynamicAnimatedVisualSource = win32.GUID{Data1: 0xab00e5cf, Data2: 0x1be6, Data3: 0x559c, Data4: [8]byte{0xad, 0x5b, 0x02, 0x53, 0xbb, 0x17, 0xc0, 0xf7}}
+
+// AsAnimatedVisualSource queries the required IAnimatedVisualSource interface.
+// IDynamicAnimatedVisualSource requires Microsoft.UI.Xaml.Controls.IAnimatedVisualSource, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IDynamicAnimatedVisualSource) AsAnimatedVisualSource() (*IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[IAnimatedVisualSource](unsafe.Pointer(self), &IID_IAnimatedVisualSource)
+}
 
 // AddAnimatedVisualInvalidated (event add add_AnimatedVisualInvalidated) dispatches through IDynamicAnimatedVisualSource's vtable slot 6.
 // The handler stays registered (and referenced by the runtime) until the
@@ -64983,6 +65046,27 @@ type ICollectionView struct {
 // IID_ICollectionView is the interface identifier for ICollectionView.
 var IID_ICollectionView = win32.GUID{Data1: 0xf8bb90d8, Data2: 0xe008, Data3: 0x5d65, Data4: [8]byte{0x8c, 0x97, 0x7b, 0xb7, 0x90, 0xa4, 0x23, 0x0c}}
 
+// AsObservableVectorOfObject queries the required IObservableVectorOfObject interface.
+// ICollectionView requires Windows.Foundation.Collections.IObservableVector`1<Object>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ICollectionView) AsObservableVectorOfObject() (*IObservableVectorOfObject, error) {
+	return winrt.QueryInterface[IObservableVectorOfObject](unsafe.Pointer(self), &IID_IObservableVectorOfObject)
+}
+
+// AsVectorOfObject queries the required IVectorOfObject interface.
+// ICollectionView requires Windows.Foundation.Collections.IVector`1<Object>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ICollectionView) AsVectorOfObject() (*IVectorOfObject, error) {
+	return winrt.QueryInterface[IVectorOfObject](unsafe.Pointer(self), &IID_IVectorOfObject)
+}
+
+// AsIterableOfObject queries the required IIterableOfObject interface.
+// ICollectionView requires Windows.Foundation.Collections.IIterable`1<Object>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ICollectionView) AsIterableOfObject() (*IIterableOfObject, error) {
+	return winrt.QueryInterface[IIterableOfObject](unsafe.Pointer(self), &IID_IIterableOfObject)
+}
+
 // CurrentItem (propget get_CurrentItem) dispatches through ICollectionView's vtable slot 6.
 func (self *ICollectionView) CurrentItem() (*syswinrt.IInspectable, error) {
 	result := new(*syswinrt.IInspectable)
@@ -65531,6 +65615,13 @@ type IItemsRangeInfo struct {
 
 // IID_IItemsRangeInfo is the interface identifier for IItemsRangeInfo.
 var IID_IItemsRangeInfo = win32.GUID{Data1: 0xb8376d08, Data2: 0x85fb, Data3: 0x563b, Data4: [8]byte{0x82, 0x73, 0x39, 0xef, 0x2d, 0x13, 0x82, 0x56}}
+
+// AsClosable queries the required wrtfoundation.IClosable interface.
+// IItemsRangeInfo requires Windows.Foundation.IClosable, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IItemsRangeInfo) AsClosable() (*wrtfoundation.IClosable, error) {
+	return winrt.QueryInterface[wrtfoundation.IClosable](unsafe.Pointer(self), &wrtfoundation.IID_IClosable)
+}
 
 // RangesChanged dispatches through IItemsRangeInfo's vtable slot 6.
 func (self *IItemsRangeInfo) RangesChanged(visibleRange *IItemIndexRange, trackedItems *IVectorViewOfItemIndexRange) error {

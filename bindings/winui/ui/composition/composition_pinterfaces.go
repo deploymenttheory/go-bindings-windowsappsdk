@@ -12,6 +12,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtfoundationnumerics "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation/numerics"
 )
 
@@ -24,6 +25,13 @@ type IAsyncOperationOfICompositionSurface struct {
 
 // IID_IAsyncOperationOfICompositionSurface is the interface identifier for IAsyncOperationOfICompositionSurface.
 var IID_IAsyncOperationOfICompositionSurface = win32.GUID{Data1: 0x92ceaa5d, Data2: 0xb255, Data3: 0x57d9, Data4: [8]byte{0xab, 0x7c, 0x0f, 0x30, 0x44, 0x85, 0xc1, 0xbd}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfICompositionSurface requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfICompositionSurface) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfICompositionSurface's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).
@@ -702,6 +710,13 @@ type IMapOfStringAndICompositionAnimationBase struct {
 // IID_IMapOfStringAndICompositionAnimationBase is the interface identifier for IMapOfStringAndICompositionAnimationBase.
 var IID_IMapOfStringAndICompositionAnimationBase = win32.GUID{Data1: 0x6a91806a, Data2: 0x8668, Data3: 0x5938, Data4: [8]byte{0x93, 0xf9, 0x75, 0x9d, 0x00, 0x21, 0xab, 0x9b}}
 
+// AsIterableOfIKeyValuePairOfStringAndICompositionAnimationBase queries the required IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase interface.
+// IMapOfStringAndICompositionAnimationBase requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndICompositionAnimationBase) AsIterableOfIKeyValuePairOfStringAndICompositionAnimationBase() (*IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase)
+}
+
 // Lookup dispatches through IMapOfStringAndICompositionAnimationBase's vtable slot 6.
 func (self *IMapOfStringAndICompositionAnimationBase) Lookup(key string) (*ICompositionAnimationBase, error) {
 	hKey, err := winrt.NewHString(key)
@@ -778,6 +793,13 @@ type IMapOfStringAndString struct {
 
 // IID_IMapOfStringAndString is the interface identifier for IMapOfStringAndString.
 var IID_IMapOfStringAndString = win32.GUID{Data1: 0xf6d1f700, Data2: 0x49c2, Data3: 0x52ae, Data4: [8]byte{0x81, 0x54, 0x82, 0x6f, 0x99, 0x08, 0x77, 0x3c}}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
 
 // Lookup dispatches through IMapOfStringAndString's vtable slot 6.
 func (self *IMapOfStringAndString) Lookup(key string) (string, error) {
@@ -864,6 +886,13 @@ type IMapViewOfStringAndICompositionAnimationBase struct {
 // IID_IMapViewOfStringAndICompositionAnimationBase is the interface identifier for IMapViewOfStringAndICompositionAnimationBase.
 var IID_IMapViewOfStringAndICompositionAnimationBase = win32.GUID{Data1: 0x60d8d804, Data2: 0xd025, Data3: 0x5b6e, Data4: [8]byte{0x80, 0x0c, 0xb0, 0x38, 0xcd, 0xed, 0xba, 0xb4}}
 
+// AsIterableOfIKeyValuePairOfStringAndICompositionAnimationBase queries the required IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase interface.
+// IMapViewOfStringAndICompositionAnimationBase requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndICompositionAnimationBase) AsIterableOfIKeyValuePairOfStringAndICompositionAnimationBase() (*IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase)
+}
+
 // Lookup dispatches through IMapViewOfStringAndICompositionAnimationBase's vtable slot 6.
 func (self *IMapViewOfStringAndICompositionAnimationBase) Lookup(key string) (*ICompositionAnimationBase, error) {
 	hKey, err := winrt.NewHString(key)
@@ -910,6 +939,13 @@ type IMapViewOfStringAndString struct {
 
 // IID_IMapViewOfStringAndString is the interface identifier for IMapViewOfStringAndString.
 var IID_IMapViewOfStringAndString = win32.GUID{Data1: 0xac7f26f2, Data2: 0xfeb7, Data3: 0x5b2a, Data4: [8]byte{0x8a, 0xc4, 0x34, 0x5b, 0xc6, 0x2c, 0xae, 0xde}}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapViewOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
 
 // Lookup dispatches through IMapViewOfStringAndString's vtable slot 6.
 func (self *IMapViewOfStringAndString) Lookup(key string) (string, error) {
@@ -961,6 +997,13 @@ type IReferenceOfSingle struct {
 // IID_IReferenceOfSingle is the interface identifier for IReferenceOfSingle.
 var IID_IReferenceOfSingle = win32.GUID{Data1: 0x719cc2ba, Data2: 0x3e76, Data3: 0x5def, Data4: [8]byte{0x9f, 0x1a, 0x38, 0xd8, 0x5a, 0x14, 0x5e, 0xa8}}
 
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfSingle requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfSingle) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
+
 // Value (propget get_Value) dispatches through IReferenceOfSingle's vtable slot 6.
 func (self *IReferenceOfSingle) Value() (float32, error) {
 	result := new(float32)
@@ -977,6 +1020,13 @@ type IReferenceOfVector2 struct {
 
 // IID_IReferenceOfVector2 is the interface identifier for IReferenceOfVector2.
 var IID_IReferenceOfVector2 = win32.GUID{Data1: 0x48f6a69e, Data2: 0x8465, Data3: 0x57ae, Data4: [8]byte{0x94, 0x00, 0x97, 0x64, 0x08, 0x7f, 0x65, 0xad}}
+
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfVector2 requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfVector2) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
 
 // Value (propget get_Value) dispatches through IReferenceOfVector2's vtable slot 6.
 func (self *IReferenceOfVector2) Value() (wrtfoundationnumerics.Vector2, error) {
@@ -995,6 +1045,13 @@ type IReferenceOfVector3 struct {
 // IID_IReferenceOfVector3 is the interface identifier for IReferenceOfVector3.
 var IID_IReferenceOfVector3 = win32.GUID{Data1: 0x1ee770ff, Data2: 0xc954, Data3: 0x59ca, Data4: [8]byte{0xa7, 0x54, 0x61, 0x99, 0xa9, 0xbe, 0x28, 0x2c}}
 
+// AsPropertyValue queries the required wrtfoundation.IPropertyValue interface.
+// IReferenceOfVector3 requires Windows.Foundation.IPropertyValue, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IReferenceOfVector3) AsPropertyValue() (*wrtfoundation.IPropertyValue, error) {
+	return winrt.QueryInterface[wrtfoundation.IPropertyValue](unsafe.Pointer(self), &wrtfoundation.IID_IPropertyValue)
+}
+
 // Value (propget get_Value) dispatches through IReferenceOfVector3's vtable slot 6.
 func (self *IReferenceOfVector3) Value() (wrtfoundationnumerics.Vector3, error) {
 	result := new(wrtfoundationnumerics.Vector3)
@@ -1011,6 +1068,13 @@ type IVectorOfCompositionColorGradientStop struct {
 
 // IID_IVectorOfCompositionColorGradientStop is the interface identifier for IVectorOfCompositionColorGradientStop.
 var IID_IVectorOfCompositionColorGradientStop = win32.GUID{Data1: 0x77fa9267, Data2: 0xb867, Data3: 0x5f77, Data4: [8]byte{0x8c, 0x02, 0x7d, 0x85, 0x81, 0x9d, 0x56, 0x3b}}
+
+// AsIterableOfCompositionColorGradientStop queries the required IIterableOfCompositionColorGradientStop interface.
+// IVectorOfCompositionColorGradientStop requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionColorGradientStop>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfCompositionColorGradientStop) AsIterableOfCompositionColorGradientStop() (*IIterableOfCompositionColorGradientStop, error) {
+	return winrt.QueryInterface[IIterableOfCompositionColorGradientStop](unsafe.Pointer(self), &IID_IIterableOfCompositionColorGradientStop)
+}
 
 // GetAt dispatches through IVectorOfCompositionColorGradientStop's vtable slot 6.
 func (self *IVectorOfCompositionColorGradientStop) GetAt(index uint32) (*ICompositionColorGradientStop, error) {
@@ -1109,6 +1173,13 @@ type IVectorOfCompositionShape struct {
 // IID_IVectorOfCompositionShape is the interface identifier for IVectorOfCompositionShape.
 var IID_IVectorOfCompositionShape = win32.GUID{Data1: 0x7397ef7a, Data2: 0xaabd, Data3: 0x50a3, Data4: [8]byte{0x93, 0x08, 0x06, 0xd2, 0xa7, 0x05, 0x06, 0x21}}
 
+// AsIterableOfCompositionShape queries the required IIterableOfCompositionShape interface.
+// IVectorOfCompositionShape requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionShape>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfCompositionShape) AsIterableOfCompositionShape() (*IIterableOfCompositionShape, error) {
+	return winrt.QueryInterface[IIterableOfCompositionShape](unsafe.Pointer(self), &IID_IIterableOfCompositionShape)
+}
+
 // GetAt dispatches through IVectorOfCompositionShape's vtable slot 6.
 func (self *IVectorOfCompositionShape) GetAt(index uint32) (*ICompositionShape, error) {
 	result := new(*ICompositionShape)
@@ -1205,6 +1276,13 @@ type IVectorOfSingle struct {
 
 // IID_IVectorOfSingle is the interface identifier for IVectorOfSingle.
 var IID_IVectorOfSingle = win32.GUID{Data1: 0x61cf693f, Data2: 0xdb4c, Data3: 0x579f, Data4: [8]byte{0xb9, 0x05, 0x5d, 0xd3, 0xd2, 0x3c, 0xfd, 0x4d}}
+
+// AsIterableOfSingle queries the required IIterableOfSingle interface.
+// IVectorOfSingle requires Windows.Foundation.Collections.IIterable`1<Single>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfSingle) AsIterableOfSingle() (*IIterableOfSingle, error) {
+	return winrt.QueryInterface[IIterableOfSingle](unsafe.Pointer(self), &IID_IIterableOfSingle)
+}
 
 // GetAt dispatches through IVectorOfSingle's vtable slot 6.
 func (self *IVectorOfSingle) GetAt(index uint32) (float32, error) {
@@ -1307,6 +1385,13 @@ type IVectorViewOfCompositionColorGradientStop struct {
 // IID_IVectorViewOfCompositionColorGradientStop is the interface identifier for IVectorViewOfCompositionColorGradientStop.
 var IID_IVectorViewOfCompositionColorGradientStop = win32.GUID{Data1: 0xb3f66d8c, Data2: 0x130e, Data3: 0x52d4, Data4: [8]byte{0x80, 0x3e, 0x53, 0x05, 0x51, 0x9d, 0x50, 0x56}}
 
+// AsIterableOfCompositionColorGradientStop queries the required IIterableOfCompositionColorGradientStop interface.
+// IVectorViewOfCompositionColorGradientStop requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionColorGradientStop>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfCompositionColorGradientStop) AsIterableOfCompositionColorGradientStop() (*IIterableOfCompositionColorGradientStop, error) {
+	return winrt.QueryInterface[IIterableOfCompositionColorGradientStop](unsafe.Pointer(self), &IID_IIterableOfCompositionColorGradientStop)
+}
+
 // GetAt dispatches through IVectorViewOfCompositionColorGradientStop's vtable slot 6.
 func (self *IVectorViewOfCompositionColorGradientStop) GetAt(index uint32) (*ICompositionColorGradientStop, error) {
 	result := new(*ICompositionColorGradientStop)
@@ -1350,6 +1435,13 @@ type IVectorViewOfCompositionShape struct {
 // IID_IVectorViewOfCompositionShape is the interface identifier for IVectorViewOfCompositionShape.
 var IID_IVectorViewOfCompositionShape = win32.GUID{Data1: 0x7c3d1b0a, Data2: 0x2533, Data3: 0x568b, Data4: [8]byte{0x96, 0x3c, 0x7f, 0xdb, 0x57, 0x69, 0xdb, 0xe8}}
 
+// AsIterableOfCompositionShape queries the required IIterableOfCompositionShape interface.
+// IVectorViewOfCompositionShape requires Windows.Foundation.Collections.IIterable`1<Microsoft.UI.Composition.CompositionShape>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfCompositionShape) AsIterableOfCompositionShape() (*IIterableOfCompositionShape, error) {
+	return winrt.QueryInterface[IIterableOfCompositionShape](unsafe.Pointer(self), &IID_IIterableOfCompositionShape)
+}
+
 // GetAt dispatches through IVectorViewOfCompositionShape's vtable slot 6.
 func (self *IVectorViewOfCompositionShape) GetAt(index uint32) (*ICompositionShape, error) {
 	result := new(*ICompositionShape)
@@ -1392,6 +1484,13 @@ type IVectorViewOfSingle struct {
 
 // IID_IVectorViewOfSingle is the interface identifier for IVectorViewOfSingle.
 var IID_IVectorViewOfSingle = win32.GUID{Data1: 0x7bca64fd, Data2: 0x150c, Data3: 0x5d50, Data4: [8]byte{0xb5, 0x6b, 0x9f, 0x4f, 0x47, 0x4c, 0x59, 0x30}}
+
+// AsIterableOfSingle queries the required IIterableOfSingle interface.
+// IVectorViewOfSingle requires Windows.Foundation.Collections.IIterable`1<Single>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfSingle) AsIterableOfSingle() (*IIterableOfSingle, error) {
+	return winrt.QueryInterface[IIterableOfSingle](unsafe.Pointer(self), &IID_IIterableOfSingle)
+}
 
 // GetAt dispatches through IVectorViewOfSingle's vtable slot 6.
 func (self *IVectorViewOfSingle) GetAt(index uint32) (float32, error) {

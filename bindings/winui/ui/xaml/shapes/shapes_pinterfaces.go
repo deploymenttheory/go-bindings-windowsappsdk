@@ -15,6 +15,122 @@ import (
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
+// IIterableOfDouble is the WinRT interface Windows.Foundation.Collections.IIterable`1<Double>.
+// IID: c738964e-9c64-5bce-b5ce-61e9a282ec4a
+type IIterableOfDouble struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfDouble is the interface identifier for IIterableOfDouble.
+var IID_IIterableOfDouble = win32.GUID{Data1: 0xc738964e, Data2: 0x9c64, Data3: 0x5bce, Data4: [8]byte{0xb5, 0xce, 0x61, 0xe9, 0xa2, 0x82, 0xec, 0x4a}}
+
+// First dispatches through IIterableOfDouble's vtable slot 6.
+func (self *IIterableOfDouble) First() (*IIteratorOfDouble, error) {
+	result := new(*IIteratorOfDouble)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIterableOfPoint is the WinRT interface Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Point>.
+// IID: c192280d-3a09-5423-9dc5-67b83ebde41d
+type IIterableOfPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIterableOfPoint is the interface identifier for IIterableOfPoint.
+var IID_IIterableOfPoint = win32.GUID{Data1: 0xc192280d, Data2: 0x3a09, Data3: 0x5423, Data4: [8]byte{0x9d, 0xc5, 0x67, 0xb8, 0x3e, 0xbd, 0xe4, 0x1d}}
+
+// First dispatches through IIterableOfPoint's vtable slot 6.
+func (self *IIterableOfPoint) First() (*IIteratorOfPoint, error) {
+	result := new(*IIteratorOfPoint)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfDouble is the WinRT interface Windows.Foundation.Collections.IIterator`1<Double>.
+// IID: 638a2cf4-f474-5318-9055-141cb909ac4b
+type IIteratorOfDouble struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfDouble is the interface identifier for IIteratorOfDouble.
+var IID_IIteratorOfDouble = win32.GUID{Data1: 0x638a2cf4, Data2: 0xf474, Data3: 0x5318, Data4: [8]byte{0x90, 0x55, 0x14, 0x1c, 0xb9, 0x09, 0xac, 0x4b}}
+
+// Current (propget get_Current) dispatches through IIteratorOfDouble's vtable slot 6.
+func (self *IIteratorOfDouble) Current() (float64, error) {
+	result := new(float64)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfDouble's vtable slot 7.
+func (self *IIteratorOfDouble) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfDouble's vtable slot 8.
+func (self *IIteratorOfDouble) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfDouble's vtable slot 9.
+func (self *IIteratorOfDouble) GetMany(items []float64) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// IIteratorOfPoint is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Point>.
+// IID: c602b59e-0a8e-5e99-b478-2b564585278d
+type IIteratorOfPoint struct {
+	syswinrt.IInspectable
+}
+
+// IID_IIteratorOfPoint is the interface identifier for IIteratorOfPoint.
+var IID_IIteratorOfPoint = win32.GUID{Data1: 0xc602b59e, Data2: 0x0a8e, Data3: 0x5e99, Data4: [8]byte{0xb4, 0x78, 0x2b, 0x56, 0x45, 0x85, 0x27, 0x8d}}
+
+// Current (propget get_Current) dispatches through IIteratorOfPoint's vtable slot 6.
+func (self *IIteratorOfPoint) Current() (wrtfoundation.Point, error) {
+	result := new(wrtfoundation.Point)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
+// HasCurrent (propget get_HasCurrent) dispatches through IIteratorOfPoint's vtable slot 7.
+func (self *IIteratorOfPoint) HasCurrent() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// MoveNext dispatches through IIteratorOfPoint's vtable slot 8.
+func (self *IIteratorOfPoint) MoveNext() (bool, error) {
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
+
+// GetMany dispatches through IIteratorOfPoint's vtable slot 9.
+func (self *IIteratorOfPoint) GetMany(items []wrtfoundation.Point) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
+
 // IVectorOfDouble is the WinRT interface Windows.Foundation.Collections.IVector`1<Double>.
 // IID: f452d23c-bf05-5f3e-88e7-d17a6716b911
 // Requires: Windows.Foundation.Collections.IIterable`1<Double>.
@@ -24,6 +140,13 @@ type IVectorOfDouble struct {
 
 // IID_IVectorOfDouble is the interface identifier for IVectorOfDouble.
 var IID_IVectorOfDouble = win32.GUID{Data1: 0xf452d23c, Data2: 0xbf05, Data3: 0x5f3e, Data4: [8]byte{0x88, 0xe7, 0xd1, 0x7a, 0x67, 0x16, 0xb9, 0x11}}
+
+// AsIterableOfDouble queries the required IIterableOfDouble interface.
+// IVectorOfDouble requires Windows.Foundation.Collections.IIterable`1<Double>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfDouble) AsIterableOfDouble() (*IIterableOfDouble, error) {
+	return winrt.QueryInterface[IIterableOfDouble](unsafe.Pointer(self), &IID_IIterableOfDouble)
+}
 
 // GetAt dispatches through IVectorOfDouble's vtable slot 6.
 func (self *IVectorOfDouble) GetAt(index uint32) (float64, error) {
@@ -126,6 +249,13 @@ type IVectorOfPoint struct {
 // IID_IVectorOfPoint is the interface identifier for IVectorOfPoint.
 var IID_IVectorOfPoint = win32.GUID{Data1: 0xc0d513a9, Data2: 0xec4a, Data3: 0x5a5d, Data4: [8]byte{0xb6, 0xd5, 0xb7, 0x07, 0xde, 0xfd, 0xb9, 0xf7}}
 
+// AsIterableOfPoint queries the required IIterableOfPoint interface.
+// IVectorOfPoint requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Point>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorOfPoint) AsIterableOfPoint() (*IIterableOfPoint, error) {
+	return winrt.QueryInterface[IIterableOfPoint](unsafe.Pointer(self), &IID_IIterableOfPoint)
+}
+
 // GetAt dispatches through IVectorOfPoint's vtable slot 6.
 func (self *IVectorOfPoint) GetAt(index uint32) (wrtfoundation.Point, error) {
 	result := new(wrtfoundation.Point)
@@ -227,6 +357,13 @@ type IVectorViewOfDouble struct {
 // IID_IVectorViewOfDouble is the interface identifier for IVectorViewOfDouble.
 var IID_IVectorViewOfDouble = win32.GUID{Data1: 0xaf7586a8, Data2: 0x6b21, Data3: 0x5f61, Data4: [8]byte{0xbf, 0xf1, 0x1b, 0x68, 0x22, 0x93, 0xad, 0x96}}
 
+// AsIterableOfDouble queries the required IIterableOfDouble interface.
+// IVectorViewOfDouble requires Windows.Foundation.Collections.IIterable`1<Double>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfDouble) AsIterableOfDouble() (*IIterableOfDouble, error) {
+	return winrt.QueryInterface[IIterableOfDouble](unsafe.Pointer(self), &IID_IIterableOfDouble)
+}
+
 // GetAt dispatches through IVectorViewOfDouble's vtable slot 6.
 func (self *IVectorViewOfDouble) GetAt(index uint32) (float64, error) {
 	result := new(float64)
@@ -270,6 +407,13 @@ type IVectorViewOfPoint struct {
 
 // IID_IVectorViewOfPoint is the interface identifier for IVectorViewOfPoint.
 var IID_IVectorViewOfPoint = win32.GUID{Data1: 0x0b7b4c9d, Data2: 0x182f, Data3: 0x582a, Data4: [8]byte{0xbd, 0xdb, 0x42, 0xb1, 0xaa, 0xc3, 0x0c, 0xad}}
+
+// AsIterableOfPoint queries the required IIterableOfPoint interface.
+// IVectorViewOfPoint requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Point>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IVectorViewOfPoint) AsIterableOfPoint() (*IIterableOfPoint, error) {
+	return winrt.QueryInterface[IIterableOfPoint](unsafe.Pointer(self), &IID_IIterableOfPoint)
+}
 
 // GetAt dispatches through IVectorViewOfPoint's vtable slot 6.
 func (self *IVectorViewOfPoint) GetAt(index uint32) (wrtfoundation.Point, error) {

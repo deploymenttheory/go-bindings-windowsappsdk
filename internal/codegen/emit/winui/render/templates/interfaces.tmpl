@@ -16,6 +16,15 @@ type {{.TypeName}} struct {
 var {{.IIDVar}} = {{.IIDLiteral}}
 
 {{end -}}
+{{range .QueryMethods}}// {{.GoName}} queries the required {{.InterfaceType}} interface.
+{{if .Note}}// {{.Note}}
+{{end -}}
+// The returned reference is owned by the caller.
+func (self *{{$.TypeName}}) {{.GoName}}() (*{{.InterfaceType}}, error) {
+	return winrt.QueryInterface[{{.InterfaceType}}](unsafe.Pointer(self), {{.IIDRef}})
+}
+
+{{end -}}
 {{range .Methods}}
 {{- if .SkipComment}}// {{.SkipComment}}
 

@@ -110,6 +110,13 @@ type IMapOfStringAndString struct {
 // IID_IMapOfStringAndString is the interface identifier for IMapOfStringAndString.
 var IID_IMapOfStringAndString = win32.GUID{Data1: 0xf6d1f700, Data2: 0x49c2, Data3: 0x52ae, Data4: [8]byte{0x81, 0x54, 0x82, 0x6f, 0x99, 0x08, 0x77, 0x3c}}
 
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
+
 // Lookup dispatches through IMapOfStringAndString's vtable slot 6.
 func (self *IMapOfStringAndString) Lookup(key string) (string, error) {
 	hKey, err := winrt.NewHString(key)
@@ -194,6 +201,13 @@ type IMapViewOfStringAndString struct {
 
 // IID_IMapViewOfStringAndString is the interface identifier for IMapViewOfStringAndString.
 var IID_IMapViewOfStringAndString = win32.GUID{Data1: 0xac7f26f2, Data2: 0xfeb7, Data3: 0x5b2a, Data4: [8]byte{0x8a, 0xc4, 0x34, 0x5b, 0xc6, 0x2c, 0xae, 0xde}}
+
+// AsIterableOfIKeyValuePairOfStringAndString queries the required IIterableOfIKeyValuePairOfStringAndString interface.
+// IMapViewOfStringAndString requires Windows.Foundation.Collections.IIterable`1<Windows.Foundation.Collections.IKeyValuePair`2<String, String>>, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IMapViewOfStringAndString) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
+	return winrt.QueryInterface[IIterableOfIKeyValuePairOfStringAndString](unsafe.Pointer(self), &IID_IIterableOfIKeyValuePairOfStringAndString)
+}
 
 // Lookup dispatches through IMapViewOfStringAndString's vtable slot 6.
 func (self *IMapViewOfStringAndString) Lookup(key string) (string, error) {

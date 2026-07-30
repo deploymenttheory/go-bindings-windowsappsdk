@@ -11,6 +11,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtstorage "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/storage"
 )
 
@@ -23,6 +24,13 @@ type IAsyncOperationOfStorageFile struct {
 
 // IID_IAsyncOperationOfStorageFile is the interface identifier for IAsyncOperationOfStorageFile.
 var IID_IAsyncOperationOfStorageFile = win32.GUID{Data1: 0x5e52f8ce, Data2: 0xaced, Data3: 0x5a42, Data4: [8]byte{0x95, 0xb4, 0xf6, 0x74, 0xdd, 0x84, 0x88, 0x5e}}
+
+// AsAsyncInfo queries the required wrtfoundation.IAsyncInfo interface.
+// IAsyncOperationOfStorageFile requires Windows.Foundation.IAsyncInfo, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *IAsyncOperationOfStorageFile) AsAsyncInfo() (*wrtfoundation.IAsyncInfo, error) {
+	return winrt.QueryInterface[wrtfoundation.IAsyncInfo](unsafe.Pointer(self), &wrtfoundation.IID_IAsyncInfo)
+}
 
 // SetCompleted (propput put_Completed) dispatches through IAsyncOperationOfStorageFile's vtable slot 6.
 // A nil handler passes NULL at the ABI (WinRT accepts it where a handler may be cleared).

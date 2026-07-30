@@ -1571,6 +1571,13 @@ type ITextSelection struct {
 // IID_ITextSelection is the interface identifier for ITextSelection.
 var IID_ITextSelection = win32.GUID{Data1: 0x8f5e6cb1, Data2: 0x2b04, Data3: 0x589f, Data4: [8]byte{0xbd, 0x24, 0x54, 0xe5, 0xcd, 0x8d, 0xd3, 0x99}}
 
+// AsTextRange queries the required ITextRange interface.
+// ITextSelection requires Microsoft.UI.Text.ITextRange, so this always succeeds.
+// The returned reference is owned by the caller.
+func (self *ITextSelection) AsTextRange() (*ITextRange, error) {
+	return winrt.QueryInterface[ITextRange](unsafe.Pointer(self), &IID_ITextRange)
+}
+
 // Options (propget get_Options) dispatches through ITextSelection's vtable slot 6.
 func (self *ITextSelection) Options() (SelectionOptions, error) {
 	result := new(SelectionOptions)
