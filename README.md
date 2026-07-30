@@ -135,6 +135,22 @@ Twenty import edges are severed to break cycles Go cannot express, so on those t
 accessor is absent. The capability is not: a consuming package closes no cycle, so
 `winrt.QueryInterface[T]` reaches the interface directly.
 
+### Try it
+
+```sh
+go run ./cmd/generate fetch-bootstrap   # the redistributable, not committed
+go run ./examples/clicker
+```
+
+A window with a `TextBlock` and a `Button`. Clicking the button runs a Go closure that
+updates the label — the framework invokes it on the UI thread, and it touches XAML
+objects directly. About a hundred lines, and it exercises the whole stack: composable
+construction, the base-class chain (`Content` is three classes above `Button`,
+`Children` one above `StackPanel`), a grounded delegate, and a monomorphized
+`IVector<UIElement>`.
+
+Needs the Windows App SDK 2.x runtime installed.
+
 ### A window on screen
 
 `acceptance/` puts one there and CI runs it, on a runner with the Windows App SDK
