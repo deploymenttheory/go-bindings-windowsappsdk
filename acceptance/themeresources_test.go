@@ -162,8 +162,14 @@ func TestControlsNeedingThemeResourcesCannotLoad(t *testing.T) {
 		wantCrash bool
 	}{
 		{"TextBlock", false},
-		{"TextBox", true},
-		{"PasswordBox", true},
+		// Fixed by the derived application: with a Go object answering
+		// IXamlMetadataProvider, the types inside the theme dictionaries resolve and
+		// these two lay out. They were fatal before it.
+		{"TextBox", false},
+		{"PasswordBox", false},
+		// Still failing, and differently: ProgressBar's default style is not found at
+		// all — ApplyTemplate returns false without error — where TextBox's now is.
+		// XamlControlsResources, which supplies the MUX styles, still cannot activate.
 		{"ProgressBar", true},
 	} {
 		output, err := runChild(t, testCase.control)

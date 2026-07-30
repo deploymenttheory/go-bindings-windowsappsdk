@@ -146,13 +146,18 @@ func Run(onReady func(ready *Ready) error, options Options) error {
 // core is up, and the first Window is what brings it up. Merging resources before
 // then fails with E_UNEXPECTED, which reads as a defect and is not one.
 func initialize(statics *uixaml.IApplicationStatics, onReady func(*Ready) error, options Options) error {
-	created, err := uixaml.NewApplication()
+	// A DERIVED application, not a plain one. The Go object is the controlling outer
+	// and answers IXamlMetadataProvider, which is what lets WinUI resolve the types
+	// inside its own theme dictionaries — without it TextBox, PasswordBox, RichEditBox,
+	// SearchBox and ProgressBar fail to load their default styles and take the process
+	// down at layout. See derived.go.
+	created, err := NewDerivedApplication()
 	if err != nil {
 		return fmt.Errorf("app: constructing the Application: %w", err)
 	}
-	// Not released: the application owns itself for the life of the message loop,
-	// and dropping this reference inside the callback would destroy it before Start
-	// had anything to run.
+	// Not closed: the application owns itself for the life of the message loop, and
+	// dropping this reference inside the callback would destroy it before Start had
+	// anything to run.
 	_ = created
 
 	application, err := statics.Current()

@@ -676,6 +676,18 @@ A Go application implements no such interface, because that means **deriving fro
 `Application`** — COM aggregation, the M7 work. That is the open task, and it is now
 specific rather than unknown.
 
+
+**Two of the five are fixed.** `app.Run` now builds a *derived* application: a Go object
+aggregating `Microsoft.UI.Xaml.Application` and answering `IXamlMetadataProvider` by
+forwarding to WinUI's own `XamlControlsXamlMetaDataProvider`. With it, `TextBox` and
+`PasswordBox` lay out where they previously killed the process.
+
+`ProgressBar` still fails, and differently: its default style is not found at all —
+`ApplyTemplate` returns false without an error — where `TextBox`'s now resolves.
+`XamlControlsResources`, which supplies the MUX control styles and whose constructor
+sets `Source` to `ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml`, still cannot
+activate. So what remains is the resource half rather than the type half.
+
 `acceptance/themeresources_test.go` is the reproduction.
 
 The earlier note that `XamlControlsResources` failing "does not matter" was reached by
