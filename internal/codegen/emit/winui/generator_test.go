@@ -508,3 +508,126 @@ func TestBaseChainIsAccountedForInTheImportGraph(t *testing.T) {
 		}
 	}
 }
+
+// TestArrayShapesLowerToTheirABI pins the three conformant-array shapes in emitted
+// source, because they are the ones where a wrong lowering compiles and then corrupts
+// memory rather than failing.
+//
+// A WinRT array crosses as TWO words. Which two depends on who allocates:
+//
+//	[in] T[]        (UINT32 size,  T*  value)  caller owns
+//	[out] T[]       (UINT32 size,  T*  value)  caller allocates, callee fills
+//	[out] T[]&      (UINT32* size, T** value)  callee allocates, caller frees
+//	T[] as retval   (UINT32* size, T** value)  same, in retval position
+//
+// The metadata distinguishes the last two from the middle one by ELEMENT_TYPE_BYREF
+// alone. Pass a count where the callee expects a pointer and it writes through the
+// count.
+func TestArrayShapesLowerToTheirABI(t *testing.T) {
+	pinterfaces := source(t, "ui/xaml/xaml_pinterfaces.go")
+
+	// [in] T[] — count then data, and an empty slice passes (0, NULL) rather than
+	// indexing element zero of a slice that has none.
+	replaceAll := methodBody(pinterfaces, "func (self *IVectorOfResourceDictionary) ReplaceAll(")
+	if replaceAll == "" {
+		t.Fatal("IVectorOfResourceDictionary.ReplaceAll was not emitted")
+	}
+	for _, want := range []string{
+		"items []*IResourceDictionary",
+		"_itemsSize := uintptr(len(items))",
+		"if len(items) > 0 {",
+		"_itemsSize, _itemsData",
+	} {
+		if !strings.Contains(replaceAll, want) {
+			t.Errorf("ReplaceAll is missing %q:\n%s", want, replaceAll)
+		}
+	}
+
+	// [out] T[] fill — the caller supplies the buffer, so the Go signature TAKES a
+	// slice and returns the count actually written. Identical arg words to the
+	// input case.
+	getMany := methodBody(pinterfaces, "func (self *IVectorOfResourceDictionary) GetMany(")
+	if getMany == "" {
+		t.Fatal("IVectorOfResourceDictionary.GetMany was not emitted")
+	}
+	if !strings.Contains(getMany, "items []*IResourceDictionary) (uint32, error)") {
+		t.Errorf("GetMany does not take a caller-allocated slice and return a count:\n%s", getMany)
+	}
+	if strings.Contains(getMany, "CoTaskMemFree") {
+		t.Error("GetMany frees the buffer, but the caller owns it in a fill array")
+	}
+
+	// A retval array — callee-allocated, so the body copies out and frees, and it
+	// must short-circuit before touching the buffer on failure.
+	result := emit(t)
+	var found string
+	for path, content := range result.files {
+		if strings.Contains(content, "systemcom.CoTaskMemFree") {
+			found = path
+			for _, want := range []string{
+				"resultSize := new(uint32)",
+				"if *result == nil || *resultSize == 0 {",
+				"copy(items, unsafe.Slice(*result, *resultSize))",
+				"systemcom.CoTaskMemFree(unsafe.Pointer(*result))",
+			} {
+				if !strings.Contains(content, want) {
+					t.Errorf("%s has a retval array but is missing %q", path, want)
+				}
+			}
+			// Freeing before the HRESULT is checked would free a buffer that was
+			// never allocated.
+			freeAt := strings.Index(content, "systemcom.CoTaskMemFree")
+			checkAt := strings.Index(content, "if err := win32.ErrIfFailed")
+			if checkAt < 0 || checkAt > freeAt {
+				t.Errorf("%s frees the retval buffer before checking the HRESULT", path)
+			}
+			break
+		}
+	}
+	if found == "" {
+		t.Error("no retval conformant array was emitted anywhere in the tree")
+	} else {
+		t.Logf("retval array shape verified in %s", found)
+	}
+}
+
+// methodBody returns the source of one function, from its signature to its closing
+// brace at column zero.
+func methodBody(content, signature string) string {
+	start := strings.Index(content, signature)
+	if start < 0 {
+		return ""
+	}
+	rest := content[start:]
+	if end := strings.Index(rest, "\n}\n"); end >= 0 {
+		return rest[:end+3]
+	}
+	return rest
+}
+
+// TestArrayElementsThatCannotConvertAreSkipped is the other half: an element whose Go
+// form is not byte-identical to its ABI form must leave a slot comment, not a direct
+// slice view over reinterpreted bytes.
+func TestArrayElementsThatCannotConvertAreSkipped(t *testing.T) {
+	result := emit(t)
+	var elementSkips, receiveSkips int
+	for _, diagnostic := range result.generator.Diagnostics {
+		switch {
+		case strings.HasPrefix(diagnostic, "array-element-skipped:"):
+			elementSkips++
+		case strings.HasPrefix(diagnostic, "array-receive-param-skipped:"):
+			receiveSkips++
+		case strings.HasPrefix(diagnostic, "array-param-skipped:"):
+			t.Errorf("a member is still skipped wholesale for being an array: %s", diagnostic)
+		}
+	}
+	if elementSkips == 0 {
+		t.Error("no array-element-skipped diagnostics; HSTRING elements should still be refused")
+	}
+	// Exactly one byref array exists in the committed metadata. If that changes, the
+	// promote-out-param-to-return path stops being a one-off and is worth building.
+	if receiveSkips != 1 {
+		t.Errorf("%d callee-allocated array parameters skipped, want 1 "+
+			"(a second one makes the receive-param path worth implementing)", receiveSkips)
+	}
+}

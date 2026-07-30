@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui"
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
@@ -121,9 +122,55 @@ func (self *IContentCoordinateConverter) ConvertLocalToScreenWithPoint(localPoin
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: ConvertLocalToScreen skipped: conformant array
+// ConvertLocalToScreenWithPoints dispatches through IContentCoordinateConverter's vtable slot 7.
+func (self *IContentCoordinateConverter) ConvertLocalToScreenWithPoints(localPoints []wrtfoundation.Point) ([]wrtgraphics.PointInt32, error) {
+	_localPointsSize := uintptr(len(localPoints))
+	_localPointsData := uintptr(0)
+	if len(localPoints) > 0 {
+		_localPointsData = uintptr(winrt.OutParam(unsafe.Pointer(&localPoints[0])))
+	}
+	resultSize := new(uint32)
+	result := new(*wrtgraphics.PointInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), _localPointsSize, _localPointsData, uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]wrtgraphics.PointInt32, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 8: ConvertLocalToScreen skipped: conformant array
+// ConvertLocalToScreenWithPointsAndRoundingMode dispatches through IContentCoordinateConverter's vtable slot 8.
+func (self *IContentCoordinateConverter) ConvertLocalToScreenWithPointsAndRoundingMode(localPoints []wrtfoundation.Point, roundingMode ContentCoordinateRoundingMode) ([]wrtgraphics.PointInt32, error) {
+	_localPointsSize := uintptr(len(localPoints))
+	_localPointsData := uintptr(0)
+	if len(localPoints) > 0 {
+		_localPointsData = uintptr(winrt.OutParam(unsafe.Pointer(&localPoints[0])))
+	}
+	resultSize := new(uint32)
+	result := new(*wrtgraphics.PointInt32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), _localPointsSize, _localPointsData, uintptr(roundingMode), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]wrtgraphics.PointInt32, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ConvertLocalToScreenWithRect dispatches through IContentCoordinateConverter's vtable slot 9.
 func (self *IContentCoordinateConverter) ConvertLocalToScreenWithRect(localRect wrtfoundation.Rect) (wrtgraphics.RectInt32, error) {
@@ -140,7 +187,30 @@ func (self *IContentCoordinateConverter) ConvertScreenToLocalWithPoint(screenPoi
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 11: ConvertScreenToLocal skipped: conformant array
+// ConvertScreenToLocalWithPoints dispatches through IContentCoordinateConverter's vtable slot 11.
+func (self *IContentCoordinateConverter) ConvertScreenToLocalWithPoints(screenPoints []wrtgraphics.PointInt32) ([]wrtfoundation.Point, error) {
+	_screenPointsSize := uintptr(len(screenPoints))
+	_screenPointsData := uintptr(0)
+	if len(screenPoints) > 0 {
+		_screenPointsData = uintptr(winrt.OutParam(unsafe.Pointer(&screenPoints[0])))
+	}
+	resultSize := new(uint32)
+	result := new(*wrtfoundation.Point)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), _screenPointsSize, _screenPointsData, uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]wrtfoundation.Point, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // ConvertScreenToLocalWithRect dispatches through IContentCoordinateConverter's vtable slot 12.
 func (self *IContentCoordinateConverter) ConvertScreenToLocalWithRect(screenRect wrtgraphics.RectInt32) (wrtfoundation.Rect, error) {
@@ -774,9 +844,45 @@ func (self *IContentIslandStatics) Create(Root *uicomposition.IVisual) (*IConten
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: FindAllForCompositor skipped: conformant array
+// FindAllForCompositor dispatches through IContentIslandStatics's vtable slot 7.
+func (self *IContentIslandStatics) FindAllForCompositor(compositor *uicomposition.ICompositor) ([]*IContentIsland, error) {
+	resultSize := new(uint32)
+	result := new(**IContentIsland)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(compositor)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IContentIsland, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 8: FindAllForCurrentThread skipped: conformant array
+// FindAllForCurrentThread dispatches through IContentIslandStatics's vtable slot 8.
+func (self *IContentIslandStatics) FindAllForCurrentThread() ([]*IContentIsland, error) {
+	resultSize := new(uint32)
+	result := new(**IContentIsland)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IContentIsland, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // GetByVisual dispatches through IContentIslandStatics's vtable slot 9.
 func (self *IContentIslandStatics) GetByVisual(child *uicomposition.IVisual) (*IContentIsland, error) {
@@ -809,7 +915,25 @@ func (self *IContentIslandStatics2) CreateForSystemVisual(queue *uidispatching.I
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: FindAllForSystemCompositor skipped: conformant array
+// FindAllForSystemCompositor dispatches through IContentIslandStatics2's vtable slot 7.
+func (self *IContentIslandStatics2) FindAllForSystemCompositor(compositor *wrtuicomposition.ICompositor) ([]*IContentIsland, error) {
+	resultSize := new(uint32)
+	result := new(**IContentIsland)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(unsafe.Pointer(compositor)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IContentIsland, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // GetBySystemVisual dispatches through IContentIslandStatics2's vtable slot 8.
 func (self *IContentIslandStatics2) GetBySystemVisual(child *wrtuicomposition.IVisual) (*IContentIsland, error) {

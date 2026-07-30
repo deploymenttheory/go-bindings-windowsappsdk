@@ -87,9 +87,28 @@ func (self *IVectorOfAppInstance) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfAppInstance's vtable slot 16.
+func (self *IVectorOfAppInstance) GetMany(startIndex uint32, items []*IAppInstance) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfAppInstance's vtable slot 17.
+func (self *IVectorOfAppInstance) ReplaceAll(items []*IAppInstance) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfAppInstance is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.AppLifecycle.AppInstance>.
 // IID: 1520072b-d6f2-5a95-988d-e6c4a6eb66a4
@@ -122,4 +141,14 @@ func (self *IVectorViewOfAppInstance) IndexOf(value *IAppInstance, index *uint32
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfAppInstance's vtable slot 9.
+func (self *IVectorViewOfAppInstance) GetMany(startIndex uint32, items []*IAppInstance) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

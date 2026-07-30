@@ -293,9 +293,28 @@ func (self *IVectorOfPackageSetItem) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfPackageSetItem's vtable slot 16.
+func (self *IVectorOfPackageSetItem) GetMany(startIndex uint32, items []*IPackageSetItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfPackageSetItem's vtable slot 17.
+func (self *IVectorOfPackageSetItem) ReplaceAll(items []*IPackageSetItem) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfPackageSetItemRuntimeDisposition is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition>.
 // IID: 27772c5b-2d44-5594-acd9-818907ab582c
@@ -371,9 +390,28 @@ func (self *IVectorOfPackageSetItemRuntimeDisposition) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfPackageSetItemRuntimeDisposition's vtable slot 16.
+func (self *IVectorOfPackageSetItemRuntimeDisposition) GetMany(startIndex uint32, items []*IPackageSetItemRuntimeDisposition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfPackageSetItemRuntimeDisposition's vtable slot 17.
+func (self *IVectorOfPackageSetItemRuntimeDisposition) ReplaceAll(items []*IPackageSetItemRuntimeDisposition) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfPackageVolume is the WinRT interface Windows.Foundation.Collections.IVector`1<Microsoft.Windows.Management.Deployment.PackageVolume>.
 // IID: 83d86012-3bb4-5aca-b1ff-e21e83321c0a
@@ -449,9 +487,28 @@ func (self *IVectorOfPackageVolume) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfPackageVolume's vtable slot 16.
+func (self *IVectorOfPackageVolume) GetMany(startIndex uint32, items []*IPackageVolume) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfPackageVolume's vtable slot 17.
+func (self *IVectorOfPackageVolume) ReplaceAll(items []*IPackageVolume) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorOfString is the WinRT interface Windows.Foundation.Collections.IVector`1<String>.
 // IID: 98b9acc1-4b56-532e-ac73-03d5291cca90
@@ -550,9 +607,9 @@ func (self *IVectorOfString) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// slot 16: GetMany skipped: string elements need per-element conversion
 
-// slot 17: ReplaceAll skipped: conformant array
+// slot 17: ReplaceAll skipped: string elements need per-element conversion
 
 // IVectorOfUri is the WinRT interface Windows.Foundation.Collections.IVector`1<Windows.Foundation.Uri>.
 // IID: 0d82bd8d-fe62-5d67-a7b9-7886dd75bc4e
@@ -628,9 +685,28 @@ func (self *IVectorOfUri) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfUri's vtable slot 16.
+func (self *IVectorOfUri) GetMany(startIndex uint32, items []*wrtfoundation.IUriRuntimeClass) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfUri's vtable slot 17.
+func (self *IVectorOfUri) ReplaceAll(items []*wrtfoundation.IUriRuntimeClass) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPackageSetItem is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.Management.Deployment.PackageSetItem>.
 // IID: 8a350fa7-ca4b-57dc-9772-e824e3156aa7
@@ -663,7 +739,17 @@ func (self *IVectorViewOfPackageSetItem) IndexOf(value *IPackageSetItem, index *
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPackageSetItem's vtable slot 9.
+func (self *IVectorViewOfPackageSetItem) GetMany(startIndex uint32, items []*IPackageSetItem) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPackageSetItemRuntimeDisposition is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition>.
 // IID: c9fc469d-dd12-593c-b554-8aad5d1c6c45
@@ -696,7 +782,17 @@ func (self *IVectorViewOfPackageSetItemRuntimeDisposition) IndexOf(value *IPacka
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPackageSetItemRuntimeDisposition's vtable slot 9.
+func (self *IVectorViewOfPackageSetItemRuntimeDisposition) GetMany(startIndex uint32, items []*IPackageSetItemRuntimeDisposition) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPackageVolume is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.Management.Deployment.PackageVolume>.
 // IID: 9794d073-de98-5af3-842e-d0e5f7cba043
@@ -729,7 +825,17 @@ func (self *IVectorViewOfPackageVolume) IndexOf(value *IPackageVolume, index *ui
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPackageVolume's vtable slot 9.
+func (self *IVectorViewOfPackageVolume) GetMany(startIndex uint32, items []*IPackageVolume) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfString is the WinRT interface Windows.Foundation.Collections.IVectorView`1<String>.
 // IID: 2f13c006-a03a-5f69-b090-75a43e33423e
@@ -770,7 +876,7 @@ func (self *IVectorViewOfString) IndexOf(value string, index *uint32) (bool, err
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: string elements need per-element conversion
 
 // IVectorViewOfUri is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Windows.Foundation.Uri>.
 // IID: 4b8385bd-a2cd-5ff1-bf74-7ea580423e50
@@ -803,4 +909,14 @@ func (self *IVectorViewOfUri) IndexOf(value *wrtfoundation.IUriRuntimeClass, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfUri's vtable slot 9.
+func (self *IVectorViewOfUri) GetMany(startIndex uint32, items []*wrtfoundation.IUriRuntimeClass) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

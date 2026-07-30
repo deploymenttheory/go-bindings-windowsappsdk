@@ -264,9 +264,28 @@ func (self *IVectorOfAppNotification) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfAppNotification's vtable slot 16.
+func (self *IVectorOfAppNotification) GetMany(startIndex uint32, items []*IAppNotification) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfAppNotification's vtable slot 17.
+func (self *IVectorOfAppNotification) ReplaceAll(items []*IAppNotification) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfAppNotification is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.AppNotifications.AppNotification>.
 // IID: e645c6bd-e8e3-5b12-8b95-963bac29f974
@@ -299,4 +318,14 @@ func (self *IVectorViewOfAppNotification) IndexOf(value *IAppNotification, index
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfAppNotification's vtable slot 9.
+func (self *IVectorViewOfAppNotification) GetMany(startIndex uint32, items []*IAppNotification) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

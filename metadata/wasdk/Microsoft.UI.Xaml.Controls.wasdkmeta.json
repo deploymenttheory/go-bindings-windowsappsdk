@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Xaml.Controls",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.3.0",
   "winmd_file": "Microsoft.UI.Xaml.winmd",
   "enums": {
@@ -2664,7 +2664,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -2800,7 +2801,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -3470,7 +3472,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -3709,7 +3712,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -3820,7 +3824,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             },
             {
               "name": "createAnimations",
@@ -4250,7 +4255,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -5053,7 +5059,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -5230,7 +5237,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -5327,7 +5335,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -5417,7 +5426,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -5749,7 +5759,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -6963,7 +6974,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -7068,7 +7080,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -7790,7 +7803,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -7864,7 +7878,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -7984,7 +7999,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -9010,7 +9026,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -12311,7 +12328,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -12389,7 +12407,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -13973,7 +13992,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -14191,7 +14211,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -15233,7 +15254,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -16510,7 +16532,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -16546,7 +16569,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -17302,7 +17326,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -17452,7 +17477,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -17488,7 +17514,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -17981,7 +18008,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -19398,7 +19426,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -20683,7 +20712,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -22348,7 +22378,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -23558,7 +23589,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -24346,7 +24378,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -25767,7 +25800,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -26263,7 +26297,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -26472,7 +26507,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -26508,7 +26544,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -26643,7 +26680,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -26711,7 +26749,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -27084,7 +27123,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -27344,7 +27384,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -28249,7 +28290,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -28732,7 +28774,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -29141,7 +29184,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -29177,7 +29221,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -29236,7 +29281,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -29272,7 +29318,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -29544,7 +29591,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -29607,7 +29655,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -30042,7 +30091,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -30206,7 +30256,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -30535,7 +30586,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -30760,7 +30812,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -31152,7 +31205,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -31226,7 +31280,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -31466,7 +31521,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -31639,7 +31695,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -32463,7 +32520,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -32811,7 +32869,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -32872,7 +32931,8 @@
                 "kind": "Native",
                 "name": "I4"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             },
             {
               "name": "second",
@@ -32880,7 +32940,8 @@
                 "kind": "Native",
                 "name": "I4"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ]
         }
@@ -33257,7 +33318,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -33406,7 +33468,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -33592,7 +33655,8 @@
                 "kind": "Native",
                 "name": "Bool"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -34286,7 +34350,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -35871,7 +35936,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -36278,7 +36344,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -36891,7 +36958,8 @@
                 "kind": "Native",
                 "name": "I4"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -37265,7 +37333,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -37851,7 +37920,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -38854,7 +38924,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -38890,7 +38961,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -39314,7 +39386,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -39350,7 +39423,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -41195,7 +41269,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -41642,7 +41717,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -41678,7 +41754,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -41737,7 +41814,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -42189,7 +42267,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -42551,7 +42630,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -42655,7 +42735,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -42989,7 +43070,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -43269,7 +43351,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -44165,7 +44248,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -44813,7 +44897,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -44918,7 +45003,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -44954,7 +45040,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -45162,7 +45249,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -45430,7 +45518,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -45662,7 +45751,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -45752,7 +45842,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -47972,7 +48063,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -48439,7 +48531,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -48475,7 +48568,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -48595,7 +48689,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -49847,7 +49942,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -50134,7 +50230,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -50211,7 +50308,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -51003,7 +51101,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -51571,7 +51670,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -51860,7 +51960,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -52387,7 +52488,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -53728,7 +53830,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -53802,7 +53905,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -54216,7 +54320,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -55188,7 +55293,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -56221,7 +56327,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -56331,7 +56438,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -56799,7 +56907,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -57240,7 +57349,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -57468,7 +57578,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -57837,7 +57948,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -58093,7 +58205,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -58550,7 +58663,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -58918,7 +59032,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -59284,7 +59399,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -59442,7 +59558,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -59632,7 +59749,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -60049,7 +60167,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -60343,7 +60462,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -61410,7 +61530,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -63060,7 +63181,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -68416,7 +68538,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -72373,7 +72496,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -72417,7 +72541,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -72665,7 +72790,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -72709,7 +72835,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -72933,7 +73060,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -73123,7 +73251,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -73225,7 +73354,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -74447,7 +74577,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -74883,7 +75014,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -75093,7 +75225,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -75784,7 +75917,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -76120,7 +76254,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -76466,7 +76601,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -76691,7 +76827,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -76760,7 +76897,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -76925,7 +77063,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -77150,7 +77289,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -77579,7 +77719,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -77821,7 +77962,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -77990,7 +78132,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -78152,7 +78295,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -79940,7 +80084,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -80202,7 +80347,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -80421,7 +80567,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -82330,7 +82477,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -82879,7 +83027,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -86604,7 +86753,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -87254,7 +87404,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -87963,7 +88114,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -89122,7 +89274,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -89154,7 +89307,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -89529,7 +89683,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -89624,7 +89779,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -89798,7 +89954,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -90697,7 +90854,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -92374,7 +92532,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -92671,7 +92830,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -93021,7 +93181,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -93141,7 +93302,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -93351,7 +93513,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -94143,7 +94306,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -94648,7 +94812,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -94882,7 +95047,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -95735,7 +95901,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -95917,7 +96084,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -97141,7 +97309,8 @@
                 "kind": "Native",
                 "name": "Object"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {

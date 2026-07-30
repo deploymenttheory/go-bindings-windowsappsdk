@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.Windows.Foundation",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.3.5",
   "winmd_file": "Microsoft.Windows.Foundation.winmd",
   "structs": {
@@ -312,7 +312,8 @@
                 "namespace": "Microsoft.Windows.Foundation",
                 "target_kind": "Struct"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -338,7 +339,8 @@
                 "namespace": "Microsoft.Windows.Foundation",
                 "target_kind": "Struct"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -372,7 +374,8 @@
                 "namespace": "Microsoft.Windows.Foundation",
                 "target_kind": "Struct"
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {

@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.UI.Input",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.1.3",
   "winmd_file": "Microsoft.UI.winmd",
   "enums": {
@@ -7707,7 +7707,8 @@
                 "target_kind": "Struct",
                 "external": true
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {
@@ -7737,7 +7738,8 @@
                 "target_kind": "Struct",
                 "external": true
               },
-              "out": true
+              "out": true,
+              "by_ref": true
             }
           ],
           "return": {

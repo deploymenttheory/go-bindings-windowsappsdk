@@ -52,4 +52,4 @@ func (self *IVectorViewOfString) IndexOf(value string, index *uint32) (bool, err
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: string elements need per-element conversion

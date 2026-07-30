@@ -75,6 +75,11 @@ const (
 	// BEFORE TakeHString consumes the handle — on failure there is no handle to
 	// consume, and taking one would be a use of uninitialized memory.
 	RetString = 2
+	// RetArray: a conformant-array retval. Two out-words rather than one (a count
+	// pointer and a buffer pointer), and the buffer is callee-allocated, so the
+	// body copies into a Go slice and frees it. Short-circuits like RetString,
+	// for the same reason: on failure there is no buffer to read or free.
+	RetArray = 3
 )
 
 // MethodModel is one vtable method, or — when SkipComment is set — a skipped-slot
@@ -110,6 +115,12 @@ type MethodModel struct {
 	// ZeroReturn is the zero value returned alongside a non-nil error in
 	// preamble and RetString short-circuits (`""`, "0", "nil", "Thickness{}").
 	ZeroReturn string
+	// ResultSizeDecl declares the count local of a RetArray return
+	// ("resultSize := new(uint32)"). Empty for every other return kind.
+	ResultSizeDecl string
+	// ResultElemType is a RetArray's element Go type ("byte", "*IFoo"), which the
+	// body needs to build the slice view over the callee's buffer.
+	ResultElemType string
 }
 
 // DelegateModel is one Go-implemented handler type emitted into the consuming

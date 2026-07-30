@@ -300,6 +300,16 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 			model.ResultDecl = "result := new(" + resolved.GoType + ")"
 			model.ResultExpr = "*result"
 			model.ZeroReturn = "nil"
+		case typemap.KindArray:
+			// A returned conformant array is a RECEIVE array: the callee allocates
+			// the buffer with CoTaskMemAlloc and the caller frees it, so this is the
+			// one return shape that takes two out-words and owns memory afterwards.
+			model.ReturnKind = view.RetArray
+			model.ReturnSig = "(" + resolved.GoType + ", error)"
+			model.ResultSizeDecl = "resultSize := new(uint32)"
+			model.ResultDecl = "result := new(*" + resolved.Elem.GoType + ")"
+			model.ResultElemType = resolved.Elem.GoType
+			model.ZeroReturn = "nil"
 		default:
 			return view.MethodModel{}, &skip{key: "unsupported-return", detail: resolved.GoType}
 		}
@@ -334,23 +344,28 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 			noteLines = append(noteLines, "Parameter "+paramName+"'s "+resolved.Note+".")
 		}
 		if param.Out {
-			decl, arg, skipped := lowerOutParam(paramName, resolved)
+			decl, preamble, args, skipped := lowerOutParam(paramName, param, resolved, paramNames)
 			if skipped != nil {
 				return view.MethodModel{}, skipped
 			}
 			decls = append(decls, decl)
-			model.ArgExprs = append(model.ArgExprs, arg)
+			model.Preamble = append(model.Preamble, preamble...)
+			model.ArgExprs = append(model.ArgExprs, args...)
 			continue
 		}
-		decl, preamble, arg, skipped := g.lowerInParam(paramName, param, resolved, paramNames, errReturn)
+		decl, preamble, args, skipped := g.lowerInParam(paramName, param, resolved, paramNames, errReturn)
 		if skipped != nil {
 			return view.MethodModel{}, skipped
 		}
 		decls = append(decls, decl)
 		model.Preamble = append(model.Preamble, preamble...)
-		model.ArgExprs = append(model.ArgExprs, arg)
+		model.ArgExprs = append(model.ArgExprs, args...)
 	}
 	if method.Return != nil {
+		// A retval array is two words, count first, in the WinRT ReceiveArray order.
+		if model.ReturnKind == view.RetArray {
+			model.ArgExprs = append(model.ArgExprs, "uintptr(winrt.OutParam(unsafe.Pointer(resultSize)))")
+		}
 		model.ArgExprs = append(model.ArgExprs, "uintptr(winrt.OutParam(unsafe.Pointer(result)))")
 	}
 	model.ParamStr = strings.Join(decls, ", ")
@@ -363,29 +378,69 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 	return model, nil
 }
 
-// lowerOutParam lowers a non-retval [out] parameter to a Go pointer parameter
-// passed straight through. Only shapes whose Go representation is ABI-identical
-// qualify.
+// lowerOutParam lowers a non-retval [out] parameter to a Go pointer parameter passed
+// straight through. Only shapes whose Go representation is ABI-identical qualify.
 //
-// The word crosses through winrt.OutParam (the out-param invariant, see
-// buildMethod), which makes the parameter leak in the method's escape summary — so
-// a caller's `&local` argument is itself moved to the heap at the call site, which
-// is exactly what is needed.
-func lowerOutParam(paramName string, resolved typemap.Resolved) (decl, arg string, skipped *skip) {
+// The word crosses through winrt.OutParam (the out-param invariant, see buildMethod),
+// which makes the parameter leak in the method's escape summary — so a caller's
+// `&local` argument is itself moved to the heap at the call site, which is exactly
+// what is needed.
+//
+// Returns the argument WORDS, plural: an array parameter occupies two.
+func lowerOutParam(paramName string, param *wasdkmeta.Param, resolved typemap.Resolved, taken map[string]bool) (decl string, preamble []string, args []string, skipped *skip) {
 	switch resolved.Kind {
 	case typemap.KindScalar, typemap.KindEnum, typemap.KindStruct, typemap.KindGUID,
 		typemap.KindInterfacePtr, typemap.KindObjectPtr:
-		return paramName + " *" + resolved.GoType,
-			"uintptr(winrt.OutParam(unsafe.Pointer(" + paramName + ")))", nil
+		return paramName + " *" + resolved.GoType, nil,
+			[]string{"uintptr(winrt.OutParam(unsafe.Pointer(" + paramName + ")))"}, nil
+
+	case typemap.KindArray:
+		if param.ByRef {
+			// A byref [out] array is a RECEIVE array: the callee allocates and writes
+			// back both a count pointer and a buffer pointer, so the Go signature
+			// would have to RETURN the slice rather than take one. There is exactly
+			// one such member in the committed metadata
+			// (ITextRangeProvider.GetBoundingRectangles) — not enough to justify a
+			// promote-out-param-to-return path, but ample reason to refuse rather
+			// than lower it as a fill array, which would hand the callee a count
+			// where it expects a pointer.
+			return "", nil, nil, &skip{key: "array-receive-param-skipped",
+				detail: fmt.Sprintf("%s is a callee-allocated array; only fill arrays are lowered", paramName)}
+		}
+		// A non-byref [out] array is a FILL array: the CALLER allocates and the
+		// callee writes into it. The lowering is identical to an input array — the
+		// difference is only who writes, which the doc comment records.
+		return lowerArrayWords(paramName, resolved, taken)
+
 	case typemap.KindString, typemap.KindBool:
 		// An HSTRING out-param transfers ownership and a WinRT boolean is one byte
 		// where Go's bool is one byte but not guaranteed 0/1 — both need a
 		// conversion wrapper this wave does not emit.
-		return "", "", &skip{key: "out-param-skipped",
+		return "", nil, nil, &skip{key: "out-param-skipped",
 			detail: fmt.Sprintf("%s out parameter %s is not lowered this wave", resolved.GoType, paramName)}
 	}
-	return "", "", &skip{key: "out-param-skipped",
+	return "", nil, nil, &skip{key: "out-param-skipped",
 		detail: fmt.Sprintf("out parameter %s not representable", paramName)}
+}
+
+// lowerArrayWords lowers a slice parameter to the WinRT conformant-array pair: a
+// count word and a data-pointer word.
+//
+// An empty slice passes (0, NULL), which is what WinRT expects and which also avoids
+// indexing element zero of a slice that has none. The data pointer goes through
+// winrt.OutParam for the same reason a by-value aggregate does: the callee holds it
+// across a call that can reenter Go, and a moving stack would strand it.
+func lowerArrayWords(paramName string, resolved typemap.Resolved, taken map[string]bool) (decl string, preamble []string, args []string, skipped *skip) {
+	size := freshLocal("_"+paramName+"Size", taken)
+	data := freshLocal("_"+paramName+"Data", taken)
+	preamble = []string{
+		size + " := uintptr(len(" + paramName + "))",
+		data + " := uintptr(0)",
+		"if len(" + paramName + ") > 0 {",
+		data + " = uintptr(winrt.OutParam(unsafe.Pointer(&" + paramName + "[0])))",
+		"}",
+	}
+	return paramName + " " + resolved.GoType, preamble, []string{size, data}, nil
 }
 
 // guidByValueSize is sizeof(win32.GUID): sixteen bytes, so a by-value GUID
@@ -407,10 +462,10 @@ const guidByValueSize = 16
 // call can reenter Go on the same goroutine and a concurrent collection may then
 // move the stack, leaving the callee reading freed memory through a stale pointer.
 // Heap-escaping the argument closes it.
-func lowerByValueAggregate(paramName, goType string, size int, taken map[string]bool) (decl string, preamble []string, arg string, skipped *skip) {
+func lowerByValueAggregate(paramName, goType string, size int, taken map[string]bool) (decl string, preamble []string, args []string, skipped *skip) {
 	decl = paramName + " " + goType
 	if typemap.ClassifyAggregate(size) == typemap.ParamByRef {
-		return decl, nil, "uintptr(winrt.OutParam(unsafe.Pointer(&" + paramName + ")))", nil
+		return decl, nil, []string{"uintptr(winrt.OutParam(unsafe.Pointer(&" + paramName + ")))"}, nil
 	}
 	local := freshLocal("_"+paramName, taken)
 	var read string
@@ -424,15 +479,15 @@ func lowerByValueAggregate(paramName, goType string, size int, taken map[string]
 	default:
 		read = "*(*uintptr)(unsafe.Pointer(&" + paramName + "))"
 	}
-	return decl, []string{local + " := " + read}, local, nil
+	return decl, []string{local + " := " + read}, []string{local}, nil
 }
 
 // lowerInParam lowers one input parameter to its SyscallN argument word, with any
 // conversion preamble.
-func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resolved typemap.Resolved, taken map[string]bool, errReturn string) (decl string, preamble []string, arg string, skipped *skip) {
+func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resolved typemap.Resolved, taken map[string]bool, errReturn string) (decl string, preamble []string, args []string, skipped *skip) {
 	switch resolved.Kind {
 	case typemap.KindScalar, typemap.KindEnum:
-		return paramName + " " + resolved.GoType, nil, "uintptr(" + paramName + ")", nil
+		return paramName + " " + resolved.GoType, nil, []string{"uintptr(" + paramName + ")"}, nil
 
 	case typemap.KindBool:
 		local := freshLocal("_"+paramName, taken)
@@ -442,7 +497,7 @@ func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resol
 			local + " = 1",
 			"}",
 		}
-		return paramName + " bool", preamble, local, nil
+		return paramName + " bool", preamble, []string{local}, nil
 
 	case typemap.KindString:
 		local := freshLocal("h"+naming.Export(paramName), taken)
@@ -453,7 +508,7 @@ func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resol
 			"}",
 			"defer " + local + ".Close()",
 		}
-		return paramName + " string", preamble, "uintptr(" + local + ".Raw())", nil
+		return paramName + " string", preamble, []string{"uintptr(" + local + ".Raw())"}, nil
 
 	case typemap.KindFloat:
 		// amd64 asmstdcall mirrors each of the first four argument words into
@@ -469,12 +524,12 @@ func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resol
 			bits = "math.Float32bits"
 		}
 		preamble = []string{local + " := uintptr(" + bits + "(" + paramName + "))"}
-		return paramName + " " + resolved.GoType, preamble, local, nil
+		return paramName + " " + resolved.GoType, preamble, []string{local}, nil
 
 	case typemap.KindStruct:
 		layout, ok := g.mapper.StructLayout(resolved.StructNamespace, resolved.StructName)
 		if !ok {
-			return "", nil, "", &skip{key: "byval-struct-param-skipped",
+			return "", nil, nil, &skip{key: "byval-struct-param-skipped",
 				detail: fmt.Sprintf("by-value %s.%s parameter %s has no computable amd64 layout",
 					resolved.StructNamespace, resolved.StructName, paramName)}
 		}
@@ -483,9 +538,12 @@ func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resol
 	case typemap.KindGUID:
 		return lowerByValueAggregate(paramName, resolved.GoType, guidByValueSize, taken)
 
+	case typemap.KindArray:
+		return lowerArrayWords(paramName, resolved, taken)
+
 	case typemap.KindInterfacePtr, typemap.KindObjectPtr:
 		return paramName + " " + resolved.GoType, nil,
-			"uintptr(unsafe.Pointer(" + paramName + "))", nil
+			[]string{"uintptr(unsafe.Pointer(" + paramName + "))"}, nil
 
 	case typemap.KindDelegatePtr:
 		// A Go-implemented handler crosses as its COM object pointer; nil passes
@@ -497,9 +555,9 @@ func (g *Generator) lowerInParam(paramName string, param *wasdkmeta.Param, resol
 			local + " = " + paramName + ".Ptr()",
 			"}",
 		}
-		return paramName + " " + resolved.GoType, preamble, local, nil
+		return paramName + " " + resolved.GoType, preamble, []string{local}, nil
 	}
-	return "", nil, "", &skip{key: "unsupported-param",
+	return "", nil, nil, &skip{key: "unsupported-param",
 		detail: fmt.Sprintf("parameter %s (%s)", param.Name, resolved.GoType)}
 }
 

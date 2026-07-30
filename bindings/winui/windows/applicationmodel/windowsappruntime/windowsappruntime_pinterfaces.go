@@ -87,9 +87,28 @@ func (self *IVectorOfRuntimeCompatibilityChange) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfRuntimeCompatibilityChange's vtable slot 16.
+func (self *IVectorOfRuntimeCompatibilityChange) GetMany(startIndex uint32, items []RuntimeCompatibilityChange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfRuntimeCompatibilityChange's vtable slot 17.
+func (self *IVectorOfRuntimeCompatibilityChange) ReplaceAll(items []RuntimeCompatibilityChange) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfRuntimeCompatibilityChange is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.ApplicationModel.WindowsAppRuntime.RuntimeCompatibilityChange>.
 // IID: b3675e71-9db8-5b51-986a-1223964c6f52
@@ -122,4 +141,14 @@ func (self *IVectorViewOfRuntimeCompatibilityChange) IndexOf(value RuntimeCompat
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfRuntimeCompatibilityChange's vtable slot 9.
+func (self *IVectorViewOfRuntimeCompatibilityChange) GetMany(startIndex uint32, items []RuntimeCompatibilityChange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

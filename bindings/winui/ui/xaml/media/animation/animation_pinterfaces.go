@@ -62,7 +62,17 @@ func (self *IIteratorOfUIElement) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfUIElement's vtable slot 9.
+func (self *IIteratorOfUIElement) GetMany(items []*uixaml.IUIElement) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IReferenceOfColor is the WinRT interface Windows.Foundation.IReference`1<Windows.UI.Color>.
 // IID: ab8e5d11-b0c1-5a21-95ae-f16bf3a37624

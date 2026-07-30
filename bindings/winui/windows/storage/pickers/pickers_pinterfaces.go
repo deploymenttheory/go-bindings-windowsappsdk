@@ -318,9 +318,9 @@ func (self *IVectorOfString) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// slot 16: GetMany skipped: string elements need per-element conversion
 
-// slot 17: ReplaceAll skipped: conformant array
+// slot 17: ReplaceAll skipped: string elements need per-element conversion
 
 // IVectorViewOfPickFileResult is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.Storage.Pickers.PickFileResult>.
 // IID: 76506627-d304-5763-86c2-d7fd3f17152b
@@ -353,7 +353,17 @@ func (self *IVectorViewOfPickFileResult) IndexOf(value *IPickFileResult, index *
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPickFileResult's vtable slot 9.
+func (self *IVectorViewOfPickFileResult) GetMany(startIndex uint32, items []*IPickFileResult) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfPickFolderResult is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.Windows.Storage.Pickers.PickFolderResult>.
 // IID: 400f8ae5-aa9a-5af2-96e6-978162ebdad5
@@ -386,7 +396,17 @@ func (self *IVectorViewOfPickFolderResult) IndexOf(value *IPickFolderResult, ind
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfPickFolderResult's vtable slot 9.
+func (self *IVectorViewOfPickFolderResult) GetMany(startIndex uint32, items []*IPickFolderResult) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfString is the WinRT interface Windows.Foundation.Collections.IVectorView`1<String>.
 // IID: 2f13c006-a03a-5f69-b090-75a43e33423e
@@ -427,4 +447,4 @@ func (self *IVectorViewOfString) IndexOf(value string, index *uint32) (bool, err
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: string elements need per-element conversion

@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	windowsai "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/ai"
 	windowsaicontentsafety "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/ai/contentsafety"
@@ -798,7 +799,17 @@ type ITextSummarizer3 struct {
 // IID_ITextSummarizer3 is the interface identifier for ITextSummarizer3.
 var IID_ITextSummarizer3 = win32.GUID{Data1: 0x493d32b9, Data2: 0xdbc9, Data3: 0x5d4b, Data4: [8]byte{0x80, 0x2f, 0x90, 0x47, 0x38, 0x50, 0x50, 0x0e}}
 
-// slot 6: IsPromptLargerThanContext skipped: conformant array
+// IsPromptLargerThanContext dispatches through ITextSummarizer3's vtable slot 6.
+func (self *ITextSummarizer3) IsPromptLargerThanContext(messages []*IConversationItem, options *IConversationSummaryOptions, cutoffPosition *uint64) (bool, error) {
+	_messagesSize := uintptr(len(messages))
+	_messagesData := uintptr(0)
+	if len(messages) > 0 {
+		_messagesData = uintptr(winrt.OutParam(unsafe.Pointer(&messages[0])))
+	}
+	result := new(byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _messagesSize, _messagesData, uintptr(unsafe.Pointer(options)), uintptr(winrt.OutParam(unsafe.Pointer(cutoffPosition))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result != 0, win32.ErrIfFailed(int32(r1))
+}
 
 // ITextSummarizer4 is the WinRT interface Microsoft.Windows.AI.Text.ITextSummarizer4.
 // IID: 5b7a28c0-7777-52e5-9934-b95b514cf535
@@ -888,7 +899,25 @@ type ITextToTableResponseResult struct {
 // IID_ITextToTableResponseResult is the interface identifier for ITextToTableResponseResult.
 var IID_ITextToTableResponseResult = win32.GUID{Data1: 0x391fbf11, Data2: 0x59cd, Data3: 0x575d, Data4: [8]byte{0x83, 0x4a, 0x9e, 0xf8, 0x23, 0x11, 0x6f, 0x98}}
 
-// slot 6: GetRows skipped: conformant array
+// GetRows dispatches through ITextToTableResponseResult's vtable slot 6.
+func (self *ITextToTableResponseResult) GetRows() ([]*ITextToTableRow, error) {
+	resultSize := new(uint32)
+	result := new(**ITextToTableRow)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*ITextToTableRow, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // Status (propget get_Status) dispatches through ITextToTableResponseResult's vtable slot 7.
 func (self *ITextToTableResponseResult) Status() (LanguageModelResponseStatus, error) {
@@ -914,4 +943,4 @@ type ITextToTableRow struct {
 // IID_ITextToTableRow is the interface identifier for ITextToTableRow.
 var IID_ITextToTableRow = win32.GUID{Data1: 0x036294fe, Data2: 0xe53c, Data3: 0x5e66, Data4: [8]byte{0x93, 0xd2, 0x7c, 0x92, 0x33, 0x8d, 0xb8, 0x81}}
 
-// slot 6: GetColumns skipped: conformant array
+// slot 6: GetColumns skipped: string elements need per-element conversion

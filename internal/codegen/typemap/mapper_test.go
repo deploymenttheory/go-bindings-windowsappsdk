@@ -326,17 +326,97 @@ func TestEventRegistrationTokenComesFromTheSharedFoundation(t *testing.T) {
 	}
 }
 
-// TestArraysAndGenericParametersDegrade covers the two IR kinds that have no Go
-// form at all.
-func TestArraysAndGenericParametersDegrade(t *testing.T) {
-	elem := wasdkmeta.TypeRef{Kind: "Native", Name: "I4"}
-	array, _ := resolve(t, wasdkmeta.TypeRef{Kind: "Array", Elem: &elem}, "Microsoft.UI.Xaml")
-	if array.Kind != KindUnsupported || !strings.HasPrefix(array.Reason, "array-param-skipped") {
-		t.Errorf("array resolved to %q / %q", array.GoType, array.Reason)
-	}
+// TestGenericParametersDegrade covers the IR kind that has no Go form at all.
+func TestGenericParametersDegrade(t *testing.T) {
 	param, _ := resolve(t, wasdkmeta.TypeRef{Kind: "GenericParamRef", Index: 0}, "Microsoft.UI.Xaml")
 	if param.Kind != KindUnsupported || !strings.HasPrefix(param.Reason, "generic-member-skipped") {
 		t.Errorf("generic parameter resolved to %q / %q", param.GoType, param.Reason)
+	}
+}
+
+// arrayOf builds a conformant-array TypeRef over the given element.
+func arrayOf(elem wasdkmeta.TypeRef) wasdkmeta.TypeRef {
+	return wasdkmeta.TypeRef{Kind: "Array", Elem: &elem}
+}
+
+// TestArraysResolveToSlices covers the element kinds whose Go representation is
+// byte-identical to the ABI form, which is what makes a direct slice view over the
+// callee's buffer sound. Anything not on this list has to be refused, not copied.
+func TestArraysResolveToSlices(t *testing.T) {
+	for _, check := range []struct {
+		what string
+		ref  wasdkmeta.TypeRef
+		want string
+	}{
+		{"scalar", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "I4"}), "[]int32"},
+		{"byte", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "U1"}), "[]byte"},
+		{"double", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "F64"}), "[]float64"},
+		{"GUID", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "Guid"}), "[]win32.GUID"},
+		{"Object", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "Object"}), "[]*syswinrt.IInspectable"},
+		{
+			"an emittable struct",
+			arrayOf(apiRef("Microsoft.UI.Xaml", "Thickness", "Struct", false)),
+			"[]Thickness",
+		},
+		{
+			"an external struct",
+			arrayOf(apiRef("Windows.Foundation", "Point", "Struct", true)),
+			"[]wrtfoundation.Point",
+		},
+		{
+			"an interface pointer",
+			arrayOf(apiRef("Microsoft.UI.Xaml", "IDependencyObject", "Interface", false)),
+			"[]*IDependencyObject",
+		},
+	} {
+		got, _ := resolve(t, check.ref, "Microsoft.UI.Xaml")
+		if got.Kind != KindArray {
+			t.Errorf("%s array resolved as kind %d (%s)", check.what, got.Kind, got.Reason)
+			continue
+		}
+		if got.GoType != check.want {
+			t.Errorf("%s array = %q, want %q", check.what, got.GoType, check.want)
+		}
+		// The lowering branches on the element, so it has to be carried through.
+		if got.Elem == nil {
+			t.Errorf("%s array carries no resolved element", check.what)
+		}
+	}
+}
+
+// TestArrayElementsNeedingConversionAreRefused is the safety half. An HSTRING is a
+// handle and a WinRT boolean is one byte with no guarantee it is 0 or 1, so a direct
+// slice view over either would reinterpret the bytes as something they are not — and
+// it would compile and run. Refusing is the only correct answer until per-element
+// conversion exists.
+func TestArrayElementsNeedingConversionAreRefused(t *testing.T) {
+	for _, check := range []struct {
+		what string
+		ref  wasdkmeta.TypeRef
+	}{
+		{"HSTRING", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "HString"})},
+		{"Bool", arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "Bool"})},
+		{"a nested array", arrayOf(arrayOf(wasdkmeta.TypeRef{Kind: "Native", Name: "I4"}))},
+		{"an unresolved element", arrayOf(apiRef("Microsoft.Nope", "IGone", "Interface", false))},
+	} {
+		got, imports := resolve(t, check.ref, "Microsoft.UI.Xaml")
+		if got.Kind != KindUnsupported {
+			t.Errorf("an array of %s resolved to %q", check.what, got.GoType)
+			continue
+		}
+		if !strings.HasPrefix(got.Reason, "array-element-skipped") {
+			t.Errorf("array of %s: reason = %q, want array-element-skipped", check.what, got.Reason)
+		}
+		// A refused element must leave no import behind: the member is skipped, so an
+		// import recorded for it would be unused and would not compile.
+		if len(imports) != 0 {
+			t.Errorf("array of %s recorded imports despite being refused: %v", check.what, imports)
+		}
+	}
+	// An array with no element at all is malformed metadata, not a conversion gap.
+	got, _ := resolve(t, wasdkmeta.TypeRef{Kind: "Array"}, "Microsoft.UI.Xaml")
+	if got.Kind != KindUnsupported {
+		t.Errorf("an elementless array resolved to %q", got.GoType)
 	}
 }
 

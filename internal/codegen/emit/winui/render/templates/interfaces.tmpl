@@ -26,6 +26,9 @@ func (self *{{$.TypeName}}) {{.GoName}}({{.ParamStr}}) {{.ReturnSig}} {
 {{- range .Preamble}}
 	{{.}}
 {{- end}}
+{{- if .ResultSizeDecl}}
+	{{.ResultSizeDecl}}
+{{- end}}
 {{- if .ResultDecl}}
 	{{.ResultDecl}}
 {{- end}}
@@ -37,6 +40,20 @@ func (self *{{$.TypeName}}) {{.GoName}}({{.ParamStr}}) {{.ReturnSig}} {
 		return {{.ZeroReturn}}, err
 	}
 	return {{.ResultExpr}}, nil
+{{- else if eq .ReturnKind 3}}
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return {{.ZeroReturn}}, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]{{.ResultElemType}}, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
 {{- else}}
 	return {{.ResultExpr}}, win32.ErrIfFailed(int32(r1))
 {{- end}}

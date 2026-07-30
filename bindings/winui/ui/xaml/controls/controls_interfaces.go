@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui"
 	uicomposition "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/composition"
@@ -16055,11 +16056,38 @@ func (self *ILinedFlowLayoutItemsInfoRequestedEventArgs) SetMaxWidth(value float
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 13: SetDesiredAspectRatios skipped: conformant array
+// SetDesiredAspectRatios dispatches through ILinedFlowLayoutItemsInfoRequestedEventArgs's vtable slot 13.
+func (self *ILinedFlowLayoutItemsInfoRequestedEventArgs) SetDesiredAspectRatios(values []float64) error {
+	_valuesSize := uintptr(len(values))
+	_valuesData := uintptr(0)
+	if len(values) > 0 {
+		_valuesData = uintptr(winrt.OutParam(unsafe.Pointer(&values[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[13], uintptr(unsafe.Pointer(self)), _valuesSize, _valuesData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 14: SetMinWidths skipped: conformant array
+// SetMinWidths dispatches through ILinedFlowLayoutItemsInfoRequestedEventArgs's vtable slot 14.
+func (self *ILinedFlowLayoutItemsInfoRequestedEventArgs) SetMinWidths(values []float64) error {
+	_valuesSize := uintptr(len(values))
+	_valuesData := uintptr(0)
+	if len(values) > 0 {
+		_valuesData = uintptr(winrt.OutParam(unsafe.Pointer(&values[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[14], uintptr(unsafe.Pointer(self)), _valuesSize, _valuesData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
-// slot 15: SetMaxWidths skipped: conformant array
+// SetMaxWidths dispatches through ILinedFlowLayoutItemsInfoRequestedEventArgs's vtable slot 15.
+func (self *ILinedFlowLayoutItemsInfoRequestedEventArgs) SetMaxWidths(values []float64) error {
+	_valuesSize := uintptr(len(values))
+	_valuesData := uintptr(0)
+	if len(values) > 0 {
+		_valuesData = uintptr(winrt.OutParam(unsafe.Pointer(&values[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[15], uintptr(unsafe.Pointer(self)), _valuesSize, _valuesData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ILinedFlowLayoutStatics is the WinRT interface Microsoft.UI.Xaml.Controls.ILinedFlowLayoutStatics.
 // IID: e5ed0928-228f-5a4e-8011-bd9cda24dca2
@@ -33511,9 +33539,45 @@ type ITabViewExternalTornOutTabsDroppedEventArgs struct {
 // IID_ITabViewExternalTornOutTabsDroppedEventArgs is the interface identifier for ITabViewExternalTornOutTabsDroppedEventArgs.
 var IID_ITabViewExternalTornOutTabsDroppedEventArgs = win32.GUID{Data1: 0x69912428, Data2: 0x34d9, Data3: 0x5aac, Data4: [8]byte{0x85, 0xb7, 0xa9, 0x1d, 0x71, 0xc1, 0x33, 0xaa}}
 
-// slot 6: get_Items skipped: conformant array
+// Items (propget get_Items) dispatches through ITabViewExternalTornOutTabsDroppedEventArgs's vtable slot 6.
+func (self *ITabViewExternalTornOutTabsDroppedEventArgs) Items() ([]*syswinrt.IInspectable, error) {
+	resultSize := new(uint32)
+	result := new(**syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*syswinrt.IInspectable, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 7: get_Tabs skipped: conformant array
+// Tabs (propget get_Tabs) dispatches through ITabViewExternalTornOutTabsDroppedEventArgs's vtable slot 7.
+func (self *ITabViewExternalTornOutTabsDroppedEventArgs) Tabs() ([]*uixaml.IUIElement, error) {
+	resultSize := new(uint32)
+	result := new(**uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*uixaml.IUIElement, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // DropIndex (propget get_DropIndex) dispatches through ITabViewExternalTornOutTabsDroppedEventArgs's vtable slot 8.
 func (self *ITabViewExternalTornOutTabsDroppedEventArgs) DropIndex() (int32, error) {
@@ -33532,9 +33596,45 @@ type ITabViewExternalTornOutTabsDroppingEventArgs struct {
 // IID_ITabViewExternalTornOutTabsDroppingEventArgs is the interface identifier for ITabViewExternalTornOutTabsDroppingEventArgs.
 var IID_ITabViewExternalTornOutTabsDroppingEventArgs = win32.GUID{Data1: 0xb2378908, Data2: 0xc5d7, Data3: 0x560e, Data4: [8]byte{0xa2, 0xe2, 0x46, 0x40, 0x3e, 0x13, 0xe5, 0xad}}
 
-// slot 6: get_Items skipped: conformant array
+// Items (propget get_Items) dispatches through ITabViewExternalTornOutTabsDroppingEventArgs's vtable slot 6.
+func (self *ITabViewExternalTornOutTabsDroppingEventArgs) Items() ([]*syswinrt.IInspectable, error) {
+	resultSize := new(uint32)
+	result := new(**syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*syswinrt.IInspectable, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 7: get_Tabs skipped: conformant array
+// Tabs (propget get_Tabs) dispatches through ITabViewExternalTornOutTabsDroppingEventArgs's vtable slot 7.
+func (self *ITabViewExternalTornOutTabsDroppingEventArgs) Tabs() ([]*uixaml.IUIElement, error) {
+	resultSize := new(uint32)
+	result := new(**uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*uixaml.IUIElement, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // DropIndex (propget get_DropIndex) dispatches through ITabViewExternalTornOutTabsDroppingEventArgs's vtable slot 8.
 func (self *ITabViewExternalTornOutTabsDroppingEventArgs) DropIndex() (int32, error) {
@@ -34115,9 +34215,45 @@ type ITabViewTabTearOutRequestedEventArgs struct {
 // IID_ITabViewTabTearOutRequestedEventArgs is the interface identifier for ITabViewTabTearOutRequestedEventArgs.
 var IID_ITabViewTabTearOutRequestedEventArgs = win32.GUID{Data1: 0xe8a0c441, Data2: 0x66c5, Data3: 0x578a, Data4: [8]byte{0x81, 0x77, 0x47, 0xdf, 0xff, 0xb9, 0x7b, 0x83}}
 
-// slot 6: get_Items skipped: conformant array
+// Items (propget get_Items) dispatches through ITabViewTabTearOutRequestedEventArgs's vtable slot 6.
+func (self *ITabViewTabTearOutRequestedEventArgs) Items() ([]*syswinrt.IInspectable, error) {
+	resultSize := new(uint32)
+	result := new(**syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*syswinrt.IInspectable, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 7: get_Tabs skipped: conformant array
+// Tabs (propget get_Tabs) dispatches through ITabViewTabTearOutRequestedEventArgs's vtable slot 7.
+func (self *ITabViewTabTearOutRequestedEventArgs) Tabs() ([]*uixaml.IUIElement, error) {
+	resultSize := new(uint32)
+	result := new(**uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*uixaml.IUIElement, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // NewWindowId (propget get_NewWindowId) dispatches through ITabViewTabTearOutRequestedEventArgs's vtable slot 8.
 func (self *ITabViewTabTearOutRequestedEventArgs) NewWindowId() (ui.WindowId, error) {
@@ -34136,9 +34272,45 @@ type ITabViewTabTearOutWindowRequestedEventArgs struct {
 // IID_ITabViewTabTearOutWindowRequestedEventArgs is the interface identifier for ITabViewTabTearOutWindowRequestedEventArgs.
 var IID_ITabViewTabTearOutWindowRequestedEventArgs = win32.GUID{Data1: 0x0c13afa7, Data2: 0xf291, Data3: 0x5bac, Data4: [8]byte{0xa6, 0xe8, 0xcc, 0x67, 0xa6, 0x9b, 0x04, 0xc9}}
 
-// slot 6: get_Items skipped: conformant array
+// Items (propget get_Items) dispatches through ITabViewTabTearOutWindowRequestedEventArgs's vtable slot 6.
+func (self *ITabViewTabTearOutWindowRequestedEventArgs) Items() ([]*syswinrt.IInspectable, error) {
+	resultSize := new(uint32)
+	result := new(**syswinrt.IInspectable)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*syswinrt.IInspectable, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
-// slot 7: get_Tabs skipped: conformant array
+// Tabs (propget get_Tabs) dispatches through ITabViewTabTearOutWindowRequestedEventArgs's vtable slot 7.
+func (self *ITabViewTabTearOutWindowRequestedEventArgs) Tabs() ([]*uixaml.IUIElement, error) {
+	resultSize := new(uint32)
+	result := new(**uixaml.IUIElement)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*uixaml.IUIElement, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // NewWindowId (propget get_NewWindowId) dispatches through ITabViewTabTearOutWindowRequestedEventArgs's vtable slot 8.
 func (self *ITabViewTabTearOutWindowRequestedEventArgs) NewWindowId() (ui.WindowId, error) {

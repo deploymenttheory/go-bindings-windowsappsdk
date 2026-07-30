@@ -1,6 +1,6 @@
 {
   "namespace": "Microsoft.Windows.AppLifecycle",
-  "schema_version": 2,
+  "schema_version": 3,
   "winmd_version": "2.3.5",
   "winmd_file": "Microsoft.Windows.AppLifecycle.winmd",
   "enums": {

@@ -60,7 +60,16 @@ func (self *IImageBuffer) RowStride() (int32, error) {
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 11: CopyToByteArray skipped: conformant array
+// CopyToByteArray dispatches through IImageBuffer's vtable slot 11.
+func (self *IImageBuffer) CopyToByteArray(values []byte) error {
+	_valuesSize := uintptr(len(values))
+	_valuesData := uintptr(0)
+	if len(values) > 0 {
+		_valuesData = uintptr(winrt.OutParam(unsafe.Pointer(&values[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[11], uintptr(unsafe.Pointer(self)), _valuesSize, _valuesData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // CopyToSoftwareBitmap dispatches through IImageBuffer's vtable slot 12.
 func (self *IImageBuffer) CopyToSoftwareBitmap() (*wrtgraphicsimaging.ISoftwareBitmap, error) {

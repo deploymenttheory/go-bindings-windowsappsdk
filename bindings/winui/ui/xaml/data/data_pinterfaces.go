@@ -80,7 +80,17 @@ func (self *IIteratorOfObject) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfObject's vtable slot 9.
+func (self *IIteratorOfObject) GetMany(items []*syswinrt.IInspectable) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IObservableVectorOfObject is the WinRT interface Windows.Foundation.Collections.IObservableVector`1<Object>.
 // IID: 7b81c56a-0985-518d-baa9-0da9ae009f65
@@ -127,4 +137,14 @@ func (self *IVectorViewOfItemIndexRange) IndexOf(value *IItemIndexRange, index *
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfItemIndexRange's vtable slot 9.
+func (self *IVectorViewOfItemIndexRange) GetMany(startIndex uint32, items []*IItemIndexRange) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

@@ -3829,7 +3829,16 @@ type ICompositionVirtualDrawingSurface struct {
 // IID_ICompositionVirtualDrawingSurface is the interface identifier for ICompositionVirtualDrawingSurface.
 var IID_ICompositionVirtualDrawingSurface = win32.GUID{Data1: 0xd741b99d, Data2: 0xe248, Data3: 0x5ba7, Data4: [8]byte{0xb7, 0x28, 0x8b, 0xee, 0xa5, 0x3f, 0xe2, 0x8e}}
 
-// slot 6: Trim skipped: conformant array
+// Trim dispatches through ICompositionVirtualDrawingSurface's vtable slot 6.
+func (self *ICompositionVirtualDrawingSurface) Trim(rects []wrtgraphics.RectInt32) error {
+	_rectsSize := uintptr(len(rects))
+	_rectsData := uintptr(0)
+	if len(rects) > 0 {
+		_rectsData = uintptr(winrt.OutParam(unsafe.Pointer(&rects[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _rectsSize, _rectsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // ICompositionVirtualDrawingSurfaceFactory is the WinRT interface Microsoft.UI.Composition.ICompositionVirtualDrawingSurfaceFactory.
 // IID: 85895891-3f06-52e2-b5ea-d1fb595f6574

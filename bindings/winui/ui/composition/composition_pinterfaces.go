@@ -177,7 +177,17 @@ func (self *IIteratorOfCompositionAnimation) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfCompositionAnimation's vtable slot 9.
+func (self *IIteratorOfCompositionAnimation) GetMany(items []*ICompositionAnimation) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfCompositionColorGradientStop is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.CompositionColorGradientStop>.
 // IID: 5865f61c-2bca-5f80-968a-8e06bdc28cb0
@@ -209,7 +219,17 @@ func (self *IIteratorOfCompositionColorGradientStop) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfCompositionColorGradientStop's vtable slot 9.
+func (self *IIteratorOfCompositionColorGradientStop) GetMany(items []*ICompositionColorGradientStop) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfCompositionProjectedShadowCaster is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.CompositionProjectedShadowCaster>.
 // IID: 1ac58905-0d81-581d-b718-801297568ec1
@@ -241,7 +261,17 @@ func (self *IIteratorOfCompositionProjectedShadowCaster) MoveNext() (bool, error
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfCompositionProjectedShadowCaster's vtable slot 9.
+func (self *IIteratorOfCompositionProjectedShadowCaster) GetMany(items []*ICompositionProjectedShadowCaster) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfCompositionProjectedShadowReceiver is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.CompositionProjectedShadowReceiver>.
 // IID: d0a7e89f-a01e-5c64-bf5e-37d03eaea320
@@ -273,7 +303,17 @@ func (self *IIteratorOfCompositionProjectedShadowReceiver) MoveNext() (bool, err
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfCompositionProjectedShadowReceiver's vtable slot 9.
+func (self *IIteratorOfCompositionProjectedShadowReceiver) GetMany(items []*ICompositionProjectedShadowReceiver) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase is the WinRT interface Windows.Foundation.Collections.IIterator`1<Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>>.
 // IID: d7585c8c-8ac4-575f-8a96-0de9c3159ea9
@@ -305,7 +345,17 @@ func (self *IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase) MoveNe
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase's vtable slot 9.
+func (self *IIteratorOfIKeyValuePairOfStringAndICompositionAnimationBase) GetMany(items []*IKeyValuePairOfStringAndICompositionAnimationBase) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IIteratorOfString is the WinRT interface Windows.Foundation.Collections.IIterator`1<String>.
 // IID: 8c304ebb-6615-50a4-8829-879ecd443236
@@ -340,7 +390,7 @@ func (self *IIteratorOfString) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// slot 9: GetMany skipped: string elements need per-element conversion
 
 // IIteratorOfVisual is the WinRT interface Windows.Foundation.Collections.IIterator`1<Microsoft.UI.Composition.Visual>.
 // IID: 44b22f94-798f-5841-bb05-0d1aaa22f668
@@ -372,7 +422,17 @@ func (self *IIteratorOfVisual) MoveNext() (bool, error) {
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IIteratorOfVisual's vtable slot 9.
+func (self *IIteratorOfVisual) GetMany(items []*IVisual) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IKeyValuePairOfStringAndICompositionAnimationBase is the WinRT interface Windows.Foundation.Collections.IKeyValuePair`2<String, Microsoft.UI.Composition.ICompositionAnimationBase>.
 // IID: e1ea9d61-0e9e-5375-ac74-502e67f9ede1
@@ -649,9 +709,28 @@ func (self *IVectorOfCompositionColorGradientStop) Clear() error {
 	return win32.ErrIfFailed(int32(r1))
 }
 
-// slot 16: GetMany skipped: conformant array
+// GetMany dispatches through IVectorOfCompositionColorGradientStop's vtable slot 16.
+func (self *IVectorOfCompositionColorGradientStop) GetMany(startIndex uint32, items []*ICompositionColorGradientStop) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[16], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
-// slot 17: ReplaceAll skipped: conformant array
+// ReplaceAll dispatches through IVectorOfCompositionColorGradientStop's vtable slot 17.
+func (self *IVectorOfCompositionColorGradientStop) ReplaceAll(items []*ICompositionColorGradientStop) error {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[17], uintptr(unsafe.Pointer(self)), _itemsSize, _itemsData)
+	return win32.ErrIfFailed(int32(r1))
+}
 
 // IVectorViewOfCompositionColorGradientStop is the WinRT interface Windows.Foundation.Collections.IVectorView`1<Microsoft.UI.Composition.CompositionColorGradientStop>.
 // IID: b3f66d8c-130e-52d4-803e-5305519d5056
@@ -684,4 +763,14 @@ func (self *IVectorViewOfCompositionColorGradientStop) IndexOf(value *ICompositi
 	return *result != 0, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 9: GetMany skipped: conformant array
+// GetMany dispatches through IVectorViewOfCompositionColorGradientStop's vtable slot 9.
+func (self *IVectorViewOfCompositionColorGradientStop) GetMany(startIndex uint32, items []*ICompositionColorGradientStop) (uint32, error) {
+	_itemsSize := uintptr(len(items))
+	_itemsData := uintptr(0)
+	if len(items) > 0 {
+		_itemsData = uintptr(winrt.OutParam(unsafe.Pointer(&items[0])))
+	}
+	result := new(uint32)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[9], uintptr(unsafe.Pointer(self)), uintptr(startIndex), _itemsSize, _itemsData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}

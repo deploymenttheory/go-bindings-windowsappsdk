@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	windowswidgetsnotifications "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/windows/widgets/notifications"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
@@ -257,7 +258,25 @@ type IFeedManager struct {
 // IID_IFeedManager is the interface identifier for IFeedManager.
 var IID_IFeedManager = win32.GUID{Data1: 0x87df6a84, Data2: 0x15aa, Data3: 0x45cb, Data4: [8]byte{0x89, 0x11, 0x5c, 0xaf, 0xab, 0x57, 0xf7, 0x23}}
 
-// slot 6: GetEnabledFeedProviders skipped: conformant array
+// GetEnabledFeedProviders dispatches through IFeedManager's vtable slot 6.
+func (self *IFeedManager) GetEnabledFeedProviders() ([]*IFeedProviderInfo, error) {
+	resultSize := new(uint32)
+	result := new(**IFeedProviderInfo)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]*IFeedProviderInfo, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // SetCustomQueryParameters dispatches through IFeedManager's vtable slot 7.
 func (self *IFeedManager) SetCustomQueryParameters(options *ICustomQueryParametersUpdateOptions) error {
@@ -527,7 +546,7 @@ func (self *IFeedProviderInfo) FeedProviderDefinitionId() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 7: get_EnabledFeedDefinitionIds skipped: conformant array
+// slot 7: get_EnabledFeedDefinitionIds skipped: string elements need per-element conversion
 
 // IFeedProviderMessage is the WinRT interface Microsoft.Windows.Widgets.Feeds.Providers.IFeedProviderMessage.
 // IID: 60c2442a-4c9d-4880-ba26-caca9e567dd4

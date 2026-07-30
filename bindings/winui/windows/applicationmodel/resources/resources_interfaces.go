@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
@@ -134,7 +135,25 @@ func (self *IResourceCandidate) ValueAsString() (string, error) {
 	return winrt.TakeHString(*result), nil
 }
 
-// slot 7: get_ValueAsBytes skipped: conformant array
+// ValueAsBytes (propget get_ValueAsBytes) dispatches through IResourceCandidate's vtable slot 7.
+func (self *IResourceCandidate) ValueAsBytes() ([]byte, error) {
+	resultSize := new(uint32)
+	result := new(*byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]byte, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // Kind (propget get_Kind) dispatches through IResourceCandidate's vtable slot 8.
 func (self *IResourceCandidate) Kind() (ResourceCandidateKind, error) {
@@ -172,7 +191,17 @@ func (self *IResourceCandidateFactory) CreateInstance(kind ResourceCandidateKind
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 7: CreateInstance2 skipped: conformant array
+// CreateInstance2 dispatches through IResourceCandidateFactory's vtable slot 7.
+func (self *IResourceCandidateFactory) CreateInstance2(data []byte) (*IResourceCandidate, error) {
+	_dataSize := uintptr(len(data))
+	_dataData := uintptr(0)
+	if len(data) > 0 {
+		_dataData = uintptr(winrt.OutParam(unsafe.Pointer(&data[0])))
+	}
+	result := new(*IResourceCandidate)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), _dataSize, _dataData, uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	return *result, win32.ErrIfFailed(int32(r1))
+}
 
 // IResourceContext is the WinRT interface Microsoft.Windows.ApplicationModel.Resources.IResourceContext.
 // IID: 96fb48dc-f77d-55ff-af12-34861e3d4939
