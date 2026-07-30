@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
@@ -569,7 +570,25 @@ func (self *IXamlMetadataProvider) GetXamlTypeByFullName(fullName string) (*IXam
 	return *result, win32.ErrIfFailed(int32(r1))
 }
 
-// slot 8: GetXmlnsDefinitions skipped: element: skipped-struct-ref: reference to skipped struct Microsoft.UI.Xaml.Markup.XmlnsDefinition
+// GetXmlnsDefinitions dispatches through IXamlMetadataProvider's vtable slot 8.
+func (self *IXamlMetadataProvider) GetXmlnsDefinitions() ([]XmlnsDefinition, error) {
+	resultSize := new(uint32)
+	result := new(*XmlnsDefinition)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[8], uintptr(unsafe.Pointer(self)), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]XmlnsDefinition, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}
 
 // IXamlReader is the WinRT interface Microsoft.UI.Xaml.Markup.IXamlReader.
 // IID: 54ce54c8-38c6-50d9-ac98-4b03eddbde9f

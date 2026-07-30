@@ -348,13 +348,22 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 			noteLines = append(noteLines, "Parameter "+paramName+"'s "+resolved.Note+".")
 		}
 		if param.Out {
-			decl, preamble, args, skipped := lowerOutParam(paramName, param, resolved, paramNames)
+			decl, preamble, args, skipped, postamble := lowerOutParam(paramName, param, resolved, paramNames)
 			if skipped != nil {
 				return view.MethodModel{}, skipped
+			}
+			// A postamble runs inside the success path, and the RetArray body already
+			// owns that path to copy out of and free the callee's buffer. No member in
+			// the metadata needs both, so the combination is refused rather than
+			// given an untested body shape.
+			if len(postamble) > 0 && model.ReturnKind == view.RetArray {
+				return view.MethodModel{}, &skip{key: "out-param-skipped",
+					detail: fmt.Sprintf("%s needs a conversion alongside an array return", paramName)}
 			}
 			decls = append(decls, decl)
 			model.Preamble = append(model.Preamble, preamble...)
 			model.ArgExprs = append(model.ArgExprs, args...)
+			model.Postamble = append(model.Postamble, postamble...)
 			continue
 		}
 		decl, preamble, args, skipped := g.lowerInParam(paramName, param, resolved, paramNames, errReturn)
@@ -391,12 +400,18 @@ func (g *Generator) buildMethod(meta *wasdkmeta.NamespaceMeta, interfaceGoName s
 // what is needed.
 //
 // Returns the argument WORDS, plural: an array parameter occupies two.
-func lowerOutParam(paramName string, param *wasdkmeta.Param, resolved typemap.Resolved, taken map[string]bool) (decl string, preamble []string, args []string, skipped *skip) {
+func lowerOutParam(paramName string, param *wasdkmeta.Param, resolved typemap.Resolved, taken map[string]bool) (decl string, preamble []string, args []string, skipped *skip, postamble []string) {
 	switch resolved.Kind {
 	case typemap.KindScalar, typemap.KindEnum, typemap.KindStruct, typemap.KindGUID,
-		typemap.KindInterfacePtr, typemap.KindObjectPtr:
+		typemap.KindFloat, typemap.KindInterfacePtr, typemap.KindObjectPtr:
+		// KindFloat belongs here for the same reason it needs no special handling as a
+		// return: an [out] parameter is a POINTER the callee writes through, so a
+		// float32 crosses through memory and never through XMM0. Only a by-value float
+		// PARAMETER needs its bit pattern taken. Leaving it out cost
+		// ICompositionPropertySet.TryGetScalar while every TryGetVector3 beside it
+		// worked, which is what made the omission visible.
 		return paramName + " *" + resolved.GoType, nil,
-			[]string{"uintptr(winrt.OutParam(unsafe.Pointer(" + paramName + ")))"}, nil
+			[]string{"uintptr(winrt.OutParam(unsafe.Pointer(" + paramName + ")))"}, nil, nil
 
 	case typemap.KindArray:
 		if param.ByRef {
@@ -409,22 +424,52 @@ func lowerOutParam(paramName string, param *wasdkmeta.Param, resolved typemap.Re
 			// than lower it as a fill array, which would hand the callee a count
 			// where it expects a pointer.
 			return "", nil, nil, &skip{key: "array-receive-param-skipped",
-				detail: fmt.Sprintf("%s is a callee-allocated array; only fill arrays are lowered", paramName)}
+				detail: fmt.Sprintf("%s is a callee-allocated array; only fill arrays are lowered", paramName)}, nil
 		}
 		// A non-byref [out] array is a FILL array: the CALLER allocates and the
 		// callee writes into it. The lowering is identical to an input array — the
 		// difference is only who writes, which the doc comment records.
-		return lowerArrayWords(paramName, resolved, taken)
+		decl, preamble, args, skipped = lowerArrayWords(paramName, resolved, taken)
+		return decl, preamble, args, skipped, nil
 
-	case typemap.KindString, typemap.KindBool:
-		// An HSTRING out-param transfers ownership and a WinRT boolean is one byte
-		// where Go's bool is one byte but not guaranteed 0/1 — both need a
-		// conversion wrapper this wave does not emit.
-		return "", nil, nil, &skip{key: "out-param-skipped",
-			detail: fmt.Sprintf("%s out parameter %s is not lowered this wave", resolved.GoType, paramName)}
+	case typemap.KindString:
+		// The ABI slot is an HSTRING the callee allocates and hands to the caller. The
+		// caller's Go variable is a *string, so a raw slot is declared beside it and
+		// converted after the call by winrt.TakeHString, which takes ownership and
+		// deletes the handle — the same conversion an HSTRING RETURN already uses.
+		//
+		// Exposing the handle instead was the alternative, and it is a worse API: an
+		// out HSTRING transfers ownership, so a caller who merely reads it leaks the
+		// string, and nothing about the signature would say so.
+		raw := rawLocal(paramName, taken)
+		return paramName + " *string",
+			[]string{raw + " := new(syswinrt.HSTRING)"},
+			[]string{"uintptr(winrt.OutParam(unsafe.Pointer(" + raw + ")))"},
+			nil, []string{"*" + paramName + " = winrt.TakeHString(*" + raw + ")"}
+
+	case typemap.KindBool:
+		// A WinRT boolean is one byte, and nothing guarantees it is 0 or 1 — so it
+		// cannot be received into a *bool directly, which would let a stray byte become
+		// a Go bool that is neither true nor false in comparisons.
+		raw := rawLocal(paramName, taken)
+		return paramName + " *bool",
+			[]string{raw + " := new(byte)"},
+			[]string{"uintptr(winrt.OutParam(unsafe.Pointer(" + raw + ")))"},
+			nil, []string{"*" + paramName + " = *" + raw + " != 0"}
 	}
 	return "", nil, nil, &skip{key: "out-param-skipped",
-		detail: fmt.Sprintf("out parameter %s not representable", paramName)}
+		detail: fmt.Sprintf("out parameter %s not representable", paramName)}, nil
+}
+
+// rawLocal names the raw ABI slot declared beside a converted out-parameter, keeping
+// it distinct from every parameter name already in scope.
+func rawLocal(paramName string, taken map[string]bool) string {
+	name := "_" + paramName + "Raw"
+	for taken[name] {
+		name += "_"
+	}
+	taken[name] = true
+	return name
 }
 
 // lowerArrayWords lowers a slice parameter to the WinRT conformant-array pair: a

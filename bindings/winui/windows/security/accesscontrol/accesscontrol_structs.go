@@ -4,6 +4,21 @@
 
 package accesscontrol
 
+import (
+	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+)
+
 // AccessControlContract is Microsoft.Windows.Security.AccessControl.AccessControlContract.
 type AccessControlContract struct {
+}
+
+// AppContainerNameAndAccess is Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess.
+//
+// AppContainerName is an HSTRING handle, not a Go string. A struct crosses the ABI as a
+// block of bytes, and there is no boundary inside one at which a conversion could
+// run. Build a handle with winrt.NewHString and release it when the struct is done
+// with it; take ownership of one the callee wrote with winrt.TakeHString.
+type AppContainerNameAndAccess struct {
+	AppContainerName syswinrt.HSTRING
+	AccessMask       uint32
 }

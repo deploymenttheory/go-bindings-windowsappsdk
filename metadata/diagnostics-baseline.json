@@ -2,12 +2,9 @@
   "entries": [
     "array-element-skipped: Microsoft.UI.Xaml.Automation.Provider.IDragProvider.get_DropEffects (string elements need per-element conversion)",
     "array-element-skipped: Microsoft.UI.Xaml.Automation.Provider.IDropTargetProvider.get_DropEffects (string elements need per-element conversion)",
-    "array-element-skipped: Microsoft.UI.Xaml.Markup.IXamlMetadataProvider.GetXmlnsDefinitions (element: skipped-struct-ref: reference to skipped struct Microsoft.UI.Xaml.Markup.XmlnsDefinition)",
     "array-element-skipped: Microsoft.Windows.AI.Text.ITextToTableRow.GetColumns (string elements need per-element conversion)",
     "array-element-skipped: Microsoft.Windows.AppLifecycle.IActivationRegistrationManagerStatics.RegisterForFileTypeActivation (string elements need per-element conversion)",
     "array-element-skipped: Microsoft.Windows.AppLifecycle.IActivationRegistrationManagerStatics.UnregisterForFileTypeActivation (string elements need per-element conversion)",
-    "array-element-skipped: Microsoft.Windows.Security.AccessControl.ISecurityDescriptorHelpersStatics.GetSddlForAppContainerNames (element: skipped-struct-ref: reference to skipped struct Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess)",
-    "array-element-skipped: Microsoft.Windows.Security.AccessControl.ISecurityDescriptorHelpersStatics.GetSecurityDescriptorBytesFromAppContainerNames (element: skipped-struct-ref: reference to skipped struct Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess)",
     "array-element-skipped: Microsoft.Windows.Widgets.Feeds.Providers.IFeedProviderInfo.get_EnabledFeedDefinitionIds (string elements need per-element conversion)",
     "array-element-skipped: Microsoft.Windows.Widgets.Providers.IWidgetManager.GetWidgetIds (string elements need per-element conversion)",
     "array-element-skipped: Windows.Foundation.Collections.IIterator`1\u003cString\u003e.GetMany (string elements need per-element conversion)",
@@ -142,15 +139,6 @@
     "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.AI.AIFeatureReadyResult, Double\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)",
     "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.Management.Deployment.PackageDeploymentResult, Microsoft.Windows.Management.Deployment.PackageDeploymentProgress\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)",
     "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.PushNotifications.PushNotificationCreateChannelResult, Microsoft.Windows.PushNotifications.PushNotificationCreateChannelStatus\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)",
-    "out-param-skipped: Microsoft.UI.Composition.ICompositionPropertySet.TryGetScalar (out parameter value not representable)",
-    "out-param-skipped: Microsoft.UI.Composition.ICompositionPropertySet2.TryGetBoolean (bool out parameter value is not lowered this wave)",
-    "out-param-skipped: Microsoft.UI.Text.ITextDocument.GetText (string out parameter value is not lowered this wave)",
-    "out-param-skipped: Microsoft.UI.Text.ITextDocument2.GetMathML (string out parameter value is not lowered this wave)",
-    "out-param-skipped: Microsoft.UI.Text.ITextParagraphFormat.GetTab (out parameter position not representable)",
-    "out-param-skipped: Microsoft.UI.Text.ITextRange.GetText (string out parameter value is not lowered this wave)",
-    "out-param-skipped: Microsoft.UI.Xaml.Automation.Provider.ITextProvider2.GetCaretRange (bool out parameter isActive is not lowered this wave)",
-    "out-param-skipped: Microsoft.UI.Xaml.Controls.IItemContainerGenerator.GenerateNext (bool out parameter isNewlyRealized is not lowered this wave)",
-    "out-param-skipped: Microsoft.UI.Xaml.Controls.Primitives.IScrollSnapPointsInfo.GetRegularSnapPoints (out parameter offset not representable)",
     "skipped-struct-ref: Microsoft.UI.Xaml.Controls.IControlTemplate.get_TargetType (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
     "skipped-struct-ref: Microsoft.UI.Xaml.Controls.IControlTemplate.put_TargetType (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
     "skipped-struct-ref: Microsoft.UI.Xaml.Controls.IFrame.Navigate (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
@@ -181,8 +169,6 @@
     "skipped-struct-ref: Microsoft.UI.Xaml.Navigation.INavigationEventArgs.get_SourcePageType (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
     "skipped-struct-ref: Microsoft.UI.Xaml.Navigation.INavigationFailedEventArgs.get_SourcePageType (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
     "skipped-struct-ref: Microsoft.UI.Xaml.Navigation.IPageStackEntry.get_SourcePageType (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
-    "skipped-struct-ref: Microsoft.UI.Xaml.Navigation.IPageStackEntryFactory.CreateInstance (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)",
-    "struct-skipped: Microsoft.UI.Xaml.Markup.XmlnsDefinition has a field that cannot be represented",
-    "struct-skipped: Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess has a field that cannot be represented"
+    "skipped-struct-ref: Microsoft.UI.Xaml.Navigation.IPageStackEntryFactory.CreateInstance (reference to skipped struct Windows.UI.Xaml.Interop.TypeName)"
   ]
 }

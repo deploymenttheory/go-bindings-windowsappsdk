@@ -60,6 +60,10 @@ type Set struct {
 	Version string
 	// Dir is the directory the metadata was read from.
 	Dir string
+	// Root is the module directory, of which Dir is a subdirectory. Needed because
+	// the metadata says what that module COULD emit and only its emitted source says
+	// what it did — see typemap.Mapper.ExternalDeclares.
+	Root string
 
 	byNamespace map[string]*wasdkmeta.NamespaceMeta
 	kinds       map[string]string
@@ -78,26 +82,33 @@ type Set struct {
 // and with a vendor directory, and getting it wrong would silently resolve
 // against the wrong version of the bindings.
 func Locate() (dir, version string, err error) {
+	dir, _, version, err = locate()
+	return dir, version, err
+}
+
+// locate also returns the module root, which Locate's two callers outside this
+// package do not need.
+func locate() (dir, root, version string, err error) {
 	output, err := exec.Command("go", "list", "-m", "-f", "{{.Version}}\t{{.Dir}}", ModulePath).Output()
 	if err != nil {
-		return "", "", fmt.Errorf("external: locating %s (run 'go mod download'): %w", ModulePath, err)
+		return "", "", "", fmt.Errorf("external: locating %s (run 'go mod download'): %w", ModulePath, err)
 	}
-	version, dir, found := strings.Cut(strings.TrimSpace(string(output)), "\t")
-	if !found || dir == "" {
-		return "", "", fmt.Errorf("external: %s has no module directory (is it vendored?)", ModulePath)
+	version, moduleDir, found := strings.Cut(strings.TrimSpace(string(output)), "\t")
+	if !found || moduleDir == "" {
+		return "", "", "", fmt.Errorf("external: %s has no module directory (is it vendored?)", ModulePath)
 	}
-	return filepath.Join(dir, filepath.FromSlash(metadataSubdir)), version, nil
+	return filepath.Join(moduleDir, filepath.FromSlash(metadataSubdir)), moduleDir, version, nil
 }
 
 // Load reads the Windows.* metadata. An empty dir locates the pinned module.
 func Load(dir string) (*Set, error) {
-	version := "(local)"
+	version, root := "(local)", ""
 	if dir == "" {
-		located, resolved, err := Locate()
+		located, locatedRoot, resolved, err := locate()
 		if err != nil {
 			return nil, err
 		}
-		dir, version = located, resolved
+		dir, root, version = located, locatedRoot, resolved
 	}
 
 	paths, err := filepath.Glob(filepath.Join(dir, "*"+fileExtension))
@@ -115,6 +126,7 @@ func Load(dir string) (*Set, error) {
 	set := &Set{
 		Version:     version,
 		Dir:         dir,
+		Root:        root,
 		byNamespace: map[string]*wasdkmeta.NamespaceMeta{},
 		kinds:       map[string]string{},
 		interfaces:  map[string]*wasdkmeta.Interface{},

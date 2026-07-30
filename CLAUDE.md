@@ -37,7 +37,7 @@ The controls in it are **styled and rendered**: a `Button` measured at `Loaded` 
 template and a size. The one thing that does not work is activating
 `XamlControlsResources`, which turns out not to be needed; see below.
 
-199 diagnostics remain, down from 870. The largest categories were cleared by
+185 diagnostics remain, down from 870. The largest categories were cleared by
 [conformant arrays](#conformant-arrays) (256), [namespace
 clusters](#namespace-clusters) (185 import cycles, 75 inherited interfaces, 70 event
 delegates) and [generic instantiations](#generic-instantiations) (72 wrongly-rejected
@@ -482,6 +482,60 @@ A returned array is the one place generated code owns native memory: the callee
 allocated it with `CoTaskMemAlloc`, so the body copies out and calls `CoTaskMemFree`,
 after the HRESULT check — freeing a buffer that was never allocated is the obvious way
 to get this wrong.
+
+### HSTRING and Bool in value positions
+
+Both are shapes where the Go form is not the ABI form, and where the conversion goes
+depends on whether there is a boundary to put it at.
+
+**A parameter or a return has one.** An `[out] HSTRING*` transfers ownership to the
+caller, so the body declares a raw slot, dispatches, and calls `winrt.TakeHString` —
+which takes the handle and deletes it. `view.MethodModel.Postamble` carries those
+statements, and the template runs them **only after the HRESULT check passes**: a failed
+call wrote nothing, so converting the slot anyway would report an error and simultaneously
+wipe the caller's variable. `Bool` out-parameters go through a `byte`, because a WinRT
+boolean is one byte with no guarantee it is 0 or 1.
+
+Exposing the raw handle was the alternative and it is a worse API: an out `HSTRING` must
+be deleted, so a caller who merely reads it leaks, and nothing in the signature says so.
+
+A float out-parameter was refused by plain omission — `KindFloat` was missing from the
+admitted kinds. An `[out]` parameter is a pointer the callee writes through, so a
+`float32` crosses through memory, never XMM0; only a by-value float parameter needs its
+bit pattern taken. `ICompositionPropertySet.TryGetScalar` was the cost, while every
+`TryGetVector3` beside it worked, which is what made it visible.
+
+**A struct field has no boundary.** The struct crosses as a block of bytes, so the field
+IS the handle: `syswinrt.HSTRING`, via `typemap.StructFieldGoType`, with a generated doc
+note stating the ownership rule. A shadow struct per type with marshalling at every
+signature would read better and would cost the property conformant arrays depend on —
+that a `[]T` over emittable structs is a direct view of the callee's buffer. Two structs
+in this metadata have string fields, so the trade was not close.
+
+### What go-bindings-winrt emitted is not what its metadata says
+
+`StructEmittable` returned true for every external type, on the reasoning that this
+module never emits them so they are always representable. That is the wrong evidence.
+The metadata says what a type IS; only the dependency's emitted source says whether there
+is a Go declaration to name.
+
+`Windows.UI.Xaml.Interop.TypeName` is `{ HSTRING Name; TypeKind Kind; }`, and
+go-bindings-winrt v0.4.0 skips it — `struct-field-skipped: has unrepresentable fields`
+in its own baseline — while its sibling `TypeKind`, an enum, is emitted. So the moment
+this module stopped refusing HSTRING struct fields, 31 members began naming
+`wrtuixamlinterop.TypeName` and the whole tree stopped compiling. The assumption had held
+only because nothing referenced up to that point had been skipped over there.
+
+`typemap/declared.go` scans the dependency's emitted `.go` files for package-level type
+declarations, lazily and memoized per namespace. It is a coupling to that module's output
+layout, and the same coupling `ImportPathFor` already has when it builds an import path
+from a namespace — so it is consistent rather than new, and it answers the question by
+reading the artefact that decides it. Conservative on any read failure: a false degrades
+a member, while a wrong true breaks every consumer's build.
+
+Those 31 members clear when go-bindings-winrt emits `TypeName` and the pin moves. The
+representation to use there is the one above — the handle as the field — because that
+module has the same absence of a boundary.
 
 ### The base-class chain
 

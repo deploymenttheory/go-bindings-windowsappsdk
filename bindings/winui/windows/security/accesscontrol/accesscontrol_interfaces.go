@@ -5,8 +5,13 @@
 package accesscontrol
 
 import (
+	"syscall"
+	"unsafe"
+
 	"github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
+	systemcom "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/com"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
 // ISecurityDescriptorHelpersStatics is the WinRT interface Microsoft.Windows.Security.AccessControl.ISecurityDescriptorHelpersStatics.
@@ -19,6 +24,52 @@ type ISecurityDescriptorHelpersStatics struct {
 // IID_ISecurityDescriptorHelpersStatics is the interface identifier for ISecurityDescriptorHelpersStatics.
 var IID_ISecurityDescriptorHelpersStatics = win32.GUID{Data1: 0x14fa9e8d, Data2: 0x59f0, Data3: 0x5017, Data4: [8]byte{0x85, 0x2f, 0x3a, 0xe2, 0x4f, 0xd5, 0xeb, 0xb1}}
 
-// slot 6: GetSddlForAppContainerNames skipped: element: skipped-struct-ref: reference to skipped struct Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess
+// GetSddlForAppContainerNames dispatches through ISecurityDescriptorHelpersStatics's vtable slot 6.
+func (self *ISecurityDescriptorHelpersStatics) GetSddlForAppContainerNames(accessRequests []AppContainerNameAndAccess, principalStringSid string, principalAccessMask uint32) (string, error) {
+	_accessRequestsSize := uintptr(len(accessRequests))
+	_accessRequestsData := uintptr(0)
+	if len(accessRequests) > 0 {
+		_accessRequestsData = uintptr(winrt.OutParam(unsafe.Pointer(&accessRequests[0])))
+	}
+	hPrincipalStringSid, err := winrt.NewHString(principalStringSid)
+	if err != nil {
+		return "", err
+	}
+	defer hPrincipalStringSid.Close()
+	result := new(syswinrt.HSTRING)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[6], uintptr(unsafe.Pointer(self)), _accessRequestsSize, _accessRequestsData, uintptr(hPrincipalStringSid.Raw()), uintptr(principalAccessMask), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return "", err
+	}
+	return winrt.TakeHString(*result), nil
+}
 
-// slot 7: GetSecurityDescriptorBytesFromAppContainerNames skipped: element: skipped-struct-ref: reference to skipped struct Microsoft.Windows.Security.AccessControl.AppContainerNameAndAccess
+// GetSecurityDescriptorBytesFromAppContainerNames dispatches through ISecurityDescriptorHelpersStatics's vtable slot 7.
+func (self *ISecurityDescriptorHelpersStatics) GetSecurityDescriptorBytesFromAppContainerNames(accessRequests []AppContainerNameAndAccess, principalStringSid string, principalAccessMask uint32) ([]byte, error) {
+	_accessRequestsSize := uintptr(len(accessRequests))
+	_accessRequestsData := uintptr(0)
+	if len(accessRequests) > 0 {
+		_accessRequestsData = uintptr(winrt.OutParam(unsafe.Pointer(&accessRequests[0])))
+	}
+	hPrincipalStringSid, err := winrt.NewHString(principalStringSid)
+	if err != nil {
+		return nil, err
+	}
+	defer hPrincipalStringSid.Close()
+	resultSize := new(uint32)
+	result := new(*byte)
+	r1, _, _ := syscall.SyscallN(self.LpVtbl[7], uintptr(unsafe.Pointer(self)), _accessRequestsSize, _accessRequestsData, uintptr(hPrincipalStringSid.Raw()), uintptr(principalAccessMask), uintptr(winrt.OutParam(unsafe.Pointer(resultSize))), uintptr(winrt.OutParam(unsafe.Pointer(result))))
+	if err := win32.ErrIfFailed(int32(r1)); err != nil {
+		return nil, err
+	}
+	if *result == nil || *resultSize == 0 {
+		return nil, nil
+	}
+	// The callee allocated this buffer and the caller frees it, so its contents are
+	// copied out before it goes. Element references, where the elements are
+	// interface pointers, transfer to the returned slice.
+	items := make([]byte, *resultSize)
+	copy(items, unsafe.Slice(*result, *resultSize))
+	systemcom.CoTaskMemFree(unsafe.Pointer(*result))
+	return items, nil
+}

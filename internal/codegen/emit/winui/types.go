@@ -1,6 +1,9 @@
 package emitwinui
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/codegen/emit/winui/view"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/codegen/naming"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/codegen/typemap"
@@ -93,14 +96,44 @@ func (g *Generator) buildStructModels(meta *wasdkmeta.NamespaceMeta, imports typ
 				break
 			}
 			model.Fields = append(model.Fields, view.StructFieldModel{
-				Name:   naming.Export(field.Name),
-				GoType: resolved.GoType,
+				Name: naming.Export(field.Name),
+				// Not resolved.GoType: a string field is emitted as the HSTRING handle,
+				// because a struct has no call boundary at which a conversion could run.
+				GoType: g.mapper.StructFieldGoType(resolved, imports),
 			})
 		}
 		if len(model.Fields) == 0 && len(definition.Fields) > 0 {
 			continue
 		}
+		// An HSTRING field is a handle, and nothing about syswinrt.HSTRING says who
+		// owns it. Say so on the type, because the alternative reading — that it is a
+		// string-shaped thing — leaks on the way in and reads freed memory on the way
+		// out.
+		if handles := stringFields(model.Fields); len(handles) > 0 {
+			subject := handles[0] + " is an HSTRING handle, not a Go string."
+			if len(handles) > 1 {
+				subject = strings.Join(handles[:len(handles)-1], ", ") + " and " +
+					handles[len(handles)-1] + " are HSTRING handles, not Go strings."
+			}
+			model.NoteLines = append(model.NoteLines, "",
+				fmt.Sprintf("%s A struct crosses the ABI as a", subject),
+				"block of bytes, and there is no boundary inside one at which a conversion could",
+				"run. Build a handle with winrt.NewHString and release it when the struct is done",
+				"with it; take ownership of one the callee wrote with winrt.TakeHString.")
+		}
 		models = append(models, model)
 	}
 	return models
+}
+
+// stringFields names the HSTRING-typed fields of a built struct model, for the doc
+// note that explains what the handle obliges the caller to do.
+func stringFields(fields []view.StructFieldModel) []string {
+	var names []string
+	for _, field := range fields {
+		if field.GoType == "syswinrt.HSTRING" {
+			names = append(names, field.Name)
+		}
+	}
+	return names
 }

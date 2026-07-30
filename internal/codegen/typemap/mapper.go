@@ -152,6 +152,10 @@ type Mapper struct {
 
 	// structLayout memoizes the per-struct amd64 layout (see layout.go).
 	structLayout map[string]layoutResult
+
+	// externalDecls memoizes which types go-bindings-winrt actually declares. See
+	// declared.go: its metadata is not evidence that it emitted them.
+	externalDecls *externalDeclarations
 }
 
 // externalTypes are types that are NEVER emitted by either module: they already
@@ -418,7 +422,15 @@ func (m *Mapper) resolveClassRef(ref *wasdkmeta.TypeRef, ctx Context, imports Im
 func (m *Mapper) StructEmittable(namespace, name string) bool {
 	key := namespace + "." + name
 	if IsExternalType(namespace, name) {
-		return true // never emitted here, but always representable
+		return true // part of the shared ABI foundation: hand-written, always there
+	}
+	if m.Registry != nil && m.Registry.IsExternal(namespace) {
+		// Representable only if go-bindings-winrt actually declared it. Its metadata
+		// carrying the struct is not evidence that it emitted one — it skips a struct
+		// with an HSTRING field for the same reason this module used to, and naming an
+		// undeclared type does not degrade a member, it breaks the build. See
+		// declared.go.
+		return m.ExternalDeclares(namespace, name)
 	}
 	if verdict, seen := m.structEmittable[key]; seen {
 		return verdict
@@ -440,12 +452,35 @@ func (m *Mapper) StructEmittable(namespace, name string) bool {
 		case KindScalar, KindFloat, KindBool, KindGUID, KindEnum, KindStruct:
 			// Value shapes embed fine; Bool fields are one byte at the ABI,
 			// which Go bool matches.
+		case KindString:
+			// Emitted as syswinrt.HSTRING rather than string — see StructFieldGoType.
 		default:
 			verdict = false
 		}
 	}
 	m.structEmittable[key] = verdict
 	return verdict
+}
+
+// StructFieldGoType is the Go type a resolved struct field is emitted with, which is
+// not always the type the same resolution would give a parameter.
+//
+// A struct crosses the ABI as a block of bytes, so every field has to BE its ABI form
+// — there is no call boundary inside a struct at which a conversion could run. For a
+// string field that means the handle: syswinrt.HSTRING, not string. A parameter or a
+// return can convert (winrt.NewHString on the way in, winrt.TakeHString on the way
+// out) precisely because there is a boundary there.
+//
+// The alternative was a shadow struct per type, with marshalling at every signature
+// that names one. It would read better and cost the property that conformant arrays
+// depend on: that a []T over emittable structs is a direct view of the callee's
+// buffer. Two structs in this metadata have string fields, so the trade was not close.
+func (m *Mapper) StructFieldGoType(resolved Resolved, imports ImportSet) string {
+	if resolved.Kind == KindString {
+		imports["syswinrt"] = Import{Path: SysWinRTImport}
+		return "syswinrt.HSTRING"
+	}
+	return resolved.GoType
 }
 
 // ImportPathFor returns the Go import path of the package carrying a namespace, in
