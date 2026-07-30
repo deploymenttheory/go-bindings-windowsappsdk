@@ -121,8 +121,9 @@ func build(ready *app.Ready) error {
 
 	// Adding an item: box a string and append it to the ListView's Items.
 	//
-	// This would read a TextBox, and cannot: every text-input control terminates the
-	// process during layout. See TestTextInputControlsCrashDuringLayout in acceptance/.
+	// This would read a TextBox, and cannot: TextBox is one of the controls whose default
+	// style cannot load, and it kills the process when laid out. See
+	// TestControlsNeedingThemeResourcesCannotLoad in acceptance/.
 	added := 0
 	add := func() {
 		added++

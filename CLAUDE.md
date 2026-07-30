@@ -607,20 +607,38 @@ QueryInterface — the same relationship a class has with its bases, which alrea
 interfaces and 142 monomorphized instantiations carry a `Requires`; they all have
 accessors now.
 
-**Text input terminates the process.** `TextBox`, `PasswordBox`, `RichEditBox` and
-`AutoSuggestBox` all die with `0xC000027B`, a stowed WinRT exception, when the element
-is laid out. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView` and `Grid` are fine
-in the same harness. Construction succeeds, properties set without error, the element
-goes into the tree, and the process dies inside the framework once layout runs — which
-is why the existing acceptance tests never saw it: they measure at `Loaded`, and a
-TextBox never reaches `Loaded`.
+**Some controls cannot load their default style, and kill the process.**
+`TextBox`, `PasswordBox`, `RichEditBox`, `SearchBox` and `ProgressBar` die with
+`0xC000027B` when laid out. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView`,
+`ComboBox`, `ScrollViewer` and `Grid` are fine.
 
-The cause is **not established**, and is deliberately not guessed at.
-`acceptance/textinput_test.go` pins it in a subprocess, with a `TextBlock` control case
-beside it so a broken harness cannot masquerade as the finding. The obvious suspect is
-the `XamlControlsResources` failure below — whose conclusion, "it does not matter", was
-reached by measuring a Button, and may hold only for the controls it was measured on.
-Settling that needs a discriminator.
+**It is not this projection**, and that is established rather than assumed. The
+framework's own parser, building its own object from markup with nothing of ours
+involved, fails the same way:
+
+```text
+XamlReader.Load("<Button/>")   -> ok
+XamlReader.Load("<TextBox/>")  -> HRESULT 0x802B000A
+```
+
+`0x802B000A` is the inner HRESULT of the crash — facility `0x2B` is XAML — and Windows
+Error Reporting names the faulting module as `Microsoft.UI.Xaml.dll`.
+
+The cause is that `ms-appx:///` does not resolve in this process, so nothing needing the
+theme dictionaries can load: `ResourceDictionary.SetSource("ms-appx:///Microsoft.UI.Xaml/Themes/generic.xaml")`
+returns `E_FAIL`, and so does activating `XamlControlsResources`. The framework ships
+those resources in `Microsoft.UI.Xaml.Controls.pri`, whose resource map is named
+`Microsoft.UI.Xaml`; an unpackaged application resolves `ms-appx:///` through its **own**
+`resources.pri`, and `go build` produces none. MSBuild closes this for C# apps by
+*merging* the framework's PRI into one it generates.
+
+Copying that PRI beside the executable does not work — neither as `resources.pri` nor
+with the executable renamed to match the resource map — so the fix is a real `makepri`
+merge, which is build tooling this repository does not have yet. **That is the open
+work.** `acceptance/themeresources_test.go` is the reproduction.
+
+The earlier note that `XamlControlsResources` failing "does not matter" was reached by
+measuring a `Button`, and holds only for the controls it was measured on.
 
 **A default interface is reached differently from every other one.** `Grid`'s default
 interface is `IGrid`, which the class embeds, so `grid.RowDefinitions()` is called
