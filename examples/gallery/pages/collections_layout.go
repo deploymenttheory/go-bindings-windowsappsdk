@@ -190,7 +190,7 @@ func (l *GoLayout) measure(args []uintptr) uintptr {
 		return 0x80070057 // E_INVALIDARG
 	}
 	l.measureCalls.Add(1)
-	context := (*uixaml.IVirtualizingLayoutContext)(unsafe.Pointer(args[0]))
+	context := (*uixaml.IVirtualizingLayoutContext)(winrt.InParam(args[0]))
 	available := sizeFromWord(args[1])
 
 	count, err := context.ItemCount()
@@ -221,7 +221,7 @@ func (l *GoLayout) arrange(args []uintptr) uintptr {
 		return 0x80070057
 	}
 	l.arrangeCalls.Add(1)
-	context := (*uixaml.IVirtualizingLayoutContext)(unsafe.Pointer(args[0]))
+	context := (*uixaml.IVirtualizingLayoutContext)(winrt.InParam(args[0]))
 	final := sizeFromWord(args[1])
 
 	count, err := context.ItemCount()
