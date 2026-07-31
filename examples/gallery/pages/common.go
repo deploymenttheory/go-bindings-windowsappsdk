@@ -14,6 +14,7 @@ import (
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 )
 
 // scrolled wraps content in a vertically scrolling ScrollViewer, which is what almost
@@ -182,4 +183,30 @@ func frameworkElementOf(element *uixaml.IUIElement) (*uixaml.IFrameworkElement, 
 func dependencyObjectOf(element *uixaml.IUIElement) (*uixaml.IDependencyObject, error) {
 	return winrt.QueryInterface[uixaml.IDependencyObject](
 		unsafe.Pointer(element), &uixaml.IID_IDependencyObject)
+}
+
+// solidBrush builds a SolidColorBrush, the fill markup writes as a colour name.
+//
+// Returned as IBrush, the base, because that is what every consumer takes —
+// BorderBrush, Foreground, Background and Fill are all typed to the base so any brush
+// will do. The caller owns it and must Release it.
+func solidBrush(colour wrtui.Color) (*uixaml.IBrush, error) {
+	brush, err := uixaml.NewSolidColorBrush()
+	if err != nil {
+		return nil, err
+	}
+	if err := brush.SetColor(colour); err != nil {
+		brush.Release()
+		return nil, err
+	}
+	base, err := brush.AsBrush()
+	brush.Release()
+	return base, err
+}
+
+// controlOf queries an element for IControl, where IsEnabled, FontSize and the rest of
+// the templated-control surface live. Not every element is a Control — a TextBlock is
+// not — so callers treat the failure as "no control state to set" rather than an error.
+func controlOf(element *uixaml.IUIElement) (*uixaml.IControl, error) {
+	return winrt.QueryInterface[uixaml.IControl](unsafe.Pointer(element), &uixaml.IID_IControl)
 }
