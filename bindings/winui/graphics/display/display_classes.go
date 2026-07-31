@@ -18,11 +18,23 @@ type DisplayAdvancedColorInfo struct {
 	IDisplayAdvancedColorInfo
 }
 
+// AsDisplayAdvancedColorInfo queries the instance's IDisplayAdvancedColorInfo interface.
+// The returned reference is owned by the caller.
+func (self *DisplayAdvancedColorInfo) AsDisplayAdvancedColorInfo() (*IDisplayAdvancedColorInfo, error) {
+	return winrt.QueryInterface[IDisplayAdvancedColorInfo](unsafe.Pointer(self), &IID_IDisplayAdvancedColorInfo)
+}
+
 // DisplayInformation is the Microsoft.Graphics.Display.DisplayInformation runtime class, surfaced through its
 // default interface IDisplayInformation. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DisplayInformation struct {
 	IDisplayInformation
+}
+
+// AsDisplayInformation queries the instance's IDisplayInformation interface.
+// The returned reference is owned by the caller.
+func (self *DisplayInformation) AsDisplayInformation() (*IDisplayInformation, error) {
+	return winrt.QueryInterface[IDisplayInformation](unsafe.Pointer(self), &IID_IDisplayInformation)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.

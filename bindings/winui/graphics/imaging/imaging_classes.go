@@ -18,6 +18,12 @@ type ImageBuffer struct {
 	IImageBuffer
 }
 
+// AsImageBuffer queries the instance's IImageBuffer interface.
+// The returned reference is owned by the caller.
+func (self *ImageBuffer) AsImageBuffer() (*IImageBuffer, error) {
+	return winrt.QueryInterface[IImageBuffer](unsafe.Pointer(self), &IID_IImageBuffer)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *ImageBuffer) AsClosable() (*wrtfoundation.IClosable, error) {

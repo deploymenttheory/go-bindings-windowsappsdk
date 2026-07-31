@@ -20,6 +20,12 @@ type DesktopWindowXamlSource struct {
 	IDesktopWindowXamlSource
 }
 
+// AsDesktopWindowXamlSource queries the instance's IDesktopWindowXamlSource interface.
+// The returned reference is owned by the caller.
+func (self *DesktopWindowXamlSource) AsDesktopWindowXamlSource() (*IDesktopWindowXamlSource, error) {
+	return winrt.QueryInterface[IDesktopWindowXamlSource](unsafe.Pointer(self), &IID_IDesktopWindowXamlSource)
+}
+
 // AsDesktopWindowXamlSource2 queries the instance's IDesktopWindowXamlSource2 interface.
 // The returned reference is owned by the caller.
 func (self *DesktopWindowXamlSource) AsDesktopWindowXamlSource2() (*IDesktopWindowXamlSource2, error) {
@@ -64,6 +70,12 @@ type DesktopWindowXamlSourceGotFocusEventArgs struct {
 	IDesktopWindowXamlSourceGotFocusEventArgs
 }
 
+// AsDesktopWindowXamlSourceGotFocusEventArgs queries the instance's IDesktopWindowXamlSourceGotFocusEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DesktopWindowXamlSourceGotFocusEventArgs) AsDesktopWindowXamlSourceGotFocusEventArgs() (*IDesktopWindowXamlSourceGotFocusEventArgs, error) {
+	return winrt.QueryInterface[IDesktopWindowXamlSourceGotFocusEventArgs](unsafe.Pointer(self), &IID_IDesktopWindowXamlSourceGotFocusEventArgs)
+}
+
 // DesktopWindowXamlSourceTakeFocusRequestedEventArgs is the Microsoft.UI.Xaml.Hosting.DesktopWindowXamlSourceTakeFocusRequestedEventArgs runtime class, surfaced through its
 // default interface IDesktopWindowXamlSourceTakeFocusRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -71,11 +83,23 @@ type DesktopWindowXamlSourceTakeFocusRequestedEventArgs struct {
 	IDesktopWindowXamlSourceTakeFocusRequestedEventArgs
 }
 
+// AsDesktopWindowXamlSourceTakeFocusRequestedEventArgs queries the instance's IDesktopWindowXamlSourceTakeFocusRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DesktopWindowXamlSourceTakeFocusRequestedEventArgs) AsDesktopWindowXamlSourceTakeFocusRequestedEventArgs() (*IDesktopWindowXamlSourceTakeFocusRequestedEventArgs, error) {
+	return winrt.QueryInterface[IDesktopWindowXamlSourceTakeFocusRequestedEventArgs](unsafe.Pointer(self), &IID_IDesktopWindowXamlSourceTakeFocusRequestedEventArgs)
+}
+
 // ElementCompositionPreview is the Microsoft.UI.Xaml.Hosting.ElementCompositionPreview runtime class, surfaced through its
 // default interface IElementCompositionPreview. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ElementCompositionPreview struct {
 	IElementCompositionPreview
+}
+
+// AsElementCompositionPreview queries the instance's IElementCompositionPreview interface.
+// The returned reference is owned by the caller.
+func (self *ElementCompositionPreview) AsElementCompositionPreview() (*IElementCompositionPreview, error) {
+	return winrt.QueryInterface[IElementCompositionPreview](unsafe.Pointer(self), &IID_IElementCompositionPreview)
 }
 
 // ElementCompositionPreviewStatics returns the Microsoft.UI.Xaml.Hosting.IElementCompositionPreviewStatics statics of the
@@ -95,6 +119,12 @@ func ElementCompositionPreviewStatics() (*IElementCompositionPreviewStatics, err
 // the embedded IInspectable → IUnknown chain).
 type WindowsXamlManager struct {
 	IWindowsXamlManager
+}
+
+// AsWindowsXamlManager queries the instance's IWindowsXamlManager interface.
+// The returned reference is owned by the caller.
+func (self *WindowsXamlManager) AsWindowsXamlManager() (*IWindowsXamlManager, error) {
+	return winrt.QueryInterface[IWindowsXamlManager](unsafe.Pointer(self), &IID_IWindowsXamlManager)
 }
 
 // AsWindowsXamlManager2 queries the instance's IWindowsXamlManager2 interface.
@@ -140,11 +170,23 @@ type XamlShutdownCompletedOnThreadEventArgs struct {
 	IXamlShutdownCompletedOnThreadEventArgs
 }
 
+// AsXamlShutdownCompletedOnThreadEventArgs queries the instance's IXamlShutdownCompletedOnThreadEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *XamlShutdownCompletedOnThreadEventArgs) AsXamlShutdownCompletedOnThreadEventArgs() (*IXamlShutdownCompletedOnThreadEventArgs, error) {
+	return winrt.QueryInterface[IXamlShutdownCompletedOnThreadEventArgs](unsafe.Pointer(self), &IID_IXamlShutdownCompletedOnThreadEventArgs)
+}
+
 // XamlSourceFocusNavigationRequest is the Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationRequest runtime class, surfaced through its
 // default interface IXamlSourceFocusNavigationRequest. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type XamlSourceFocusNavigationRequest struct {
 	IXamlSourceFocusNavigationRequest
+}
+
+// AsXamlSourceFocusNavigationRequest queries the instance's IXamlSourceFocusNavigationRequest interface.
+// The returned reference is owned by the caller.
+func (self *XamlSourceFocusNavigationRequest) AsXamlSourceFocusNavigationRequest() (*IXamlSourceFocusNavigationRequest, error) {
+	return winrt.QueryInterface[IXamlSourceFocusNavigationRequest](unsafe.Pointer(self), &IID_IXamlSourceFocusNavigationRequest)
 }
 
 // CreateInstance constructs a Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationRequest instance through
@@ -203,6 +245,12 @@ func CreateInstanceWithHintRectAndCorrelationId(reason XamlSourceFocusNavigation
 // the embedded IInspectable → IUnknown chain).
 type XamlSourceFocusNavigationResult struct {
 	IXamlSourceFocusNavigationResult
+}
+
+// AsXamlSourceFocusNavigationResult queries the instance's IXamlSourceFocusNavigationResult interface.
+// The returned reference is owned by the caller.
+func (self *XamlSourceFocusNavigationResult) AsXamlSourceFocusNavigationResult() (*IXamlSourceFocusNavigationResult, error) {
+	return winrt.QueryInterface[IXamlSourceFocusNavigationResult](unsafe.Pointer(self), &IID_IXamlSourceFocusNavigationResult)
 }
 
 // CreateInstanceXamlSourceFocusNavigationResult constructs a Microsoft.UI.Xaml.Hosting.XamlSourceFocusNavigationResult instance through

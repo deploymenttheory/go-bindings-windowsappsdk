@@ -28,6 +28,12 @@ func NewAddPackageDependencyOptions() (*AddPackageDependencyOptions, error) {
 	return winrt.QueryInterface[AddPackageDependencyOptions](unsafe.Pointer(instance), &IID_IAddPackageDependencyOptions)
 }
 
+// AsAddPackageDependencyOptions queries the instance's IAddPackageDependencyOptions interface.
+// The returned reference is owned by the caller.
+func (self *AddPackageDependencyOptions) AsAddPackageDependencyOptions() (*IAddPackageDependencyOptions, error) {
+	return winrt.QueryInterface[IAddPackageDependencyOptions](unsafe.Pointer(self), &IID_IAddPackageDependencyOptions)
+}
+
 // CreatePackageDependencyOptions is the Microsoft.Windows.ApplicationModel.DynamicDependency.CreatePackageDependencyOptions runtime class, surfaced through its
 // default interface ICreatePackageDependencyOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -46,11 +52,23 @@ func NewCreatePackageDependencyOptions() (*CreatePackageDependencyOptions, error
 	return winrt.QueryInterface[CreatePackageDependencyOptions](unsafe.Pointer(instance), &IID_ICreatePackageDependencyOptions)
 }
 
+// AsCreatePackageDependencyOptions queries the instance's ICreatePackageDependencyOptions interface.
+// The returned reference is owned by the caller.
+func (self *CreatePackageDependencyOptions) AsCreatePackageDependencyOptions() (*ICreatePackageDependencyOptions, error) {
+	return winrt.QueryInterface[ICreatePackageDependencyOptions](unsafe.Pointer(self), &IID_ICreatePackageDependencyOptions)
+}
+
 // PackageDependency is the Microsoft.Windows.ApplicationModel.DynamicDependency.PackageDependency runtime class, surfaced through its
 // default interface IPackageDependency. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PackageDependency struct {
 	IPackageDependency
+}
+
+// AsPackageDependency queries the instance's IPackageDependency interface.
+// The returned reference is owned by the caller.
+func (self *PackageDependency) AsPackageDependency() (*IPackageDependency, error) {
+	return winrt.QueryInterface[IPackageDependency](unsafe.Pointer(self), &IID_IPackageDependency)
 }
 
 // PackageDependencyStatics returns the Microsoft.Windows.ApplicationModel.DynamicDependency.IPackageDependencyStatics statics of the
@@ -82,6 +100,12 @@ func PackageDependencyStatics2() (*IPackageDependencyStatics2, error) {
 // the embedded IInspectable → IUnknown chain).
 type PackageDependencyContext struct {
 	IPackageDependencyContext
+}
+
+// AsPackageDependencyContext queries the instance's IPackageDependencyContext interface.
+// The returned reference is owned by the caller.
+func (self *PackageDependencyContext) AsPackageDependencyContext() (*IPackageDependencyContext, error) {
+	return winrt.QueryInterface[IPackageDependencyContext](unsafe.Pointer(self), &IID_IPackageDependencyContext)
 }
 
 // CreateInstance constructs a Microsoft.Windows.ApplicationModel.DynamicDependency.PackageDependencyContext instance through

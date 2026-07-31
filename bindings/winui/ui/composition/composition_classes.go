@@ -20,6 +20,12 @@ type AmbientLight struct {
 	IAmbientLight
 }
 
+// AsAmbientLight queries the instance's IAmbientLight interface.
+// The returned reference is owned by the caller.
+func (self *AmbientLight) AsAmbientLight() (*IAmbientLight, error) {
+	return winrt.QueryInterface[IAmbientLight](unsafe.Pointer(self), &IID_IAmbientLight)
+}
+
 // AsAmbientLight2 queries the instance's IAmbientLight2 interface.
 // The returned reference is owned by the caller.
 func (self *AmbientLight) AsAmbientLight2() (*IAmbientLight2, error) {
@@ -103,6 +109,12 @@ type AnimationController struct {
 	IAnimationController
 }
 
+// AsAnimationController queries the instance's IAnimationController interface.
+// The returned reference is owned by the caller.
+func (self *AnimationController) AsAnimationController() (*IAnimationController, error) {
+	return winrt.QueryInterface[IAnimationController](unsafe.Pointer(self), &IID_IAnimationController)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -171,6 +183,12 @@ type AnimationPropertyInfo struct {
 	IAnimationPropertyInfo
 }
 
+// AsAnimationPropertyInfo queries the instance's IAnimationPropertyInfo interface.
+// The returned reference is owned by the caller.
+func (self *AnimationPropertyInfo) AsAnimationPropertyInfo() (*IAnimationPropertyInfo, error) {
+	return winrt.QueryInterface[IAnimationPropertyInfo](unsafe.Pointer(self), &IID_IAnimationPropertyInfo)
+}
+
 // AsAnimationPropertyInfo2 queries the instance's IAnimationPropertyInfo2 interface.
 // The returned reference is owned by the caller.
 func (self *AnimationPropertyInfo) AsAnimationPropertyInfo2() (*IAnimationPropertyInfo2, error) {
@@ -231,6 +249,12 @@ func (self *AnimationPropertyInfo) AsAnimationObject() (*IAnimationObject, error
 // the embedded IInspectable → IUnknown chain).
 type BackEasingFunction struct {
 	IBackEasingFunction
+}
+
+// AsBackEasingFunction queries the instance's IBackEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *BackEasingFunction) AsBackEasingFunction() (*IBackEasingFunction, error) {
+	return winrt.QueryInterface[IBackEasingFunction](unsafe.Pointer(self), &IID_IBackEasingFunction)
 }
 
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
@@ -294,6 +318,12 @@ func (self *BackEasingFunction) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type BooleanKeyFrameAnimation struct {
 	IBooleanKeyFrameAnimation
+}
+
+// AsBooleanKeyFrameAnimation queries the instance's IBooleanKeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *BooleanKeyFrameAnimation) AsBooleanKeyFrameAnimation() (*IBooleanKeyFrameAnimation, error) {
+	return winrt.QueryInterface[IBooleanKeyFrameAnimation](unsafe.Pointer(self), &IID_IBooleanKeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -408,6 +438,12 @@ type BounceEasingFunction struct {
 	IBounceEasingFunction
 }
 
+// AsBounceEasingFunction queries the instance's IBounceEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *BounceEasingFunction) AsBounceEasingFunction() (*IBounceEasingFunction, error) {
+	return winrt.QueryInterface[IBounceEasingFunction](unsafe.Pointer(self), &IID_IBounceEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -469,6 +505,12 @@ func (self *BounceEasingFunction) AsAnimationObject() (*IAnimationObject, error)
 // the embedded IInspectable → IUnknown chain).
 type BounceScalarNaturalMotionAnimation struct {
 	IBounceScalarNaturalMotionAnimation
+}
+
+// AsBounceScalarNaturalMotionAnimation queries the instance's IBounceScalarNaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *BounceScalarNaturalMotionAnimation) AsBounceScalarNaturalMotionAnimation() (*IBounceScalarNaturalMotionAnimation, error) {
+	return winrt.QueryInterface[IBounceScalarNaturalMotionAnimation](unsafe.Pointer(self), &IID_IBounceScalarNaturalMotionAnimation)
 }
 
 // AsScalarNaturalMotionAnimation queries the instance's IScalarNaturalMotionAnimation interface.
@@ -576,6 +618,12 @@ type BounceVector2NaturalMotionAnimation struct {
 	IBounceVector2NaturalMotionAnimation
 }
 
+// AsBounceVector2NaturalMotionAnimation queries the instance's IBounceVector2NaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *BounceVector2NaturalMotionAnimation) AsBounceVector2NaturalMotionAnimation() (*IBounceVector2NaturalMotionAnimation, error) {
+	return winrt.QueryInterface[IBounceVector2NaturalMotionAnimation](unsafe.Pointer(self), &IID_IBounceVector2NaturalMotionAnimation)
+}
+
 // AsVector2NaturalMotionAnimation queries the instance's IVector2NaturalMotionAnimation interface.
 // Inherited from Microsoft.UI.Composition.Vector2NaturalMotionAnimation.
 // The returned reference is owned by the caller.
@@ -679,6 +727,12 @@ func (self *BounceVector2NaturalMotionAnimation) AsAnimationObject() (*IAnimatio
 // the embedded IInspectable → IUnknown chain).
 type BounceVector3NaturalMotionAnimation struct {
 	IBounceVector3NaturalMotionAnimation
+}
+
+// AsBounceVector3NaturalMotionAnimation queries the instance's IBounceVector3NaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *BounceVector3NaturalMotionAnimation) AsBounceVector3NaturalMotionAnimation() (*IBounceVector3NaturalMotionAnimation, error) {
+	return winrt.QueryInterface[IBounceVector3NaturalMotionAnimation](unsafe.Pointer(self), &IID_IBounceVector3NaturalMotionAnimation)
 }
 
 // AsVector3NaturalMotionAnimation queries the instance's IVector3NaturalMotionAnimation interface.
@@ -786,6 +840,12 @@ type CircleEasingFunction struct {
 	ICircleEasingFunction
 }
 
+// AsCircleEasingFunction queries the instance's ICircleEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *CircleEasingFunction) AsCircleEasingFunction() (*ICircleEasingFunction, error) {
+	return winrt.QueryInterface[ICircleEasingFunction](unsafe.Pointer(self), &IID_ICircleEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -847,6 +907,12 @@ func (self *CircleEasingFunction) AsAnimationObject() (*IAnimationObject, error)
 // the embedded IInspectable → IUnknown chain).
 type ColorKeyFrameAnimation struct {
 	IColorKeyFrameAnimation
+}
+
+// AsColorKeyFrameAnimation queries the instance's IColorKeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *ColorKeyFrameAnimation) AsColorKeyFrameAnimation() (*IColorKeyFrameAnimation, error) {
+	return winrt.QueryInterface[IColorKeyFrameAnimation](unsafe.Pointer(self), &IID_IColorKeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -961,6 +1027,12 @@ type CompositionAnimation struct {
 	ICompositionAnimation
 }
 
+// AsCompositionAnimation queries the instance's ICompositionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *CompositionAnimation) AsCompositionAnimation() (*ICompositionAnimation, error) {
+	return winrt.QueryInterface[ICompositionAnimation](unsafe.Pointer(self), &IID_ICompositionAnimation)
+}
+
 // AsCompositionAnimation2 queries the instance's ICompositionAnimation2 interface.
 // The returned reference is owned by the caller.
 func (self *CompositionAnimation) AsCompositionAnimation2() (*ICompositionAnimation2, error) {
@@ -1039,6 +1111,12 @@ func (self *CompositionAnimation) AsAnimationObject() (*IAnimationObject, error)
 // the embedded IInspectable → IUnknown chain).
 type CompositionAnimationGroup struct {
 	ICompositionAnimationGroup
+}
+
+// AsCompositionAnimationGroup queries the instance's ICompositionAnimationGroup interface.
+// The returned reference is owned by the caller.
+func (self *CompositionAnimationGroup) AsCompositionAnimationGroup() (*ICompositionAnimationGroup, error) {
+	return winrt.QueryInterface[ICompositionAnimationGroup](unsafe.Pointer(self), &IID_ICompositionAnimationGroup)
 }
 
 // AsIterableOfCompositionAnimation queries the instance's IIterableOfCompositionAnimation interface.
@@ -1121,6 +1199,12 @@ type CompositionBackdropBrush struct {
 	ICompositionBackdropBrush
 }
 
+// AsCompositionBackdropBrush queries the instance's ICompositionBackdropBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionBackdropBrush) AsCompositionBackdropBrush() (*ICompositionBackdropBrush, error) {
+	return winrt.QueryInterface[ICompositionBackdropBrush](unsafe.Pointer(self), &IID_ICompositionBackdropBrush)
+}
+
 // AsCompositionBrush queries the instance's ICompositionBrush interface.
 // Inherited from Microsoft.UI.Composition.CompositionBrush.
 // The returned reference is owned by the caller.
@@ -1184,6 +1268,12 @@ type CompositionBatchCompletedEventArgs struct {
 	ICompositionBatchCompletedEventArgs
 }
 
+// AsCompositionBatchCompletedEventArgs queries the instance's ICompositionBatchCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CompositionBatchCompletedEventArgs) AsCompositionBatchCompletedEventArgs() (*ICompositionBatchCompletedEventArgs, error) {
+	return winrt.QueryInterface[ICompositionBatchCompletedEventArgs](unsafe.Pointer(self), &IID_ICompositionBatchCompletedEventArgs)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -1238,6 +1328,12 @@ func (self *CompositionBatchCompletedEventArgs) AsAnimationObject() (*IAnimation
 // the embedded IInspectable → IUnknown chain).
 type CompositionBrush struct {
 	ICompositionBrush
+}
+
+// AsCompositionBrush queries the instance's ICompositionBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionBrush) AsCompositionBrush() (*ICompositionBrush, error) {
+	return winrt.QueryInterface[ICompositionBrush](unsafe.Pointer(self), &IID_ICompositionBrush)
 }
 
 // AsCompositionObject queries the instance's ICompositionObject interface.
@@ -1307,11 +1403,23 @@ func NewCompositionCapabilities() (*CompositionCapabilities, error) {
 	return winrt.QueryInterface[CompositionCapabilities](unsafe.Pointer(instance), &IID_ICompositionCapabilities)
 }
 
+// AsCompositionCapabilities queries the instance's ICompositionCapabilities interface.
+// The returned reference is owned by the caller.
+func (self *CompositionCapabilities) AsCompositionCapabilities() (*ICompositionCapabilities, error) {
+	return winrt.QueryInterface[ICompositionCapabilities](unsafe.Pointer(self), &IID_ICompositionCapabilities)
+}
+
 // CompositionClip is the Microsoft.UI.Composition.CompositionClip runtime class, surfaced through its
 // default interface ICompositionClip. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CompositionClip struct {
 	ICompositionClip
+}
+
+// AsCompositionClip queries the instance's ICompositionClip interface.
+// The returned reference is owned by the caller.
+func (self *CompositionClip) AsCompositionClip() (*ICompositionClip, error) {
+	return winrt.QueryInterface[ICompositionClip](unsafe.Pointer(self), &IID_ICompositionClip)
 }
 
 // AsCompositionClip2 queries the instance's ICompositionClip2 interface.
@@ -1374,6 +1482,12 @@ func (self *CompositionClip) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type CompositionColorBrush struct {
 	ICompositionColorBrush
+}
+
+// AsCompositionColorBrush queries the instance's ICompositionColorBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionColorBrush) AsCompositionColorBrush() (*ICompositionColorBrush, error) {
+	return winrt.QueryInterface[ICompositionColorBrush](unsafe.Pointer(self), &IID_ICompositionColorBrush)
 }
 
 // AsCompositionBrush queries the instance's ICompositionBrush interface.
@@ -1439,6 +1553,12 @@ type CompositionColorGradientStop struct {
 	ICompositionColorGradientStop
 }
 
+// AsCompositionColorGradientStop queries the instance's ICompositionColorGradientStop interface.
+// The returned reference is owned by the caller.
+func (self *CompositionColorGradientStop) AsCompositionColorGradientStop() (*ICompositionColorGradientStop, error) {
+	return winrt.QueryInterface[ICompositionColorGradientStop](unsafe.Pointer(self), &IID_ICompositionColorGradientStop)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -1495,6 +1615,12 @@ type CompositionColorGradientStopCollection struct {
 	ICompositionColorGradientStopCollection
 }
 
+// AsCompositionColorGradientStopCollection queries the instance's ICompositionColorGradientStopCollection interface.
+// The returned reference is owned by the caller.
+func (self *CompositionColorGradientStopCollection) AsCompositionColorGradientStopCollection() (*ICompositionColorGradientStopCollection, error) {
+	return winrt.QueryInterface[ICompositionColorGradientStopCollection](unsafe.Pointer(self), &IID_ICompositionColorGradientStopCollection)
+}
+
 // AsIterableOfCompositionColorGradientStop queries the instance's IIterableOfCompositionColorGradientStop interface.
 // The returned reference is owned by the caller.
 func (self *CompositionColorGradientStopCollection) AsIterableOfCompositionColorGradientStop() (*IIterableOfCompositionColorGradientStop, error) {
@@ -1512,6 +1638,12 @@ func (self *CompositionColorGradientStopCollection) AsVectorOfCompositionColorGr
 // the embedded IInspectable → IUnknown chain).
 type CompositionCommitBatch struct {
 	ICompositionCommitBatch
+}
+
+// AsCompositionCommitBatch queries the instance's ICompositionCommitBatch interface.
+// The returned reference is owned by the caller.
+func (self *CompositionCommitBatch) AsCompositionCommitBatch() (*ICompositionCommitBatch, error) {
+	return winrt.QueryInterface[ICompositionCommitBatch](unsafe.Pointer(self), &IID_ICompositionCommitBatch)
 }
 
 // AsCompositionObject queries the instance's ICompositionObject interface.
@@ -1568,6 +1700,12 @@ func (self *CompositionCommitBatch) AsAnimationObject() (*IAnimationObject, erro
 // the embedded IInspectable → IUnknown chain).
 type CompositionContainerShape struct {
 	ICompositionContainerShape
+}
+
+// AsCompositionContainerShape queries the instance's ICompositionContainerShape interface.
+// The returned reference is owned by the caller.
+func (self *CompositionContainerShape) AsCompositionContainerShape() (*ICompositionContainerShape, error) {
+	return winrt.QueryInterface[ICompositionContainerShape](unsafe.Pointer(self), &IID_ICompositionContainerShape)
 }
 
 // AsCompositionShape queries the instance's ICompositionShape interface.
@@ -1631,6 +1769,12 @@ func (self *CompositionContainerShape) AsAnimationObject() (*IAnimationObject, e
 // the embedded IInspectable → IUnknown chain).
 type CompositionDrawingSurface struct {
 	ICompositionDrawingSurface
+}
+
+// AsCompositionDrawingSurface queries the instance's ICompositionDrawingSurface interface.
+// The returned reference is owned by the caller.
+func (self *CompositionDrawingSurface) AsCompositionDrawingSurface() (*ICompositionDrawingSurface, error) {
+	return winrt.QueryInterface[ICompositionDrawingSurface](unsafe.Pointer(self), &IID_ICompositionDrawingSurface)
 }
 
 // AsCompositionDrawingSurface2 queries the instance's ICompositionDrawingSurface2 interface.
@@ -1701,6 +1845,12 @@ type CompositionEasingFunction struct {
 	ICompositionEasingFunction
 }
 
+// AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *CompositionEasingFunction) AsCompositionEasingFunction() (*ICompositionEasingFunction, error) {
+	return winrt.QueryInterface[ICompositionEasingFunction](unsafe.Pointer(self), &IID_ICompositionEasingFunction)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -1769,6 +1919,12 @@ type CompositionEffectBrush struct {
 	ICompositionEffectBrush
 }
 
+// AsCompositionEffectBrush queries the instance's ICompositionEffectBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionEffectBrush) AsCompositionEffectBrush() (*ICompositionEffectBrush, error) {
+	return winrt.QueryInterface[ICompositionEffectBrush](unsafe.Pointer(self), &IID_ICompositionEffectBrush)
+}
+
 // AsCompositionBrush queries the instance's ICompositionBrush interface.
 // Inherited from Microsoft.UI.Composition.CompositionBrush.
 // The returned reference is owned by the caller.
@@ -1832,6 +1988,12 @@ type CompositionEffectFactory struct {
 	ICompositionEffectFactory
 }
 
+// AsCompositionEffectFactory queries the instance's ICompositionEffectFactory interface.
+// The returned reference is owned by the caller.
+func (self *CompositionEffectFactory) AsCompositionEffectFactory() (*ICompositionEffectFactory, error) {
+	return winrt.QueryInterface[ICompositionEffectFactory](unsafe.Pointer(self), &IID_ICompositionEffectFactory)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -1888,6 +2050,12 @@ type CompositionEffectSourceParameter struct {
 	ICompositionEffectSourceParameter
 }
 
+// AsCompositionEffectSourceParameter queries the instance's ICompositionEffectSourceParameter interface.
+// The returned reference is owned by the caller.
+func (self *CompositionEffectSourceParameter) AsCompositionEffectSourceParameter() (*ICompositionEffectSourceParameter, error) {
+	return winrt.QueryInterface[ICompositionEffectSourceParameter](unsafe.Pointer(self), &IID_ICompositionEffectSourceParameter)
+}
+
 // AsGraphicsEffectSource queries the instance's wrtgraphicseffects.IGraphicsEffectSource interface.
 // The returned reference is owned by the caller.
 func (self *CompositionEffectSourceParameter) AsGraphicsEffectSource() (*wrtgraphicseffects.IGraphicsEffectSource, error) {
@@ -1916,6 +2084,12 @@ func Create(name string) (*CompositionEffectSourceParameter, error) {
 // the embedded IInspectable → IUnknown chain).
 type CompositionEllipseGeometry struct {
 	ICompositionEllipseGeometry
+}
+
+// AsCompositionEllipseGeometry queries the instance's ICompositionEllipseGeometry interface.
+// The returned reference is owned by the caller.
+func (self *CompositionEllipseGeometry) AsCompositionEllipseGeometry() (*ICompositionEllipseGeometry, error) {
+	return winrt.QueryInterface[ICompositionEllipseGeometry](unsafe.Pointer(self), &IID_ICompositionEllipseGeometry)
 }
 
 // AsCompositionGeometry queries the instance's ICompositionGeometry interface.
@@ -1993,6 +2167,12 @@ type CompositionGeometricClip struct {
 	ICompositionGeometricClip
 }
 
+// AsCompositionGeometricClip queries the instance's ICompositionGeometricClip interface.
+// The returned reference is owned by the caller.
+func (self *CompositionGeometricClip) AsCompositionGeometricClip() (*ICompositionGeometricClip, error) {
+	return winrt.QueryInterface[ICompositionGeometricClip](unsafe.Pointer(self), &IID_ICompositionGeometricClip)
+}
+
 // AsCompositionClip queries the instance's ICompositionClip interface.
 // Inherited from Microsoft.UI.Composition.CompositionClip.
 // The returned reference is owned by the caller.
@@ -2063,6 +2243,12 @@ type CompositionGeometry struct {
 	ICompositionGeometry
 }
 
+// AsCompositionGeometry queries the instance's ICompositionGeometry interface.
+// The returned reference is owned by the caller.
+func (self *CompositionGeometry) AsCompositionGeometry() (*ICompositionGeometry, error) {
+	return winrt.QueryInterface[ICompositionGeometry](unsafe.Pointer(self), &IID_ICompositionGeometry)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -2117,6 +2303,12 @@ func (self *CompositionGeometry) AsAnimationObject() (*IAnimationObject, error) 
 // the embedded IInspectable → IUnknown chain).
 type CompositionGradientBrush struct {
 	ICompositionGradientBrush
+}
+
+// AsCompositionGradientBrush queries the instance's ICompositionGradientBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionGradientBrush) AsCompositionGradientBrush() (*ICompositionGradientBrush, error) {
+	return winrt.QueryInterface[ICompositionGradientBrush](unsafe.Pointer(self), &IID_ICompositionGradientBrush)
 }
 
 // AsCompositionGradientBrush2 queries the instance's ICompositionGradientBrush2 interface.
@@ -2186,6 +2378,12 @@ func (self *CompositionGradientBrush) AsAnimationObject() (*IAnimationObject, er
 // the embedded IInspectable → IUnknown chain).
 type CompositionGraphicsDevice struct {
 	ICompositionGraphicsDevice
+}
+
+// AsCompositionGraphicsDevice queries the instance's ICompositionGraphicsDevice interface.
+// The returned reference is owned by the caller.
+func (self *CompositionGraphicsDevice) AsCompositionGraphicsDevice() (*ICompositionGraphicsDevice, error) {
+	return winrt.QueryInterface[ICompositionGraphicsDevice](unsafe.Pointer(self), &IID_ICompositionGraphicsDevice)
 }
 
 // AsCompositionGraphicsDevice2 queries the instance's ICompositionGraphicsDevice2 interface.
@@ -2262,6 +2460,12 @@ type CompositionLight struct {
 	ICompositionLight
 }
 
+// AsCompositionLight queries the instance's ICompositionLight interface.
+// The returned reference is owned by the caller.
+func (self *CompositionLight) AsCompositionLight() (*ICompositionLight, error) {
+	return winrt.QueryInterface[ICompositionLight](unsafe.Pointer(self), &IID_ICompositionLight)
+}
+
 // AsCompositionLight2 queries the instance's ICompositionLight2 interface.
 // The returned reference is owned by the caller.
 func (self *CompositionLight) AsCompositionLight2() (*ICompositionLight2, error) {
@@ -2330,6 +2534,12 @@ type CompositionLineGeometry struct {
 	ICompositionLineGeometry
 }
 
+// AsCompositionLineGeometry queries the instance's ICompositionLineGeometry interface.
+// The returned reference is owned by the caller.
+func (self *CompositionLineGeometry) AsCompositionLineGeometry() (*ICompositionLineGeometry, error) {
+	return winrt.QueryInterface[ICompositionLineGeometry](unsafe.Pointer(self), &IID_ICompositionLineGeometry)
+}
+
 // AsCompositionGeometry queries the instance's ICompositionGeometry interface.
 // Inherited from Microsoft.UI.Composition.CompositionGeometry.
 // The returned reference is owned by the caller.
@@ -2391,6 +2601,12 @@ func (self *CompositionLineGeometry) AsAnimationObject() (*IAnimationObject, err
 // the embedded IInspectable → IUnknown chain).
 type CompositionLinearGradientBrush struct {
 	ICompositionLinearGradientBrush
+}
+
+// AsCompositionLinearGradientBrush queries the instance's ICompositionLinearGradientBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionLinearGradientBrush) AsCompositionLinearGradientBrush() (*ICompositionLinearGradientBrush, error) {
+	return winrt.QueryInterface[ICompositionLinearGradientBrush](unsafe.Pointer(self), &IID_ICompositionLinearGradientBrush)
 }
 
 // AsCompositionGradientBrush queries the instance's ICompositionGradientBrush interface.
@@ -2470,6 +2686,12 @@ type CompositionMaskBrush struct {
 	ICompositionMaskBrush
 }
 
+// AsCompositionMaskBrush queries the instance's ICompositionMaskBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionMaskBrush) AsCompositionMaskBrush() (*ICompositionMaskBrush, error) {
+	return winrt.QueryInterface[ICompositionMaskBrush](unsafe.Pointer(self), &IID_ICompositionMaskBrush)
+}
+
 // AsCompositionBrush queries the instance's ICompositionBrush interface.
 // Inherited from Microsoft.UI.Composition.CompositionBrush.
 // The returned reference is owned by the caller.
@@ -2533,6 +2755,12 @@ type CompositionMipmapSurface struct {
 	ICompositionMipmapSurface
 }
 
+// AsCompositionMipmapSurface queries the instance's ICompositionMipmapSurface interface.
+// The returned reference is owned by the caller.
+func (self *CompositionMipmapSurface) AsCompositionMipmapSurface() (*ICompositionMipmapSurface, error) {
+	return winrt.QueryInterface[ICompositionMipmapSurface](unsafe.Pointer(self), &IID_ICompositionMipmapSurface)
+}
+
 // AsCompositionSurface queries the instance's ICompositionSurface interface.
 // The returned reference is owned by the caller.
 func (self *CompositionMipmapSurface) AsCompositionSurface() (*ICompositionSurface, error) {
@@ -2593,6 +2821,12 @@ func (self *CompositionMipmapSurface) AsAnimationObject() (*IAnimationObject, er
 // the embedded IInspectable → IUnknown chain).
 type CompositionNineGridBrush struct {
 	ICompositionNineGridBrush
+}
+
+// AsCompositionNineGridBrush queries the instance's ICompositionNineGridBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionNineGridBrush) AsCompositionNineGridBrush() (*ICompositionNineGridBrush, error) {
+	return winrt.QueryInterface[ICompositionNineGridBrush](unsafe.Pointer(self), &IID_ICompositionNineGridBrush)
 }
 
 // AsCompositionBrush queries the instance's ICompositionBrush interface.
@@ -2658,6 +2892,12 @@ type CompositionObject struct {
 	ICompositionObject
 }
 
+// AsCompositionObject queries the instance's ICompositionObject interface.
+// The returned reference is owned by the caller.
+func (self *CompositionObject) AsCompositionObject() (*ICompositionObject, error) {
+	return winrt.QueryInterface[ICompositionObject](unsafe.Pointer(self), &IID_ICompositionObject)
+}
+
 // AsCompositionObject2 queries the instance's ICompositionObject2 interface.
 // The returned reference is owned by the caller.
 func (self *CompositionObject) AsCompositionObject2() (*ICompositionObject2, error) {
@@ -2713,6 +2953,12 @@ type CompositionPath struct {
 	ICompositionPath
 }
 
+// AsCompositionPath queries the instance's ICompositionPath interface.
+// The returned reference is owned by the caller.
+func (self *CompositionPath) AsCompositionPath() (*ICompositionPath, error) {
+	return winrt.QueryInterface[ICompositionPath](unsafe.Pointer(self), &IID_ICompositionPath)
+}
+
 // AsGeometrySource2D queries the instance's wrtgraphics.IGeometrySource2D interface.
 // The returned reference is owned by the caller.
 func (self *CompositionPath) AsGeometrySource2D() (*wrtgraphics.IGeometrySource2D, error) {
@@ -2741,6 +2987,12 @@ func CreateCompositionPath(source *wrtgraphics.IGeometrySource2D) (*CompositionP
 // the embedded IInspectable → IUnknown chain).
 type CompositionPathGeometry struct {
 	ICompositionPathGeometry
+}
+
+// AsCompositionPathGeometry queries the instance's ICompositionPathGeometry interface.
+// The returned reference is owned by the caller.
+func (self *CompositionPathGeometry) AsCompositionPathGeometry() (*ICompositionPathGeometry, error) {
+	return winrt.QueryInterface[ICompositionPathGeometry](unsafe.Pointer(self), &IID_ICompositionPathGeometry)
 }
 
 // AsCompositionGeometry queries the instance's ICompositionGeometry interface.
@@ -2806,6 +3058,12 @@ type CompositionProjectedShadow struct {
 	ICompositionProjectedShadow
 }
 
+// AsCompositionProjectedShadow queries the instance's ICompositionProjectedShadow interface.
+// The returned reference is owned by the caller.
+func (self *CompositionProjectedShadow) AsCompositionProjectedShadow() (*ICompositionProjectedShadow, error) {
+	return winrt.QueryInterface[ICompositionProjectedShadow](unsafe.Pointer(self), &IID_ICompositionProjectedShadow)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -2862,6 +3120,12 @@ type CompositionProjectedShadowCaster struct {
 	ICompositionProjectedShadowCaster
 }
 
+// AsCompositionProjectedShadowCaster queries the instance's ICompositionProjectedShadowCaster interface.
+// The returned reference is owned by the caller.
+func (self *CompositionProjectedShadowCaster) AsCompositionProjectedShadowCaster() (*ICompositionProjectedShadowCaster, error) {
+	return winrt.QueryInterface[ICompositionProjectedShadowCaster](unsafe.Pointer(self), &IID_ICompositionProjectedShadowCaster)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -2916,6 +3180,12 @@ func (self *CompositionProjectedShadowCaster) AsAnimationObject() (*IAnimationOb
 // the embedded IInspectable → IUnknown chain).
 type CompositionProjectedShadowCasterCollection struct {
 	ICompositionProjectedShadowCasterCollection
+}
+
+// AsCompositionProjectedShadowCasterCollection queries the instance's ICompositionProjectedShadowCasterCollection interface.
+// The returned reference is owned by the caller.
+func (self *CompositionProjectedShadowCasterCollection) AsCompositionProjectedShadowCasterCollection() (*ICompositionProjectedShadowCasterCollection, error) {
+	return winrt.QueryInterface[ICompositionProjectedShadowCasterCollection](unsafe.Pointer(self), &IID_ICompositionProjectedShadowCasterCollection)
 }
 
 // AsIterableOfCompositionProjectedShadowCaster queries the instance's IIterableOfCompositionProjectedShadowCaster interface.
@@ -2992,6 +3262,12 @@ type CompositionProjectedShadowReceiver struct {
 	ICompositionProjectedShadowReceiver
 }
 
+// AsCompositionProjectedShadowReceiver queries the instance's ICompositionProjectedShadowReceiver interface.
+// The returned reference is owned by the caller.
+func (self *CompositionProjectedShadowReceiver) AsCompositionProjectedShadowReceiver() (*ICompositionProjectedShadowReceiver, error) {
+	return winrt.QueryInterface[ICompositionProjectedShadowReceiver](unsafe.Pointer(self), &IID_ICompositionProjectedShadowReceiver)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -3046,6 +3322,12 @@ func (self *CompositionProjectedShadowReceiver) AsAnimationObject() (*IAnimation
 // the embedded IInspectable → IUnknown chain).
 type CompositionProjectedShadowReceiverUnorderedCollection struct {
 	ICompositionProjectedShadowReceiverUnorderedCollection
+}
+
+// AsCompositionProjectedShadowReceiverUnorderedCollection queries the instance's ICompositionProjectedShadowReceiverUnorderedCollection interface.
+// The returned reference is owned by the caller.
+func (self *CompositionProjectedShadowReceiverUnorderedCollection) AsCompositionProjectedShadowReceiverUnorderedCollection() (*ICompositionProjectedShadowReceiverUnorderedCollection, error) {
+	return winrt.QueryInterface[ICompositionProjectedShadowReceiverUnorderedCollection](unsafe.Pointer(self), &IID_ICompositionProjectedShadowReceiverUnorderedCollection)
 }
 
 // AsIterableOfCompositionProjectedShadowReceiver queries the instance's IIterableOfCompositionProjectedShadowReceiver interface.
@@ -3110,6 +3392,12 @@ type CompositionPropertySet struct {
 	ICompositionPropertySet
 }
 
+// AsCompositionPropertySet queries the instance's ICompositionPropertySet interface.
+// The returned reference is owned by the caller.
+func (self *CompositionPropertySet) AsCompositionPropertySet() (*ICompositionPropertySet, error) {
+	return winrt.QueryInterface[ICompositionPropertySet](unsafe.Pointer(self), &IID_ICompositionPropertySet)
+}
+
 // AsCompositionPropertySet2 queries the instance's ICompositionPropertySet2 interface.
 // The returned reference is owned by the caller.
 func (self *CompositionPropertySet) AsCompositionPropertySet2() (*ICompositionPropertySet2, error) {
@@ -3170,6 +3458,12 @@ func (self *CompositionPropertySet) AsAnimationObject() (*IAnimationObject, erro
 // the embedded IInspectable → IUnknown chain).
 type CompositionRadialGradientBrush struct {
 	ICompositionRadialGradientBrush
+}
+
+// AsCompositionRadialGradientBrush queries the instance's ICompositionRadialGradientBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionRadialGradientBrush) AsCompositionRadialGradientBrush() (*ICompositionRadialGradientBrush, error) {
+	return winrt.QueryInterface[ICompositionRadialGradientBrush](unsafe.Pointer(self), &IID_ICompositionRadialGradientBrush)
 }
 
 // AsCompositionGradientBrush queries the instance's ICompositionGradientBrush interface.
@@ -3249,6 +3543,12 @@ type CompositionRectangleGeometry struct {
 	ICompositionRectangleGeometry
 }
 
+// AsCompositionRectangleGeometry queries the instance's ICompositionRectangleGeometry interface.
+// The returned reference is owned by the caller.
+func (self *CompositionRectangleGeometry) AsCompositionRectangleGeometry() (*ICompositionRectangleGeometry, error) {
+	return winrt.QueryInterface[ICompositionRectangleGeometry](unsafe.Pointer(self), &IID_ICompositionRectangleGeometry)
+}
+
 // AsCompositionGeometry queries the instance's ICompositionGeometry interface.
 // Inherited from Microsoft.UI.Composition.CompositionGeometry.
 // The returned reference is owned by the caller.
@@ -3310,6 +3610,12 @@ func (self *CompositionRectangleGeometry) AsAnimationObject() (*IAnimationObject
 // the embedded IInspectable → IUnknown chain).
 type CompositionRoundedRectangleGeometry struct {
 	ICompositionRoundedRectangleGeometry
+}
+
+// AsCompositionRoundedRectangleGeometry queries the instance's ICompositionRoundedRectangleGeometry interface.
+// The returned reference is owned by the caller.
+func (self *CompositionRoundedRectangleGeometry) AsCompositionRoundedRectangleGeometry() (*ICompositionRoundedRectangleGeometry, error) {
+	return winrt.QueryInterface[ICompositionRoundedRectangleGeometry](unsafe.Pointer(self), &IID_ICompositionRoundedRectangleGeometry)
 }
 
 // AsCompositionGeometry queries the instance's ICompositionGeometry interface.
@@ -3375,6 +3681,12 @@ type CompositionScopedBatch struct {
 	ICompositionScopedBatch
 }
 
+// AsCompositionScopedBatch queries the instance's ICompositionScopedBatch interface.
+// The returned reference is owned by the caller.
+func (self *CompositionScopedBatch) AsCompositionScopedBatch() (*ICompositionScopedBatch, error) {
+	return winrt.QueryInterface[ICompositionScopedBatch](unsafe.Pointer(self), &IID_ICompositionScopedBatch)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -3429,6 +3741,12 @@ func (self *CompositionScopedBatch) AsAnimationObject() (*IAnimationObject, erro
 // the embedded IInspectable → IUnknown chain).
 type CompositionShadow struct {
 	ICompositionShadow
+}
+
+// AsCompositionShadow queries the instance's ICompositionShadow interface.
+// The returned reference is owned by the caller.
+func (self *CompositionShadow) AsCompositionShadow() (*ICompositionShadow, error) {
+	return winrt.QueryInterface[ICompositionShadow](unsafe.Pointer(self), &IID_ICompositionShadow)
 }
 
 // AsCompositionObject queries the instance's ICompositionObject interface.
@@ -3487,6 +3805,12 @@ type CompositionShape struct {
 	ICompositionShape
 }
 
+// AsCompositionShape queries the instance's ICompositionShape interface.
+// The returned reference is owned by the caller.
+func (self *CompositionShape) AsCompositionShape() (*ICompositionShape, error) {
+	return winrt.QueryInterface[ICompositionShape](unsafe.Pointer(self), &IID_ICompositionShape)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -3541,6 +3865,12 @@ func (self *CompositionShape) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type CompositionShapeCollection struct {
 	IVectorOfCompositionShape
+}
+
+// AsVectorOfCompositionShape queries the instance's IVectorOfCompositionShape interface.
+// The returned reference is owned by the caller.
+func (self *CompositionShapeCollection) AsVectorOfCompositionShape() (*IVectorOfCompositionShape, error) {
+	return winrt.QueryInterface[IVectorOfCompositionShape](unsafe.Pointer(self), &IID_IVectorOfCompositionShape)
 }
 
 // AsIterableOfCompositionShape queries the instance's IIterableOfCompositionShape interface.
@@ -3603,6 +3933,12 @@ func (self *CompositionShapeCollection) AsAnimationObject() (*IAnimationObject, 
 // the embedded IInspectable → IUnknown chain).
 type CompositionSpriteShape struct {
 	ICompositionSpriteShape
+}
+
+// AsCompositionSpriteShape queries the instance's ICompositionSpriteShape interface.
+// The returned reference is owned by the caller.
+func (self *CompositionSpriteShape) AsCompositionSpriteShape() (*ICompositionSpriteShape, error) {
+	return winrt.QueryInterface[ICompositionSpriteShape](unsafe.Pointer(self), &IID_ICompositionSpriteShape)
 }
 
 // AsCompositionShape queries the instance's ICompositionShape interface.
@@ -3668,6 +4004,12 @@ type CompositionStrokeDashArray struct {
 	IVectorOfSingle
 }
 
+// AsVectorOfSingle queries the instance's IVectorOfSingle interface.
+// The returned reference is owned by the caller.
+func (self *CompositionStrokeDashArray) AsVectorOfSingle() (*IVectorOfSingle, error) {
+	return winrt.QueryInterface[IVectorOfSingle](unsafe.Pointer(self), &IID_IVectorOfSingle)
+}
+
 // AsIterableOfSingle queries the instance's IIterableOfSingle interface.
 // The returned reference is owned by the caller.
 func (self *CompositionStrokeDashArray) AsIterableOfSingle() (*IIterableOfSingle, error) {
@@ -3728,6 +4070,12 @@ func (self *CompositionStrokeDashArray) AsAnimationObject() (*IAnimationObject, 
 // the embedded IInspectable → IUnknown chain).
 type CompositionSurfaceBrush struct {
 	ICompositionSurfaceBrush
+}
+
+// AsCompositionSurfaceBrush queries the instance's ICompositionSurfaceBrush interface.
+// The returned reference is owned by the caller.
+func (self *CompositionSurfaceBrush) AsCompositionSurfaceBrush() (*ICompositionSurfaceBrush, error) {
+	return winrt.QueryInterface[ICompositionSurfaceBrush](unsafe.Pointer(self), &IID_ICompositionSurfaceBrush)
 }
 
 // AsCompositionSurfaceBrush2 queries the instance's ICompositionSurfaceBrush2 interface.
@@ -3805,6 +4153,12 @@ type CompositionTransform struct {
 	ICompositionTransform
 }
 
+// AsCompositionTransform queries the instance's ICompositionTransform interface.
+// The returned reference is owned by the caller.
+func (self *CompositionTransform) AsCompositionTransform() (*ICompositionTransform, error) {
+	return winrt.QueryInterface[ICompositionTransform](unsafe.Pointer(self), &IID_ICompositionTransform)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -3861,6 +4215,12 @@ type CompositionViewBox struct {
 	ICompositionViewBox
 }
 
+// AsCompositionViewBox queries the instance's ICompositionViewBox interface.
+// The returned reference is owned by the caller.
+func (self *CompositionViewBox) AsCompositionViewBox() (*ICompositionViewBox, error) {
+	return winrt.QueryInterface[ICompositionViewBox](unsafe.Pointer(self), &IID_ICompositionViewBox)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -3915,6 +4275,12 @@ func (self *CompositionViewBox) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type CompositionVirtualDrawingSurface struct {
 	ICompositionVirtualDrawingSurface
+}
+
+// AsCompositionVirtualDrawingSurface queries the instance's ICompositionVirtualDrawingSurface interface.
+// The returned reference is owned by the caller.
+func (self *CompositionVirtualDrawingSurface) AsCompositionVirtualDrawingSurface() (*ICompositionVirtualDrawingSurface, error) {
+	return winrt.QueryInterface[ICompositionVirtualDrawingSurface](unsafe.Pointer(self), &IID_ICompositionVirtualDrawingSurface)
 }
 
 // AsCompositionDrawingSurface queries the instance's ICompositionDrawingSurface interface.
@@ -3994,6 +4360,12 @@ type CompositionVisualSurface struct {
 	ICompositionVisualSurface
 }
 
+// AsCompositionVisualSurface queries the instance's ICompositionVisualSurface interface.
+// The returned reference is owned by the caller.
+func (self *CompositionVisualSurface) AsCompositionVisualSurface() (*ICompositionVisualSurface, error) {
+	return winrt.QueryInterface[ICompositionVisualSurface](unsafe.Pointer(self), &IID_ICompositionVisualSurface)
+}
+
 // AsCompositionSurface queries the instance's ICompositionSurface interface.
 // The returned reference is owned by the caller.
 func (self *CompositionVisualSurface) AsCompositionSurface() (*ICompositionSurface, error) {
@@ -4065,6 +4437,12 @@ func NewCompositor() (*Compositor, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Compositor](unsafe.Pointer(instance), &IID_ICompositor)
+}
+
+// AsCompositor queries the instance's ICompositor interface.
+// The returned reference is owned by the caller.
+func (self *Compositor) AsCompositor() (*ICompositor, error) {
+	return winrt.QueryInterface[ICompositor](unsafe.Pointer(self), &IID_ICompositor)
 }
 
 // AsCompositor2 queries the instance's ICompositor2 interface.
@@ -4144,6 +4522,12 @@ func CompositorStatics() (*ICompositorStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ContainerVisual struct {
 	IContainerVisual
+}
+
+// AsContainerVisual queries the instance's IContainerVisual interface.
+// The returned reference is owned by the caller.
+func (self *ContainerVisual) AsContainerVisual() (*IContainerVisual, error) {
+	return winrt.QueryInterface[IContainerVisual](unsafe.Pointer(self), &IID_IContainerVisual)
 }
 
 // AsVisual queries the instance's IVisual interface.
@@ -4230,6 +4614,12 @@ type CubicBezierEasingFunction struct {
 	ICubicBezierEasingFunction
 }
 
+// AsCubicBezierEasingFunction queries the instance's ICubicBezierEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *CubicBezierEasingFunction) AsCubicBezierEasingFunction() (*ICubicBezierEasingFunction, error) {
+	return winrt.QueryInterface[ICubicBezierEasingFunction](unsafe.Pointer(self), &IID_ICubicBezierEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -4291,6 +4681,12 @@ func (self *CubicBezierEasingFunction) AsAnimationObject() (*IAnimationObject, e
 // the embedded IInspectable → IUnknown chain).
 type DistantLight struct {
 	IDistantLight
+}
+
+// AsDistantLight queries the instance's IDistantLight interface.
+// The returned reference is owned by the caller.
+func (self *DistantLight) AsDistantLight() (*IDistantLight, error) {
+	return winrt.QueryInterface[IDistantLight](unsafe.Pointer(self), &IID_IDistantLight)
 }
 
 // AsDistantLight2 queries the instance's IDistantLight2 interface.
@@ -4376,6 +4772,12 @@ type DropShadow struct {
 	IDropShadow
 }
 
+// AsDropShadow queries the instance's IDropShadow interface.
+// The returned reference is owned by the caller.
+func (self *DropShadow) AsDropShadow() (*IDropShadow, error) {
+	return winrt.QueryInterface[IDropShadow](unsafe.Pointer(self), &IID_IDropShadow)
+}
+
 // AsDropShadow2 queries the instance's IDropShadow2 interface.
 // The returned reference is owned by the caller.
 func (self *DropShadow) AsDropShadow2() (*IDropShadow2, error) {
@@ -4445,6 +4847,12 @@ type ElasticEasingFunction struct {
 	IElasticEasingFunction
 }
 
+// AsElasticEasingFunction queries the instance's IElasticEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *ElasticEasingFunction) AsElasticEasingFunction() (*IElasticEasingFunction, error) {
+	return winrt.QueryInterface[IElasticEasingFunction](unsafe.Pointer(self), &IID_IElasticEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -4508,6 +4916,12 @@ type ExponentialEasingFunction struct {
 	IExponentialEasingFunction
 }
 
+// AsExponentialEasingFunction queries the instance's IExponentialEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *ExponentialEasingFunction) AsExponentialEasingFunction() (*IExponentialEasingFunction, error) {
+	return winrt.QueryInterface[IExponentialEasingFunction](unsafe.Pointer(self), &IID_IExponentialEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -4569,6 +4983,12 @@ func (self *ExponentialEasingFunction) AsAnimationObject() (*IAnimationObject, e
 // the embedded IInspectable → IUnknown chain).
 type ExpressionAnimation struct {
 	IExpressionAnimation
+}
+
+// AsExpressionAnimation queries the instance's IExpressionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *ExpressionAnimation) AsExpressionAnimation() (*IExpressionAnimation, error) {
+	return winrt.QueryInterface[IExpressionAnimation](unsafe.Pointer(self), &IID_IExpressionAnimation)
 }
 
 // AsCompositionAnimation queries the instance's ICompositionAnimation interface.
@@ -4662,6 +5082,12 @@ type ImplicitAnimationCollection struct {
 	IImplicitAnimationCollection
 }
 
+// AsImplicitAnimationCollection queries the instance's IImplicitAnimationCollection interface.
+// The returned reference is owned by the caller.
+func (self *ImplicitAnimationCollection) AsImplicitAnimationCollection() (*IImplicitAnimationCollection, error) {
+	return winrt.QueryInterface[IImplicitAnimationCollection](unsafe.Pointer(self), &IID_IImplicitAnimationCollection)
+}
+
 // AsIterableOfIKeyValuePairOfStringAndICompositionAnimationBase queries the instance's IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase interface.
 // The returned reference is owned by the caller.
 func (self *ImplicitAnimationCollection) AsIterableOfIKeyValuePairOfStringAndICompositionAnimationBase() (*IIterableOfIKeyValuePairOfStringAndICompositionAnimationBase, error) {
@@ -4730,6 +5156,12 @@ type InitialValueExpressionCollection struct {
 	IMapOfStringAndString
 }
 
+// AsMapOfStringAndString queries the instance's IMapOfStringAndString interface.
+// The returned reference is owned by the caller.
+func (self *InitialValueExpressionCollection) AsMapOfStringAndString() (*IMapOfStringAndString, error) {
+	return winrt.QueryInterface[IMapOfStringAndString](unsafe.Pointer(self), &IID_IMapOfStringAndString)
+}
+
 // AsIterableOfIKeyValuePairOfStringAndString queries the instance's IIterableOfIKeyValuePairOfStringAndString interface.
 // The returned reference is owned by the caller.
 func (self *InitialValueExpressionCollection) AsIterableOfIKeyValuePairOfStringAndString() (*IIterableOfIKeyValuePairOfStringAndString, error) {
@@ -4790,6 +5222,12 @@ func (self *InitialValueExpressionCollection) AsAnimationObject() (*IAnimationOb
 // the embedded IInspectable → IUnknown chain).
 type InsetClip struct {
 	IInsetClip
+}
+
+// AsInsetClip queries the instance's IInsetClip interface.
+// The returned reference is owned by the caller.
+func (self *InsetClip) AsInsetClip() (*IInsetClip, error) {
+	return winrt.QueryInterface[IInsetClip](unsafe.Pointer(self), &IID_IInsetClip)
 }
 
 // AsCompositionClip queries the instance's ICompositionClip interface.
@@ -4860,6 +5298,12 @@ func (self *InsetClip) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type KeyFrameAnimation struct {
 	IKeyFrameAnimation
+}
+
+// AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *KeyFrameAnimation) AsKeyFrameAnimation() (*IKeyFrameAnimation, error) {
+	return winrt.QueryInterface[IKeyFrameAnimation](unsafe.Pointer(self), &IID_IKeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation2 queries the instance's IKeyFrameAnimation2 interface.
@@ -4965,6 +5409,12 @@ type LayerVisual struct {
 	ILayerVisual
 }
 
+// AsLayerVisual queries the instance's ILayerVisual interface.
+// The returned reference is owned by the caller.
+func (self *LayerVisual) AsLayerVisual() (*ILayerVisual, error) {
+	return winrt.QueryInterface[ILayerVisual](unsafe.Pointer(self), &IID_ILayerVisual)
+}
+
 // AsLayerVisual2 queries the instance's ILayerVisual2 interface.
 // The returned reference is owned by the caller.
 func (self *LayerVisual) AsLayerVisual2() (*ILayerVisual2, error) {
@@ -5062,6 +5512,12 @@ type LinearEasingFunction struct {
 	ILinearEasingFunction
 }
 
+// AsLinearEasingFunction queries the instance's ILinearEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *LinearEasingFunction) AsLinearEasingFunction() (*ILinearEasingFunction, error) {
+	return winrt.QueryInterface[ILinearEasingFunction](unsafe.Pointer(self), &IID_ILinearEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -5123,6 +5579,12 @@ func (self *LinearEasingFunction) AsAnimationObject() (*IAnimationObject, error)
 // the embedded IInspectable → IUnknown chain).
 type NaturalMotionAnimation struct {
 	INaturalMotionAnimation
+}
+
+// AsNaturalMotionAnimation queries the instance's INaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *NaturalMotionAnimation) AsNaturalMotionAnimation() (*INaturalMotionAnimation, error) {
+	return winrt.QueryInterface[INaturalMotionAnimation](unsafe.Pointer(self), &IID_INaturalMotionAnimation)
 }
 
 // AsCompositionAnimation queries the instance's ICompositionAnimation interface.
@@ -5214,6 +5676,12 @@ func (self *NaturalMotionAnimation) AsAnimationObject() (*IAnimationObject, erro
 // the embedded IInspectable → IUnknown chain).
 type PathKeyFrameAnimation struct {
 	IPathKeyFrameAnimation
+}
+
+// AsPathKeyFrameAnimation queries the instance's IPathKeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *PathKeyFrameAnimation) AsPathKeyFrameAnimation() (*IPathKeyFrameAnimation, error) {
+	return winrt.QueryInterface[IPathKeyFrameAnimation](unsafe.Pointer(self), &IID_IPathKeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -5328,6 +5796,12 @@ type PointLight struct {
 	IPointLight
 }
 
+// AsPointLight queries the instance's IPointLight interface.
+// The returned reference is owned by the caller.
+func (self *PointLight) AsPointLight() (*IPointLight, error) {
+	return winrt.QueryInterface[IPointLight](unsafe.Pointer(self), &IID_IPointLight)
+}
+
 // AsPointLight2 queries the instance's IPointLight2 interface.
 // The returned reference is owned by the caller.
 func (self *PointLight) AsPointLight2() (*IPointLight2, error) {
@@ -5417,6 +5891,12 @@ type PowerEasingFunction struct {
 	IPowerEasingFunction
 }
 
+// AsPowerEasingFunction queries the instance's IPowerEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *PowerEasingFunction) AsPowerEasingFunction() (*IPowerEasingFunction, error) {
+	return winrt.QueryInterface[IPowerEasingFunction](unsafe.Pointer(self), &IID_IPowerEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -5478,6 +5958,12 @@ func (self *PowerEasingFunction) AsAnimationObject() (*IAnimationObject, error) 
 // the embedded IInspectable → IUnknown chain).
 type QuaternionKeyFrameAnimation struct {
 	IQuaternionKeyFrameAnimation
+}
+
+// AsQuaternionKeyFrameAnimation queries the instance's IQuaternionKeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *QuaternionKeyFrameAnimation) AsQuaternionKeyFrameAnimation() (*IQuaternionKeyFrameAnimation, error) {
+	return winrt.QueryInterface[IQuaternionKeyFrameAnimation](unsafe.Pointer(self), &IID_IQuaternionKeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -5592,6 +6078,12 @@ type RectangleClip struct {
 	IRectangleClip
 }
 
+// AsRectangleClip queries the instance's IRectangleClip interface.
+// The returned reference is owned by the caller.
+func (self *RectangleClip) AsRectangleClip() (*IRectangleClip, error) {
+	return winrt.QueryInterface[IRectangleClip](unsafe.Pointer(self), &IID_IRectangleClip)
+}
+
 // AsCompositionClip queries the instance's ICompositionClip interface.
 // Inherited from Microsoft.UI.Composition.CompositionClip.
 // The returned reference is owned by the caller.
@@ -5660,6 +6152,12 @@ func (self *RectangleClip) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type RedirectVisual struct {
 	IRedirectVisual
+}
+
+// AsRedirectVisual queries the instance's IRedirectVisual interface.
+// The returned reference is owned by the caller.
+func (self *RedirectVisual) AsRedirectVisual() (*IRedirectVisual, error) {
+	return winrt.QueryInterface[IRedirectVisual](unsafe.Pointer(self), &IID_IRedirectVisual)
 }
 
 // AsContainerVisual queries the instance's IContainerVisual interface.
@@ -5753,6 +6251,12 @@ type RenderingDeviceReplacedEventArgs struct {
 	IRenderingDeviceReplacedEventArgs
 }
 
+// AsRenderingDeviceReplacedEventArgs queries the instance's IRenderingDeviceReplacedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RenderingDeviceReplacedEventArgs) AsRenderingDeviceReplacedEventArgs() (*IRenderingDeviceReplacedEventArgs, error) {
+	return winrt.QueryInterface[IRenderingDeviceReplacedEventArgs](unsafe.Pointer(self), &IID_IRenderingDeviceReplacedEventArgs)
+}
+
 // AsCompositionObject queries the instance's ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -5807,6 +6311,12 @@ func (self *RenderingDeviceReplacedEventArgs) AsAnimationObject() (*IAnimationOb
 // the embedded IInspectable → IUnknown chain).
 type ScalarKeyFrameAnimation struct {
 	IScalarKeyFrameAnimation
+}
+
+// AsScalarKeyFrameAnimation queries the instance's IScalarKeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *ScalarKeyFrameAnimation) AsScalarKeyFrameAnimation() (*IScalarKeyFrameAnimation, error) {
+	return winrt.QueryInterface[IScalarKeyFrameAnimation](unsafe.Pointer(self), &IID_IScalarKeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -5921,6 +6431,12 @@ type ScalarNaturalMotionAnimation struct {
 	IScalarNaturalMotionAnimation
 }
 
+// AsScalarNaturalMotionAnimation queries the instance's IScalarNaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *ScalarNaturalMotionAnimation) AsScalarNaturalMotionAnimation() (*IScalarNaturalMotionAnimation, error) {
+	return winrt.QueryInterface[IScalarNaturalMotionAnimation](unsafe.Pointer(self), &IID_IScalarNaturalMotionAnimation)
+}
+
 // AsNaturalMotionAnimation queries the instance's INaturalMotionAnimation interface.
 // Inherited from Microsoft.UI.Composition.NaturalMotionAnimation.
 // The returned reference is owned by the caller.
@@ -6019,6 +6535,12 @@ type ShapeVisual struct {
 	IShapeVisual
 }
 
+// AsShapeVisual queries the instance's IShapeVisual interface.
+// The returned reference is owned by the caller.
+func (self *ShapeVisual) AsShapeVisual() (*IShapeVisual, error) {
+	return winrt.QueryInterface[IShapeVisual](unsafe.Pointer(self), &IID_IShapeVisual)
+}
+
 // AsContainerVisual queries the instance's IContainerVisual interface.
 // Inherited from Microsoft.UI.Composition.ContainerVisual.
 // The returned reference is owned by the caller.
@@ -6110,6 +6632,12 @@ type SineEasingFunction struct {
 	ISineEasingFunction
 }
 
+// AsSineEasingFunction queries the instance's ISineEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *SineEasingFunction) AsSineEasingFunction() (*ISineEasingFunction, error) {
+	return winrt.QueryInterface[ISineEasingFunction](unsafe.Pointer(self), &IID_ISineEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -6171,6 +6699,12 @@ func (self *SineEasingFunction) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type SpotLight struct {
 	ISpotLight
+}
+
+// AsSpotLight queries the instance's ISpotLight interface.
+// The returned reference is owned by the caller.
+func (self *SpotLight) AsSpotLight() (*ISpotLight, error) {
+	return winrt.QueryInterface[ISpotLight](unsafe.Pointer(self), &IID_ISpotLight)
 }
 
 // AsSpotLight2 queries the instance's ISpotLight2 interface.
@@ -6260,6 +6794,12 @@ func (self *SpotLight) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type SpringScalarNaturalMotionAnimation struct {
 	ISpringScalarNaturalMotionAnimation
+}
+
+// AsSpringScalarNaturalMotionAnimation queries the instance's ISpringScalarNaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SpringScalarNaturalMotionAnimation) AsSpringScalarNaturalMotionAnimation() (*ISpringScalarNaturalMotionAnimation, error) {
+	return winrt.QueryInterface[ISpringScalarNaturalMotionAnimation](unsafe.Pointer(self), &IID_ISpringScalarNaturalMotionAnimation)
 }
 
 // AsScalarNaturalMotionAnimation queries the instance's IScalarNaturalMotionAnimation interface.
@@ -6367,6 +6907,12 @@ type SpringVector2NaturalMotionAnimation struct {
 	ISpringVector2NaturalMotionAnimation
 }
 
+// AsSpringVector2NaturalMotionAnimation queries the instance's ISpringVector2NaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SpringVector2NaturalMotionAnimation) AsSpringVector2NaturalMotionAnimation() (*ISpringVector2NaturalMotionAnimation, error) {
+	return winrt.QueryInterface[ISpringVector2NaturalMotionAnimation](unsafe.Pointer(self), &IID_ISpringVector2NaturalMotionAnimation)
+}
+
 // AsVector2NaturalMotionAnimation queries the instance's IVector2NaturalMotionAnimation interface.
 // Inherited from Microsoft.UI.Composition.Vector2NaturalMotionAnimation.
 // The returned reference is owned by the caller.
@@ -6470,6 +7016,12 @@ func (self *SpringVector2NaturalMotionAnimation) AsAnimationObject() (*IAnimatio
 // the embedded IInspectable → IUnknown chain).
 type SpringVector3NaturalMotionAnimation struct {
 	ISpringVector3NaturalMotionAnimation
+}
+
+// AsSpringVector3NaturalMotionAnimation queries the instance's ISpringVector3NaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SpringVector3NaturalMotionAnimation) AsSpringVector3NaturalMotionAnimation() (*ISpringVector3NaturalMotionAnimation, error) {
+	return winrt.QueryInterface[ISpringVector3NaturalMotionAnimation](unsafe.Pointer(self), &IID_ISpringVector3NaturalMotionAnimation)
 }
 
 // AsVector3NaturalMotionAnimation queries the instance's IVector3NaturalMotionAnimation interface.
@@ -6577,6 +7129,12 @@ type SpriteVisual struct {
 	ISpriteVisual
 }
 
+// AsSpriteVisual queries the instance's ISpriteVisual interface.
+// The returned reference is owned by the caller.
+func (self *SpriteVisual) AsSpriteVisual() (*ISpriteVisual, error) {
+	return winrt.QueryInterface[ISpriteVisual](unsafe.Pointer(self), &IID_ISpriteVisual)
+}
+
 // AsSpriteVisual2 queries the instance's ISpriteVisual2 interface.
 // The returned reference is owned by the caller.
 func (self *SpriteVisual) AsSpriteVisual2() (*ISpriteVisual2, error) {
@@ -6674,6 +7232,12 @@ type StepEasingFunction struct {
 	IStepEasingFunction
 }
 
+// AsStepEasingFunction queries the instance's IStepEasingFunction interface.
+// The returned reference is owned by the caller.
+func (self *StepEasingFunction) AsStepEasingFunction() (*IStepEasingFunction, error) {
+	return winrt.QueryInterface[IStepEasingFunction](unsafe.Pointer(self), &IID_IStepEasingFunction)
+}
+
 // AsCompositionEasingFunction queries the instance's ICompositionEasingFunction interface.
 // Inherited from Microsoft.UI.Composition.CompositionEasingFunction.
 // The returned reference is owned by the caller.
@@ -6735,6 +7299,12 @@ func (self *StepEasingFunction) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type Vector2KeyFrameAnimation struct {
 	IVector2KeyFrameAnimation
+}
+
+// AsVector2KeyFrameAnimation queries the instance's IVector2KeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *Vector2KeyFrameAnimation) AsVector2KeyFrameAnimation() (*IVector2KeyFrameAnimation, error) {
+	return winrt.QueryInterface[IVector2KeyFrameAnimation](unsafe.Pointer(self), &IID_IVector2KeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -6849,6 +7419,12 @@ type Vector2NaturalMotionAnimation struct {
 	IVector2NaturalMotionAnimation
 }
 
+// AsVector2NaturalMotionAnimation queries the instance's IVector2NaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *Vector2NaturalMotionAnimation) AsVector2NaturalMotionAnimation() (*IVector2NaturalMotionAnimation, error) {
+	return winrt.QueryInterface[IVector2NaturalMotionAnimation](unsafe.Pointer(self), &IID_IVector2NaturalMotionAnimation)
+}
+
 // AsNaturalMotionAnimation queries the instance's INaturalMotionAnimation interface.
 // Inherited from Microsoft.UI.Composition.NaturalMotionAnimation.
 // The returned reference is owned by the caller.
@@ -6945,6 +7521,12 @@ func (self *Vector2NaturalMotionAnimation) AsAnimationObject() (*IAnimationObjec
 // the embedded IInspectable → IUnknown chain).
 type Vector3KeyFrameAnimation struct {
 	IVector3KeyFrameAnimation
+}
+
+// AsVector3KeyFrameAnimation queries the instance's IVector3KeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *Vector3KeyFrameAnimation) AsVector3KeyFrameAnimation() (*IVector3KeyFrameAnimation, error) {
+	return winrt.QueryInterface[IVector3KeyFrameAnimation](unsafe.Pointer(self), &IID_IVector3KeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -7059,6 +7641,12 @@ type Vector3NaturalMotionAnimation struct {
 	IVector3NaturalMotionAnimation
 }
 
+// AsVector3NaturalMotionAnimation queries the instance's IVector3NaturalMotionAnimation interface.
+// The returned reference is owned by the caller.
+func (self *Vector3NaturalMotionAnimation) AsVector3NaturalMotionAnimation() (*IVector3NaturalMotionAnimation, error) {
+	return winrt.QueryInterface[IVector3NaturalMotionAnimation](unsafe.Pointer(self), &IID_IVector3NaturalMotionAnimation)
+}
+
 // AsNaturalMotionAnimation queries the instance's INaturalMotionAnimation interface.
 // Inherited from Microsoft.UI.Composition.NaturalMotionAnimation.
 // The returned reference is owned by the caller.
@@ -7155,6 +7743,12 @@ func (self *Vector3NaturalMotionAnimation) AsAnimationObject() (*IAnimationObjec
 // the embedded IInspectable → IUnknown chain).
 type Vector4KeyFrameAnimation struct {
 	IVector4KeyFrameAnimation
+}
+
+// AsVector4KeyFrameAnimation queries the instance's IVector4KeyFrameAnimation interface.
+// The returned reference is owned by the caller.
+func (self *Vector4KeyFrameAnimation) AsVector4KeyFrameAnimation() (*IVector4KeyFrameAnimation, error) {
+	return winrt.QueryInterface[IVector4KeyFrameAnimation](unsafe.Pointer(self), &IID_IVector4KeyFrameAnimation)
 }
 
 // AsKeyFrameAnimation queries the instance's IKeyFrameAnimation interface.
@@ -7269,6 +7863,12 @@ type Visual struct {
 	IVisual
 }
 
+// AsVisual queries the instance's IVisual interface.
+// The returned reference is owned by the caller.
+func (self *Visual) AsVisual() (*IVisual, error) {
+	return winrt.QueryInterface[IVisual](unsafe.Pointer(self), &IID_IVisual)
+}
+
 // AsVisual2 queries the instance's IVisual2 interface.
 // The returned reference is owned by the caller.
 func (self *Visual) AsVisual2() (*IVisual2, error) {
@@ -7343,6 +7943,12 @@ type VisualCollection struct {
 	IVisualCollection
 }
 
+// AsVisualCollection queries the instance's IVisualCollection interface.
+// The returned reference is owned by the caller.
+func (self *VisualCollection) AsVisualCollection() (*IVisualCollection, error) {
+	return winrt.QueryInterface[IVisualCollection](unsafe.Pointer(self), &IID_IVisualCollection)
+}
+
 // AsIterableOfVisual queries the instance's IIterableOfVisual interface.
 // The returned reference is owned by the caller.
 func (self *VisualCollection) AsIterableOfVisual() (*IIterableOfVisual, error) {
@@ -7403,6 +8009,12 @@ func (self *VisualCollection) AsAnimationObject() (*IAnimationObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type VisualUnorderedCollection struct {
 	IVisualUnorderedCollection
+}
+
+// AsVisualUnorderedCollection queries the instance's IVisualUnorderedCollection interface.
+// The returned reference is owned by the caller.
+func (self *VisualUnorderedCollection) AsVisualUnorderedCollection() (*IVisualUnorderedCollection, error) {
+	return winrt.QueryInterface[IVisualUnorderedCollection](unsafe.Pointer(self), &IID_IVisualUnorderedCollection)
 }
 
 // AsIterableOfVisual queries the instance's IIterableOfVisual interface.

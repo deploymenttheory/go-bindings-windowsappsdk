@@ -29,6 +29,12 @@ func NewConversationItem() (*ConversationItem, error) {
 	return winrt.QueryInterface[ConversationItem](unsafe.Pointer(instance), &IID_IConversationItem)
 }
 
+// AsConversationItem queries the instance's IConversationItem interface.
+// The returned reference is owned by the caller.
+func (self *ConversationItem) AsConversationItem() (*IConversationItem, error) {
+	return winrt.QueryInterface[IConversationItem](unsafe.Pointer(self), &IID_IConversationItem)
+}
+
 // ConversationSummaryOptions is the Microsoft.Windows.AI.Text.ConversationSummaryOptions runtime class, surfaced through its
 // default interface IConversationSummaryOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -47,6 +53,12 @@ func NewConversationSummaryOptions() (*ConversationSummaryOptions, error) {
 	return winrt.QueryInterface[ConversationSummaryOptions](unsafe.Pointer(instance), &IID_IConversationSummaryOptions)
 }
 
+// AsConversationSummaryOptions queries the instance's IConversationSummaryOptions interface.
+// The returned reference is owned by the caller.
+func (self *ConversationSummaryOptions) AsConversationSummaryOptions() (*IConversationSummaryOptions, error) {
+	return winrt.QueryInterface[IConversationSummaryOptions](unsafe.Pointer(self), &IID_IConversationSummaryOptions)
+}
+
 // GenerateStructuredJsonResponseResult is the Microsoft.Windows.AI.Text.GenerateStructuredJsonResponseResult runtime class, surfaced through its
 // default interface IGenerateStructuredJsonResponseResult. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -54,11 +66,23 @@ type GenerateStructuredJsonResponseResult struct {
 	IGenerateStructuredJsonResponseResult
 }
 
+// AsGenerateStructuredJsonResponseResult queries the instance's IGenerateStructuredJsonResponseResult interface.
+// The returned reference is owned by the caller.
+func (self *GenerateStructuredJsonResponseResult) AsGenerateStructuredJsonResponseResult() (*IGenerateStructuredJsonResponseResult, error) {
+	return winrt.QueryInterface[IGenerateStructuredJsonResponseResult](unsafe.Pointer(self), &IID_IGenerateStructuredJsonResponseResult)
+}
+
 // LanguageModel is the Microsoft.Windows.AI.Text.LanguageModel runtime class, surfaced through its
 // default interface ILanguageModel. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type LanguageModel struct {
 	ILanguageModel
+}
+
+// AsLanguageModel queries the instance's ILanguageModel interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModel) AsLanguageModel() (*ILanguageModel, error) {
+	return winrt.QueryInterface[ILanguageModel](unsafe.Pointer(self), &IID_ILanguageModel)
 }
 
 // AsLanguageModel2 queries the instance's ILanguageModel2 interface.
@@ -98,6 +122,12 @@ type LanguageModelContext struct {
 	ILanguageModelContext
 }
 
+// AsLanguageModelContext queries the instance's ILanguageModelContext interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModelContext) AsLanguageModelContext() (*ILanguageModelContext, error) {
+	return winrt.QueryInterface[ILanguageModelContext](unsafe.Pointer(self), &IID_ILanguageModelContext)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *LanguageModelContext) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -111,11 +141,23 @@ type LanguageModelEmbeddingVectorResult struct {
 	ILanguageModelEmbeddingVectorResult
 }
 
+// AsLanguageModelEmbeddingVectorResult queries the instance's ILanguageModelEmbeddingVectorResult interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModelEmbeddingVectorResult) AsLanguageModelEmbeddingVectorResult() (*ILanguageModelEmbeddingVectorResult, error) {
+	return winrt.QueryInterface[ILanguageModelEmbeddingVectorResult](unsafe.Pointer(self), &IID_ILanguageModelEmbeddingVectorResult)
+}
+
 // LanguageModelLowRankAdapter is the Microsoft.Windows.AI.Text.LanguageModelLowRankAdapter runtime class, surfaced through its
 // default interface ILanguageModelLowRankAdapter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type LanguageModelLowRankAdapter struct {
 	ILanguageModelLowRankAdapter
+}
+
+// AsLanguageModelLowRankAdapter queries the instance's ILanguageModelLowRankAdapter interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModelLowRankAdapter) AsLanguageModelLowRankAdapter() (*ILanguageModelLowRankAdapter, error) {
+	return winrt.QueryInterface[ILanguageModelLowRankAdapter](unsafe.Pointer(self), &IID_ILanguageModelLowRankAdapter)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -143,6 +185,12 @@ type LanguageModelLowRankAdapterResult struct {
 	ILanguageModelLowRankAdapterResult
 }
 
+// AsLanguageModelLowRankAdapterResult queries the instance's ILanguageModelLowRankAdapterResult interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModelLowRankAdapterResult) AsLanguageModelLowRankAdapterResult() (*ILanguageModelLowRankAdapterResult, error) {
+	return winrt.QueryInterface[ILanguageModelLowRankAdapterResult](unsafe.Pointer(self), &IID_ILanguageModelLowRankAdapterResult)
+}
+
 // LanguageModelOptions is the Microsoft.Windows.AI.Text.LanguageModelOptions runtime class, surfaced through its
 // default interface ILanguageModelOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -161,6 +209,12 @@ func NewLanguageModelOptions() (*LanguageModelOptions, error) {
 	return winrt.QueryInterface[LanguageModelOptions](unsafe.Pointer(instance), &IID_ILanguageModelOptions)
 }
 
+// AsLanguageModelOptions queries the instance's ILanguageModelOptions interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModelOptions) AsLanguageModelOptions() (*ILanguageModelOptions, error) {
+	return winrt.QueryInterface[ILanguageModelOptions](unsafe.Pointer(self), &IID_ILanguageModelOptions)
+}
+
 // AsLanguageModelOptions2 queries the instance's ILanguageModelOptions2 interface.
 // The returned reference is owned by the caller.
 func (self *LanguageModelOptions) AsLanguageModelOptions2() (*ILanguageModelOptions2, error) {
@@ -174,11 +228,23 @@ type LanguageModelResponseResult struct {
 	ILanguageModelResponseResult
 }
 
+// AsLanguageModelResponseResult queries the instance's ILanguageModelResponseResult interface.
+// The returned reference is owned by the caller.
+func (self *LanguageModelResponseResult) AsLanguageModelResponseResult() (*ILanguageModelResponseResult, error) {
+	return winrt.QueryInterface[ILanguageModelResponseResult](unsafe.Pointer(self), &IID_ILanguageModelResponseResult)
+}
+
 // TextRewriter is the Microsoft.Windows.AI.Text.TextRewriter runtime class, surfaced through its
 // default interface ITextRewriter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextRewriter struct {
 	ITextRewriter
+}
+
+// AsTextRewriter queries the instance's ITextRewriter interface.
+// The returned reference is owned by the caller.
+func (self *TextRewriter) AsTextRewriter() (*ITextRewriter, error) {
+	return winrt.QueryInterface[ITextRewriter](unsafe.Pointer(self), &IID_ITextRewriter)
 }
 
 // AsTextRewriter2 queries the instance's ITextRewriter2 interface.
@@ -215,6 +281,12 @@ func CreateInstance(languageModel *ILanguageModel) (*TextRewriter, error) {
 // the embedded IInspectable → IUnknown chain).
 type TextSummarizer struct {
 	ITextSummarizer
+}
+
+// AsTextSummarizer queries the instance's ITextSummarizer interface.
+// The returned reference is owned by the caller.
+func (self *TextSummarizer) AsTextSummarizer() (*ITextSummarizer, error) {
+	return winrt.QueryInterface[ITextSummarizer](unsafe.Pointer(self), &IID_ITextSummarizer)
 }
 
 // AsTextSummarizer2 queries the instance's ITextSummarizer2 interface.
@@ -259,6 +331,12 @@ type TextToTableConverter struct {
 	ITextToTableConverter
 }
 
+// AsTextToTableConverter queries the instance's ITextToTableConverter interface.
+// The returned reference is owned by the caller.
+func (self *TextToTableConverter) AsTextToTableConverter() (*ITextToTableConverter, error) {
+	return winrt.QueryInterface[ITextToTableConverter](unsafe.Pointer(self), &IID_ITextToTableConverter)
+}
+
 // CreateInstanceTextToTableConverter constructs a Microsoft.Windows.AI.Text.TextToTableConverter instance through
 // Microsoft.Windows.AI.Text.ITextToTableConverterFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -283,9 +361,21 @@ type TextToTableResponseResult struct {
 	ITextToTableResponseResult
 }
 
+// AsTextToTableResponseResult queries the instance's ITextToTableResponseResult interface.
+// The returned reference is owned by the caller.
+func (self *TextToTableResponseResult) AsTextToTableResponseResult() (*ITextToTableResponseResult, error) {
+	return winrt.QueryInterface[ITextToTableResponseResult](unsafe.Pointer(self), &IID_ITextToTableResponseResult)
+}
+
 // TextToTableRow is the Microsoft.Windows.AI.Text.TextToTableRow runtime class, surfaced through its
 // default interface ITextToTableRow. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextToTableRow struct {
 	ITextToTableRow
+}
+
+// AsTextToTableRow queries the instance's ITextToTableRow interface.
+// The returned reference is owned by the caller.
+func (self *TextToTableRow) AsTextToTableRow() (*ITextToTableRow, error) {
+	return winrt.QueryInterface[ITextToTableRow](unsafe.Pointer(self), &IID_ITextToTableRow)
 }

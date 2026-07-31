@@ -18,6 +18,12 @@ type FeedAnnouncement struct {
 	IFeedAnnouncement
 }
 
+// AsFeedAnnouncement queries the instance's IFeedAnnouncement interface.
+// The returned reference is owned by the caller.
+func (self *FeedAnnouncement) AsFeedAnnouncement() (*IFeedAnnouncement, error) {
+	return winrt.QueryInterface[IFeedAnnouncement](unsafe.Pointer(self), &IID_IFeedAnnouncement)
+}
+
 // CreateInstance constructs a Microsoft.Windows.Widgets.Notifications.FeedAnnouncement instance through
 // Microsoft.Windows.Widgets.Notifications.IFeedAnnouncementFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -40,4 +46,10 @@ func CreateInstance(id string, primaryText string, secondaryText string, lightMo
 // the embedded IInspectable → IUnknown chain).
 type FeedAnnouncementInvokedArgs struct {
 	IFeedAnnouncementInvokedArgs
+}
+
+// AsFeedAnnouncementInvokedArgs queries the instance's IFeedAnnouncementInvokedArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedAnnouncementInvokedArgs) AsFeedAnnouncementInvokedArgs() (*IFeedAnnouncementInvokedArgs, error) {
+	return winrt.QueryInterface[IFeedAnnouncementInvokedArgs](unsafe.Pointer(self), &IID_IFeedAnnouncementInvokedArgs)
 }

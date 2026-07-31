@@ -18,6 +18,12 @@ type VideoScaler struct {
 	IVideoScaler
 }
 
+// AsVideoScaler queries the instance's IVideoScaler interface.
+// The returned reference is owned by the caller.
+func (self *VideoScaler) AsVideoScaler() (*IVideoScaler, error) {
+	return winrt.QueryInterface[IVideoScaler](unsafe.Pointer(self), &IID_IVideoScaler)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *VideoScaler) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -54,9 +60,21 @@ func NewVideoScalerOptions() (*VideoScalerOptions, error) {
 	return winrt.QueryInterface[VideoScalerOptions](unsafe.Pointer(instance), &IID_IVideoScalerOptions)
 }
 
+// AsVideoScalerOptions queries the instance's IVideoScalerOptions interface.
+// The returned reference is owned by the caller.
+func (self *VideoScalerOptions) AsVideoScalerOptions() (*IVideoScalerOptions, error) {
+	return winrt.QueryInterface[IVideoScalerOptions](unsafe.Pointer(self), &IID_IVideoScalerOptions)
+}
+
 // VideoScalerResult is the Microsoft.Windows.AI.Video.VideoScalerResult runtime class, surfaced through its
 // default interface IVideoScalerResult. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type VideoScalerResult struct {
 	IVideoScalerResult
+}
+
+// AsVideoScalerResult queries the instance's IVideoScalerResult interface.
+// The returned reference is owned by the caller.
+func (self *VideoScalerResult) AsVideoScalerResult() (*IVideoScalerResult, error) {
+	return winrt.QueryInterface[IVideoScalerResult](unsafe.Pointer(self), &IID_IVideoScalerResult)
 }

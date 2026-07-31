@@ -19,11 +19,23 @@ type AuthFailure struct {
 	IAuthFailure
 }
 
+// AsAuthFailure queries the instance's IAuthFailure interface.
+// The returned reference is owned by the caller.
+func (self *AuthFailure) AsAuthFailure() (*IAuthFailure, error) {
+	return winrt.QueryInterface[IAuthFailure](unsafe.Pointer(self), &IID_IAuthFailure)
+}
+
 // AuthRequestParams is the Microsoft.Security.Authentication.OAuth.AuthRequestParams runtime class, surfaced through its
 // default interface IAuthRequestParams. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AuthRequestParams struct {
 	IAuthRequestParams
+}
+
+// AsAuthRequestParams queries the instance's IAuthRequestParams interface.
+// The returned reference is owned by the caller.
+func (self *AuthRequestParams) AsAuthRequestParams() (*IAuthRequestParams, error) {
+	return winrt.QueryInterface[IAuthRequestParams](unsafe.Pointer(self), &IID_IAuthRequestParams)
 }
 
 // AuthRequestParamsStatics returns the Microsoft.Security.Authentication.OAuth.IAuthRequestParamsStatics statics of the
@@ -79,11 +91,23 @@ type AuthRequestResult struct {
 	IAuthRequestResult
 }
 
+// AsAuthRequestResult queries the instance's IAuthRequestResult interface.
+// The returned reference is owned by the caller.
+func (self *AuthRequestResult) AsAuthRequestResult() (*IAuthRequestResult, error) {
+	return winrt.QueryInterface[IAuthRequestResult](unsafe.Pointer(self), &IID_IAuthRequestResult)
+}
+
 // AuthResponse is the Microsoft.Security.Authentication.OAuth.AuthResponse runtime class, surfaced through its
 // default interface IAuthResponse. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AuthResponse struct {
 	IAuthResponse
+}
+
+// AsAuthResponse queries the instance's IAuthResponse interface.
+// The returned reference is owned by the caller.
+func (self *AuthResponse) AsAuthResponse() (*IAuthResponse, error) {
+	return winrt.QueryInterface[IAuthResponse](unsafe.Pointer(self), &IID_IAuthResponse)
 }
 
 // ClientAuthentication is the Microsoft.Security.Authentication.OAuth.ClientAuthentication runtime class, surfaced through its
@@ -102,6 +126,12 @@ func NewClientAuthentication() (*ClientAuthentication, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ClientAuthentication](unsafe.Pointer(instance), &IID_IClientAuthentication)
+}
+
+// AsClientAuthentication queries the instance's IClientAuthentication interface.
+// The returned reference is owned by the caller.
+func (self *ClientAuthentication) AsClientAuthentication() (*IClientAuthentication, error) {
+	return winrt.QueryInterface[IClientAuthentication](unsafe.Pointer(self), &IID_IClientAuthentication)
 }
 
 // ClientAuthenticationStatics returns the Microsoft.Security.Authentication.OAuth.IClientAuthenticationStatics statics of the
@@ -152,11 +182,23 @@ type TokenFailure struct {
 	ITokenFailure
 }
 
+// AsTokenFailure queries the instance's ITokenFailure interface.
+// The returned reference is owned by the caller.
+func (self *TokenFailure) AsTokenFailure() (*ITokenFailure, error) {
+	return winrt.QueryInterface[ITokenFailure](unsafe.Pointer(self), &IID_ITokenFailure)
+}
+
 // TokenRequestParams is the Microsoft.Security.Authentication.OAuth.TokenRequestParams runtime class, surfaced through its
 // default interface ITokenRequestParams. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TokenRequestParams struct {
 	ITokenRequestParams
+}
+
+// AsTokenRequestParams queries the instance's ITokenRequestParams interface.
+// The returned reference is owned by the caller.
+func (self *TokenRequestParams) AsTokenRequestParams() (*ITokenRequestParams, error) {
+	return winrt.QueryInterface[ITokenRequestParams](unsafe.Pointer(self), &IID_ITokenRequestParams)
 }
 
 // TokenRequestParamsStatics returns the Microsoft.Security.Authentication.OAuth.ITokenRequestParamsStatics statics of the
@@ -195,9 +237,21 @@ type TokenRequestResult struct {
 	ITokenRequestResult
 }
 
+// AsTokenRequestResult queries the instance's ITokenRequestResult interface.
+// The returned reference is owned by the caller.
+func (self *TokenRequestResult) AsTokenRequestResult() (*ITokenRequestResult, error) {
+	return winrt.QueryInterface[ITokenRequestResult](unsafe.Pointer(self), &IID_ITokenRequestResult)
+}
+
 // TokenResponse is the Microsoft.Security.Authentication.OAuth.TokenResponse runtime class, surfaced through its
 // default interface ITokenResponse. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TokenResponse struct {
 	ITokenResponse
+}
+
+// AsTokenResponse queries the instance's ITokenResponse interface.
+// The returned reference is owned by the caller.
+func (self *TokenResponse) AsTokenResponse() (*ITokenResponse, error) {
+	return winrt.QueryInterface[ITokenResponse](unsafe.Pointer(self), &IID_ITokenResponse)
 }

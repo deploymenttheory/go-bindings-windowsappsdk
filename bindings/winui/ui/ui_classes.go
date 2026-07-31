@@ -17,6 +17,12 @@ type ColorHelper struct {
 	IColorHelper
 }
 
+// AsColorHelper queries the instance's IColorHelper interface.
+// The returned reference is owned by the caller.
+func (self *ColorHelper) AsColorHelper() (*IColorHelper, error) {
+	return winrt.QueryInterface[IColorHelper](unsafe.Pointer(self), &IID_IColorHelper)
+}
+
 // ColorHelperStatics returns the Microsoft.UI.IColorHelperStatics statics of the
 // Microsoft.UI.ColorHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -46,6 +52,12 @@ func ColorHelperStatics2() (*IColorHelperStatics2, error) {
 // the embedded IInspectable → IUnknown chain).
 type Colors struct {
 	IColors
+}
+
+// AsColors queries the instance's IColors interface.
+// The returned reference is owned by the caller.
+func (self *Colors) AsColors() (*IColors, error) {
+	return winrt.QueryInterface[IColors](unsafe.Pointer(self), &IID_IColors)
 }
 
 // ColorsStatics returns the Microsoft.UI.IColorsStatics statics of the

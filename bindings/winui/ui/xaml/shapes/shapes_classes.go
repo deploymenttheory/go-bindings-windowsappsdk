@@ -31,6 +31,12 @@ func NewEllipse() (*Ellipse, error) {
 	return winrt.QueryInterface[Ellipse](unsafe.Pointer(instance), &IID_IEllipse)
 }
 
+// AsEllipse queries the instance's IEllipse interface.
+// The returned reference is owned by the caller.
+func (self *Ellipse) AsEllipse() (*IEllipse, error) {
+	return winrt.QueryInterface[IEllipse](unsafe.Pointer(self), &IID_IEllipse)
+}
+
 // AsShape queries the instance's IShape interface.
 // Inherited from Microsoft.UI.Xaml.Shapes.Shape.
 // The returned reference is owned by the caller.
@@ -124,6 +130,12 @@ func NewLine() (*Line, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Line](unsafe.Pointer(instance), &IID_ILine)
+}
+
+// AsLine queries the instance's ILine interface.
+// The returned reference is owned by the caller.
+func (self *Line) AsLine() (*ILine, error) {
+	return winrt.QueryInterface[ILine](unsafe.Pointer(self), &IID_ILine)
 }
 
 // AsShape queries the instance's IShape interface.
@@ -220,6 +232,12 @@ func LineStatics() (*ILineStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type Path struct {
 	IPath
+}
+
+// AsPath queries the instance's IPath interface.
+// The returned reference is owned by the caller.
+func (self *Path) AsPath() (*IPath, error) {
+	return winrt.QueryInterface[IPath](unsafe.Pointer(self), &IID_IPath)
 }
 
 // AsShape queries the instance's IShape interface.
@@ -354,6 +372,12 @@ func NewPolygon() (*Polygon, error) {
 	return winrt.QueryInterface[Polygon](unsafe.Pointer(instance), &IID_IPolygon)
 }
 
+// AsPolygon queries the instance's IPolygon interface.
+// The returned reference is owned by the caller.
+func (self *Polygon) AsPolygon() (*IPolygon, error) {
+	return winrt.QueryInterface[IPolygon](unsafe.Pointer(self), &IID_IPolygon)
+}
+
 // AsShape queries the instance's IShape interface.
 // Inherited from Microsoft.UI.Xaml.Shapes.Shape.
 // The returned reference is owned by the caller.
@@ -459,6 +483,12 @@ func NewPolyline() (*Polyline, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Polyline](unsafe.Pointer(instance), &IID_IPolyline)
+}
+
+// AsPolyline queries the instance's IPolyline interface.
+// The returned reference is owned by the caller.
+func (self *Polyline) AsPolyline() (*IPolyline, error) {
+	return winrt.QueryInterface[IPolyline](unsafe.Pointer(self), &IID_IPolyline)
 }
 
 // AsShape queries the instance's IShape interface.
@@ -568,6 +598,12 @@ func NewRectangle() (*Rectangle, error) {
 	return winrt.QueryInterface[Rectangle](unsafe.Pointer(instance), &IID_IRectangle)
 }
 
+// AsRectangle queries the instance's IRectangle interface.
+// The returned reference is owned by the caller.
+func (self *Rectangle) AsRectangle() (*IRectangle, error) {
+	return winrt.QueryInterface[IRectangle](unsafe.Pointer(self), &IID_IRectangle)
+}
+
 // AsShape queries the instance's IShape interface.
 // Inherited from Microsoft.UI.Xaml.Shapes.Shape.
 // The returned reference is owned by the caller.
@@ -662,6 +698,12 @@ func RectangleStatics() (*IRectangleStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type Shape struct {
 	IShape
+}
+
+// AsShape queries the instance's IShape interface.
+// The returned reference is owned by the caller.
+func (self *Shape) AsShape() (*IShape, error) {
+	return winrt.QueryInterface[IShape](unsafe.Pointer(self), &IID_IShape)
 }
 
 // AsFrameworkElement queries the instance's uixaml.IFrameworkElement interface.

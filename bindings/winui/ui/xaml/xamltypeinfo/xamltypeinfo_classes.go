@@ -35,6 +35,12 @@ func (self *XamlControlsXamlMetaDataProvider) AsXamlControlsXamlMetaDataProvider
 	return winrt.QueryInterface[IXamlControlsXamlMetaDataProvider](unsafe.Pointer(self), &IID_IXamlControlsXamlMetaDataProvider)
 }
 
+// AsXamlMetadataProvider queries the instance's uixamlmarkup.IXamlMetadataProvider interface.
+// The returned reference is owned by the caller.
+func (self *XamlControlsXamlMetaDataProvider) AsXamlMetadataProvider() (*uixamlmarkup.IXamlMetadataProvider, error) {
+	return winrt.QueryInterface[uixamlmarkup.IXamlMetadataProvider](unsafe.Pointer(self), &uixamlmarkup.IID_IXamlMetadataProvider)
+}
+
 // XamlControlsXamlMetaDataProviderStatics returns the Microsoft.UI.Xaml.XamlTypeInfo.IXamlControlsXamlMetaDataProviderStatics statics of the
 // Microsoft.UI.Xaml.XamlTypeInfo.XamlControlsXamlMetaDataProvider runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;

@@ -18,6 +18,12 @@ type FileOpenPicker struct {
 	IFileOpenPicker
 }
 
+// AsFileOpenPicker queries the instance's IFileOpenPicker interface.
+// The returned reference is owned by the caller.
+func (self *FileOpenPicker) AsFileOpenPicker() (*IFileOpenPicker, error) {
+	return winrt.QueryInterface[IFileOpenPicker](unsafe.Pointer(self), &IID_IFileOpenPicker)
+}
+
 // AsFileOpenPicker2 queries the instance's IFileOpenPicker2 interface.
 // The returned reference is owned by the caller.
 func (self *FileOpenPicker) AsFileOpenPicker2() (*IFileOpenPicker2, error) {
@@ -46,6 +52,12 @@ func CreateInstance(windowId ui.WindowId) (*FileOpenPicker, error) {
 // the embedded IInspectable → IUnknown chain).
 type FileSavePicker struct {
 	IFileSavePicker
+}
+
+// AsFileSavePicker queries the instance's IFileSavePicker interface.
+// The returned reference is owned by the caller.
+func (self *FileSavePicker) AsFileSavePicker() (*IFileSavePicker, error) {
+	return winrt.QueryInterface[IFileSavePicker](unsafe.Pointer(self), &IID_IFileSavePicker)
 }
 
 // AsFileSavePicker2 queries the instance's IFileSavePicker2 interface.
@@ -78,6 +90,12 @@ type FolderPicker struct {
 	IFolderPicker
 }
 
+// AsFolderPicker queries the instance's IFolderPicker interface.
+// The returned reference is owned by the caller.
+func (self *FolderPicker) AsFolderPicker() (*IFolderPicker, error) {
+	return winrt.QueryInterface[IFolderPicker](unsafe.Pointer(self), &IID_IFolderPicker)
+}
+
 // AsFolderPicker2 queries the instance's IFolderPicker2 interface.
 // The returned reference is owned by the caller.
 func (self *FolderPicker) AsFolderPicker2() (*IFolderPicker2, error) {
@@ -108,9 +126,21 @@ type PickFileResult struct {
 	IPickFileResult
 }
 
+// AsPickFileResult queries the instance's IPickFileResult interface.
+// The returned reference is owned by the caller.
+func (self *PickFileResult) AsPickFileResult() (*IPickFileResult, error) {
+	return winrt.QueryInterface[IPickFileResult](unsafe.Pointer(self), &IID_IPickFileResult)
+}
+
 // PickFolderResult is the Microsoft.Windows.Storage.Pickers.PickFolderResult runtime class, surfaced through its
 // default interface IPickFolderResult. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PickFolderResult struct {
 	IPickFolderResult
+}
+
+// AsPickFolderResult queries the instance's IPickFolderResult interface.
+// The returned reference is owned by the caller.
+func (self *PickFolderResult) AsPickFolderResult() (*IPickFolderResult, error) {
+	return winrt.QueryInterface[IPickFolderResult](unsafe.Pointer(self), &IID_IPickFolderResult)
 }

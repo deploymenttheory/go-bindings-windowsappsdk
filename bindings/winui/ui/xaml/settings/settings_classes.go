@@ -17,6 +17,12 @@ type XamlOptionalChanges struct {
 	IXamlOptionalChanges
 }
 
+// AsXamlOptionalChanges queries the instance's IXamlOptionalChanges interface.
+// The returned reference is owned by the caller.
+func (self *XamlOptionalChanges) AsXamlOptionalChanges() (*IXamlOptionalChanges, error) {
+	return winrt.QueryInterface[IXamlOptionalChanges](unsafe.Pointer(self), &IID_IXamlOptionalChanges)
+}
+
 // XamlOptionalChangesStatics returns the Microsoft.UI.Xaml.Settings.IXamlOptionalChangesStatics statics of the
 // Microsoft.UI.Xaml.Settings.XamlOptionalChanges runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;

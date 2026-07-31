@@ -18,11 +18,23 @@ type WidgetActionInvokedArgs struct {
 	IWidgetActionInvokedArgs
 }
 
+// AsWidgetActionInvokedArgs queries the instance's IWidgetActionInvokedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetActionInvokedArgs) AsWidgetActionInvokedArgs() (*IWidgetActionInvokedArgs, error) {
+	return winrt.QueryInterface[IWidgetActionInvokedArgs](unsafe.Pointer(self), &IID_IWidgetActionInvokedArgs)
+}
+
 // WidgetAnalyticsInfoReportedArgs is the Microsoft.Windows.Widgets.Providers.WidgetAnalyticsInfoReportedArgs runtime class, surfaced through its
 // default interface IWidgetAnalyticsInfoReportedArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WidgetAnalyticsInfoReportedArgs struct {
 	IWidgetAnalyticsInfoReportedArgs
+}
+
+// AsWidgetAnalyticsInfoReportedArgs queries the instance's IWidgetAnalyticsInfoReportedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetAnalyticsInfoReportedArgs) AsWidgetAnalyticsInfoReportedArgs() (*IWidgetAnalyticsInfoReportedArgs, error) {
+	return winrt.QueryInterface[IWidgetAnalyticsInfoReportedArgs](unsafe.Pointer(self), &IID_IWidgetAnalyticsInfoReportedArgs)
 }
 
 // WidgetContext is the Microsoft.Windows.Widgets.Providers.WidgetContext runtime class, surfaced through its
@@ -32,11 +44,23 @@ type WidgetContext struct {
 	IWidgetContext
 }
 
+// AsWidgetContext queries the instance's IWidgetContext interface.
+// The returned reference is owned by the caller.
+func (self *WidgetContext) AsWidgetContext() (*IWidgetContext, error) {
+	return winrt.QueryInterface[IWidgetContext](unsafe.Pointer(self), &IID_IWidgetContext)
+}
+
 // WidgetContextChangedArgs is the Microsoft.Windows.Widgets.Providers.WidgetContextChangedArgs runtime class, surfaced through its
 // default interface IWidgetContextChangedArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WidgetContextChangedArgs struct {
 	IWidgetContextChangedArgs
+}
+
+// AsWidgetContextChangedArgs queries the instance's IWidgetContextChangedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetContextChangedArgs) AsWidgetContextChangedArgs() (*IWidgetContextChangedArgs, error) {
+	return winrt.QueryInterface[IWidgetContextChangedArgs](unsafe.Pointer(self), &IID_IWidgetContextChangedArgs)
 }
 
 // WidgetCustomizationRequestedArgs is the Microsoft.Windows.Widgets.Providers.WidgetCustomizationRequestedArgs runtime class, surfaced through its
@@ -46,6 +70,12 @@ type WidgetCustomizationRequestedArgs struct {
 	IWidgetCustomizationRequestedArgs
 }
 
+// AsWidgetCustomizationRequestedArgs queries the instance's IWidgetCustomizationRequestedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetCustomizationRequestedArgs) AsWidgetCustomizationRequestedArgs() (*IWidgetCustomizationRequestedArgs, error) {
+	return winrt.QueryInterface[IWidgetCustomizationRequestedArgs](unsafe.Pointer(self), &IID_IWidgetCustomizationRequestedArgs)
+}
+
 // WidgetErrorInfoReportedArgs is the Microsoft.Windows.Widgets.Providers.WidgetErrorInfoReportedArgs runtime class, surfaced through its
 // default interface IWidgetErrorInfoReportedArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -53,11 +83,23 @@ type WidgetErrorInfoReportedArgs struct {
 	IWidgetErrorInfoReportedArgs
 }
 
+// AsWidgetErrorInfoReportedArgs queries the instance's IWidgetErrorInfoReportedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetErrorInfoReportedArgs) AsWidgetErrorInfoReportedArgs() (*IWidgetErrorInfoReportedArgs, error) {
+	return winrt.QueryInterface[IWidgetErrorInfoReportedArgs](unsafe.Pointer(self), &IID_IWidgetErrorInfoReportedArgs)
+}
+
 // WidgetInfo is the Microsoft.Windows.Widgets.Providers.WidgetInfo runtime class, surfaced through its
 // default interface IWidgetInfo. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WidgetInfo struct {
 	IWidgetInfo
+}
+
+// AsWidgetInfo queries the instance's IWidgetInfo interface.
+// The returned reference is owned by the caller.
+func (self *WidgetInfo) AsWidgetInfo() (*IWidgetInfo, error) {
+	return winrt.QueryInterface[IWidgetInfo](unsafe.Pointer(self), &IID_IWidgetInfo)
 }
 
 // AsWidgetInfo2 queries the instance's IWidgetInfo2 interface.
@@ -77,6 +119,12 @@ func (self *WidgetInfo) AsWidgetInfo3() (*IWidgetInfo3, error) {
 // the embedded IInspectable → IUnknown chain).
 type WidgetManager struct {
 	IWidgetManager
+}
+
+// AsWidgetManager queries the instance's IWidgetManager interface.
+// The returned reference is owned by the caller.
+func (self *WidgetManager) AsWidgetManager() (*IWidgetManager, error) {
+	return winrt.QueryInterface[IWidgetManager](unsafe.Pointer(self), &IID_IWidgetManager)
 }
 
 // AsWidgetManager2 queries the instance's IWidgetManager2 interface.
@@ -104,11 +152,23 @@ type WidgetMessageReceivedArgs struct {
 	IWidgetMessageReceivedArgs
 }
 
+// AsWidgetMessageReceivedArgs queries the instance's IWidgetMessageReceivedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetMessageReceivedArgs) AsWidgetMessageReceivedArgs() (*IWidgetMessageReceivedArgs, error) {
+	return winrt.QueryInterface[IWidgetMessageReceivedArgs](unsafe.Pointer(self), &IID_IWidgetMessageReceivedArgs)
+}
+
 // WidgetResourceRequest is the Microsoft.Windows.Widgets.Providers.WidgetResourceRequest runtime class, surfaced through its
 // default interface IWidgetResourceRequest. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WidgetResourceRequest struct {
 	IWidgetResourceRequest
+}
+
+// AsWidgetResourceRequest queries the instance's IWidgetResourceRequest interface.
+// The returned reference is owned by the caller.
+func (self *WidgetResourceRequest) AsWidgetResourceRequest() (*IWidgetResourceRequest, error) {
+	return winrt.QueryInterface[IWidgetResourceRequest](unsafe.Pointer(self), &IID_IWidgetResourceRequest)
 }
 
 // WidgetResourceRequestedArgs is the Microsoft.Windows.Widgets.Providers.WidgetResourceRequestedArgs runtime class, surfaced through its
@@ -118,11 +178,23 @@ type WidgetResourceRequestedArgs struct {
 	IWidgetResourceRequestedArgs
 }
 
+// AsWidgetResourceRequestedArgs queries the instance's IWidgetResourceRequestedArgs interface.
+// The returned reference is owned by the caller.
+func (self *WidgetResourceRequestedArgs) AsWidgetResourceRequestedArgs() (*IWidgetResourceRequestedArgs, error) {
+	return winrt.QueryInterface[IWidgetResourceRequestedArgs](unsafe.Pointer(self), &IID_IWidgetResourceRequestedArgs)
+}
+
 // WidgetResourceResponse is the Microsoft.Windows.Widgets.Providers.WidgetResourceResponse runtime class, surfaced through its
 // default interface IWidgetResourceResponse. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WidgetResourceResponse struct {
 	IWidgetResourceResponse
+}
+
+// AsWidgetResourceResponse queries the instance's IWidgetResourceResponse interface.
+// The returned reference is owned by the caller.
+func (self *WidgetResourceResponse) AsWidgetResourceResponse() (*IWidgetResourceResponse, error) {
+	return winrt.QueryInterface[IWidgetResourceResponse](unsafe.Pointer(self), &IID_IWidgetResourceResponse)
 }
 
 // CreateInstance constructs a Microsoft.Windows.Widgets.Providers.WidgetResourceResponse instance through
@@ -147,6 +219,12 @@ func CreateInstance(content *wrtstoragestreams.IRandomAccessStreamReference, rea
 // the embedded IInspectable → IUnknown chain).
 type WidgetUpdateRequestOptions struct {
 	IWidgetUpdateRequestOptions
+}
+
+// AsWidgetUpdateRequestOptions queries the instance's IWidgetUpdateRequestOptions interface.
+// The returned reference is owned by the caller.
+func (self *WidgetUpdateRequestOptions) AsWidgetUpdateRequestOptions() (*IWidgetUpdateRequestOptions, error) {
+	return winrt.QueryInterface[IWidgetUpdateRequestOptions](unsafe.Pointer(self), &IID_IWidgetUpdateRequestOptions)
 }
 
 // AsWidgetUpdateRequestOptions2 queries the instance's IWidgetUpdateRequestOptions2 interface.

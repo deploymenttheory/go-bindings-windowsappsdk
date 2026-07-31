@@ -49,10 +49,17 @@ import (
 // named control and wait for layout, rather than run the suite.
 const themeResourceSubprocessEnv = "WASDK_THEME_RESOURCE_CASE"
 
-// TestMain lets the test binary re-enter as the crashing child.
+// TestMain lets the test binary re-enter as a subprocess.
+//
+// One per package, so it dispatches every mode: the theme-resource control cases here,
+// and one gallery page (gallery_test.go). Each mode builds one thing and exits, which is
+// what lets a case that kills the process name itself instead of taking the suite down.
 func TestMain(m *testing.M) {
 	if control := os.Getenv(themeResourceSubprocessEnv); control != "" {
 		os.Exit(runThemeResourceCase(control))
+	}
+	if page := os.Getenv(galleryPageEnv); page != "" {
+		os.Exit(runGalleryPage(page))
 	}
 	os.Exit(m.Run())
 }

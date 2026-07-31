@@ -18,6 +18,12 @@ type MarkupExtension struct {
 	IMarkupExtension
 }
 
+// AsMarkupExtension queries the instance's IMarkupExtension interface.
+// The returned reference is owned by the caller.
+func (self *MarkupExtension) AsMarkupExtension() (*IMarkupExtension, error) {
+	return winrt.QueryInterface[IMarkupExtension](unsafe.Pointer(self), &IID_IMarkupExtension)
+}
+
 // AsMarkupExtensionOverrides queries the instance's IMarkupExtensionOverrides interface.
 // The returned reference is owned by the caller.
 func (self *MarkupExtension) AsMarkupExtensionOverrides() (*IMarkupExtensionOverrides, error) {
@@ -67,11 +73,23 @@ func NewProvideValueTargetProperty() (*ProvideValueTargetProperty, error) {
 	return winrt.QueryInterface[ProvideValueTargetProperty](unsafe.Pointer(instance), &IID_IProvideValueTargetProperty)
 }
 
+// AsProvideValueTargetProperty queries the instance's IProvideValueTargetProperty interface.
+// The returned reference is owned by the caller.
+func (self *ProvideValueTargetProperty) AsProvideValueTargetProperty() (*IProvideValueTargetProperty, error) {
+	return winrt.QueryInterface[IProvideValueTargetProperty](unsafe.Pointer(self), &IID_IProvideValueTargetProperty)
+}
+
 // XamlBinaryWriter is the Microsoft.UI.Xaml.Markup.XamlBinaryWriter runtime class, surfaced through its
 // default interface IXamlBinaryWriter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type XamlBinaryWriter struct {
 	IXamlBinaryWriter
+}
+
+// AsXamlBinaryWriter queries the instance's IXamlBinaryWriter interface.
+// The returned reference is owned by the caller.
+func (self *XamlBinaryWriter) AsXamlBinaryWriter() (*IXamlBinaryWriter, error) {
+	return winrt.QueryInterface[IXamlBinaryWriter](unsafe.Pointer(self), &IID_IXamlBinaryWriter)
 }
 
 // XamlBinaryWriterStatics returns the Microsoft.UI.Xaml.Markup.IXamlBinaryWriterStatics statics of the
@@ -91,6 +109,12 @@ func XamlBinaryWriterStatics() (*IXamlBinaryWriterStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type XamlBindingHelper struct {
 	IXamlBindingHelper
+}
+
+// AsXamlBindingHelper queries the instance's IXamlBindingHelper interface.
+// The returned reference is owned by the caller.
+func (self *XamlBindingHelper) AsXamlBindingHelper() (*IXamlBindingHelper, error) {
+	return winrt.QueryInterface[IXamlBindingHelper](unsafe.Pointer(self), &IID_IXamlBindingHelper)
 }
 
 // XamlBindingHelperStatics returns the Microsoft.UI.Xaml.Markup.IXamlBindingHelperStatics statics of the
@@ -124,6 +148,12 @@ type XamlMarkupHelper struct {
 	IXamlMarkupHelper
 }
 
+// AsXamlMarkupHelper queries the instance's IXamlMarkupHelper interface.
+// The returned reference is owned by the caller.
+func (self *XamlMarkupHelper) AsXamlMarkupHelper() (*IXamlMarkupHelper, error) {
+	return winrt.QueryInterface[IXamlMarkupHelper](unsafe.Pointer(self), &IID_IXamlMarkupHelper)
+}
+
 // XamlMarkupHelperStatics returns the Microsoft.UI.Xaml.Markup.IXamlMarkupHelperStatics statics of the
 // Microsoft.UI.Xaml.Markup.XamlMarkupHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -141,6 +171,12 @@ func XamlMarkupHelperStatics() (*IXamlMarkupHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type XamlReader struct {
 	IXamlReader
+}
+
+// AsXamlReader queries the instance's IXamlReader interface.
+// The returned reference is owned by the caller.
+func (self *XamlReader) AsXamlReader() (*IXamlReader, error) {
+	return winrt.QueryInterface[IXamlReader](unsafe.Pointer(self), &IID_IXamlReader)
 }
 
 // XamlReaderStatics returns the Microsoft.UI.Xaml.Markup.IXamlReaderStatics statics of the

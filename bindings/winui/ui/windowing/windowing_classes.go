@@ -17,6 +17,12 @@ type AppWindow struct {
 	IAppWindow
 }
 
+// AsAppWindow queries the instance's IAppWindow interface.
+// The returned reference is owned by the caller.
+func (self *AppWindow) AsAppWindow() (*IAppWindow, error) {
+	return winrt.QueryInterface[IAppWindow](unsafe.Pointer(self), &IID_IAppWindow)
+}
+
 // AsAppWindow2 queries the instance's IAppWindow2 interface.
 // The returned reference is owned by the caller.
 func (self *AppWindow) AsAppWindow2() (*IAppWindow2, error) {
@@ -66,6 +72,12 @@ type AppWindowChangedEventArgs struct {
 	IAppWindowChangedEventArgs
 }
 
+// AsAppWindowChangedEventArgs queries the instance's IAppWindowChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AppWindowChangedEventArgs) AsAppWindowChangedEventArgs() (*IAppWindowChangedEventArgs, error) {
+	return winrt.QueryInterface[IAppWindowChangedEventArgs](unsafe.Pointer(self), &IID_IAppWindowChangedEventArgs)
+}
+
 // AsAppWindowChangedEventArgs2 queries the instance's IAppWindowChangedEventArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *AppWindowChangedEventArgs) AsAppWindowChangedEventArgs2() (*IAppWindowChangedEventArgs2, error) {
@@ -79,6 +91,12 @@ type AppWindowClosingEventArgs struct {
 	IAppWindowClosingEventArgs
 }
 
+// AsAppWindowClosingEventArgs queries the instance's IAppWindowClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AppWindowClosingEventArgs) AsAppWindowClosingEventArgs() (*IAppWindowClosingEventArgs, error) {
+	return winrt.QueryInterface[IAppWindowClosingEventArgs](unsafe.Pointer(self), &IID_IAppWindowClosingEventArgs)
+}
+
 // AppWindowPresenter is the Microsoft.UI.Windowing.AppWindowPresenter runtime class, surfaced through its
 // default interface IAppWindowPresenter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -86,11 +104,23 @@ type AppWindowPresenter struct {
 	IAppWindowPresenter
 }
 
+// AsAppWindowPresenter queries the instance's IAppWindowPresenter interface.
+// The returned reference is owned by the caller.
+func (self *AppWindowPresenter) AsAppWindowPresenter() (*IAppWindowPresenter, error) {
+	return winrt.QueryInterface[IAppWindowPresenter](unsafe.Pointer(self), &IID_IAppWindowPresenter)
+}
+
 // AppWindowTitleBar is the Microsoft.UI.Windowing.AppWindowTitleBar runtime class, surfaced through its
 // default interface IAppWindowTitleBar. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AppWindowTitleBar struct {
 	IAppWindowTitleBar
+}
+
+// AsAppWindowTitleBar queries the instance's IAppWindowTitleBar interface.
+// The returned reference is owned by the caller.
+func (self *AppWindowTitleBar) AsAppWindowTitleBar() (*IAppWindowTitleBar, error) {
+	return winrt.QueryInterface[IAppWindowTitleBar](unsafe.Pointer(self), &IID_IAppWindowTitleBar)
 }
 
 // AsAppWindowTitleBar2 queries the instance's IAppWindowTitleBar2 interface.
@@ -124,6 +154,12 @@ type CompactOverlayPresenter struct {
 	ICompactOverlayPresenter
 }
 
+// AsCompactOverlayPresenter queries the instance's ICompactOverlayPresenter interface.
+// The returned reference is owned by the caller.
+func (self *CompactOverlayPresenter) AsCompactOverlayPresenter() (*ICompactOverlayPresenter, error) {
+	return winrt.QueryInterface[ICompactOverlayPresenter](unsafe.Pointer(self), &IID_ICompactOverlayPresenter)
+}
+
 // AsAppWindowPresenter queries the instance's IAppWindowPresenter interface.
 // Inherited from Microsoft.UI.Windowing.AppWindowPresenter.
 // The returned reference is owned by the caller.
@@ -148,6 +184,12 @@ func CompactOverlayPresenterStatics() (*ICompactOverlayPresenterStatics, error) 
 // the embedded IInspectable → IUnknown chain).
 type DisplayArea struct {
 	IDisplayArea
+}
+
+// AsDisplayArea queries the instance's IDisplayArea interface.
+// The returned reference is owned by the caller.
+func (self *DisplayArea) AsDisplayArea() (*IDisplayArea, error) {
+	return winrt.QueryInterface[IDisplayArea](unsafe.Pointer(self), &IID_IDisplayArea)
 }
 
 // DisplayAreaStatics returns the Microsoft.UI.Windowing.IDisplayAreaStatics statics of the
@@ -181,11 +223,23 @@ type DisplayAreaWatcher struct {
 	IDisplayAreaWatcher
 }
 
+// AsDisplayAreaWatcher queries the instance's IDisplayAreaWatcher interface.
+// The returned reference is owned by the caller.
+func (self *DisplayAreaWatcher) AsDisplayAreaWatcher() (*IDisplayAreaWatcher, error) {
+	return winrt.QueryInterface[IDisplayAreaWatcher](unsafe.Pointer(self), &IID_IDisplayAreaWatcher)
+}
+
 // FullScreenPresenter is the Microsoft.UI.Windowing.FullScreenPresenter runtime class, surfaced through its
 // default interface IFullScreenPresenter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FullScreenPresenter struct {
 	IFullScreenPresenter
+}
+
+// AsFullScreenPresenter queries the instance's IFullScreenPresenter interface.
+// The returned reference is owned by the caller.
+func (self *FullScreenPresenter) AsFullScreenPresenter() (*IFullScreenPresenter, error) {
+	return winrt.QueryInterface[IFullScreenPresenter](unsafe.Pointer(self), &IID_IFullScreenPresenter)
 }
 
 // AsAppWindowPresenter queries the instance's IAppWindowPresenter interface.
@@ -212,6 +266,12 @@ func FullScreenPresenterStatics() (*IFullScreenPresenterStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type OverlappedPresenter struct {
 	IOverlappedPresenter
+}
+
+// AsOverlappedPresenter queries the instance's IOverlappedPresenter interface.
+// The returned reference is owned by the caller.
+func (self *OverlappedPresenter) AsOverlappedPresenter() (*IOverlappedPresenter, error) {
+	return winrt.QueryInterface[IOverlappedPresenter](unsafe.Pointer(self), &IID_IOverlappedPresenter)
 }
 
 // AsOverlappedPresenter2 queries the instance's IOverlappedPresenter2 interface.

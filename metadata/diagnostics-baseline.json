@@ -125,6 +125,8 @@
     "foreign-type-skipped: Microsoft.UI.Xaml.Controls.IWebView22.EnsureCoreWebView2Async (Microsoft.Web.WebView2.Core.CoreWebView2Environment: ships in the Microsoft.Web.WebView2 package, which has no Go bindings)",
     "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.AI.AIFeatureReadyResult, Double\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)",
     "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.Management.Deployment.PackageDeploymentResult, Microsoft.Windows.Management.Deployment.PackageDeploymentProgress\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)",
-    "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.PushNotifications.PushNotificationCreateChannelResult, Microsoft.Windows.PushNotifications.PushNotificationCreateChannelStatus\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)"
+    "generic-member-skipped: Windows.Foundation.IAsyncOperationWithProgress`2\u003cMicrosoft.Windows.PushNotifications.PushNotificationCreateChannelResult, Microsoft.Windows.PushNotifications.PushNotificationCreateChannelStatus\u003e.put_Progress (parameterized type Windows.Foundation.AsyncOperationProgressHandler`2)",
+    "name-collision-skipped: Microsoft.UI.Xaml.FrameworkView.AsFrameworkView",
+    "name-collision-skipped: Microsoft.UI.Xaml.FrameworkViewSource.AsFrameworkViewSource"
   ]
 }

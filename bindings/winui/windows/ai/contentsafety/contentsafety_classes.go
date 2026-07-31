@@ -28,6 +28,12 @@ func NewContentFilterOptions() (*ContentFilterOptions, error) {
 	return winrt.QueryInterface[ContentFilterOptions](unsafe.Pointer(instance), &IID_IContentFilterOptions)
 }
 
+// AsContentFilterOptions queries the instance's IContentFilterOptions interface.
+// The returned reference is owned by the caller.
+func (self *ContentFilterOptions) AsContentFilterOptions() (*IContentFilterOptions, error) {
+	return winrt.QueryInterface[IContentFilterOptions](unsafe.Pointer(self), &IID_IContentFilterOptions)
+}
+
 // ImageContentFilterSeverity is the Microsoft.Windows.AI.ContentSafety.ImageContentFilterSeverity runtime class, surfaced through its
 // default interface IImageContentFilterSeverity. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -44,6 +50,12 @@ func NewImageContentFilterSeverity() (*ImageContentFilterSeverity, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ImageContentFilterSeverity](unsafe.Pointer(instance), &IID_IImageContentFilterSeverity)
+}
+
+// AsImageContentFilterSeverity queries the instance's IImageContentFilterSeverity interface.
+// The returned reference is owned by the caller.
+func (self *ImageContentFilterSeverity) AsImageContentFilterSeverity() (*IImageContentFilterSeverity, error) {
+	return winrt.QueryInterface[IImageContentFilterSeverity](unsafe.Pointer(self), &IID_IImageContentFilterSeverity)
 }
 
 // CreateInstance constructs a Microsoft.Windows.AI.ContentSafety.ImageContentFilterSeverity instance through
@@ -79,6 +91,12 @@ func NewTextContentFilterSeverity() (*TextContentFilterSeverity, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[TextContentFilterSeverity](unsafe.Pointer(instance), &IID_ITextContentFilterSeverity)
+}
+
+// AsTextContentFilterSeverity queries the instance's ITextContentFilterSeverity interface.
+// The returned reference is owned by the caller.
+func (self *TextContentFilterSeverity) AsTextContentFilterSeverity() (*ITextContentFilterSeverity, error) {
+	return winrt.QueryInterface[ITextContentFilterSeverity](unsafe.Pointer(self), &IID_ITextContentFilterSeverity)
 }
 
 // CreateInstanceTextContentFilterSeverity constructs a Microsoft.Windows.AI.ContentSafety.TextContentFilterSeverity instance through

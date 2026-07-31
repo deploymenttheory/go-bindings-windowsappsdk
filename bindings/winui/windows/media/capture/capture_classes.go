@@ -18,6 +18,12 @@ type CameraCaptureUI struct {
 	ICameraCaptureUI
 }
 
+// AsCameraCaptureUI queries the instance's ICameraCaptureUI interface.
+// The returned reference is owned by the caller.
+func (self *CameraCaptureUI) AsCameraCaptureUI() (*ICameraCaptureUI, error) {
+	return winrt.QueryInterface[ICameraCaptureUI](unsafe.Pointer(self), &IID_ICameraCaptureUI)
+}
+
 // CreateInstance constructs a Microsoft.Windows.Media.Capture.CameraCaptureUI instance through
 // Microsoft.Windows.Media.Capture.ICameraCaptureUIFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -53,6 +59,12 @@ func NewCameraCaptureUIPhotoCaptureSettings() (*CameraCaptureUIPhotoCaptureSetti
 	return winrt.QueryInterface[CameraCaptureUIPhotoCaptureSettings](unsafe.Pointer(instance), &IID_ICameraCaptureUIPhotoCaptureSettings)
 }
 
+// AsCameraCaptureUIPhotoCaptureSettings queries the instance's ICameraCaptureUIPhotoCaptureSettings interface.
+// The returned reference is owned by the caller.
+func (self *CameraCaptureUIPhotoCaptureSettings) AsCameraCaptureUIPhotoCaptureSettings() (*ICameraCaptureUIPhotoCaptureSettings, error) {
+	return winrt.QueryInterface[ICameraCaptureUIPhotoCaptureSettings](unsafe.Pointer(self), &IID_ICameraCaptureUIPhotoCaptureSettings)
+}
+
 // CameraCaptureUIVideoCaptureSettings is the Microsoft.Windows.Media.Capture.CameraCaptureUIVideoCaptureSettings runtime class, surfaced through its
 // default interface ICameraCaptureUIVideoCaptureSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -69,4 +81,10 @@ func NewCameraCaptureUIVideoCaptureSettings() (*CameraCaptureUIVideoCaptureSetti
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[CameraCaptureUIVideoCaptureSettings](unsafe.Pointer(instance), &IID_ICameraCaptureUIVideoCaptureSettings)
+}
+
+// AsCameraCaptureUIVideoCaptureSettings queries the instance's ICameraCaptureUIVideoCaptureSettings interface.
+// The returned reference is owned by the caller.
+func (self *CameraCaptureUIVideoCaptureSettings) AsCameraCaptureUIVideoCaptureSettings() (*ICameraCaptureUIVideoCaptureSettings, error) {
+	return winrt.QueryInterface[ICameraCaptureUIVideoCaptureSettings](unsafe.Pointer(self), &IID_ICameraCaptureUIVideoCaptureSettings)
 }

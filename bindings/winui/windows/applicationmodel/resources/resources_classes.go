@@ -29,6 +29,12 @@ type ResourceCandidate struct {
 	IResourceCandidate
 }
 
+// AsResourceCandidate queries the instance's IResourceCandidate interface.
+// The returned reference is owned by the caller.
+func (self *ResourceCandidate) AsResourceCandidate() (*IResourceCandidate, error) {
+	return winrt.QueryInterface[IResourceCandidate](unsafe.Pointer(self), &IID_IResourceCandidate)
+}
+
 // CreateInstance constructs a Microsoft.Windows.ApplicationModel.Resources.ResourceCandidate instance through
 // Microsoft.Windows.ApplicationModel.Resources.IResourceCandidateFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -76,6 +82,12 @@ func (self *ResourceContext) AsResourceContext2() (*IResourceContext2, error) {
 	return winrt.QueryInterface[IResourceContext2](unsafe.Pointer(self), &IID_IResourceContext2)
 }
 
+// AsResourceContext queries the instance's IResourceContext interface.
+// The returned reference is owned by the caller.
+func (self *ResourceContext) AsResourceContext() (*IResourceContext, error) {
+	return winrt.QueryInterface[IResourceContext](unsafe.Pointer(self), &IID_IResourceContext)
+}
+
 // ResourceLoader is the Microsoft.Windows.ApplicationModel.Resources.ResourceLoader runtime class, surfaced through its
 // default interface IResourceLoader. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -92,6 +104,12 @@ func NewResourceLoader() (*ResourceLoader, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ResourceLoader](unsafe.Pointer(instance), &IID_IResourceLoader)
+}
+
+// AsResourceLoader queries the instance's IResourceLoader interface.
+// The returned reference is owned by the caller.
+func (self *ResourceLoader) AsResourceLoader() (*IResourceLoader, error) {
+	return winrt.QueryInterface[IResourceLoader](unsafe.Pointer(self), &IID_IResourceLoader)
 }
 
 // ResourceLoaderStatics returns the Microsoft.Windows.ApplicationModel.Resources.IResourceLoaderStatics statics of the
@@ -164,6 +182,12 @@ func (self *ResourceManager) AsResourceManager2() (*IResourceManager2, error) {
 	return winrt.QueryInterface[IResourceManager2](unsafe.Pointer(self), &IID_IResourceManager2)
 }
 
+// AsResourceManager queries the instance's IResourceManager interface.
+// The returned reference is owned by the caller.
+func (self *ResourceManager) AsResourceManager() (*IResourceManager, error) {
+	return winrt.QueryInterface[IResourceManager](unsafe.Pointer(self), &IID_IResourceManager)
+}
+
 // CreateInstanceResourceManager constructs a Microsoft.Windows.ApplicationModel.Resources.ResourceManager instance through
 // Microsoft.Windows.ApplicationModel.Resources.IResourceManagerFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -188,9 +212,21 @@ type ResourceMap struct {
 	IResourceMap
 }
 
+// AsResourceMap queries the instance's IResourceMap interface.
+// The returned reference is owned by the caller.
+func (self *ResourceMap) AsResourceMap() (*IResourceMap, error) {
+	return winrt.QueryInterface[IResourceMap](unsafe.Pointer(self), &IID_IResourceMap)
+}
+
 // ResourceNotFoundEventArgs is the Microsoft.Windows.ApplicationModel.Resources.ResourceNotFoundEventArgs runtime class, surfaced through its
 // default interface IResourceNotFoundEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ResourceNotFoundEventArgs struct {
 	IResourceNotFoundEventArgs
+}
+
+// AsResourceNotFoundEventArgs queries the instance's IResourceNotFoundEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ResourceNotFoundEventArgs) AsResourceNotFoundEventArgs() (*IResourceNotFoundEventArgs, error) {
+	return winrt.QueryInterface[IResourceNotFoundEventArgs](unsafe.Pointer(self), &IID_IResourceNotFoundEventArgs)
 }

@@ -29,6 +29,12 @@ func NewCompositorController() (*CompositorController, error) {
 	return winrt.QueryInterface[CompositorController](unsafe.Pointer(instance), &IID_ICompositorController)
 }
 
+// AsCompositorController queries the instance's ICompositorController interface.
+// The returned reference is owned by the caller.
+func (self *CompositorController) AsCompositorController() (*ICompositorController, error) {
+	return winrt.QueryInterface[ICompositorController](unsafe.Pointer(self), &IID_ICompositorController)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *CompositorController) AsClosable() (*wrtfoundation.IClosable, error) {

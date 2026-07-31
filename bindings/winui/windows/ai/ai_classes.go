@@ -29,6 +29,12 @@ type AIFeatureReadyResult struct {
 	IAIFeatureReadyResult
 }
 
+// AsAIFeatureReadyResult queries the instance's IAIFeatureReadyResult interface.
+// The returned reference is owned by the caller.
+func (self *AIFeatureReadyResult) AsAIFeatureReadyResult() (*IAIFeatureReadyResult, error) {
+	return winrt.QueryInterface[IAIFeatureReadyResult](unsafe.Pointer(self), &IID_IAIFeatureReadyResult)
+}
+
 // AsAIFeatureReadyResult2 queries the instance's IAIFeatureReadyResult2 interface.
 // The returned reference is owned by the caller.
 func (self *AIFeatureReadyResult) AsAIFeatureReadyResult2() (*IAIFeatureReadyResult2, error) {

@@ -30,6 +30,12 @@ func NewDesktopAcrylicController() (*DesktopAcrylicController, error) {
 	return winrt.QueryInterface[DesktopAcrylicController](unsafe.Pointer(instance), &IID_IDesktopAcrylicController)
 }
 
+// AsDesktopAcrylicController queries the instance's IDesktopAcrylicController interface.
+// The returned reference is owned by the caller.
+func (self *DesktopAcrylicController) AsDesktopAcrylicController() (*IDesktopAcrylicController, error) {
+	return winrt.QueryInterface[IDesktopAcrylicController](unsafe.Pointer(self), &IID_IDesktopAcrylicController)
+}
+
 // AsDesktopAcrylicController2 queries the instance's IDesktopAcrylicController2 interface.
 // The returned reference is owned by the caller.
 func (self *DesktopAcrylicController) AsDesktopAcrylicController2() (*IDesktopAcrylicController2, error) {
@@ -96,6 +102,12 @@ func NewMicaController() (*MicaController, error) {
 	return winrt.QueryInterface[MicaController](unsafe.Pointer(instance), &IID_IMicaController)
 }
 
+// AsMicaController queries the instance's IMicaController interface.
+// The returned reference is owned by the caller.
+func (self *MicaController) AsMicaController() (*IMicaController, error) {
+	return winrt.QueryInterface[IMicaController](unsafe.Pointer(self), &IID_IMicaController)
+}
+
 // AsMicaController2 queries the instance's IMicaController2 interface.
 // The returned reference is owned by the caller.
 func (self *MicaController) AsMicaController2() (*IMicaController2, error) {
@@ -154,4 +166,10 @@ func NewSystemBackdropConfiguration() (*SystemBackdropConfiguration, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SystemBackdropConfiguration](unsafe.Pointer(instance), &IID_ISystemBackdropConfiguration)
+}
+
+// AsSystemBackdropConfiguration queries the instance's ISystemBackdropConfiguration interface.
+// The returned reference is owned by the caller.
+func (self *SystemBackdropConfiguration) AsSystemBackdropConfiguration() (*ISystemBackdropConfiguration, error) {
+	return winrt.QueryInterface[ISystemBackdropConfiguration](unsafe.Pointer(self), &IID_ISystemBackdropConfiguration)
 }

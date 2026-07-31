@@ -19,6 +19,12 @@ type CompositionConditionalValue struct {
 	ICompositionConditionalValue
 }
 
+// AsCompositionConditionalValue queries the instance's ICompositionConditionalValue interface.
+// The returned reference is owned by the caller.
+func (self *CompositionConditionalValue) AsCompositionConditionalValue() (*ICompositionConditionalValue, error) {
+	return winrt.QueryInterface[ICompositionConditionalValue](unsafe.Pointer(self), &IID_ICompositionConditionalValue)
+}
+
 // AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -87,6 +93,12 @@ type CompositionInteractionSourceCollection struct {
 	ICompositionInteractionSourceCollection
 }
 
+// AsCompositionInteractionSourceCollection queries the instance's ICompositionInteractionSourceCollection interface.
+// The returned reference is owned by the caller.
+func (self *CompositionInteractionSourceCollection) AsCompositionInteractionSourceCollection() (*ICompositionInteractionSourceCollection, error) {
+	return winrt.QueryInterface[ICompositionInteractionSourceCollection](unsafe.Pointer(self), &IID_ICompositionInteractionSourceCollection)
+}
+
 // AsIterableOfICompositionInteractionSource queries the instance's IIterableOfICompositionInteractionSource interface.
 // The returned reference is owned by the caller.
 func (self *CompositionInteractionSourceCollection) AsIterableOfICompositionInteractionSource() (*IIterableOfICompositionInteractionSource, error) {
@@ -149,6 +161,12 @@ type InteractionSourceConfiguration struct {
 	IInteractionSourceConfiguration
 }
 
+// AsInteractionSourceConfiguration queries the instance's IInteractionSourceConfiguration interface.
+// The returned reference is owned by the caller.
+func (self *InteractionSourceConfiguration) AsInteractionSourceConfiguration() (*IInteractionSourceConfiguration, error) {
+	return winrt.QueryInterface[IInteractionSourceConfiguration](unsafe.Pointer(self), &IID_IInteractionSourceConfiguration)
+}
+
 // AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -203,6 +221,12 @@ func (self *InteractionSourceConfiguration) AsAnimationObject() (*uicomposition.
 // the embedded IInspectable → IUnknown chain).
 type InteractionTracker struct {
 	IInteractionTracker
+}
+
+// AsInteractionTracker queries the instance's IInteractionTracker interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTracker) AsInteractionTracker() (*IInteractionTracker, error) {
+	return winrt.QueryInterface[IInteractionTracker](unsafe.Pointer(self), &IID_IInteractionTracker)
 }
 
 // AsInteractionTracker2 queries the instance's IInteractionTracker2 interface.
@@ -309,6 +333,12 @@ type InteractionTrackerCustomAnimationStateEnteredArgs struct {
 	IInteractionTrackerCustomAnimationStateEnteredArgs
 }
 
+// AsInteractionTrackerCustomAnimationStateEnteredArgs queries the instance's IInteractionTrackerCustomAnimationStateEnteredArgs interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerCustomAnimationStateEnteredArgs) AsInteractionTrackerCustomAnimationStateEnteredArgs() (*IInteractionTrackerCustomAnimationStateEnteredArgs, error) {
+	return winrt.QueryInterface[IInteractionTrackerCustomAnimationStateEnteredArgs](unsafe.Pointer(self), &IID_IInteractionTrackerCustomAnimationStateEnteredArgs)
+}
+
 // AsInteractionTrackerCustomAnimationStateEnteredArgs2 queries the instance's IInteractionTrackerCustomAnimationStateEnteredArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *InteractionTrackerCustomAnimationStateEnteredArgs) AsInteractionTrackerCustomAnimationStateEnteredArgs2() (*IInteractionTrackerCustomAnimationStateEnteredArgs2, error) {
@@ -322,6 +352,12 @@ type InteractionTrackerIdleStateEnteredArgs struct {
 	IInteractionTrackerIdleStateEnteredArgs
 }
 
+// AsInteractionTrackerIdleStateEnteredArgs queries the instance's IInteractionTrackerIdleStateEnteredArgs interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerIdleStateEnteredArgs) AsInteractionTrackerIdleStateEnteredArgs() (*IInteractionTrackerIdleStateEnteredArgs, error) {
+	return winrt.QueryInterface[IInteractionTrackerIdleStateEnteredArgs](unsafe.Pointer(self), &IID_IInteractionTrackerIdleStateEnteredArgs)
+}
+
 // AsInteractionTrackerIdleStateEnteredArgs2 queries the instance's IInteractionTrackerIdleStateEnteredArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *InteractionTrackerIdleStateEnteredArgs) AsInteractionTrackerIdleStateEnteredArgs2() (*IInteractionTrackerIdleStateEnteredArgs2, error) {
@@ -333,6 +369,12 @@ func (self *InteractionTrackerIdleStateEnteredArgs) AsInteractionTrackerIdleStat
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerInertiaModifier struct {
 	IInteractionTrackerInertiaModifier
+}
+
+// AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaModifier) AsInteractionTrackerInertiaModifier() (*IInteractionTrackerInertiaModifier, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaModifier](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaModifier)
 }
 
 // AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
@@ -389,6 +431,12 @@ func (self *InteractionTrackerInertiaModifier) AsAnimationObject() (*uicompositi
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerInertiaMotion struct {
 	IInteractionTrackerInertiaMotion
+}
+
+// AsInteractionTrackerInertiaMotion queries the instance's IInteractionTrackerInertiaMotion interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaMotion) AsInteractionTrackerInertiaMotion() (*IInteractionTrackerInertiaMotion, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaMotion](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaMotion)
 }
 
 // AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
@@ -466,6 +514,12 @@ type InteractionTrackerInertiaNaturalMotion struct {
 	IInteractionTrackerInertiaNaturalMotion
 }
 
+// AsInteractionTrackerInertiaNaturalMotion queries the instance's IInteractionTrackerInertiaNaturalMotion interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaNaturalMotion) AsInteractionTrackerInertiaNaturalMotion() (*IInteractionTrackerInertiaNaturalMotion, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaNaturalMotion](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaNaturalMotion)
+}
+
 // AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
 // Inherited from Microsoft.UI.Composition.Interactions.InteractionTrackerInertiaModifier.
 // The returned reference is owned by the caller.
@@ -539,6 +593,12 @@ func InteractionTrackerInertiaNaturalMotionStatics() (*IInteractionTrackerInerti
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerInertiaRestingValue struct {
 	IInteractionTrackerInertiaRestingValue
+}
+
+// AsInteractionTrackerInertiaRestingValue queries the instance's IInteractionTrackerInertiaRestingValue interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaRestingValue) AsInteractionTrackerInertiaRestingValue() (*IInteractionTrackerInertiaRestingValue, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaRestingValue](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaRestingValue)
 }
 
 // AsInteractionTrackerInertiaModifier queries the instance's IInteractionTrackerInertiaModifier interface.
@@ -616,6 +676,12 @@ type InteractionTrackerInertiaStateEnteredArgs struct {
 	IInteractionTrackerInertiaStateEnteredArgs
 }
 
+// AsInteractionTrackerInertiaStateEnteredArgs queries the instance's IInteractionTrackerInertiaStateEnteredArgs interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInertiaStateEnteredArgs) AsInteractionTrackerInertiaStateEnteredArgs() (*IInteractionTrackerInertiaStateEnteredArgs, error) {
+	return winrt.QueryInterface[IInteractionTrackerInertiaStateEnteredArgs](unsafe.Pointer(self), &IID_IInteractionTrackerInertiaStateEnteredArgs)
+}
+
 // AsInteractionTrackerInertiaStateEnteredArgs2 queries the instance's IInteractionTrackerInertiaStateEnteredArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *InteractionTrackerInertiaStateEnteredArgs) AsInteractionTrackerInertiaStateEnteredArgs2() (*IInteractionTrackerInertiaStateEnteredArgs2, error) {
@@ -635,6 +701,12 @@ type InteractionTrackerInteractingStateEnteredArgs struct {
 	IInteractionTrackerInteractingStateEnteredArgs
 }
 
+// AsInteractionTrackerInteractingStateEnteredArgs queries the instance's IInteractionTrackerInteractingStateEnteredArgs interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerInteractingStateEnteredArgs) AsInteractionTrackerInteractingStateEnteredArgs() (*IInteractionTrackerInteractingStateEnteredArgs, error) {
+	return winrt.QueryInterface[IInteractionTrackerInteractingStateEnteredArgs](unsafe.Pointer(self), &IID_IInteractionTrackerInteractingStateEnteredArgs)
+}
+
 // AsInteractionTrackerInteractingStateEnteredArgs2 queries the instance's IInteractionTrackerInteractingStateEnteredArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *InteractionTrackerInteractingStateEnteredArgs) AsInteractionTrackerInteractingStateEnteredArgs2() (*IInteractionTrackerInteractingStateEnteredArgs2, error) {
@@ -648,6 +720,12 @@ type InteractionTrackerRequestIgnoredArgs struct {
 	IInteractionTrackerRequestIgnoredArgs
 }
 
+// AsInteractionTrackerRequestIgnoredArgs queries the instance's IInteractionTrackerRequestIgnoredArgs interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerRequestIgnoredArgs) AsInteractionTrackerRequestIgnoredArgs() (*IInteractionTrackerRequestIgnoredArgs, error) {
+	return winrt.QueryInterface[IInteractionTrackerRequestIgnoredArgs](unsafe.Pointer(self), &IID_IInteractionTrackerRequestIgnoredArgs)
+}
+
 // InteractionTrackerValuesChangedArgs is the Microsoft.UI.Composition.Interactions.InteractionTrackerValuesChangedArgs runtime class, surfaced through its
 // default interface IInteractionTrackerValuesChangedArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -655,11 +733,23 @@ type InteractionTrackerValuesChangedArgs struct {
 	IInteractionTrackerValuesChangedArgs
 }
 
+// AsInteractionTrackerValuesChangedArgs queries the instance's IInteractionTrackerValuesChangedArgs interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerValuesChangedArgs) AsInteractionTrackerValuesChangedArgs() (*IInteractionTrackerValuesChangedArgs, error) {
+	return winrt.QueryInterface[IInteractionTrackerValuesChangedArgs](unsafe.Pointer(self), &IID_IInteractionTrackerValuesChangedArgs)
+}
+
 // InteractionTrackerVector2InertiaModifier is the Microsoft.UI.Composition.Interactions.InteractionTrackerVector2InertiaModifier runtime class, surfaced through its
 // default interface IInteractionTrackerVector2InertiaModifier. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerVector2InertiaModifier struct {
 	IInteractionTrackerVector2InertiaModifier
+}
+
+// AsInteractionTrackerVector2InertiaModifier queries the instance's IInteractionTrackerVector2InertiaModifier interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaModifier) AsInteractionTrackerVector2InertiaModifier() (*IInteractionTrackerVector2InertiaModifier, error) {
+	return winrt.QueryInterface[IInteractionTrackerVector2InertiaModifier](unsafe.Pointer(self), &IID_IInteractionTrackerVector2InertiaModifier)
 }
 
 // AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
@@ -716,6 +806,12 @@ func (self *InteractionTrackerVector2InertiaModifier) AsAnimationObject() (*uico
 // the embedded IInspectable → IUnknown chain).
 type InteractionTrackerVector2InertiaNaturalMotion struct {
 	IInteractionTrackerVector2InertiaNaturalMotion
+}
+
+// AsInteractionTrackerVector2InertiaNaturalMotion queries the instance's IInteractionTrackerVector2InertiaNaturalMotion interface.
+// The returned reference is owned by the caller.
+func (self *InteractionTrackerVector2InertiaNaturalMotion) AsInteractionTrackerVector2InertiaNaturalMotion() (*IInteractionTrackerVector2InertiaNaturalMotion, error) {
+	return winrt.QueryInterface[IInteractionTrackerVector2InertiaNaturalMotion](unsafe.Pointer(self), &IID_IInteractionTrackerVector2InertiaNaturalMotion)
 }
 
 // AsInteractionTrackerVector2InertiaModifier queries the instance's IInteractionTrackerVector2InertiaModifier interface.
@@ -791,6 +887,12 @@ func InteractionTrackerVector2InertiaNaturalMotionStatics() (*IInteractionTracke
 // the embedded IInspectable → IUnknown chain).
 type VisualInteractionSource struct {
 	IVisualInteractionSource
+}
+
+// AsVisualInteractionSource queries the instance's IVisualInteractionSource interface.
+// The returned reference is owned by the caller.
+func (self *VisualInteractionSource) AsVisualInteractionSource() (*IVisualInteractionSource, error) {
+	return winrt.QueryInterface[IVisualInteractionSource](unsafe.Pointer(self), &IID_IVisualInteractionSource)
 }
 
 // AsVisualInteractionSource2 queries the instance's IVisualInteractionSource2 interface.
