@@ -14,12 +14,16 @@ package main
 // for a Go build, which is why it is here.
 //
 // IMPORTANT, and stated plainly because the alternative is a user losing an afternoon:
-// this is NECESSARY BUT NOT YET SUFFICIENT. With the generated file in place, MRT
-// resolves the theme resources — Files/Microsoft.UI.Xaml/Themes/generic.xbf comes back
-// from ResourceManager.MainResourceMap.GetValue — and XAML still cannot load them, and
-// XamlControlsResources still fails to activate. TextBox, PasswordBox, RichEditBox,
-// SearchBox and ProgressBar remain unusable. See acceptance/themeresources_test.go for
-// exactly how far the trail is followed.
+// this file is NECESSARY BUT NOT SUFFICIENT ON ITS OWN. It settles where the theme
+// dictionaries live; it does not settle who resolves the type names inside them. WinUI
+// asks the application object for IXamlMetadataProvider, and an application that
+// activated Microsoft.UI.Xaml.Application directly cannot answer — so with this file
+// in place and nothing else, ProgressBar still fails with "The type 'ProgressBar' was
+// not found".
+//
+// app.Run builds an application that answers, so a caller using it needs only this file.
+// acceptance/themeresources_test.go asserts both halves: the resource lookup that this
+// command fixes, and the type resolution that the derived application fixes.
 
 import (
 	"flag"
@@ -108,9 +112,10 @@ func runAppResources(args []string) error {
 	if removed > 0 {
 		fmt.Printf("removed %d per-language index files (--keep-language-splits to retain them)\n", removed)
 	}
-	fmt.Println("NOTE: this is necessary but not yet sufficient — XAML still cannot load the")
-	fmt.Println("theme dictionaries, so TextBox, PasswordBox, RichEditBox, SearchBox and")
-	fmt.Println("ProgressBar remain unusable. See acceptance/themeresources_test.go.")
+	fmt.Println("NOTE: this file is one of two things the theme dictionaries need. The other is")
+	fmt.Println("an application that answers IXamlMetadataProvider, which app.Run builds for you.")
+	fmt.Println("An application activating Microsoft.UI.Xaml.Application directly has a")
+	fmt.Println("resources.pri and still cannot load them. See acceptance/themeresources_test.go.")
 	return nil
 }
 
