@@ -64,6 +64,9 @@ func TestMain(m *testing.M) {
 	if os.Getenv(goLayoutSubprocessEnv) != "" {
 		os.Exit(runGoLayoutCase())
 	}
+	if os.Getenv(popupLeakSubprocessEnv) != "" {
+		os.Exit(runPopupLeakCase())
+	}
 	os.Exit(m.Run())
 }
 
