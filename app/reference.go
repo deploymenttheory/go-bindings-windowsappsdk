@@ -27,6 +27,29 @@ package app
 //
 // So this does the same. IReference<T> is one method — get_Value at slot 6, writing
 // through an out pointer — which is small enough to implement exactly.
+//
+// # WHERE THIS DOES NOT WORK, AND WHAT TO USE INSTEAD
+//
+// A Go-implemented IReference<T> satisfies a callee that only calls get_Value.
+// ScrollPresenter.ZoomTo does exactly that, which is the case this was written for.
+//
+// It is REFUSED by XAML's dependency-property system. Setting DoubleAnimation.From to one
+// fails with E_FAIL, because that property is stored as a dependency-property value and
+// read back through IPropertyValue — an interface this object does not implement and
+// cannot usefully fake.
+//
+// The rule that follows is short:
+//
+//   - if PropertyValue can box the type, BOX IT and query for IReference<T>. A boxed
+//     value implements both interfaces, so it satisfies either consumer. Every WinRT
+//     primitive plus Point, Size, Rect and GUID is in that set — see Box.
+//   - use NewReference only for the types PropertyValue CANNOT box, which is the
+//     numerics: Vector2, Vector3, Matrix and the rest. Those never appear as
+//     dependency-property values in this metadata, so the limitation and the need do
+//     not overlap.
+//
+// Found by ProgressRingStoryboardAnimationPage in the gallery, which animates a double
+// and needs the boxed form.
 
 import (
 	"fmt"
