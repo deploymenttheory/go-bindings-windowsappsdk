@@ -102,19 +102,25 @@ func TestControlsAreStyledWithoutXamlControlsResources(t *testing.T) {
 	}
 }
 
-// TestXamlControlsResourcesCannotBeActivated pins the one thing that genuinely does
-// not work, now stripped of the explanation it never earned.
+// TestXamlControlsResourcesNeedsTheApplicationResourceIndex pins what turned out to be
+// true, which is not what this test used to say.
 //
-// Activating it returns E_FAIL at every point tried. What the spike established is
-// what it is NOT: not a broken projection, and not a missing metadata provider.
-// Neighbouring types activate fine and XAML type resolution works — see
-// TestXamlTypeResolutionWorksWithoutAMetadataProvider — so the cause is specific to
-// this type and remains unknown.
+// It used to assert that XamlControlsResources simply cannot be activated, cause
+// unknown. The cause is now known and it is the environment, not the type: its
+// constructor sets Source to ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml
+// (see XamlControlsResources.cpp in microsoft/microsoft-ui-xaml), and an unpackaged
+// application resolves ms-appx:/// through its own resources.pri — which `go build`
+// does not produce and `go test` therefore does not have beside this binary.
 //
-// It also does not matter, which is the useful part: controls are styled without it.
-// Its remaining purpose in WinUI 3 is UseCompactResources, so this is a gap to note
-// rather than a blocker to clear.
-func TestXamlControlsResourcesCannotBeActivated(t *testing.T) {
+// So the failure asserted here is CONDITIONAL, and the condition is this test binary's
+// directory. Given a generated resources.pri and a derived application it activates and
+// merges, which is what TestControlsNeedingThemeResourcesNowLoad demonstrates in a
+// subprocess staged with one.
+//
+// Kept, rather than deleted, because it is the cheap half of the pair: if this ever
+// starts succeeding under plain `go test`, the resource story has changed again and the
+// notes in CLAUDE.md and README.md need rereading.
+func TestXamlControlsResourcesNeedsTheApplicationResourceIndex(t *testing.T) {
 	var (
 		resourcesErr  error
 		dictionaryErr error
@@ -173,11 +179,19 @@ func TestXamlControlsResourcesCannotBeActivated(t *testing.T) {
 // XamlReader parses markup and instantiates framework types perfectly well, because
 // the framework resolves its own types and never needed us to.
 //
-// So COM aggregation is not on the critical path for a working UI, and building it to
-// fix styling would have fixed nothing. A provider is still what a Go application
-// would need to resolve types IT defines, which is a real future concern and a
-// different one.
-func TestXamlTypeResolutionWorksWithoutAMetadataProvider(t *testing.T) {
+// The conclusion once drawn from this — that COM aggregation is "not on the critical
+// path for a working UI" — was WRONG, and wrong in an instructive way. It was measured
+// on Grid, TextBlock and ResourceDictionary, all of which resolve without a provider.
+// The controls that do not are the ones whose styles live in WinUI's own theme
+// dictionaries, and for those the provider is exactly what was missing: TextBox,
+// PasswordBox, RichEditBox and ProgressBar all took the process down until app.Run
+// began deriving the Application. See TestControlsNeedingThemeResourcesNowLoad.
+//
+// What the probes below still show is narrower and still worth having: the parser
+// resolves framework types, sets properties on them, and rejects a name that does not
+// exist. A provider is now always present, so this no longer says anything about its
+// absence — the name says so.
+func TestXamlTypeResolutionResolvesFrameworkTypes(t *testing.T) {
 	const namespace = `xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"`
 	type probe struct {
 		label     string
@@ -218,9 +232,14 @@ func TestXamlTypeResolutionWorksWithoutAMetadataProvider(t *testing.T) {
 	if err != nil {
 		t.Fatalf("app.Run: %v", err)
 	}
-	if providerErr == nil {
-		t.Log("the Application now answers IXamlMetadataProvider; this test's premise " +
-			"(that it does not, and that this does not matter) needs revisiting")
+	// The Application MUST answer IXamlMetadataProvider: app.Run derives it, and that
+	// answer is what lets WinUI resolve the types inside its own theme dictionaries.
+	// This is the cheapest possible check that the aggregation is still wired — if the
+	// derived application regressed to a plain one, four controls would start killing
+	// the process again and this line is what would say so first.
+	if providerErr != nil {
+		t.Errorf("Application does not answer IXamlMetadataProvider: %v — the derived "+
+			"application is not in place, and the controls that need it will crash", providerErr)
 	}
 	for i, p := range probes {
 		switch {

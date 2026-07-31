@@ -51,6 +51,7 @@ built toward, and is written down now so it does not have to be rediscovered.
 ```sh
 go run ./cmd/generate fetch-metadata     # winmds ← NuGet meta-package fan-out
 go run ./cmd/generate fetch-bootstrap    # the redistributable bootstrapper
+go run ./cmd/generate app-resources --out <dir>   # resources.pri for an unpackaged app
 go run ./cmd/generate ingest             # winmds → metadata/wasdk/*.json
 go run ./cmd/generate validate --external
 go run ./cmd/generate resolve             # every reference → a Go type, or a reason
@@ -607,20 +608,37 @@ QueryInterface — the same relationship a class has with its bases, which alrea
 interfaces and 142 monomorphized instantiations carry a `Requires`; they all have
 accessors now.
 
-**Text input terminates the process.** `TextBox`, `PasswordBox`, `RichEditBox` and
-`AutoSuggestBox` all die with `0xC000027B`, a stowed WinRT exception, when the element
-is laid out. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView` and `Grid` are fine
-in the same harness. Construction succeeds, properties set without error, the element
-goes into the tree, and the process dies inside the framework once layout runs — which
-is why the existing acceptance tests never saw it: they measure at `Loaded`, and a
-TextBox never reaches `Loaded`.
+**Controls that need WinUI's theme resources now work, and it took three things.**
+`TextBox`, `PasswordBox`, `RichEditBox` and `ProgressBar` used to terminate the process
+with `0xC000027B` at layout. Reading WinRT's restricted error info gave two different
+messages, which is what showed there were two problems:
 
-The cause is **not established**, and is deliberately not guessed at.
-`acceptance/textinput_test.go` pins it in a subprocess, with a `TextBlock` control case
-beside it so a broken harness cannot masquerade as the finding. The obvious suspect is
-the `XamlControlsResources` failure below — whose conclusion, "it does not matter", was
-reached by measuring a Button, and may hold only for the controls it was measured on.
-Settling that needs a discriminator.
+```text
+TextBox     -> Cannot locate resource from 'ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml'
+ProgressBar -> The type 'ProgressBar' was not found
+```
+
+`microsoft/microsoft-ui-xaml` accounts for both: `XamlControlsResources`' constructor
+sets `Source` to exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
+`DefaultStyleResourceUri` under the same `ms-appx` root.
+
+| | what was missing | fix |
+|---|---|---|
+| resources | an unpackaged app resolves `ms-appx:///` through its own `resources.pri`, and `go build` produces none | `generate app-resources` |
+| types | WinUI asks the application for `IXamlMetadataProvider`; a native `Application` cannot answer | a derived application — `app/derived.go` |
+| threading | the provider forwards into XAML, which is single-threaded; staging that onto the runtime's worker deadlocked both | inline dispatch on the declared UI thread (go-bindings-winrt) |
+
+The provider is a **forwarder**. WinUI ships `XamlControlsXamlMetaDataProvider`, it is
+activatable, and all three `IXamlMetadataProvider` slots take two ABI words — so the Go
+side passes them straight through without knowing their shapes.
+
+`SearchBox` is not a WinUI 3 type at all (removed in favour of `AutoSuggestBox`), so its
+absence is correct rather than a gap.
+
+**This corrects a claim carried since the M1 spike** — that COM aggregation is "not on
+the critical path for a working UI". It was measured on a `Button`, and a `Button` is one
+of the controls that does not need it. The lesson is the one this file already records
+twice: a conclusion drawn from one measurement holds only for what was measured.
 
 **A default interface is reached differently from every other one.** `Grid`'s default
 interface is `IGrid`, which the class embeds, so `grid.RowDefinitions()` is called

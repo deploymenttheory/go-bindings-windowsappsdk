@@ -290,16 +290,43 @@ with a styled `Button` and `TextBlock`, responding to clicks, the pointer and th
 keyboard. Everything still takes and returns the generated types, so any call can be
 written the long way and mixed freely; there is no parallel API to escape from.
 
-### Known limitation: text input
+### Controls that need theme resources
 
-`TextBox`, `PasswordBox`, `RichEditBox` and `AutoSuggestBox` **terminate the process**
-when they are laid out, with `0xC000027B` — a stowed WinRT exception from inside the
-framework. `TextBlock`, `Button`, `CheckBox`, `Slider`, `ListView` and `Grid` are fine.
+`TextBox`, `PasswordBox`, `RichEditBox` and `ProgressBar` used to **terminate the
+process** with `0xC000027B` when laid out. They now work, and it took three things — one
+in each layer.
 
-Construction succeeds, properties set without error, and the element goes into the tree;
-the process dies once layout runs. The cause is not established and is not guessed at.
-`acceptance/textinput_test.go` pins it in a subprocess, with a `TextBlock` control case
-beside it, so it is tracked rather than folklore.
+Reading WinRT's restricted error info gave two different messages, which is what showed
+there were two problems:
+
+```text
+TextBox     -> Cannot locate resource from 'ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml'
+ProgressBar -> The type 'ProgressBar' was not found
+```
+
+`microsoft/microsoft-ui-xaml` accounts for both: `XamlControlsResources`' constructor
+sets `Source` to exactly that URI, and `SetDefaultStyleKeyWorker` gives every control a
+`DefaultStyleResourceUri` under the same `ms-appx` root. One failure is the resources,
+the other the types.
+
+| | what was missing | fix |
+|---|---|---|
+| resources | an unpackaged app resolves `ms-appx:///` through its own `resources.pri`, and `go build` produces none | `generate app-resources` |
+| types | WinUI asks the application for `IXamlMetadataProvider`; a native `Application` cannot answer | a **derived** application — Go object aggregating `Microsoft.UI.Xaml.Application` |
+| threading | the provider forwards into XAML, which is single-threaded; staging that onto the runtime's worker deadlocked both | inline dispatch on the declared UI thread (go-bindings-winrt) |
+
+So an application needs a `resources.pri` beside its executable:
+
+```sh
+go build -o build/myapp.exe ./cmd/myapp
+go run ./cmd/generate app-resources --out build --name myapp
+```
+
+The resource map must be named for the executable, which is what `--name` sets.
+
+**This corrects a claim this repository carried for a long time** — that COM aggregation
+is "not on the critical path for a working UI". That was measured on a `Button`, and a
+`Button` is one of the controls that does not need it.
 
 ### Try it
 
