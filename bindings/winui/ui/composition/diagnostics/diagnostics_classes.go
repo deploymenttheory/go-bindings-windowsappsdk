@@ -17,11 +17,23 @@ type CompositionDebugHeatMaps struct {
 	ICompositionDebugHeatMaps
 }
 
+// AsCompositionDebugHeatMaps queries the instance's ICompositionDebugHeatMaps interface.
+// The returned reference is owned by the caller.
+func (self *CompositionDebugHeatMaps) AsCompositionDebugHeatMaps() (*ICompositionDebugHeatMaps, error) {
+	return winrt.QueryInterface[ICompositionDebugHeatMaps](unsafe.Pointer(self), &IID_ICompositionDebugHeatMaps)
+}
+
 // CompositionDebugSettings is the Microsoft.UI.Composition.Diagnostics.CompositionDebugSettings runtime class, surfaced through its
 // default interface ICompositionDebugSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CompositionDebugSettings struct {
 	ICompositionDebugSettings
+}
+
+// AsCompositionDebugSettings queries the instance's ICompositionDebugSettings interface.
+// The returned reference is owned by the caller.
+func (self *CompositionDebugSettings) AsCompositionDebugSettings() (*ICompositionDebugSettings, error) {
+	return winrt.QueryInterface[ICompositionDebugSettings](unsafe.Pointer(self), &IID_ICompositionDebugSettings)
 }
 
 // CompositionDebugSettingsStatics returns the Microsoft.UI.Composition.Diagnostics.ICompositionDebugSettingsStatics statics of the

@@ -28,11 +28,23 @@ func NewDispatcherExitDeferral() (*DispatcherExitDeferral, error) {
 	return winrt.QueryInterface[DispatcherExitDeferral](unsafe.Pointer(instance), &IID_IDispatcherExitDeferral)
 }
 
+// AsDispatcherExitDeferral queries the instance's IDispatcherExitDeferral interface.
+// The returned reference is owned by the caller.
+func (self *DispatcherExitDeferral) AsDispatcherExitDeferral() (*IDispatcherExitDeferral, error) {
+	return winrt.QueryInterface[IDispatcherExitDeferral](unsafe.Pointer(self), &IID_IDispatcherExitDeferral)
+}
+
 // DispatcherQueue is the Microsoft.UI.Dispatching.DispatcherQueue runtime class, surfaced through its
 // default interface IDispatcherQueue. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DispatcherQueue struct {
 	IDispatcherQueue
+}
+
+// AsDispatcherQueue queries the instance's IDispatcherQueue interface.
+// The returned reference is owned by the caller.
+func (self *DispatcherQueue) AsDispatcherQueue() (*IDispatcherQueue, error) {
+	return winrt.QueryInterface[IDispatcherQueue](unsafe.Pointer(self), &IID_IDispatcherQueue)
 }
 
 // AsDispatcherQueue2 queries the instance's IDispatcherQueue2 interface.
@@ -66,6 +78,12 @@ type DispatcherQueueController struct {
 	IDispatcherQueueController
 }
 
+// AsDispatcherQueueController queries the instance's IDispatcherQueueController interface.
+// The returned reference is owned by the caller.
+func (self *DispatcherQueueController) AsDispatcherQueueController() (*IDispatcherQueueController, error) {
+	return winrt.QueryInterface[IDispatcherQueueController](unsafe.Pointer(self), &IID_IDispatcherQueueController)
+}
+
 // AsDispatcherQueueController2 queries the instance's IDispatcherQueueController2 interface.
 // The returned reference is owned by the caller.
 func (self *DispatcherQueueController) AsDispatcherQueueController2() (*IDispatcherQueueController2, error) {
@@ -91,9 +109,21 @@ type DispatcherQueueShutdownStartingEventArgs struct {
 	IDispatcherQueueShutdownStartingEventArgs
 }
 
+// AsDispatcherQueueShutdownStartingEventArgs queries the instance's IDispatcherQueueShutdownStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DispatcherQueueShutdownStartingEventArgs) AsDispatcherQueueShutdownStartingEventArgs() (*IDispatcherQueueShutdownStartingEventArgs, error) {
+	return winrt.QueryInterface[IDispatcherQueueShutdownStartingEventArgs](unsafe.Pointer(self), &IID_IDispatcherQueueShutdownStartingEventArgs)
+}
+
 // DispatcherQueueTimer is the Microsoft.UI.Dispatching.DispatcherQueueTimer runtime class, surfaced through its
 // default interface IDispatcherQueueTimer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DispatcherQueueTimer struct {
 	IDispatcherQueueTimer
+}
+
+// AsDispatcherQueueTimer queries the instance's IDispatcherQueueTimer interface.
+// The returned reference is owned by the caller.
+func (self *DispatcherQueueTimer) AsDispatcherQueueTimer() (*IDispatcherQueueTimer, error) {
+	return winrt.QueryInterface[IDispatcherQueueTimer](unsafe.Pointer(self), &IID_IDispatcherQueueTimer)
 }

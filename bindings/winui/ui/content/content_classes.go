@@ -20,6 +20,12 @@ type ChildSiteLink struct {
 	IChildSiteLink
 }
 
+// AsChildSiteLink queries the instance's IChildSiteLink interface.
+// The returned reference is owned by the caller.
+func (self *ChildSiteLink) AsChildSiteLink() (*IChildSiteLink, error) {
+	return winrt.QueryInterface[IChildSiteLink](unsafe.Pointer(self), &IID_IChildSiteLink)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *ChildSiteLink) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -69,6 +75,12 @@ type ContentCoordinateConverter struct {
 	IContentCoordinateConverter
 }
 
+// AsContentCoordinateConverter queries the instance's IContentCoordinateConverter interface.
+// The returned reference is owned by the caller.
+func (self *ContentCoordinateConverter) AsContentCoordinateConverter() (*IContentCoordinateConverter, error) {
+	return winrt.QueryInterface[IContentCoordinateConverter](unsafe.Pointer(self), &IID_IContentCoordinateConverter)
+}
+
 // ContentCoordinateConverterStatics returns the Microsoft.UI.Content.IContentCoordinateConverterStatics statics of the
 // Microsoft.UI.Content.ContentCoordinateConverter runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -88,6 +100,12 @@ type ContentDeferral struct {
 	IContentDeferral
 }
 
+// AsContentDeferral queries the instance's IContentDeferral interface.
+// The returned reference is owned by the caller.
+func (self *ContentDeferral) AsContentDeferral() (*IContentDeferral, error) {
+	return winrt.QueryInterface[IContentDeferral](unsafe.Pointer(self), &IID_IContentDeferral)
+}
+
 // ContentEnvironmentSettingChangedEventArgs is the Microsoft.UI.Content.ContentEnvironmentSettingChangedEventArgs runtime class, surfaced through its
 // default interface IContentEnvironmentSettingChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -95,11 +113,23 @@ type ContentEnvironmentSettingChangedEventArgs struct {
 	IContentEnvironmentSettingChangedEventArgs
 }
 
+// AsContentEnvironmentSettingChangedEventArgs queries the instance's IContentEnvironmentSettingChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentEnvironmentSettingChangedEventArgs) AsContentEnvironmentSettingChangedEventArgs() (*IContentEnvironmentSettingChangedEventArgs, error) {
+	return winrt.QueryInterface[IContentEnvironmentSettingChangedEventArgs](unsafe.Pointer(self), &IID_IContentEnvironmentSettingChangedEventArgs)
+}
+
 // ContentEnvironmentStateChangedEventArgs is the Microsoft.UI.Content.ContentEnvironmentStateChangedEventArgs runtime class, surfaced through its
 // default interface IContentEnvironmentStateChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentEnvironmentStateChangedEventArgs struct {
 	IContentEnvironmentStateChangedEventArgs
+}
+
+// AsContentEnvironmentStateChangedEventArgs queries the instance's IContentEnvironmentStateChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentEnvironmentStateChangedEventArgs) AsContentEnvironmentStateChangedEventArgs() (*IContentEnvironmentStateChangedEventArgs, error) {
+	return winrt.QueryInterface[IContentEnvironmentStateChangedEventArgs](unsafe.Pointer(self), &IID_IContentEnvironmentStateChangedEventArgs)
 }
 
 // AsContentEnvironmentStateChangedEventArgs2 queries the instance's IContentEnvironmentStateChangedEventArgs2 interface.
@@ -113,6 +143,12 @@ func (self *ContentEnvironmentStateChangedEventArgs) AsContentEnvironmentStateCh
 // the embedded IInspectable → IUnknown chain).
 type ContentIsland struct {
 	IContentIsland
+}
+
+// AsContentIsland queries the instance's IContentIsland interface.
+// The returned reference is owned by the caller.
+func (self *ContentIsland) AsContentIsland() (*IContentIsland, error) {
+	return winrt.QueryInterface[IContentIsland](unsafe.Pointer(self), &IID_IContentIsland)
 }
 
 // AsContentIsland2 queries the instance's IContentIsland2 interface.
@@ -176,11 +212,23 @@ type ContentIslandAutomationProviderRequestedEventArgs struct {
 	IContentIslandAutomationProviderRequestedEventArgs
 }
 
+// AsContentIslandAutomationProviderRequestedEventArgs queries the instance's IContentIslandAutomationProviderRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentIslandAutomationProviderRequestedEventArgs) AsContentIslandAutomationProviderRequestedEventArgs() (*IContentIslandAutomationProviderRequestedEventArgs, error) {
+	return winrt.QueryInterface[IContentIslandAutomationProviderRequestedEventArgs](unsafe.Pointer(self), &IID_IContentIslandAutomationProviderRequestedEventArgs)
+}
+
 // ContentIslandEnvironment is the Microsoft.UI.Content.ContentIslandEnvironment runtime class, surfaced through its
 // default interface IContentIslandEnvironment. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentIslandEnvironment struct {
 	IContentIslandEnvironment
+}
+
+// AsContentIslandEnvironment queries the instance's IContentIslandEnvironment interface.
+// The returned reference is owned by the caller.
+func (self *ContentIslandEnvironment) AsContentIslandEnvironment() (*IContentIslandEnvironment, error) {
+	return winrt.QueryInterface[IContentIslandEnvironment](unsafe.Pointer(self), &IID_IContentIslandEnvironment)
 }
 
 // AsContentIslandEnvironment2 queries the instance's IContentIslandEnvironment2 interface.
@@ -196,6 +244,12 @@ type ContentIslandStateChangedEventArgs struct {
 	IContentIslandStateChangedEventArgs
 }
 
+// AsContentIslandStateChangedEventArgs queries the instance's IContentIslandStateChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentIslandStateChangedEventArgs) AsContentIslandStateChangedEventArgs() (*IContentIslandStateChangedEventArgs, error) {
+	return winrt.QueryInterface[IContentIslandStateChangedEventArgs](unsafe.Pointer(self), &IID_IContentIslandStateChangedEventArgs)
+}
+
 // AsContentIslandStateChangedEventArgs2 queries the instance's IContentIslandStateChangedEventArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *ContentIslandStateChangedEventArgs) AsContentIslandStateChangedEventArgs2() (*IContentIslandStateChangedEventArgs2, error) {
@@ -207,6 +261,12 @@ func (self *ContentIslandStateChangedEventArgs) AsContentIslandStateChangedEvent
 // the embedded IInspectable → IUnknown chain).
 type ContentSite struct {
 	IContentSite
+}
+
+// AsContentSite queries the instance's IContentSite interface.
+// The returned reference is owned by the caller.
+func (self *ContentSite) AsContentSite() (*IContentSite, error) {
+	return winrt.QueryInterface[IContentSite](unsafe.Pointer(self), &IID_IContentSite)
 }
 
 // AsContentSite2 queries the instance's IContentSite2 interface.
@@ -234,11 +294,23 @@ type ContentSiteAutomationProviderRequestedEventArgs struct {
 	IContentSiteAutomationProviderRequestedEventArgs
 }
 
+// AsContentSiteAutomationProviderRequestedEventArgs queries the instance's IContentSiteAutomationProviderRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentSiteAutomationProviderRequestedEventArgs) AsContentSiteAutomationProviderRequestedEventArgs() (*IContentSiteAutomationProviderRequestedEventArgs, error) {
+	return winrt.QueryInterface[IContentSiteAutomationProviderRequestedEventArgs](unsafe.Pointer(self), &IID_IContentSiteAutomationProviderRequestedEventArgs)
+}
+
 // ContentSiteEnvironment is the Microsoft.UI.Content.ContentSiteEnvironment runtime class, surfaced through its
 // default interface IContentSiteEnvironment. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentSiteEnvironment struct {
 	IContentSiteEnvironment
+}
+
+// AsContentSiteEnvironment queries the instance's IContentSiteEnvironment interface.
+// The returned reference is owned by the caller.
+func (self *ContentSiteEnvironment) AsContentSiteEnvironment() (*IContentSiteEnvironment, error) {
+	return winrt.QueryInterface[IContentSiteEnvironment](unsafe.Pointer(self), &IID_IContentSiteEnvironment)
 }
 
 // AsContentSiteEnvironment2 queries the instance's IContentSiteEnvironment2 interface.
@@ -254,6 +326,12 @@ type ContentSiteEnvironmentView struct {
 	IContentSiteEnvironmentView
 }
 
+// AsContentSiteEnvironmentView queries the instance's IContentSiteEnvironmentView interface.
+// The returned reference is owned by the caller.
+func (self *ContentSiteEnvironmentView) AsContentSiteEnvironmentView() (*IContentSiteEnvironmentView, error) {
+	return winrt.QueryInterface[IContentSiteEnvironmentView](unsafe.Pointer(self), &IID_IContentSiteEnvironmentView)
+}
+
 // AsContentSiteEnvironmentView2 queries the instance's IContentSiteEnvironmentView2 interface.
 // The returned reference is owned by the caller.
 func (self *ContentSiteEnvironmentView) AsContentSiteEnvironmentView2() (*IContentSiteEnvironmentView2, error) {
@@ -267,11 +345,23 @@ type ContentSiteRequestedStateChangedEventArgs struct {
 	IContentSiteRequestedStateChangedEventArgs
 }
 
+// AsContentSiteRequestedStateChangedEventArgs queries the instance's IContentSiteRequestedStateChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentSiteRequestedStateChangedEventArgs) AsContentSiteRequestedStateChangedEventArgs() (*IContentSiteRequestedStateChangedEventArgs, error) {
+	return winrt.QueryInterface[IContentSiteRequestedStateChangedEventArgs](unsafe.Pointer(self), &IID_IContentSiteRequestedStateChangedEventArgs)
+}
+
 // ContentSiteView is the Microsoft.UI.Content.ContentSiteView runtime class, surfaced through its
 // default interface IContentSiteView. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentSiteView struct {
 	IContentSiteView
+}
+
+// AsContentSiteView queries the instance's IContentSiteView interface.
+// The returned reference is owned by the caller.
+func (self *ContentSiteView) AsContentSiteView() (*IContentSiteView, error) {
+	return winrt.QueryInterface[IContentSiteView](unsafe.Pointer(self), &IID_IContentSiteView)
 }
 
 // AsContentSiteView2 queries the instance's IContentSiteView2 interface.
@@ -291,6 +381,12 @@ func (self *ContentSiteView) AsContentSiteViewAutomation() (*IContentSiteViewAut
 // the embedded IInspectable → IUnknown chain).
 type DesktopAttachedSiteBridge struct {
 	IDesktopAttachedSiteBridge
+}
+
+// AsDesktopAttachedSiteBridge queries the instance's IDesktopAttachedSiteBridge interface.
+// The returned reference is owned by the caller.
+func (self *DesktopAttachedSiteBridge) AsDesktopAttachedSiteBridge() (*IDesktopAttachedSiteBridge, error) {
+	return winrt.QueryInterface[IDesktopAttachedSiteBridge](unsafe.Pointer(self), &IID_IDesktopAttachedSiteBridge)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -334,6 +430,12 @@ func DesktopAttachedSiteBridgeStatics() (*IDesktopAttachedSiteBridgeStatics, err
 // the embedded IInspectable → IUnknown chain).
 type DesktopChildSiteBridge struct {
 	IDesktopChildSiteBridge
+}
+
+// AsDesktopChildSiteBridge queries the instance's IDesktopChildSiteBridge interface.
+// The returned reference is owned by the caller.
+func (self *DesktopChildSiteBridge) AsDesktopChildSiteBridge() (*IDesktopChildSiteBridge, error) {
+	return winrt.QueryInterface[IDesktopChildSiteBridge](unsafe.Pointer(self), &IID_IDesktopChildSiteBridge)
 }
 
 // AsDesktopSiteBridge queries the instance's IDesktopSiteBridge interface.
@@ -395,6 +497,12 @@ type DesktopPopupSiteBridge struct {
 	IDesktopPopupSiteBridge
 }
 
+// AsDesktopPopupSiteBridge queries the instance's IDesktopPopupSiteBridge interface.
+// The returned reference is owned by the caller.
+func (self *DesktopPopupSiteBridge) AsDesktopPopupSiteBridge() (*IDesktopPopupSiteBridge, error) {
+	return winrt.QueryInterface[IDesktopPopupSiteBridge](unsafe.Pointer(self), &IID_IDesktopPopupSiteBridge)
+}
+
 // AsDesktopPopupSiteBridge2 queries the instance's IDesktopPopupSiteBridge2 interface.
 // The returned reference is owned by the caller.
 func (self *DesktopPopupSiteBridge) AsDesktopPopupSiteBridge2() (*IDesktopPopupSiteBridge2, error) {
@@ -448,6 +556,12 @@ func DesktopPopupSiteBridgeStatics() (*IDesktopPopupSiteBridgeStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type DesktopSiteBridge struct {
 	IDesktopSiteBridge
+}
+
+// AsDesktopSiteBridge queries the instance's IDesktopSiteBridge interface.
+// The returned reference is owned by the caller.
+func (self *DesktopSiteBridge) AsDesktopSiteBridge() (*IDesktopSiteBridge, error) {
+	return winrt.QueryInterface[IDesktopSiteBridge](unsafe.Pointer(self), &IID_IDesktopSiteBridge)
 }
 
 // AsClosableNotifier queries the instance's ui.IClosableNotifier interface.

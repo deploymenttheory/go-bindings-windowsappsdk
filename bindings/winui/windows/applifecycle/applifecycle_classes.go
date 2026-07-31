@@ -29,11 +29,23 @@ type AppActivationArguments struct {
 	IAppActivationArguments
 }
 
+// AsAppActivationArguments queries the instance's IAppActivationArguments interface.
+// The returned reference is owned by the caller.
+func (self *AppActivationArguments) AsAppActivationArguments() (*IAppActivationArguments, error) {
+	return winrt.QueryInterface[IAppActivationArguments](unsafe.Pointer(self), &IID_IAppActivationArguments)
+}
+
 // AppInstance is the Microsoft.Windows.AppLifecycle.AppInstance runtime class, surfaced through its
 // default interface IAppInstance. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AppInstance struct {
 	IAppInstance
+}
+
+// AsAppInstance queries the instance's IAppInstance interface.
+// The returned reference is owned by the caller.
+func (self *AppInstance) AsAppInstance() (*IAppInstance, error) {
+	return winrt.QueryInterface[IAppInstance](unsafe.Pointer(self), &IID_IAppInstance)
 }
 
 // AppInstanceStatics returns the Microsoft.Windows.AppLifecycle.IAppInstanceStatics statics of the

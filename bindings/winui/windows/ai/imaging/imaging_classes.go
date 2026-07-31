@@ -18,6 +18,12 @@ type ImageDescriptionGenerator struct {
 	IImageDescriptionGenerator
 }
 
+// AsImageDescriptionGenerator queries the instance's IImageDescriptionGenerator interface.
+// The returned reference is owned by the caller.
+func (self *ImageDescriptionGenerator) AsImageDescriptionGenerator() (*IImageDescriptionGenerator, error) {
+	return winrt.QueryInterface[IImageDescriptionGenerator](unsafe.Pointer(self), &IID_IImageDescriptionGenerator)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *ImageDescriptionGenerator) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -43,11 +49,23 @@ type ImageDescriptionResult struct {
 	IImageDescriptionResult
 }
 
+// AsImageDescriptionResult queries the instance's IImageDescriptionResult interface.
+// The returned reference is owned by the caller.
+func (self *ImageDescriptionResult) AsImageDescriptionResult() (*IImageDescriptionResult, error) {
+	return winrt.QueryInterface[IImageDescriptionResult](unsafe.Pointer(self), &IID_IImageDescriptionResult)
+}
+
 // ImageObjectExtractor is the Microsoft.Windows.AI.Imaging.ImageObjectExtractor runtime class, surfaced through its
 // default interface IImageObjectExtractor. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ImageObjectExtractor struct {
 	IImageObjectExtractor
+}
+
+// AsImageObjectExtractor queries the instance's IImageObjectExtractor interface.
+// The returned reference is owned by the caller.
+func (self *ImageObjectExtractor) AsImageObjectExtractor() (*IImageObjectExtractor, error) {
+	return winrt.QueryInterface[IImageObjectExtractor](unsafe.Pointer(self), &IID_IImageObjectExtractor)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -75,6 +93,12 @@ type ImageObjectExtractorHint struct {
 	IImageObjectExtractorHint
 }
 
+// AsImageObjectExtractorHint queries the instance's IImageObjectExtractorHint interface.
+// The returned reference is owned by the caller.
+func (self *ImageObjectExtractorHint) AsImageObjectExtractorHint() (*IImageObjectExtractorHint, error) {
+	return winrt.QueryInterface[IImageObjectExtractorHint](unsafe.Pointer(self), &IID_IImageObjectExtractorHint)
+}
+
 // CreateInstance constructs a Microsoft.Windows.AI.Imaging.ImageObjectExtractorHint instance through
 // Microsoft.Windows.AI.Imaging.IImageObjectExtractorHintFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -97,6 +121,12 @@ func CreateInstance(includeRects *IVectorOfRectInt32, includePoints *IVectorOfPo
 // the embedded IInspectable → IUnknown chain).
 type ImageObjectRemover struct {
 	IImageObjectRemover
+}
+
+// AsImageObjectRemover queries the instance's IImageObjectRemover interface.
+// The returned reference is owned by the caller.
+func (self *ImageObjectRemover) AsImageObjectRemover() (*IImageObjectRemover, error) {
+	return winrt.QueryInterface[IImageObjectRemover](unsafe.Pointer(self), &IID_IImageObjectRemover)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -124,6 +154,12 @@ type ImageScaler struct {
 	IImageScaler
 }
 
+// AsImageScaler queries the instance's IImageScaler interface.
+// The returned reference is owned by the caller.
+func (self *ImageScaler) AsImageScaler() (*IImageScaler, error) {
+	return winrt.QueryInterface[IImageScaler](unsafe.Pointer(self), &IID_IImageScaler)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *ImageScaler) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -149,11 +185,23 @@ type RecognizedLine struct {
 	IRecognizedLine
 }
 
+// AsRecognizedLine queries the instance's IRecognizedLine interface.
+// The returned reference is owned by the caller.
+func (self *RecognizedLine) AsRecognizedLine() (*IRecognizedLine, error) {
+	return winrt.QueryInterface[IRecognizedLine](unsafe.Pointer(self), &IID_IRecognizedLine)
+}
+
 // RecognizedText is the Microsoft.Windows.AI.Imaging.RecognizedText runtime class, surfaced through its
 // default interface IRecognizedText. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type RecognizedText struct {
 	IRecognizedText
+}
+
+// AsRecognizedText queries the instance's IRecognizedText interface.
+// The returned reference is owned by the caller.
+func (self *RecognizedText) AsRecognizedText() (*IRecognizedText, error) {
+	return winrt.QueryInterface[IRecognizedText](unsafe.Pointer(self), &IID_IRecognizedText)
 }
 
 // RecognizedWord is the Microsoft.Windows.AI.Imaging.RecognizedWord runtime class, surfaced through its
@@ -163,11 +211,23 @@ type RecognizedWord struct {
 	IRecognizedWord
 }
 
+// AsRecognizedWord queries the instance's IRecognizedWord interface.
+// The returned reference is owned by the caller.
+func (self *RecognizedWord) AsRecognizedWord() (*IRecognizedWord, error) {
+	return winrt.QueryInterface[IRecognizedWord](unsafe.Pointer(self), &IID_IRecognizedWord)
+}
+
 // TextRecognizer is the Microsoft.Windows.AI.Imaging.TextRecognizer runtime class, surfaced through its
 // default interface ITextRecognizer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextRecognizer struct {
 	ITextRecognizer
+}
+
+// AsTextRecognizer queries the instance's ITextRecognizer interface.
+// The returned reference is owned by the caller.
+func (self *TextRecognizer) AsTextRecognizer() (*ITextRecognizer, error) {
+	return winrt.QueryInterface[ITextRecognizer](unsafe.Pointer(self), &IID_ITextRecognizer)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.

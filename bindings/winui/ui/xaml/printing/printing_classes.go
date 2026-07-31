@@ -30,6 +30,12 @@ func NewAddPagesEventArgs() (*AddPagesEventArgs, error) {
 	return winrt.QueryInterface[AddPagesEventArgs](unsafe.Pointer(instance), &IID_IAddPagesEventArgs)
 }
 
+// AsAddPagesEventArgs queries the instance's IAddPagesEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AddPagesEventArgs) AsAddPagesEventArgs() (*IAddPagesEventArgs, error) {
+	return winrt.QueryInterface[IAddPagesEventArgs](unsafe.Pointer(self), &IID_IAddPagesEventArgs)
+}
+
 // GetPreviewPageEventArgs is the Microsoft.UI.Xaml.Printing.GetPreviewPageEventArgs runtime class, surfaced through its
 // default interface IGetPreviewPageEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -46,6 +52,12 @@ func NewGetPreviewPageEventArgs() (*GetPreviewPageEventArgs, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[GetPreviewPageEventArgs](unsafe.Pointer(instance), &IID_IGetPreviewPageEventArgs)
+}
+
+// AsGetPreviewPageEventArgs queries the instance's IGetPreviewPageEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *GetPreviewPageEventArgs) AsGetPreviewPageEventArgs() (*IGetPreviewPageEventArgs, error) {
+	return winrt.QueryInterface[IGetPreviewPageEventArgs](unsafe.Pointer(self), &IID_IGetPreviewPageEventArgs)
 }
 
 // PaginateEventArgs is the Microsoft.UI.Xaml.Printing.PaginateEventArgs runtime class, surfaced through its
@@ -66,11 +78,23 @@ func NewPaginateEventArgs() (*PaginateEventArgs, error) {
 	return winrt.QueryInterface[PaginateEventArgs](unsafe.Pointer(instance), &IID_IPaginateEventArgs)
 }
 
+// AsPaginateEventArgs queries the instance's IPaginateEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PaginateEventArgs) AsPaginateEventArgs() (*IPaginateEventArgs, error) {
+	return winrt.QueryInterface[IPaginateEventArgs](unsafe.Pointer(self), &IID_IPaginateEventArgs)
+}
+
 // PrintDocument is the Microsoft.UI.Xaml.Printing.PrintDocument runtime class, surfaced through its
 // default interface IPrintDocument. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PrintDocument struct {
 	IPrintDocument
+}
+
+// AsPrintDocument queries the instance's IPrintDocument interface.
+// The returned reference is owned by the caller.
+func (self *PrintDocument) AsPrintDocument() (*IPrintDocument, error) {
+	return winrt.QueryInterface[IPrintDocument](unsafe.Pointer(self), &IID_IPrintDocument)
 }
 
 // AsDependencyObject queries the instance's uixaml.IDependencyObject interface.

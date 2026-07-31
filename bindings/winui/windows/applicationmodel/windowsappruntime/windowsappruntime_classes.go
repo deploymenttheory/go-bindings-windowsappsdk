@@ -28,6 +28,12 @@ func NewDeploymentInitializeOptions() (*DeploymentInitializeOptions, error) {
 	return winrt.QueryInterface[DeploymentInitializeOptions](unsafe.Pointer(instance), &IID_IDeploymentInitializeOptions)
 }
 
+// AsDeploymentInitializeOptions queries the instance's IDeploymentInitializeOptions interface.
+// The returned reference is owned by the caller.
+func (self *DeploymentInitializeOptions) AsDeploymentInitializeOptions() (*IDeploymentInitializeOptions, error) {
+	return winrt.QueryInterface[IDeploymentInitializeOptions](unsafe.Pointer(self), &IID_IDeploymentInitializeOptions)
+}
+
 // AsDeploymentInitializeOptions2 queries the instance's IDeploymentInitializeOptions2 interface.
 // The returned reference is owned by the caller.
 func (self *DeploymentInitializeOptions) AsDeploymentInitializeOptions2() (*IDeploymentInitializeOptions2, error) {
@@ -63,6 +69,12 @@ func DeploymentManagerStatics2() (*IDeploymentManagerStatics2, error) {
 // the embedded IInspectable → IUnknown chain).
 type DeploymentResult struct {
 	IDeploymentResult
+}
+
+// AsDeploymentResult queries the instance's IDeploymentResult interface.
+// The returned reference is owned by the caller.
+func (self *DeploymentResult) AsDeploymentResult() (*IDeploymentResult, error) {
+	return winrt.QueryInterface[IDeploymentResult](unsafe.Pointer(self), &IID_IDeploymentResult)
 }
 
 // CreateInstance constructs a Microsoft.Windows.ApplicationModel.WindowsAppRuntime.DeploymentResult instance through
@@ -110,6 +122,12 @@ func NewRuntimeCompatibilityOptions() (*RuntimeCompatibilityOptions, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RuntimeCompatibilityOptions](unsafe.Pointer(instance), &IID_IRuntimeCompatibilityOptions)
+}
+
+// AsRuntimeCompatibilityOptions queries the instance's IRuntimeCompatibilityOptions interface.
+// The returned reference is owned by the caller.
+func (self *RuntimeCompatibilityOptions) AsRuntimeCompatibilityOptions() (*IRuntimeCompatibilityOptions, error) {
+	return winrt.QueryInterface[IRuntimeCompatibilityOptions](unsafe.Pointer(self), &IID_IRuntimeCompatibilityOptions)
 }
 
 // RuntimeInfoStatics returns the Microsoft.Windows.ApplicationModel.WindowsAppRuntime.IRuntimeInfoStatics statics of the

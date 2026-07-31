@@ -17,6 +17,12 @@ type AppNotification struct {
 	IAppNotification
 }
 
+// AsAppNotification queries the instance's IAppNotification interface.
+// The returned reference is owned by the caller.
+func (self *AppNotification) AsAppNotification() (*IAppNotification, error) {
+	return winrt.QueryInterface[IAppNotification](unsafe.Pointer(self), &IID_IAppNotification)
+}
+
 // CreateInstance constructs a Microsoft.Windows.AppNotifications.AppNotification instance through
 // Microsoft.Windows.AppNotifications.IAppNotificationFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -41,6 +47,12 @@ type AppNotificationActivatedEventArgs struct {
 	IAppNotificationActivatedEventArgs
 }
 
+// AsAppNotificationActivatedEventArgs queries the instance's IAppNotificationActivatedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationActivatedEventArgs) AsAppNotificationActivatedEventArgs() (*IAppNotificationActivatedEventArgs, error) {
+	return winrt.QueryInterface[IAppNotificationActivatedEventArgs](unsafe.Pointer(self), &IID_IAppNotificationActivatedEventArgs)
+}
+
 // AsAppNotificationActivatedEventArgs2 queries the instance's IAppNotificationActivatedEventArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *AppNotificationActivatedEventArgs) AsAppNotificationActivatedEventArgs2() (*IAppNotificationActivatedEventArgs2, error) {
@@ -52,6 +64,12 @@ func (self *AppNotificationActivatedEventArgs) AsAppNotificationActivatedEventAr
 // the embedded IInspectable → IUnknown chain).
 type AppNotificationManager struct {
 	IAppNotificationManager
+}
+
+// AsAppNotificationManager queries the instance's IAppNotificationManager interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationManager) AsAppNotificationManager() (*IAppNotificationManager, error) {
+	return winrt.QueryInterface[IAppNotificationManager](unsafe.Pointer(self), &IID_IAppNotificationManager)
 }
 
 // AsAppNotificationManager2 queries the instance's IAppNotificationManager2 interface.
@@ -89,6 +107,12 @@ func AppNotificationManagerStatics2() (*IAppNotificationManagerStatics2, error) 
 // the embedded IInspectable → IUnknown chain).
 type AppNotificationProgressData struct {
 	IAppNotificationProgressData
+}
+
+// AsAppNotificationProgressData queries the instance's IAppNotificationProgressData interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationProgressData) AsAppNotificationProgressData() (*IAppNotificationProgressData, error) {
+	return winrt.QueryInterface[IAppNotificationProgressData](unsafe.Pointer(self), &IID_IAppNotificationProgressData)
 }
 
 // CreateInstanceAppNotificationProgressData constructs a Microsoft.Windows.AppNotifications.AppNotificationProgressData instance through

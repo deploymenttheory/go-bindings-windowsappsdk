@@ -27,3 +27,9 @@ func NewBackgroundTaskBuilder() (*BackgroundTaskBuilder, error) {
 	defer instance.Release()
 	return winrt.QueryInterface[BackgroundTaskBuilder](unsafe.Pointer(instance), &IID_IBackgroundTaskBuilder)
 }
+
+// AsBackgroundTaskBuilder queries the instance's IBackgroundTaskBuilder interface.
+// The returned reference is owned by the caller.
+func (self *BackgroundTaskBuilder) AsBackgroundTaskBuilder() (*IBackgroundTaskBuilder, error) {
+	return winrt.QueryInterface[IBackgroundTaskBuilder](unsafe.Pointer(self), &IID_IBackgroundTaskBuilder)
+}

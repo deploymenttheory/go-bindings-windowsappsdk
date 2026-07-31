@@ -18,6 +18,12 @@ type EmbeddingVector struct {
 	IEmbeddingVector
 }
 
+// AsEmbeddingVector queries the instance's IEmbeddingVector interface.
+// The returned reference is owned by the caller.
+func (self *EmbeddingVector) AsEmbeddingVector() (*IEmbeddingVector, error) {
+	return winrt.QueryInterface[IEmbeddingVector](unsafe.Pointer(self), &IID_IEmbeddingVector)
+}
+
 // CreateInstance constructs a Microsoft.Windows.SemanticSearch.EmbeddingVector instance through
 // Microsoft.Windows.SemanticSearch.IEmbeddingVectorFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).

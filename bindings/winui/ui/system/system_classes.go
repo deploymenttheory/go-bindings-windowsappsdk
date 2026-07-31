@@ -17,6 +17,12 @@ type ThemeSettings struct {
 	IThemeSettings
 }
 
+// AsThemeSettings queries the instance's IThemeSettings interface.
+// The returned reference is owned by the caller.
+func (self *ThemeSettings) AsThemeSettings() (*IThemeSettings, error) {
+	return winrt.QueryInterface[IThemeSettings](unsafe.Pointer(self), &IID_IThemeSettings)
+}
+
 // ThemeSettingsStatics returns the Microsoft.UI.System.IThemeSettingsStatics statics of the
 // Microsoft.UI.System.ThemeSettings runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;

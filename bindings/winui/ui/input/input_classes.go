@@ -18,11 +18,23 @@ type CharacterReceivedEventArgs struct {
 	ICharacterReceivedEventArgs
 }
 
+// AsCharacterReceivedEventArgs queries the instance's ICharacterReceivedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CharacterReceivedEventArgs) AsCharacterReceivedEventArgs() (*ICharacterReceivedEventArgs, error) {
+	return winrt.QueryInterface[ICharacterReceivedEventArgs](unsafe.Pointer(self), &IID_ICharacterReceivedEventArgs)
+}
+
 // ContextMenuKeyEventArgs is the Microsoft.UI.Input.ContextMenuKeyEventArgs runtime class, surfaced through its
 // default interface IContextMenuKeyEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContextMenuKeyEventArgs struct {
 	IContextMenuKeyEventArgs
+}
+
+// AsContextMenuKeyEventArgs queries the instance's IContextMenuKeyEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContextMenuKeyEventArgs) AsContextMenuKeyEventArgs() (*IContextMenuKeyEventArgs, error) {
+	return winrt.QueryInterface[IContextMenuKeyEventArgs](unsafe.Pointer(self), &IID_IContextMenuKeyEventArgs)
 }
 
 // CrossSlidingEventArgs is the Microsoft.UI.Input.CrossSlidingEventArgs runtime class, surfaced through its
@@ -32,11 +44,23 @@ type CrossSlidingEventArgs struct {
 	ICrossSlidingEventArgs
 }
 
+// AsCrossSlidingEventArgs queries the instance's ICrossSlidingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CrossSlidingEventArgs) AsCrossSlidingEventArgs() (*ICrossSlidingEventArgs, error) {
+	return winrt.QueryInterface[ICrossSlidingEventArgs](unsafe.Pointer(self), &IID_ICrossSlidingEventArgs)
+}
+
 // DraggingEventArgs is the Microsoft.UI.Input.DraggingEventArgs runtime class, surfaced through its
 // default interface IDraggingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DraggingEventArgs struct {
 	IDraggingEventArgs
+}
+
+// AsDraggingEventArgs queries the instance's IDraggingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DraggingEventArgs) AsDraggingEventArgs() (*IDraggingEventArgs, error) {
+	return winrt.QueryInterface[IDraggingEventArgs](unsafe.Pointer(self), &IID_IDraggingEventArgs)
 }
 
 // EnteredMoveSizeEventArgs is the Microsoft.UI.Input.EnteredMoveSizeEventArgs runtime class, surfaced through its
@@ -46,11 +70,23 @@ type EnteredMoveSizeEventArgs struct {
 	IEnteredMoveSizeEventArgs
 }
 
+// AsEnteredMoveSizeEventArgs queries the instance's IEnteredMoveSizeEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *EnteredMoveSizeEventArgs) AsEnteredMoveSizeEventArgs() (*IEnteredMoveSizeEventArgs, error) {
+	return winrt.QueryInterface[IEnteredMoveSizeEventArgs](unsafe.Pointer(self), &IID_IEnteredMoveSizeEventArgs)
+}
+
 // EnteringMoveSizeEventArgs is the Microsoft.UI.Input.EnteringMoveSizeEventArgs runtime class, surfaced through its
 // default interface IEnteringMoveSizeEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type EnteringMoveSizeEventArgs struct {
 	IEnteringMoveSizeEventArgs
+}
+
+// AsEnteringMoveSizeEventArgs queries the instance's IEnteringMoveSizeEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *EnteringMoveSizeEventArgs) AsEnteringMoveSizeEventArgs() (*IEnteringMoveSizeEventArgs, error) {
+	return winrt.QueryInterface[IEnteringMoveSizeEventArgs](unsafe.Pointer(self), &IID_IEnteringMoveSizeEventArgs)
 }
 
 // ExitedMoveSizeEventArgs is the Microsoft.UI.Input.ExitedMoveSizeEventArgs runtime class, surfaced through its
@@ -60,6 +96,12 @@ type ExitedMoveSizeEventArgs struct {
 	IExitedMoveSizeEventArgs
 }
 
+// AsExitedMoveSizeEventArgs queries the instance's IExitedMoveSizeEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ExitedMoveSizeEventArgs) AsExitedMoveSizeEventArgs() (*IExitedMoveSizeEventArgs, error) {
+	return winrt.QueryInterface[IExitedMoveSizeEventArgs](unsafe.Pointer(self), &IID_IExitedMoveSizeEventArgs)
+}
+
 // FocusChangedEventArgs is the Microsoft.UI.Input.FocusChangedEventArgs runtime class, surfaced through its
 // default interface IFocusChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -67,11 +109,23 @@ type FocusChangedEventArgs struct {
 	IFocusChangedEventArgs
 }
 
+// AsFocusChangedEventArgs queries the instance's IFocusChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FocusChangedEventArgs) AsFocusChangedEventArgs() (*IFocusChangedEventArgs, error) {
+	return winrt.QueryInterface[IFocusChangedEventArgs](unsafe.Pointer(self), &IID_IFocusChangedEventArgs)
+}
+
 // FocusNavigationRequest is the Microsoft.UI.Input.FocusNavigationRequest runtime class, surfaced through its
 // default interface IFocusNavigationRequest. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FocusNavigationRequest struct {
 	IFocusNavigationRequest
+}
+
+// AsFocusNavigationRequest queries the instance's IFocusNavigationRequest interface.
+// The returned reference is owned by the caller.
+func (self *FocusNavigationRequest) AsFocusNavigationRequest() (*IFocusNavigationRequest, error) {
+	return winrt.QueryInterface[IFocusNavigationRequest](unsafe.Pointer(self), &IID_IFocusNavigationRequest)
 }
 
 // FocusNavigationRequestStatics returns the Microsoft.UI.Input.IFocusNavigationRequestStatics statics of the
@@ -93,6 +147,12 @@ type FocusNavigationRequestEventArgs struct {
 	IFocusNavigationRequestEventArgs
 }
 
+// AsFocusNavigationRequestEventArgs queries the instance's IFocusNavigationRequestEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FocusNavigationRequestEventArgs) AsFocusNavigationRequestEventArgs() (*IFocusNavigationRequestEventArgs, error) {
+	return winrt.QueryInterface[IFocusNavigationRequestEventArgs](unsafe.Pointer(self), &IID_IFocusNavigationRequestEventArgs)
+}
+
 // GestureRecognizer is the Microsoft.UI.Input.GestureRecognizer runtime class, surfaced through its
 // default interface IGestureRecognizer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -111,6 +171,12 @@ func NewGestureRecognizer() (*GestureRecognizer, error) {
 	return winrt.QueryInterface[GestureRecognizer](unsafe.Pointer(instance), &IID_IGestureRecognizer)
 }
 
+// AsGestureRecognizer queries the instance's IGestureRecognizer interface.
+// The returned reference is owned by the caller.
+func (self *GestureRecognizer) AsGestureRecognizer() (*IGestureRecognizer, error) {
+	return winrt.QueryInterface[IGestureRecognizer](unsafe.Pointer(self), &IID_IGestureRecognizer)
+}
+
 // HoldingEventArgs is the Microsoft.UI.Input.HoldingEventArgs runtime class, surfaced through its
 // default interface IHoldingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -118,11 +184,23 @@ type HoldingEventArgs struct {
 	IHoldingEventArgs
 }
 
+// AsHoldingEventArgs queries the instance's IHoldingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *HoldingEventArgs) AsHoldingEventArgs() (*IHoldingEventArgs, error) {
+	return winrt.QueryInterface[IHoldingEventArgs](unsafe.Pointer(self), &IID_IHoldingEventArgs)
+}
+
 // InputActivationListener is the Microsoft.UI.Input.InputActivationListener runtime class, surfaced through its
 // default interface IInputActivationListener. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InputActivationListener struct {
 	IInputActivationListener
+}
+
+// AsInputActivationListener queries the instance's IInputActivationListener interface.
+// The returned reference is owned by the caller.
+func (self *InputActivationListener) AsInputActivationListener() (*IInputActivationListener, error) {
+	return winrt.QueryInterface[IInputActivationListener](unsafe.Pointer(self), &IID_IInputActivationListener)
 }
 
 // AsInputObject queries the instance's IInputObject interface.
@@ -163,11 +241,23 @@ type InputActivationListenerActivationChangedEventArgs struct {
 	IInputActivationListenerActivationChangedEventArgs
 }
 
+// AsInputActivationListenerActivationChangedEventArgs queries the instance's IInputActivationListenerActivationChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *InputActivationListenerActivationChangedEventArgs) AsInputActivationListenerActivationChangedEventArgs() (*IInputActivationListenerActivationChangedEventArgs, error) {
+	return winrt.QueryInterface[IInputActivationListenerActivationChangedEventArgs](unsafe.Pointer(self), &IID_IInputActivationListenerActivationChangedEventArgs)
+}
+
 // InputCursor is the Microsoft.UI.Input.InputCursor runtime class, surfaced through its
 // default interface IInputCursor. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InputCursor struct {
 	IInputCursor
+}
+
+// AsInputCursor queries the instance's IInputCursor interface.
+// The returned reference is owned by the caller.
+func (self *InputCursor) AsInputCursor() (*IInputCursor, error) {
+	return winrt.QueryInterface[IInputCursor](unsafe.Pointer(self), &IID_IInputCursor)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -195,6 +285,12 @@ type InputCustomCursor struct {
 	IInputCustomCursor
 }
 
+// AsInputCustomCursor queries the instance's IInputCustomCursor interface.
+// The returned reference is owned by the caller.
+func (self *InputCustomCursor) AsInputCustomCursor() (*IInputCustomCursor, error) {
+	return winrt.QueryInterface[IInputCustomCursor](unsafe.Pointer(self), &IID_IInputCustomCursor)
+}
+
 // AsInputCursor queries the instance's IInputCursor interface.
 // Inherited from Microsoft.UI.Input.InputCursor.
 // The returned reference is owned by the caller.
@@ -214,6 +310,12 @@ func (self *InputCustomCursor) AsClosable() (*wrtfoundation.IClosable, error) {
 // the embedded IInspectable → IUnknown chain).
 type InputDesktopNamedResourceCursor struct {
 	IInputDesktopNamedResourceCursor
+}
+
+// AsInputDesktopNamedResourceCursor queries the instance's IInputDesktopNamedResourceCursor interface.
+// The returned reference is owned by the caller.
+func (self *InputDesktopNamedResourceCursor) AsInputDesktopNamedResourceCursor() (*IInputDesktopNamedResourceCursor, error) {
+	return winrt.QueryInterface[IInputDesktopNamedResourceCursor](unsafe.Pointer(self), &IID_IInputDesktopNamedResourceCursor)
 }
 
 // AsInputCursor queries the instance's IInputCursor interface.
@@ -249,6 +351,12 @@ type InputDesktopResourceCursor struct {
 	IInputDesktopResourceCursor
 }
 
+// AsInputDesktopResourceCursor queries the instance's IInputDesktopResourceCursor interface.
+// The returned reference is owned by the caller.
+func (self *InputDesktopResourceCursor) AsInputDesktopResourceCursor() (*IInputDesktopResourceCursor, error) {
+	return winrt.QueryInterface[IInputDesktopResourceCursor](unsafe.Pointer(self), &IID_IInputDesktopResourceCursor)
+}
+
 // AsInputCursor queries the instance's IInputCursor interface.
 // Inherited from Microsoft.UI.Input.InputCursor.
 // The returned reference is owned by the caller.
@@ -280,6 +388,12 @@ func InputDesktopResourceCursorStatics() (*IInputDesktopResourceCursorStatics, e
 // the embedded IInspectable → IUnknown chain).
 type InputFocusController struct {
 	IInputFocusController
+}
+
+// AsInputFocusController queries the instance's IInputFocusController interface.
+// The returned reference is owned by the caller.
+func (self *InputFocusController) AsInputFocusController() (*IInputFocusController, error) {
+	return winrt.QueryInterface[IInputFocusController](unsafe.Pointer(self), &IID_IInputFocusController)
 }
 
 // AsInputFocusController2 queries the instance's IInputFocusController2 interface.
@@ -320,6 +434,12 @@ type InputFocusNavigationHost struct {
 	IInputFocusNavigationHost
 }
 
+// AsInputFocusNavigationHost queries the instance's IInputFocusNavigationHost interface.
+// The returned reference is owned by the caller.
+func (self *InputFocusNavigationHost) AsInputFocusNavigationHost() (*IInputFocusNavigationHost, error) {
+	return winrt.QueryInterface[IInputFocusNavigationHost](unsafe.Pointer(self), &IID_IInputFocusNavigationHost)
+}
+
 // AsInputObject queries the instance's IInputObject interface.
 // Inherited from Microsoft.UI.Input.InputObject.
 // The returned reference is owned by the caller.
@@ -356,6 +476,12 @@ func InputFocusNavigationHostStatics2() (*IInputFocusNavigationHostStatics2, err
 // the embedded IInspectable → IUnknown chain).
 type InputKeyboardSource struct {
 	IInputKeyboardSource
+}
+
+// AsInputKeyboardSource queries the instance's IInputKeyboardSource interface.
+// The returned reference is owned by the caller.
+func (self *InputKeyboardSource) AsInputKeyboardSource() (*IInputKeyboardSource, error) {
+	return winrt.QueryInterface[IInputKeyboardSource](unsafe.Pointer(self), &IID_IInputKeyboardSource)
 }
 
 // AsInputKeyboardSource2 queries the instance's IInputKeyboardSource2 interface.
@@ -402,6 +528,12 @@ type InputLightDismissAction struct {
 	IInputLightDismissAction
 }
 
+// AsInputLightDismissAction queries the instance's IInputLightDismissAction interface.
+// The returned reference is owned by the caller.
+func (self *InputLightDismissAction) AsInputLightDismissAction() (*IInputLightDismissAction, error) {
+	return winrt.QueryInterface[IInputLightDismissAction](unsafe.Pointer(self), &IID_IInputLightDismissAction)
+}
+
 // AsInputObject queries the instance's IInputObject interface.
 // Inherited from Microsoft.UI.Input.InputObject.
 // The returned reference is owned by the caller.
@@ -428,11 +560,23 @@ type InputLightDismissEventArgs struct {
 	IInputLightDismissEventArgs
 }
 
+// AsInputLightDismissEventArgs queries the instance's IInputLightDismissEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *InputLightDismissEventArgs) AsInputLightDismissEventArgs() (*IInputLightDismissEventArgs, error) {
+	return winrt.QueryInterface[IInputLightDismissEventArgs](unsafe.Pointer(self), &IID_IInputLightDismissEventArgs)
+}
+
 // InputNonClientPointerSource is the Microsoft.UI.Input.InputNonClientPointerSource runtime class, surfaced through its
 // default interface IInputNonClientPointerSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InputNonClientPointerSource struct {
 	IInputNonClientPointerSource
+}
+
+// AsInputNonClientPointerSource queries the instance's IInputNonClientPointerSource interface.
+// The returned reference is owned by the caller.
+func (self *InputNonClientPointerSource) AsInputNonClientPointerSource() (*IInputNonClientPointerSource, error) {
+	return winrt.QueryInterface[IInputNonClientPointerSource](unsafe.Pointer(self), &IID_IInputNonClientPointerSource)
 }
 
 // AsInputNonClientPointerSource2 queries the instance's IInputNonClientPointerSource2 interface.
@@ -460,11 +604,23 @@ type InputObject struct {
 	IInputObject
 }
 
+// AsInputObject queries the instance's IInputObject interface.
+// The returned reference is owned by the caller.
+func (self *InputObject) AsInputObject() (*IInputObject, error) {
+	return winrt.QueryInterface[IInputObject](unsafe.Pointer(self), &IID_IInputObject)
+}
+
 // InputPointerSource is the Microsoft.UI.Input.InputPointerSource runtime class, surfaced through its
 // default interface IInputPointerSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InputPointerSource struct {
 	IInputPointerSource
+}
+
+// AsInputPointerSource queries the instance's IInputPointerSource interface.
+// The returned reference is owned by the caller.
+func (self *InputPointerSource) AsInputPointerSource() (*IInputPointerSource, error) {
+	return winrt.QueryInterface[IInputPointerSource](unsafe.Pointer(self), &IID_IInputPointerSource)
 }
 
 // AsInputObject queries the instance's IInputObject interface.
@@ -493,6 +649,12 @@ type InputPreTranslateKeyboardSource struct {
 	IInputPreTranslateKeyboardSource
 }
 
+// AsInputPreTranslateKeyboardSource queries the instance's IInputPreTranslateKeyboardSource interface.
+// The returned reference is owned by the caller.
+func (self *InputPreTranslateKeyboardSource) AsInputPreTranslateKeyboardSource() (*IInputPreTranslateKeyboardSource, error) {
+	return winrt.QueryInterface[IInputPreTranslateKeyboardSource](unsafe.Pointer(self), &IID_IInputPreTranslateKeyboardSource)
+}
+
 // AsInputObject queries the instance's IInputObject interface.
 // Inherited from Microsoft.UI.Input.InputObject.
 // The returned reference is owned by the caller.
@@ -517,6 +679,12 @@ func InputPreTranslateKeyboardSourceStatics() (*IInputPreTranslateKeyboardSource
 // the embedded IInspectable → IUnknown chain).
 type InputSystemCursor struct {
 	IInputSystemCursor
+}
+
+// AsInputSystemCursor queries the instance's IInputSystemCursor interface.
+// The returned reference is owned by the caller.
+func (self *InputSystemCursor) AsInputSystemCursor() (*IInputSystemCursor, error) {
+	return winrt.QueryInterface[IInputSystemCursor](unsafe.Pointer(self), &IID_IInputSystemCursor)
 }
 
 // AsInputCursor queries the instance's IInputCursor interface.
@@ -552,11 +720,23 @@ type KeyEventArgs struct {
 	IKeyEventArgs
 }
 
+// AsKeyEventArgs queries the instance's IKeyEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *KeyEventArgs) AsKeyEventArgs() (*IKeyEventArgs, error) {
+	return winrt.QueryInterface[IKeyEventArgs](unsafe.Pointer(self), &IID_IKeyEventArgs)
+}
+
 // ManipulationCompletedEventArgs is the Microsoft.UI.Input.ManipulationCompletedEventArgs runtime class, surfaced through its
 // default interface IManipulationCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ManipulationCompletedEventArgs struct {
 	IManipulationCompletedEventArgs
+}
+
+// AsManipulationCompletedEventArgs queries the instance's IManipulationCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationCompletedEventArgs) AsManipulationCompletedEventArgs() (*IManipulationCompletedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationCompletedEventArgs](unsafe.Pointer(self), &IID_IManipulationCompletedEventArgs)
 }
 
 // ManipulationInertiaStartingEventArgs is the Microsoft.UI.Input.ManipulationInertiaStartingEventArgs runtime class, surfaced through its
@@ -566,11 +746,23 @@ type ManipulationInertiaStartingEventArgs struct {
 	IManipulationInertiaStartingEventArgs
 }
 
+// AsManipulationInertiaStartingEventArgs queries the instance's IManipulationInertiaStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationInertiaStartingEventArgs) AsManipulationInertiaStartingEventArgs() (*IManipulationInertiaStartingEventArgs, error) {
+	return winrt.QueryInterface[IManipulationInertiaStartingEventArgs](unsafe.Pointer(self), &IID_IManipulationInertiaStartingEventArgs)
+}
+
 // ManipulationStartedEventArgs is the Microsoft.UI.Input.ManipulationStartedEventArgs runtime class, surfaced through its
 // default interface IManipulationStartedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ManipulationStartedEventArgs struct {
 	IManipulationStartedEventArgs
+}
+
+// AsManipulationStartedEventArgs queries the instance's IManipulationStartedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationStartedEventArgs) AsManipulationStartedEventArgs() (*IManipulationStartedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationStartedEventArgs](unsafe.Pointer(self), &IID_IManipulationStartedEventArgs)
 }
 
 // ManipulationUpdatedEventArgs is the Microsoft.UI.Input.ManipulationUpdatedEventArgs runtime class, surfaced through its
@@ -580,11 +772,23 @@ type ManipulationUpdatedEventArgs struct {
 	IManipulationUpdatedEventArgs
 }
 
+// AsManipulationUpdatedEventArgs queries the instance's IManipulationUpdatedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationUpdatedEventArgs) AsManipulationUpdatedEventArgs() (*IManipulationUpdatedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationUpdatedEventArgs](unsafe.Pointer(self), &IID_IManipulationUpdatedEventArgs)
+}
+
 // MouseWheelParameters is the Microsoft.UI.Input.MouseWheelParameters runtime class, surfaced through its
 // default interface IMouseWheelParameters. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MouseWheelParameters struct {
 	IMouseWheelParameters
+}
+
+// AsMouseWheelParameters queries the instance's IMouseWheelParameters interface.
+// The returned reference is owned by the caller.
+func (self *MouseWheelParameters) AsMouseWheelParameters() (*IMouseWheelParameters, error) {
+	return winrt.QueryInterface[IMouseWheelParameters](unsafe.Pointer(self), &IID_IMouseWheelParameters)
 }
 
 // NonClientCaptionTappedEventArgs is the Microsoft.UI.Input.NonClientCaptionTappedEventArgs runtime class, surfaced through its
@@ -594,11 +798,23 @@ type NonClientCaptionTappedEventArgs struct {
 	INonClientCaptionTappedEventArgs
 }
 
+// AsNonClientCaptionTappedEventArgs queries the instance's INonClientCaptionTappedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NonClientCaptionTappedEventArgs) AsNonClientCaptionTappedEventArgs() (*INonClientCaptionTappedEventArgs, error) {
+	return winrt.QueryInterface[INonClientCaptionTappedEventArgs](unsafe.Pointer(self), &IID_INonClientCaptionTappedEventArgs)
+}
+
 // NonClientPointerEventArgs is the Microsoft.UI.Input.NonClientPointerEventArgs runtime class, surfaced through its
 // default interface INonClientPointerEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type NonClientPointerEventArgs struct {
 	INonClientPointerEventArgs
+}
+
+// AsNonClientPointerEventArgs queries the instance's INonClientPointerEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NonClientPointerEventArgs) AsNonClientPointerEventArgs() (*INonClientPointerEventArgs, error) {
+	return winrt.QueryInterface[INonClientPointerEventArgs](unsafe.Pointer(self), &IID_INonClientPointerEventArgs)
 }
 
 // NonClientRegionsChangedEventArgs is the Microsoft.UI.Input.NonClientRegionsChangedEventArgs runtime class, surfaced through its
@@ -608,6 +824,12 @@ type NonClientRegionsChangedEventArgs struct {
 	INonClientRegionsChangedEventArgs
 }
 
+// AsNonClientRegionsChangedEventArgs queries the instance's INonClientRegionsChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NonClientRegionsChangedEventArgs) AsNonClientRegionsChangedEventArgs() (*INonClientRegionsChangedEventArgs, error) {
+	return winrt.QueryInterface[INonClientRegionsChangedEventArgs](unsafe.Pointer(self), &IID_INonClientRegionsChangedEventArgs)
+}
+
 // PointerEventArgs is the Microsoft.UI.Input.PointerEventArgs runtime class, surfaced through its
 // default interface IPointerEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -615,11 +837,23 @@ type PointerEventArgs struct {
 	IPointerEventArgs
 }
 
+// AsPointerEventArgs queries the instance's IPointerEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PointerEventArgs) AsPointerEventArgs() (*IPointerEventArgs, error) {
+	return winrt.QueryInterface[IPointerEventArgs](unsafe.Pointer(self), &IID_IPointerEventArgs)
+}
+
 // PointerPoint is the Microsoft.UI.Input.PointerPoint runtime class, surfaced through its
 // default interface IPointerPoint. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PointerPoint struct {
 	IPointerPoint
+}
+
+// AsPointerPoint queries the instance's IPointerPoint interface.
+// The returned reference is owned by the caller.
+func (self *PointerPoint) AsPointerPoint() (*IPointerPoint, error) {
+	return winrt.QueryInterface[IPointerPoint](unsafe.Pointer(self), &IID_IPointerPoint)
 }
 
 // PointerPointStatics returns the Microsoft.UI.Input.IPointerPointStatics statics of the
@@ -641,11 +875,23 @@ type PointerPointProperties struct {
 	IPointerPointProperties
 }
 
+// AsPointerPointProperties queries the instance's IPointerPointProperties interface.
+// The returned reference is owned by the caller.
+func (self *PointerPointProperties) AsPointerPointProperties() (*IPointerPointProperties, error) {
+	return winrt.QueryInterface[IPointerPointProperties](unsafe.Pointer(self), &IID_IPointerPointProperties)
+}
+
 // PointerPredictor is the Microsoft.UI.Input.PointerPredictor runtime class, surfaced through its
 // default interface IPointerPredictor. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PointerPredictor struct {
 	IPointerPredictor
+}
+
+// AsPointerPredictor queries the instance's IPointerPredictor interface.
+// The returned reference is owned by the caller.
+func (self *PointerPredictor) AsPointerPredictor() (*IPointerPredictor, error) {
+	return winrt.QueryInterface[IPointerPredictor](unsafe.Pointer(self), &IID_IPointerPredictor)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -673,11 +919,23 @@ type RightTappedEventArgs struct {
 	IRightTappedEventArgs
 }
 
+// AsRightTappedEventArgs queries the instance's IRightTappedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RightTappedEventArgs) AsRightTappedEventArgs() (*IRightTappedEventArgs, error) {
+	return winrt.QueryInterface[IRightTappedEventArgs](unsafe.Pointer(self), &IID_IRightTappedEventArgs)
+}
+
 // TappedEventArgs is the Microsoft.UI.Input.TappedEventArgs runtime class, surfaced through its
 // default interface ITappedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TappedEventArgs struct {
 	ITappedEventArgs
+}
+
+// AsTappedEventArgs queries the instance's ITappedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TappedEventArgs) AsTappedEventArgs() (*ITappedEventArgs, error) {
+	return winrt.QueryInterface[ITappedEventArgs](unsafe.Pointer(self), &IID_ITappedEventArgs)
 }
 
 // WindowRectChangedEventArgs is the Microsoft.UI.Input.WindowRectChangedEventArgs runtime class, surfaced through its
@@ -687,9 +945,21 @@ type WindowRectChangedEventArgs struct {
 	IWindowRectChangedEventArgs
 }
 
+// AsWindowRectChangedEventArgs queries the instance's IWindowRectChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *WindowRectChangedEventArgs) AsWindowRectChangedEventArgs() (*IWindowRectChangedEventArgs, error) {
+	return winrt.QueryInterface[IWindowRectChangedEventArgs](unsafe.Pointer(self), &IID_IWindowRectChangedEventArgs)
+}
+
 // WindowRectChangingEventArgs is the Microsoft.UI.Input.WindowRectChangingEventArgs runtime class, surfaced through its
 // default interface IWindowRectChangingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WindowRectChangingEventArgs struct {
 	IWindowRectChangingEventArgs
+}
+
+// AsWindowRectChangingEventArgs queries the instance's IWindowRectChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *WindowRectChangingEventArgs) AsWindowRectChangingEventArgs() (*IWindowRectChangingEventArgs, error) {
+	return winrt.QueryInterface[IWindowRectChangingEventArgs](unsafe.Pointer(self), &IID_IWindowRectChangingEventArgs)
 }

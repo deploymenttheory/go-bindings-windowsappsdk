@@ -19,6 +19,12 @@ type SceneBoundingBox struct {
 	ISceneBoundingBox
 }
 
+// AsSceneBoundingBox queries the instance's ISceneBoundingBox interface.
+// The returned reference is owned by the caller.
+func (self *SceneBoundingBox) AsSceneBoundingBox() (*ISceneBoundingBox, error) {
+	return winrt.QueryInterface[ISceneBoundingBox](unsafe.Pointer(self), &IID_ISceneBoundingBox)
+}
+
 // AsSceneObject queries the instance's ISceneObject interface.
 // Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
 // The returned reference is owned by the caller.
@@ -80,6 +86,12 @@ func (self *SceneBoundingBox) AsAnimationObject() (*uicomposition.IAnimationObje
 // the embedded IInspectable → IUnknown chain).
 type SceneComponent struct {
 	ISceneComponent
+}
+
+// AsSceneComponent queries the instance's ISceneComponent interface.
+// The returned reference is owned by the caller.
+func (self *SceneComponent) AsSceneComponent() (*ISceneComponent, error) {
+	return winrt.QueryInterface[ISceneComponent](unsafe.Pointer(self), &IID_ISceneComponent)
 }
 
 // AsSceneObject queries the instance's ISceneObject interface.
@@ -151,6 +163,12 @@ func (self *SceneComponentCollection) AsSceneComponentCollection() (*ISceneCompo
 	return winrt.QueryInterface[ISceneComponentCollection](unsafe.Pointer(self), &IID_ISceneComponentCollection)
 }
 
+// AsVectorOfSceneComponent queries the instance's IVectorOfSceneComponent interface.
+// The returned reference is owned by the caller.
+func (self *SceneComponentCollection) AsVectorOfSceneComponent() (*IVectorOfSceneComponent, error) {
+	return winrt.QueryInterface[IVectorOfSceneComponent](unsafe.Pointer(self), &IID_IVectorOfSceneComponent)
+}
+
 // AsIterableOfSceneComponent queries the instance's IIterableOfSceneComponent interface.
 // The returned reference is owned by the caller.
 func (self *SceneComponentCollection) AsIterableOfSceneComponent() (*IIterableOfSceneComponent, error) {
@@ -220,6 +238,12 @@ type SceneMaterial struct {
 	ISceneMaterial
 }
 
+// AsSceneMaterial queries the instance's ISceneMaterial interface.
+// The returned reference is owned by the caller.
+func (self *SceneMaterial) AsSceneMaterial() (*ISceneMaterial, error) {
+	return winrt.QueryInterface[ISceneMaterial](unsafe.Pointer(self), &IID_ISceneMaterial)
+}
+
 // AsSceneObject queries the instance's ISceneObject interface.
 // Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
 // The returned reference is owned by the caller.
@@ -283,6 +307,12 @@ type SceneMaterialInput struct {
 	ISceneMaterialInput
 }
 
+// AsSceneMaterialInput queries the instance's ISceneMaterialInput interface.
+// The returned reference is owned by the caller.
+func (self *SceneMaterialInput) AsSceneMaterialInput() (*ISceneMaterialInput, error) {
+	return winrt.QueryInterface[ISceneMaterialInput](unsafe.Pointer(self), &IID_ISceneMaterialInput)
+}
+
 // AsSceneObject queries the instance's ISceneObject interface.
 // Inherited from Microsoft.UI.Composition.Scenes.SceneObject.
 // The returned reference is owned by the caller.
@@ -344,6 +374,12 @@ func (self *SceneMaterialInput) AsAnimationObject() (*uicomposition.IAnimationOb
 // the embedded IInspectable → IUnknown chain).
 type SceneMesh struct {
 	ISceneMesh
+}
+
+// AsSceneMesh queries the instance's ISceneMesh interface.
+// The returned reference is owned by the caller.
+func (self *SceneMesh) AsSceneMesh() (*ISceneMesh, error) {
+	return winrt.QueryInterface[ISceneMesh](unsafe.Pointer(self), &IID_ISceneMesh)
 }
 
 // AsSceneObject queries the instance's ISceneObject interface.
@@ -421,6 +457,12 @@ type SceneMeshMaterialAttributeMap struct {
 	ISceneMeshMaterialAttributeMap
 }
 
+// AsSceneMeshMaterialAttributeMap queries the instance's ISceneMeshMaterialAttributeMap interface.
+// The returned reference is owned by the caller.
+func (self *SceneMeshMaterialAttributeMap) AsSceneMeshMaterialAttributeMap() (*ISceneMeshMaterialAttributeMap, error) {
+	return winrt.QueryInterface[ISceneMeshMaterialAttributeMap](unsafe.Pointer(self), &IID_ISceneMeshMaterialAttributeMap)
+}
+
 // AsMapOfStringAndSceneAttributeSemantic queries the instance's IMapOfStringAndSceneAttributeSemantic interface.
 // The returned reference is owned by the caller.
 func (self *SceneMeshMaterialAttributeMap) AsMapOfStringAndSceneAttributeSemantic() (*IMapOfStringAndSceneAttributeSemantic, error) {
@@ -494,6 +536,12 @@ func (self *SceneMeshMaterialAttributeMap) AsAnimationObject() (*uicomposition.I
 // the embedded IInspectable → IUnknown chain).
 type SceneMeshRendererComponent struct {
 	ISceneMeshRendererComponent
+}
+
+// AsSceneMeshRendererComponent queries the instance's ISceneMeshRendererComponent interface.
+// The returned reference is owned by the caller.
+func (self *SceneMeshRendererComponent) AsSceneMeshRendererComponent() (*ISceneMeshRendererComponent, error) {
+	return winrt.QueryInterface[ISceneMeshRendererComponent](unsafe.Pointer(self), &IID_ISceneMeshRendererComponent)
 }
 
 // AsSceneRendererComponent queries the instance's ISceneRendererComponent interface.
@@ -585,6 +633,12 @@ type SceneMetallicRoughnessMaterial struct {
 	ISceneMetallicRoughnessMaterial
 }
 
+// AsSceneMetallicRoughnessMaterial queries the instance's ISceneMetallicRoughnessMaterial interface.
+// The returned reference is owned by the caller.
+func (self *SceneMetallicRoughnessMaterial) AsSceneMetallicRoughnessMaterial() (*ISceneMetallicRoughnessMaterial, error) {
+	return winrt.QueryInterface[ISceneMetallicRoughnessMaterial](unsafe.Pointer(self), &IID_ISceneMetallicRoughnessMaterial)
+}
+
 // AsScenePbrMaterial queries the instance's IScenePbrMaterial interface.
 // Inherited from Microsoft.UI.Composition.Scenes.ScenePbrMaterial.
 // The returned reference is owned by the caller.
@@ -674,6 +728,12 @@ type SceneModelTransform struct {
 	ISceneModelTransform
 }
 
+// AsSceneModelTransform queries the instance's ISceneModelTransform interface.
+// The returned reference is owned by the caller.
+func (self *SceneModelTransform) AsSceneModelTransform() (*ISceneModelTransform, error) {
+	return winrt.QueryInterface[ISceneModelTransform](unsafe.Pointer(self), &IID_ISceneModelTransform)
+}
+
 // AsCompositionTransform queries the instance's uicomposition.ICompositionTransform interface.
 // Inherited from Microsoft.UI.Composition.CompositionTransform.
 // The returned reference is owned by the caller.
@@ -735,6 +795,12 @@ func (self *SceneModelTransform) AsAnimationObject() (*uicomposition.IAnimationO
 // the embedded IInspectable → IUnknown chain).
 type SceneNode struct {
 	ISceneNode
+}
+
+// AsSceneNode queries the instance's ISceneNode interface.
+// The returned reference is owned by the caller.
+func (self *SceneNode) AsSceneNode() (*ISceneNode, error) {
+	return winrt.QueryInterface[ISceneNode](unsafe.Pointer(self), &IID_ISceneNode)
 }
 
 // AsSceneObject queries the instance's ISceneObject interface.
@@ -818,6 +884,12 @@ func (self *SceneNodeCollection) AsSceneNodeCollection() (*ISceneNodeCollection,
 	return winrt.QueryInterface[ISceneNodeCollection](unsafe.Pointer(self), &IID_ISceneNodeCollection)
 }
 
+// AsVectorOfSceneNode queries the instance's IVectorOfSceneNode interface.
+// The returned reference is owned by the caller.
+func (self *SceneNodeCollection) AsVectorOfSceneNode() (*IVectorOfSceneNode, error) {
+	return winrt.QueryInterface[IVectorOfSceneNode](unsafe.Pointer(self), &IID_IVectorOfSceneNode)
+}
+
 // AsIterableOfSceneNode queries the instance's IIterableOfSceneNode interface.
 // The returned reference is owned by the caller.
 func (self *SceneNodeCollection) AsIterableOfSceneNode() (*IIterableOfSceneNode, error) {
@@ -887,6 +959,12 @@ type SceneObject struct {
 	ISceneObject
 }
 
+// AsSceneObject queries the instance's ISceneObject interface.
+// The returned reference is owned by the caller.
+func (self *SceneObject) AsSceneObject() (*ISceneObject, error) {
+	return winrt.QueryInterface[ISceneObject](unsafe.Pointer(self), &IID_ISceneObject)
+}
+
 // AsCompositionObject queries the instance's uicomposition.ICompositionObject interface.
 // Inherited from Microsoft.UI.Composition.CompositionObject.
 // The returned reference is owned by the caller.
@@ -941,6 +1019,12 @@ func (self *SceneObject) AsAnimationObject() (*uicomposition.IAnimationObject, e
 // the embedded IInspectable → IUnknown chain).
 type ScenePbrMaterial struct {
 	IScenePbrMaterial
+}
+
+// AsScenePbrMaterial queries the instance's IScenePbrMaterial interface.
+// The returned reference is owned by the caller.
+func (self *ScenePbrMaterial) AsScenePbrMaterial() (*IScenePbrMaterial, error) {
+	return winrt.QueryInterface[IScenePbrMaterial](unsafe.Pointer(self), &IID_IScenePbrMaterial)
 }
 
 // AsSceneMaterial queries the instance's ISceneMaterial interface.
@@ -1013,6 +1097,12 @@ type SceneRendererComponent struct {
 	ISceneRendererComponent
 }
 
+// AsSceneRendererComponent queries the instance's ISceneRendererComponent interface.
+// The returned reference is owned by the caller.
+func (self *SceneRendererComponent) AsSceneRendererComponent() (*ISceneRendererComponent, error) {
+	return winrt.QueryInterface[ISceneRendererComponent](unsafe.Pointer(self), &IID_ISceneRendererComponent)
+}
+
 // AsSceneComponent queries the instance's ISceneComponent interface.
 // Inherited from Microsoft.UI.Composition.Scenes.SceneComponent.
 // The returned reference is owned by the caller.
@@ -1081,6 +1171,12 @@ func (self *SceneRendererComponent) AsAnimationObject() (*uicomposition.IAnimati
 // the embedded IInspectable → IUnknown chain).
 type SceneSurfaceMaterialInput struct {
 	ISceneSurfaceMaterialInput
+}
+
+// AsSceneSurfaceMaterialInput queries the instance's ISceneSurfaceMaterialInput interface.
+// The returned reference is owned by the caller.
+func (self *SceneSurfaceMaterialInput) AsSceneSurfaceMaterialInput() (*ISceneSurfaceMaterialInput, error) {
+	return winrt.QueryInterface[ISceneSurfaceMaterialInput](unsafe.Pointer(self), &IID_ISceneSurfaceMaterialInput)
 }
 
 // AsSceneMaterialInput queries the instance's ISceneMaterialInput interface.
@@ -1163,6 +1259,12 @@ func SceneSurfaceMaterialInputStatics() (*ISceneSurfaceMaterialInputStatics, err
 // the embedded IInspectable → IUnknown chain).
 type SceneVisual struct {
 	ISceneVisual
+}
+
+// AsSceneVisual queries the instance's ISceneVisual interface.
+// The returned reference is owned by the caller.
+func (self *SceneVisual) AsSceneVisual() (*ISceneVisual, error) {
+	return winrt.QueryInterface[ISceneVisual](unsafe.Pointer(self), &IID_ISceneVisual)
 }
 
 // AsContainerVisual queries the instance's uicomposition.IContainerVisual interface.

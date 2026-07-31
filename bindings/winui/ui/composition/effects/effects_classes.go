@@ -29,6 +29,12 @@ func NewSceneLightingEffect() (*SceneLightingEffect, error) {
 	return winrt.QueryInterface[SceneLightingEffect](unsafe.Pointer(instance), &IID_ISceneLightingEffect)
 }
 
+// AsSceneLightingEffect queries the instance's ISceneLightingEffect interface.
+// The returned reference is owned by the caller.
+func (self *SceneLightingEffect) AsSceneLightingEffect() (*ISceneLightingEffect, error) {
+	return winrt.QueryInterface[ISceneLightingEffect](unsafe.Pointer(self), &IID_ISceneLightingEffect)
+}
+
 // AsSceneLightingEffect2 queries the instance's ISceneLightingEffect2 interface.
 // The returned reference is owned by the caller.
 func (self *SceneLightingEffect) AsSceneLightingEffect2() (*ISceneLightingEffect2, error) {

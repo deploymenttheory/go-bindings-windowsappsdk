@@ -18,6 +18,12 @@ type NotifyCollectionChangedEventArgs struct {
 	INotifyCollectionChangedEventArgs
 }
 
+// AsNotifyCollectionChangedEventArgs queries the instance's INotifyCollectionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NotifyCollectionChangedEventArgs) AsNotifyCollectionChangedEventArgs() (*INotifyCollectionChangedEventArgs, error) {
+	return winrt.QueryInterface[INotifyCollectionChangedEventArgs](unsafe.Pointer(self), &IID_INotifyCollectionChangedEventArgs)
+}
+
 // NewNotifyCollectionChangedEventArgsWithAllParameters constructs a Microsoft.UI.Xaml.Interop.NotifyCollectionChangedEventArgs instance through
 // Microsoft.UI.Xaml.Interop.INotifyCollectionChangedEventArgsFactory.CreateInstanceWithAllParameters with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only

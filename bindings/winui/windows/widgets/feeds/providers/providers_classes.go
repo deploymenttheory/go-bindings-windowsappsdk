@@ -18,11 +18,23 @@ type CustomQueryParametersRequestedArgs struct {
 	ICustomQueryParametersRequestedArgs
 }
 
+// AsCustomQueryParametersRequestedArgs queries the instance's ICustomQueryParametersRequestedArgs interface.
+// The returned reference is owned by the caller.
+func (self *CustomQueryParametersRequestedArgs) AsCustomQueryParametersRequestedArgs() (*ICustomQueryParametersRequestedArgs, error) {
+	return winrt.QueryInterface[ICustomQueryParametersRequestedArgs](unsafe.Pointer(self), &IID_ICustomQueryParametersRequestedArgs)
+}
+
 // CustomQueryParametersUpdateOptions is the Microsoft.Windows.Widgets.Feeds.Providers.CustomQueryParametersUpdateOptions runtime class, surfaced through its
 // default interface ICustomQueryParametersUpdateOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CustomQueryParametersUpdateOptions struct {
 	ICustomQueryParametersUpdateOptions
+}
+
+// AsCustomQueryParametersUpdateOptions queries the instance's ICustomQueryParametersUpdateOptions interface.
+// The returned reference is owned by the caller.
+func (self *CustomQueryParametersUpdateOptions) AsCustomQueryParametersUpdateOptions() (*ICustomQueryParametersUpdateOptions, error) {
+	return winrt.QueryInterface[ICustomQueryParametersUpdateOptions](unsafe.Pointer(self), &IID_ICustomQueryParametersUpdateOptions)
 }
 
 // CreateInstance constructs a Microsoft.Windows.Widgets.Feeds.Providers.CustomQueryParametersUpdateOptions instance through
@@ -49,11 +61,23 @@ type FeedAnalyticsInfoReportedArgs struct {
 	IFeedAnalyticsInfoReportedArgs
 }
 
+// AsFeedAnalyticsInfoReportedArgs queries the instance's IFeedAnalyticsInfoReportedArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedAnalyticsInfoReportedArgs) AsFeedAnalyticsInfoReportedArgs() (*IFeedAnalyticsInfoReportedArgs, error) {
+	return winrt.QueryInterface[IFeedAnalyticsInfoReportedArgs](unsafe.Pointer(self), &IID_IFeedAnalyticsInfoReportedArgs)
+}
+
 // FeedDisabledArgs is the Microsoft.Windows.Widgets.Feeds.Providers.FeedDisabledArgs runtime class, surfaced through its
 // default interface IFeedDisabledArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FeedDisabledArgs struct {
 	IFeedDisabledArgs
+}
+
+// AsFeedDisabledArgs queries the instance's IFeedDisabledArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedDisabledArgs) AsFeedDisabledArgs() (*IFeedDisabledArgs, error) {
+	return winrt.QueryInterface[IFeedDisabledArgs](unsafe.Pointer(self), &IID_IFeedDisabledArgs)
 }
 
 // FeedEnabledArgs is the Microsoft.Windows.Widgets.Feeds.Providers.FeedEnabledArgs runtime class, surfaced through its
@@ -63,6 +87,12 @@ type FeedEnabledArgs struct {
 	IFeedEnabledArgs
 }
 
+// AsFeedEnabledArgs queries the instance's IFeedEnabledArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedEnabledArgs) AsFeedEnabledArgs() (*IFeedEnabledArgs, error) {
+	return winrt.QueryInterface[IFeedEnabledArgs](unsafe.Pointer(self), &IID_IFeedEnabledArgs)
+}
+
 // FeedErrorInfoReportedArgs is the Microsoft.Windows.Widgets.Feeds.Providers.FeedErrorInfoReportedArgs runtime class, surfaced through its
 // default interface IFeedErrorInfoReportedArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -70,11 +100,23 @@ type FeedErrorInfoReportedArgs struct {
 	IFeedErrorInfoReportedArgs
 }
 
+// AsFeedErrorInfoReportedArgs queries the instance's IFeedErrorInfoReportedArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedErrorInfoReportedArgs) AsFeedErrorInfoReportedArgs() (*IFeedErrorInfoReportedArgs, error) {
+	return winrt.QueryInterface[IFeedErrorInfoReportedArgs](unsafe.Pointer(self), &IID_IFeedErrorInfoReportedArgs)
+}
+
 // FeedManager is the Microsoft.Windows.Widgets.Feeds.Providers.FeedManager runtime class, surfaced through its
 // default interface IFeedManager. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FeedManager struct {
 	IFeedManager
+}
+
+// AsFeedManager queries the instance's IFeedManager interface.
+// The returned reference is owned by the caller.
+func (self *FeedManager) AsFeedManager() (*IFeedManager, error) {
+	return winrt.QueryInterface[IFeedManager](unsafe.Pointer(self), &IID_IFeedManager)
 }
 
 // AsFeedManager2 queries the instance's IFeedManager2 interface.
@@ -108,11 +150,23 @@ type FeedMessageReceivedArgs struct {
 	IFeedMessageReceivedArgs
 }
 
+// AsFeedMessageReceivedArgs queries the instance's IFeedMessageReceivedArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedMessageReceivedArgs) AsFeedMessageReceivedArgs() (*IFeedMessageReceivedArgs, error) {
+	return winrt.QueryInterface[IFeedMessageReceivedArgs](unsafe.Pointer(self), &IID_IFeedMessageReceivedArgs)
+}
+
 // FeedProviderDisabledArgs is the Microsoft.Windows.Widgets.Feeds.Providers.FeedProviderDisabledArgs runtime class, surfaced through its
 // default interface IFeedProviderDisabledArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FeedProviderDisabledArgs struct {
 	IFeedProviderDisabledArgs
+}
+
+// AsFeedProviderDisabledArgs queries the instance's IFeedProviderDisabledArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedProviderDisabledArgs) AsFeedProviderDisabledArgs() (*IFeedProviderDisabledArgs, error) {
+	return winrt.QueryInterface[IFeedProviderDisabledArgs](unsafe.Pointer(self), &IID_IFeedProviderDisabledArgs)
 }
 
 // FeedProviderEnabledArgs is the Microsoft.Windows.Widgets.Feeds.Providers.FeedProviderEnabledArgs runtime class, surfaced through its
@@ -122,11 +176,23 @@ type FeedProviderEnabledArgs struct {
 	IFeedProviderEnabledArgs
 }
 
+// AsFeedProviderEnabledArgs queries the instance's IFeedProviderEnabledArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedProviderEnabledArgs) AsFeedProviderEnabledArgs() (*IFeedProviderEnabledArgs, error) {
+	return winrt.QueryInterface[IFeedProviderEnabledArgs](unsafe.Pointer(self), &IID_IFeedProviderEnabledArgs)
+}
+
 // FeedProviderInfo is the Microsoft.Windows.Widgets.Feeds.Providers.FeedProviderInfo runtime class, surfaced through its
 // default interface IFeedProviderInfo. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FeedProviderInfo struct {
 	IFeedProviderInfo
+}
+
+// AsFeedProviderInfo queries the instance's IFeedProviderInfo interface.
+// The returned reference is owned by the caller.
+func (self *FeedProviderInfo) AsFeedProviderInfo() (*IFeedProviderInfo, error) {
+	return winrt.QueryInterface[IFeedProviderInfo](unsafe.Pointer(self), &IID_IFeedProviderInfo)
 }
 
 // FeedResourceRequest is the Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceRequest runtime class, surfaced through its
@@ -136,6 +202,12 @@ type FeedResourceRequest struct {
 	IFeedResourceRequest
 }
 
+// AsFeedResourceRequest queries the instance's IFeedResourceRequest interface.
+// The returned reference is owned by the caller.
+func (self *FeedResourceRequest) AsFeedResourceRequest() (*IFeedResourceRequest, error) {
+	return winrt.QueryInterface[IFeedResourceRequest](unsafe.Pointer(self), &IID_IFeedResourceRequest)
+}
+
 // FeedResourceRequestedArgs is the Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceRequestedArgs runtime class, surfaced through its
 // default interface IFeedResourceRequestedArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -143,11 +215,23 @@ type FeedResourceRequestedArgs struct {
 	IFeedResourceRequestedArgs
 }
 
+// AsFeedResourceRequestedArgs queries the instance's IFeedResourceRequestedArgs interface.
+// The returned reference is owned by the caller.
+func (self *FeedResourceRequestedArgs) AsFeedResourceRequestedArgs() (*IFeedResourceRequestedArgs, error) {
+	return winrt.QueryInterface[IFeedResourceRequestedArgs](unsafe.Pointer(self), &IID_IFeedResourceRequestedArgs)
+}
+
 // FeedResourceResponse is the Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceResponse runtime class, surfaced through its
 // default interface IFeedResourceResponse. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FeedResourceResponse struct {
 	IFeedResourceResponse
+}
+
+// AsFeedResourceResponse queries the instance's IFeedResourceResponse interface.
+// The returned reference is owned by the caller.
+func (self *FeedResourceResponse) AsFeedResourceResponse() (*IFeedResourceResponse, error) {
+	return winrt.QueryInterface[IFeedResourceResponse](unsafe.Pointer(self), &IID_IFeedResourceResponse)
 }
 
 // CreateInstanceFeedResourceResponse constructs a Microsoft.Windows.Widgets.Feeds.Providers.FeedResourceResponse instance through

@@ -17,6 +17,12 @@ type PushNotificationChannel struct {
 	IPushNotificationChannel
 }
 
+// AsPushNotificationChannel queries the instance's IPushNotificationChannel interface.
+// The returned reference is owned by the caller.
+func (self *PushNotificationChannel) AsPushNotificationChannel() (*IPushNotificationChannel, error) {
+	return winrt.QueryInterface[IPushNotificationChannel](unsafe.Pointer(self), &IID_IPushNotificationChannel)
+}
+
 // PushNotificationCreateChannelResult is the Microsoft.Windows.PushNotifications.PushNotificationCreateChannelResult runtime class, surfaced through its
 // default interface IPushNotificationCreateChannelResult. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -24,11 +30,23 @@ type PushNotificationCreateChannelResult struct {
 	IPushNotificationCreateChannelResult
 }
 
+// AsPushNotificationCreateChannelResult queries the instance's IPushNotificationCreateChannelResult interface.
+// The returned reference is owned by the caller.
+func (self *PushNotificationCreateChannelResult) AsPushNotificationCreateChannelResult() (*IPushNotificationCreateChannelResult, error) {
+	return winrt.QueryInterface[IPushNotificationCreateChannelResult](unsafe.Pointer(self), &IID_IPushNotificationCreateChannelResult)
+}
+
 // PushNotificationManager is the Microsoft.Windows.PushNotifications.PushNotificationManager runtime class, surfaced through its
 // default interface IPushNotificationManager. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PushNotificationManager struct {
 	IPushNotificationManager
+}
+
+// AsPushNotificationManager queries the instance's IPushNotificationManager interface.
+// The returned reference is owned by the caller.
+func (self *PushNotificationManager) AsPushNotificationManager() (*IPushNotificationManager, error) {
+	return winrt.QueryInterface[IPushNotificationManager](unsafe.Pointer(self), &IID_IPushNotificationManager)
 }
 
 // PushNotificationManagerStatics returns the Microsoft.Windows.PushNotifications.IPushNotificationManagerStatics statics of the
@@ -48,4 +66,10 @@ func PushNotificationManagerStatics() (*IPushNotificationManagerStatics, error) 
 // the embedded IInspectable → IUnknown chain).
 type PushNotificationReceivedEventArgs struct {
 	IPushNotificationReceivedEventArgs
+}
+
+// AsPushNotificationReceivedEventArgs queries the instance's IPushNotificationReceivedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PushNotificationReceivedEventArgs) AsPushNotificationReceivedEventArgs() (*IPushNotificationReceivedEventArgs, error) {
+	return winrt.QueryInterface[IPushNotificationReceivedEventArgs](unsafe.Pointer(self), &IID_IPushNotificationReceivedEventArgs)
 }

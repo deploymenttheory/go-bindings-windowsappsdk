@@ -18,6 +18,12 @@ type CustomXamlResourceLoader struct {
 	ICustomXamlResourceLoader
 }
 
+// AsCustomXamlResourceLoader queries the instance's ICustomXamlResourceLoader interface.
+// The returned reference is owned by the caller.
+func (self *CustomXamlResourceLoader) AsCustomXamlResourceLoader() (*ICustomXamlResourceLoader, error) {
+	return winrt.QueryInterface[ICustomXamlResourceLoader](unsafe.Pointer(self), &IID_ICustomXamlResourceLoader)
+}
+
 // AsCustomXamlResourceLoaderOverrides queries the instance's ICustomXamlResourceLoaderOverrides interface.
 // The returned reference is owned by the caller.
 func (self *CustomXamlResourceLoader) AsCustomXamlResourceLoaderOverrides() (*ICustomXamlResourceLoaderOverrides, error) {

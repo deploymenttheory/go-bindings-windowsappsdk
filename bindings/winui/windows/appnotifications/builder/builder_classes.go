@@ -28,6 +28,12 @@ func NewAppNotificationBuilder() (*AppNotificationBuilder, error) {
 	return winrt.QueryInterface[AppNotificationBuilder](unsafe.Pointer(instance), &IID_IAppNotificationBuilder)
 }
 
+// AsAppNotificationBuilder queries the instance's IAppNotificationBuilder interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationBuilder) AsAppNotificationBuilder() (*IAppNotificationBuilder, error) {
+	return winrt.QueryInterface[IAppNotificationBuilder](unsafe.Pointer(self), &IID_IAppNotificationBuilder)
+}
+
 // AppNotificationBuilderStatics returns the Microsoft.Windows.AppNotifications.Builder.IAppNotificationBuilderStatics statics of the
 // Microsoft.Windows.AppNotifications.Builder.AppNotificationBuilder runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -56,6 +62,12 @@ func NewAppNotificationButton() (*AppNotificationButton, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AppNotificationButton](unsafe.Pointer(instance), &IID_IAppNotificationButton)
+}
+
+// AsAppNotificationButton queries the instance's IAppNotificationButton interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationButton) AsAppNotificationButton() (*IAppNotificationButton, error) {
+	return winrt.QueryInterface[IAppNotificationButton](unsafe.Pointer(self), &IID_IAppNotificationButton)
 }
 
 // AppNotificationButtonStatics returns the Microsoft.Windows.AppNotifications.Builder.IAppNotificationButtonStatics statics of the
@@ -94,6 +106,12 @@ type AppNotificationComboBox struct {
 	IAppNotificationComboBox
 }
 
+// AsAppNotificationComboBox queries the instance's IAppNotificationComboBox interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationComboBox) AsAppNotificationComboBox() (*IAppNotificationComboBox, error) {
+	return winrt.QueryInterface[IAppNotificationComboBox](unsafe.Pointer(self), &IID_IAppNotificationComboBox)
+}
+
 // CreateInstanceAppNotificationComboBox constructs a Microsoft.Windows.AppNotifications.Builder.AppNotificationComboBox instance through
 // Microsoft.Windows.AppNotifications.Builder.IAppNotificationComboBoxFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -129,6 +147,12 @@ func NewAppNotificationProgressBar() (*AppNotificationProgressBar, error) {
 	return winrt.QueryInterface[AppNotificationProgressBar](unsafe.Pointer(instance), &IID_IAppNotificationProgressBar)
 }
 
+// AsAppNotificationProgressBar queries the instance's IAppNotificationProgressBar interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationProgressBar) AsAppNotificationProgressBar() (*IAppNotificationProgressBar, error) {
+	return winrt.QueryInterface[IAppNotificationProgressBar](unsafe.Pointer(self), &IID_IAppNotificationProgressBar)
+}
+
 // AppNotificationTextProperties is the Microsoft.Windows.AppNotifications.Builder.AppNotificationTextProperties runtime class, surfaced through its
 // default interface IAppNotificationTextProperties. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -145,4 +169,10 @@ func NewAppNotificationTextProperties() (*AppNotificationTextProperties, error) 
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AppNotificationTextProperties](unsafe.Pointer(instance), &IID_IAppNotificationTextProperties)
+}
+
+// AsAppNotificationTextProperties queries the instance's IAppNotificationTextProperties interface.
+// The returned reference is owned by the caller.
+func (self *AppNotificationTextProperties) AsAppNotificationTextProperties() (*IAppNotificationTextProperties, error) {
+	return winrt.QueryInterface[IAppNotificationTextProperties](unsafe.Pointer(self), &IID_IAppNotificationTextProperties)
 }

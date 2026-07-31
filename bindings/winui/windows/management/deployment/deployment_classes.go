@@ -29,6 +29,12 @@ func NewAddPackageOptions() (*AddPackageOptions, error) {
 	return winrt.QueryInterface[AddPackageOptions](unsafe.Pointer(instance), &IID_IAddPackageOptions)
 }
 
+// AsAddPackageOptions queries the instance's IAddPackageOptions interface.
+// The returned reference is owned by the caller.
+func (self *AddPackageOptions) AsAddPackageOptions() (*IAddPackageOptions, error) {
+	return winrt.QueryInterface[IAddPackageOptions](unsafe.Pointer(self), &IID_IAddPackageOptions)
+}
+
 // AsAddPackageOptions2 queries the instance's IAddPackageOptions2 interface.
 // The returned reference is owned by the caller.
 func (self *AddPackageOptions) AsAddPackageOptions2() (*IAddPackageOptions2, error) {
@@ -53,6 +59,12 @@ func NewEnsureReadyOptions() (*EnsureReadyOptions, error) {
 	return winrt.QueryInterface[EnsureReadyOptions](unsafe.Pointer(instance), &IID_IEnsureReadyOptions)
 }
 
+// AsEnsureReadyOptions queries the instance's IEnsureReadyOptions interface.
+// The returned reference is owned by the caller.
+func (self *EnsureReadyOptions) AsEnsureReadyOptions() (*IEnsureReadyOptions, error) {
+	return winrt.QueryInterface[IEnsureReadyOptions](unsafe.Pointer(self), &IID_IEnsureReadyOptions)
+}
+
 // AsEnsureReadyOptions2 queries the instance's IEnsureReadyOptions2 interface.
 // The returned reference is owned by the caller.
 func (self *EnsureReadyOptions) AsEnsureReadyOptions2() (*IEnsureReadyOptions2, error) {
@@ -64,6 +76,12 @@ func (self *EnsureReadyOptions) AsEnsureReadyOptions2() (*IEnsureReadyOptions2, 
 // the embedded IInspectable → IUnknown chain).
 type PackageCertificateEkuValidator struct {
 	IPackageValidator
+}
+
+// AsPackageValidator queries the instance's IPackageValidator interface.
+// The returned reference is owned by the caller.
+func (self *PackageCertificateEkuValidator) AsPackageValidator() (*IPackageValidator, error) {
+	return winrt.QueryInterface[IPackageValidator](unsafe.Pointer(self), &IID_IPackageValidator)
 }
 
 // CreateInstance constructs a Microsoft.Windows.Management.Deployment.PackageCertificateEkuValidator instance through
@@ -88,6 +106,12 @@ func CreateInstance(expectedCertificateEku string) (*PackageCertificateEkuValida
 // the embedded IInspectable → IUnknown chain).
 type PackageDeploymentManager struct {
 	IPackageDeploymentManager
+}
+
+// AsPackageDeploymentManager queries the instance's IPackageDeploymentManager interface.
+// The returned reference is owned by the caller.
+func (self *PackageDeploymentManager) AsPackageDeploymentManager() (*IPackageDeploymentManager, error) {
+	return winrt.QueryInterface[IPackageDeploymentManager](unsafe.Pointer(self), &IID_IPackageDeploymentManager)
 }
 
 // AsPackageDeploymentManager2 queries the instance's IPackageDeploymentManager2 interface.
@@ -127,11 +151,23 @@ type PackageDeploymentResult struct {
 	IPackageDeploymentResult
 }
 
+// AsPackageDeploymentResult queries the instance's IPackageDeploymentResult interface.
+// The returned reference is owned by the caller.
+func (self *PackageDeploymentResult) AsPackageDeploymentResult() (*IPackageDeploymentResult, error) {
+	return winrt.QueryInterface[IPackageDeploymentResult](unsafe.Pointer(self), &IID_IPackageDeploymentResult)
+}
+
 // PackageFamilyNameValidator is the Microsoft.Windows.Management.Deployment.PackageFamilyNameValidator runtime class, surfaced through its
 // default interface IPackageValidator. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PackageFamilyNameValidator struct {
 	IPackageValidator
+}
+
+// AsPackageValidator queries the instance's IPackageValidator interface.
+// The returned reference is owned by the caller.
+func (self *PackageFamilyNameValidator) AsPackageValidator() (*IPackageValidator, error) {
+	return winrt.QueryInterface[IPackageValidator](unsafe.Pointer(self), &IID_IPackageValidator)
 }
 
 // CreateInstancePackageFamilyNameValidator constructs a Microsoft.Windows.Management.Deployment.PackageFamilyNameValidator instance through
@@ -158,6 +194,12 @@ type PackageMinimumVersionValidator struct {
 	IPackageValidator
 }
 
+// AsPackageValidator queries the instance's IPackageValidator interface.
+// The returned reference is owned by the caller.
+func (self *PackageMinimumVersionValidator) AsPackageValidator() (*IPackageValidator, error) {
+	return winrt.QueryInterface[IPackageValidator](unsafe.Pointer(self), &IID_IPackageValidator)
+}
+
 // CreateInstancePackageMinimumVersionValidator constructs a Microsoft.Windows.Management.Deployment.PackageMinimumVersionValidator instance through
 // Microsoft.Windows.Management.Deployment.IPackageMinimumVersionValidatorFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -180,6 +222,12 @@ func CreateInstancePackageMinimumVersionValidator(minimumVersion wrtapplicationm
 // the embedded IInspectable → IUnknown chain).
 type PackageRuntimeManager struct {
 	IPackageRuntimeManager
+}
+
+// AsPackageRuntimeManager queries the instance's IPackageRuntimeManager interface.
+// The returned reference is owned by the caller.
+func (self *PackageRuntimeManager) AsPackageRuntimeManager() (*IPackageRuntimeManager, error) {
+	return winrt.QueryInterface[IPackageRuntimeManager](unsafe.Pointer(self), &IID_IPackageRuntimeManager)
 }
 
 // PackageRuntimeManagerStatics returns the Microsoft.Windows.Management.Deployment.IPackageRuntimeManagerStatics statics of the
@@ -212,6 +260,12 @@ func NewPackageSet() (*PackageSet, error) {
 	return winrt.QueryInterface[PackageSet](unsafe.Pointer(instance), &IID_IPackageSet)
 }
 
+// AsPackageSet queries the instance's IPackageSet interface.
+// The returned reference is owned by the caller.
+func (self *PackageSet) AsPackageSet() (*IPackageSet, error) {
+	return winrt.QueryInterface[IPackageSet](unsafe.Pointer(self), &IID_IPackageSet)
+}
+
 // PackageSetItem is the Microsoft.Windows.Management.Deployment.PackageSetItem runtime class, surfaced through its
 // default interface IPackageSetItem. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -228,6 +282,12 @@ func NewPackageSetItem() (*PackageSetItem, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PackageSetItem](unsafe.Pointer(instance), &IID_IPackageSetItem)
+}
+
+// AsPackageSetItem queries the instance's IPackageSetItem interface.
+// The returned reference is owned by the caller.
+func (self *PackageSetItem) AsPackageSetItem() (*IPackageSetItem, error) {
+	return winrt.QueryInterface[IPackageSetItem](unsafe.Pointer(self), &IID_IPackageSetItem)
 }
 
 // PackageSetItemRuntimeDisposition is the Microsoft.Windows.Management.Deployment.PackageSetItemRuntimeDisposition runtime class, surfaced through its
@@ -248,6 +308,12 @@ func NewPackageSetItemRuntimeDisposition() (*PackageSetItemRuntimeDisposition, e
 	return winrt.QueryInterface[PackageSetItemRuntimeDisposition](unsafe.Pointer(instance), &IID_IPackageSetItemRuntimeDisposition)
 }
 
+// AsPackageSetItemRuntimeDisposition queries the instance's IPackageSetItemRuntimeDisposition interface.
+// The returned reference is owned by the caller.
+func (self *PackageSetItemRuntimeDisposition) AsPackageSetItemRuntimeDisposition() (*IPackageSetItemRuntimeDisposition, error) {
+	return winrt.QueryInterface[IPackageSetItemRuntimeDisposition](unsafe.Pointer(self), &IID_IPackageSetItemRuntimeDisposition)
+}
+
 // PackageSetRuntimeDisposition is the Microsoft.Windows.Management.Deployment.PackageSetRuntimeDisposition runtime class, surfaced through its
 // default interface IPackageSetRuntimeDisposition. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -266,11 +332,23 @@ func NewPackageSetRuntimeDisposition() (*PackageSetRuntimeDisposition, error) {
 	return winrt.QueryInterface[PackageSetRuntimeDisposition](unsafe.Pointer(instance), &IID_IPackageSetRuntimeDisposition)
 }
 
+// AsPackageSetRuntimeDisposition queries the instance's IPackageSetRuntimeDisposition interface.
+// The returned reference is owned by the caller.
+func (self *PackageSetRuntimeDisposition) AsPackageSetRuntimeDisposition() (*IPackageSetRuntimeDisposition, error) {
+	return winrt.QueryInterface[IPackageSetRuntimeDisposition](unsafe.Pointer(self), &IID_IPackageSetRuntimeDisposition)
+}
+
 // PackageValidationEventArgs is the Microsoft.Windows.Management.Deployment.PackageValidationEventArgs runtime class, surfaced through its
 // default interface IPackageValidationEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PackageValidationEventArgs struct {
 	IPackageValidationEventArgs
+}
+
+// AsPackageValidationEventArgs queries the instance's IPackageValidationEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PackageValidationEventArgs) AsPackageValidationEventArgs() (*IPackageValidationEventArgs, error) {
+	return winrt.QueryInterface[IPackageValidationEventArgs](unsafe.Pointer(self), &IID_IPackageValidationEventArgs)
 }
 
 // PackageValidationEventSource is the Microsoft.Windows.Management.Deployment.PackageValidationEventSource runtime class, surfaced through its
@@ -280,11 +358,23 @@ type PackageValidationEventSource struct {
 	IPackageValidationEventSource
 }
 
+// AsPackageValidationEventSource queries the instance's IPackageValidationEventSource interface.
+// The returned reference is owned by the caller.
+func (self *PackageValidationEventSource) AsPackageValidationEventSource() (*IPackageValidationEventSource, error) {
+	return winrt.QueryInterface[IPackageValidationEventSource](unsafe.Pointer(self), &IID_IPackageValidationEventSource)
+}
+
 // PackageValidationHandler is the Microsoft.Windows.Management.Deployment.PackageValidationHandler runtime class, surfaced through its
 // default interface IPackageValidationHandler. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PackageValidationHandler struct {
 	IPackageValidationHandler
+}
+
+// AsPackageValidationHandler queries the instance's IPackageValidationHandler interface.
+// The returned reference is owned by the caller.
+func (self *PackageValidationHandler) AsPackageValidationHandler() (*IPackageValidationHandler, error) {
+	return winrt.QueryInterface[IPackageValidationHandler](unsafe.Pointer(self), &IID_IPackageValidationHandler)
 }
 
 // CreateInstancePackageValidationHandler constructs a Microsoft.Windows.Management.Deployment.PackageValidationHandler instance through
@@ -309,6 +399,12 @@ func CreateInstancePackageValidationHandler(validator *IPackageValidator) (*Pack
 // the embedded IInspectable → IUnknown chain).
 type PackageVolume struct {
 	IPackageVolume
+}
+
+// AsPackageVolume queries the instance's IPackageVolume interface.
+// The returned reference is owned by the caller.
+func (self *PackageVolume) AsPackageVolume() (*IPackageVolume, error) {
+	return winrt.QueryInterface[IPackageVolume](unsafe.Pointer(self), &IID_IPackageVolume)
 }
 
 // AsPackageVolume2 queries the instance's IPackageVolume2 interface.
@@ -359,6 +455,12 @@ func NewProvisionPackageOptions() (*ProvisionPackageOptions, error) {
 	return winrt.QueryInterface[ProvisionPackageOptions](unsafe.Pointer(instance), &IID_IProvisionPackageOptions)
 }
 
+// AsProvisionPackageOptions queries the instance's IProvisionPackageOptions interface.
+// The returned reference is owned by the caller.
+func (self *ProvisionPackageOptions) AsProvisionPackageOptions() (*IProvisionPackageOptions, error) {
+	return winrt.QueryInterface[IProvisionPackageOptions](unsafe.Pointer(self), &IID_IProvisionPackageOptions)
+}
+
 // RegisterPackageOptions is the Microsoft.Windows.Management.Deployment.RegisterPackageOptions runtime class, surfaced through its
 // default interface IRegisterPackageOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -375,6 +477,12 @@ func NewRegisterPackageOptions() (*RegisterPackageOptions, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RegisterPackageOptions](unsafe.Pointer(instance), &IID_IRegisterPackageOptions)
+}
+
+// AsRegisterPackageOptions queries the instance's IRegisterPackageOptions interface.
+// The returned reference is owned by the caller.
+func (self *RegisterPackageOptions) AsRegisterPackageOptions() (*IRegisterPackageOptions, error) {
+	return winrt.QueryInterface[IRegisterPackageOptions](unsafe.Pointer(self), &IID_IRegisterPackageOptions)
 }
 
 // RemovePackageOptions is the Microsoft.Windows.Management.Deployment.RemovePackageOptions runtime class, surfaced through its
@@ -395,6 +503,12 @@ func NewRemovePackageOptions() (*RemovePackageOptions, error) {
 	return winrt.QueryInterface[RemovePackageOptions](unsafe.Pointer(instance), &IID_IRemovePackageOptions)
 }
 
+// AsRemovePackageOptions queries the instance's IRemovePackageOptions interface.
+// The returned reference is owned by the caller.
+func (self *RemovePackageOptions) AsRemovePackageOptions() (*IRemovePackageOptions, error) {
+	return winrt.QueryInterface[IRemovePackageOptions](unsafe.Pointer(self), &IID_IRemovePackageOptions)
+}
+
 // StagePackageOptions is the Microsoft.Windows.Management.Deployment.StagePackageOptions runtime class, surfaced through its
 // default interface IStagePackageOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -411,6 +525,12 @@ func NewStagePackageOptions() (*StagePackageOptions, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[StagePackageOptions](unsafe.Pointer(instance), &IID_IStagePackageOptions)
+}
+
+// AsStagePackageOptions queries the instance's IStagePackageOptions interface.
+// The returned reference is owned by the caller.
+func (self *StagePackageOptions) AsStagePackageOptions() (*IStagePackageOptions, error) {
+	return winrt.QueryInterface[IStagePackageOptions](unsafe.Pointer(self), &IID_IStagePackageOptions)
 }
 
 // AsStagePackageOptions2 queries the instance's IStagePackageOptions2 interface.

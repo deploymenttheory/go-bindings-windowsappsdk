@@ -17,6 +17,12 @@ type BadgeNotificationManager struct {
 	IBadgeNotificationManager
 }
 
+// AsBadgeNotificationManager queries the instance's IBadgeNotificationManager interface.
+// The returned reference is owned by the caller.
+func (self *BadgeNotificationManager) AsBadgeNotificationManager() (*IBadgeNotificationManager, error) {
+	return winrt.QueryInterface[IBadgeNotificationManager](unsafe.Pointer(self), &IID_IBadgeNotificationManager)
+}
+
 // BadgeNotificationManagerStatics returns the Microsoft.Windows.BadgeNotifications.IBadgeNotificationManagerStatics statics of the
 // Microsoft.Windows.BadgeNotifications.BadgeNotificationManager runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;

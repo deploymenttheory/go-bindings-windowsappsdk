@@ -328,6 +328,28 @@ The resource map must be named for the executable, which is what `--name` sets.
 is "not on the critical path for a working UI". That was measured on a `Button`, and a
 `Button` is one of the controls that does not need it.
 
+### The gallery
+
+`examples/gallery` ports the pages from `microsoft/microsoft-ui-xaml`'s
+`controls/dev/<Control>/TestUI` — the pages WinUI's own test application drives. Picking
+a control on the left builds that page on the right.
+
+It is two things at once. A **reference**: the Go beside each page shows how that control
+is actually driven. And a **conformance suite**: `acceptance/gallery_test.go` builds every
+registered page in a subprocess and asserts it lays out, so the reference cannot drift
+from what works. The registry is the single source — the test iterates it, so a page
+cannot be added without also being checked.
+
+```sh
+go build -o build/gallery.exe ./examples/gallery
+go run ./cmd/generate app-resources --out build --name gallery
+./build/gallery.exe
+```
+
+The `app-resources` step is not optional: WinUI keeps its control styles in the
+framework's resource index and reaches them through `ms-appx:///`, which an unpackaged
+application resolves through its own index — and `go build` produces none.
+
 ### Try it
 
 ```sh

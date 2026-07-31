@@ -17,6 +17,12 @@ type EnvironmentManager struct {
 	IEnvironmentManager
 }
 
+// AsEnvironmentManager queries the instance's IEnvironmentManager interface.
+// The returned reference is owned by the caller.
+func (self *EnvironmentManager) AsEnvironmentManager() (*IEnvironmentManager, error) {
+	return winrt.QueryInterface[IEnvironmentManager](unsafe.Pointer(self), &IID_IEnvironmentManager)
+}
+
 // AsEnvironmentManager2 queries the instance's IEnvironmentManager2 interface.
 // The returned reference is owned by the caller.
 func (self *EnvironmentManager) AsEnvironmentManager2() (*IEnvironmentManager2, error) {

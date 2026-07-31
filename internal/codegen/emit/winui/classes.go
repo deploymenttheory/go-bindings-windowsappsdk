@@ -114,11 +114,30 @@ func (g *Generator) buildClassType(meta *wasdkmeta.NamespaceMeta, name, fullName
 	// name ever collided, the class's own member is the one that keeps it.
 	methodNames := map[string]bool{}
 	for i := range class.Interfaces {
-		target := &class.Interfaces[i]
-		if target.Namespace == class.DefaultInterface.Namespace && target.Name == class.DefaultInterface.Name {
-			continue // the default is embedded, not queried
-		}
-		g.addQueryMethod(&model, target, fullName, "", meta.Namespace, context, scratch, methodNames)
+		g.addQueryMethod(&model, &class.Interfaces[i], fullName, "", meta.Namespace, context, scratch, methodNames)
+	}
+	// The default interface gets an accessor too, even though it is embedded and its
+	// members are already callable directly.
+	//
+	// Uniformity is the whole reason. Without it a caller has to know which of a class's
+	// interfaces is the default in order to know whether to write viewer.Foo() or
+	// viewer.AsBar().Foo() — Grid embeds IGrid so grid.RowDefinitions() works, while
+	// ScrollViewer embeds IScrollViewer so scrolled.AsScrollViewer() did not exist. That
+	// is a fact about metadata the caller cannot see from Go, and getting it wrong is a
+	// compile error every time rather than a lesson learned once.
+	//
+	// It also makes the class usable with the app package's combinators, which take an
+	// As<Interface> method value and cannot take an embedded field.
+	//
+	// Skipped when the class already lists its default among its own interfaces, which
+	// most do — adding it twice would collide with itself.
+	//
+	// Two classes report a genuine collision here and it is correct: FrameworkView
+	// implements both Microsoft.UI.Xaml.IFrameworkView and Windows.ApplicationModel
+	// .Core.IFrameworkView, which share an As-name. The class's own interface is added
+	// first and keeps the name, which is the right precedence.
+	if !containsRef(class.Interfaces, class.DefaultInterface) {
+		g.addQueryMethod(&model, class.DefaultInterface, fullName, "", meta.Namespace, context, scratch, methodNames)
 	}
 	g.addInheritedQueryMethods(&model, class, fullName, meta.Namespace, context, scratch, methodNames)
 
@@ -523,4 +542,19 @@ func (g *Generator) iidRef(ref *wasdkmeta.TypeRef, fromNamespace string) (string
 	// namespace takes the wrt prefix, and a bare ImportAlias here would name a
 	// package the file did not import.
 	return "&" + g.mapper.AliasFor(ref.Namespace) + "." + iidVar, true
+}
+
+// containsRef reports whether refs already names the same type as target. Used to avoid
+// emitting a duplicate accessor when a class lists its default interface among its own
+// interfaces as well, which most do.
+func containsRef(refs []wasdkmeta.TypeRef, target *wasdkmeta.TypeRef) bool {
+	if target == nil {
+		return true // nothing to add
+	}
+	for i := range refs {
+		if sameType(&refs[i], target) {
+			return true
+		}
+	}
+	return false
 }

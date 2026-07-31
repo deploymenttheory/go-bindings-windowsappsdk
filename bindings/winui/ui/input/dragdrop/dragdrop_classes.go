@@ -18,6 +18,12 @@ type DragDropManager struct {
 	IDragDropManager
 }
 
+// AsDragDropManager queries the instance's IDragDropManager interface.
+// The returned reference is owned by the caller.
+func (self *DragDropManager) AsDragDropManager() (*IDragDropManager, error) {
+	return winrt.QueryInterface[IDragDropManager](unsafe.Pointer(self), &IID_IDragDropManager)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *DragDropManager) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -43,6 +49,12 @@ type DragInfo struct {
 	IDragInfo
 }
 
+// AsDragInfo queries the instance's IDragInfo interface.
+// The returned reference is owned by the caller.
+func (self *DragInfo) AsDragInfo() (*IDragInfo, error) {
+	return winrt.QueryInterface[IDragInfo](unsafe.Pointer(self), &IID_IDragInfo)
+}
+
 // DragOperation is the Microsoft.UI.Input.DragDrop.DragOperation runtime class, surfaced through its
 // default interface IDragOperation. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -61,6 +73,12 @@ func NewDragOperation() (*DragOperation, error) {
 	return winrt.QueryInterface[DragOperation](unsafe.Pointer(instance), &IID_IDragOperation)
 }
 
+// AsDragOperation queries the instance's IDragOperation interface.
+// The returned reference is owned by the caller.
+func (self *DragOperation) AsDragOperation() (*IDragOperation, error) {
+	return winrt.QueryInterface[IDragOperation](unsafe.Pointer(self), &IID_IDragOperation)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *DragOperation) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -74,9 +92,21 @@ type DragUIOverride struct {
 	IDragUIOverride
 }
 
+// AsDragUIOverride queries the instance's IDragUIOverride interface.
+// The returned reference is owned by the caller.
+func (self *DragUIOverride) AsDragUIOverride() (*IDragUIOverride, error) {
+	return winrt.QueryInterface[IDragUIOverride](unsafe.Pointer(self), &IID_IDragUIOverride)
+}
+
 // DropOperationTargetRequestedEventArgs is the Microsoft.UI.Input.DragDrop.DropOperationTargetRequestedEventArgs runtime class, surfaced through its
 // default interface IDropOperationTargetRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DropOperationTargetRequestedEventArgs struct {
 	IDropOperationTargetRequestedEventArgs
+}
+
+// AsDropOperationTargetRequestedEventArgs queries the instance's IDropOperationTargetRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DropOperationTargetRequestedEventArgs) AsDropOperationTargetRequestedEventArgs() (*IDropOperationTargetRequestedEventArgs, error) {
+	return winrt.QueryInterface[IDropOperationTargetRequestedEventArgs](unsafe.Pointer(self), &IID_IDropOperationTargetRequestedEventArgs)
 }

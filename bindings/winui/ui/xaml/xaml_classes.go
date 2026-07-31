@@ -12,7 +12,6 @@ import (
 	uiinput "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/input"
 	uixamlinterop "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/interop"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
-	wrtapplicationmodelcore "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/applicationmodel/core"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
 	wrtuixamlinterop "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui/xaml/interop"
@@ -23,6 +22,12 @@ import (
 // the embedded IInspectable → IUnknown chain).
 type AdaptiveTrigger struct {
 	IAdaptiveTrigger
+}
+
+// AsAdaptiveTrigger queries the instance's IAdaptiveTrigger interface.
+// The returned reference is owned by the caller.
+func (self *AdaptiveTrigger) AsAdaptiveTrigger() (*IAdaptiveTrigger, error) {
+	return winrt.QueryInterface[IAdaptiveTrigger](unsafe.Pointer(self), &IID_IAdaptiveTrigger)
 }
 
 // AsStateTriggerBase queries the instance's IStateTriggerBase interface.
@@ -90,6 +95,12 @@ type Application struct {
 	IApplication
 }
 
+// AsApplication queries the instance's IApplication interface.
+// The returned reference is owned by the caller.
+func (self *Application) AsApplication() (*IApplication, error) {
+	return winrt.QueryInterface[IApplication](unsafe.Pointer(self), &IID_IApplication)
+}
+
 // AsApplication2 queries the instance's IApplication2 interface.
 // The returned reference is owned by the caller.
 func (self *Application) AsApplication2() (*IApplication2, error) {
@@ -152,11 +163,23 @@ type ApplicationInitializationCallbackParams struct {
 	IApplicationInitializationCallbackParams
 }
 
+// AsApplicationInitializationCallbackParams queries the instance's IApplicationInitializationCallbackParams interface.
+// The returned reference is owned by the caller.
+func (self *ApplicationInitializationCallbackParams) AsApplicationInitializationCallbackParams() (*IApplicationInitializationCallbackParams, error) {
+	return winrt.QueryInterface[IApplicationInitializationCallbackParams](unsafe.Pointer(self), &IID_IApplicationInitializationCallbackParams)
+}
+
 // BindingFailedEventArgs is the Microsoft.UI.Xaml.BindingFailedEventArgs runtime class, surfaced through its
 // default interface IBindingFailedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type BindingFailedEventArgs struct {
 	IBindingFailedEventArgs
+}
+
+// AsBindingFailedEventArgs queries the instance's IBindingFailedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *BindingFailedEventArgs) AsBindingFailedEventArgs() (*IBindingFailedEventArgs, error) {
+	return winrt.QueryInterface[IBindingFailedEventArgs](unsafe.Pointer(self), &IID_IBindingFailedEventArgs)
 }
 
 // BringIntoViewOptions is the Microsoft.UI.Xaml.BringIntoViewOptions runtime class, surfaced through its
@@ -177,11 +200,23 @@ func NewBringIntoViewOptions() (*BringIntoViewOptions, error) {
 	return winrt.QueryInterface[BringIntoViewOptions](unsafe.Pointer(instance), &IID_IBringIntoViewOptions)
 }
 
+// AsBringIntoViewOptions queries the instance's IBringIntoViewOptions interface.
+// The returned reference is owned by the caller.
+func (self *BringIntoViewOptions) AsBringIntoViewOptions() (*IBringIntoViewOptions, error) {
+	return winrt.QueryInterface[IBringIntoViewOptions](unsafe.Pointer(self), &IID_IBringIntoViewOptions)
+}
+
 // BringIntoViewRequestedEventArgs is the Microsoft.UI.Xaml.BringIntoViewRequestedEventArgs runtime class, surfaced through its
 // default interface IBringIntoViewRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type BringIntoViewRequestedEventArgs struct {
 	IBringIntoViewRequestedEventArgs
+}
+
+// AsBringIntoViewRequestedEventArgs queries the instance's IBringIntoViewRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *BringIntoViewRequestedEventArgs) AsBringIntoViewRequestedEventArgs() (*IBringIntoViewRequestedEventArgs, error) {
+	return winrt.QueryInterface[IBringIntoViewRequestedEventArgs](unsafe.Pointer(self), &IID_IBringIntoViewRequestedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -196,6 +231,12 @@ func (self *BringIntoViewRequestedEventArgs) AsRoutedEventArgs() (*IRoutedEventA
 // the embedded IInspectable → IUnknown chain).
 type BrushTransition struct {
 	IBrushTransition
+}
+
+// AsBrushTransition queries the instance's IBrushTransition interface.
+// The returned reference is owned by the caller.
+func (self *BrushTransition) AsBrushTransition() (*IBrushTransition, error) {
+	return winrt.QueryInterface[IBrushTransition](unsafe.Pointer(self), &IID_IBrushTransition)
 }
 
 // NewBrushTransition constructs a Microsoft.UI.Xaml.BrushTransition instance through
@@ -228,6 +269,12 @@ func NewBrushTransition() (*BrushTransition, error) {
 // the embedded IInspectable → IUnknown chain).
 type ColorPaletteResources struct {
 	IColorPaletteResources
+}
+
+// AsColorPaletteResources queries the instance's IColorPaletteResources interface.
+// The returned reference is owned by the caller.
+func (self *ColorPaletteResources) AsColorPaletteResources() (*IColorPaletteResources, error) {
+	return winrt.QueryInterface[IColorPaletteResources](unsafe.Pointer(self), &IID_IColorPaletteResources)
 }
 
 // AsResourceDictionary queries the instance's IResourceDictionary interface.
@@ -290,6 +337,12 @@ type CornerRadiusHelper struct {
 	ICornerRadiusHelper
 }
 
+// AsCornerRadiusHelper queries the instance's ICornerRadiusHelper interface.
+// The returned reference is owned by the caller.
+func (self *CornerRadiusHelper) AsCornerRadiusHelper() (*ICornerRadiusHelper, error) {
+	return winrt.QueryInterface[ICornerRadiusHelper](unsafe.Pointer(self), &IID_ICornerRadiusHelper)
+}
+
 // CornerRadiusHelperStatics returns the Microsoft.UI.Xaml.ICornerRadiusHelperStatics statics of the
 // Microsoft.UI.Xaml.CornerRadiusHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -309,11 +362,23 @@ type DataContextChangedEventArgs struct {
 	IDataContextChangedEventArgs
 }
 
+// AsDataContextChangedEventArgs queries the instance's IDataContextChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DataContextChangedEventArgs) AsDataContextChangedEventArgs() (*IDataContextChangedEventArgs, error) {
+	return winrt.QueryInterface[IDataContextChangedEventArgs](unsafe.Pointer(self), &IID_IDataContextChangedEventArgs)
+}
+
 // DataTemplate is the Microsoft.UI.Xaml.DataTemplate runtime class, surfaced through its
 // default interface IDataTemplate. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DataTemplate struct {
 	IDataTemplate
+}
+
+// AsDataTemplate queries the instance's IDataTemplate interface.
+// The returned reference is owned by the caller.
+func (self *DataTemplate) AsDataTemplate() (*IDataTemplate, error) {
+	return winrt.QueryInterface[IDataTemplate](unsafe.Pointer(self), &IID_IDataTemplate)
 }
 
 // AsElementFactory queries the instance's IElementFactory interface.
@@ -380,6 +445,12 @@ type DataTemplateKey struct {
 	IDataTemplateKey
 }
 
+// AsDataTemplateKey queries the instance's IDataTemplateKey interface.
+// The returned reference is owned by the caller.
+func (self *DataTemplateKey) AsDataTemplateKey() (*IDataTemplateKey, error) {
+	return winrt.QueryInterface[IDataTemplateKey](unsafe.Pointer(self), &IID_IDataTemplateKey)
+}
+
 // NewDataTemplateKey constructs a Microsoft.UI.Xaml.DataTemplateKey instance through
 // Microsoft.UI.Xaml.IDataTemplateKeyFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -437,6 +508,12 @@ type DebugSettings struct {
 	IDebugSettings
 }
 
+// AsDebugSettings queries the instance's IDebugSettings interface.
+// The returned reference is owned by the caller.
+func (self *DebugSettings) AsDebugSettings() (*IDebugSettings, error) {
+	return winrt.QueryInterface[IDebugSettings](unsafe.Pointer(self), &IID_IDebugSettings)
+}
+
 // AsDebugSettings2 queries the instance's IDebugSettings2 interface.
 // The returned reference is owned by the caller.
 func (self *DebugSettings) AsDebugSettings2() (*IDebugSettings2, error) {
@@ -454,6 +531,12 @@ func (self *DebugSettings) AsDebugSettings3() (*IDebugSettings3, error) {
 // the embedded IInspectable → IUnknown chain).
 type DependencyObject struct {
 	IDependencyObject
+}
+
+// AsDependencyObject queries the instance's IDependencyObject interface.
+// The returned reference is owned by the caller.
+func (self *DependencyObject) AsDependencyObject() (*IDependencyObject, error) {
+	return winrt.QueryInterface[IDependencyObject](unsafe.Pointer(self), &IID_IDependencyObject)
 }
 
 // NewDependencyObject constructs a Microsoft.UI.Xaml.DependencyObject instance through
@@ -486,6 +569,12 @@ func NewDependencyObject() (*DependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type DependencyObjectCollection struct {
 	IObservableVectorOfDependencyObject
+}
+
+// AsObservableVectorOfDependencyObject queries the instance's IObservableVectorOfDependencyObject interface.
+// The returned reference is owned by the caller.
+func (self *DependencyObjectCollection) AsObservableVectorOfDependencyObject() (*IObservableVectorOfDependencyObject, error) {
+	return winrt.QueryInterface[IObservableVectorOfDependencyObject](unsafe.Pointer(self), &IID_IObservableVectorOfDependencyObject)
 }
 
 // AsVectorOfDependencyObject queries the instance's IVectorOfDependencyObject interface.
@@ -539,6 +628,12 @@ type DependencyProperty struct {
 	IDependencyProperty
 }
 
+// AsDependencyProperty queries the instance's IDependencyProperty interface.
+// The returned reference is owned by the caller.
+func (self *DependencyProperty) AsDependencyProperty() (*IDependencyProperty, error) {
+	return winrt.QueryInterface[IDependencyProperty](unsafe.Pointer(self), &IID_IDependencyProperty)
+}
+
 // DependencyPropertyStatics returns the Microsoft.UI.Xaml.IDependencyPropertyStatics statics of the
 // Microsoft.UI.Xaml.DependencyProperty runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -558,11 +653,23 @@ type DependencyPropertyChangedEventArgs struct {
 	IDependencyPropertyChangedEventArgs
 }
 
+// AsDependencyPropertyChangedEventArgs queries the instance's IDependencyPropertyChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DependencyPropertyChangedEventArgs) AsDependencyPropertyChangedEventArgs() (*IDependencyPropertyChangedEventArgs, error) {
+	return winrt.QueryInterface[IDependencyPropertyChangedEventArgs](unsafe.Pointer(self), &IID_IDependencyPropertyChangedEventArgs)
+}
+
 // DispatcherTimer is the Microsoft.UI.Xaml.DispatcherTimer runtime class, surfaced through its
 // default interface IDispatcherTimer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DispatcherTimer struct {
 	IDispatcherTimer
+}
+
+// AsDispatcherTimer queries the instance's IDispatcherTimer interface.
+// The returned reference is owned by the caller.
+func (self *DispatcherTimer) AsDispatcherTimer() (*IDispatcherTimer, error) {
+	return winrt.QueryInterface[IDispatcherTimer](unsafe.Pointer(self), &IID_IDispatcherTimer)
 }
 
 // NewDispatcherTimer constructs a Microsoft.UI.Xaml.DispatcherTimer instance through
@@ -597,6 +704,12 @@ type DragEventArgs struct {
 	IDragEventArgs
 }
 
+// AsDragEventArgs queries the instance's IDragEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragEventArgs) AsDragEventArgs() (*IDragEventArgs, error) {
+	return winrt.QueryInterface[IDragEventArgs](unsafe.Pointer(self), &IID_IDragEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -611,11 +724,23 @@ type DragOperationDeferral struct {
 	IDragOperationDeferral
 }
 
+// AsDragOperationDeferral queries the instance's IDragOperationDeferral interface.
+// The returned reference is owned by the caller.
+func (self *DragOperationDeferral) AsDragOperationDeferral() (*IDragOperationDeferral, error) {
+	return winrt.QueryInterface[IDragOperationDeferral](unsafe.Pointer(self), &IID_IDragOperationDeferral)
+}
+
 // DragStartingEventArgs is the Microsoft.UI.Xaml.DragStartingEventArgs runtime class, surfaced through its
 // default interface IDragStartingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DragStartingEventArgs struct {
 	IDragStartingEventArgs
+}
+
+// AsDragStartingEventArgs queries the instance's IDragStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragStartingEventArgs) AsDragStartingEventArgs() (*IDragStartingEventArgs, error) {
+	return winrt.QueryInterface[IDragStartingEventArgs](unsafe.Pointer(self), &IID_IDragStartingEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -632,6 +757,12 @@ type DragUI struct {
 	IDragUI
 }
 
+// AsDragUI queries the instance's IDragUI interface.
+// The returned reference is owned by the caller.
+func (self *DragUI) AsDragUI() (*IDragUI, error) {
+	return winrt.QueryInterface[IDragUI](unsafe.Pointer(self), &IID_IDragUI)
+}
+
 // DragUIOverride is the Microsoft.UI.Xaml.DragUIOverride runtime class, surfaced through its
 // default interface IDragUIOverride. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -639,11 +770,23 @@ type DragUIOverride struct {
 	IDragUIOverride
 }
 
+// AsDragUIOverride queries the instance's IDragUIOverride interface.
+// The returned reference is owned by the caller.
+func (self *DragUIOverride) AsDragUIOverride() (*IDragUIOverride, error) {
+	return winrt.QueryInterface[IDragUIOverride](unsafe.Pointer(self), &IID_IDragUIOverride)
+}
+
 // DropCompletedEventArgs is the Microsoft.UI.Xaml.DropCompletedEventArgs runtime class, surfaced through its
 // default interface IDropCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DropCompletedEventArgs struct {
 	IDropCompletedEventArgs
+}
+
+// AsDropCompletedEventArgs queries the instance's IDropCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DropCompletedEventArgs) AsDropCompletedEventArgs() (*IDropCompletedEventArgs, error) {
+	return winrt.QueryInterface[IDropCompletedEventArgs](unsafe.Pointer(self), &IID_IDropCompletedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -658,6 +801,12 @@ func (self *DropCompletedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, erro
 // the embedded IInspectable → IUnknown chain).
 type DurationHelper struct {
 	IDurationHelper
+}
+
+// AsDurationHelper queries the instance's IDurationHelper interface.
+// The returned reference is owned by the caller.
+func (self *DurationHelper) AsDurationHelper() (*IDurationHelper, error) {
+	return winrt.QueryInterface[IDurationHelper](unsafe.Pointer(self), &IID_IDurationHelper)
 }
 
 // DurationHelperStatics returns the Microsoft.UI.Xaml.IDurationHelperStatics statics of the
@@ -679,11 +828,23 @@ type EffectiveViewportChangedEventArgs struct {
 	IEffectiveViewportChangedEventArgs
 }
 
+// AsEffectiveViewportChangedEventArgs queries the instance's IEffectiveViewportChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *EffectiveViewportChangedEventArgs) AsEffectiveViewportChangedEventArgs() (*IEffectiveViewportChangedEventArgs, error) {
+	return winrt.QueryInterface[IEffectiveViewportChangedEventArgs](unsafe.Pointer(self), &IID_IEffectiveViewportChangedEventArgs)
+}
+
 // ElementFactoryGetArgs is the Microsoft.UI.Xaml.ElementFactoryGetArgs runtime class, surfaced through its
 // default interface IElementFactoryGetArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ElementFactoryGetArgs struct {
 	IElementFactoryGetArgs
+}
+
+// AsElementFactoryGetArgs queries the instance's IElementFactoryGetArgs interface.
+// The returned reference is owned by the caller.
+func (self *ElementFactoryGetArgs) AsElementFactoryGetArgs() (*IElementFactoryGetArgs, error) {
+	return winrt.QueryInterface[IElementFactoryGetArgs](unsafe.Pointer(self), &IID_IElementFactoryGetArgs)
 }
 
 // NewElementFactoryGetArgs constructs a Microsoft.UI.Xaml.ElementFactoryGetArgs instance through
@@ -718,6 +879,12 @@ type ElementFactoryRecycleArgs struct {
 	IElementFactoryRecycleArgs
 }
 
+// AsElementFactoryRecycleArgs queries the instance's IElementFactoryRecycleArgs interface.
+// The returned reference is owned by the caller.
+func (self *ElementFactoryRecycleArgs) AsElementFactoryRecycleArgs() (*IElementFactoryRecycleArgs, error) {
+	return winrt.QueryInterface[IElementFactoryRecycleArgs](unsafe.Pointer(self), &IID_IElementFactoryRecycleArgs)
+}
+
 // NewElementFactoryRecycleArgs constructs a Microsoft.UI.Xaml.ElementFactoryRecycleArgs instance through
 // Microsoft.UI.Xaml.IElementFactoryRecycleArgsFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -750,6 +917,12 @@ type ElementSoundPlayer struct {
 	IElementSoundPlayer
 }
 
+// AsElementSoundPlayer queries the instance's IElementSoundPlayer interface.
+// The returned reference is owned by the caller.
+func (self *ElementSoundPlayer) AsElementSoundPlayer() (*IElementSoundPlayer, error) {
+	return winrt.QueryInterface[IElementSoundPlayer](unsafe.Pointer(self), &IID_IElementSoundPlayer)
+}
+
 // ElementSoundPlayerStatics returns the Microsoft.UI.Xaml.IElementSoundPlayerStatics statics of the
 // Microsoft.UI.Xaml.ElementSoundPlayer runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -780,6 +953,12 @@ func NewEventTrigger() (*EventTrigger, error) {
 	return winrt.QueryInterface[EventTrigger](unsafe.Pointer(instance), &IID_IEventTrigger)
 }
 
+// AsEventTrigger queries the instance's IEventTrigger interface.
+// The returned reference is owned by the caller.
+func (self *EventTrigger) AsEventTrigger() (*IEventTrigger, error) {
+	return winrt.QueryInterface[IEventTrigger](unsafe.Pointer(self), &IID_IEventTrigger)
+}
+
 // AsTriggerBase queries the instance's ITriggerBase interface.
 // Inherited from Microsoft.UI.Xaml.TriggerBase.
 // The returned reference is owned by the caller.
@@ -801,6 +980,12 @@ type ExceptionRoutedEventArgs struct {
 	IExceptionRoutedEventArgs
 }
 
+// AsExceptionRoutedEventArgs queries the instance's IExceptionRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ExceptionRoutedEventArgs) AsExceptionRoutedEventArgs() (*IExceptionRoutedEventArgs, error) {
+	return winrt.QueryInterface[IExceptionRoutedEventArgs](unsafe.Pointer(self), &IID_IExceptionRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -813,6 +998,12 @@ func (self *ExceptionRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, er
 // the embedded IInspectable → IUnknown chain).
 type FrameworkElement struct {
 	IFrameworkElement
+}
+
+// AsFrameworkElement queries the instance's IFrameworkElement interface.
+// The returned reference is owned by the caller.
+func (self *FrameworkElement) AsFrameworkElement() (*IFrameworkElement, error) {
+	return winrt.QueryInterface[IFrameworkElement](unsafe.Pointer(self), &IID_IFrameworkElement)
 }
 
 // AsFrameworkElementProtected queries the instance's IFrameworkElementProtected interface.
@@ -920,6 +1111,12 @@ type FrameworkTemplate struct {
 	IFrameworkTemplate
 }
 
+// AsFrameworkTemplate queries the instance's IFrameworkTemplate interface.
+// The returned reference is owned by the caller.
+func (self *FrameworkTemplate) AsFrameworkTemplate() (*IFrameworkTemplate, error) {
+	return winrt.QueryInterface[IFrameworkTemplate](unsafe.Pointer(self), &IID_IFrameworkTemplate)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -970,10 +1167,10 @@ func NewFrameworkView() (*FrameworkView, error) {
 	return winrt.QueryInterface[FrameworkView](unsafe.Pointer(instance), &IID_IFrameworkView)
 }
 
-// AsFrameworkView queries the instance's wrtapplicationmodelcore.IFrameworkView interface.
+// AsFrameworkView queries the instance's IFrameworkView interface.
 // The returned reference is owned by the caller.
-func (self *FrameworkView) AsFrameworkView() (*wrtapplicationmodelcore.IFrameworkView, error) {
-	return winrt.QueryInterface[wrtapplicationmodelcore.IFrameworkView](unsafe.Pointer(self), &wrtapplicationmodelcore.IID_IFrameworkView)
+func (self *FrameworkView) AsFrameworkView() (*IFrameworkView, error) {
+	return winrt.QueryInterface[IFrameworkView](unsafe.Pointer(self), &IID_IFrameworkView)
 }
 
 // FrameworkViewSource is the Microsoft.UI.Xaml.FrameworkViewSource runtime class, surfaced through its
@@ -994,10 +1191,10 @@ func NewFrameworkViewSource() (*FrameworkViewSource, error) {
 	return winrt.QueryInterface[FrameworkViewSource](unsafe.Pointer(instance), &IID_IFrameworkViewSource)
 }
 
-// AsFrameworkViewSource queries the instance's wrtapplicationmodelcore.IFrameworkViewSource interface.
+// AsFrameworkViewSource queries the instance's IFrameworkViewSource interface.
 // The returned reference is owned by the caller.
-func (self *FrameworkViewSource) AsFrameworkViewSource() (*wrtapplicationmodelcore.IFrameworkViewSource, error) {
-	return winrt.QueryInterface[wrtapplicationmodelcore.IFrameworkViewSource](unsafe.Pointer(self), &wrtapplicationmodelcore.IID_IFrameworkViewSource)
+func (self *FrameworkViewSource) AsFrameworkViewSource() (*IFrameworkViewSource, error) {
+	return winrt.QueryInterface[IFrameworkViewSource](unsafe.Pointer(self), &IID_IFrameworkViewSource)
 }
 
 // GridLengthHelper is the Microsoft.UI.Xaml.GridLengthHelper runtime class, surfaced through its
@@ -1005,6 +1202,12 @@ func (self *FrameworkViewSource) AsFrameworkViewSource() (*wrtapplicationmodelco
 // the embedded IInspectable → IUnknown chain).
 type GridLengthHelper struct {
 	IGridLengthHelper
+}
+
+// AsGridLengthHelper queries the instance's IGridLengthHelper interface.
+// The returned reference is owned by the caller.
+func (self *GridLengthHelper) AsGridLengthHelper() (*IGridLengthHelper, error) {
+	return winrt.QueryInterface[IGridLengthHelper](unsafe.Pointer(self), &IID_IGridLengthHelper)
 }
 
 // GridLengthHelperStatics returns the Microsoft.UI.Xaml.IGridLengthHelperStatics statics of the
@@ -1026,11 +1229,23 @@ type LaunchActivatedEventArgs struct {
 	ILaunchActivatedEventArgs
 }
 
+// AsLaunchActivatedEventArgs queries the instance's ILaunchActivatedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *LaunchActivatedEventArgs) AsLaunchActivatedEventArgs() (*ILaunchActivatedEventArgs, error) {
+	return winrt.QueryInterface[ILaunchActivatedEventArgs](unsafe.Pointer(self), &IID_ILaunchActivatedEventArgs)
+}
+
 // MediaFailedRoutedEventArgs is the Microsoft.UI.Xaml.MediaFailedRoutedEventArgs runtime class, surfaced through its
 // default interface IMediaFailedRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MediaFailedRoutedEventArgs struct {
 	IMediaFailedRoutedEventArgs
+}
+
+// AsMediaFailedRoutedEventArgs queries the instance's IMediaFailedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *MediaFailedRoutedEventArgs) AsMediaFailedRoutedEventArgs() (*IMediaFailedRoutedEventArgs, error) {
+	return winrt.QueryInterface[IMediaFailedRoutedEventArgs](unsafe.Pointer(self), &IID_IMediaFailedRoutedEventArgs)
 }
 
 // AsExceptionRoutedEventArgs queries the instance's IExceptionRoutedEventArgs interface.
@@ -1054,6 +1269,12 @@ type PointHelper struct {
 	IPointHelper
 }
 
+// AsPointHelper queries the instance's IPointHelper interface.
+// The returned reference is owned by the caller.
+func (self *PointHelper) AsPointHelper() (*IPointHelper, error) {
+	return winrt.QueryInterface[IPointHelper](unsafe.Pointer(self), &IID_IPointHelper)
+}
+
 // PointHelperStatics returns the Microsoft.UI.Xaml.IPointHelperStatics statics of the
 // Microsoft.UI.Xaml.PointHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1071,6 +1292,12 @@ func PointHelperStatics() (*IPointHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type PropertyMetadata struct {
 	IPropertyMetadata
+}
+
+// AsPropertyMetadata queries the instance's IPropertyMetadata interface.
+// The returned reference is owned by the caller.
+func (self *PropertyMetadata) AsPropertyMetadata() (*IPropertyMetadata, error) {
+	return winrt.QueryInterface[IPropertyMetadata](unsafe.Pointer(self), &IID_IPropertyMetadata)
 }
 
 // PropertyMetadataStatics returns the Microsoft.UI.Xaml.IPropertyMetadataStatics statics of the
@@ -1142,6 +1369,12 @@ type PropertyPath struct {
 	IPropertyPath
 }
 
+// AsPropertyPath queries the instance's IPropertyPath interface.
+// The returned reference is owned by the caller.
+func (self *PropertyPath) AsPropertyPath() (*IPropertyPath, error) {
+	return winrt.QueryInterface[IPropertyPath](unsafe.Pointer(self), &IID_IPropertyPath)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -1173,6 +1406,12 @@ type RectHelper struct {
 	IRectHelper
 }
 
+// AsRectHelper queries the instance's IRectHelper interface.
+// The returned reference is owned by the caller.
+func (self *RectHelper) AsRectHelper() (*IRectHelper, error) {
+	return winrt.QueryInterface[IRectHelper](unsafe.Pointer(self), &IID_IRectHelper)
+}
+
 // RectHelperStatics returns the Microsoft.UI.Xaml.IRectHelperStatics statics of the
 // Microsoft.UI.Xaml.RectHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1190,6 +1429,12 @@ func RectHelperStatics() (*IRectHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ResourceDictionary struct {
 	IResourceDictionary
+}
+
+// AsResourceDictionary queries the instance's IResourceDictionary interface.
+// The returned reference is owned by the caller.
+func (self *ResourceDictionary) AsResourceDictionary() (*IResourceDictionary, error) {
+	return winrt.QueryInterface[IResourceDictionary](unsafe.Pointer(self), &IID_IResourceDictionary)
 }
 
 // AsMapOfObjectAndObject queries the instance's IMapOfObjectAndObject interface.
@@ -1243,6 +1488,12 @@ type ResourceManagerRequestedEventArgs struct {
 	IResourceManagerRequestedEventArgs
 }
 
+// AsResourceManagerRequestedEventArgs queries the instance's IResourceManagerRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ResourceManagerRequestedEventArgs) AsResourceManagerRequestedEventArgs() (*IResourceManagerRequestedEventArgs, error) {
+	return winrt.QueryInterface[IResourceManagerRequestedEventArgs](unsafe.Pointer(self), &IID_IResourceManagerRequestedEventArgs)
+}
+
 // RoutedEvent is the Microsoft.UI.Xaml.RoutedEvent runtime class, surfaced through its
 // default interface IRoutedEvent. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1250,11 +1501,23 @@ type RoutedEvent struct {
 	IRoutedEvent
 }
 
+// AsRoutedEvent queries the instance's IRoutedEvent interface.
+// The returned reference is owned by the caller.
+func (self *RoutedEvent) AsRoutedEvent() (*IRoutedEvent, error) {
+	return winrt.QueryInterface[IRoutedEvent](unsafe.Pointer(self), &IID_IRoutedEvent)
+}
+
 // RoutedEventArgs is the Microsoft.UI.Xaml.RoutedEventArgs runtime class, surfaced through its
 // default interface IRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type RoutedEventArgs struct {
 	IRoutedEventArgs
+}
+
+// AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error) {
+	return winrt.QueryInterface[IRoutedEventArgs](unsafe.Pointer(self), &IID_IRoutedEventArgs)
 }
 
 // NewRoutedEventArgs constructs a Microsoft.UI.Xaml.RoutedEventArgs instance through
@@ -1287,6 +1550,12 @@ func NewRoutedEventArgs() (*RoutedEventArgs, error) {
 // the embedded IInspectable → IUnknown chain).
 type ScalarTransition struct {
 	IScalarTransition
+}
+
+// AsScalarTransition queries the instance's IScalarTransition interface.
+// The returned reference is owned by the caller.
+func (self *ScalarTransition) AsScalarTransition() (*IScalarTransition, error) {
+	return winrt.QueryInterface[IScalarTransition](unsafe.Pointer(self), &IID_IScalarTransition)
 }
 
 // NewScalarTransition constructs a Microsoft.UI.Xaml.ScalarTransition instance through
@@ -1330,6 +1599,12 @@ func NewSetter() (*Setter, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Setter](unsafe.Pointer(instance), &IID_ISetter)
+}
+
+// AsSetter queries the instance's ISetter interface.
+// The returned reference is owned by the caller.
+func (self *Setter) AsSetter() (*ISetter, error) {
+	return winrt.QueryInterface[ISetter](unsafe.Pointer(self), &IID_ISetter)
 }
 
 // AsSetterBase queries the instance's ISetterBase interface.
@@ -1382,6 +1657,12 @@ type SetterBase struct {
 	ISetterBase
 }
 
+// AsSetterBase queries the instance's ISetterBase interface.
+// The returned reference is owned by the caller.
+func (self *SetterBase) AsSetterBase() (*ISetterBase, error) {
+	return winrt.QueryInterface[ISetterBase](unsafe.Pointer(self), &IID_ISetterBase)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -1407,6 +1688,12 @@ func NewSetterBaseCollection() (*SetterBaseCollection, error) {
 	return winrt.QueryInterface[SetterBaseCollection](unsafe.Pointer(instance), &IID_ISetterBaseCollection)
 }
 
+// AsSetterBaseCollection queries the instance's ISetterBaseCollection interface.
+// The returned reference is owned by the caller.
+func (self *SetterBaseCollection) AsSetterBaseCollection() (*ISetterBaseCollection, error) {
+	return winrt.QueryInterface[ISetterBaseCollection](unsafe.Pointer(self), &IID_ISetterBaseCollection)
+}
+
 // AsVectorOfSetterBase queries the instance's IVectorOfSetterBase interface.
 // The returned reference is owned by the caller.
 func (self *SetterBaseCollection) AsVectorOfSetterBase() (*IVectorOfSetterBase, error) {
@@ -1426,6 +1713,12 @@ type SizeChangedEventArgs struct {
 	ISizeChangedEventArgs
 }
 
+// AsSizeChangedEventArgs queries the instance's ISizeChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SizeChangedEventArgs) AsSizeChangedEventArgs() (*ISizeChangedEventArgs, error) {
+	return winrt.QueryInterface[ISizeChangedEventArgs](unsafe.Pointer(self), &IID_ISizeChangedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -1438,6 +1731,12 @@ func (self *SizeChangedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error)
 // the embedded IInspectable → IUnknown chain).
 type SizeHelper struct {
 	ISizeHelper
+}
+
+// AsSizeHelper queries the instance's ISizeHelper interface.
+// The returned reference is owned by the caller.
+func (self *SizeHelper) AsSizeHelper() (*ISizeHelper, error) {
+	return winrt.QueryInterface[ISizeHelper](unsafe.Pointer(self), &IID_ISizeHelper)
 }
 
 // SizeHelperStatics returns the Microsoft.UI.Xaml.ISizeHelperStatics statics of the
@@ -1468,6 +1767,12 @@ func NewStateTrigger() (*StateTrigger, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[StateTrigger](unsafe.Pointer(instance), &IID_IStateTrigger)
+}
+
+// AsStateTrigger queries the instance's IStateTrigger interface.
+// The returned reference is owned by the caller.
+func (self *StateTrigger) AsStateTrigger() (*IStateTrigger, error) {
+	return winrt.QueryInterface[IStateTrigger](unsafe.Pointer(self), &IID_IStateTrigger)
 }
 
 // AsStateTriggerBase queries the instance's IStateTriggerBase interface.
@@ -1508,6 +1813,12 @@ func StateTriggerStatics() (*IStateTriggerStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type StateTriggerBase struct {
 	IStateTriggerBase
+}
+
+// AsStateTriggerBase queries the instance's IStateTriggerBase interface.
+// The returned reference is owned by the caller.
+func (self *StateTriggerBase) AsStateTriggerBase() (*IStateTriggerBase, error) {
+	return winrt.QueryInterface[IStateTriggerBase](unsafe.Pointer(self), &IID_IStateTriggerBase)
 }
 
 // AsStateTriggerBaseProtected queries the instance's IStateTriggerBaseProtected interface.
@@ -1566,6 +1877,12 @@ func NewStyle() (*Style, error) {
 	return winrt.QueryInterface[Style](unsafe.Pointer(instance), &IID_IStyle)
 }
 
+// AsStyle queries the instance's IStyle interface.
+// The returned reference is owned by the caller.
+func (self *Style) AsStyle() (*IStyle, error) {
+	return winrt.QueryInterface[IStyle](unsafe.Pointer(self), &IID_IStyle)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -1608,6 +1925,12 @@ func NewTargetPropertyPath() (*TargetPropertyPath, error) {
 	return winrt.QueryInterface[TargetPropertyPath](unsafe.Pointer(instance), &IID_ITargetPropertyPath)
 }
 
+// AsTargetPropertyPath queries the instance's ITargetPropertyPath interface.
+// The returned reference is owned by the caller.
+func (self *TargetPropertyPath) AsTargetPropertyPath() (*ITargetPropertyPath, error) {
+	return winrt.QueryInterface[ITargetPropertyPath](unsafe.Pointer(self), &IID_ITargetPropertyPath)
+}
+
 // CreateInstanceTargetPropertyPath constructs a Microsoft.UI.Xaml.TargetPropertyPath instance through
 // Microsoft.UI.Xaml.ITargetPropertyPathFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -1632,6 +1955,12 @@ type ThicknessHelper struct {
 	IThicknessHelper
 }
 
+// AsThicknessHelper queries the instance's IThicknessHelper interface.
+// The returned reference is owned by the caller.
+func (self *ThicknessHelper) AsThicknessHelper() (*IThicknessHelper, error) {
+	return winrt.QueryInterface[IThicknessHelper](unsafe.Pointer(self), &IID_IThicknessHelper)
+}
+
 // ThicknessHelperStatics returns the Microsoft.UI.Xaml.IThicknessHelperStatics statics of the
 // Microsoft.UI.Xaml.ThicknessHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -1649,6 +1978,12 @@ func ThicknessHelperStatics() (*IThicknessHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type TriggerAction struct {
 	ITriggerAction
+}
+
+// AsTriggerAction queries the instance's ITriggerAction interface.
+// The returned reference is owned by the caller.
+func (self *TriggerAction) AsTriggerAction() (*ITriggerAction, error) {
+	return winrt.QueryInterface[ITriggerAction](unsafe.Pointer(self), &IID_ITriggerAction)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -1676,6 +2011,12 @@ func NewTriggerActionCollection() (*TriggerActionCollection, error) {
 	return winrt.QueryInterface[TriggerActionCollection](unsafe.Pointer(instance), &IID_IVectorOfTriggerAction)
 }
 
+// AsVectorOfTriggerAction queries the instance's IVectorOfTriggerAction interface.
+// The returned reference is owned by the caller.
+func (self *TriggerActionCollection) AsVectorOfTriggerAction() (*IVectorOfTriggerAction, error) {
+	return winrt.QueryInterface[IVectorOfTriggerAction](unsafe.Pointer(self), &IID_IVectorOfTriggerAction)
+}
+
 // AsIterableOfTriggerAction queries the instance's IIterableOfTriggerAction interface.
 // The returned reference is owned by the caller.
 func (self *TriggerActionCollection) AsIterableOfTriggerAction() (*IIterableOfTriggerAction, error) {
@@ -1687,6 +2028,12 @@ func (self *TriggerActionCollection) AsIterableOfTriggerAction() (*IIterableOfTr
 // the embedded IInspectable → IUnknown chain).
 type TriggerBase struct {
 	ITriggerBase
+}
+
+// AsTriggerBase queries the instance's ITriggerBase interface.
+// The returned reference is owned by the caller.
+func (self *TriggerBase) AsTriggerBase() (*ITriggerBase, error) {
+	return winrt.QueryInterface[ITriggerBase](unsafe.Pointer(self), &IID_ITriggerBase)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -1703,6 +2050,12 @@ type TriggerCollection struct {
 	IVectorOfTriggerBase
 }
 
+// AsVectorOfTriggerBase queries the instance's IVectorOfTriggerBase interface.
+// The returned reference is owned by the caller.
+func (self *TriggerCollection) AsVectorOfTriggerBase() (*IVectorOfTriggerBase, error) {
+	return winrt.QueryInterface[IVectorOfTriggerBase](unsafe.Pointer(self), &IID_IVectorOfTriggerBase)
+}
+
 // AsIterableOfTriggerBase queries the instance's IIterableOfTriggerBase interface.
 // The returned reference is owned by the caller.
 func (self *TriggerCollection) AsIterableOfTriggerBase() (*IIterableOfTriggerBase, error) {
@@ -1714,6 +2067,12 @@ func (self *TriggerCollection) AsIterableOfTriggerBase() (*IIterableOfTriggerBas
 // the embedded IInspectable → IUnknown chain).
 type UIElement struct {
 	IUIElement
+}
+
+// AsUIElement queries the instance's IUIElement interface.
+// The returned reference is owned by the caller.
+func (self *UIElement) AsUIElement() (*IUIElement, error) {
+	return winrt.QueryInterface[IUIElement](unsafe.Pointer(self), &IID_IUIElement)
 }
 
 // AsUIElementProtected queries the instance's IUIElementProtected interface.
@@ -1772,6 +2131,12 @@ type UIElementWeakCollection struct {
 	IVectorOfUIElement
 }
 
+// AsVectorOfUIElement queries the instance's IVectorOfUIElement interface.
+// The returned reference is owned by the caller.
+func (self *UIElementWeakCollection) AsVectorOfUIElement() (*IVectorOfUIElement, error) {
+	return winrt.QueryInterface[IVectorOfUIElement](unsafe.Pointer(self), &IID_IVectorOfUIElement)
+}
+
 // AsIterableOfUIElement queries the instance's IIterableOfUIElement interface.
 // The returned reference is owned by the caller.
 func (self *UIElementWeakCollection) AsIterableOfUIElement() (*IIterableOfUIElement, error) {
@@ -1810,11 +2175,23 @@ type UnhandledExceptionEventArgs struct {
 	IUnhandledExceptionEventArgs
 }
 
+// AsUnhandledExceptionEventArgs queries the instance's IUnhandledExceptionEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *UnhandledExceptionEventArgs) AsUnhandledExceptionEventArgs() (*IUnhandledExceptionEventArgs, error) {
+	return winrt.QueryInterface[IUnhandledExceptionEventArgs](unsafe.Pointer(self), &IID_IUnhandledExceptionEventArgs)
+}
+
 // Vector3Transition is the Microsoft.UI.Xaml.Vector3Transition runtime class, surfaced through its
 // default interface IVector3Transition. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Vector3Transition struct {
 	IVector3Transition
+}
+
+// AsVector3Transition queries the instance's IVector3Transition interface.
+// The returned reference is owned by the caller.
+func (self *Vector3Transition) AsVector3Transition() (*IVector3Transition, error) {
+	return winrt.QueryInterface[IVector3Transition](unsafe.Pointer(self), &IID_IVector3Transition)
 }
 
 // NewVector3Transition constructs a Microsoft.UI.Xaml.Vector3Transition instance through
@@ -1860,6 +2237,12 @@ func NewVisualState() (*VisualState, error) {
 	return winrt.QueryInterface[VisualState](unsafe.Pointer(instance), &IID_IVisualState)
 }
 
+// AsVisualState queries the instance's IVisualState interface.
+// The returned reference is owned by the caller.
+func (self *VisualState) AsVisualState() (*IVisualState, error) {
+	return winrt.QueryInterface[IVisualState](unsafe.Pointer(self), &IID_IVisualState)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -1885,6 +2268,12 @@ func NewVisualStateChangedEventArgs() (*VisualStateChangedEventArgs, error) {
 	return winrt.QueryInterface[VisualStateChangedEventArgs](unsafe.Pointer(instance), &IID_IVisualStateChangedEventArgs)
 }
 
+// AsVisualStateChangedEventArgs queries the instance's IVisualStateChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *VisualStateChangedEventArgs) AsVisualStateChangedEventArgs() (*IVisualStateChangedEventArgs, error) {
+	return winrt.QueryInterface[IVisualStateChangedEventArgs](unsafe.Pointer(self), &IID_IVisualStateChangedEventArgs)
+}
+
 // VisualStateGroup is the Microsoft.UI.Xaml.VisualStateGroup runtime class, surfaced through its
 // default interface IVisualStateGroup. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -1903,6 +2292,12 @@ func NewVisualStateGroup() (*VisualStateGroup, error) {
 	return winrt.QueryInterface[VisualStateGroup](unsafe.Pointer(instance), &IID_IVisualStateGroup)
 }
 
+// AsVisualStateGroup queries the instance's IVisualStateGroup interface.
+// The returned reference is owned by the caller.
+func (self *VisualStateGroup) AsVisualStateGroup() (*IVisualStateGroup, error) {
+	return winrt.QueryInterface[IVisualStateGroup](unsafe.Pointer(self), &IID_IVisualStateGroup)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -1915,6 +2310,12 @@ func (self *VisualStateGroup) AsDependencyObject() (*IDependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type VisualStateManager struct {
 	IVisualStateManager
+}
+
+// AsVisualStateManager queries the instance's IVisualStateManager interface.
+// The returned reference is owned by the caller.
+func (self *VisualStateManager) AsVisualStateManager() (*IVisualStateManager, error) {
+	return winrt.QueryInterface[IVisualStateManager](unsafe.Pointer(self), &IID_IVisualStateManager)
 }
 
 // AsVisualStateManagerProtected queries the instance's IVisualStateManagerProtected interface.
@@ -1980,6 +2381,12 @@ type VisualTransition struct {
 	IVisualTransition
 }
 
+// AsVisualTransition queries the instance's IVisualTransition interface.
+// The returned reference is owned by the caller.
+func (self *VisualTransition) AsVisualTransition() (*IVisualTransition, error) {
+	return winrt.QueryInterface[IVisualTransition](unsafe.Pointer(self), &IID_IVisualTransition)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -2017,6 +2424,12 @@ func NewVisualTransition() (*VisualTransition, error) {
 // the embedded IInspectable → IUnknown chain).
 type Window struct {
 	IWindow
+}
+
+// AsWindow queries the instance's IWindow interface.
+// The returned reference is owned by the caller.
+func (self *Window) AsWindow() (*IWindow, error) {
+	return winrt.QueryInterface[IWindow](unsafe.Pointer(self), &IID_IWindow)
 }
 
 // AsWindow2 queries the instance's IWindow2 interface.
@@ -2069,11 +2482,23 @@ type WindowActivatedEventArgs struct {
 	IWindowActivatedEventArgs
 }
 
+// AsWindowActivatedEventArgs queries the instance's IWindowActivatedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *WindowActivatedEventArgs) AsWindowActivatedEventArgs() (*IWindowActivatedEventArgs, error) {
+	return winrt.QueryInterface[IWindowActivatedEventArgs](unsafe.Pointer(self), &IID_IWindowActivatedEventArgs)
+}
+
 // WindowEventArgs is the Microsoft.UI.Xaml.WindowEventArgs runtime class, surfaced through its
 // default interface IWindowEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type WindowEventArgs struct {
 	IWindowEventArgs
+}
+
+// AsWindowEventArgs queries the instance's IWindowEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *WindowEventArgs) AsWindowEventArgs() (*IWindowEventArgs, error) {
+	return winrt.QueryInterface[IWindowEventArgs](unsafe.Pointer(self), &IID_IWindowEventArgs)
 }
 
 // WindowSizeChangedEventArgs is the Microsoft.UI.Xaml.WindowSizeChangedEventArgs runtime class, surfaced through its
@@ -2083,6 +2508,12 @@ type WindowSizeChangedEventArgs struct {
 	IWindowSizeChangedEventArgs
 }
 
+// AsWindowSizeChangedEventArgs queries the instance's IWindowSizeChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *WindowSizeChangedEventArgs) AsWindowSizeChangedEventArgs() (*IWindowSizeChangedEventArgs, error) {
+	return winrt.QueryInterface[IWindowSizeChangedEventArgs](unsafe.Pointer(self), &IID_IWindowSizeChangedEventArgs)
+}
+
 // WindowVisibilityChangedEventArgs is the Microsoft.UI.Xaml.WindowVisibilityChangedEventArgs runtime class, surfaced through its
 // default interface IWindowVisibilityChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -2090,11 +2521,23 @@ type WindowVisibilityChangedEventArgs struct {
 	IWindowVisibilityChangedEventArgs
 }
 
+// AsWindowVisibilityChangedEventArgs queries the instance's IWindowVisibilityChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *WindowVisibilityChangedEventArgs) AsWindowVisibilityChangedEventArgs() (*IWindowVisibilityChangedEventArgs, error) {
+	return winrt.QueryInterface[IWindowVisibilityChangedEventArgs](unsafe.Pointer(self), &IID_IWindowVisibilityChangedEventArgs)
+}
+
 // XamlIsland is the Microsoft.UI.Xaml.XamlIsland runtime class, surfaced through its
 // default interface IXamlIsland. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type XamlIsland struct {
 	IXamlIsland
+}
+
+// AsXamlIsland queries the instance's IXamlIsland interface.
+// The returned reference is owned by the caller.
+func (self *XamlIsland) AsXamlIsland() (*IXamlIsland, error) {
+	return winrt.QueryInterface[IXamlIsland](unsafe.Pointer(self), &IID_IXamlIsland)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -2135,11 +2578,23 @@ type XamlResourceReferenceFailedEventArgs struct {
 	IXamlResourceReferenceFailedEventArgs
 }
 
+// AsXamlResourceReferenceFailedEventArgs queries the instance's IXamlResourceReferenceFailedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *XamlResourceReferenceFailedEventArgs) AsXamlResourceReferenceFailedEventArgs() (*IXamlResourceReferenceFailedEventArgs, error) {
+	return winrt.QueryInterface[IXamlResourceReferenceFailedEventArgs](unsafe.Pointer(self), &IID_IXamlResourceReferenceFailedEventArgs)
+}
+
 // XamlRoot is the Microsoft.UI.Xaml.XamlRoot runtime class, surfaced through its
 // default interface IXamlRoot. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type XamlRoot struct {
 	IXamlRoot
+}
+
+// AsXamlRoot queries the instance's IXamlRoot interface.
+// The returned reference is owned by the caller.
+func (self *XamlRoot) AsXamlRoot() (*IXamlRoot, error) {
+	return winrt.QueryInterface[IXamlRoot](unsafe.Pointer(self), &IID_IXamlRoot)
 }
 
 // AsXamlRoot2 queries the instance's IXamlRoot2 interface.
@@ -2167,11 +2622,23 @@ type XamlRootChangedEventArgs struct {
 	IXamlRootChangedEventArgs
 }
 
+// AsXamlRootChangedEventArgs queries the instance's IXamlRootChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *XamlRootChangedEventArgs) AsXamlRootChangedEventArgs() (*IXamlRootChangedEventArgs, error) {
+	return winrt.QueryInterface[IXamlRootChangedEventArgs](unsafe.Pointer(self), &IID_IXamlRootChangedEventArgs)
+}
+
 // AnnotationPatternIdentifiers is the Microsoft.UI.Xaml.Automation.AnnotationPatternIdentifiers runtime class, surfaced through its
 // default interface IAnnotationPatternIdentifiers. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnnotationPatternIdentifiers struct {
 	IAnnotationPatternIdentifiers
+}
+
+// AsAnnotationPatternIdentifiers queries the instance's IAnnotationPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *AnnotationPatternIdentifiers) AsAnnotationPatternIdentifiers() (*IAnnotationPatternIdentifiers, error) {
+	return winrt.QueryInterface[IAnnotationPatternIdentifiers](unsafe.Pointer(self), &IID_IAnnotationPatternIdentifiers)
 }
 
 // AnnotationPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IAnnotationPatternIdentifiersStatics statics of the
@@ -2202,6 +2669,12 @@ func NewAutomationAnnotation() (*AutomationAnnotation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AutomationAnnotation](unsafe.Pointer(instance), &IID_IAutomationAnnotation)
+}
+
+// AsAutomationAnnotation queries the instance's IAutomationAnnotation interface.
+// The returned reference is owned by the caller.
+func (self *AutomationAnnotation) AsAutomationAnnotation() (*IAutomationAnnotation, error) {
+	return winrt.QueryInterface[IAutomationAnnotation](unsafe.Pointer(self), &IID_IAutomationAnnotation)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -2264,6 +2737,12 @@ type AutomationElementIdentifiers struct {
 	IAutomationElementIdentifiers
 }
 
+// AsAutomationElementIdentifiers queries the instance's IAutomationElementIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *AutomationElementIdentifiers) AsAutomationElementIdentifiers() (*IAutomationElementIdentifiers, error) {
+	return winrt.QueryInterface[IAutomationElementIdentifiers](unsafe.Pointer(self), &IID_IAutomationElementIdentifiers)
+}
+
 // AutomationElementIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IAutomationElementIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.AutomationElementIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2281,6 +2760,12 @@ func AutomationElementIdentifiersStatics() (*IAutomationElementIdentifiersStatic
 // the embedded IInspectable → IUnknown chain).
 type AutomationProperties struct {
 	IAutomationProperties
+}
+
+// AsAutomationProperties queries the instance's IAutomationProperties interface.
+// The returned reference is owned by the caller.
+func (self *AutomationProperties) AsAutomationProperties() (*IAutomationProperties, error) {
+	return winrt.QueryInterface[IAutomationProperties](unsafe.Pointer(self), &IID_IAutomationProperties)
 }
 
 // AutomationPropertiesStatics returns the Microsoft.UI.Xaml.Automation.IAutomationPropertiesStatics statics of the
@@ -2314,11 +2799,23 @@ type AutomationProperty struct {
 	IAutomationProperty
 }
 
+// AsAutomationProperty queries the instance's IAutomationProperty interface.
+// The returned reference is owned by the caller.
+func (self *AutomationProperty) AsAutomationProperty() (*IAutomationProperty, error) {
+	return winrt.QueryInterface[IAutomationProperty](unsafe.Pointer(self), &IID_IAutomationProperty)
+}
+
 // DockPatternIdentifiers is the Microsoft.UI.Xaml.Automation.DockPatternIdentifiers runtime class, surfaced through its
 // default interface IDockPatternIdentifiers. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DockPatternIdentifiers struct {
 	IDockPatternIdentifiers
+}
+
+// AsDockPatternIdentifiers queries the instance's IDockPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *DockPatternIdentifiers) AsDockPatternIdentifiers() (*IDockPatternIdentifiers, error) {
+	return winrt.QueryInterface[IDockPatternIdentifiers](unsafe.Pointer(self), &IID_IDockPatternIdentifiers)
 }
 
 // DockPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IDockPatternIdentifiersStatics statics of the
@@ -2340,6 +2837,12 @@ type DragPatternIdentifiers struct {
 	IDragPatternIdentifiers
 }
 
+// AsDragPatternIdentifiers queries the instance's IDragPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *DragPatternIdentifiers) AsDragPatternIdentifiers() (*IDragPatternIdentifiers, error) {
+	return winrt.QueryInterface[IDragPatternIdentifiers](unsafe.Pointer(self), &IID_IDragPatternIdentifiers)
+}
+
 // DragPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IDragPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.DragPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2357,6 +2860,12 @@ func DragPatternIdentifiersStatics() (*IDragPatternIdentifiersStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type DropTargetPatternIdentifiers struct {
 	IDropTargetPatternIdentifiers
+}
+
+// AsDropTargetPatternIdentifiers queries the instance's IDropTargetPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *DropTargetPatternIdentifiers) AsDropTargetPatternIdentifiers() (*IDropTargetPatternIdentifiers, error) {
+	return winrt.QueryInterface[IDropTargetPatternIdentifiers](unsafe.Pointer(self), &IID_IDropTargetPatternIdentifiers)
 }
 
 // DropTargetPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IDropTargetPatternIdentifiersStatics statics of the
@@ -2378,6 +2887,12 @@ type ExpandCollapsePatternIdentifiers struct {
 	IExpandCollapsePatternIdentifiers
 }
 
+// AsExpandCollapsePatternIdentifiers queries the instance's IExpandCollapsePatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *ExpandCollapsePatternIdentifiers) AsExpandCollapsePatternIdentifiers() (*IExpandCollapsePatternIdentifiers, error) {
+	return winrt.QueryInterface[IExpandCollapsePatternIdentifiers](unsafe.Pointer(self), &IID_IExpandCollapsePatternIdentifiers)
+}
+
 // ExpandCollapsePatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IExpandCollapsePatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.ExpandCollapsePatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2395,6 +2910,12 @@ func ExpandCollapsePatternIdentifiersStatics() (*IExpandCollapsePatternIdentifie
 // the embedded IInspectable → IUnknown chain).
 type GridItemPatternIdentifiers struct {
 	IGridItemPatternIdentifiers
+}
+
+// AsGridItemPatternIdentifiers queries the instance's IGridItemPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *GridItemPatternIdentifiers) AsGridItemPatternIdentifiers() (*IGridItemPatternIdentifiers, error) {
+	return winrt.QueryInterface[IGridItemPatternIdentifiers](unsafe.Pointer(self), &IID_IGridItemPatternIdentifiers)
 }
 
 // GridItemPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IGridItemPatternIdentifiersStatics statics of the
@@ -2416,6 +2937,12 @@ type GridPatternIdentifiers struct {
 	IGridPatternIdentifiers
 }
 
+// AsGridPatternIdentifiers queries the instance's IGridPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *GridPatternIdentifiers) AsGridPatternIdentifiers() (*IGridPatternIdentifiers, error) {
+	return winrt.QueryInterface[IGridPatternIdentifiers](unsafe.Pointer(self), &IID_IGridPatternIdentifiers)
+}
+
 // GridPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IGridPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.GridPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2433,6 +2960,12 @@ func GridPatternIdentifiersStatics() (*IGridPatternIdentifiersStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type MultipleViewPatternIdentifiers struct {
 	IMultipleViewPatternIdentifiers
+}
+
+// AsMultipleViewPatternIdentifiers queries the instance's IMultipleViewPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *MultipleViewPatternIdentifiers) AsMultipleViewPatternIdentifiers() (*IMultipleViewPatternIdentifiers, error) {
+	return winrt.QueryInterface[IMultipleViewPatternIdentifiers](unsafe.Pointer(self), &IID_IMultipleViewPatternIdentifiers)
 }
 
 // MultipleViewPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IMultipleViewPatternIdentifiersStatics statics of the
@@ -2454,6 +2987,12 @@ type RangeValuePatternIdentifiers struct {
 	IRangeValuePatternIdentifiers
 }
 
+// AsRangeValuePatternIdentifiers queries the instance's IRangeValuePatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *RangeValuePatternIdentifiers) AsRangeValuePatternIdentifiers() (*IRangeValuePatternIdentifiers, error) {
+	return winrt.QueryInterface[IRangeValuePatternIdentifiers](unsafe.Pointer(self), &IID_IRangeValuePatternIdentifiers)
+}
+
 // RangeValuePatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IRangeValuePatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.RangeValuePatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2471,6 +3010,12 @@ func RangeValuePatternIdentifiersStatics() (*IRangeValuePatternIdentifiersStatic
 // the embedded IInspectable → IUnknown chain).
 type ScrollPatternIdentifiers struct {
 	IScrollPatternIdentifiers
+}
+
+// AsScrollPatternIdentifiers queries the instance's IScrollPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *ScrollPatternIdentifiers) AsScrollPatternIdentifiers() (*IScrollPatternIdentifiers, error) {
+	return winrt.QueryInterface[IScrollPatternIdentifiers](unsafe.Pointer(self), &IID_IScrollPatternIdentifiers)
 }
 
 // ScrollPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IScrollPatternIdentifiersStatics statics of the
@@ -2492,6 +3037,12 @@ type SelectionItemPatternIdentifiers struct {
 	ISelectionItemPatternIdentifiers
 }
 
+// AsSelectionItemPatternIdentifiers queries the instance's ISelectionItemPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *SelectionItemPatternIdentifiers) AsSelectionItemPatternIdentifiers() (*ISelectionItemPatternIdentifiers, error) {
+	return winrt.QueryInterface[ISelectionItemPatternIdentifiers](unsafe.Pointer(self), &IID_ISelectionItemPatternIdentifiers)
+}
+
 // SelectionItemPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ISelectionItemPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.SelectionItemPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2509,6 +3060,12 @@ func SelectionItemPatternIdentifiersStatics() (*ISelectionItemPatternIdentifiers
 // the embedded IInspectable → IUnknown chain).
 type SelectionPatternIdentifiers struct {
 	ISelectionPatternIdentifiers
+}
+
+// AsSelectionPatternIdentifiers queries the instance's ISelectionPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *SelectionPatternIdentifiers) AsSelectionPatternIdentifiers() (*ISelectionPatternIdentifiers, error) {
+	return winrt.QueryInterface[ISelectionPatternIdentifiers](unsafe.Pointer(self), &IID_ISelectionPatternIdentifiers)
 }
 
 // SelectionPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ISelectionPatternIdentifiersStatics statics of the
@@ -2530,6 +3087,12 @@ type SpreadsheetItemPatternIdentifiers struct {
 	ISpreadsheetItemPatternIdentifiers
 }
 
+// AsSpreadsheetItemPatternIdentifiers queries the instance's ISpreadsheetItemPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *SpreadsheetItemPatternIdentifiers) AsSpreadsheetItemPatternIdentifiers() (*ISpreadsheetItemPatternIdentifiers, error) {
+	return winrt.QueryInterface[ISpreadsheetItemPatternIdentifiers](unsafe.Pointer(self), &IID_ISpreadsheetItemPatternIdentifiers)
+}
+
 // SpreadsheetItemPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ISpreadsheetItemPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.SpreadsheetItemPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2547,6 +3110,12 @@ func SpreadsheetItemPatternIdentifiersStatics() (*ISpreadsheetItemPatternIdentif
 // the embedded IInspectable → IUnknown chain).
 type StylesPatternIdentifiers struct {
 	IStylesPatternIdentifiers
+}
+
+// AsStylesPatternIdentifiers queries the instance's IStylesPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *StylesPatternIdentifiers) AsStylesPatternIdentifiers() (*IStylesPatternIdentifiers, error) {
+	return winrt.QueryInterface[IStylesPatternIdentifiers](unsafe.Pointer(self), &IID_IStylesPatternIdentifiers)
 }
 
 // StylesPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IStylesPatternIdentifiersStatics statics of the
@@ -2568,6 +3137,12 @@ type TableItemPatternIdentifiers struct {
 	ITableItemPatternIdentifiers
 }
 
+// AsTableItemPatternIdentifiers queries the instance's ITableItemPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *TableItemPatternIdentifiers) AsTableItemPatternIdentifiers() (*ITableItemPatternIdentifiers, error) {
+	return winrt.QueryInterface[ITableItemPatternIdentifiers](unsafe.Pointer(self), &IID_ITableItemPatternIdentifiers)
+}
+
 // TableItemPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ITableItemPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.TableItemPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2585,6 +3160,12 @@ func TableItemPatternIdentifiersStatics() (*ITableItemPatternIdentifiersStatics,
 // the embedded IInspectable → IUnknown chain).
 type TablePatternIdentifiers struct {
 	ITablePatternIdentifiers
+}
+
+// AsTablePatternIdentifiers queries the instance's ITablePatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *TablePatternIdentifiers) AsTablePatternIdentifiers() (*ITablePatternIdentifiers, error) {
+	return winrt.QueryInterface[ITablePatternIdentifiers](unsafe.Pointer(self), &IID_ITablePatternIdentifiers)
 }
 
 // TablePatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ITablePatternIdentifiersStatics statics of the
@@ -2606,6 +3187,12 @@ type TogglePatternIdentifiers struct {
 	ITogglePatternIdentifiers
 }
 
+// AsTogglePatternIdentifiers queries the instance's ITogglePatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *TogglePatternIdentifiers) AsTogglePatternIdentifiers() (*ITogglePatternIdentifiers, error) {
+	return winrt.QueryInterface[ITogglePatternIdentifiers](unsafe.Pointer(self), &IID_ITogglePatternIdentifiers)
+}
+
 // TogglePatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ITogglePatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.TogglePatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2623,6 +3210,12 @@ func TogglePatternIdentifiersStatics() (*ITogglePatternIdentifiersStatics, error
 // the embedded IInspectable → IUnknown chain).
 type TransformPattern2Identifiers struct {
 	ITransformPattern2Identifiers
+}
+
+// AsTransformPattern2Identifiers queries the instance's ITransformPattern2Identifiers interface.
+// The returned reference is owned by the caller.
+func (self *TransformPattern2Identifiers) AsTransformPattern2Identifiers() (*ITransformPattern2Identifiers, error) {
+	return winrt.QueryInterface[ITransformPattern2Identifiers](unsafe.Pointer(self), &IID_ITransformPattern2Identifiers)
 }
 
 // TransformPattern2IdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ITransformPattern2IdentifiersStatics statics of the
@@ -2644,6 +3237,12 @@ type TransformPatternIdentifiers struct {
 	ITransformPatternIdentifiers
 }
 
+// AsTransformPatternIdentifiers queries the instance's ITransformPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *TransformPatternIdentifiers) AsTransformPatternIdentifiers() (*ITransformPatternIdentifiers, error) {
+	return winrt.QueryInterface[ITransformPatternIdentifiers](unsafe.Pointer(self), &IID_ITransformPatternIdentifiers)
+}
+
 // TransformPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.ITransformPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.TransformPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2661,6 +3260,12 @@ func TransformPatternIdentifiersStatics() (*ITransformPatternIdentifiersStatics,
 // the embedded IInspectable → IUnknown chain).
 type ValuePatternIdentifiers struct {
 	IValuePatternIdentifiers
+}
+
+// AsValuePatternIdentifiers queries the instance's IValuePatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *ValuePatternIdentifiers) AsValuePatternIdentifiers() (*IValuePatternIdentifiers, error) {
+	return winrt.QueryInterface[IValuePatternIdentifiers](unsafe.Pointer(self), &IID_IValuePatternIdentifiers)
 }
 
 // ValuePatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IValuePatternIdentifiersStatics statics of the
@@ -2682,6 +3287,12 @@ type WindowPatternIdentifiers struct {
 	IWindowPatternIdentifiers
 }
 
+// AsWindowPatternIdentifiers queries the instance's IWindowPatternIdentifiers interface.
+// The returned reference is owned by the caller.
+func (self *WindowPatternIdentifiers) AsWindowPatternIdentifiers() (*IWindowPatternIdentifiers, error) {
+	return winrt.QueryInterface[IWindowPatternIdentifiers](unsafe.Pointer(self), &IID_IWindowPatternIdentifiers)
+}
+
 // WindowPatternIdentifiersStatics returns the Microsoft.UI.Xaml.Automation.IWindowPatternIdentifiersStatics statics of the
 // Microsoft.UI.Xaml.Automation.WindowPatternIdentifiers runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -2699,6 +3310,12 @@ func WindowPatternIdentifiersStatics() (*IWindowPatternIdentifiersStatics, error
 // the embedded IInspectable → IUnknown chain).
 type AnimatedVisualPlayerAutomationPeer struct {
 	IAnimatedVisualPlayerAutomationPeer
+}
+
+// AsAnimatedVisualPlayerAutomationPeer queries the instance's IAnimatedVisualPlayerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayerAutomationPeer) AsAnimatedVisualPlayerAutomationPeer() (*IAnimatedVisualPlayerAutomationPeer, error) {
+	return winrt.QueryInterface[IAnimatedVisualPlayerAutomationPeer](unsafe.Pointer(self), &IID_IAnimatedVisualPlayerAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -2766,6 +3383,12 @@ func NewAnimatedVisualPlayerAutomationPeer(owner *IAnimatedVisualPlayer) (*Anima
 // the embedded IInspectable → IUnknown chain).
 type AppBarAutomationPeer struct {
 	IAppBarAutomationPeer
+}
+
+// AsAppBarAutomationPeer queries the instance's IAppBarAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *AppBarAutomationPeer) AsAppBarAutomationPeer() (*IAppBarAutomationPeer, error) {
+	return winrt.QueryInterface[IAppBarAutomationPeer](unsafe.Pointer(self), &IID_IAppBarAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -2851,6 +3474,12 @@ func NewAppBarAutomationPeerWithOwner(owner *IAppBar) (*AppBarAutomationPeer, er
 // the embedded IInspectable → IUnknown chain).
 type AppBarButtonAutomationPeer struct {
 	IAppBarButtonAutomationPeer
+}
+
+// AsAppBarButtonAutomationPeer queries the instance's IAppBarButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonAutomationPeer) AsAppBarButtonAutomationPeer() (*IAppBarButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IAppBarButtonAutomationPeer](unsafe.Pointer(self), &IID_IAppBarButtonAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -2947,6 +3576,12 @@ type AppBarToggleButtonAutomationPeer struct {
 	IAppBarToggleButtonAutomationPeer
 }
 
+// AsAppBarToggleButtonAutomationPeer queries the instance's IAppBarToggleButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonAutomationPeer) AsAppBarToggleButtonAutomationPeer() (*IAppBarToggleButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IAppBarToggleButtonAutomationPeer](unsafe.Pointer(self), &IID_IAppBarToggleButtonAutomationPeer)
+}
+
 // AsToggleButtonAutomationPeer queries the instance's IToggleButtonAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer.
 // The returned reference is owned by the caller.
@@ -3035,6 +3670,12 @@ type AutoSuggestBoxAutomationPeer struct {
 	IAutoSuggestBoxAutomationPeer
 }
 
+// AsAutoSuggestBoxAutomationPeer queries the instance's IAutoSuggestBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxAutomationPeer) AsAutoSuggestBoxAutomationPeer() (*IAutoSuggestBoxAutomationPeer, error) {
+	return winrt.QueryInterface[IAutoSuggestBoxAutomationPeer](unsafe.Pointer(self), &IID_IAutoSuggestBoxAutomationPeer)
+}
+
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
 // The returned reference is owned by the caller.
 func (self *AutoSuggestBoxAutomationPeer) AsInvokeProvider() (*IInvokeProvider, error) {
@@ -3098,6 +3739,12 @@ func CreateInstanceWithOwner(owner *IAutoSuggestBox) (*AutoSuggestBoxAutomationP
 // the embedded IInspectable → IUnknown chain).
 type AutomationPeer struct {
 	IAutomationPeer
+}
+
+// AsAutomationPeer queries the instance's IAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *AutomationPeer) AsAutomationPeer() (*IAutomationPeer, error) {
+	return winrt.QueryInterface[IAutomationPeer](unsafe.Pointer(self), &IID_IAutomationPeer)
 }
 
 // AsAutomationPeerProtected queries the instance's IAutomationPeerProtected interface.
@@ -3174,6 +3821,12 @@ func NewAutomationPeerAnnotation() (*AutomationPeerAnnotation, error) {
 	return winrt.QueryInterface[AutomationPeerAnnotation](unsafe.Pointer(instance), &IID_IAutomationPeerAnnotation)
 }
 
+// AsAutomationPeerAnnotation queries the instance's IAutomationPeerAnnotation interface.
+// The returned reference is owned by the caller.
+func (self *AutomationPeerAnnotation) AsAutomationPeerAnnotation() (*IAutomationPeerAnnotation, error) {
+	return winrt.QueryInterface[IAutomationPeerAnnotation](unsafe.Pointer(self), &IID_IAutomationPeerAnnotation)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -3232,6 +3885,12 @@ func CreateWithPeerParameter(type_ AnnotationType, peer *IAutomationPeer) (*Auto
 // the embedded IInspectable → IUnknown chain).
 type BreadcrumbBarItemAutomationPeer struct {
 	IBreadcrumbBarItemAutomationPeer
+}
+
+// AsBreadcrumbBarItemAutomationPeer queries the instance's IBreadcrumbBarItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemAutomationPeer) AsBreadcrumbBarItemAutomationPeer() (*IBreadcrumbBarItemAutomationPeer, error) {
+	return winrt.QueryInterface[IBreadcrumbBarItemAutomationPeer](unsafe.Pointer(self), &IID_IBreadcrumbBarItemAutomationPeer)
 }
 
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
@@ -3305,6 +3964,12 @@ func NewBreadcrumbBarItemAutomationPeer(owner *IBreadcrumbBarItem) (*BreadcrumbB
 // the embedded IInspectable → IUnknown chain).
 type ButtonAutomationPeer struct {
 	IButtonAutomationPeer
+}
+
+// AsButtonAutomationPeer queries the instance's IButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ButtonAutomationPeer) AsButtonAutomationPeer() (*IButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonAutomationPeer](unsafe.Pointer(self), &IID_IButtonAutomationPeer)
 }
 
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
@@ -3387,6 +4052,12 @@ type ButtonBaseAutomationPeer struct {
 	IButtonBaseAutomationPeer
 }
 
+// AsButtonBaseAutomationPeer queries the instance's IButtonBaseAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ButtonBaseAutomationPeer) AsButtonBaseAutomationPeer() (*IButtonBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IButtonBaseAutomationPeer](unsafe.Pointer(self), &IID_IButtonBaseAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -3452,6 +4123,12 @@ func NewButtonBaseAutomationPeerWithOwner(owner *IButtonBase) (*ButtonBaseAutoma
 // the embedded IInspectable → IUnknown chain).
 type CalendarDatePickerAutomationPeer struct {
 	ICalendarDatePickerAutomationPeer
+}
+
+// AsCalendarDatePickerAutomationPeer queries the instance's ICalendarDatePickerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerAutomationPeer) AsCalendarDatePickerAutomationPeer() (*ICalendarDatePickerAutomationPeer, error) {
+	return winrt.QueryInterface[ICalendarDatePickerAutomationPeer](unsafe.Pointer(self), &IID_ICalendarDatePickerAutomationPeer)
 }
 
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
@@ -3531,6 +4208,12 @@ func NewCalendarDatePickerAutomationPeerWithOwner(owner *ICalendarDatePicker) (*
 // the embedded IInspectable → IUnknown chain).
 type CheckBoxAutomationPeer struct {
 	ICheckBoxAutomationPeer
+}
+
+// AsCheckBoxAutomationPeer queries the instance's ICheckBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *CheckBoxAutomationPeer) AsCheckBoxAutomationPeer() (*ICheckBoxAutomationPeer, error) {
+	return winrt.QueryInterface[ICheckBoxAutomationPeer](unsafe.Pointer(self), &IID_ICheckBoxAutomationPeer)
 }
 
 // AsToggleButtonAutomationPeer queries the instance's IToggleButtonAutomationPeer interface.
@@ -3621,6 +4304,12 @@ type ColorPickerSliderAutomationPeer struct {
 	IColorPickerSliderAutomationPeer
 }
 
+// AsColorPickerSliderAutomationPeer queries the instance's IColorPickerSliderAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSliderAutomationPeer) AsColorPickerSliderAutomationPeer() (*IColorPickerSliderAutomationPeer, error) {
+	return winrt.QueryInterface[IColorPickerSliderAutomationPeer](unsafe.Pointer(self), &IID_IColorPickerSliderAutomationPeer)
+}
+
 // AsSliderAutomationPeer queries the instance's ISliderAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.SliderAutomationPeer.
 // The returned reference is owned by the caller.
@@ -3709,6 +4398,12 @@ type ColorSpectrumAutomationPeer struct {
 	IColorSpectrumAutomationPeer
 }
 
+// AsColorSpectrumAutomationPeer queries the instance's IColorSpectrumAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrumAutomationPeer) AsColorSpectrumAutomationPeer() (*IColorSpectrumAutomationPeer, error) {
+	return winrt.QueryInterface[IColorSpectrumAutomationPeer](unsafe.Pointer(self), &IID_IColorSpectrumAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -3774,6 +4469,12 @@ func NewColorSpectrumAutomationPeerWithOwner(owner *IColorSpectrum) (*ColorSpect
 // the embedded IInspectable → IUnknown chain).
 type ComboBoxAutomationPeer struct {
 	IComboBoxAutomationPeer
+}
+
+// AsComboBoxAutomationPeer queries the instance's IComboBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxAutomationPeer) AsComboBoxAutomationPeer() (*IComboBoxAutomationPeer, error) {
+	return winrt.QueryInterface[IComboBoxAutomationPeer](unsafe.Pointer(self), &IID_IComboBoxAutomationPeer)
 }
 
 // AsValueProvider queries the instance's IValueProvider interface.
@@ -3896,6 +4597,12 @@ type ComboBoxItemAutomationPeer struct {
 	IComboBoxItemAutomationPeer
 }
 
+// AsComboBoxItemAutomationPeer queries the instance's IComboBoxItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemAutomationPeer) AsComboBoxItemAutomationPeer() (*IComboBoxItemAutomationPeer, error) {
+	return winrt.QueryInterface[IComboBoxItemAutomationPeer](unsafe.Pointer(self), &IID_IComboBoxItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -3961,6 +4668,12 @@ func NewComboBoxItemAutomationPeerWithOwner(owner *IComboBoxItem) (*ComboBoxItem
 // the embedded IInspectable → IUnknown chain).
 type ComboBoxItemDataAutomationPeer struct {
 	IComboBoxItemDataAutomationPeer
+}
+
+// AsComboBoxItemDataAutomationPeer queries the instance's IComboBoxItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItemDataAutomationPeer) AsComboBoxItemDataAutomationPeer() (*IComboBoxItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[IComboBoxItemDataAutomationPeer](unsafe.Pointer(self), &IID_IComboBoxItemDataAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -4057,6 +4770,12 @@ type DatePickerAutomationPeer struct {
 	IDatePickerAutomationPeer
 }
 
+// AsDatePickerAutomationPeer queries the instance's IDatePickerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerAutomationPeer) AsDatePickerAutomationPeer() (*IDatePickerAutomationPeer, error) {
+	return winrt.QueryInterface[IDatePickerAutomationPeer](unsafe.Pointer(self), &IID_IDatePickerAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -4124,6 +4843,12 @@ type DatePickerFlyoutPresenterAutomationPeer struct {
 	IDatePickerFlyoutPresenterAutomationPeer
 }
 
+// AsDatePickerFlyoutPresenterAutomationPeer queries the instance's IDatePickerFlyoutPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenterAutomationPeer) AsDatePickerFlyoutPresenterAutomationPeer() (*IDatePickerFlyoutPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[IDatePickerFlyoutPresenterAutomationPeer](unsafe.Pointer(self), &IID_IDatePickerFlyoutPresenterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -4164,6 +4889,12 @@ func (self *DatePickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*IDep
 // the embedded IInspectable → IUnknown chain).
 type DropDownButtonAutomationPeer struct {
 	IDropDownButtonAutomationPeer
+}
+
+// AsDropDownButtonAutomationPeer queries the instance's IDropDownButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *DropDownButtonAutomationPeer) AsDropDownButtonAutomationPeer() (*IDropDownButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IDropDownButtonAutomationPeer](unsafe.Pointer(self), &IID_IDropDownButtonAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -4260,6 +4991,12 @@ type ExpanderAutomationPeer struct {
 	IExpanderAutomationPeer
 }
 
+// AsExpanderAutomationPeer queries the instance's IExpanderAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ExpanderAutomationPeer) AsExpanderAutomationPeer() (*IExpanderAutomationPeer, error) {
+	return winrt.QueryInterface[IExpanderAutomationPeer](unsafe.Pointer(self), &IID_IExpanderAutomationPeer)
+}
+
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
 // The returned reference is owned by the caller.
 func (self *ExpanderAutomationPeer) AsExpandCollapseProvider() (*IExpandCollapseProvider, error) {
@@ -4331,6 +5068,12 @@ func NewExpanderAutomationPeer(owner *IExpander) (*ExpanderAutomationPeer, error
 // the embedded IInspectable → IUnknown chain).
 type FlipViewAutomationPeer struct {
 	IFlipViewAutomationPeer
+}
+
+// AsFlipViewAutomationPeer queries the instance's IFlipViewAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *FlipViewAutomationPeer) AsFlipViewAutomationPeer() (*IFlipViewAutomationPeer, error) {
+	return winrt.QueryInterface[IFlipViewAutomationPeer](unsafe.Pointer(self), &IID_IFlipViewAutomationPeer)
 }
 
 // AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
@@ -4435,6 +5178,12 @@ type FlipViewItemAutomationPeer struct {
 	IFlipViewItemAutomationPeer
 }
 
+// AsFlipViewItemAutomationPeer queries the instance's IFlipViewItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemAutomationPeer) AsFlipViewItemAutomationPeer() (*IFlipViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[IFlipViewItemAutomationPeer](unsafe.Pointer(self), &IID_IFlipViewItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -4500,6 +5249,12 @@ func NewFlipViewItemAutomationPeerWithOwner(owner *IFlipViewItem) (*FlipViewItem
 // the embedded IInspectable → IUnknown chain).
 type FlipViewItemDataAutomationPeer struct {
 	IFlipViewItemDataAutomationPeer
+}
+
+// AsFlipViewItemDataAutomationPeer queries the instance's IFlipViewItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *FlipViewItemDataAutomationPeer) AsFlipViewItemDataAutomationPeer() (*IFlipViewItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[IFlipViewItemDataAutomationPeer](unsafe.Pointer(self), &IID_IFlipViewItemDataAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -4596,6 +5351,12 @@ type FlyoutPresenterAutomationPeer struct {
 	IFlyoutPresenterAutomationPeer
 }
 
+// AsFlyoutPresenterAutomationPeer queries the instance's IFlyoutPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenterAutomationPeer) AsFlyoutPresenterAutomationPeer() (*IFlyoutPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[IFlyoutPresenterAutomationPeer](unsafe.Pointer(self), &IID_IFlyoutPresenterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -4661,6 +5422,12 @@ func NewFlyoutPresenterAutomationPeerWithOwner(owner *IFlyoutPresenter) (*Flyout
 // the embedded IInspectable → IUnknown chain).
 type FrameworkElementAutomationPeer struct {
 	IFrameworkElementAutomationPeer
+}
+
+// AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *FrameworkElementAutomationPeer) AsFrameworkElementAutomationPeer() (*IFrameworkElementAutomationPeer, error) {
+	return winrt.QueryInterface[IFrameworkElementAutomationPeer](unsafe.Pointer(self), &IID_IFrameworkElementAutomationPeer)
 }
 
 // AsAutomationPeer queries the instance's IAutomationPeer interface.
@@ -4733,6 +5500,12 @@ func NewFrameworkElementAutomationPeerWithOwner(owner *IFrameworkElement) (*Fram
 // the embedded IInspectable → IUnknown chain).
 type GridViewAutomationPeer struct {
 	IGridViewAutomationPeer
+}
+
+// AsGridViewAutomationPeer queries the instance's IGridViewAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *GridViewAutomationPeer) AsGridViewAutomationPeer() (*IGridViewAutomationPeer, error) {
+	return winrt.QueryInterface[IGridViewAutomationPeer](unsafe.Pointer(self), &IID_IGridViewAutomationPeer)
 }
 
 // AsListViewBaseAutomationPeer queries the instance's IListViewBaseAutomationPeer interface.
@@ -4851,6 +5624,12 @@ type GridViewHeaderItemAutomationPeer struct {
 	IGridViewHeaderItemAutomationPeer
 }
 
+// AsGridViewHeaderItemAutomationPeer queries the instance's IGridViewHeaderItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItemAutomationPeer) AsGridViewHeaderItemAutomationPeer() (*IGridViewHeaderItemAutomationPeer, error) {
+	return winrt.QueryInterface[IGridViewHeaderItemAutomationPeer](unsafe.Pointer(self), &IID_IGridViewHeaderItemAutomationPeer)
+}
+
 // AsListViewBaseHeaderItemAutomationPeer queries the instance's IListViewBaseHeaderItemAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.ListViewBaseHeaderItemAutomationPeer.
 // The returned reference is owned by the caller.
@@ -4925,6 +5704,12 @@ type GridViewItemAutomationPeer struct {
 	IGridViewItemAutomationPeer
 }
 
+// AsGridViewItemAutomationPeer queries the instance's IGridViewItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *GridViewItemAutomationPeer) AsGridViewItemAutomationPeer() (*IGridViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[IGridViewItemAutomationPeer](unsafe.Pointer(self), &IID_IGridViewItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -4990,6 +5775,12 @@ func NewGridViewItemAutomationPeerWithOwner(owner *IGridViewItem) (*GridViewItem
 // the embedded IInspectable → IUnknown chain).
 type GridViewItemDataAutomationPeer struct {
 	IGridViewItemDataAutomationPeer
+}
+
+// AsGridViewItemDataAutomationPeer queries the instance's IGridViewItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *GridViewItemDataAutomationPeer) AsGridViewItemDataAutomationPeer() (*IGridViewItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[IGridViewItemDataAutomationPeer](unsafe.Pointer(self), &IID_IGridViewItemDataAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -5086,6 +5877,12 @@ type GroupItemAutomationPeer struct {
 	IGroupItemAutomationPeer
 }
 
+// AsGroupItemAutomationPeer queries the instance's IGroupItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *GroupItemAutomationPeer) AsGroupItemAutomationPeer() (*IGroupItemAutomationPeer, error) {
+	return winrt.QueryInterface[IGroupItemAutomationPeer](unsafe.Pointer(self), &IID_IGroupItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -5153,6 +5950,12 @@ type HubAutomationPeer struct {
 	IHubAutomationPeer
 }
 
+// AsHubAutomationPeer queries the instance's IHubAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *HubAutomationPeer) AsHubAutomationPeer() (*IHubAutomationPeer, error) {
+	return winrt.QueryInterface[IHubAutomationPeer](unsafe.Pointer(self), &IID_IHubAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -5218,6 +6021,12 @@ func NewHubAutomationPeerWithOwner(owner *IHub) (*HubAutomationPeer, error) {
 // the embedded IInspectable → IUnknown chain).
 type HubSectionAutomationPeer struct {
 	IHubSectionAutomationPeer
+}
+
+// AsHubSectionAutomationPeer queries the instance's IHubSectionAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *HubSectionAutomationPeer) AsHubSectionAutomationPeer() (*IHubSectionAutomationPeer, error) {
+	return winrt.QueryInterface[IHubSectionAutomationPeer](unsafe.Pointer(self), &IID_IHubSectionAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -5291,6 +6100,12 @@ func NewHubSectionAutomationPeerWithOwner(owner *IHubSection) (*HubSectionAutoma
 // the embedded IInspectable → IUnknown chain).
 type HyperlinkButtonAutomationPeer struct {
 	IHyperlinkButtonAutomationPeer
+}
+
+// AsHyperlinkButtonAutomationPeer queries the instance's IHyperlinkButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButtonAutomationPeer) AsHyperlinkButtonAutomationPeer() (*IHyperlinkButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IHyperlinkButtonAutomationPeer](unsafe.Pointer(self), &IID_IHyperlinkButtonAutomationPeer)
 }
 
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
@@ -5373,6 +6188,12 @@ type ImageAutomationPeer struct {
 	IImageAutomationPeer
 }
 
+// AsImageAutomationPeer queries the instance's IImageAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ImageAutomationPeer) AsImageAutomationPeer() (*IImageAutomationPeer, error) {
+	return winrt.QueryInterface[IImageAutomationPeer](unsafe.Pointer(self), &IID_IImageAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -5438,6 +6259,12 @@ func NewImageAutomationPeerWithOwner(owner *IImage) (*ImageAutomationPeer, error
 // the embedded IInspectable → IUnknown chain).
 type InfoBarAutomationPeer struct {
 	IInfoBarAutomationPeer
+}
+
+// AsInfoBarAutomationPeer queries the instance's IInfoBarAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *InfoBarAutomationPeer) AsInfoBarAutomationPeer() (*IInfoBarAutomationPeer, error) {
+	return winrt.QueryInterface[IInfoBarAutomationPeer](unsafe.Pointer(self), &IID_IInfoBarAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -5507,6 +6334,12 @@ type ItemAutomationPeer struct {
 	IItemAutomationPeer
 }
 
+// AsItemAutomationPeer queries the instance's IItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ItemAutomationPeer) AsItemAutomationPeer() (*IItemAutomationPeer, error) {
+	return winrt.QueryInterface[IItemAutomationPeer](unsafe.Pointer(self), &IID_IItemAutomationPeer)
+}
+
 // AsVirtualizedItemProvider queries the instance's IVirtualizedItemProvider interface.
 // The returned reference is owned by the caller.
 func (self *ItemAutomationPeer) AsVirtualizedItemProvider() (*IVirtualizedItemProvider, error) {
@@ -5571,6 +6404,12 @@ func NewItemAutomationPeerWithParentAndItem(item *syswinrt.IInspectable, parent 
 // the embedded IInspectable → IUnknown chain).
 type ItemContainerAutomationPeer struct {
 	IItemContainerAutomationPeer
+}
+
+// AsItemContainerAutomationPeer queries the instance's IItemContainerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ItemContainerAutomationPeer) AsItemContainerAutomationPeer() (*IItemContainerAutomationPeer, error) {
+	return winrt.QueryInterface[IItemContainerAutomationPeer](unsafe.Pointer(self), &IID_IItemContainerAutomationPeer)
 }
 
 // AsSelectionItemProvider queries the instance's ISelectionItemProvider interface.
@@ -5652,6 +6491,12 @@ type ItemsControlAutomationPeer struct {
 	IItemsControlAutomationPeer
 }
 
+// AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ItemsControlAutomationPeer) AsItemsControlAutomationPeer() (*IItemsControlAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsControlAutomationPeer](unsafe.Pointer(self), &IID_IItemsControlAutomationPeer)
+}
+
 // AsItemsControlAutomationPeerOverrides queries the instance's IItemsControlAutomationPeerOverrides interface.
 // The returned reference is owned by the caller.
 func (self *ItemsControlAutomationPeer) AsItemsControlAutomationPeerOverrides() (*IItemsControlAutomationPeerOverrides, error) {
@@ -5731,6 +6576,12 @@ type ItemsViewAutomationPeer struct {
 	IItemsViewAutomationPeer
 }
 
+// AsItemsViewAutomationPeer queries the instance's IItemsViewAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ItemsViewAutomationPeer) AsItemsViewAutomationPeer() (*IItemsViewAutomationPeer, error) {
+	return winrt.QueryInterface[IItemsViewAutomationPeer](unsafe.Pointer(self), &IID_IItemsViewAutomationPeer)
+}
+
 // AsSelectionProvider queries the instance's ISelectionProvider interface.
 // The returned reference is owned by the caller.
 func (self *ItemsViewAutomationPeer) AsSelectionProvider() (*ISelectionProvider, error) {
@@ -5802,6 +6653,12 @@ func NewItemsViewAutomationPeer(owner *IItemsView) (*ItemsViewAutomationPeer, er
 // the embedded IInspectable → IUnknown chain).
 type ListBoxAutomationPeer struct {
 	IListBoxAutomationPeer
+}
+
+// AsListBoxAutomationPeer queries the instance's IListBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListBoxAutomationPeer) AsListBoxAutomationPeer() (*IListBoxAutomationPeer, error) {
+	return winrt.QueryInterface[IListBoxAutomationPeer](unsafe.Pointer(self), &IID_IListBoxAutomationPeer)
 }
 
 // AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
@@ -5906,6 +6763,12 @@ type ListBoxItemAutomationPeer struct {
 	IListBoxItemAutomationPeer
 }
 
+// AsListBoxItemAutomationPeer queries the instance's IListBoxItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemAutomationPeer) AsListBoxItemAutomationPeer() (*IListBoxItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListBoxItemAutomationPeer](unsafe.Pointer(self), &IID_IListBoxItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -5971,6 +6834,12 @@ func NewListBoxItemAutomationPeerWithOwner(owner *IListBoxItem) (*ListBoxItemAut
 // the embedded IInspectable → IUnknown chain).
 type ListBoxItemDataAutomationPeer struct {
 	IListBoxItemDataAutomationPeer
+}
+
+// AsListBoxItemDataAutomationPeer queries the instance's IListBoxItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListBoxItemDataAutomationPeer) AsListBoxItemDataAutomationPeer() (*IListBoxItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[IListBoxItemDataAutomationPeer](unsafe.Pointer(self), &IID_IListBoxItemDataAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -6067,6 +6936,12 @@ type ListPickerFlyoutPresenterAutomationPeer struct {
 	IListPickerFlyoutPresenterAutomationPeer
 }
 
+// AsListPickerFlyoutPresenterAutomationPeer queries the instance's IListPickerFlyoutPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenterAutomationPeer) AsListPickerFlyoutPresenterAutomationPeer() (*IListPickerFlyoutPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[IListPickerFlyoutPresenterAutomationPeer](unsafe.Pointer(self), &IID_IListPickerFlyoutPresenterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -6107,6 +6982,12 @@ func (self *ListPickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*IDep
 // the embedded IInspectable → IUnknown chain).
 type ListViewAutomationPeer struct {
 	IListViewAutomationPeer
+}
+
+// AsListViewAutomationPeer queries the instance's IListViewAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListViewAutomationPeer) AsListViewAutomationPeer() (*IListViewAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewAutomationPeer](unsafe.Pointer(self), &IID_IListViewAutomationPeer)
 }
 
 // AsListViewBaseAutomationPeer queries the instance's IListViewBaseAutomationPeer interface.
@@ -6225,6 +7106,12 @@ type ListViewBaseAutomationPeer struct {
 	IListViewBaseAutomationPeer
 }
 
+// AsListViewBaseAutomationPeer queries the instance's IListViewBaseAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseAutomationPeer) AsListViewBaseAutomationPeer() (*IListViewBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseAutomationPeer)
+}
+
 // AsDropTargetProvider queries the instance's IDropTargetProvider interface.
 // The returned reference is owned by the caller.
 func (self *ListViewBaseAutomationPeer) AsDropTargetProvider() (*IDropTargetProvider, error) {
@@ -6333,6 +7220,12 @@ type ListViewBaseHeaderItemAutomationPeer struct {
 	IListViewBaseHeaderItemAutomationPeer
 }
 
+// AsListViewBaseHeaderItemAutomationPeer queries the instance's IListViewBaseHeaderItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItemAutomationPeer) AsListViewBaseHeaderItemAutomationPeer() (*IListViewBaseHeaderItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewBaseHeaderItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewBaseHeaderItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -6398,6 +7291,12 @@ func NewListViewBaseHeaderItemAutomationPeerWithOwner(owner *IListViewBaseHeader
 // the embedded IInspectable → IUnknown chain).
 type ListViewHeaderItemAutomationPeer struct {
 	IListViewHeaderItemAutomationPeer
+}
+
+// AsListViewHeaderItemAutomationPeer queries the instance's IListViewHeaderItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItemAutomationPeer) AsListViewHeaderItemAutomationPeer() (*IListViewHeaderItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewHeaderItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewHeaderItemAutomationPeer)
 }
 
 // AsListViewBaseHeaderItemAutomationPeer queries the instance's IListViewBaseHeaderItemAutomationPeer interface.
@@ -6474,6 +7373,12 @@ type ListViewItemAutomationPeer struct {
 	IListViewItemAutomationPeer
 }
 
+// AsListViewItemAutomationPeer queries the instance's IListViewItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListViewItemAutomationPeer) AsListViewItemAutomationPeer() (*IListViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewItemAutomationPeer](unsafe.Pointer(self), &IID_IListViewItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -6539,6 +7444,12 @@ func NewListViewItemAutomationPeerWithOwner(owner *IListViewItem) (*ListViewItem
 // the embedded IInspectable → IUnknown chain).
 type ListViewItemDataAutomationPeer struct {
 	IListViewItemDataAutomationPeer
+}
+
+// AsListViewItemDataAutomationPeer queries the instance's IListViewItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ListViewItemDataAutomationPeer) AsListViewItemDataAutomationPeer() (*IListViewItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[IListViewItemDataAutomationPeer](unsafe.Pointer(self), &IID_IListViewItemDataAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -6635,6 +7546,12 @@ type LoopingSelectorAutomationPeer struct {
 	ILoopingSelectorAutomationPeer
 }
 
+// AsLoopingSelectorAutomationPeer queries the instance's ILoopingSelectorAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorAutomationPeer) AsLoopingSelectorAutomationPeer() (*ILoopingSelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ILoopingSelectorAutomationPeer](unsafe.Pointer(self), &IID_ILoopingSelectorAutomationPeer)
+}
+
 // AsSelectionProvider queries the instance's ISelectionProvider interface.
 // The returned reference is owned by the caller.
 func (self *LoopingSelectorAutomationPeer) AsSelectionProvider() (*ISelectionProvider, error) {
@@ -6695,6 +7612,12 @@ type LoopingSelectorItemAutomationPeer struct {
 	ILoopingSelectorItemAutomationPeer
 }
 
+// AsLoopingSelectorItemAutomationPeer queries the instance's ILoopingSelectorItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemAutomationPeer) AsLoopingSelectorItemAutomationPeer() (*ILoopingSelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ILoopingSelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ILoopingSelectorItemAutomationPeer)
+}
+
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
 // The returned reference is owned by the caller.
 func (self *LoopingSelectorItemAutomationPeer) AsScrollItemProvider() (*IScrollItemProvider, error) {
@@ -6749,6 +7672,12 @@ type LoopingSelectorItemDataAutomationPeer struct {
 	ILoopingSelectorItemDataAutomationPeer
 }
 
+// AsLoopingSelectorItemDataAutomationPeer queries the instance's ILoopingSelectorItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItemDataAutomationPeer) AsLoopingSelectorItemDataAutomationPeer() (*ILoopingSelectorItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[ILoopingSelectorItemDataAutomationPeer](unsafe.Pointer(self), &IID_ILoopingSelectorItemDataAutomationPeer)
+}
+
 // AsVirtualizedItemProvider queries the instance's IVirtualizedItemProvider interface.
 // The returned reference is owned by the caller.
 func (self *LoopingSelectorItemDataAutomationPeer) AsVirtualizedItemProvider() (*IVirtualizedItemProvider, error) {
@@ -6788,6 +7717,12 @@ func (self *LoopingSelectorItemDataAutomationPeer) AsDependencyObject() (*IDepen
 // the embedded IInspectable → IUnknown chain).
 type MediaPlayerElementAutomationPeer struct {
 	IMediaPlayerElementAutomationPeer
+}
+
+// AsMediaPlayerElementAutomationPeer queries the instance's IMediaPlayerElementAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElementAutomationPeer) AsMediaPlayerElementAutomationPeer() (*IMediaPlayerElementAutomationPeer, error) {
+	return winrt.QueryInterface[IMediaPlayerElementAutomationPeer](unsafe.Pointer(self), &IID_IMediaPlayerElementAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -6857,6 +7792,12 @@ type MediaTransportControlsAutomationPeer struct {
 	IMediaTransportControlsAutomationPeer
 }
 
+// AsMediaTransportControlsAutomationPeer queries the instance's IMediaTransportControlsAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsAutomationPeer) AsMediaTransportControlsAutomationPeer() (*IMediaTransportControlsAutomationPeer, error) {
+	return winrt.QueryInterface[IMediaTransportControlsAutomationPeer](unsafe.Pointer(self), &IID_IMediaTransportControlsAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -6924,6 +7865,12 @@ type MenuBarAutomationPeer struct {
 	IMenuBarAutomationPeer
 }
 
+// AsMenuBarAutomationPeer queries the instance's IMenuBarAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *MenuBarAutomationPeer) AsMenuBarAutomationPeer() (*IMenuBarAutomationPeer, error) {
+	return winrt.QueryInterface[IMenuBarAutomationPeer](unsafe.Pointer(self), &IID_IMenuBarAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -6989,6 +7936,12 @@ func NewMenuBarAutomationPeer(owner *IMenuBar) (*MenuBarAutomationPeer, error) {
 // the embedded IInspectable → IUnknown chain).
 type MenuBarItemAutomationPeer struct {
 	IMenuBarItemAutomationPeer
+}
+
+// AsMenuBarItemAutomationPeer queries the instance's IMenuBarItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemAutomationPeer) AsMenuBarItemAutomationPeer() (*IMenuBarItemAutomationPeer, error) {
+	return winrt.QueryInterface[IMenuBarItemAutomationPeer](unsafe.Pointer(self), &IID_IMenuBarItemAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -7070,6 +8023,12 @@ type MenuFlyoutItemAutomationPeer struct {
 	IMenuFlyoutItemAutomationPeer
 }
 
+// AsMenuFlyoutItemAutomationPeer queries the instance's IMenuFlyoutItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemAutomationPeer) AsMenuFlyoutItemAutomationPeer() (*IMenuFlyoutItemAutomationPeer, error) {
+	return winrt.QueryInterface[IMenuFlyoutItemAutomationPeer](unsafe.Pointer(self), &IID_IMenuFlyoutItemAutomationPeer)
+}
+
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
 // The returned reference is owned by the caller.
 func (self *MenuFlyoutItemAutomationPeer) AsInvokeProvider() (*IInvokeProvider, error) {
@@ -7141,6 +8100,12 @@ func NewMenuFlyoutItemAutomationPeerWithOwner(owner *IMenuFlyoutItem) (*MenuFlyo
 // the embedded IInspectable → IUnknown chain).
 type MenuFlyoutPresenterAutomationPeer struct {
 	IMenuFlyoutPresenterAutomationPeer
+}
+
+// AsMenuFlyoutPresenterAutomationPeer queries the instance's IMenuFlyoutPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterAutomationPeer) AsMenuFlyoutPresenterAutomationPeer() (*IMenuFlyoutPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[IMenuFlyoutPresenterAutomationPeer](unsafe.Pointer(self), &IID_IMenuFlyoutPresenterAutomationPeer)
 }
 
 // AsItemsControlAutomationPeer queries the instance's IItemsControlAutomationPeer interface.
@@ -7231,6 +8196,12 @@ type NavigationViewAutomationPeer struct {
 	INavigationViewAutomationPeer
 }
 
+// AsNavigationViewAutomationPeer queries the instance's INavigationViewAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewAutomationPeer) AsNavigationViewAutomationPeer() (*INavigationViewAutomationPeer, error) {
+	return winrt.QueryInterface[INavigationViewAutomationPeer](unsafe.Pointer(self), &IID_INavigationViewAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -7296,6 +8267,12 @@ func NewNavigationViewAutomationPeer(owner *INavigationView) (*NavigationViewAut
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewItemAutomationPeer struct {
 	INavigationViewItemAutomationPeer
+}
+
+// AsNavigationViewItemAutomationPeer queries the instance's INavigationViewItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemAutomationPeer) AsNavigationViewItemAutomationPeer() (*INavigationViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[INavigationViewItemAutomationPeer](unsafe.Pointer(self), &IID_INavigationViewItemAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -7371,6 +8348,12 @@ type NumberBoxAutomationPeer struct {
 	INumberBoxAutomationPeer
 }
 
+// AsNumberBoxAutomationPeer queries the instance's INumberBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *NumberBoxAutomationPeer) AsNumberBoxAutomationPeer() (*INumberBoxAutomationPeer, error) {
+	return winrt.QueryInterface[INumberBoxAutomationPeer](unsafe.Pointer(self), &IID_INumberBoxAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -7436,6 +8419,12 @@ func NewNumberBoxAutomationPeer(owner *INumberBox) (*NumberBoxAutomationPeer, er
 // the embedded IInspectable → IUnknown chain).
 type PasswordBoxAutomationPeer struct {
 	IPasswordBoxAutomationPeer
+}
+
+// AsPasswordBoxAutomationPeer queries the instance's IPasswordBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxAutomationPeer) AsPasswordBoxAutomationPeer() (*IPasswordBoxAutomationPeer, error) {
+	return winrt.QueryInterface[IPasswordBoxAutomationPeer](unsafe.Pointer(self), &IID_IPasswordBoxAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -7505,6 +8494,12 @@ type PersonPictureAutomationPeer struct {
 	IPersonPictureAutomationPeer
 }
 
+// AsPersonPictureAutomationPeer queries the instance's IPersonPictureAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PersonPictureAutomationPeer) AsPersonPictureAutomationPeer() (*IPersonPictureAutomationPeer, error) {
+	return winrt.QueryInterface[IPersonPictureAutomationPeer](unsafe.Pointer(self), &IID_IPersonPictureAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -7572,6 +8567,12 @@ type PickerFlyoutPresenterAutomationPeer struct {
 	IPickerFlyoutPresenterAutomationPeer
 }
 
+// AsPickerFlyoutPresenterAutomationPeer queries the instance's IPickerFlyoutPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenterAutomationPeer) AsPickerFlyoutPresenterAutomationPeer() (*IPickerFlyoutPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[IPickerFlyoutPresenterAutomationPeer](unsafe.Pointer(self), &IID_IPickerFlyoutPresenterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -7612,6 +8613,12 @@ func (self *PickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*IDepende
 // the embedded IInspectable → IUnknown chain).
 type PipsPagerAutomationPeer struct {
 	IPipsPagerAutomationPeer
+}
+
+// AsPipsPagerAutomationPeer queries the instance's IPipsPagerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PipsPagerAutomationPeer) AsPipsPagerAutomationPeer() (*IPipsPagerAutomationPeer, error) {
+	return winrt.QueryInterface[IPipsPagerAutomationPeer](unsafe.Pointer(self), &IID_IPipsPagerAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -7679,6 +8686,12 @@ func NewPipsPagerAutomationPeer(owner *IPipsPager) (*PipsPagerAutomationPeer, er
 // the embedded IInspectable → IUnknown chain).
 type PivotAutomationPeer struct {
 	IPivotAutomationPeer
+}
+
+// AsPivotAutomationPeer queries the instance's IPivotAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PivotAutomationPeer) AsPivotAutomationPeer() (*IPivotAutomationPeer, error) {
+	return winrt.QueryInterface[IPivotAutomationPeer](unsafe.Pointer(self), &IID_IPivotAutomationPeer)
 }
 
 // AsSelectionProvider queries the instance's ISelectionProvider interface.
@@ -7773,6 +8786,12 @@ type PivotItemAutomationPeer struct {
 	IPivotItemAutomationPeer
 }
 
+// AsPivotItemAutomationPeer queries the instance's IPivotItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PivotItemAutomationPeer) AsPivotItemAutomationPeer() (*IPivotItemAutomationPeer, error) {
+	return winrt.QueryInterface[IPivotItemAutomationPeer](unsafe.Pointer(self), &IID_IPivotItemAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -7830,6 +8849,12 @@ func CreateInstanceWithOwnerPivotItemAutomationPeer(owner *IPivotItem) (*PivotIt
 // the embedded IInspectable → IUnknown chain).
 type PivotItemDataAutomationPeer struct {
 	IPivotItemDataAutomationPeer
+}
+
+// AsPivotItemDataAutomationPeer queries the instance's IPivotItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *PivotItemDataAutomationPeer) AsPivotItemDataAutomationPeer() (*IPivotItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[IPivotItemDataAutomationPeer](unsafe.Pointer(self), &IID_IPivotItemDataAutomationPeer)
 }
 
 // AsScrollItemProvider queries the instance's IScrollItemProvider interface.
@@ -7907,6 +8932,12 @@ func CreateInstanceWithParentAndItem(item *syswinrt.IInspectable, parent *IPivot
 // the embedded IInspectable → IUnknown chain).
 type ProgressBarAutomationPeer struct {
 	IProgressBarAutomationPeer
+}
+
+// AsProgressBarAutomationPeer queries the instance's IProgressBarAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ProgressBarAutomationPeer) AsProgressBarAutomationPeer() (*IProgressBarAutomationPeer, error) {
+	return winrt.QueryInterface[IProgressBarAutomationPeer](unsafe.Pointer(self), &IID_IProgressBarAutomationPeer)
 }
 
 // AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
@@ -7990,6 +9021,12 @@ type ProgressRingAutomationPeer struct {
 	IProgressRingAutomationPeer
 }
 
+// AsProgressRingAutomationPeer queries the instance's IProgressRingAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ProgressRingAutomationPeer) AsProgressRingAutomationPeer() (*IProgressRingAutomationPeer, error) {
+	return winrt.QueryInterface[IProgressRingAutomationPeer](unsafe.Pointer(self), &IID_IProgressRingAutomationPeer)
+}
+
 // AsRangeValueProvider queries the instance's IRangeValueProvider interface.
 // The returned reference is owned by the caller.
 func (self *ProgressRingAutomationPeer) AsRangeValueProvider() (*IRangeValueProvider, error) {
@@ -8061,6 +9098,12 @@ func NewProgressRingAutomationPeer(owner *IProgressRing) (*ProgressRingAutomatio
 // the embedded IInspectable → IUnknown chain).
 type RadioButtonAutomationPeer struct {
 	IRadioButtonAutomationPeer
+}
+
+// AsRadioButtonAutomationPeer queries the instance's IRadioButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RadioButtonAutomationPeer) AsRadioButtonAutomationPeer() (*IRadioButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IRadioButtonAutomationPeer](unsafe.Pointer(self), &IID_IRadioButtonAutomationPeer)
 }
 
 // AsSelectionItemProvider queries the instance's ISelectionItemProvider interface.
@@ -8157,6 +9200,12 @@ type RadioButtonsAutomationPeer struct {
 	IRadioButtonsAutomationPeer
 }
 
+// AsRadioButtonsAutomationPeer queries the instance's IRadioButtonsAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RadioButtonsAutomationPeer) AsRadioButtonsAutomationPeer() (*IRadioButtonsAutomationPeer, error) {
+	return winrt.QueryInterface[IRadioButtonsAutomationPeer](unsafe.Pointer(self), &IID_IRadioButtonsAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -8222,6 +9271,12 @@ func NewRadioButtonsAutomationPeer(owner *IRadioButtons) (*RadioButtonsAutomatio
 // the embedded IInspectable → IUnknown chain).
 type RangeBaseAutomationPeer struct {
 	IRangeBaseAutomationPeer
+}
+
+// AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RangeBaseAutomationPeer) AsRangeBaseAutomationPeer() (*IRangeBaseAutomationPeer, error) {
+	return winrt.QueryInterface[IRangeBaseAutomationPeer](unsafe.Pointer(self), &IID_IRangeBaseAutomationPeer)
 }
 
 // AsRangeValueProvider queries the instance's IRangeValueProvider interface.
@@ -8297,6 +9352,12 @@ type RatingControlAutomationPeer struct {
 	IRatingControlAutomationPeer
 }
 
+// AsRatingControlAutomationPeer queries the instance's IRatingControlAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RatingControlAutomationPeer) AsRatingControlAutomationPeer() (*IRatingControlAutomationPeer, error) {
+	return winrt.QueryInterface[IRatingControlAutomationPeer](unsafe.Pointer(self), &IID_IRatingControlAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -8362,6 +9423,12 @@ func NewRatingControlAutomationPeerWithOwner(owner *IRatingControl) (*RatingCont
 // the embedded IInspectable → IUnknown chain).
 type RepeatButtonAutomationPeer struct {
 	IRepeatButtonAutomationPeer
+}
+
+// AsRepeatButtonAutomationPeer queries the instance's IRepeatButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RepeatButtonAutomationPeer) AsRepeatButtonAutomationPeer() (*IRepeatButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IRepeatButtonAutomationPeer](unsafe.Pointer(self), &IID_IRepeatButtonAutomationPeer)
 }
 
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
@@ -8444,6 +9511,12 @@ type RepeaterAutomationPeer struct {
 	IRepeaterAutomationPeer
 }
 
+// AsRepeaterAutomationPeer queries the instance's IRepeaterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RepeaterAutomationPeer) AsRepeaterAutomationPeer() (*IRepeaterAutomationPeer, error) {
+	return winrt.QueryInterface[IRepeaterAutomationPeer](unsafe.Pointer(self), &IID_IRepeaterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -8509,6 +9582,12 @@ func NewRepeaterAutomationPeer(owner *IItemsRepeater) (*RepeaterAutomationPeer, 
 // the embedded IInspectable → IUnknown chain).
 type RichEditBoxAutomationPeer struct {
 	IRichEditBoxAutomationPeer
+}
+
+// AsRichEditBoxAutomationPeer queries the instance's IRichEditBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxAutomationPeer) AsRichEditBoxAutomationPeer() (*IRichEditBoxAutomationPeer, error) {
+	return winrt.QueryInterface[IRichEditBoxAutomationPeer](unsafe.Pointer(self), &IID_IRichEditBoxAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -8578,6 +9657,12 @@ type RichTextBlockAutomationPeer struct {
 	IRichTextBlockAutomationPeer
 }
 
+// AsRichTextBlockAutomationPeer queries the instance's IRichTextBlockAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockAutomationPeer) AsRichTextBlockAutomationPeer() (*IRichTextBlockAutomationPeer, error) {
+	return winrt.QueryInterface[IRichTextBlockAutomationPeer](unsafe.Pointer(self), &IID_IRichTextBlockAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -8645,6 +9730,12 @@ type RichTextBlockOverflowAutomationPeer struct {
 	IRichTextBlockOverflowAutomationPeer
 }
 
+// AsRichTextBlockOverflowAutomationPeer queries the instance's IRichTextBlockOverflowAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflowAutomationPeer) AsRichTextBlockOverflowAutomationPeer() (*IRichTextBlockOverflowAutomationPeer, error) {
+	return winrt.QueryInterface[IRichTextBlockOverflowAutomationPeer](unsafe.Pointer(self), &IID_IRichTextBlockOverflowAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -8710,6 +9801,12 @@ func NewRichTextBlockOverflowAutomationPeerWithOwner(owner *IRichTextBlockOverfl
 // the embedded IInspectable → IUnknown chain).
 type ScrollBarAutomationPeer struct {
 	IScrollBarAutomationPeer
+}
+
+// AsScrollBarAutomationPeer queries the instance's IScrollBarAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ScrollBarAutomationPeer) AsScrollBarAutomationPeer() (*IScrollBarAutomationPeer, error) {
+	return winrt.QueryInterface[IScrollBarAutomationPeer](unsafe.Pointer(self), &IID_IScrollBarAutomationPeer)
 }
 
 // AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
@@ -8793,6 +9890,12 @@ type ScrollPresenterAutomationPeer struct {
 	IScrollPresenterAutomationPeer
 }
 
+// AsScrollPresenterAutomationPeer queries the instance's IScrollPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenterAutomationPeer) AsScrollPresenterAutomationPeer() (*IScrollPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[IScrollPresenterAutomationPeer](unsafe.Pointer(self), &IID_IScrollPresenterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -8858,6 +9961,12 @@ func NewScrollPresenterAutomationPeer(owner *IScrollPresenter) (*ScrollPresenter
 // the embedded IInspectable → IUnknown chain).
 type ScrollViewerAutomationPeer struct {
 	IScrollViewerAutomationPeer
+}
+
+// AsScrollViewerAutomationPeer queries the instance's IScrollViewerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerAutomationPeer) AsScrollViewerAutomationPeer() (*IScrollViewerAutomationPeer, error) {
+	return winrt.QueryInterface[IScrollViewerAutomationPeer](unsafe.Pointer(self), &IID_IScrollViewerAutomationPeer)
 }
 
 // AsScrollProvider queries the instance's IScrollProvider interface.
@@ -8931,6 +10040,12 @@ func NewScrollViewerAutomationPeerWithOwner(owner *IScrollViewer) (*ScrollViewer
 // the embedded IInspectable → IUnknown chain).
 type SelectorAutomationPeer struct {
 	ISelectorAutomationPeer
+}
+
+// AsSelectorAutomationPeer queries the instance's ISelectorAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SelectorAutomationPeer) AsSelectorAutomationPeer() (*ISelectorAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorAutomationPeer](unsafe.Pointer(self), &IID_ISelectorAutomationPeer)
 }
 
 // AsSelectionProvider queries the instance's ISelectionProvider interface.
@@ -9027,6 +10142,12 @@ type SelectorBarItemAutomationPeer struct {
 	ISelectorBarItemAutomationPeer
 }
 
+// AsSelectorBarItemAutomationPeer queries the instance's ISelectorBarItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItemAutomationPeer) AsSelectorBarItemAutomationPeer() (*ISelectorBarItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorBarItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorBarItemAutomationPeer)
+}
+
 // AsItemContainerAutomationPeer queries the instance's IItemContainerAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.ItemContainerAutomationPeer.
 // The returned reference is owned by the caller.
@@ -9115,6 +10236,12 @@ type SelectorItemAutomationPeer struct {
 	ISelectorItemAutomationPeer
 }
 
+// AsSelectorItemAutomationPeer queries the instance's ISelectorItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SelectorItemAutomationPeer) AsSelectorItemAutomationPeer() (*ISelectorItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISelectorItemAutomationPeer](unsafe.Pointer(self), &IID_ISelectorItemAutomationPeer)
+}
+
 // AsSelectionItemProvider queries the instance's ISelectionItemProvider interface.
 // The returned reference is owned by the caller.
 func (self *SelectorItemAutomationPeer) AsSelectionItemProvider() (*ISelectionItemProvider, error) {
@@ -9195,6 +10322,12 @@ type SemanticZoomAutomationPeer struct {
 	ISemanticZoomAutomationPeer
 }
 
+// AsSemanticZoomAutomationPeer queries the instance's ISemanticZoomAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomAutomationPeer) AsSemanticZoomAutomationPeer() (*ISemanticZoomAutomationPeer, error) {
+	return winrt.QueryInterface[ISemanticZoomAutomationPeer](unsafe.Pointer(self), &IID_ISemanticZoomAutomationPeer)
+}
+
 // AsToggleProvider queries the instance's IToggleProvider interface.
 // The returned reference is owned by the caller.
 func (self *SemanticZoomAutomationPeer) AsToggleProvider() (*IToggleProvider, error) {
@@ -9266,6 +10399,12 @@ func NewSemanticZoomAutomationPeerWithOwner(owner *ISemanticZoom) (*SemanticZoom
 // the embedded IInspectable → IUnknown chain).
 type SliderAutomationPeer struct {
 	ISliderAutomationPeer
+}
+
+// AsSliderAutomationPeer queries the instance's ISliderAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SliderAutomationPeer) AsSliderAutomationPeer() (*ISliderAutomationPeer, error) {
+	return winrt.QueryInterface[ISliderAutomationPeer](unsafe.Pointer(self), &IID_ISliderAutomationPeer)
 }
 
 // AsRangeBaseAutomationPeer queries the instance's IRangeBaseAutomationPeer interface.
@@ -9349,6 +10488,12 @@ type SplitButtonAutomationPeer struct {
 	ISplitButtonAutomationPeer
 }
 
+// AsSplitButtonAutomationPeer queries the instance's ISplitButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SplitButtonAutomationPeer) AsSplitButtonAutomationPeer() (*ISplitButtonAutomationPeer, error) {
+	return winrt.QueryInterface[ISplitButtonAutomationPeer](unsafe.Pointer(self), &IID_ISplitButtonAutomationPeer)
+}
+
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
 // The returned reference is owned by the caller.
 func (self *SplitButtonAutomationPeer) AsExpandCollapseProvider() (*IExpandCollapseProvider, error) {
@@ -9426,6 +10571,12 @@ func NewSplitButtonAutomationPeer(owner *ISplitButton) (*SplitButtonAutomationPe
 // the embedded IInspectable → IUnknown chain).
 type SplitMenuFlyoutItemAutomationPeer struct {
 	ISplitMenuFlyoutItemAutomationPeer
+}
+
+// AsSplitMenuFlyoutItemAutomationPeer queries the instance's ISplitMenuFlyoutItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItemAutomationPeer) AsSplitMenuFlyoutItemAutomationPeer() (*ISplitMenuFlyoutItemAutomationPeer, error) {
+	return winrt.QueryInterface[ISplitMenuFlyoutItemAutomationPeer](unsafe.Pointer(self), &IID_ISplitMenuFlyoutItemAutomationPeer)
 }
 
 // AsInvokeProvider queries the instance's IInvokeProvider interface.
@@ -9507,6 +10658,12 @@ type TabViewAutomationPeer struct {
 	ITabViewAutomationPeer
 }
 
+// AsTabViewAutomationPeer queries the instance's ITabViewAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TabViewAutomationPeer) AsTabViewAutomationPeer() (*ITabViewAutomationPeer, error) {
+	return winrt.QueryInterface[ITabViewAutomationPeer](unsafe.Pointer(self), &IID_ITabViewAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -9572,6 +10729,12 @@ func NewTabViewAutomationPeer(owner *ITabView) (*TabViewAutomationPeer, error) {
 // the embedded IInspectable → IUnknown chain).
 type TabViewItemAutomationPeer struct {
 	ITabViewItemAutomationPeer
+}
+
+// AsTabViewItemAutomationPeer queries the instance's ITabViewItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TabViewItemAutomationPeer) AsTabViewItemAutomationPeer() (*ITabViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[ITabViewItemAutomationPeer](unsafe.Pointer(self), &IID_ITabViewItemAutomationPeer)
 }
 
 // AsListViewItemAutomationPeer queries the instance's IListViewItemAutomationPeer interface.
@@ -9648,6 +10811,12 @@ type TeachingTipAutomationPeer struct {
 	ITeachingTipAutomationPeer
 }
 
+// AsTeachingTipAutomationPeer queries the instance's ITeachingTipAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TeachingTipAutomationPeer) AsTeachingTipAutomationPeer() (*ITeachingTipAutomationPeer, error) {
+	return winrt.QueryInterface[ITeachingTipAutomationPeer](unsafe.Pointer(self), &IID_ITeachingTipAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -9713,6 +10882,12 @@ func NewTeachingTipAutomationPeer(owner *ITeachingTip) (*TeachingTipAutomationPe
 // the embedded IInspectable → IUnknown chain).
 type TextBlockAutomationPeer struct {
 	ITextBlockAutomationPeer
+}
+
+// AsTextBlockAutomationPeer queries the instance's ITextBlockAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TextBlockAutomationPeer) AsTextBlockAutomationPeer() (*ITextBlockAutomationPeer, error) {
+	return winrt.QueryInterface[ITextBlockAutomationPeer](unsafe.Pointer(self), &IID_ITextBlockAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -9782,6 +10957,12 @@ type TextBoxAutomationPeer struct {
 	ITextBoxAutomationPeer
 }
 
+// AsTextBoxAutomationPeer queries the instance's ITextBoxAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TextBoxAutomationPeer) AsTextBoxAutomationPeer() (*ITextBoxAutomationPeer, error) {
+	return winrt.QueryInterface[ITextBoxAutomationPeer](unsafe.Pointer(self), &IID_ITextBoxAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -9847,6 +11028,12 @@ func NewTextBoxAutomationPeerWithOwner(owner *ITextBox) (*TextBoxAutomationPeer,
 // the embedded IInspectable → IUnknown chain).
 type ThumbAutomationPeer struct {
 	IThumbAutomationPeer
+}
+
+// AsThumbAutomationPeer queries the instance's IThumbAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ThumbAutomationPeer) AsThumbAutomationPeer() (*IThumbAutomationPeer, error) {
+	return winrt.QueryInterface[IThumbAutomationPeer](unsafe.Pointer(self), &IID_IThumbAutomationPeer)
 }
 
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
@@ -9916,6 +11103,12 @@ type TimePickerAutomationPeer struct {
 	ITimePickerAutomationPeer
 }
 
+// AsTimePickerAutomationPeer queries the instance's ITimePickerAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TimePickerAutomationPeer) AsTimePickerAutomationPeer() (*ITimePickerAutomationPeer, error) {
+	return winrt.QueryInterface[ITimePickerAutomationPeer](unsafe.Pointer(self), &IID_ITimePickerAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -9983,6 +11176,12 @@ type TimePickerFlyoutPresenterAutomationPeer struct {
 	ITimePickerFlyoutPresenterAutomationPeer
 }
 
+// AsTimePickerFlyoutPresenterAutomationPeer queries the instance's ITimePickerFlyoutPresenterAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenterAutomationPeer) AsTimePickerFlyoutPresenterAutomationPeer() (*ITimePickerFlyoutPresenterAutomationPeer, error) {
+	return winrt.QueryInterface[ITimePickerFlyoutPresenterAutomationPeer](unsafe.Pointer(self), &IID_ITimePickerFlyoutPresenterAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -10023,6 +11222,12 @@ func (self *TimePickerFlyoutPresenterAutomationPeer) AsDependencyObject() (*IDep
 // the embedded IInspectable → IUnknown chain).
 type ToggleButtonAutomationPeer struct {
 	IToggleButtonAutomationPeer
+}
+
+// AsToggleButtonAutomationPeer queries the instance's IToggleButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ToggleButtonAutomationPeer) AsToggleButtonAutomationPeer() (*IToggleButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleButtonAutomationPeer](unsafe.Pointer(self), &IID_IToggleButtonAutomationPeer)
 }
 
 // AsToggleProvider queries the instance's IToggleProvider interface.
@@ -10105,6 +11310,12 @@ type ToggleMenuFlyoutItemAutomationPeer struct {
 	IToggleMenuFlyoutItemAutomationPeer
 }
 
+// AsToggleMenuFlyoutItemAutomationPeer queries the instance's IToggleMenuFlyoutItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItemAutomationPeer) AsToggleMenuFlyoutItemAutomationPeer() (*IToggleMenuFlyoutItemAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleMenuFlyoutItemAutomationPeer](unsafe.Pointer(self), &IID_IToggleMenuFlyoutItemAutomationPeer)
+}
+
 // AsToggleProvider queries the instance's IToggleProvider interface.
 // The returned reference is owned by the caller.
 func (self *ToggleMenuFlyoutItemAutomationPeer) AsToggleProvider() (*IToggleProvider, error) {
@@ -10176,6 +11387,12 @@ func NewToggleMenuFlyoutItemAutomationPeerWithOwner(owner *IToggleMenuFlyoutItem
 // the embedded IInspectable → IUnknown chain).
 type ToggleSplitButtonAutomationPeer struct {
 	IToggleSplitButtonAutomationPeer
+}
+
+// AsToggleSplitButtonAutomationPeer queries the instance's IToggleSplitButtonAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonAutomationPeer) AsToggleSplitButtonAutomationPeer() (*IToggleSplitButtonAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleSplitButtonAutomationPeer](unsafe.Pointer(self), &IID_IToggleSplitButtonAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -10257,6 +11474,12 @@ type ToggleSwitchAutomationPeer struct {
 	IToggleSwitchAutomationPeer
 }
 
+// AsToggleSwitchAutomationPeer queries the instance's IToggleSwitchAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchAutomationPeer) AsToggleSwitchAutomationPeer() (*IToggleSwitchAutomationPeer, error) {
+	return winrt.QueryInterface[IToggleSwitchAutomationPeer](unsafe.Pointer(self), &IID_IToggleSwitchAutomationPeer)
+}
+
 // AsToggleProvider queries the instance's IToggleProvider interface.
 // The returned reference is owned by the caller.
 func (self *ToggleSwitchAutomationPeer) AsToggleProvider() (*IToggleProvider, error) {
@@ -10328,6 +11551,12 @@ func NewToggleSwitchAutomationPeerWithOwner(owner *IToggleSwitch) (*ToggleSwitch
 // the embedded IInspectable → IUnknown chain).
 type TreeViewItemAutomationPeer struct {
 	ITreeViewItemAutomationPeer
+}
+
+// AsTreeViewItemAutomationPeer queries the instance's ITreeViewItemAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemAutomationPeer) AsTreeViewItemAutomationPeer() (*ITreeViewItemAutomationPeer, error) {
+	return winrt.QueryInterface[ITreeViewItemAutomationPeer](unsafe.Pointer(self), &IID_ITreeViewItemAutomationPeer)
 }
 
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
@@ -10410,6 +11639,12 @@ type TreeViewItemDataAutomationPeer struct {
 	ITreeViewItemDataAutomationPeer
 }
 
+// AsTreeViewItemDataAutomationPeer queries the instance's ITreeViewItemDataAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemDataAutomationPeer) AsTreeViewItemDataAutomationPeer() (*ITreeViewItemDataAutomationPeer, error) {
+	return winrt.QueryInterface[ITreeViewItemDataAutomationPeer](unsafe.Pointer(self), &IID_ITreeViewItemDataAutomationPeer)
+}
+
 // AsExpandCollapseProvider queries the instance's IExpandCollapseProvider interface.
 // The returned reference is owned by the caller.
 func (self *TreeViewItemDataAutomationPeer) AsExpandCollapseProvider() (*IExpandCollapseProvider, error) {
@@ -10488,6 +11723,12 @@ func NewTreeViewItemDataAutomationPeerWithOwner(item *syswinrt.IInspectable, par
 // the embedded IInspectable → IUnknown chain).
 type TreeViewListAutomationPeer struct {
 	ITreeViewListAutomationPeer
+}
+
+// AsTreeViewListAutomationPeer queries the instance's ITreeViewListAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewListAutomationPeer) AsTreeViewListAutomationPeer() (*ITreeViewListAutomationPeer, error) {
+	return winrt.QueryInterface[ITreeViewListAutomationPeer](unsafe.Pointer(self), &IID_ITreeViewListAutomationPeer)
 }
 
 // AsListViewAutomationPeer queries the instance's IListViewAutomationPeer interface.
@@ -10613,6 +11854,12 @@ type WebView2AutomationPeer struct {
 	IWebView2AutomationPeer
 }
 
+// AsWebView2AutomationPeer queries the instance's IWebView2AutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *WebView2AutomationPeer) AsWebView2AutomationPeer() (*IWebView2AutomationPeer, error) {
+	return winrt.QueryInterface[IWebView2AutomationPeer](unsafe.Pointer(self), &IID_IWebView2AutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -10680,6 +11927,12 @@ type IRawElementProviderSimple struct {
 	IIRawElementProviderSimple
 }
 
+// AsIRawElementProviderSimple queries the instance's IIRawElementProviderSimple interface.
+// The returned reference is owned by the caller.
+func (self *IRawElementProviderSimple) AsIRawElementProviderSimple() (*IIRawElementProviderSimple, error) {
+	return winrt.QueryInterface[IIRawElementProviderSimple](unsafe.Pointer(self), &IID_IIRawElementProviderSimple)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -10694,11 +11947,23 @@ type AnchorRequestedEventArgs struct {
 	IAnchorRequestedEventArgs
 }
 
+// AsAnchorRequestedEventArgs queries the instance's IAnchorRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AnchorRequestedEventArgs) AsAnchorRequestedEventArgs() (*IAnchorRequestedEventArgs, error) {
+	return winrt.QueryInterface[IAnchorRequestedEventArgs](unsafe.Pointer(self), &IID_IAnchorRequestedEventArgs)
+}
+
 // AnimatedIcon is the Microsoft.UI.Xaml.Controls.AnimatedIcon runtime class, surfaced through its
 // default interface IAnimatedIcon. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnimatedIcon struct {
 	IAnimatedIcon
+}
+
+// AsAnimatedIcon queries the instance's IAnimatedIcon interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedIcon) AsAnimatedIcon() (*IAnimatedIcon, error) {
+	return winrt.QueryInterface[IAnimatedIcon](unsafe.Pointer(self), &IID_IAnimatedIcon)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -10822,6 +12087,12 @@ type AnimatedIconSource struct {
 	IAnimatedIconSource
 }
 
+// AsAnimatedIconSource queries the instance's IAnimatedIconSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedIconSource) AsAnimatedIconSource() (*IAnimatedIconSource, error) {
+	return winrt.QueryInterface[IAnimatedIconSource](unsafe.Pointer(self), &IID_IAnimatedIconSource)
+}
+
 // AsIconSource queries the instance's IIconSource interface.
 // Inherited from Microsoft.UI.Xaml.Controls.IconSource.
 // The returned reference is owned by the caller.
@@ -10885,6 +12156,12 @@ func NewAnimatedIconSource() (*AnimatedIconSource, error) {
 // the embedded IInspectable → IUnknown chain).
 type AnimatedVisualPlayer struct {
 	IAnimatedVisualPlayer
+}
+
+// AsAnimatedVisualPlayer queries the instance's IAnimatedVisualPlayer interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedVisualPlayer) AsAnimatedVisualPlayer() (*IAnimatedVisualPlayer, error) {
+	return winrt.QueryInterface[IAnimatedVisualPlayer](unsafe.Pointer(self), &IID_IAnimatedVisualPlayer)
 }
 
 // AsAnimatedVisualPlayer2 queries the instance's IAnimatedVisualPlayer2 interface.
@@ -11017,6 +12294,12 @@ func NewAnimatedVisualPlayer() (*AnimatedVisualPlayer, error) {
 // the embedded IInspectable → IUnknown chain).
 type AnnotatedScrollBar struct {
 	IAnnotatedScrollBar
+}
+
+// AsAnnotatedScrollBar queries the instance's IAnnotatedScrollBar interface.
+// The returned reference is owned by the caller.
+func (self *AnnotatedScrollBar) AsAnnotatedScrollBar() (*IAnnotatedScrollBar, error) {
+	return winrt.QueryInterface[IAnnotatedScrollBar](unsafe.Pointer(self), &IID_IAnnotatedScrollBar)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -11154,11 +12437,23 @@ type AnnotatedScrollBarDetailLabelRequestedEventArgs struct {
 	IAnnotatedScrollBarDetailLabelRequestedEventArgs
 }
 
+// AsAnnotatedScrollBarDetailLabelRequestedEventArgs queries the instance's IAnnotatedScrollBarDetailLabelRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AnnotatedScrollBarDetailLabelRequestedEventArgs) AsAnnotatedScrollBarDetailLabelRequestedEventArgs() (*IAnnotatedScrollBarDetailLabelRequestedEventArgs, error) {
+	return winrt.QueryInterface[IAnnotatedScrollBarDetailLabelRequestedEventArgs](unsafe.Pointer(self), &IID_IAnnotatedScrollBarDetailLabelRequestedEventArgs)
+}
+
 // AnnotatedScrollBarLabel is the Microsoft.UI.Xaml.Controls.AnnotatedScrollBarLabel runtime class, surfaced through its
 // default interface IAnnotatedScrollBarLabel. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AnnotatedScrollBarLabel struct {
 	IAnnotatedScrollBarLabel
+}
+
+// AsAnnotatedScrollBarLabel queries the instance's IAnnotatedScrollBarLabel interface.
+// The returned reference is owned by the caller.
+func (self *AnnotatedScrollBarLabel) AsAnnotatedScrollBarLabel() (*IAnnotatedScrollBarLabel, error) {
+	return winrt.QueryInterface[IAnnotatedScrollBarLabel](unsafe.Pointer(self), &IID_IAnnotatedScrollBarLabel)
 }
 
 // CreateInstanceAnnotatedScrollBarLabel constructs a Microsoft.UI.Xaml.Controls.AnnotatedScrollBarLabel instance through
@@ -11185,11 +12480,23 @@ type AnnotatedScrollBarScrollingEventArgs struct {
 	IAnnotatedScrollBarScrollingEventArgs
 }
 
+// AsAnnotatedScrollBarScrollingEventArgs queries the instance's IAnnotatedScrollBarScrollingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AnnotatedScrollBarScrollingEventArgs) AsAnnotatedScrollBarScrollingEventArgs() (*IAnnotatedScrollBarScrollingEventArgs, error) {
+	return winrt.QueryInterface[IAnnotatedScrollBarScrollingEventArgs](unsafe.Pointer(self), &IID_IAnnotatedScrollBarScrollingEventArgs)
+}
+
 // AppBar is the Microsoft.UI.Xaml.Controls.AppBar runtime class, surfaced through its
 // default interface IAppBar. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AppBar struct {
 	IAppBar
+}
+
+// AsAppBar queries the instance's IAppBar interface.
+// The returned reference is owned by the caller.
+func (self *AppBar) AsAppBar() (*IAppBar, error) {
+	return winrt.QueryInterface[IAppBar](unsafe.Pointer(self), &IID_IAppBar)
 }
 
 // AsAppBarOverrides queries the instance's IAppBarOverrides interface.
@@ -11345,6 +12652,12 @@ func NewAppBar() (*AppBar, error) {
 // the embedded IInspectable → IUnknown chain).
 type AppBarButton struct {
 	IAppBarButton
+}
+
+// AsAppBarButton queries the instance's IAppBarButton interface.
+// The returned reference is owned by the caller.
+func (self *AppBarButton) AsAppBarButton() (*IAppBarButton, error) {
+	return winrt.QueryInterface[IAppBarButton](unsafe.Pointer(self), &IID_IAppBarButton)
 }
 
 // AsCommandBarElement queries the instance's ICommandBarElement interface.
@@ -11516,6 +12829,12 @@ type AppBarElementContainer struct {
 	IAppBarElementContainer
 }
 
+// AsAppBarElementContainer queries the instance's IAppBarElementContainer interface.
+// The returned reference is owned by the caller.
+func (self *AppBarElementContainer) AsAppBarElementContainer() (*IAppBarElementContainer, error) {
+	return winrt.QueryInterface[IAppBarElementContainer](unsafe.Pointer(self), &IID_IAppBarElementContainer)
+}
+
 // AsCommandBarElement queries the instance's ICommandBarElement interface.
 // The returned reference is owned by the caller.
 func (self *AppBarElementContainer) AsCommandBarElement() (*ICommandBarElement, error) {
@@ -11671,6 +12990,12 @@ type AppBarSeparator struct {
 	IAppBarSeparator
 }
 
+// AsAppBarSeparator queries the instance's IAppBarSeparator interface.
+// The returned reference is owned by the caller.
+func (self *AppBarSeparator) AsAppBarSeparator() (*IAppBarSeparator, error) {
+	return winrt.QueryInterface[IAppBarSeparator](unsafe.Pointer(self), &IID_IAppBarSeparator)
+}
+
 // AsCommandBarElement queries the instance's ICommandBarElement interface.
 // The returned reference is owned by the caller.
 func (self *AppBarSeparator) AsCommandBarElement() (*ICommandBarElement, error) {
@@ -11810,6 +13135,12 @@ func NewAppBarSeparator() (*AppBarSeparator, error) {
 // the embedded IInspectable → IUnknown chain).
 type AppBarToggleButton struct {
 	IAppBarToggleButton
+}
+
+// AsAppBarToggleButton queries the instance's IAppBarToggleButton interface.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButton) AsAppBarToggleButton() (*IAppBarToggleButton, error) {
+	return winrt.QueryInterface[IAppBarToggleButton](unsafe.Pointer(self), &IID_IAppBarToggleButton)
 }
 
 // AsCommandBarElement queries the instance's ICommandBarElement interface.
@@ -11999,6 +13330,12 @@ func NewAutoSuggestBox() (*AutoSuggestBox, error) {
 	return winrt.QueryInterface[AutoSuggestBox](unsafe.Pointer(instance), &IID_IAutoSuggestBox)
 }
 
+// AsAutoSuggestBox queries the instance's IAutoSuggestBox interface.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBox) AsAutoSuggestBox() (*IAutoSuggestBox, error) {
+	return winrt.QueryInterface[IAutoSuggestBox](unsafe.Pointer(self), &IID_IAutoSuggestBox)
+}
+
 // AsItemsControl queries the instance's IItemsControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.ItemsControl.
 // The returned reference is owned by the caller.
@@ -12141,6 +13478,12 @@ func NewAutoSuggestBoxQuerySubmittedEventArgs() (*AutoSuggestBoxQuerySubmittedEv
 	return winrt.QueryInterface[AutoSuggestBoxQuerySubmittedEventArgs](unsafe.Pointer(instance), &IID_IAutoSuggestBoxQuerySubmittedEventArgs)
 }
 
+// AsAutoSuggestBoxQuerySubmittedEventArgs queries the instance's IAutoSuggestBoxQuerySubmittedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxQuerySubmittedEventArgs) AsAutoSuggestBoxQuerySubmittedEventArgs() (*IAutoSuggestBoxQuerySubmittedEventArgs, error) {
+	return winrt.QueryInterface[IAutoSuggestBoxQuerySubmittedEventArgs](unsafe.Pointer(self), &IID_IAutoSuggestBoxQuerySubmittedEventArgs)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -12164,6 +13507,12 @@ func NewAutoSuggestBoxSuggestionChosenEventArgs() (*AutoSuggestBoxSuggestionChos
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AutoSuggestBoxSuggestionChosenEventArgs](unsafe.Pointer(instance), &IID_IAutoSuggestBoxSuggestionChosenEventArgs)
+}
+
+// AsAutoSuggestBoxSuggestionChosenEventArgs queries the instance's IAutoSuggestBoxSuggestionChosenEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxSuggestionChosenEventArgs) AsAutoSuggestBoxSuggestionChosenEventArgs() (*IAutoSuggestBoxSuggestionChosenEventArgs, error) {
+	return winrt.QueryInterface[IAutoSuggestBoxSuggestionChosenEventArgs](unsafe.Pointer(self), &IID_IAutoSuggestBoxSuggestionChosenEventArgs)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -12191,6 +13540,12 @@ func NewAutoSuggestBoxTextChangedEventArgs() (*AutoSuggestBoxTextChangedEventArg
 	return winrt.QueryInterface[AutoSuggestBoxTextChangedEventArgs](unsafe.Pointer(instance), &IID_IAutoSuggestBoxTextChangedEventArgs)
 }
 
+// AsAutoSuggestBoxTextChangedEventArgs queries the instance's IAutoSuggestBoxTextChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxTextChangedEventArgs) AsAutoSuggestBoxTextChangedEventArgs() (*IAutoSuggestBoxTextChangedEventArgs, error) {
+	return winrt.QueryInterface[IAutoSuggestBoxTextChangedEventArgs](unsafe.Pointer(self), &IID_IAutoSuggestBoxTextChangedEventArgs)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -12215,6 +13570,12 @@ func AutoSuggestBoxTextChangedEventArgsStatics() (*IAutoSuggestBoxTextChangedEve
 // the embedded IInspectable → IUnknown chain).
 type BitmapIcon struct {
 	IBitmapIcon
+}
+
+// AsBitmapIcon queries the instance's IBitmapIcon interface.
+// The returned reference is owned by the caller.
+func (self *BitmapIcon) AsBitmapIcon() (*IBitmapIcon, error) {
+	return winrt.QueryInterface[IBitmapIcon](unsafe.Pointer(self), &IID_IBitmapIcon)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -12338,6 +13699,12 @@ type BitmapIconSource struct {
 	IBitmapIconSource
 }
 
+// AsBitmapIconSource queries the instance's IBitmapIconSource interface.
+// The returned reference is owned by the caller.
+func (self *BitmapIconSource) AsBitmapIconSource() (*IBitmapIconSource, error) {
+	return winrt.QueryInterface[IBitmapIconSource](unsafe.Pointer(self), &IID_IBitmapIconSource)
+}
+
 // AsIconSource queries the instance's IIconSource interface.
 // Inherited from Microsoft.UI.Xaml.Controls.IconSource.
 // The returned reference is owned by the caller.
@@ -12412,6 +13779,12 @@ func NewBorder() (*Border, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Border](unsafe.Pointer(instance), &IID_IBorder)
+}
+
+// AsBorder queries the instance's IBorder interface.
+// The returned reference is owned by the caller.
+func (self *Border) AsBorder() (*IBorder, error) {
+	return winrt.QueryInterface[IBorder](unsafe.Pointer(self), &IID_IBorder)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -12501,6 +13874,12 @@ func BorderStatics() (*IBorderStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type BreadcrumbBar struct {
 	IBreadcrumbBar
+}
+
+// AsBreadcrumbBar queries the instance's IBreadcrumbBar interface.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBar) AsBreadcrumbBar() (*IBreadcrumbBar, error) {
+	return winrt.QueryInterface[IBreadcrumbBar](unsafe.Pointer(self), &IID_IBreadcrumbBar)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -12636,6 +14015,12 @@ func NewBreadcrumbBar() (*BreadcrumbBar, error) {
 // the embedded IInspectable → IUnknown chain).
 type BreadcrumbBarItem struct {
 	IBreadcrumbBarItem
+}
+
+// AsBreadcrumbBarItem queries the instance's IBreadcrumbBarItem interface.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItem) AsBreadcrumbBarItem() (*IBreadcrumbBarItem, error) {
+	return winrt.QueryInterface[IBreadcrumbBarItem](unsafe.Pointer(self), &IID_IBreadcrumbBarItem)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -12775,11 +14160,23 @@ type BreadcrumbBarItemClickedEventArgs struct {
 	IBreadcrumbBarItemClickedEventArgs
 }
 
+// AsBreadcrumbBarItemClickedEventArgs queries the instance's IBreadcrumbBarItemClickedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *BreadcrumbBarItemClickedEventArgs) AsBreadcrumbBarItemClickedEventArgs() (*IBreadcrumbBarItemClickedEventArgs, error) {
+	return winrt.QueryInterface[IBreadcrumbBarItemClickedEventArgs](unsafe.Pointer(self), &IID_IBreadcrumbBarItemClickedEventArgs)
+}
+
 // Button is the Microsoft.UI.Xaml.Controls.Button runtime class, surfaced through its
 // default interface IButton. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Button struct {
 	IButton
+}
+
+// AsButton queries the instance's IButton interface.
+// The returned reference is owned by the caller.
+func (self *Button) AsButton() (*IButton, error) {
+	return winrt.QueryInterface[IButton](unsafe.Pointer(self), &IID_IButton)
 }
 
 // AsButtonBase queries the instance's IButtonBase interface.
@@ -12938,6 +14335,12 @@ type CalendarDatePicker struct {
 	ICalendarDatePicker
 }
 
+// AsCalendarDatePicker queries the instance's ICalendarDatePicker interface.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePicker) AsCalendarDatePicker() (*ICalendarDatePicker, error) {
+	return winrt.QueryInterface[ICalendarDatePicker](unsafe.Pointer(self), &IID_ICalendarDatePicker)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -13073,11 +14476,23 @@ type CalendarDatePickerDateChangedEventArgs struct {
 	ICalendarDatePickerDateChangedEventArgs
 }
 
+// AsCalendarDatePickerDateChangedEventArgs queries the instance's ICalendarDatePickerDateChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CalendarDatePickerDateChangedEventArgs) AsCalendarDatePickerDateChangedEventArgs() (*ICalendarDatePickerDateChangedEventArgs, error) {
+	return winrt.QueryInterface[ICalendarDatePickerDateChangedEventArgs](unsafe.Pointer(self), &IID_ICalendarDatePickerDateChangedEventArgs)
+}
+
 // CalendarView is the Microsoft.UI.Xaml.Controls.CalendarView runtime class, surfaced through its
 // default interface ICalendarView. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CalendarView struct {
 	ICalendarView
+}
+
+// AsCalendarView queries the instance's ICalendarView interface.
+// The returned reference is owned by the caller.
+func (self *CalendarView) AsCalendarView() (*ICalendarView, error) {
+	return winrt.QueryInterface[ICalendarView](unsafe.Pointer(self), &IID_ICalendarView)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -13215,6 +14630,12 @@ type CalendarViewDayItem struct {
 	ICalendarViewDayItem
 }
 
+// AsCalendarViewDayItem queries the instance's ICalendarViewDayItem interface.
+// The returned reference is owned by the caller.
+func (self *CalendarViewDayItem) AsCalendarViewDayItem() (*ICalendarViewDayItem, error) {
+	return winrt.QueryInterface[ICalendarViewDayItem](unsafe.Pointer(self), &IID_ICalendarViewDayItem)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -13350,11 +14771,23 @@ type CalendarViewDayItemChangingEventArgs struct {
 	ICalendarViewDayItemChangingEventArgs
 }
 
+// AsCalendarViewDayItemChangingEventArgs queries the instance's ICalendarViewDayItemChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CalendarViewDayItemChangingEventArgs) AsCalendarViewDayItemChangingEventArgs() (*ICalendarViewDayItemChangingEventArgs, error) {
+	return winrt.QueryInterface[ICalendarViewDayItemChangingEventArgs](unsafe.Pointer(self), &IID_ICalendarViewDayItemChangingEventArgs)
+}
+
 // CalendarViewSelectedDatesChangedEventArgs is the Microsoft.UI.Xaml.Controls.CalendarViewSelectedDatesChangedEventArgs runtime class, surfaced through its
 // default interface ICalendarViewSelectedDatesChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CalendarViewSelectedDatesChangedEventArgs struct {
 	ICalendarViewSelectedDatesChangedEventArgs
+}
+
+// AsCalendarViewSelectedDatesChangedEventArgs queries the instance's ICalendarViewSelectedDatesChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CalendarViewSelectedDatesChangedEventArgs) AsCalendarViewSelectedDatesChangedEventArgs() (*ICalendarViewSelectedDatesChangedEventArgs, error) {
+	return winrt.QueryInterface[ICalendarViewSelectedDatesChangedEventArgs](unsafe.Pointer(self), &IID_ICalendarViewSelectedDatesChangedEventArgs)
 }
 
 // CandidateWindowBoundsChangedEventArgs is the Microsoft.UI.Xaml.Controls.CandidateWindowBoundsChangedEventArgs runtime class, surfaced through its
@@ -13364,11 +14797,23 @@ type CandidateWindowBoundsChangedEventArgs struct {
 	ICandidateWindowBoundsChangedEventArgs
 }
 
+// AsCandidateWindowBoundsChangedEventArgs queries the instance's ICandidateWindowBoundsChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CandidateWindowBoundsChangedEventArgs) AsCandidateWindowBoundsChangedEventArgs() (*ICandidateWindowBoundsChangedEventArgs, error) {
+	return winrt.QueryInterface[ICandidateWindowBoundsChangedEventArgs](unsafe.Pointer(self), &IID_ICandidateWindowBoundsChangedEventArgs)
+}
+
 // Canvas is the Microsoft.UI.Xaml.Controls.Canvas runtime class, surfaced through its
 // default interface ICanvas. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Canvas struct {
 	ICanvas
+}
+
+// AsCanvas queries the instance's ICanvas interface.
+// The returned reference is owned by the caller.
+func (self *Canvas) AsCanvas() (*ICanvas, error) {
+	return winrt.QueryInterface[ICanvas](unsafe.Pointer(self), &IID_ICanvas)
 }
 
 // AsPanel queries the instance's IPanel interface.
@@ -13490,6 +14935,12 @@ func NewCanvas() (*Canvas, error) {
 // the embedded IInspectable → IUnknown chain).
 type CheckBox struct {
 	ICheckBox
+}
+
+// AsCheckBox queries the instance's ICheckBox interface.
+// The returned reference is owned by the caller.
+func (self *CheckBox) AsCheckBox() (*ICheckBox, error) {
+	return winrt.QueryInterface[ICheckBox](unsafe.Pointer(self), &IID_ICheckBox)
 }
 
 // AsToggleButton queries the instance's IToggleButton interface.
@@ -13661,6 +15112,12 @@ func NewChoosingGroupHeaderContainerEventArgs() (*ChoosingGroupHeaderContainerEv
 	return winrt.QueryInterface[ChoosingGroupHeaderContainerEventArgs](unsafe.Pointer(instance), &IID_IChoosingGroupHeaderContainerEventArgs)
 }
 
+// AsChoosingGroupHeaderContainerEventArgs queries the instance's IChoosingGroupHeaderContainerEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ChoosingGroupHeaderContainerEventArgs) AsChoosingGroupHeaderContainerEventArgs() (*IChoosingGroupHeaderContainerEventArgs, error) {
+	return winrt.QueryInterface[IChoosingGroupHeaderContainerEventArgs](unsafe.Pointer(self), &IID_IChoosingGroupHeaderContainerEventArgs)
+}
+
 // ChoosingItemContainerEventArgs is the Microsoft.UI.Xaml.Controls.ChoosingItemContainerEventArgs runtime class, surfaced through its
 // default interface IChoosingItemContainerEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -13679,11 +15136,23 @@ func NewChoosingItemContainerEventArgs() (*ChoosingItemContainerEventArgs, error
 	return winrt.QueryInterface[ChoosingItemContainerEventArgs](unsafe.Pointer(instance), &IID_IChoosingItemContainerEventArgs)
 }
 
+// AsChoosingItemContainerEventArgs queries the instance's IChoosingItemContainerEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ChoosingItemContainerEventArgs) AsChoosingItemContainerEventArgs() (*IChoosingItemContainerEventArgs, error) {
+	return winrt.QueryInterface[IChoosingItemContainerEventArgs](unsafe.Pointer(self), &IID_IChoosingItemContainerEventArgs)
+}
+
 // CleanUpVirtualizedItemEventArgs is the Microsoft.UI.Xaml.Controls.CleanUpVirtualizedItemEventArgs runtime class, surfaced through its
 // default interface ICleanUpVirtualizedItemEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CleanUpVirtualizedItemEventArgs struct {
 	ICleanUpVirtualizedItemEventArgs
+}
+
+// AsCleanUpVirtualizedItemEventArgs queries the instance's ICleanUpVirtualizedItemEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CleanUpVirtualizedItemEventArgs) AsCleanUpVirtualizedItemEventArgs() (*ICleanUpVirtualizedItemEventArgs, error) {
+	return winrt.QueryInterface[ICleanUpVirtualizedItemEventArgs](unsafe.Pointer(self), &IID_ICleanUpVirtualizedItemEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -13700,11 +15169,23 @@ type ColorChangedEventArgs struct {
 	IColorChangedEventArgs
 }
 
+// AsColorChangedEventArgs queries the instance's IColorChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ColorChangedEventArgs) AsColorChangedEventArgs() (*IColorChangedEventArgs, error) {
+	return winrt.QueryInterface[IColorChangedEventArgs](unsafe.Pointer(self), &IID_IColorChangedEventArgs)
+}
+
 // ColorPicker is the Microsoft.UI.Xaml.Controls.ColorPicker runtime class, surfaced through its
 // default interface IColorPicker. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ColorPicker struct {
 	IColorPicker
+}
+
+// AsColorPicker queries the instance's IColorPicker interface.
+// The returned reference is owned by the caller.
+func (self *ColorPicker) AsColorPicker() (*IColorPicker, error) {
+	return winrt.QueryInterface[IColorPicker](unsafe.Pointer(self), &IID_IColorPicker)
 }
 
 // AsColorPicker2 queries the instance's IColorPicker2 interface.
@@ -13871,6 +15352,12 @@ func NewColumnDefinition() (*ColumnDefinition, error) {
 	return winrt.QueryInterface[ColumnDefinition](unsafe.Pointer(instance), &IID_IColumnDefinition)
 }
 
+// AsColumnDefinition queries the instance's IColumnDefinition interface.
+// The returned reference is owned by the caller.
+func (self *ColumnDefinition) AsColumnDefinition() (*IColumnDefinition, error) {
+	return winrt.QueryInterface[IColumnDefinition](unsafe.Pointer(self), &IID_IColumnDefinition)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -13897,6 +15384,12 @@ type ColumnDefinitionCollection struct {
 	IVectorOfColumnDefinition
 }
 
+// AsVectorOfColumnDefinition queries the instance's IVectorOfColumnDefinition interface.
+// The returned reference is owned by the caller.
+func (self *ColumnDefinitionCollection) AsVectorOfColumnDefinition() (*IVectorOfColumnDefinition, error) {
+	return winrt.QueryInterface[IVectorOfColumnDefinition](unsafe.Pointer(self), &IID_IVectorOfColumnDefinition)
+}
+
 // AsIterableOfColumnDefinition queries the instance's IIterableOfColumnDefinition interface.
 // The returned reference is owned by the caller.
 func (self *ColumnDefinitionCollection) AsIterableOfColumnDefinition() (*IIterableOfColumnDefinition, error) {
@@ -13908,6 +15401,12 @@ func (self *ColumnDefinitionCollection) AsIterableOfColumnDefinition() (*IIterab
 // the embedded IInspectable → IUnknown chain).
 type ComboBox struct {
 	IComboBox
+}
+
+// AsComboBox queries the instance's IComboBox interface.
+// The returned reference is owned by the caller.
+func (self *ComboBox) AsComboBox() (*IComboBox, error) {
+	return winrt.QueryInterface[IComboBox](unsafe.Pointer(self), &IID_IComboBox)
 }
 
 // AsComboBoxOverrides queries the instance's IComboBoxOverrides interface.
@@ -14079,6 +15578,12 @@ type ComboBoxItem struct {
 	IComboBoxItem
 }
 
+// AsComboBoxItem queries the instance's IComboBoxItem interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxItem) AsComboBoxItem() (*IComboBoxItem, error) {
+	return winrt.QueryInterface[IComboBoxItem](unsafe.Pointer(self), &IID_IComboBoxItem)
+}
+
 // AsSelectorItem queries the instance's ISelectorItem interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.SelectorItem.
 // The returned reference is owned by the caller.
@@ -14223,11 +15728,23 @@ type ComboBoxTextSubmittedEventArgs struct {
 	IComboBoxTextSubmittedEventArgs
 }
 
+// AsComboBoxTextSubmittedEventArgs queries the instance's IComboBoxTextSubmittedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxTextSubmittedEventArgs) AsComboBoxTextSubmittedEventArgs() (*IComboBoxTextSubmittedEventArgs, error) {
+	return winrt.QueryInterface[IComboBoxTextSubmittedEventArgs](unsafe.Pointer(self), &IID_IComboBoxTextSubmittedEventArgs)
+}
+
 // CommandBar is the Microsoft.UI.Xaml.Controls.CommandBar runtime class, surfaced through its
 // default interface ICommandBar. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CommandBar struct {
 	ICommandBar
+}
+
+// AsCommandBar queries the instance's ICommandBar interface.
+// The returned reference is owned by the caller.
+func (self *CommandBar) AsCommandBar() (*ICommandBar, error) {
+	return winrt.QueryInterface[ICommandBar](unsafe.Pointer(self), &IID_ICommandBar)
 }
 
 // AsAppBar queries the instance's IAppBar interface.
@@ -14393,6 +15910,12 @@ type CommandBarFlyout struct {
 	ICommandBarFlyout
 }
 
+// AsCommandBarFlyout queries the instance's ICommandBarFlyout interface.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyout) AsCommandBarFlyout() (*ICommandBarFlyout, error) {
+	return winrt.QueryInterface[ICommandBarFlyout](unsafe.Pointer(self), &IID_ICommandBarFlyout)
+}
+
 // AsCommandBarFlyout2 queries the instance's ICommandBarFlyout2 interface.
 // The returned reference is owned by the caller.
 func (self *CommandBarFlyout) AsCommandBarFlyout2() (*ICommandBarFlyout2, error) {
@@ -14457,6 +15980,12 @@ func NewCommandBarFlyout() (*CommandBarFlyout, error) {
 // the embedded IInspectable → IUnknown chain).
 type CommandBarOverflowPresenter struct {
 	ICommandBarOverflowPresenter
+}
+
+// AsCommandBarOverflowPresenter queries the instance's ICommandBarOverflowPresenter interface.
+// The returned reference is owned by the caller.
+func (self *CommandBarOverflowPresenter) AsCommandBarOverflowPresenter() (*ICommandBarOverflowPresenter, error) {
+	return winrt.QueryInterface[ICommandBarOverflowPresenter](unsafe.Pointer(self), &IID_ICommandBarOverflowPresenter)
 }
 
 // AsItemsControl queries the instance's IItemsControl interface.
@@ -14614,11 +16143,23 @@ func NewContainerContentChangingEventArgs() (*ContainerContentChangingEventArgs,
 	return winrt.QueryInterface[ContainerContentChangingEventArgs](unsafe.Pointer(instance), &IID_IContainerContentChangingEventArgs)
 }
 
+// AsContainerContentChangingEventArgs queries the instance's IContainerContentChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContainerContentChangingEventArgs) AsContainerContentChangingEventArgs() (*IContainerContentChangingEventArgs, error) {
+	return winrt.QueryInterface[IContainerContentChangingEventArgs](unsafe.Pointer(self), &IID_IContainerContentChangingEventArgs)
+}
+
 // ContentControl is the Microsoft.UI.Xaml.Controls.ContentControl runtime class, surfaced through its
 // default interface IContentControl. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentControl struct {
 	IContentControl
+}
+
+// AsContentControl queries the instance's IContentControl interface.
+// The returned reference is owned by the caller.
+func (self *ContentControl) AsContentControl() (*IContentControl, error) {
+	return winrt.QueryInterface[IContentControl](unsafe.Pointer(self), &IID_IContentControl)
 }
 
 // AsContentControlOverrides queries the instance's IContentControlOverrides interface.
@@ -14760,6 +16301,12 @@ func NewContentControl() (*ContentControl, error) {
 // the embedded IInspectable → IUnknown chain).
 type ContentDialog struct {
 	IContentDialog
+}
+
+// AsContentDialog queries the instance's IContentDialog interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialog) AsContentDialog() (*IContentDialog, error) {
+	return winrt.QueryInterface[IContentDialog](unsafe.Pointer(self), &IID_IContentDialog)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -14911,11 +16458,23 @@ type ContentDialogButtonClickDeferral struct {
 	IContentDialogButtonClickDeferral
 }
 
+// AsContentDialogButtonClickDeferral queries the instance's IContentDialogButtonClickDeferral interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialogButtonClickDeferral) AsContentDialogButtonClickDeferral() (*IContentDialogButtonClickDeferral, error) {
+	return winrt.QueryInterface[IContentDialogButtonClickDeferral](unsafe.Pointer(self), &IID_IContentDialogButtonClickDeferral)
+}
+
 // ContentDialogButtonClickEventArgs is the Microsoft.UI.Xaml.Controls.ContentDialogButtonClickEventArgs runtime class, surfaced through its
 // default interface IContentDialogButtonClickEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentDialogButtonClickEventArgs struct {
 	IContentDialogButtonClickEventArgs
+}
+
+// AsContentDialogButtonClickEventArgs queries the instance's IContentDialogButtonClickEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialogButtonClickEventArgs) AsContentDialogButtonClickEventArgs() (*IContentDialogButtonClickEventArgs, error) {
+	return winrt.QueryInterface[IContentDialogButtonClickEventArgs](unsafe.Pointer(self), &IID_IContentDialogButtonClickEventArgs)
 }
 
 // ContentDialogClosedEventArgs is the Microsoft.UI.Xaml.Controls.ContentDialogClosedEventArgs runtime class, surfaced through its
@@ -14925,11 +16484,23 @@ type ContentDialogClosedEventArgs struct {
 	IContentDialogClosedEventArgs
 }
 
+// AsContentDialogClosedEventArgs queries the instance's IContentDialogClosedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialogClosedEventArgs) AsContentDialogClosedEventArgs() (*IContentDialogClosedEventArgs, error) {
+	return winrt.QueryInterface[IContentDialogClosedEventArgs](unsafe.Pointer(self), &IID_IContentDialogClosedEventArgs)
+}
+
 // ContentDialogClosingDeferral is the Microsoft.UI.Xaml.Controls.ContentDialogClosingDeferral runtime class, surfaced through its
 // default interface IContentDialogClosingDeferral. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentDialogClosingDeferral struct {
 	IContentDialogClosingDeferral
+}
+
+// AsContentDialogClosingDeferral queries the instance's IContentDialogClosingDeferral interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialogClosingDeferral) AsContentDialogClosingDeferral() (*IContentDialogClosingDeferral, error) {
+	return winrt.QueryInterface[IContentDialogClosingDeferral](unsafe.Pointer(self), &IID_IContentDialogClosingDeferral)
 }
 
 // ContentDialogClosingEventArgs is the Microsoft.UI.Xaml.Controls.ContentDialogClosingEventArgs runtime class, surfaced through its
@@ -14939,6 +16510,12 @@ type ContentDialogClosingEventArgs struct {
 	IContentDialogClosingEventArgs
 }
 
+// AsContentDialogClosingEventArgs queries the instance's IContentDialogClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialogClosingEventArgs) AsContentDialogClosingEventArgs() (*IContentDialogClosingEventArgs, error) {
+	return winrt.QueryInterface[IContentDialogClosingEventArgs](unsafe.Pointer(self), &IID_IContentDialogClosingEventArgs)
+}
+
 // ContentDialogOpenedEventArgs is the Microsoft.UI.Xaml.Controls.ContentDialogOpenedEventArgs runtime class, surfaced through its
 // default interface IContentDialogOpenedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -14946,11 +16523,23 @@ type ContentDialogOpenedEventArgs struct {
 	IContentDialogOpenedEventArgs
 }
 
+// AsContentDialogOpenedEventArgs queries the instance's IContentDialogOpenedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContentDialogOpenedEventArgs) AsContentDialogOpenedEventArgs() (*IContentDialogOpenedEventArgs, error) {
+	return winrt.QueryInterface[IContentDialogOpenedEventArgs](unsafe.Pointer(self), &IID_IContentDialogOpenedEventArgs)
+}
+
 // ContentPresenter is the Microsoft.UI.Xaml.Controls.ContentPresenter runtime class, surfaced through its
 // default interface IContentPresenter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ContentPresenter struct {
 	IContentPresenter
+}
+
+// AsContentPresenter queries the instance's IContentPresenter interface.
+// The returned reference is owned by the caller.
+func (self *ContentPresenter) AsContentPresenter() (*IContentPresenter, error) {
+	return winrt.QueryInterface[IContentPresenter](unsafe.Pointer(self), &IID_IContentPresenter)
 }
 
 // AsContentPresenterOverrides queries the instance's IContentPresenterOverrides interface.
@@ -15073,6 +16662,12 @@ type ContextMenuEventArgs struct {
 	IContextMenuEventArgs
 }
 
+// AsContextMenuEventArgs queries the instance's IContextMenuEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContextMenuEventArgs) AsContextMenuEventArgs() (*IContextMenuEventArgs, error) {
+	return winrt.QueryInterface[IContextMenuEventArgs](unsafe.Pointer(self), &IID_IContextMenuEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -15085,6 +16680,12 @@ func (self *ContextMenuEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error)
 // the embedded IInspectable → IUnknown chain).
 type Control struct {
 	IControl
+}
+
+// AsControl queries the instance's IControl interface.
+// The returned reference is owned by the caller.
+func (self *Control) AsControl() (*IControl, error) {
+	return winrt.QueryInterface[IControl](unsafe.Pointer(self), &IID_IControl)
 }
 
 // AsControlProtected queries the instance's IControlProtected interface.
@@ -15224,6 +16825,12 @@ func NewControlTemplate() (*ControlTemplate, error) {
 	return winrt.QueryInterface[ControlTemplate](unsafe.Pointer(instance), &IID_IControlTemplate)
 }
 
+// AsControlTemplate queries the instance's IControlTemplate interface.
+// The returned reference is owned by the caller.
+func (self *ControlTemplate) AsControlTemplate() (*IControlTemplate, error) {
+	return winrt.QueryInterface[IControlTemplate](unsafe.Pointer(self), &IID_IControlTemplate)
+}
+
 // AsFrameworkTemplate queries the instance's IFrameworkTemplate interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkTemplate.
 // The returned reference is owned by the caller.
@@ -15245,11 +16852,23 @@ type CoreWebView2InitializedEventArgs struct {
 	ICoreWebView2InitializedEventArgs
 }
 
+// AsCoreWebView2InitializedEventArgs queries the instance's ICoreWebView2InitializedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CoreWebView2InitializedEventArgs) AsCoreWebView2InitializedEventArgs() (*ICoreWebView2InitializedEventArgs, error) {
+	return winrt.QueryInterface[ICoreWebView2InitializedEventArgs](unsafe.Pointer(self), &IID_ICoreWebView2InitializedEventArgs)
+}
+
 // DataTemplateSelector is the Microsoft.UI.Xaml.Controls.DataTemplateSelector runtime class, surfaced through its
 // default interface IDataTemplateSelector. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DataTemplateSelector struct {
 	IDataTemplateSelector
+}
+
+// AsDataTemplateSelector queries the instance's IDataTemplateSelector interface.
+// The returned reference is owned by the caller.
+func (self *DataTemplateSelector) AsDataTemplateSelector() (*IDataTemplateSelector, error) {
+	return winrt.QueryInterface[IDataTemplateSelector](unsafe.Pointer(self), &IID_IDataTemplateSelector)
 }
 
 // AsDataTemplateSelectorOverrides queries the instance's IDataTemplateSelectorOverrides interface.
@@ -15307,6 +16926,12 @@ func NewDatePickedEventArgs() (*DatePickedEventArgs, error) {
 	return winrt.QueryInterface[DatePickedEventArgs](unsafe.Pointer(instance), &IID_IDatePickedEventArgs)
 }
 
+// AsDatePickedEventArgs queries the instance's IDatePickedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DatePickedEventArgs) AsDatePickedEventArgs() (*IDatePickedEventArgs, error) {
+	return winrt.QueryInterface[IDatePickedEventArgs](unsafe.Pointer(self), &IID_IDatePickedEventArgs)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -15319,6 +16944,12 @@ func (self *DatePickedEventArgs) AsDependencyObject() (*IDependencyObject, error
 // the embedded IInspectable → IUnknown chain).
 type DatePicker struct {
 	IDatePicker
+}
+
+// AsDatePicker queries the instance's IDatePicker interface.
+// The returned reference is owned by the caller.
+func (self *DatePicker) AsDatePicker() (*IDatePicker, error) {
+	return winrt.QueryInterface[IDatePicker](unsafe.Pointer(self), &IID_IDatePicker)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -15467,6 +17098,12 @@ func NewDatePickerFlyout() (*DatePickerFlyout, error) {
 	return winrt.QueryInterface[DatePickerFlyout](unsafe.Pointer(instance), &IID_IDatePickerFlyout)
 }
 
+// AsDatePickerFlyout queries the instance's IDatePickerFlyout interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyout) AsDatePickerFlyout() (*IDatePickerFlyout, error) {
+	return winrt.QueryInterface[IDatePickerFlyout](unsafe.Pointer(self), &IID_IDatePickerFlyout)
+}
+
 // AsPickerFlyoutBase queries the instance's IPickerFlyoutBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.PickerFlyoutBase.
 // The returned reference is owned by the caller.
@@ -15528,6 +17165,12 @@ type DatePickerFlyoutItem struct {
 	IDatePickerFlyoutItem
 }
 
+// AsDatePickerFlyoutItem queries the instance's IDatePickerFlyoutItem interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutItem) AsDatePickerFlyoutItem() (*IDatePickerFlyoutItem, error) {
+	return winrt.QueryInterface[IDatePickerFlyoutItem](unsafe.Pointer(self), &IID_IDatePickerFlyoutItem)
+}
+
 // AsCustomPropertyProvider queries the instance's ICustomPropertyProvider interface.
 // The returned reference is owned by the caller.
 func (self *DatePickerFlyoutItem) AsCustomPropertyProvider() (*ICustomPropertyProvider, error) {
@@ -15558,6 +17201,12 @@ func DatePickerFlyoutItemStatics() (*IDatePickerFlyoutItemStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type DatePickerFlyoutPresenter struct {
 	IDatePickerFlyoutPresenter
+}
+
+// AsDatePickerFlyoutPresenter queries the instance's IDatePickerFlyoutPresenter interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerFlyoutPresenter) AsDatePickerFlyoutPresenter() (*IDatePickerFlyoutPresenter, error) {
+	return winrt.QueryInterface[IDatePickerFlyoutPresenter](unsafe.Pointer(self), &IID_IDatePickerFlyoutPresenter)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -15670,6 +17319,12 @@ type DatePickerSelectedValueChangedEventArgs struct {
 	IDatePickerSelectedValueChangedEventArgs
 }
 
+// AsDatePickerSelectedValueChangedEventArgs queries the instance's IDatePickerSelectedValueChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerSelectedValueChangedEventArgs) AsDatePickerSelectedValueChangedEventArgs() (*IDatePickerSelectedValueChangedEventArgs, error) {
+	return winrt.QueryInterface[IDatePickerSelectedValueChangedEventArgs](unsafe.Pointer(self), &IID_IDatePickerSelectedValueChangedEventArgs)
+}
+
 // DatePickerValueChangedEventArgs is the Microsoft.UI.Xaml.Controls.DatePickerValueChangedEventArgs runtime class, surfaced through its
 // default interface IDatePickerValueChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -15677,11 +17332,23 @@ type DatePickerValueChangedEventArgs struct {
 	IDatePickerValueChangedEventArgs
 }
 
+// AsDatePickerValueChangedEventArgs queries the instance's IDatePickerValueChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DatePickerValueChangedEventArgs) AsDatePickerValueChangedEventArgs() (*IDatePickerValueChangedEventArgs, error) {
+	return winrt.QueryInterface[IDatePickerValueChangedEventArgs](unsafe.Pointer(self), &IID_IDatePickerValueChangedEventArgs)
+}
+
 // DragItemsCompletedEventArgs is the Microsoft.UI.Xaml.Controls.DragItemsCompletedEventArgs runtime class, surfaced through its
 // default interface IDragItemsCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DragItemsCompletedEventArgs struct {
 	IDragItemsCompletedEventArgs
+}
+
+// AsDragItemsCompletedEventArgs queries the instance's IDragItemsCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragItemsCompletedEventArgs) AsDragItemsCompletedEventArgs() (*IDragItemsCompletedEventArgs, error) {
+	return winrt.QueryInterface[IDragItemsCompletedEventArgs](unsafe.Pointer(self), &IID_IDragItemsCompletedEventArgs)
 }
 
 // DragItemsStartingEventArgs is the Microsoft.UI.Xaml.Controls.DragItemsStartingEventArgs runtime class, surfaced through its
@@ -15702,11 +17369,23 @@ func NewDragItemsStartingEventArgs() (*DragItemsStartingEventArgs, error) {
 	return winrt.QueryInterface[DragItemsStartingEventArgs](unsafe.Pointer(instance), &IID_IDragItemsStartingEventArgs)
 }
 
+// AsDragItemsStartingEventArgs queries the instance's IDragItemsStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragItemsStartingEventArgs) AsDragItemsStartingEventArgs() (*IDragItemsStartingEventArgs, error) {
+	return winrt.QueryInterface[IDragItemsStartingEventArgs](unsafe.Pointer(self), &IID_IDragItemsStartingEventArgs)
+}
+
 // DropDownButton is the Microsoft.UI.Xaml.Controls.DropDownButton runtime class, surfaced through its
 // default interface IDropDownButton. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type DropDownButton struct {
 	IDropDownButton
+}
+
+// AsDropDownButton queries the instance's IDropDownButton interface.
+// The returned reference is owned by the caller.
+func (self *DropDownButton) AsDropDownButton() (*IDropDownButton, error) {
+	return winrt.QueryInterface[IDropDownButton](unsafe.Pointer(self), &IID_IDropDownButton)
 }
 
 // AsButton queries the instance's IButton interface.
@@ -15871,11 +17550,23 @@ func NewDynamicOverflowItemsChangingEventArgs() (*DynamicOverflowItemsChangingEv
 	return winrt.QueryInterface[DynamicOverflowItemsChangingEventArgs](unsafe.Pointer(instance), &IID_IDynamicOverflowItemsChangingEventArgs)
 }
 
+// AsDynamicOverflowItemsChangingEventArgs queries the instance's IDynamicOverflowItemsChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DynamicOverflowItemsChangingEventArgs) AsDynamicOverflowItemsChangingEventArgs() (*IDynamicOverflowItemsChangingEventArgs, error) {
+	return winrt.QueryInterface[IDynamicOverflowItemsChangingEventArgs](unsafe.Pointer(self), &IID_IDynamicOverflowItemsChangingEventArgs)
+}
+
 // Expander is the Microsoft.UI.Xaml.Controls.Expander runtime class, surfaced through its
 // default interface IExpander. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Expander struct {
 	IExpander
+}
+
+// AsExpander queries the instance's IExpander interface.
+// The returned reference is owned by the caller.
+func (self *Expander) AsExpander() (*IExpander, error) {
+	return winrt.QueryInterface[IExpander](unsafe.Pointer(self), &IID_IExpander)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -16027,6 +17718,12 @@ type ExpanderCollapsedEventArgs struct {
 	IExpanderCollapsedEventArgs
 }
 
+// AsExpanderCollapsedEventArgs queries the instance's IExpanderCollapsedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ExpanderCollapsedEventArgs) AsExpanderCollapsedEventArgs() (*IExpanderCollapsedEventArgs, error) {
+	return winrt.QueryInterface[IExpanderCollapsedEventArgs](unsafe.Pointer(self), &IID_IExpanderCollapsedEventArgs)
+}
+
 // ExpanderExpandingEventArgs is the Microsoft.UI.Xaml.Controls.ExpanderExpandingEventArgs runtime class, surfaced through its
 // default interface IExpanderExpandingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -16034,11 +17731,23 @@ type ExpanderExpandingEventArgs struct {
 	IExpanderExpandingEventArgs
 }
 
+// AsExpanderExpandingEventArgs queries the instance's IExpanderExpandingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ExpanderExpandingEventArgs) AsExpanderExpandingEventArgs() (*IExpanderExpandingEventArgs, error) {
+	return winrt.QueryInterface[IExpanderExpandingEventArgs](unsafe.Pointer(self), &IID_IExpanderExpandingEventArgs)
+}
+
 // ExpanderTemplateSettings is the Microsoft.UI.Xaml.Controls.ExpanderTemplateSettings runtime class, surfaced through its
 // default interface IExpanderTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ExpanderTemplateSettings struct {
 	IExpanderTemplateSettings
+}
+
+// AsExpanderTemplateSettings queries the instance's IExpanderTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ExpanderTemplateSettings) AsExpanderTemplateSettings() (*IExpanderTemplateSettings, error) {
+	return winrt.QueryInterface[IExpanderTemplateSettings](unsafe.Pointer(self), &IID_IExpanderTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -16053,6 +17762,12 @@ func (self *ExpanderTemplateSettings) AsDependencyObject() (*IDependencyObject, 
 // the embedded IInspectable → IUnknown chain).
 type FlipView struct {
 	IFlipView
+}
+
+// AsFlipView queries the instance's IFlipView interface.
+// The returned reference is owned by the caller.
+func (self *FlipView) AsFlipView() (*IFlipView, error) {
+	return winrt.QueryInterface[IFlipView](unsafe.Pointer(self), &IID_IFlipView)
 }
 
 // AsSelector queries the instance's ISelector interface.
@@ -16218,6 +17933,12 @@ type FlipViewItem struct {
 	IFlipViewItem
 }
 
+// AsFlipViewItem queries the instance's IFlipViewItem interface.
+// The returned reference is owned by the caller.
+func (self *FlipViewItem) AsFlipViewItem() (*IFlipViewItem, error) {
+	return winrt.QueryInterface[IFlipViewItem](unsafe.Pointer(self), &IID_IFlipViewItem)
+}
+
 // AsSelectorItem queries the instance's ISelectorItem interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.SelectorItem.
 // The returned reference is owned by the caller.
@@ -16362,6 +18083,12 @@ type Flyout struct {
 	IFlyout
 }
 
+// AsFlyout queries the instance's IFlyout interface.
+// The returned reference is owned by the caller.
+func (self *Flyout) AsFlyout() (*IFlyout, error) {
+	return winrt.QueryInterface[IFlyout](unsafe.Pointer(self), &IID_IFlyout)
+}
+
 // AsFlyoutBase queries the instance's IFlyoutBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase.
 // The returned reference is owned by the caller.
@@ -16432,6 +18159,12 @@ func NewFlyout() (*Flyout, error) {
 // the embedded IInspectable → IUnknown chain).
 type FlyoutPresenter struct {
 	IFlyoutPresenter
+}
+
+// AsFlyoutPresenter queries the instance's IFlyoutPresenter interface.
+// The returned reference is owned by the caller.
+func (self *FlyoutPresenter) AsFlyoutPresenter() (*IFlyoutPresenter, error) {
+	return winrt.QueryInterface[IFlyoutPresenter](unsafe.Pointer(self), &IID_IFlyoutPresenter)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -16583,6 +18316,12 @@ type FocusDisengagedEventArgs struct {
 	IFocusDisengagedEventArgs
 }
 
+// AsFocusDisengagedEventArgs queries the instance's IFocusDisengagedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FocusDisengagedEventArgs) AsFocusDisengagedEventArgs() (*IFocusDisengagedEventArgs, error) {
+	return winrt.QueryInterface[IFocusDisengagedEventArgs](unsafe.Pointer(self), &IID_IFocusDisengagedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -16597,6 +18336,12 @@ type FocusEngagedEventArgs struct {
 	IFocusEngagedEventArgs
 }
 
+// AsFocusEngagedEventArgs queries the instance's IFocusEngagedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FocusEngagedEventArgs) AsFocusEngagedEventArgs() (*IFocusEngagedEventArgs, error) {
+	return winrt.QueryInterface[IFocusEngagedEventArgs](unsafe.Pointer(self), &IID_IFocusEngagedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -16609,6 +18354,12 @@ func (self *FocusEngagedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error
 // the embedded IInspectable → IUnknown chain).
 type FontIcon struct {
 	IFontIcon
+}
+
+// AsFontIcon queries the instance's IFontIcon interface.
+// The returned reference is owned by the caller.
+func (self *FontIcon) AsFontIcon() (*IFontIcon, error) {
+	return winrt.QueryInterface[IFontIcon](unsafe.Pointer(self), &IID_IFontIcon)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -16732,6 +18483,12 @@ type FontIconSource struct {
 	IFontIconSource
 }
 
+// AsFontIconSource queries the instance's IFontIconSource interface.
+// The returned reference is owned by the caller.
+func (self *FontIconSource) AsFontIconSource() (*IFontIconSource, error) {
+	return winrt.QueryInterface[IFontIconSource](unsafe.Pointer(self), &IID_IFontIconSource)
+}
+
 // AsIconSource queries the instance's IIconSource interface.
 // Inherited from Microsoft.UI.Xaml.Controls.IconSource.
 // The returned reference is owned by the caller.
@@ -16795,6 +18552,12 @@ func NewFontIconSource() (*FontIconSource, error) {
 // the embedded IInspectable → IUnknown chain).
 type Frame struct {
 	IFrame
+}
+
+// AsFrame queries the instance's IFrame interface.
+// The returned reference is owned by the caller.
+func (self *Frame) AsFrame() (*IFrame, error) {
+	return winrt.QueryInterface[IFrame](unsafe.Pointer(self), &IID_IFrame)
 }
 
 // AsNavigate queries the instance's INavigate interface.
@@ -16952,6 +18715,12 @@ type Grid struct {
 	IGrid
 }
 
+// AsGrid queries the instance's IGrid interface.
+// The returned reference is owned by the caller.
+func (self *Grid) AsGrid() (*IGrid, error) {
+	return winrt.QueryInterface[IGrid](unsafe.Pointer(self), &IID_IGrid)
+}
+
 // AsPanel queries the instance's IPanel interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Panel.
 // The returned reference is owned by the caller.
@@ -17071,6 +18840,12 @@ func NewGrid() (*Grid, error) {
 // the embedded IInspectable → IUnknown chain).
 type GridView struct {
 	IGridView
+}
+
+// AsGridView queries the instance's IGridView interface.
+// The returned reference is owned by the caller.
+func (self *GridView) AsGridView() (*IGridView, error) {
+	return winrt.QueryInterface[IGridView](unsafe.Pointer(self), &IID_IGridView)
 }
 
 // AsListViewBase queries the instance's IListViewBase interface.
@@ -17238,6 +19013,12 @@ type GridViewHeaderItem struct {
 	IGridViewHeaderItem
 }
 
+// AsGridViewHeaderItem queries the instance's IGridViewHeaderItem interface.
+// The returned reference is owned by the caller.
+func (self *GridViewHeaderItem) AsGridViewHeaderItem() (*IGridViewHeaderItem, error) {
+	return winrt.QueryInterface[IGridViewHeaderItem](unsafe.Pointer(self), &IID_IGridViewHeaderItem)
+}
+
 // AsListViewBaseHeaderItem queries the instance's IListViewBaseHeaderItem interface.
 // Inherited from Microsoft.UI.Xaml.Controls.ListViewBaseHeaderItem.
 // The returned reference is owned by the caller.
@@ -17380,6 +19161,12 @@ func NewGridViewHeaderItem() (*GridViewHeaderItem, error) {
 // the embedded IInspectable → IUnknown chain).
 type GridViewItem struct {
 	IGridViewItem
+}
+
+// AsGridViewItem queries the instance's IGridViewItem interface.
+// The returned reference is owned by the caller.
+func (self *GridViewItem) AsGridViewItem() (*IGridViewItem, error) {
+	return winrt.QueryInterface[IGridViewItem](unsafe.Pointer(self), &IID_IGridViewItem)
 }
 
 // AsSelectorItem queries the instance's ISelectorItem interface.
@@ -17526,6 +19313,12 @@ type GroupItem struct {
 	IGroupItem
 }
 
+// AsGroupItem queries the instance's IGroupItem interface.
+// The returned reference is owned by the caller.
+func (self *GroupItem) AsGroupItem() (*IGroupItem, error) {
+	return winrt.QueryInterface[IGroupItem](unsafe.Pointer(self), &IID_IGroupItem)
+}
+
 // AsContentControl queries the instance's IContentControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
 // The returned reference is owned by the caller.
@@ -17663,6 +19456,12 @@ type GroupStyle struct {
 	IGroupStyle
 }
 
+// AsGroupStyle queries the instance's IGroupStyle interface.
+// The returned reference is owned by the caller.
+func (self *GroupStyle) AsGroupStyle() (*IGroupStyle, error) {
+	return winrt.QueryInterface[IGroupStyle](unsafe.Pointer(self), &IID_IGroupStyle)
+}
+
 // AsNotifyPropertyChanged queries the instance's INotifyPropertyChanged interface.
 // The returned reference is owned by the caller.
 func (self *GroupStyle) AsNotifyPropertyChanged() (*INotifyPropertyChanged, error) {
@@ -17699,6 +19498,12 @@ func NewGroupStyle() (*GroupStyle, error) {
 // the embedded IInspectable → IUnknown chain).
 type GroupStyleSelector struct {
 	IGroupStyleSelector
+}
+
+// AsGroupStyleSelector queries the instance's IGroupStyleSelector interface.
+// The returned reference is owned by the caller.
+func (self *GroupStyleSelector) AsGroupStyleSelector() (*IGroupStyleSelector, error) {
+	return winrt.QueryInterface[IGroupStyleSelector](unsafe.Pointer(self), &IID_IGroupStyleSelector)
 }
 
 // AsGroupStyleSelectorOverrides queries the instance's IGroupStyleSelectorOverrides interface.
@@ -17739,11 +19544,23 @@ type HasValidationErrorsChangedEventArgs struct {
 	IHasValidationErrorsChangedEventArgs
 }
 
+// AsHasValidationErrorsChangedEventArgs queries the instance's IHasValidationErrorsChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *HasValidationErrorsChangedEventArgs) AsHasValidationErrorsChangedEventArgs() (*IHasValidationErrorsChangedEventArgs, error) {
+	return winrt.QueryInterface[IHasValidationErrorsChangedEventArgs](unsafe.Pointer(self), &IID_IHasValidationErrorsChangedEventArgs)
+}
+
 // Hub is the Microsoft.UI.Xaml.Controls.Hub runtime class, surfaced through its
 // default interface IHub. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Hub struct {
 	IHub
+}
+
+// AsHub queries the instance's IHub interface.
+// The returned reference is owned by the caller.
+func (self *Hub) AsHub() (*IHub, error) {
+	return winrt.QueryInterface[IHub](unsafe.Pointer(self), &IID_IHub)
 }
 
 // AsSemanticZoomInformation queries the instance's ISemanticZoomInformation interface.
@@ -17887,6 +19704,12 @@ type HubSection struct {
 	IHubSection
 }
 
+// AsHubSection queries the instance's IHubSection interface.
+// The returned reference is owned by the caller.
+func (self *HubSection) AsHubSection() (*IHubSection, error) {
+	return winrt.QueryInterface[IHubSection](unsafe.Pointer(self), &IID_IHubSection)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -18022,6 +19845,12 @@ type HubSectionCollection struct {
 	IVectorOfHubSection
 }
 
+// AsVectorOfHubSection queries the instance's IVectorOfHubSection interface.
+// The returned reference is owned by the caller.
+func (self *HubSectionCollection) AsVectorOfHubSection() (*IVectorOfHubSection, error) {
+	return winrt.QueryInterface[IVectorOfHubSection](unsafe.Pointer(self), &IID_IVectorOfHubSection)
+}
+
 // AsIterableOfHubSection queries the instance's IIterableOfHubSection interface.
 // The returned reference is owned by the caller.
 func (self *HubSectionCollection) AsIterableOfHubSection() (*IIterableOfHubSection, error) {
@@ -18046,11 +19875,23 @@ func NewHubSectionHeaderClickEventArgs() (*HubSectionHeaderClickEventArgs, error
 	return winrt.QueryInterface[HubSectionHeaderClickEventArgs](unsafe.Pointer(instance), &IID_IHubSectionHeaderClickEventArgs)
 }
 
+// AsHubSectionHeaderClickEventArgs queries the instance's IHubSectionHeaderClickEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *HubSectionHeaderClickEventArgs) AsHubSectionHeaderClickEventArgs() (*IHubSectionHeaderClickEventArgs, error) {
+	return winrt.QueryInterface[IHubSectionHeaderClickEventArgs](unsafe.Pointer(self), &IID_IHubSectionHeaderClickEventArgs)
+}
+
 // HyperlinkButton is the Microsoft.UI.Xaml.Controls.HyperlinkButton runtime class, surfaced through its
 // default interface IHyperlinkButton. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type HyperlinkButton struct {
 	IHyperlinkButton
+}
+
+// AsHyperlinkButton queries the instance's IHyperlinkButton interface.
+// The returned reference is owned by the caller.
+func (self *HyperlinkButton) AsHyperlinkButton() (*IHyperlinkButton, error) {
+	return winrt.QueryInterface[IHyperlinkButton](unsafe.Pointer(self), &IID_IHyperlinkButton)
 }
 
 // AsButtonBase queries the instance's IButtonBase interface.
@@ -18209,6 +20050,12 @@ type IconElement struct {
 	IIconElement
 }
 
+// AsIconElement queries the instance's IIconElement interface.
+// The returned reference is owned by the caller.
+func (self *IconElement) AsIconElement() (*IIconElement, error) {
+	return winrt.QueryInterface[IIconElement](unsafe.Pointer(self), &IID_IIconElement)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -18298,6 +20145,12 @@ type IconSource struct {
 	IIconSource
 }
 
+// AsIconSource queries the instance's IIconSource interface.
+// The returned reference is owned by the caller.
+func (self *IconSource) AsIconSource() (*IIconSource, error) {
+	return winrt.QueryInterface[IIconSource](unsafe.Pointer(self), &IID_IIconSource)
+}
+
 // AsIconSourceOverrides queries the instance's IIconSourceOverrides interface.
 // The returned reference is owned by the caller.
 func (self *IconSource) AsIconSourceOverrides() (*IIconSourceOverrides, error) {
@@ -18328,6 +20181,12 @@ func IconSourceStatics() (*IIconSourceStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type IconSourceElement struct {
 	IIconSourceElement
+}
+
+// AsIconSourceElement queries the instance's IIconSourceElement interface.
+// The returned reference is owned by the caller.
+func (self *IconSourceElement) AsIconSourceElement() (*IIconSourceElement, error) {
+	return winrt.QueryInterface[IIconSourceElement](unsafe.Pointer(self), &IID_IIconSourceElement)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -18462,6 +20321,12 @@ func NewImage() (*Image, error) {
 	return winrt.QueryInterface[Image](unsafe.Pointer(instance), &IID_IImage)
 }
 
+// AsImage queries the instance's IImage interface.
+// The returned reference is owned by the caller.
+func (self *Image) AsImage() (*IImage, error) {
+	return winrt.QueryInterface[IImage](unsafe.Pointer(self), &IID_IImage)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -18549,6 +20414,12 @@ func ImageStatics() (*IImageStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ImageIcon struct {
 	IImageIcon
+}
+
+// AsImageIcon queries the instance's IImageIcon interface.
+// The returned reference is owned by the caller.
+func (self *ImageIcon) AsImageIcon() (*IImageIcon, error) {
+	return winrt.QueryInterface[IImageIcon](unsafe.Pointer(self), &IID_IImageIcon)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -18672,6 +20543,12 @@ type ImageIconSource struct {
 	IImageIconSource
 }
 
+// AsImageIconSource queries the instance's IImageIconSource interface.
+// The returned reference is owned by the caller.
+func (self *ImageIconSource) AsImageIconSource() (*IImageIconSource, error) {
+	return winrt.QueryInterface[IImageIconSource](unsafe.Pointer(self), &IID_IImageIconSource)
+}
+
 // AsIconSource queries the instance's IIconSource interface.
 // Inherited from Microsoft.UI.Xaml.Controls.IconSource.
 // The returned reference is owned by the caller.
@@ -18735,6 +20612,12 @@ func NewImageIconSource() (*ImageIconSource, error) {
 // the embedded IInspectable → IUnknown chain).
 type InfoBadge struct {
 	IInfoBadge
+}
+
+// AsInfoBadge queries the instance's IInfoBadge interface.
+// The returned reference is owned by the caller.
+func (self *InfoBadge) AsInfoBadge() (*IInfoBadge, error) {
+	return winrt.QueryInterface[IInfoBadge](unsafe.Pointer(self), &IID_IInfoBadge)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -18872,6 +20755,12 @@ type InfoBadgeTemplateSettings struct {
 	IInfoBadgeTemplateSettings
 }
 
+// AsInfoBadgeTemplateSettings queries the instance's IInfoBadgeTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *InfoBadgeTemplateSettings) AsInfoBadgeTemplateSettings() (*IInfoBadgeTemplateSettings, error) {
+	return winrt.QueryInterface[IInfoBadgeTemplateSettings](unsafe.Pointer(self), &IID_IInfoBadgeTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -18921,6 +20810,12 @@ func NewInfoBadgeTemplateSettings() (*InfoBadgeTemplateSettings, error) {
 // the embedded IInspectable → IUnknown chain).
 type InfoBar struct {
 	IInfoBar
+}
+
+// AsInfoBar queries the instance's IInfoBar interface.
+// The returned reference is owned by the caller.
+func (self *InfoBar) AsInfoBar() (*IInfoBar, error) {
+	return winrt.QueryInterface[IInfoBar](unsafe.Pointer(self), &IID_IInfoBar)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -19058,6 +20953,12 @@ type InfoBarClosedEventArgs struct {
 	IInfoBarClosedEventArgs
 }
 
+// AsInfoBarClosedEventArgs queries the instance's IInfoBarClosedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *InfoBarClosedEventArgs) AsInfoBarClosedEventArgs() (*IInfoBarClosedEventArgs, error) {
+	return winrt.QueryInterface[IInfoBarClosedEventArgs](unsafe.Pointer(self), &IID_IInfoBarClosedEventArgs)
+}
+
 // InfoBarClosingEventArgs is the Microsoft.UI.Xaml.Controls.InfoBarClosingEventArgs runtime class, surfaced through its
 // default interface IInfoBarClosingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -19065,11 +20966,23 @@ type InfoBarClosingEventArgs struct {
 	IInfoBarClosingEventArgs
 }
 
+// AsInfoBarClosingEventArgs queries the instance's IInfoBarClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *InfoBarClosingEventArgs) AsInfoBarClosingEventArgs() (*IInfoBarClosingEventArgs, error) {
+	return winrt.QueryInterface[IInfoBarClosingEventArgs](unsafe.Pointer(self), &IID_IInfoBarClosingEventArgs)
+}
+
 // InfoBarTemplateSettings is the Microsoft.UI.Xaml.Controls.InfoBarTemplateSettings runtime class, surfaced through its
 // default interface IInfoBarTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InfoBarTemplateSettings struct {
 	IInfoBarTemplateSettings
+}
+
+// AsInfoBarTemplateSettings queries the instance's IInfoBarTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *InfoBarTemplateSettings) AsInfoBarTemplateSettings() (*IInfoBarTemplateSettings, error) {
+	return winrt.QueryInterface[IInfoBarTemplateSettings](unsafe.Pointer(self), &IID_IInfoBarTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -19123,6 +21036,12 @@ type IsTextTrimmedChangedEventArgs struct {
 	IIsTextTrimmedChangedEventArgs
 }
 
+// AsIsTextTrimmedChangedEventArgs queries the instance's IIsTextTrimmedChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *IsTextTrimmedChangedEventArgs) AsIsTextTrimmedChangedEventArgs() (*IIsTextTrimmedChangedEventArgs, error) {
+	return winrt.QueryInterface[IIsTextTrimmedChangedEventArgs](unsafe.Pointer(self), &IID_IIsTextTrimmedChangedEventArgs)
+}
+
 // ItemClickEventArgs is the Microsoft.UI.Xaml.Controls.ItemClickEventArgs runtime class, surfaced through its
 // default interface IItemClickEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -19141,6 +21060,12 @@ func NewItemClickEventArgs() (*ItemClickEventArgs, error) {
 	return winrt.QueryInterface[ItemClickEventArgs](unsafe.Pointer(instance), &IID_IItemClickEventArgs)
 }
 
+// AsItemClickEventArgs queries the instance's IItemClickEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemClickEventArgs) AsItemClickEventArgs() (*IItemClickEventArgs, error) {
+	return winrt.QueryInterface[IItemClickEventArgs](unsafe.Pointer(self), &IID_IItemClickEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -19153,6 +21078,12 @@ func (self *ItemClickEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error) {
 // the embedded IInspectable → IUnknown chain).
 type ItemCollection struct {
 	IObservableVectorOfObject
+}
+
+// AsObservableVectorOfObject queries the instance's IObservableVectorOfObject interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollection) AsObservableVectorOfObject() (*IObservableVectorOfObject, error) {
+	return winrt.QueryInterface[IObservableVectorOfObject](unsafe.Pointer(self), &IID_IObservableVectorOfObject)
 }
 
 // AsVectorOfObject queries the instance's IVectorOfObject interface.
@@ -19174,11 +21105,23 @@ type ItemCollectionTransition struct {
 	IItemCollectionTransition
 }
 
+// AsItemCollectionTransition queries the instance's IItemCollectionTransition interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollectionTransition) AsItemCollectionTransition() (*IItemCollectionTransition, error) {
+	return winrt.QueryInterface[IItemCollectionTransition](unsafe.Pointer(self), &IID_IItemCollectionTransition)
+}
+
 // ItemCollectionTransitionCompletedEventArgs is the Microsoft.UI.Xaml.Controls.ItemCollectionTransitionCompletedEventArgs runtime class, surfaced through its
 // default interface IItemCollectionTransitionCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ItemCollectionTransitionCompletedEventArgs struct {
 	IItemCollectionTransitionCompletedEventArgs
+}
+
+// AsItemCollectionTransitionCompletedEventArgs queries the instance's IItemCollectionTransitionCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollectionTransitionCompletedEventArgs) AsItemCollectionTransitionCompletedEventArgs() (*IItemCollectionTransitionCompletedEventArgs, error) {
+	return winrt.QueryInterface[IItemCollectionTransitionCompletedEventArgs](unsafe.Pointer(self), &IID_IItemCollectionTransitionCompletedEventArgs)
 }
 
 // ItemCollectionTransitionProgress is the Microsoft.UI.Xaml.Controls.ItemCollectionTransitionProgress runtime class, surfaced through its
@@ -19188,11 +21131,23 @@ type ItemCollectionTransitionProgress struct {
 	IItemCollectionTransitionProgress
 }
 
+// AsItemCollectionTransitionProgress queries the instance's IItemCollectionTransitionProgress interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollectionTransitionProgress) AsItemCollectionTransitionProgress() (*IItemCollectionTransitionProgress, error) {
+	return winrt.QueryInterface[IItemCollectionTransitionProgress](unsafe.Pointer(self), &IID_IItemCollectionTransitionProgress)
+}
+
 // ItemCollectionTransitionProvider is the Microsoft.UI.Xaml.Controls.ItemCollectionTransitionProvider runtime class, surfaced through its
 // default interface IItemCollectionTransitionProvider. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ItemCollectionTransitionProvider struct {
 	IItemCollectionTransitionProvider
+}
+
+// AsItemCollectionTransitionProvider queries the instance's IItemCollectionTransitionProvider interface.
+// The returned reference is owned by the caller.
+func (self *ItemCollectionTransitionProvider) AsItemCollectionTransitionProvider() (*IItemCollectionTransitionProvider, error) {
+	return winrt.QueryInterface[IItemCollectionTransitionProvider](unsafe.Pointer(self), &IID_IItemCollectionTransitionProvider)
 }
 
 // AsItemCollectionTransitionProviderOverrides queries the instance's IItemCollectionTransitionProviderOverrides interface.
@@ -19231,6 +21186,12 @@ func NewItemCollectionTransitionProvider() (*ItemCollectionTransitionProvider, e
 // the embedded IInspectable → IUnknown chain).
 type ItemContainer struct {
 	IItemContainer
+}
+
+// AsItemContainer queries the instance's IItemContainer interface.
+// The returned reference is owned by the caller.
+func (self *ItemContainer) AsItemContainer() (*IItemContainer, error) {
+	return winrt.QueryInterface[IItemContainer](unsafe.Pointer(self), &IID_IItemContainer)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -19368,11 +21329,23 @@ type ItemContainerGenerator struct {
 	IItemContainerGenerator
 }
 
+// AsItemContainerGenerator queries the instance's IItemContainerGenerator interface.
+// The returned reference is owned by the caller.
+func (self *ItemContainerGenerator) AsItemContainerGenerator() (*IItemContainerGenerator, error) {
+	return winrt.QueryInterface[IItemContainerGenerator](unsafe.Pointer(self), &IID_IItemContainerGenerator)
+}
+
 // ItemsControl is the Microsoft.UI.Xaml.Controls.ItemsControl runtime class, surfaced through its
 // default interface IItemsControl. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ItemsControl struct {
 	IItemsControl
+}
+
+// AsItemsControl queries the instance's IItemsControl interface.
+// The returned reference is owned by the caller.
+func (self *ItemsControl) AsItemsControl() (*IItemsControl, error) {
+	return winrt.QueryInterface[IItemsControl](unsafe.Pointer(self), &IID_IItemsControl)
 }
 
 // AsItemsControlOverrides queries the instance's IItemsControlOverrides interface.
@@ -19533,6 +21506,12 @@ func NewItemsPanelTemplate() (*ItemsPanelTemplate, error) {
 	return winrt.QueryInterface[ItemsPanelTemplate](unsafe.Pointer(instance), &IID_IItemsPanelTemplate)
 }
 
+// AsItemsPanelTemplate queries the instance's IItemsPanelTemplate interface.
+// The returned reference is owned by the caller.
+func (self *ItemsPanelTemplate) AsItemsPanelTemplate() (*IItemsPanelTemplate, error) {
+	return winrt.QueryInterface[IItemsPanelTemplate](unsafe.Pointer(self), &IID_IItemsPanelTemplate)
+}
+
 // AsFrameworkTemplate queries the instance's IFrameworkTemplate interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkTemplate.
 // The returned reference is owned by the caller.
@@ -19565,6 +21544,12 @@ func NewItemsPickedEventArgs() (*ItemsPickedEventArgs, error) {
 	return winrt.QueryInterface[ItemsPickedEventArgs](unsafe.Pointer(instance), &IID_IItemsPickedEventArgs)
 }
 
+// AsItemsPickedEventArgs queries the instance's IItemsPickedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsPickedEventArgs) AsItemsPickedEventArgs() (*IItemsPickedEventArgs, error) {
+	return winrt.QueryInterface[IItemsPickedEventArgs](unsafe.Pointer(self), &IID_IItemsPickedEventArgs)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -19588,6 +21573,12 @@ func NewItemsPresenter() (*ItemsPresenter, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ItemsPresenter](unsafe.Pointer(instance), &IID_IItemsPresenter)
+}
+
+// AsItemsPresenter queries the instance's IItemsPresenter interface.
+// The returned reference is owned by the caller.
+func (self *ItemsPresenter) AsItemsPresenter() (*IItemsPresenter, error) {
+	return winrt.QueryInterface[IItemsPresenter](unsafe.Pointer(self), &IID_IItemsPresenter)
 }
 
 // AsScrollSnapPointsInfo queries the instance's IScrollSnapPointsInfo interface.
@@ -19683,6 +21674,12 @@ func ItemsPresenterStatics() (*IItemsPresenterStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ItemsRepeater struct {
 	IItemsRepeater
+}
+
+// AsItemsRepeater queries the instance's IItemsRepeater interface.
+// The returned reference is owned by the caller.
+func (self *ItemsRepeater) AsItemsRepeater() (*IItemsRepeater, error) {
+	return winrt.QueryInterface[IItemsRepeater](unsafe.Pointer(self), &IID_IItemsRepeater)
 }
 
 // AsItemsRepeater2 queries the instance's IItemsRepeater2 interface.
@@ -19817,6 +21814,12 @@ type ItemsRepeaterElementClearingEventArgs struct {
 	IItemsRepeaterElementClearingEventArgs
 }
 
+// AsItemsRepeaterElementClearingEventArgs queries the instance's IItemsRepeaterElementClearingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsRepeaterElementClearingEventArgs) AsItemsRepeaterElementClearingEventArgs() (*IItemsRepeaterElementClearingEventArgs, error) {
+	return winrt.QueryInterface[IItemsRepeaterElementClearingEventArgs](unsafe.Pointer(self), &IID_IItemsRepeaterElementClearingEventArgs)
+}
+
 // ItemsRepeaterElementIndexChangedEventArgs is the Microsoft.UI.Xaml.Controls.ItemsRepeaterElementIndexChangedEventArgs runtime class, surfaced through its
 // default interface IItemsRepeaterElementIndexChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -19824,11 +21827,23 @@ type ItemsRepeaterElementIndexChangedEventArgs struct {
 	IItemsRepeaterElementIndexChangedEventArgs
 }
 
+// AsItemsRepeaterElementIndexChangedEventArgs queries the instance's IItemsRepeaterElementIndexChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsRepeaterElementIndexChangedEventArgs) AsItemsRepeaterElementIndexChangedEventArgs() (*IItemsRepeaterElementIndexChangedEventArgs, error) {
+	return winrt.QueryInterface[IItemsRepeaterElementIndexChangedEventArgs](unsafe.Pointer(self), &IID_IItemsRepeaterElementIndexChangedEventArgs)
+}
+
 // ItemsRepeaterElementPreparedEventArgs is the Microsoft.UI.Xaml.Controls.ItemsRepeaterElementPreparedEventArgs runtime class, surfaced through its
 // default interface IItemsRepeaterElementPreparedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ItemsRepeaterElementPreparedEventArgs struct {
 	IItemsRepeaterElementPreparedEventArgs
+}
+
+// AsItemsRepeaterElementPreparedEventArgs queries the instance's IItemsRepeaterElementPreparedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsRepeaterElementPreparedEventArgs) AsItemsRepeaterElementPreparedEventArgs() (*IItemsRepeaterElementPreparedEventArgs, error) {
+	return winrt.QueryInterface[IItemsRepeaterElementPreparedEventArgs](unsafe.Pointer(self), &IID_IItemsRepeaterElementPreparedEventArgs)
 }
 
 // ItemsRepeaterScrollHost is the Microsoft.UI.Xaml.Controls.ItemsRepeaterScrollHost runtime class, surfaced through its
@@ -19847,6 +21862,12 @@ func NewItemsRepeaterScrollHost() (*ItemsRepeaterScrollHost, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ItemsRepeaterScrollHost](unsafe.Pointer(instance), &IID_IItemsRepeaterScrollHost)
+}
+
+// AsItemsRepeaterScrollHost queries the instance's IItemsRepeaterScrollHost interface.
+// The returned reference is owned by the caller.
+func (self *ItemsRepeaterScrollHost) AsItemsRepeaterScrollHost() (*IItemsRepeaterScrollHost, error) {
+	return winrt.QueryInterface[IItemsRepeaterScrollHost](unsafe.Pointer(self), &IID_IItemsRepeaterScrollHost)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -19926,6 +21947,12 @@ type ItemsSourceView struct {
 	IItemsSourceView
 }
 
+// AsItemsSourceView queries the instance's IItemsSourceView interface.
+// The returned reference is owned by the caller.
+func (self *ItemsSourceView) AsItemsSourceView() (*IItemsSourceView, error) {
+	return winrt.QueryInterface[IItemsSourceView](unsafe.Pointer(self), &IID_IItemsSourceView)
+}
+
 // AsNotifyCollectionChanged queries the instance's uixamlinterop.INotifyCollectionChanged interface.
 // The returned reference is owned by the caller.
 func (self *ItemsSourceView) AsNotifyCollectionChanged() (*uixamlinterop.INotifyCollectionChanged, error) {
@@ -19973,6 +22000,12 @@ func NewItemsStackPanel() (*ItemsStackPanel, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ItemsStackPanel](unsafe.Pointer(instance), &IID_IItemsStackPanel)
+}
+
+// AsItemsStackPanel queries the instance's IItemsStackPanel interface.
+// The returned reference is owned by the caller.
+func (self *ItemsStackPanel) AsItemsStackPanel() (*IItemsStackPanel, error) {
+	return winrt.QueryInterface[IItemsStackPanel](unsafe.Pointer(self), &IID_IItemsStackPanel)
 }
 
 // AsPanel queries the instance's IPanel interface.
@@ -20069,6 +22102,12 @@ func ItemsStackPanelStatics() (*IItemsStackPanelStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ItemsView struct {
 	IItemsView
+}
+
+// AsItemsView queries the instance's IItemsView interface.
+// The returned reference is owned by the caller.
+func (self *ItemsView) AsItemsView() (*IItemsView, error) {
+	return winrt.QueryInterface[IItemsView](unsafe.Pointer(self), &IID_IItemsView)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -20206,6 +22245,12 @@ type ItemsViewItemInvokedEventArgs struct {
 	IItemsViewItemInvokedEventArgs
 }
 
+// AsItemsViewItemInvokedEventArgs queries the instance's IItemsViewItemInvokedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsViewItemInvokedEventArgs) AsItemsViewItemInvokedEventArgs() (*IItemsViewItemInvokedEventArgs, error) {
+	return winrt.QueryInterface[IItemsViewItemInvokedEventArgs](unsafe.Pointer(self), &IID_IItemsViewItemInvokedEventArgs)
+}
+
 // ItemsViewSelectionChangedEventArgs is the Microsoft.UI.Xaml.Controls.ItemsViewSelectionChangedEventArgs runtime class, surfaced through its
 // default interface IItemsViewSelectionChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -20213,11 +22258,23 @@ type ItemsViewSelectionChangedEventArgs struct {
 	IItemsViewSelectionChangedEventArgs
 }
 
+// AsItemsViewSelectionChangedEventArgs queries the instance's IItemsViewSelectionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsViewSelectionChangedEventArgs) AsItemsViewSelectionChangedEventArgs() (*IItemsViewSelectionChangedEventArgs, error) {
+	return winrt.QueryInterface[IItemsViewSelectionChangedEventArgs](unsafe.Pointer(self), &IID_IItemsViewSelectionChangedEventArgs)
+}
+
 // ItemsWrapGrid is the Microsoft.UI.Xaml.Controls.ItemsWrapGrid runtime class, surfaced through its
 // default interface IItemsWrapGrid. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ItemsWrapGrid struct {
 	IItemsWrapGrid
+}
+
+// AsItemsWrapGrid queries the instance's IItemsWrapGrid interface.
+// The returned reference is owned by the caller.
+func (self *ItemsWrapGrid) AsItemsWrapGrid() (*IItemsWrapGrid, error) {
+	return winrt.QueryInterface[IItemsWrapGrid](unsafe.Pointer(self), &IID_IItemsWrapGrid)
 }
 
 // AsPanel queries the instance's IPanel interface.
@@ -20341,6 +22398,12 @@ type Layout struct {
 	ILayout
 }
 
+// AsLayout queries the instance's ILayout interface.
+// The returned reference is owned by the caller.
+func (self *Layout) AsLayout() (*ILayout, error) {
+	return winrt.QueryInterface[ILayout](unsafe.Pointer(self), &IID_ILayout)
+}
+
 // AsLayout2 queries the instance's ILayout2 interface.
 // The returned reference is owned by the caller.
 func (self *Layout) AsLayout2() (*ILayout2, error) {
@@ -20379,6 +22442,12 @@ type LayoutContext struct {
 	ILayoutContext
 }
 
+// AsLayoutContext queries the instance's ILayoutContext interface.
+// The returned reference is owned by the caller.
+func (self *LayoutContext) AsLayoutContext() (*ILayoutContext, error) {
+	return winrt.QueryInterface[ILayoutContext](unsafe.Pointer(self), &IID_ILayoutContext)
+}
+
 // AsLayoutContextOverrides queries the instance's ILayoutContextOverrides interface.
 // The returned reference is owned by the caller.
 func (self *LayoutContext) AsLayoutContextOverrides() (*ILayoutContextOverrides, error) {
@@ -20397,6 +22466,12 @@ func (self *LayoutContext) AsDependencyObject() (*IDependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type LinedFlowLayout struct {
 	ILinedFlowLayout
+}
+
+// AsLinedFlowLayout queries the instance's ILinedFlowLayout interface.
+// The returned reference is owned by the caller.
+func (self *LinedFlowLayout) AsLinedFlowLayout() (*ILinedFlowLayout, error) {
+	return winrt.QueryInterface[ILinedFlowLayout](unsafe.Pointer(self), &IID_ILinedFlowLayout)
 }
 
 // AsVirtualizingLayout queries the instance's IVirtualizingLayout interface.
@@ -20499,6 +22574,12 @@ type LinedFlowLayoutItemCollectionTransitionProvider struct {
 	ILinedFlowLayoutItemCollectionTransitionProvider
 }
 
+// AsLinedFlowLayoutItemCollectionTransitionProvider queries the instance's ILinedFlowLayoutItemCollectionTransitionProvider interface.
+// The returned reference is owned by the caller.
+func (self *LinedFlowLayoutItemCollectionTransitionProvider) AsLinedFlowLayoutItemCollectionTransitionProvider() (*ILinedFlowLayoutItemCollectionTransitionProvider, error) {
+	return winrt.QueryInterface[ILinedFlowLayoutItemCollectionTransitionProvider](unsafe.Pointer(self), &IID_ILinedFlowLayoutItemCollectionTransitionProvider)
+}
+
 // AsItemCollectionTransitionProvider queries the instance's IItemCollectionTransitionProvider interface.
 // Inherited from Microsoft.UI.Xaml.Controls.ItemCollectionTransitionProvider.
 // The returned reference is owned by the caller.
@@ -20545,11 +22626,23 @@ type LinedFlowLayoutItemsInfoRequestedEventArgs struct {
 	ILinedFlowLayoutItemsInfoRequestedEventArgs
 }
 
+// AsLinedFlowLayoutItemsInfoRequestedEventArgs queries the instance's ILinedFlowLayoutItemsInfoRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *LinedFlowLayoutItemsInfoRequestedEventArgs) AsLinedFlowLayoutItemsInfoRequestedEventArgs() (*ILinedFlowLayoutItemsInfoRequestedEventArgs, error) {
+	return winrt.QueryInterface[ILinedFlowLayoutItemsInfoRequestedEventArgs](unsafe.Pointer(self), &IID_ILinedFlowLayoutItemsInfoRequestedEventArgs)
+}
+
 // ListBox is the Microsoft.UI.Xaml.Controls.ListBox runtime class, surfaced through its
 // default interface IListBox. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ListBox struct {
 	IListBox
+}
+
+// AsListBox queries the instance's IListBox interface.
+// The returned reference is owned by the caller.
+func (self *ListBox) AsListBox() (*IListBox, error) {
+	return winrt.QueryInterface[IListBox](unsafe.Pointer(self), &IID_IListBox)
 }
 
 // AsSelector queries the instance's ISelector interface.
@@ -20715,6 +22808,12 @@ type ListBoxItem struct {
 	IListBoxItem
 }
 
+// AsListBoxItem queries the instance's IListBoxItem interface.
+// The returned reference is owned by the caller.
+func (self *ListBoxItem) AsListBoxItem() (*IListBoxItem, error) {
+	return winrt.QueryInterface[IListBoxItem](unsafe.Pointer(self), &IID_IListBoxItem)
+}
+
 // AsSelectorItem queries the instance's ISelectorItem interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.SelectorItem.
 // The returned reference is owned by the caller.
@@ -20870,6 +22969,12 @@ func NewListPickerFlyout() (*ListPickerFlyout, error) {
 	return winrt.QueryInterface[ListPickerFlyout](unsafe.Pointer(instance), &IID_IListPickerFlyout)
 }
 
+// AsListPickerFlyout queries the instance's IListPickerFlyout interface.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyout) AsListPickerFlyout() (*IListPickerFlyout, error) {
+	return winrt.QueryInterface[IListPickerFlyout](unsafe.Pointer(self), &IID_IListPickerFlyout)
+}
+
 // AsPickerFlyoutBase queries the instance's IPickerFlyoutBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.PickerFlyoutBase.
 // The returned reference is owned by the caller.
@@ -20929,6 +23034,12 @@ func ListPickerFlyoutStatics() (*IListPickerFlyoutStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ListPickerFlyoutPresenter struct {
 	IListPickerFlyoutPresenter
+}
+
+// AsListPickerFlyoutPresenter queries the instance's IListPickerFlyoutPresenter interface.
+// The returned reference is owned by the caller.
+func (self *ListPickerFlyoutPresenter) AsListPickerFlyoutPresenter() (*IListPickerFlyoutPresenter, error) {
+	return winrt.QueryInterface[IListPickerFlyoutPresenter](unsafe.Pointer(self), &IID_IListPickerFlyoutPresenter)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -21027,6 +23138,12 @@ func (self *ListPickerFlyoutPresenter) AsDependencyObject() (*IDependencyObject,
 // the embedded IInspectable → IUnknown chain).
 type ListView struct {
 	IListView
+}
+
+// AsListView queries the instance's IListView interface.
+// The returned reference is owned by the caller.
+func (self *ListView) AsListView() (*IListView, error) {
+	return winrt.QueryInterface[IListView](unsafe.Pointer(self), &IID_IListView)
 }
 
 // AsListViewBase queries the instance's IListViewBase interface.
@@ -21192,6 +23309,12 @@ func NewListView() (*ListView, error) {
 // the embedded IInspectable → IUnknown chain).
 type ListViewBase struct {
 	IListViewBase
+}
+
+// AsListViewBase queries the instance's IListViewBase interface.
+// The returned reference is owned by the caller.
+func (self *ListViewBase) AsListViewBase() (*IListViewBase, error) {
+	return winrt.QueryInterface[IListViewBase](unsafe.Pointer(self), &IID_IListViewBase)
 }
 
 // AsSemanticZoomInformation queries the instance's ISemanticZoomInformation interface.
@@ -21363,6 +23486,12 @@ type ListViewBaseHeaderItem struct {
 	IListViewBaseHeaderItem
 }
 
+// AsListViewBaseHeaderItem queries the instance's IListViewBaseHeaderItem interface.
+// The returned reference is owned by the caller.
+func (self *ListViewBaseHeaderItem) AsListViewBaseHeaderItem() (*IListViewBaseHeaderItem, error) {
+	return winrt.QueryInterface[IListViewBaseHeaderItem](unsafe.Pointer(self), &IID_IListViewBaseHeaderItem)
+}
+
 // AsContentControl queries the instance's IContentControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
 // The returned reference is owned by the caller.
@@ -21473,6 +23602,12 @@ func (self *ListViewBaseHeaderItem) AsDependencyObject() (*IDependencyObject, er
 // the embedded IInspectable → IUnknown chain).
 type ListViewHeaderItem struct {
 	IListViewHeaderItem
+}
+
+// AsListViewHeaderItem queries the instance's IListViewHeaderItem interface.
+// The returned reference is owned by the caller.
+func (self *ListViewHeaderItem) AsListViewHeaderItem() (*IListViewHeaderItem, error) {
+	return winrt.QueryInterface[IListViewHeaderItem](unsafe.Pointer(self), &IID_IListViewHeaderItem)
 }
 
 // AsListViewBaseHeaderItem queries the instance's IListViewBaseHeaderItem interface.
@@ -21619,6 +23754,12 @@ type ListViewItem struct {
 	IListViewItem
 }
 
+// AsListViewItem queries the instance's IListViewItem interface.
+// The returned reference is owned by the caller.
+func (self *ListViewItem) AsListViewItem() (*IListViewItem, error) {
+	return winrt.QueryInterface[IListViewItem](unsafe.Pointer(self), &IID_IListViewItem)
+}
+
 // AsSelectorItem queries the instance's ISelectorItem interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.SelectorItem.
 // The returned reference is owned by the caller.
@@ -21763,6 +23904,12 @@ type ListViewPersistenceHelper struct {
 	IListViewPersistenceHelper
 }
 
+// AsListViewPersistenceHelper queries the instance's IListViewPersistenceHelper interface.
+// The returned reference is owned by the caller.
+func (self *ListViewPersistenceHelper) AsListViewPersistenceHelper() (*IListViewPersistenceHelper, error) {
+	return winrt.QueryInterface[IListViewPersistenceHelper](unsafe.Pointer(self), &IID_IListViewPersistenceHelper)
+}
+
 // ListViewPersistenceHelperStatics returns the Microsoft.UI.Xaml.Controls.IListViewPersistenceHelperStatics statics of the
 // Microsoft.UI.Xaml.Controls.ListViewPersistenceHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -21780,6 +23927,12 @@ func ListViewPersistenceHelperStatics() (*IListViewPersistenceHelperStatics, err
 // the embedded IInspectable → IUnknown chain).
 type MapControl struct {
 	IMapControl
+}
+
+// AsMapControl queries the instance's IMapControl interface.
+// The returned reference is owned by the caller.
+func (self *MapControl) AsMapControl() (*IMapControl, error) {
+	return winrt.QueryInterface[IMapControl](unsafe.Pointer(self), &IID_IMapControl)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -21917,11 +24070,23 @@ type MapControlMapServiceErrorOccurredEventArgs struct {
 	IMapControlMapServiceErrorOccurredEventArgs
 }
 
+// AsMapControlMapServiceErrorOccurredEventArgs queries the instance's IMapControlMapServiceErrorOccurredEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *MapControlMapServiceErrorOccurredEventArgs) AsMapControlMapServiceErrorOccurredEventArgs() (*IMapControlMapServiceErrorOccurredEventArgs, error) {
+	return winrt.QueryInterface[IMapControlMapServiceErrorOccurredEventArgs](unsafe.Pointer(self), &IID_IMapControlMapServiceErrorOccurredEventArgs)
+}
+
 // MapElement is the Microsoft.UI.Xaml.Controls.MapElement runtime class, surfaced through its
 // default interface IMapElement. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MapElement struct {
 	IMapElement
+}
+
+// AsMapElement queries the instance's IMapElement interface.
+// The returned reference is owned by the caller.
+func (self *MapElement) AsMapElement() (*IMapElement, error) {
+	return winrt.QueryInterface[IMapElement](unsafe.Pointer(self), &IID_IMapElement)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -21938,11 +24103,23 @@ type MapElementClickEventArgs struct {
 	IMapElementClickEventArgs
 }
 
+// AsMapElementClickEventArgs queries the instance's IMapElementClickEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *MapElementClickEventArgs) AsMapElementClickEventArgs() (*IMapElementClickEventArgs, error) {
+	return winrt.QueryInterface[IMapElementClickEventArgs](unsafe.Pointer(self), &IID_IMapElementClickEventArgs)
+}
+
 // MapElementsLayer is the Microsoft.UI.Xaml.Controls.MapElementsLayer runtime class, surfaced through its
 // default interface IMapElementsLayer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MapElementsLayer struct {
 	IMapElementsLayer
+}
+
+// AsMapElementsLayer queries the instance's IMapElementsLayer interface.
+// The returned reference is owned by the caller.
+func (self *MapElementsLayer) AsMapElementsLayer() (*IMapElementsLayer, error) {
+	return winrt.QueryInterface[IMapElementsLayer](unsafe.Pointer(self), &IID_IMapElementsLayer)
 }
 
 // AsMapLayer queries the instance's IMapLayer interface.
@@ -22003,6 +24180,12 @@ type MapIcon struct {
 	IMapIcon
 }
 
+// AsMapIcon queries the instance's IMapIcon interface.
+// The returned reference is owned by the caller.
+func (self *MapIcon) AsMapIcon() (*IMapIcon, error) {
+	return winrt.QueryInterface[IMapIcon](unsafe.Pointer(self), &IID_IMapIcon)
+}
+
 // AsMapElement queries the instance's IMapElement interface.
 // Inherited from Microsoft.UI.Xaml.Controls.MapElement.
 // The returned reference is owned by the caller.
@@ -22061,6 +24244,12 @@ type MapLayer struct {
 	IMapLayer
 }
 
+// AsMapLayer queries the instance's IMapLayer interface.
+// The returned reference is owned by the caller.
+func (self *MapLayer) AsMapLayer() (*IMapLayer, error) {
+	return winrt.QueryInterface[IMapLayer](unsafe.Pointer(self), &IID_IMapLayer)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -22073,6 +24262,12 @@ func (self *MapLayer) AsDependencyObject() (*IDependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type MediaPlayerElement struct {
 	IMediaPlayerElement
+}
+
+// AsMediaPlayerElement queries the instance's IMediaPlayerElement interface.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerElement) AsMediaPlayerElement() (*IMediaPlayerElement, error) {
+	return winrt.QueryInterface[IMediaPlayerElement](unsafe.Pointer(self), &IID_IMediaPlayerElement)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -22210,6 +24405,12 @@ type MediaPlayerPresenter struct {
 	IMediaPlayerPresenter
 }
 
+// AsMediaPlayerPresenter queries the instance's IMediaPlayerPresenter interface.
+// The returned reference is owned by the caller.
+func (self *MediaPlayerPresenter) AsMediaPlayerPresenter() (*IMediaPlayerPresenter, error) {
+	return winrt.QueryInterface[IMediaPlayerPresenter](unsafe.Pointer(self), &IID_IMediaPlayerPresenter)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -22322,6 +24523,12 @@ func NewMediaPlayerPresenter() (*MediaPlayerPresenter, error) {
 // the embedded IInspectable → IUnknown chain).
 type MediaTransportControls struct {
 	IMediaTransportControls
+}
+
+// AsMediaTransportControls queries the instance's IMediaTransportControls interface.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControls) AsMediaTransportControls() (*IMediaTransportControls, error) {
+	return winrt.QueryInterface[IMediaTransportControls](unsafe.Pointer(self), &IID_IMediaTransportControls)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -22459,6 +24666,12 @@ type MediaTransportControlsHelper struct {
 	IMediaTransportControlsHelper
 }
 
+// AsMediaTransportControlsHelper queries the instance's IMediaTransportControlsHelper interface.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsHelper) AsMediaTransportControlsHelper() (*IMediaTransportControlsHelper, error) {
+	return winrt.QueryInterface[IMediaTransportControlsHelper](unsafe.Pointer(self), &IID_IMediaTransportControlsHelper)
+}
+
 // MediaTransportControlsHelperStatics returns the Microsoft.UI.Xaml.Controls.IMediaTransportControlsHelperStatics statics of the
 // Microsoft.UI.Xaml.Controls.MediaTransportControlsHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -22476,6 +24689,12 @@ func MediaTransportControlsHelperStatics() (*IMediaTransportControlsHelperStatic
 // the embedded IInspectable → IUnknown chain).
 type MenuBar struct {
 	IMenuBar
+}
+
+// AsMenuBar queries the instance's IMenuBar interface.
+// The returned reference is owned by the caller.
+func (self *MenuBar) AsMenuBar() (*IMenuBar, error) {
+	return winrt.QueryInterface[IMenuBar](unsafe.Pointer(self), &IID_IMenuBar)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -22613,6 +24832,12 @@ type MenuBarItem struct {
 	IMenuBarItem
 }
 
+// AsMenuBarItem queries the instance's IMenuBarItem interface.
+// The returned reference is owned by the caller.
+func (self *MenuBarItem) AsMenuBarItem() (*IMenuBarItem, error) {
+	return winrt.QueryInterface[IMenuBarItem](unsafe.Pointer(self), &IID_IMenuBarItem)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -22748,6 +24973,12 @@ type MenuBarItemFlyout struct {
 	IMenuBarItemFlyout
 }
 
+// AsMenuBarItemFlyout queries the instance's IMenuBarItemFlyout interface.
+// The returned reference is owned by the caller.
+func (self *MenuBarItemFlyout) AsMenuBarItemFlyout() (*IMenuBarItemFlyout, error) {
+	return winrt.QueryInterface[IMenuBarItemFlyout](unsafe.Pointer(self), &IID_IMenuBarItemFlyout)
+}
+
 // AsMenuFlyout queries the instance's IMenuFlyout interface.
 // Inherited from Microsoft.UI.Xaml.Controls.MenuFlyout.
 // The returned reference is owned by the caller.
@@ -22813,6 +25044,12 @@ func NewMenuBarItemFlyout() (*MenuBarItemFlyout, error) {
 // the embedded IInspectable → IUnknown chain).
 type MenuFlyout struct {
 	IMenuFlyout
+}
+
+// AsMenuFlyout queries the instance's IMenuFlyout interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyout) AsMenuFlyout() (*IMenuFlyout, error) {
+	return winrt.QueryInterface[IMenuFlyout](unsafe.Pointer(self), &IID_IMenuFlyout)
 }
 
 // AsFlyoutBase queries the instance's IFlyoutBase interface.
@@ -22885,6 +25122,12 @@ func NewMenuFlyout() (*MenuFlyout, error) {
 // the embedded IInspectable → IUnknown chain).
 type MenuFlyoutItem struct {
 	IMenuFlyoutItem
+}
+
+// AsMenuFlyoutItem queries the instance's IMenuFlyoutItem interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItem) AsMenuFlyoutItem() (*IMenuFlyoutItem, error) {
+	return winrt.QueryInterface[IMenuFlyoutItem](unsafe.Pointer(self), &IID_IMenuFlyoutItem)
 }
 
 // AsMenuFlyoutItemBase queries the instance's IMenuFlyoutItemBase interface.
@@ -23029,6 +25272,12 @@ type MenuFlyoutItemBase struct {
 	IMenuFlyoutItemBase
 }
 
+// AsMenuFlyoutItemBase queries the instance's IMenuFlyoutItemBase interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemBase) AsMenuFlyoutItemBase() (*IMenuFlyoutItemBase, error) {
+	return winrt.QueryInterface[IMenuFlyoutItemBase](unsafe.Pointer(self), &IID_IMenuFlyoutItemBase)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -23125,6 +25374,12 @@ func (self *MenuFlyoutItemBase) AsDependencyObject() (*IDependencyObject, error)
 // the embedded IInspectable → IUnknown chain).
 type MenuFlyoutPresenter struct {
 	IMenuFlyoutPresenter
+}
+
+// AsMenuFlyoutPresenter queries the instance's IMenuFlyoutPresenter interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenter) AsMenuFlyoutPresenter() (*IMenuFlyoutPresenter, error) {
+	return winrt.QueryInterface[IMenuFlyoutPresenter](unsafe.Pointer(self), &IID_IMenuFlyoutPresenter)
 }
 
 // AsMenuFlyoutPresenter2 queries the instance's IMenuFlyoutPresenter2 interface.
@@ -23301,6 +25556,12 @@ type MenuFlyoutSeparator struct {
 	IMenuFlyoutSeparator
 }
 
+// AsMenuFlyoutSeparator queries the instance's IMenuFlyoutSeparator interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutSeparator) AsMenuFlyoutSeparator() (*IMenuFlyoutSeparator, error) {
+	return winrt.QueryInterface[IMenuFlyoutSeparator](unsafe.Pointer(self), &IID_IMenuFlyoutSeparator)
+}
+
 // AsMenuFlyoutItemBase queries the instance's IMenuFlyoutItemBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.MenuFlyoutItemBase.
 // The returned reference is owned by the caller.
@@ -23442,6 +25703,12 @@ func NewMenuFlyoutSubItem() (*MenuFlyoutSubItem, error) {
 	return winrt.QueryInterface[MenuFlyoutSubItem](unsafe.Pointer(instance), &IID_IMenuFlyoutSubItem)
 }
 
+// AsMenuFlyoutSubItem queries the instance's IMenuFlyoutSubItem interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutSubItem) AsMenuFlyoutSubItem() (*IMenuFlyoutSubItem, error) {
+	return winrt.QueryInterface[IMenuFlyoutSubItem](unsafe.Pointer(self), &IID_IMenuFlyoutSubItem)
+}
+
 // AsMenuFlyoutItemBase queries the instance's IMenuFlyoutItemBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.MenuFlyoutItemBase.
 // The returned reference is owned by the caller.
@@ -23557,6 +25824,12 @@ func MenuFlyoutSubItemStatics() (*IMenuFlyoutSubItemStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type NavigationView struct {
 	INavigationView
+}
+
+// AsNavigationView queries the instance's INavigationView interface.
+// The returned reference is owned by the caller.
+func (self *NavigationView) AsNavigationView() (*INavigationView, error) {
+	return winrt.QueryInterface[INavigationView](unsafe.Pointer(self), &IID_INavigationView)
 }
 
 // AsNavigationView2 queries the instance's INavigationView2 interface.
@@ -23726,6 +25999,12 @@ type NavigationViewBackRequestedEventArgs struct {
 	INavigationViewBackRequestedEventArgs
 }
 
+// AsNavigationViewBackRequestedEventArgs queries the instance's INavigationViewBackRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewBackRequestedEventArgs) AsNavigationViewBackRequestedEventArgs() (*INavigationViewBackRequestedEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewBackRequestedEventArgs](unsafe.Pointer(self), &IID_INavigationViewBackRequestedEventArgs)
+}
+
 // NavigationViewDisplayModeChangedEventArgs is the Microsoft.UI.Xaml.Controls.NavigationViewDisplayModeChangedEventArgs runtime class, surfaced through its
 // default interface INavigationViewDisplayModeChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -23733,11 +26012,23 @@ type NavigationViewDisplayModeChangedEventArgs struct {
 	INavigationViewDisplayModeChangedEventArgs
 }
 
+// AsNavigationViewDisplayModeChangedEventArgs queries the instance's INavigationViewDisplayModeChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewDisplayModeChangedEventArgs) AsNavigationViewDisplayModeChangedEventArgs() (*INavigationViewDisplayModeChangedEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewDisplayModeChangedEventArgs](unsafe.Pointer(self), &IID_INavigationViewDisplayModeChangedEventArgs)
+}
+
 // NavigationViewItem is the Microsoft.UI.Xaml.Controls.NavigationViewItem runtime class, surfaced through its
 // default interface INavigationViewItem. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewItem struct {
 	INavigationViewItem
+}
+
+// AsNavigationViewItem queries the instance's INavigationViewItem interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItem) AsNavigationViewItem() (*INavigationViewItem, error) {
+	return winrt.QueryInterface[INavigationViewItem](unsafe.Pointer(self), &IID_INavigationViewItem)
 }
 
 // AsNavigationViewItem2 queries the instance's INavigationViewItem2 interface.
@@ -23939,6 +26230,12 @@ type NavigationViewItemBase struct {
 	INavigationViewItemBase
 }
 
+// AsNavigationViewItemBase queries the instance's INavigationViewItemBase interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemBase) AsNavigationViewItemBase() (*INavigationViewItemBase, error) {
+	return winrt.QueryInterface[INavigationViewItemBase](unsafe.Pointer(self), &IID_INavigationViewItemBase)
+}
+
 // AsNavigationViewItemBase2 queries the instance's INavigationViewItemBase2 interface.
 // The returned reference is owned by the caller.
 func (self *NavigationViewItemBase) AsNavigationViewItemBase2() (*INavigationViewItemBase2, error) {
@@ -24069,6 +26366,12 @@ type NavigationViewItemCollapsedEventArgs struct {
 	INavigationViewItemCollapsedEventArgs
 }
 
+// AsNavigationViewItemCollapsedEventArgs queries the instance's INavigationViewItemCollapsedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemCollapsedEventArgs) AsNavigationViewItemCollapsedEventArgs() (*INavigationViewItemCollapsedEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewItemCollapsedEventArgs](unsafe.Pointer(self), &IID_INavigationViewItemCollapsedEventArgs)
+}
+
 // NavigationViewItemExpandingEventArgs is the Microsoft.UI.Xaml.Controls.NavigationViewItemExpandingEventArgs runtime class, surfaced through its
 // default interface INavigationViewItemExpandingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -24076,11 +26379,23 @@ type NavigationViewItemExpandingEventArgs struct {
 	INavigationViewItemExpandingEventArgs
 }
 
+// AsNavigationViewItemExpandingEventArgs queries the instance's INavigationViewItemExpandingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemExpandingEventArgs) AsNavigationViewItemExpandingEventArgs() (*INavigationViewItemExpandingEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewItemExpandingEventArgs](unsafe.Pointer(self), &IID_INavigationViewItemExpandingEventArgs)
+}
+
 // NavigationViewItemHeader is the Microsoft.UI.Xaml.Controls.NavigationViewItemHeader runtime class, surfaced through its
 // default interface INavigationViewItemHeader. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewItemHeader struct {
 	INavigationViewItemHeader
+}
+
+// AsNavigationViewItemHeader queries the instance's INavigationViewItemHeader interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemHeader) AsNavigationViewItemHeader() (*INavigationViewItemHeader, error) {
+	return winrt.QueryInterface[INavigationViewItemHeader](unsafe.Pointer(self), &IID_INavigationViewItemHeader)
 }
 
 // AsNavigationViewItemBase queries the instance's INavigationViewItemBase interface.
@@ -24245,6 +26560,12 @@ func NewNavigationViewItemInvokedEventArgs() (*NavigationViewItemInvokedEventArg
 	return winrt.QueryInterface[NavigationViewItemInvokedEventArgs](unsafe.Pointer(instance), &IID_INavigationViewItemInvokedEventArgs)
 }
 
+// AsNavigationViewItemInvokedEventArgs queries the instance's INavigationViewItemInvokedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemInvokedEventArgs) AsNavigationViewItemInvokedEventArgs() (*INavigationViewItemInvokedEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewItemInvokedEventArgs](unsafe.Pointer(self), &IID_INavigationViewItemInvokedEventArgs)
+}
+
 // AsNavigationViewItemInvokedEventArgs2 queries the instance's INavigationViewItemInvokedEventArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *NavigationViewItemInvokedEventArgs) AsNavigationViewItemInvokedEventArgs2() (*INavigationViewItemInvokedEventArgs2, error) {
@@ -24256,6 +26577,12 @@ func (self *NavigationViewItemInvokedEventArgs) AsNavigationViewItemInvokedEvent
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewItemSeparator struct {
 	INavigationViewItemSeparator
+}
+
+// AsNavigationViewItemSeparator queries the instance's INavigationViewItemSeparator interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemSeparator) AsNavigationViewItemSeparator() (*INavigationViewItemSeparator, error) {
+	return winrt.QueryInterface[INavigationViewItemSeparator](unsafe.Pointer(self), &IID_INavigationViewItemSeparator)
 }
 
 // AsNavigationViewItemBase queries the instance's INavigationViewItemBase interface.
@@ -24409,11 +26736,23 @@ type NavigationViewPaneClosingEventArgs struct {
 	INavigationViewPaneClosingEventArgs
 }
 
+// AsNavigationViewPaneClosingEventArgs queries the instance's INavigationViewPaneClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewPaneClosingEventArgs) AsNavigationViewPaneClosingEventArgs() (*INavigationViewPaneClosingEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewPaneClosingEventArgs](unsafe.Pointer(self), &IID_INavigationViewPaneClosingEventArgs)
+}
+
 // NavigationViewSelectionChangedEventArgs is the Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs runtime class, surfaced through its
 // default interface INavigationViewSelectionChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewSelectionChangedEventArgs struct {
 	INavigationViewSelectionChangedEventArgs
+}
+
+// AsNavigationViewSelectionChangedEventArgs queries the instance's INavigationViewSelectionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewSelectionChangedEventArgs) AsNavigationViewSelectionChangedEventArgs() (*INavigationViewSelectionChangedEventArgs, error) {
+	return winrt.QueryInterface[INavigationViewSelectionChangedEventArgs](unsafe.Pointer(self), &IID_INavigationViewSelectionChangedEventArgs)
 }
 
 // AsNavigationViewSelectionChangedEventArgs2 queries the instance's INavigationViewSelectionChangedEventArgs2 interface.
@@ -24427,6 +26766,12 @@ func (self *NavigationViewSelectionChangedEventArgs) AsNavigationViewSelectionCh
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewTemplateSettings struct {
 	INavigationViewTemplateSettings
+}
+
+// AsNavigationViewTemplateSettings queries the instance's INavigationViewTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewTemplateSettings) AsNavigationViewTemplateSettings() (*INavigationViewTemplateSettings, error) {
+	return winrt.QueryInterface[INavigationViewTemplateSettings](unsafe.Pointer(self), &IID_INavigationViewTemplateSettings)
 }
 
 // AsNavigationViewTemplateSettings2 queries the instance's INavigationViewTemplateSettings2 interface.
@@ -24496,6 +26841,12 @@ func NewNavigationViewTemplateSettings() (*NavigationViewTemplateSettings, error
 // the embedded IInspectable → IUnknown chain).
 type NonVirtualizingLayout struct {
 	INonVirtualizingLayout
+}
+
+// AsNonVirtualizingLayout queries the instance's INonVirtualizingLayout interface.
+// The returned reference is owned by the caller.
+func (self *NonVirtualizingLayout) AsNonVirtualizingLayout() (*INonVirtualizingLayout, error) {
+	return winrt.QueryInterface[INonVirtualizingLayout](unsafe.Pointer(self), &IID_INonVirtualizingLayout)
 }
 
 // AsNonVirtualizingLayoutOverrides queries the instance's INonVirtualizingLayoutOverrides interface.
@@ -24578,6 +26929,12 @@ type NonVirtualizingLayoutContext struct {
 	INonVirtualizingLayoutContext
 }
 
+// AsNonVirtualizingLayoutContext queries the instance's INonVirtualizingLayoutContext interface.
+// The returned reference is owned by the caller.
+func (self *NonVirtualizingLayoutContext) AsNonVirtualizingLayoutContext() (*INonVirtualizingLayoutContext, error) {
+	return winrt.QueryInterface[INonVirtualizingLayoutContext](unsafe.Pointer(self), &IID_INonVirtualizingLayoutContext)
+}
+
 // AsNonVirtualizingLayoutContextOverrides queries the instance's INonVirtualizingLayoutContextOverrides interface.
 // The returned reference is owned by the caller.
 func (self *NonVirtualizingLayoutContext) AsNonVirtualizingLayoutContextOverrides() (*INonVirtualizingLayoutContextOverrides, error) {
@@ -24635,6 +26992,12 @@ func NewNonVirtualizingLayoutContext() (*NonVirtualizingLayoutContext, error) {
 // the embedded IInspectable → IUnknown chain).
 type NumberBox struct {
 	INumberBox
+}
+
+// AsNumberBox queries the instance's INumberBox interface.
+// The returned reference is owned by the caller.
+func (self *NumberBox) AsNumberBox() (*INumberBox, error) {
+	return winrt.QueryInterface[INumberBox](unsafe.Pointer(self), &IID_INumberBox)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -24772,11 +27135,23 @@ type NumberBoxValueChangedEventArgs struct {
 	INumberBoxValueChangedEventArgs
 }
 
+// AsNumberBoxValueChangedEventArgs queries the instance's INumberBoxValueChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NumberBoxValueChangedEventArgs) AsNumberBoxValueChangedEventArgs() (*INumberBoxValueChangedEventArgs, error) {
+	return winrt.QueryInterface[INumberBoxValueChangedEventArgs](unsafe.Pointer(self), &IID_INumberBoxValueChangedEventArgs)
+}
+
 // Page is the Microsoft.UI.Xaml.Controls.Page runtime class, surfaced through its
 // default interface IPage. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Page struct {
 	IPage
+}
+
+// AsPage queries the instance's IPage interface.
+// The returned reference is owned by the caller.
+func (self *Page) AsPage() (*IPage, error) {
+	return winrt.QueryInterface[IPage](unsafe.Pointer(self), &IID_IPage)
 }
 
 // AsPageOverrides queries the instance's IPageOverrides interface.
@@ -24927,6 +27302,12 @@ type Panel struct {
 	IPanel
 }
 
+// AsPanel queries the instance's IPanel interface.
+// The returned reference is owned by the caller.
+func (self *Panel) AsPanel() (*IPanel, error) {
+	return winrt.QueryInterface[IPanel](unsafe.Pointer(self), &IID_IPanel)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -25039,6 +27420,12 @@ func NewPanel() (*Panel, error) {
 // the embedded IInspectable → IUnknown chain).
 type ParallaxView struct {
 	IParallaxView
+}
+
+// AsParallaxView queries the instance's IParallaxView interface.
+// The returned reference is owned by the caller.
+func (self *ParallaxView) AsParallaxView() (*IParallaxView, error) {
+	return winrt.QueryInterface[IParallaxView](unsafe.Pointer(self), &IID_IParallaxView)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -25166,6 +27553,12 @@ func NewPasswordBox() (*PasswordBox, error) {
 	return winrt.QueryInterface[PasswordBox](unsafe.Pointer(instance), &IID_IPasswordBox)
 }
 
+// AsPasswordBox queries the instance's IPasswordBox interface.
+// The returned reference is owned by the caller.
+func (self *PasswordBox) AsPasswordBox() (*IPasswordBox, error) {
+	return winrt.QueryInterface[IPasswordBox](unsafe.Pointer(self), &IID_IPasswordBox)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -25276,11 +27669,23 @@ type PasswordBoxPasswordChangingEventArgs struct {
 	IPasswordBoxPasswordChangingEventArgs
 }
 
+// AsPasswordBoxPasswordChangingEventArgs queries the instance's IPasswordBoxPasswordChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PasswordBoxPasswordChangingEventArgs) AsPasswordBoxPasswordChangingEventArgs() (*IPasswordBoxPasswordChangingEventArgs, error) {
+	return winrt.QueryInterface[IPasswordBoxPasswordChangingEventArgs](unsafe.Pointer(self), &IID_IPasswordBoxPasswordChangingEventArgs)
+}
+
 // PathIcon is the Microsoft.UI.Xaml.Controls.PathIcon runtime class, surfaced through its
 // default interface IPathIcon. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PathIcon struct {
 	IPathIcon
+}
+
+// AsPathIcon queries the instance's IPathIcon interface.
+// The returned reference is owned by the caller.
+func (self *PathIcon) AsPathIcon() (*IPathIcon, error) {
+	return winrt.QueryInterface[IPathIcon](unsafe.Pointer(self), &IID_IPathIcon)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -25404,6 +27809,12 @@ type PathIconSource struct {
 	IPathIconSource
 }
 
+// AsPathIconSource queries the instance's IPathIconSource interface.
+// The returned reference is owned by the caller.
+func (self *PathIconSource) AsPathIconSource() (*IPathIconSource, error) {
+	return winrt.QueryInterface[IPathIconSource](unsafe.Pointer(self), &IID_IPathIconSource)
+}
+
 // AsIconSource queries the instance's IIconSource interface.
 // Inherited from Microsoft.UI.Xaml.Controls.IconSource.
 // The returned reference is owned by the caller.
@@ -25467,6 +27878,12 @@ func NewPathIconSource() (*PathIconSource, error) {
 // the embedded IInspectable → IUnknown chain).
 type PersonPicture struct {
 	IPersonPicture
+}
+
+// AsPersonPicture queries the instance's IPersonPicture interface.
+// The returned reference is owned by the caller.
+func (self *PersonPicture) AsPersonPicture() (*IPersonPicture, error) {
+	return winrt.QueryInterface[IPersonPicture](unsafe.Pointer(self), &IID_IPersonPicture)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -25604,6 +28021,12 @@ type PersonPictureTemplateSettings struct {
 	IPersonPictureTemplateSettings
 }
 
+// AsPersonPictureTemplateSettings queries the instance's IPersonPictureTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *PersonPictureTemplateSettings) AsPersonPictureTemplateSettings() (*IPersonPictureTemplateSettings, error) {
+	return winrt.QueryInterface[IPersonPictureTemplateSettings](unsafe.Pointer(self), &IID_IPersonPictureTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -25629,6 +28052,12 @@ func NewPickerConfirmedEventArgs() (*PickerConfirmedEventArgs, error) {
 	return winrt.QueryInterface[PickerConfirmedEventArgs](unsafe.Pointer(instance), &IID_IPickerConfirmedEventArgs)
 }
 
+// AsPickerConfirmedEventArgs queries the instance's IPickerConfirmedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PickerConfirmedEventArgs) AsPickerConfirmedEventArgs() (*IPickerConfirmedEventArgs, error) {
+	return winrt.QueryInterface[IPickerConfirmedEventArgs](unsafe.Pointer(self), &IID_IPickerConfirmedEventArgs)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -25652,6 +28081,12 @@ func NewPickerFlyout() (*PickerFlyout, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PickerFlyout](unsafe.Pointer(instance), &IID_IPickerFlyout)
+}
+
+// AsPickerFlyout queries the instance's IPickerFlyout interface.
+// The returned reference is owned by the caller.
+func (self *PickerFlyout) AsPickerFlyout() (*IPickerFlyout, error) {
+	return winrt.QueryInterface[IPickerFlyout](unsafe.Pointer(self), &IID_IPickerFlyout)
 }
 
 // AsPickerFlyoutBase queries the instance's IPickerFlyoutBase interface.
@@ -25713,6 +28148,12 @@ func PickerFlyoutStatics() (*IPickerFlyoutStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type PickerFlyoutPresenter struct {
 	IPickerFlyoutPresenter
+}
+
+// AsPickerFlyoutPresenter queries the instance's IPickerFlyoutPresenter interface.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutPresenter) AsPickerFlyoutPresenter() (*IPickerFlyoutPresenter, error) {
+	return winrt.QueryInterface[IPickerFlyoutPresenter](unsafe.Pointer(self), &IID_IPickerFlyoutPresenter)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -25825,6 +28266,12 @@ func (self *PickerFlyoutPresenter) AsDependencyObject() (*IDependencyObject, err
 // the embedded IInspectable → IUnknown chain).
 type PipsPager struct {
 	IPipsPager
+}
+
+// AsPipsPager queries the instance's IPipsPager interface.
+// The returned reference is owned by the caller.
+func (self *PipsPager) AsPipsPager() (*IPipsPager, error) {
+	return winrt.QueryInterface[IPipsPager](unsafe.Pointer(self), &IID_IPipsPager)
 }
 
 // AsPipsPager2 queries the instance's IPipsPager2 interface.
@@ -25980,11 +28427,23 @@ type PipsPagerSelectedIndexChangedEventArgs struct {
 	IPipsPagerSelectedIndexChangedEventArgs
 }
 
+// AsPipsPagerSelectedIndexChangedEventArgs queries the instance's IPipsPagerSelectedIndexChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PipsPagerSelectedIndexChangedEventArgs) AsPipsPagerSelectedIndexChangedEventArgs() (*IPipsPagerSelectedIndexChangedEventArgs, error) {
+	return winrt.QueryInterface[IPipsPagerSelectedIndexChangedEventArgs](unsafe.Pointer(self), &IID_IPipsPagerSelectedIndexChangedEventArgs)
+}
+
 // PipsPagerTemplateSettings is the Microsoft.UI.Xaml.Controls.PipsPagerTemplateSettings runtime class, surfaced through its
 // default interface IPipsPagerTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PipsPagerTemplateSettings struct {
 	IPipsPagerTemplateSettings
+}
+
+// AsPipsPagerTemplateSettings queries the instance's IPipsPagerTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *PipsPagerTemplateSettings) AsPipsPagerTemplateSettings() (*IPipsPagerTemplateSettings, error) {
+	return winrt.QueryInterface[IPipsPagerTemplateSettings](unsafe.Pointer(self), &IID_IPipsPagerTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -25999,6 +28458,12 @@ func (self *PipsPagerTemplateSettings) AsDependencyObject() (*IDependencyObject,
 // the embedded IInspectable → IUnknown chain).
 type Pivot struct {
 	IPivot
+}
+
+// AsPivot queries the instance's IPivot interface.
+// The returned reference is owned by the caller.
+func (self *Pivot) AsPivot() (*IPivot, error) {
+	return winrt.QueryInterface[IPivot](unsafe.Pointer(self), &IID_IPivot)
 }
 
 // AsItemsControl queries the instance's IItemsControl interface.
@@ -26155,6 +28620,12 @@ func NewPivot() (*Pivot, error) {
 // the embedded IInspectable → IUnknown chain).
 type PivotItem struct {
 	IPivotItem
+}
+
+// AsPivotItem queries the instance's IPivotItem interface.
+// The returned reference is owned by the caller.
+func (self *PivotItem) AsPivotItem() (*IPivotItem, error) {
+	return winrt.QueryInterface[IPivotItem](unsafe.Pointer(self), &IID_IPivotItem)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -26317,11 +28788,23 @@ func NewPivotItemEventArgs() (*PivotItemEventArgs, error) {
 	return winrt.QueryInterface[PivotItemEventArgs](unsafe.Pointer(instance), &IID_IPivotItemEventArgs)
 }
 
+// AsPivotItemEventArgs queries the instance's IPivotItemEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PivotItemEventArgs) AsPivotItemEventArgs() (*IPivotItemEventArgs, error) {
+	return winrt.QueryInterface[IPivotItemEventArgs](unsafe.Pointer(self), &IID_IPivotItemEventArgs)
+}
+
 // ProgressBar is the Microsoft.UI.Xaml.Controls.ProgressBar runtime class, surfaced through its
 // default interface IProgressBar. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ProgressBar struct {
 	IProgressBar
+}
+
+// AsProgressBar queries the instance's IProgressBar interface.
+// The returned reference is owned by the caller.
+func (self *ProgressBar) AsProgressBar() (*IProgressBar, error) {
+	return winrt.QueryInterface[IProgressBar](unsafe.Pointer(self), &IID_IProgressBar)
 }
 
 // AsRangeBase queries the instance's IRangeBase interface.
@@ -26473,6 +28956,12 @@ type ProgressBarTemplateSettings struct {
 	IProgressBarTemplateSettings
 }
 
+// AsProgressBarTemplateSettings queries the instance's IProgressBarTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ProgressBarTemplateSettings) AsProgressBarTemplateSettings() (*IProgressBarTemplateSettings, error) {
+	return winrt.QueryInterface[IProgressBarTemplateSettings](unsafe.Pointer(self), &IID_IProgressBarTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -26485,6 +28974,12 @@ func (self *ProgressBarTemplateSettings) AsDependencyObject() (*IDependencyObjec
 // the embedded IInspectable → IUnknown chain).
 type ProgressRing struct {
 	IProgressRing
+}
+
+// AsProgressRing queries the instance's IProgressRing interface.
+// The returned reference is owned by the caller.
+func (self *ProgressRing) AsProgressRing() (*IProgressRing, error) {
+	return winrt.QueryInterface[IProgressRing](unsafe.Pointer(self), &IID_IProgressRing)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -26622,6 +29117,12 @@ type ProgressRingTemplateSettings struct {
 	IProgressRingTemplateSettings
 }
 
+// AsProgressRingTemplateSettings queries the instance's IProgressRingTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ProgressRingTemplateSettings) AsProgressRingTemplateSettings() (*IProgressRingTemplateSettings, error) {
+	return winrt.QueryInterface[IProgressRingTemplateSettings](unsafe.Pointer(self), &IID_IProgressRingTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -26634,6 +29135,12 @@ func (self *ProgressRingTemplateSettings) AsDependencyObject() (*IDependencyObje
 // the embedded IInspectable → IUnknown chain).
 type RadioButton struct {
 	IRadioButton
+}
+
+// AsRadioButton queries the instance's IRadioButton interface.
+// The returned reference is owned by the caller.
+func (self *RadioButton) AsRadioButton() (*IRadioButton, error) {
+	return winrt.QueryInterface[IRadioButton](unsafe.Pointer(self), &IID_IRadioButton)
 }
 
 // AsToggleButton queries the instance's IToggleButton interface.
@@ -26806,6 +29313,12 @@ type RadioButtons struct {
 	IRadioButtons
 }
 
+// AsRadioButtons queries the instance's IRadioButtons interface.
+// The returned reference is owned by the caller.
+func (self *RadioButtons) AsRadioButtons() (*IRadioButtons, error) {
+	return winrt.QueryInterface[IRadioButtons](unsafe.Pointer(self), &IID_IRadioButtons)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -26939,6 +29452,12 @@ func NewRadioButtons() (*RadioButtons, error) {
 // the embedded IInspectable → IUnknown chain).
 type RadioMenuFlyoutItem struct {
 	IRadioMenuFlyoutItem
+}
+
+// AsRadioMenuFlyoutItem queries the instance's IRadioMenuFlyoutItem interface.
+// The returned reference is owned by the caller.
+func (self *RadioMenuFlyoutItem) AsRadioMenuFlyoutItem() (*IRadioMenuFlyoutItem, error) {
+	return winrt.QueryInterface[IRadioMenuFlyoutItem](unsafe.Pointer(self), &IID_IRadioMenuFlyoutItem)
 }
 
 // AsMenuFlyoutItem queries the instance's IMenuFlyoutItem interface.
@@ -27102,6 +29621,12 @@ type RatingControl struct {
 	IRatingControl
 }
 
+// AsRatingControl queries the instance's IRatingControl interface.
+// The returned reference is owned by the caller.
+func (self *RatingControl) AsRatingControl() (*IRatingControl, error) {
+	return winrt.QueryInterface[IRatingControl](unsafe.Pointer(self), &IID_IRatingControl)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -27237,6 +29762,12 @@ type RatingItemFontInfo struct {
 	IRatingItemFontInfo
 }
 
+// AsRatingItemFontInfo queries the instance's IRatingItemFontInfo interface.
+// The returned reference is owned by the caller.
+func (self *RatingItemFontInfo) AsRatingItemFontInfo() (*IRatingItemFontInfo, error) {
+	return winrt.QueryInterface[IRatingItemFontInfo](unsafe.Pointer(self), &IID_IRatingItemFontInfo)
+}
+
 // AsRatingItemInfo queries the instance's IRatingItemInfo interface.
 // Inherited from Microsoft.UI.Xaml.Controls.RatingItemInfo.
 // The returned reference is owned by the caller.
@@ -27293,6 +29824,12 @@ func NewRatingItemFontInfo() (*RatingItemFontInfo, error) {
 // the embedded IInspectable → IUnknown chain).
 type RatingItemImageInfo struct {
 	IRatingItemImageInfo
+}
+
+// AsRatingItemImageInfo queries the instance's IRatingItemImageInfo interface.
+// The returned reference is owned by the caller.
+func (self *RatingItemImageInfo) AsRatingItemImageInfo() (*IRatingItemImageInfo, error) {
+	return winrt.QueryInterface[IRatingItemImageInfo](unsafe.Pointer(self), &IID_IRatingItemImageInfo)
 }
 
 // AsRatingItemInfo queries the instance's IRatingItemInfo interface.
@@ -27353,6 +29890,12 @@ type RatingItemInfo struct {
 	IRatingItemInfo
 }
 
+// AsRatingItemInfo queries the instance's IRatingItemInfo interface.
+// The returned reference is owned by the caller.
+func (self *RatingItemInfo) AsRatingItemInfo() (*IRatingItemInfo, error) {
+	return winrt.QueryInterface[IRatingItemInfo](unsafe.Pointer(self), &IID_IRatingItemInfo)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -27390,6 +29933,12 @@ func NewRatingItemInfo() (*RatingItemInfo, error) {
 // the embedded IInspectable → IUnknown chain).
 type RefreshContainer struct {
 	IRefreshContainer
+}
+
+// AsRefreshContainer queries the instance's IRefreshContainer interface.
+// The returned reference is owned by the caller.
+func (self *RefreshContainer) AsRefreshContainer() (*IRefreshContainer, error) {
+	return winrt.QueryInterface[IRefreshContainer](unsafe.Pointer(self), &IID_IRefreshContainer)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -27541,11 +30090,23 @@ type RefreshInteractionRatioChangedEventArgs struct {
 	IRefreshInteractionRatioChangedEventArgs
 }
 
+// AsRefreshInteractionRatioChangedEventArgs queries the instance's IRefreshInteractionRatioChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RefreshInteractionRatioChangedEventArgs) AsRefreshInteractionRatioChangedEventArgs() (*IRefreshInteractionRatioChangedEventArgs, error) {
+	return winrt.QueryInterface[IRefreshInteractionRatioChangedEventArgs](unsafe.Pointer(self), &IID_IRefreshInteractionRatioChangedEventArgs)
+}
+
 // RefreshRequestedEventArgs is the Microsoft.UI.Xaml.Controls.RefreshRequestedEventArgs runtime class, surfaced through its
 // default interface IRefreshRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type RefreshRequestedEventArgs struct {
 	IRefreshRequestedEventArgs
+}
+
+// AsRefreshRequestedEventArgs queries the instance's IRefreshRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RefreshRequestedEventArgs) AsRefreshRequestedEventArgs() (*IRefreshRequestedEventArgs, error) {
+	return winrt.QueryInterface[IRefreshRequestedEventArgs](unsafe.Pointer(self), &IID_IRefreshRequestedEventArgs)
 }
 
 // RefreshStateChangedEventArgs is the Microsoft.UI.Xaml.Controls.RefreshStateChangedEventArgs runtime class, surfaced through its
@@ -27555,11 +30116,23 @@ type RefreshStateChangedEventArgs struct {
 	IRefreshStateChangedEventArgs
 }
 
+// AsRefreshStateChangedEventArgs queries the instance's IRefreshStateChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RefreshStateChangedEventArgs) AsRefreshStateChangedEventArgs() (*IRefreshStateChangedEventArgs, error) {
+	return winrt.QueryInterface[IRefreshStateChangedEventArgs](unsafe.Pointer(self), &IID_IRefreshStateChangedEventArgs)
+}
+
 // RefreshVisualizer is the Microsoft.UI.Xaml.Controls.RefreshVisualizer runtime class, surfaced through its
 // default interface IRefreshVisualizer. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type RefreshVisualizer struct {
 	IRefreshVisualizer
+}
+
+// AsRefreshVisualizer queries the instance's IRefreshVisualizer interface.
+// The returned reference is owned by the caller.
+func (self *RefreshVisualizer) AsRefreshVisualizer() (*IRefreshVisualizer, error) {
+	return winrt.QueryInterface[IRefreshVisualizer](unsafe.Pointer(self), &IID_IRefreshVisualizer)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -27697,6 +30270,12 @@ type RelativePanel struct {
 	IRelativePanel
 }
 
+// AsRelativePanel queries the instance's IRelativePanel interface.
+// The returned reference is owned by the caller.
+func (self *RelativePanel) AsRelativePanel() (*IRelativePanel, error) {
+	return winrt.QueryInterface[IRelativePanel](unsafe.Pointer(self), &IID_IRelativePanel)
+}
+
 // AsPanel queries the instance's IPanel interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Panel.
 // The returned reference is owned by the caller.
@@ -27816,6 +30395,12 @@ func NewRelativePanel() (*RelativePanel, error) {
 // the embedded IInspectable → IUnknown chain).
 type RevealListViewItemPresenter struct {
 	IRevealListViewItemPresenter
+}
+
+// AsRevealListViewItemPresenter queries the instance's IRevealListViewItemPresenter interface.
+// The returned reference is owned by the caller.
+func (self *RevealListViewItemPresenter) AsRevealListViewItemPresenter() (*IRevealListViewItemPresenter, error) {
+	return winrt.QueryInterface[IRevealListViewItemPresenter](unsafe.Pointer(self), &IID_IRevealListViewItemPresenter)
 }
 
 // AsListViewItemPresenter queries the instance's IListViewItemPresenter interface.
@@ -27939,6 +30524,12 @@ func NewRevealListViewItemPresenter() (*RevealListViewItemPresenter, error) {
 // the embedded IInspectable → IUnknown chain).
 type RichEditBox struct {
 	IRichEditBox
+}
+
+// AsRichEditBox queries the instance's IRichEditBox interface.
+// The returned reference is owned by the caller.
+func (self *RichEditBox) AsRichEditBox() (*IRichEditBox, error) {
+	return winrt.QueryInterface[IRichEditBox](unsafe.Pointer(self), &IID_IRichEditBox)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -28076,11 +30667,23 @@ type RichEditBoxSelectionChangingEventArgs struct {
 	IRichEditBoxSelectionChangingEventArgs
 }
 
+// AsRichEditBoxSelectionChangingEventArgs queries the instance's IRichEditBoxSelectionChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxSelectionChangingEventArgs) AsRichEditBoxSelectionChangingEventArgs() (*IRichEditBoxSelectionChangingEventArgs, error) {
+	return winrt.QueryInterface[IRichEditBoxSelectionChangingEventArgs](unsafe.Pointer(self), &IID_IRichEditBoxSelectionChangingEventArgs)
+}
+
 // RichEditBoxTextChangingEventArgs is the Microsoft.UI.Xaml.Controls.RichEditBoxTextChangingEventArgs runtime class, surfaced through its
 // default interface IRichEditBoxTextChangingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type RichEditBoxTextChangingEventArgs struct {
 	IRichEditBoxTextChangingEventArgs
+}
+
+// AsRichEditBoxTextChangingEventArgs queries the instance's IRichEditBoxTextChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RichEditBoxTextChangingEventArgs) AsRichEditBoxTextChangingEventArgs() (*IRichEditBoxTextChangingEventArgs, error) {
+	return winrt.QueryInterface[IRichEditBoxTextChangingEventArgs](unsafe.Pointer(self), &IID_IRichEditBoxTextChangingEventArgs)
 }
 
 // RichTextBlock is the Microsoft.UI.Xaml.Controls.RichTextBlock runtime class, surfaced through its
@@ -28099,6 +30702,12 @@ func NewRichTextBlock() (*RichTextBlock, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RichTextBlock](unsafe.Pointer(instance), &IID_IRichTextBlock)
+}
+
+// AsRichTextBlock queries the instance's IRichTextBlock interface.
+// The returned reference is owned by the caller.
+func (self *RichTextBlock) AsRichTextBlock() (*IRichTextBlock, error) {
+	return winrt.QueryInterface[IRichTextBlock](unsafe.Pointer(self), &IID_IRichTextBlock)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -28201,6 +30810,12 @@ func NewRichTextBlockOverflow() (*RichTextBlockOverflow, error) {
 	return winrt.QueryInterface[RichTextBlockOverflow](unsafe.Pointer(instance), &IID_IRichTextBlockOverflow)
 }
 
+// AsRichTextBlockOverflow queries the instance's IRichTextBlockOverflow interface.
+// The returned reference is owned by the caller.
+func (self *RichTextBlockOverflow) AsRichTextBlockOverflow() (*IRichTextBlockOverflow, error) {
+	return winrt.QueryInterface[IRichTextBlockOverflow](unsafe.Pointer(self), &IID_IRichTextBlockOverflow)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -28301,6 +30916,12 @@ func NewRowDefinition() (*RowDefinition, error) {
 	return winrt.QueryInterface[RowDefinition](unsafe.Pointer(instance), &IID_IRowDefinition)
 }
 
+// AsRowDefinition queries the instance's IRowDefinition interface.
+// The returned reference is owned by the caller.
+func (self *RowDefinition) AsRowDefinition() (*IRowDefinition, error) {
+	return winrt.QueryInterface[IRowDefinition](unsafe.Pointer(self), &IID_IRowDefinition)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -28327,6 +30948,12 @@ type RowDefinitionCollection struct {
 	IVectorOfRowDefinition
 }
 
+// AsVectorOfRowDefinition queries the instance's IVectorOfRowDefinition interface.
+// The returned reference is owned by the caller.
+func (self *RowDefinitionCollection) AsVectorOfRowDefinition() (*IVectorOfRowDefinition, error) {
+	return winrt.QueryInterface[IVectorOfRowDefinition](unsafe.Pointer(self), &IID_IVectorOfRowDefinition)
+}
+
 // AsIterableOfRowDefinition queries the instance's IIterableOfRowDefinition interface.
 // The returned reference is owned by the caller.
 func (self *RowDefinitionCollection) AsIterableOfRowDefinition() (*IIterableOfRowDefinition, error) {
@@ -28349,6 +30976,12 @@ func NewScrollContentPresenter() (*ScrollContentPresenter, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ScrollContentPresenter](unsafe.Pointer(instance), &IID_IScrollContentPresenter)
+}
+
+// AsScrollContentPresenter queries the instance's IScrollContentPresenter interface.
+// The returned reference is owned by the caller.
+func (self *ScrollContentPresenter) AsScrollContentPresenter() (*IScrollContentPresenter, error) {
+	return winrt.QueryInterface[IScrollContentPresenter](unsafe.Pointer(self), &IID_IScrollContentPresenter)
 }
 
 // AsContentPresenter queries the instance's IContentPresenter interface.
@@ -28452,6 +31085,12 @@ func ScrollContentPresenterStatics() (*IScrollContentPresenterStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ScrollView struct {
 	IScrollView
+}
+
+// AsScrollView queries the instance's IScrollView interface.
+// The returned reference is owned by the caller.
+func (self *ScrollView) AsScrollView() (*IScrollView, error) {
+	return winrt.QueryInterface[IScrollView](unsafe.Pointer(self), &IID_IScrollView)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -28600,6 +31239,12 @@ func NewScrollViewer() (*ScrollViewer, error) {
 	return winrt.QueryInterface[ScrollViewer](unsafe.Pointer(instance), &IID_IScrollViewer)
 }
 
+// AsScrollViewer queries the instance's IScrollViewer interface.
+// The returned reference is owned by the caller.
+func (self *ScrollViewer) AsScrollViewer() (*IScrollViewer, error) {
+	return winrt.QueryInterface[IScrollViewer](unsafe.Pointer(self), &IID_IScrollViewer)
+}
+
 // AsScrollAnchorProvider queries the instance's IScrollAnchorProvider interface.
 // The returned reference is owned by the caller.
 func (self *ScrollViewer) AsScrollAnchorProvider() (*IScrollAnchorProvider, error) {
@@ -28730,6 +31375,12 @@ type ScrollViewerView struct {
 	IScrollViewerView
 }
 
+// AsScrollViewerView queries the instance's IScrollViewerView interface.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerView) AsScrollViewerView() (*IScrollViewerView, error) {
+	return winrt.QueryInterface[IScrollViewerView](unsafe.Pointer(self), &IID_IScrollViewerView)
+}
+
 // ScrollViewerViewChangedEventArgs is the Microsoft.UI.Xaml.Controls.ScrollViewerViewChangedEventArgs runtime class, surfaced through its
 // default interface IScrollViewerViewChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -28748,11 +31399,23 @@ func NewScrollViewerViewChangedEventArgs() (*ScrollViewerViewChangedEventArgs, e
 	return winrt.QueryInterface[ScrollViewerViewChangedEventArgs](unsafe.Pointer(instance), &IID_IScrollViewerViewChangedEventArgs)
 }
 
+// AsScrollViewerViewChangedEventArgs queries the instance's IScrollViewerViewChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerViewChangedEventArgs) AsScrollViewerViewChangedEventArgs() (*IScrollViewerViewChangedEventArgs, error) {
+	return winrt.QueryInterface[IScrollViewerViewChangedEventArgs](unsafe.Pointer(self), &IID_IScrollViewerViewChangedEventArgs)
+}
+
 // ScrollViewerViewChangingEventArgs is the Microsoft.UI.Xaml.Controls.ScrollViewerViewChangingEventArgs runtime class, surfaced through its
 // default interface IScrollViewerViewChangingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScrollViewerViewChangingEventArgs struct {
 	IScrollViewerViewChangingEventArgs
+}
+
+// AsScrollViewerViewChangingEventArgs queries the instance's IScrollViewerViewChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollViewerViewChangingEventArgs) AsScrollViewerViewChangingEventArgs() (*IScrollViewerViewChangingEventArgs, error) {
+	return winrt.QueryInterface[IScrollViewerViewChangingEventArgs](unsafe.Pointer(self), &IID_IScrollViewerViewChangingEventArgs)
 }
 
 // ScrollingAnchorRequestedEventArgs is the Microsoft.UI.Xaml.Controls.ScrollingAnchorRequestedEventArgs runtime class, surfaced through its
@@ -28762,11 +31425,23 @@ type ScrollingAnchorRequestedEventArgs struct {
 	IScrollingAnchorRequestedEventArgs
 }
 
+// AsScrollingAnchorRequestedEventArgs queries the instance's IScrollingAnchorRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingAnchorRequestedEventArgs) AsScrollingAnchorRequestedEventArgs() (*IScrollingAnchorRequestedEventArgs, error) {
+	return winrt.QueryInterface[IScrollingAnchorRequestedEventArgs](unsafe.Pointer(self), &IID_IScrollingAnchorRequestedEventArgs)
+}
+
 // ScrollingBringingIntoViewEventArgs is the Microsoft.UI.Xaml.Controls.ScrollingBringingIntoViewEventArgs runtime class, surfaced through its
 // default interface IScrollingBringingIntoViewEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScrollingBringingIntoViewEventArgs struct {
 	IScrollingBringingIntoViewEventArgs
+}
+
+// AsScrollingBringingIntoViewEventArgs queries the instance's IScrollingBringingIntoViewEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingBringingIntoViewEventArgs) AsScrollingBringingIntoViewEventArgs() (*IScrollingBringingIntoViewEventArgs, error) {
+	return winrt.QueryInterface[IScrollingBringingIntoViewEventArgs](unsafe.Pointer(self), &IID_IScrollingBringingIntoViewEventArgs)
 }
 
 // ScrollingScrollAnimationStartingEventArgs is the Microsoft.UI.Xaml.Controls.ScrollingScrollAnimationStartingEventArgs runtime class, surfaced through its
@@ -28776,6 +31451,12 @@ type ScrollingScrollAnimationStartingEventArgs struct {
 	IScrollingScrollAnimationStartingEventArgs
 }
 
+// AsScrollingScrollAnimationStartingEventArgs queries the instance's IScrollingScrollAnimationStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingScrollAnimationStartingEventArgs) AsScrollingScrollAnimationStartingEventArgs() (*IScrollingScrollAnimationStartingEventArgs, error) {
+	return winrt.QueryInterface[IScrollingScrollAnimationStartingEventArgs](unsafe.Pointer(self), &IID_IScrollingScrollAnimationStartingEventArgs)
+}
+
 // ScrollingScrollCompletedEventArgs is the Microsoft.UI.Xaml.Controls.ScrollingScrollCompletedEventArgs runtime class, surfaced through its
 // default interface IScrollingScrollCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -28783,11 +31464,23 @@ type ScrollingScrollCompletedEventArgs struct {
 	IScrollingScrollCompletedEventArgs
 }
 
+// AsScrollingScrollCompletedEventArgs queries the instance's IScrollingScrollCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingScrollCompletedEventArgs) AsScrollingScrollCompletedEventArgs() (*IScrollingScrollCompletedEventArgs, error) {
+	return winrt.QueryInterface[IScrollingScrollCompletedEventArgs](unsafe.Pointer(self), &IID_IScrollingScrollCompletedEventArgs)
+}
+
 // ScrollingScrollOptions is the Microsoft.UI.Xaml.Controls.ScrollingScrollOptions runtime class, surfaced through its
 // default interface IScrollingScrollOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScrollingScrollOptions struct {
 	IScrollingScrollOptions
+}
+
+// AsScrollingScrollOptions queries the instance's IScrollingScrollOptions interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingScrollOptions) AsScrollingScrollOptions() (*IScrollingScrollOptions, error) {
+	return winrt.QueryInterface[IScrollingScrollOptions](unsafe.Pointer(self), &IID_IScrollingScrollOptions)
 }
 
 // NewScrollingScrollOptions constructs a Microsoft.UI.Xaml.Controls.ScrollingScrollOptions instance through
@@ -28847,6 +31540,12 @@ type ScrollingZoomAnimationStartingEventArgs struct {
 	IScrollingZoomAnimationStartingEventArgs
 }
 
+// AsScrollingZoomAnimationStartingEventArgs queries the instance's IScrollingZoomAnimationStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingZoomAnimationStartingEventArgs) AsScrollingZoomAnimationStartingEventArgs() (*IScrollingZoomAnimationStartingEventArgs, error) {
+	return winrt.QueryInterface[IScrollingZoomAnimationStartingEventArgs](unsafe.Pointer(self), &IID_IScrollingZoomAnimationStartingEventArgs)
+}
+
 // ScrollingZoomCompletedEventArgs is the Microsoft.UI.Xaml.Controls.ScrollingZoomCompletedEventArgs runtime class, surfaced through its
 // default interface IScrollingZoomCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -28854,11 +31553,23 @@ type ScrollingZoomCompletedEventArgs struct {
 	IScrollingZoomCompletedEventArgs
 }
 
+// AsScrollingZoomCompletedEventArgs queries the instance's IScrollingZoomCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingZoomCompletedEventArgs) AsScrollingZoomCompletedEventArgs() (*IScrollingZoomCompletedEventArgs, error) {
+	return winrt.QueryInterface[IScrollingZoomCompletedEventArgs](unsafe.Pointer(self), &IID_IScrollingZoomCompletedEventArgs)
+}
+
 // ScrollingZoomOptions is the Microsoft.UI.Xaml.Controls.ScrollingZoomOptions runtime class, surfaced through its
 // default interface IScrollingZoomOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ScrollingZoomOptions struct {
 	IScrollingZoomOptions
+}
+
+// AsScrollingZoomOptions queries the instance's IScrollingZoomOptions interface.
+// The returned reference is owned by the caller.
+func (self *ScrollingZoomOptions) AsScrollingZoomOptions() (*IScrollingZoomOptions, error) {
+	return winrt.QueryInterface[IScrollingZoomOptions](unsafe.Pointer(self), &IID_IScrollingZoomOptions)
 }
 
 // NewScrollingZoomOptions constructs a Microsoft.UI.Xaml.Controls.ScrollingZoomOptions instance through
@@ -28918,11 +31629,23 @@ type SectionsInViewChangedEventArgs struct {
 	ISectionsInViewChangedEventArgs
 }
 
+// AsSectionsInViewChangedEventArgs queries the instance's ISectionsInViewChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SectionsInViewChangedEventArgs) AsSectionsInViewChangedEventArgs() (*ISectionsInViewChangedEventArgs, error) {
+	return winrt.QueryInterface[ISectionsInViewChangedEventArgs](unsafe.Pointer(self), &IID_ISectionsInViewChangedEventArgs)
+}
+
 // SelectionChangedEventArgs is the Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs runtime class, surfaced through its
 // default interface ISelectionChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SelectionChangedEventArgs struct {
 	ISelectionChangedEventArgs
+}
+
+// AsSelectionChangedEventArgs queries the instance's ISelectionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SelectionChangedEventArgs) AsSelectionChangedEventArgs() (*ISelectionChangedEventArgs, error) {
+	return winrt.QueryInterface[ISelectionChangedEventArgs](unsafe.Pointer(self), &IID_ISelectionChangedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -28962,6 +31685,12 @@ func NewSelectionChangedEventArgsWithRemovedItemsAndAddedItems(removedItems *IVe
 // the embedded IInspectable → IUnknown chain).
 type SelectorBar struct {
 	ISelectorBar
+}
+
+// AsSelectorBar queries the instance's ISelectorBar interface.
+// The returned reference is owned by the caller.
+func (self *SelectorBar) AsSelectorBar() (*ISelectorBar, error) {
+	return winrt.QueryInterface[ISelectorBar](unsafe.Pointer(self), &IID_ISelectorBar)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -29097,6 +31826,12 @@ func NewSelectorBar() (*SelectorBar, error) {
 // the embedded IInspectable → IUnknown chain).
 type SelectorBarItem struct {
 	ISelectorBarItem
+}
+
+// AsSelectorBarItem queries the instance's ISelectorBarItem interface.
+// The returned reference is owned by the caller.
+func (self *SelectorBarItem) AsSelectorBarItem() (*ISelectorBarItem, error) {
+	return winrt.QueryInterface[ISelectorBarItem](unsafe.Pointer(self), &IID_ISelectorBarItem)
 }
 
 // AsItemContainer queries the instance's IItemContainer interface.
@@ -29241,6 +31976,12 @@ type SelectorBarSelectionChangedEventArgs struct {
 	ISelectorBarSelectionChangedEventArgs
 }
 
+// AsSelectorBarSelectionChangedEventArgs queries the instance's ISelectorBarSelectionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SelectorBarSelectionChangedEventArgs) AsSelectorBarSelectionChangedEventArgs() (*ISelectorBarSelectionChangedEventArgs, error) {
+	return winrt.QueryInterface[ISelectorBarSelectionChangedEventArgs](unsafe.Pointer(self), &IID_ISelectorBarSelectionChangedEventArgs)
+}
+
 // SemanticZoom is the Microsoft.UI.Xaml.Controls.SemanticZoom runtime class, surfaced through its
 // default interface ISemanticZoom. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -29257,6 +31998,12 @@ func NewSemanticZoom() (*SemanticZoom, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SemanticZoom](unsafe.Pointer(instance), &IID_ISemanticZoom)
+}
+
+// AsSemanticZoom queries the instance's ISemanticZoom interface.
+// The returned reference is owned by the caller.
+func (self *SemanticZoom) AsSemanticZoom() (*ISemanticZoom, error) {
+	return winrt.QueryInterface[ISemanticZoom](unsafe.Pointer(self), &IID_ISemanticZoom)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -29380,6 +32127,12 @@ func NewSemanticZoomLocation() (*SemanticZoomLocation, error) {
 	return winrt.QueryInterface[SemanticZoomLocation](unsafe.Pointer(instance), &IID_ISemanticZoomLocation)
 }
 
+// AsSemanticZoomLocation queries the instance's ISemanticZoomLocation interface.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomLocation) AsSemanticZoomLocation() (*ISemanticZoomLocation, error) {
+	return winrt.QueryInterface[ISemanticZoomLocation](unsafe.Pointer(self), &IID_ISemanticZoomLocation)
+}
+
 // SemanticZoomViewChangedEventArgs is the Microsoft.UI.Xaml.Controls.SemanticZoomViewChangedEventArgs runtime class, surfaced through its
 // default interface ISemanticZoomViewChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -29398,11 +32151,23 @@ func NewSemanticZoomViewChangedEventArgs() (*SemanticZoomViewChangedEventArgs, e
 	return winrt.QueryInterface[SemanticZoomViewChangedEventArgs](unsafe.Pointer(instance), &IID_ISemanticZoomViewChangedEventArgs)
 }
 
+// AsSemanticZoomViewChangedEventArgs queries the instance's ISemanticZoomViewChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SemanticZoomViewChangedEventArgs) AsSemanticZoomViewChangedEventArgs() (*ISemanticZoomViewChangedEventArgs, error) {
+	return winrt.QueryInterface[ISemanticZoomViewChangedEventArgs](unsafe.Pointer(self), &IID_ISemanticZoomViewChangedEventArgs)
+}
+
 // Slider is the Microsoft.UI.Xaml.Controls.Slider runtime class, surfaced through its
 // default interface ISlider. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Slider struct {
 	ISlider
+}
+
+// AsSlider queries the instance's ISlider interface.
+// The returned reference is owned by the caller.
+func (self *Slider) AsSlider() (*ISlider, error) {
+	return winrt.QueryInterface[ISlider](unsafe.Pointer(self), &IID_ISlider)
 }
 
 // AsRangeBase queries the instance's IRangeBase interface.
@@ -29554,6 +32319,12 @@ type SplitButton struct {
 	ISplitButton
 }
 
+// AsSplitButton queries the instance's ISplitButton interface.
+// The returned reference is owned by the caller.
+func (self *SplitButton) AsSplitButton() (*ISplitButton, error) {
+	return winrt.QueryInterface[ISplitButton](unsafe.Pointer(self), &IID_ISplitButton)
+}
+
 // AsContentControl queries the instance's IContentControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.ContentControl.
 // The returned reference is owned by the caller.
@@ -29703,11 +32474,23 @@ type SplitButtonClickEventArgs struct {
 	ISplitButtonClickEventArgs
 }
 
+// AsSplitButtonClickEventArgs queries the instance's ISplitButtonClickEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SplitButtonClickEventArgs) AsSplitButtonClickEventArgs() (*ISplitButtonClickEventArgs, error) {
+	return winrt.QueryInterface[ISplitButtonClickEventArgs](unsafe.Pointer(self), &IID_ISplitButtonClickEventArgs)
+}
+
 // SplitMenuFlyoutItem is the Microsoft.UI.Xaml.Controls.SplitMenuFlyoutItem runtime class, surfaced through its
 // default interface ISplitMenuFlyoutItem. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SplitMenuFlyoutItem struct {
 	ISplitMenuFlyoutItem
+}
+
+// AsSplitMenuFlyoutItem queries the instance's ISplitMenuFlyoutItem interface.
+// The returned reference is owned by the caller.
+func (self *SplitMenuFlyoutItem) AsSplitMenuFlyoutItem() (*ISplitMenuFlyoutItem, error) {
+	return winrt.QueryInterface[ISplitMenuFlyoutItem](unsafe.Pointer(self), &IID_ISplitMenuFlyoutItem)
 }
 
 // AsMenuFlyoutItem queries the instance's IMenuFlyoutItem interface.
@@ -29859,6 +32642,12 @@ type SplitView struct {
 	ISplitView
 }
 
+// AsSplitView queries the instance's ISplitView interface.
+// The returned reference is owned by the caller.
+func (self *SplitView) AsSplitView() (*ISplitView, error) {
+	return winrt.QueryInterface[ISplitView](unsafe.Pointer(self), &IID_ISplitView)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -29994,11 +32783,23 @@ type SplitViewPaneClosingEventArgs struct {
 	ISplitViewPaneClosingEventArgs
 }
 
+// AsSplitViewPaneClosingEventArgs queries the instance's ISplitViewPaneClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SplitViewPaneClosingEventArgs) AsSplitViewPaneClosingEventArgs() (*ISplitViewPaneClosingEventArgs, error) {
+	return winrt.QueryInterface[ISplitViewPaneClosingEventArgs](unsafe.Pointer(self), &IID_ISplitViewPaneClosingEventArgs)
+}
+
 // StackLayout is the Microsoft.UI.Xaml.Controls.StackLayout runtime class, surfaced through its
 // default interface IStackLayout. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type StackLayout struct {
 	IStackLayout
+}
+
+// AsStackLayout queries the instance's IStackLayout interface.
+// The returned reference is owned by the caller.
+func (self *StackLayout) AsStackLayout() (*IStackLayout, error) {
+	return winrt.QueryInterface[IStackLayout](unsafe.Pointer(self), &IID_IStackLayout)
 }
 
 // AsVirtualizingLayout queries the instance's IVirtualizingLayout interface.
@@ -30099,6 +32900,12 @@ func NewStackLayout() (*StackLayout, error) {
 // the embedded IInspectable → IUnknown chain).
 type StackPanel struct {
 	IStackPanel
+}
+
+// AsStackPanel queries the instance's IStackPanel interface.
+// The returned reference is owned by the caller.
+func (self *StackPanel) AsStackPanel() (*IStackPanel, error) {
+	return winrt.QueryInterface[IStackPanel](unsafe.Pointer(self), &IID_IStackPanel)
 }
 
 // AsScrollSnapPointsInfo queries the instance's IScrollSnapPointsInfo interface.
@@ -30234,6 +33041,12 @@ type StyleSelector struct {
 	IStyleSelector
 }
 
+// AsStyleSelector queries the instance's IStyleSelector interface.
+// The returned reference is owned by the caller.
+func (self *StyleSelector) AsStyleSelector() (*IStyleSelector, error) {
+	return winrt.QueryInterface[IStyleSelector](unsafe.Pointer(self), &IID_IStyleSelector)
+}
+
 // AsStyleSelectorOverrides queries the instance's IStyleSelectorOverrides interface.
 // The returned reference is owned by the caller.
 func (self *StyleSelector) AsStyleSelectorOverrides() (*IStyleSelectorOverrides, error) {
@@ -30270,6 +33083,12 @@ func NewStyleSelector() (*StyleSelector, error) {
 // the embedded IInspectable → IUnknown chain).
 type SwapChainBackgroundPanel struct {
 	ISwapChainBackgroundPanel
+}
+
+// AsSwapChainBackgroundPanel queries the instance's ISwapChainBackgroundPanel interface.
+// The returned reference is owned by the caller.
+func (self *SwapChainBackgroundPanel) AsSwapChainBackgroundPanel() (*ISwapChainBackgroundPanel, error) {
+	return winrt.QueryInterface[ISwapChainBackgroundPanel](unsafe.Pointer(self), &IID_ISwapChainBackgroundPanel)
 }
 
 // AsGrid queries the instance's IGrid interface.
@@ -30386,6 +33205,12 @@ func NewSwapChainBackgroundPanel() (*SwapChainBackgroundPanel, error) {
 // the embedded IInspectable → IUnknown chain).
 type SwapChainPanel struct {
 	ISwapChainPanel
+}
+
+// AsSwapChainPanel queries the instance's ISwapChainPanel interface.
+// The returned reference is owned by the caller.
+func (self *SwapChainPanel) AsSwapChainPanel() (*ISwapChainPanel, error) {
+	return winrt.QueryInterface[ISwapChainPanel](unsafe.Pointer(self), &IID_ISwapChainPanel)
 }
 
 // AsGrid queries the instance's IGrid interface.
@@ -30514,6 +33339,12 @@ func NewSwapChainPanel() (*SwapChainPanel, error) {
 // the embedded IInspectable → IUnknown chain).
 type SwipeControl struct {
 	ISwipeControl
+}
+
+// AsSwipeControl queries the instance's ISwipeControl interface.
+// The returned reference is owned by the caller.
+func (self *SwipeControl) AsSwipeControl() (*ISwipeControl, error) {
+	return winrt.QueryInterface[ISwipeControl](unsafe.Pointer(self), &IID_ISwipeControl)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -30665,6 +33496,12 @@ type SwipeItem struct {
 	ISwipeItem
 }
 
+// AsSwipeItem queries the instance's ISwipeItem interface.
+// The returned reference is owned by the caller.
+func (self *SwipeItem) AsSwipeItem() (*ISwipeItem, error) {
+	return winrt.QueryInterface[ISwipeItem](unsafe.Pointer(self), &IID_ISwipeItem)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -30716,11 +33553,23 @@ type SwipeItemInvokedEventArgs struct {
 	ISwipeItemInvokedEventArgs
 }
 
+// AsSwipeItemInvokedEventArgs queries the instance's ISwipeItemInvokedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SwipeItemInvokedEventArgs) AsSwipeItemInvokedEventArgs() (*ISwipeItemInvokedEventArgs, error) {
+	return winrt.QueryInterface[ISwipeItemInvokedEventArgs](unsafe.Pointer(self), &IID_ISwipeItemInvokedEventArgs)
+}
+
 // SwipeItems is the Microsoft.UI.Xaml.Controls.SwipeItems runtime class, surfaced through its
 // default interface ISwipeItems. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SwipeItems struct {
 	ISwipeItems
+}
+
+// AsSwipeItems queries the instance's ISwipeItems interface.
+// The returned reference is owned by the caller.
+func (self *SwipeItems) AsSwipeItems() (*ISwipeItems, error) {
+	return winrt.QueryInterface[ISwipeItems](unsafe.Pointer(self), &IID_ISwipeItems)
 }
 
 // AsVectorOfSwipeItem queries the instance's IVectorOfSwipeItem interface.
@@ -30795,6 +33644,12 @@ func NewSymbolIcon() (*SymbolIcon, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SymbolIcon](unsafe.Pointer(instance), &IID_ISymbolIcon)
+}
+
+// AsSymbolIcon queries the instance's ISymbolIcon interface.
+// The returned reference is owned by the caller.
+func (self *SymbolIcon) AsSymbolIcon() (*ISymbolIcon, error) {
+	return winrt.QueryInterface[ISymbolIcon](unsafe.Pointer(self), &IID_ISymbolIcon)
 }
 
 // AsIconElement queries the instance's IIconElement interface.
@@ -30910,6 +33765,12 @@ type SymbolIconSource struct {
 	ISymbolIconSource
 }
 
+// AsSymbolIconSource queries the instance's ISymbolIconSource interface.
+// The returned reference is owned by the caller.
+func (self *SymbolIconSource) AsSymbolIconSource() (*ISymbolIconSource, error) {
+	return winrt.QueryInterface[ISymbolIconSource](unsafe.Pointer(self), &IID_ISymbolIconSource)
+}
+
 // AsIconSource queries the instance's IIconSource interface.
 // Inherited from Microsoft.UI.Xaml.Controls.IconSource.
 // The returned reference is owned by the caller.
@@ -30973,6 +33834,12 @@ func NewSymbolIconSource() (*SymbolIconSource, error) {
 // the embedded IInspectable → IUnknown chain).
 type SystemBackdropElement struct {
 	ISystemBackdropElement
+}
+
+// AsSystemBackdropElement queries the instance's ISystemBackdropElement interface.
+// The returned reference is owned by the caller.
+func (self *SystemBackdropElement) AsSystemBackdropElement() (*ISystemBackdropElement, error) {
+	return winrt.QueryInterface[ISystemBackdropElement](unsafe.Pointer(self), &IID_ISystemBackdropElement)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -31087,6 +33954,12 @@ func NewSystemBackdropElement() (*SystemBackdropElement, error) {
 // the embedded IInspectable → IUnknown chain).
 type TabView struct {
 	ITabView
+}
+
+// AsTabView queries the instance's ITabView interface.
+// The returned reference is owned by the caller.
+func (self *TabView) AsTabView() (*ITabView, error) {
+	return winrt.QueryInterface[ITabView](unsafe.Pointer(self), &IID_ITabView)
 }
 
 // AsTabView2 queries the instance's ITabView2 interface.
@@ -31242,6 +34115,12 @@ type TabViewExternalTornOutTabsDroppedEventArgs struct {
 	ITabViewExternalTornOutTabsDroppedEventArgs
 }
 
+// AsTabViewExternalTornOutTabsDroppedEventArgs queries the instance's ITabViewExternalTornOutTabsDroppedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewExternalTornOutTabsDroppedEventArgs) AsTabViewExternalTornOutTabsDroppedEventArgs() (*ITabViewExternalTornOutTabsDroppedEventArgs, error) {
+	return winrt.QueryInterface[ITabViewExternalTornOutTabsDroppedEventArgs](unsafe.Pointer(self), &IID_ITabViewExternalTornOutTabsDroppedEventArgs)
+}
+
 // TabViewExternalTornOutTabsDroppingEventArgs is the Microsoft.UI.Xaml.Controls.TabViewExternalTornOutTabsDroppingEventArgs runtime class, surfaced through its
 // default interface ITabViewExternalTornOutTabsDroppingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -31249,11 +34128,23 @@ type TabViewExternalTornOutTabsDroppingEventArgs struct {
 	ITabViewExternalTornOutTabsDroppingEventArgs
 }
 
+// AsTabViewExternalTornOutTabsDroppingEventArgs queries the instance's ITabViewExternalTornOutTabsDroppingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewExternalTornOutTabsDroppingEventArgs) AsTabViewExternalTornOutTabsDroppingEventArgs() (*ITabViewExternalTornOutTabsDroppingEventArgs, error) {
+	return winrt.QueryInterface[ITabViewExternalTornOutTabsDroppingEventArgs](unsafe.Pointer(self), &IID_ITabViewExternalTornOutTabsDroppingEventArgs)
+}
+
 // TabViewItem is the Microsoft.UI.Xaml.Controls.TabViewItem runtime class, surfaced through its
 // default interface ITabViewItem. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TabViewItem struct {
 	ITabViewItem
+}
+
+// AsTabViewItem queries the instance's ITabViewItem interface.
+// The returned reference is owned by the caller.
+func (self *TabViewItem) AsTabViewItem() (*ITabViewItem, error) {
+	return winrt.QueryInterface[ITabViewItem](unsafe.Pointer(self), &IID_ITabViewItem)
 }
 
 // AsListViewItem queries the instance's IListViewItem interface.
@@ -31419,6 +34310,12 @@ type TabViewItemTemplateSettings struct {
 	ITabViewItemTemplateSettings
 }
 
+// AsTabViewItemTemplateSettings queries the instance's ITabViewItemTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *TabViewItemTemplateSettings) AsTabViewItemTemplateSettings() (*ITabViewItemTemplateSettings, error) {
+	return winrt.QueryInterface[ITabViewItemTemplateSettings](unsafe.Pointer(self), &IID_ITabViewItemTemplateSettings)
+}
+
 // AsTabViewItemTemplateSettings2 queries the instance's ITabViewItemTemplateSettings2 interface.
 // The returned reference is owned by the caller.
 func (self *TabViewItemTemplateSettings) AsTabViewItemTemplateSettings2() (*ITabViewItemTemplateSettings2, error) {
@@ -31488,11 +34385,23 @@ type TabViewTabCloseRequestedEventArgs struct {
 	ITabViewTabCloseRequestedEventArgs
 }
 
+// AsTabViewTabCloseRequestedEventArgs queries the instance's ITabViewTabCloseRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewTabCloseRequestedEventArgs) AsTabViewTabCloseRequestedEventArgs() (*ITabViewTabCloseRequestedEventArgs, error) {
+	return winrt.QueryInterface[ITabViewTabCloseRequestedEventArgs](unsafe.Pointer(self), &IID_ITabViewTabCloseRequestedEventArgs)
+}
+
 // TabViewTabDragCompletedEventArgs is the Microsoft.UI.Xaml.Controls.TabViewTabDragCompletedEventArgs runtime class, surfaced through its
 // default interface ITabViewTabDragCompletedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TabViewTabDragCompletedEventArgs struct {
 	ITabViewTabDragCompletedEventArgs
+}
+
+// AsTabViewTabDragCompletedEventArgs queries the instance's ITabViewTabDragCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewTabDragCompletedEventArgs) AsTabViewTabDragCompletedEventArgs() (*ITabViewTabDragCompletedEventArgs, error) {
+	return winrt.QueryInterface[ITabViewTabDragCompletedEventArgs](unsafe.Pointer(self), &IID_ITabViewTabDragCompletedEventArgs)
 }
 
 // TabViewTabDragStartingEventArgs is the Microsoft.UI.Xaml.Controls.TabViewTabDragStartingEventArgs runtime class, surfaced through its
@@ -31502,11 +34411,23 @@ type TabViewTabDragStartingEventArgs struct {
 	ITabViewTabDragStartingEventArgs
 }
 
+// AsTabViewTabDragStartingEventArgs queries the instance's ITabViewTabDragStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewTabDragStartingEventArgs) AsTabViewTabDragStartingEventArgs() (*ITabViewTabDragStartingEventArgs, error) {
+	return winrt.QueryInterface[ITabViewTabDragStartingEventArgs](unsafe.Pointer(self), &IID_ITabViewTabDragStartingEventArgs)
+}
+
 // TabViewTabDroppedOutsideEventArgs is the Microsoft.UI.Xaml.Controls.TabViewTabDroppedOutsideEventArgs runtime class, surfaced through its
 // default interface ITabViewTabDroppedOutsideEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TabViewTabDroppedOutsideEventArgs struct {
 	ITabViewTabDroppedOutsideEventArgs
+}
+
+// AsTabViewTabDroppedOutsideEventArgs queries the instance's ITabViewTabDroppedOutsideEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewTabDroppedOutsideEventArgs) AsTabViewTabDroppedOutsideEventArgs() (*ITabViewTabDroppedOutsideEventArgs, error) {
+	return winrt.QueryInterface[ITabViewTabDroppedOutsideEventArgs](unsafe.Pointer(self), &IID_ITabViewTabDroppedOutsideEventArgs)
 }
 
 // TabViewTabTearOutRequestedEventArgs is the Microsoft.UI.Xaml.Controls.TabViewTabTearOutRequestedEventArgs runtime class, surfaced through its
@@ -31516,6 +34437,12 @@ type TabViewTabTearOutRequestedEventArgs struct {
 	ITabViewTabTearOutRequestedEventArgs
 }
 
+// AsTabViewTabTearOutRequestedEventArgs queries the instance's ITabViewTabTearOutRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewTabTearOutRequestedEventArgs) AsTabViewTabTearOutRequestedEventArgs() (*ITabViewTabTearOutRequestedEventArgs, error) {
+	return winrt.QueryInterface[ITabViewTabTearOutRequestedEventArgs](unsafe.Pointer(self), &IID_ITabViewTabTearOutRequestedEventArgs)
+}
+
 // TabViewTabTearOutWindowRequestedEventArgs is the Microsoft.UI.Xaml.Controls.TabViewTabTearOutWindowRequestedEventArgs runtime class, surfaced through its
 // default interface ITabViewTabTearOutWindowRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -31523,11 +34450,23 @@ type TabViewTabTearOutWindowRequestedEventArgs struct {
 	ITabViewTabTearOutWindowRequestedEventArgs
 }
 
+// AsTabViewTabTearOutWindowRequestedEventArgs queries the instance's ITabViewTabTearOutWindowRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TabViewTabTearOutWindowRequestedEventArgs) AsTabViewTabTearOutWindowRequestedEventArgs() (*ITabViewTabTearOutWindowRequestedEventArgs, error) {
+	return winrt.QueryInterface[ITabViewTabTearOutWindowRequestedEventArgs](unsafe.Pointer(self), &IID_ITabViewTabTearOutWindowRequestedEventArgs)
+}
+
 // TeachingTip is the Microsoft.UI.Xaml.Controls.TeachingTip runtime class, surfaced through its
 // default interface ITeachingTip. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TeachingTip struct {
 	ITeachingTip
+}
+
+// AsTeachingTip queries the instance's ITeachingTip interface.
+// The returned reference is owned by the caller.
+func (self *TeachingTip) AsTeachingTip() (*ITeachingTip, error) {
+	return winrt.QueryInterface[ITeachingTip](unsafe.Pointer(self), &IID_ITeachingTip)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -31679,6 +34618,12 @@ type TeachingTipClosedEventArgs struct {
 	ITeachingTipClosedEventArgs
 }
 
+// AsTeachingTipClosedEventArgs queries the instance's ITeachingTipClosedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TeachingTipClosedEventArgs) AsTeachingTipClosedEventArgs() (*ITeachingTipClosedEventArgs, error) {
+	return winrt.QueryInterface[ITeachingTipClosedEventArgs](unsafe.Pointer(self), &IID_ITeachingTipClosedEventArgs)
+}
+
 // TeachingTipClosingEventArgs is the Microsoft.UI.Xaml.Controls.TeachingTipClosingEventArgs runtime class, surfaced through its
 // default interface ITeachingTipClosingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -31686,11 +34631,23 @@ type TeachingTipClosingEventArgs struct {
 	ITeachingTipClosingEventArgs
 }
 
+// AsTeachingTipClosingEventArgs queries the instance's ITeachingTipClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TeachingTipClosingEventArgs) AsTeachingTipClosingEventArgs() (*ITeachingTipClosingEventArgs, error) {
+	return winrt.QueryInterface[ITeachingTipClosingEventArgs](unsafe.Pointer(self), &IID_ITeachingTipClosingEventArgs)
+}
+
 // TeachingTipTemplateSettings is the Microsoft.UI.Xaml.Controls.TeachingTipTemplateSettings runtime class, surfaced through its
 // default interface ITeachingTipTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TeachingTipTemplateSettings struct {
 	ITeachingTipTemplateSettings
+}
+
+// AsTeachingTipTemplateSettings queries the instance's ITeachingTipTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *TeachingTipTemplateSettings) AsTeachingTipTemplateSettings() (*ITeachingTipTemplateSettings, error) {
+	return winrt.QueryInterface[ITeachingTipTemplateSettings](unsafe.Pointer(self), &IID_ITeachingTipTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -31753,6 +34710,12 @@ func NewTextBlock() (*TextBlock, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[TextBlock](unsafe.Pointer(instance), &IID_ITextBlock)
+}
+
+// AsTextBlock queries the instance's ITextBlock interface.
+// The returned reference is owned by the caller.
+func (self *TextBlock) AsTextBlock() (*ITextBlock, error) {
+	return winrt.QueryInterface[ITextBlock](unsafe.Pointer(self), &IID_ITextBlock)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -31842,6 +34805,12 @@ func TextBlockStatics() (*ITextBlockStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type TextBox struct {
 	ITextBox
+}
+
+// AsTextBox queries the instance's ITextBox interface.
+// The returned reference is owned by the caller.
+func (self *TextBox) AsTextBox() (*ITextBox, error) {
+	return winrt.QueryInterface[ITextBox](unsafe.Pointer(self), &IID_ITextBox)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -31979,11 +34948,23 @@ type TextBoxBeforeTextChangingEventArgs struct {
 	ITextBoxBeforeTextChangingEventArgs
 }
 
+// AsTextBoxBeforeTextChangingEventArgs queries the instance's ITextBoxBeforeTextChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextBoxBeforeTextChangingEventArgs) AsTextBoxBeforeTextChangingEventArgs() (*ITextBoxBeforeTextChangingEventArgs, error) {
+	return winrt.QueryInterface[ITextBoxBeforeTextChangingEventArgs](unsafe.Pointer(self), &IID_ITextBoxBeforeTextChangingEventArgs)
+}
+
 // TextBoxSelectionChangingEventArgs is the Microsoft.UI.Xaml.Controls.TextBoxSelectionChangingEventArgs runtime class, surfaced through its
 // default interface ITextBoxSelectionChangingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextBoxSelectionChangingEventArgs struct {
 	ITextBoxSelectionChangingEventArgs
+}
+
+// AsTextBoxSelectionChangingEventArgs queries the instance's ITextBoxSelectionChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextBoxSelectionChangingEventArgs) AsTextBoxSelectionChangingEventArgs() (*ITextBoxSelectionChangingEventArgs, error) {
+	return winrt.QueryInterface[ITextBoxSelectionChangingEventArgs](unsafe.Pointer(self), &IID_ITextBoxSelectionChangingEventArgs)
 }
 
 // TextBoxTextChangingEventArgs is the Microsoft.UI.Xaml.Controls.TextBoxTextChangingEventArgs runtime class, surfaced through its
@@ -31993,11 +34974,23 @@ type TextBoxTextChangingEventArgs struct {
 	ITextBoxTextChangingEventArgs
 }
 
+// AsTextBoxTextChangingEventArgs queries the instance's ITextBoxTextChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextBoxTextChangingEventArgs) AsTextBoxTextChangingEventArgs() (*ITextBoxTextChangingEventArgs, error) {
+	return winrt.QueryInterface[ITextBoxTextChangingEventArgs](unsafe.Pointer(self), &IID_ITextBoxTextChangingEventArgs)
+}
+
 // TextChangedEventArgs is the Microsoft.UI.Xaml.Controls.TextChangedEventArgs runtime class, surfaced through its
 // default interface ITextChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextChangedEventArgs struct {
 	ITextChangedEventArgs
+}
+
+// AsTextChangedEventArgs queries the instance's ITextChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextChangedEventArgs) AsTextChangedEventArgs() (*ITextChangedEventArgs, error) {
+	return winrt.QueryInterface[ITextChangedEventArgs](unsafe.Pointer(self), &IID_ITextChangedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -32012,6 +35005,12 @@ func (self *TextChangedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error)
 // the embedded IInspectable → IUnknown chain).
 type TextCommandBarFlyout struct {
 	ITextCommandBarFlyout
+}
+
+// AsTextCommandBarFlyout queries the instance's ITextCommandBarFlyout interface.
+// The returned reference is owned by the caller.
+func (self *TextCommandBarFlyout) AsTextCommandBarFlyout() (*ITextCommandBarFlyout, error) {
+	return winrt.QueryInterface[ITextCommandBarFlyout](unsafe.Pointer(self), &IID_ITextCommandBarFlyout)
 }
 
 // AsCommandBarFlyout queries the instance's ICommandBarFlyout interface.
@@ -32088,11 +35087,23 @@ type TextCompositionChangedEventArgs struct {
 	ITextCompositionChangedEventArgs
 }
 
+// AsTextCompositionChangedEventArgs queries the instance's ITextCompositionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextCompositionChangedEventArgs) AsTextCompositionChangedEventArgs() (*ITextCompositionChangedEventArgs, error) {
+	return winrt.QueryInterface[ITextCompositionChangedEventArgs](unsafe.Pointer(self), &IID_ITextCompositionChangedEventArgs)
+}
+
 // TextCompositionEndedEventArgs is the Microsoft.UI.Xaml.Controls.TextCompositionEndedEventArgs runtime class, surfaced through its
 // default interface ITextCompositionEndedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextCompositionEndedEventArgs struct {
 	ITextCompositionEndedEventArgs
+}
+
+// AsTextCompositionEndedEventArgs queries the instance's ITextCompositionEndedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextCompositionEndedEventArgs) AsTextCompositionEndedEventArgs() (*ITextCompositionEndedEventArgs, error) {
+	return winrt.QueryInterface[ITextCompositionEndedEventArgs](unsafe.Pointer(self), &IID_ITextCompositionEndedEventArgs)
 }
 
 // TextCompositionStartedEventArgs is the Microsoft.UI.Xaml.Controls.TextCompositionStartedEventArgs runtime class, surfaced through its
@@ -32102,11 +35113,23 @@ type TextCompositionStartedEventArgs struct {
 	ITextCompositionStartedEventArgs
 }
 
+// AsTextCompositionStartedEventArgs queries the instance's ITextCompositionStartedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextCompositionStartedEventArgs) AsTextCompositionStartedEventArgs() (*ITextCompositionStartedEventArgs, error) {
+	return winrt.QueryInterface[ITextCompositionStartedEventArgs](unsafe.Pointer(self), &IID_ITextCompositionStartedEventArgs)
+}
+
 // TextControlCopyingToClipboardEventArgs is the Microsoft.UI.Xaml.Controls.TextControlCopyingToClipboardEventArgs runtime class, surfaced through its
 // default interface ITextControlCopyingToClipboardEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextControlCopyingToClipboardEventArgs struct {
 	ITextControlCopyingToClipboardEventArgs
+}
+
+// AsTextControlCopyingToClipboardEventArgs queries the instance's ITextControlCopyingToClipboardEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextControlCopyingToClipboardEventArgs) AsTextControlCopyingToClipboardEventArgs() (*ITextControlCopyingToClipboardEventArgs, error) {
+	return winrt.QueryInterface[ITextControlCopyingToClipboardEventArgs](unsafe.Pointer(self), &IID_ITextControlCopyingToClipboardEventArgs)
 }
 
 // TextControlCuttingToClipboardEventArgs is the Microsoft.UI.Xaml.Controls.TextControlCuttingToClipboardEventArgs runtime class, surfaced through its
@@ -32116,11 +35139,23 @@ type TextControlCuttingToClipboardEventArgs struct {
 	ITextControlCuttingToClipboardEventArgs
 }
 
+// AsTextControlCuttingToClipboardEventArgs queries the instance's ITextControlCuttingToClipboardEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextControlCuttingToClipboardEventArgs) AsTextControlCuttingToClipboardEventArgs() (*ITextControlCuttingToClipboardEventArgs, error) {
+	return winrt.QueryInterface[ITextControlCuttingToClipboardEventArgs](unsafe.Pointer(self), &IID_ITextControlCuttingToClipboardEventArgs)
+}
+
 // TextControlPasteEventArgs is the Microsoft.UI.Xaml.Controls.TextControlPasteEventArgs runtime class, surfaced through its
 // default interface ITextControlPasteEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TextControlPasteEventArgs struct {
 	ITextControlPasteEventArgs
+}
+
+// AsTextControlPasteEventArgs queries the instance's ITextControlPasteEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TextControlPasteEventArgs) AsTextControlPasteEventArgs() (*ITextControlPasteEventArgs, error) {
+	return winrt.QueryInterface[ITextControlPasteEventArgs](unsafe.Pointer(self), &IID_ITextControlPasteEventArgs)
 }
 
 // TimePickedEventArgs is the Microsoft.UI.Xaml.Controls.TimePickedEventArgs runtime class, surfaced through its
@@ -32141,6 +35176,12 @@ func NewTimePickedEventArgs() (*TimePickedEventArgs, error) {
 	return winrt.QueryInterface[TimePickedEventArgs](unsafe.Pointer(instance), &IID_ITimePickedEventArgs)
 }
 
+// AsTimePickedEventArgs queries the instance's ITimePickedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TimePickedEventArgs) AsTimePickedEventArgs() (*ITimePickedEventArgs, error) {
+	return winrt.QueryInterface[ITimePickedEventArgs](unsafe.Pointer(self), &IID_ITimePickedEventArgs)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -32153,6 +35194,12 @@ func (self *TimePickedEventArgs) AsDependencyObject() (*IDependencyObject, error
 // the embedded IInspectable → IUnknown chain).
 type TimePicker struct {
 	ITimePicker
+}
+
+// AsTimePicker queries the instance's ITimePicker interface.
+// The returned reference is owned by the caller.
+func (self *TimePicker) AsTimePicker() (*ITimePicker, error) {
+	return winrt.QueryInterface[ITimePicker](unsafe.Pointer(self), &IID_ITimePicker)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -32301,6 +35348,12 @@ func NewTimePickerFlyout() (*TimePickerFlyout, error) {
 	return winrt.QueryInterface[TimePickerFlyout](unsafe.Pointer(instance), &IID_ITimePickerFlyout)
 }
 
+// AsTimePickerFlyout queries the instance's ITimePickerFlyout interface.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyout) AsTimePickerFlyout() (*ITimePickerFlyout, error) {
+	return winrt.QueryInterface[ITimePickerFlyout](unsafe.Pointer(self), &IID_ITimePickerFlyout)
+}
+
 // AsPickerFlyoutBase queries the instance's IPickerFlyoutBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.PickerFlyoutBase.
 // The returned reference is owned by the caller.
@@ -32360,6 +35413,12 @@ func TimePickerFlyoutStatics() (*ITimePickerFlyoutStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type TimePickerFlyoutPresenter struct {
 	ITimePickerFlyoutPresenter
+}
+
+// AsTimePickerFlyoutPresenter queries the instance's ITimePickerFlyoutPresenter interface.
+// The returned reference is owned by the caller.
+func (self *TimePickerFlyoutPresenter) AsTimePickerFlyoutPresenter() (*ITimePickerFlyoutPresenter, error) {
+	return winrt.QueryInterface[ITimePickerFlyoutPresenter](unsafe.Pointer(self), &IID_ITimePickerFlyoutPresenter)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -32472,6 +35531,12 @@ type TimePickerSelectedValueChangedEventArgs struct {
 	ITimePickerSelectedValueChangedEventArgs
 }
 
+// AsTimePickerSelectedValueChangedEventArgs queries the instance's ITimePickerSelectedValueChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TimePickerSelectedValueChangedEventArgs) AsTimePickerSelectedValueChangedEventArgs() (*ITimePickerSelectedValueChangedEventArgs, error) {
+	return winrt.QueryInterface[ITimePickerSelectedValueChangedEventArgs](unsafe.Pointer(self), &IID_ITimePickerSelectedValueChangedEventArgs)
+}
+
 // TimePickerValueChangedEventArgs is the Microsoft.UI.Xaml.Controls.TimePickerValueChangedEventArgs runtime class, surfaced through its
 // default interface ITimePickerValueChangedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -32479,11 +35544,23 @@ type TimePickerValueChangedEventArgs struct {
 	ITimePickerValueChangedEventArgs
 }
 
+// AsTimePickerValueChangedEventArgs queries the instance's ITimePickerValueChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TimePickerValueChangedEventArgs) AsTimePickerValueChangedEventArgs() (*ITimePickerValueChangedEventArgs, error) {
+	return winrt.QueryInterface[ITimePickerValueChangedEventArgs](unsafe.Pointer(self), &IID_ITimePickerValueChangedEventArgs)
+}
+
 // TitleBar is the Microsoft.UI.Xaml.Controls.TitleBar runtime class, surfaced through its
 // default interface ITitleBar. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TitleBar struct {
 	ITitleBar
+}
+
+// AsTitleBar queries the instance's ITitleBar interface.
+// The returned reference is owned by the caller.
+func (self *TitleBar) AsTitleBar() (*ITitleBar, error) {
+	return winrt.QueryInterface[ITitleBar](unsafe.Pointer(self), &IID_ITitleBar)
 }
 
 // AsTitleBar2 queries the instance's ITitleBar2 interface.
@@ -32639,6 +35716,12 @@ type TitleBarAutomationPeer struct {
 	ITitleBarAutomationPeer
 }
 
+// AsTitleBarAutomationPeer queries the instance's ITitleBarAutomationPeer interface.
+// The returned reference is owned by the caller.
+func (self *TitleBarAutomationPeer) AsTitleBarAutomationPeer() (*ITitleBarAutomationPeer, error) {
+	return winrt.QueryInterface[ITitleBarAutomationPeer](unsafe.Pointer(self), &IID_ITitleBarAutomationPeer)
+}
+
 // AsFrameworkElementAutomationPeer queries the instance's IFrameworkElementAutomationPeer interface.
 // Inherited from Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.
 // The returned reference is owned by the caller.
@@ -32706,6 +35789,12 @@ type TitleBarTemplateSettings struct {
 	ITitleBarTemplateSettings
 }
 
+// AsTitleBarTemplateSettings queries the instance's ITitleBarTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *TitleBarTemplateSettings) AsTitleBarTemplateSettings() (*ITitleBarTemplateSettings, error) {
+	return winrt.QueryInterface[ITitleBarTemplateSettings](unsafe.Pointer(self), &IID_ITitleBarTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -32755,6 +35844,12 @@ func NewTitleBarTemplateSettings() (*TitleBarTemplateSettings, error) {
 // the embedded IInspectable → IUnknown chain).
 type ToggleMenuFlyoutItem struct {
 	IToggleMenuFlyoutItem
+}
+
+// AsToggleMenuFlyoutItem queries the instance's IToggleMenuFlyoutItem interface.
+// The returned reference is owned by the caller.
+func (self *ToggleMenuFlyoutItem) AsToggleMenuFlyoutItem() (*IToggleMenuFlyoutItem, error) {
+	return winrt.QueryInterface[IToggleMenuFlyoutItem](unsafe.Pointer(self), &IID_IToggleMenuFlyoutItem)
 }
 
 // AsMenuFlyoutItem queries the instance's IMenuFlyoutItem interface.
@@ -32904,6 +35999,12 @@ func NewToggleMenuFlyoutItem() (*ToggleMenuFlyoutItem, error) {
 // the embedded IInspectable → IUnknown chain).
 type ToggleSplitButton struct {
 	IToggleSplitButton
+}
+
+// AsToggleSplitButton queries the instance's IToggleSplitButton interface.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButton) AsToggleSplitButton() (*IToggleSplitButton, error) {
+	return winrt.QueryInterface[IToggleSplitButton](unsafe.Pointer(self), &IID_IToggleSplitButton)
 }
 
 // AsSplitButton queries the instance's ISplitButton interface.
@@ -33062,6 +36163,12 @@ type ToggleSplitButtonIsCheckedChangedEventArgs struct {
 	IToggleSplitButtonIsCheckedChangedEventArgs
 }
 
+// AsToggleSplitButtonIsCheckedChangedEventArgs queries the instance's IToggleSplitButtonIsCheckedChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ToggleSplitButtonIsCheckedChangedEventArgs) AsToggleSplitButtonIsCheckedChangedEventArgs() (*IToggleSplitButtonIsCheckedChangedEventArgs, error) {
+	return winrt.QueryInterface[IToggleSplitButtonIsCheckedChangedEventArgs](unsafe.Pointer(self), &IID_IToggleSplitButtonIsCheckedChangedEventArgs)
+}
+
 // ToggleSwitch is the Microsoft.UI.Xaml.Controls.ToggleSwitch runtime class, surfaced through its
 // default interface IToggleSwitch. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -33078,6 +36185,12 @@ func NewToggleSwitch() (*ToggleSwitch, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ToggleSwitch](unsafe.Pointer(instance), &IID_IToggleSwitch)
+}
+
+// AsToggleSwitch queries the instance's IToggleSwitch interface.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitch) AsToggleSwitch() (*IToggleSwitch, error) {
+	return winrt.QueryInterface[IToggleSwitch](unsafe.Pointer(self), &IID_IToggleSwitch)
 }
 
 // AsToggleSwitchOverrides queries the instance's IToggleSwitchOverrides interface.
@@ -33194,6 +36307,12 @@ func ToggleSwitchStatics() (*IToggleSwitchStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ToolTip struct {
 	IToolTip
+}
+
+// AsToolTip queries the instance's IToolTip interface.
+// The returned reference is owned by the caller.
+func (self *ToolTip) AsToolTip() (*IToolTip, error) {
+	return winrt.QueryInterface[IToolTip](unsafe.Pointer(self), &IID_IToolTip)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -33345,6 +36464,12 @@ type ToolTipService struct {
 	IToolTipService
 }
 
+// AsToolTipService queries the instance's IToolTipService interface.
+// The returned reference is owned by the caller.
+func (self *ToolTipService) AsToolTipService() (*IToolTipService, error) {
+	return winrt.QueryInterface[IToolTipService](unsafe.Pointer(self), &IID_IToolTipService)
+}
+
 // ToolTipServiceStatics returns the Microsoft.UI.Xaml.Controls.IToolTipServiceStatics statics of the
 // Microsoft.UI.Xaml.Controls.ToolTipService runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -33362,6 +36487,12 @@ func ToolTipServiceStatics() (*IToolTipServiceStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type TreeView struct {
 	ITreeView
+}
+
+// AsTreeView queries the instance's ITreeView interface.
+// The returned reference is owned by the caller.
+func (self *TreeView) AsTreeView() (*ITreeView, error) {
+	return winrt.QueryInterface[ITreeView](unsafe.Pointer(self), &IID_ITreeView)
 }
 
 // AsTreeView2 queries the instance's ITreeView2 interface.
@@ -33523,6 +36654,12 @@ type TreeViewCollapsedEventArgs struct {
 	ITreeViewCollapsedEventArgs
 }
 
+// AsTreeViewCollapsedEventArgs queries the instance's ITreeViewCollapsedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewCollapsedEventArgs) AsTreeViewCollapsedEventArgs() (*ITreeViewCollapsedEventArgs, error) {
+	return winrt.QueryInterface[ITreeViewCollapsedEventArgs](unsafe.Pointer(self), &IID_ITreeViewCollapsedEventArgs)
+}
+
 // AsTreeViewCollapsedEventArgs2 queries the instance's ITreeViewCollapsedEventArgs2 interface.
 // The returned reference is owned by the caller.
 func (self *TreeViewCollapsedEventArgs) AsTreeViewCollapsedEventArgs2() (*ITreeViewCollapsedEventArgs2, error) {
@@ -33534,6 +36671,12 @@ func (self *TreeViewCollapsedEventArgs) AsTreeViewCollapsedEventArgs2() (*ITreeV
 // the embedded IInspectable → IUnknown chain).
 type TreeViewDragItemsCompletedEventArgs struct {
 	ITreeViewDragItemsCompletedEventArgs
+}
+
+// AsTreeViewDragItemsCompletedEventArgs queries the instance's ITreeViewDragItemsCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewDragItemsCompletedEventArgs) AsTreeViewDragItemsCompletedEventArgs() (*ITreeViewDragItemsCompletedEventArgs, error) {
+	return winrt.QueryInterface[ITreeViewDragItemsCompletedEventArgs](unsafe.Pointer(self), &IID_ITreeViewDragItemsCompletedEventArgs)
 }
 
 // AsTreeViewDragItemsCompletedEventArgs2 queries the instance's ITreeViewDragItemsCompletedEventArgs2 interface.
@@ -33549,11 +36692,23 @@ type TreeViewDragItemsStartingEventArgs struct {
 	ITreeViewDragItemsStartingEventArgs
 }
 
+// AsTreeViewDragItemsStartingEventArgs queries the instance's ITreeViewDragItemsStartingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewDragItemsStartingEventArgs) AsTreeViewDragItemsStartingEventArgs() (*ITreeViewDragItemsStartingEventArgs, error) {
+	return winrt.QueryInterface[ITreeViewDragItemsStartingEventArgs](unsafe.Pointer(self), &IID_ITreeViewDragItemsStartingEventArgs)
+}
+
 // TreeViewExpandingEventArgs is the Microsoft.UI.Xaml.Controls.TreeViewExpandingEventArgs runtime class, surfaced through its
 // default interface ITreeViewExpandingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TreeViewExpandingEventArgs struct {
 	ITreeViewExpandingEventArgs
+}
+
+// AsTreeViewExpandingEventArgs queries the instance's ITreeViewExpandingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewExpandingEventArgs) AsTreeViewExpandingEventArgs() (*ITreeViewExpandingEventArgs, error) {
+	return winrt.QueryInterface[ITreeViewExpandingEventArgs](unsafe.Pointer(self), &IID_ITreeViewExpandingEventArgs)
 }
 
 // AsTreeViewExpandingEventArgs2 queries the instance's ITreeViewExpandingEventArgs2 interface.
@@ -33567,6 +36722,12 @@ func (self *TreeViewExpandingEventArgs) AsTreeViewExpandingEventArgs2() (*ITreeV
 // the embedded IInspectable → IUnknown chain).
 type TreeViewItem struct {
 	ITreeViewItem
+}
+
+// AsTreeViewItem queries the instance's ITreeViewItem interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewItem) AsTreeViewItem() (*ITreeViewItem, error) {
+	return winrt.QueryInterface[ITreeViewItem](unsafe.Pointer(self), &IID_ITreeViewItem)
 }
 
 // AsTreeViewItem2 queries the instance's ITreeViewItem2 interface.
@@ -33750,11 +36911,23 @@ type TreeViewItemInvokedEventArgs struct {
 	ITreeViewItemInvokedEventArgs
 }
 
+// AsTreeViewItemInvokedEventArgs queries the instance's ITreeViewItemInvokedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemInvokedEventArgs) AsTreeViewItemInvokedEventArgs() (*ITreeViewItemInvokedEventArgs, error) {
+	return winrt.QueryInterface[ITreeViewItemInvokedEventArgs](unsafe.Pointer(self), &IID_ITreeViewItemInvokedEventArgs)
+}
+
 // TreeViewItemTemplateSettings is the Microsoft.UI.Xaml.Controls.TreeViewItemTemplateSettings runtime class, surfaced through its
 // default interface ITreeViewItemTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TreeViewItemTemplateSettings struct {
 	ITreeViewItemTemplateSettings
+}
+
+// AsTreeViewItemTemplateSettings queries the instance's ITreeViewItemTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewItemTemplateSettings) AsTreeViewItemTemplateSettings() (*ITreeViewItemTemplateSettings, error) {
+	return winrt.QueryInterface[ITreeViewItemTemplateSettings](unsafe.Pointer(self), &IID_ITreeViewItemTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -33806,6 +36979,12 @@ func NewTreeViewItemTemplateSettings() (*TreeViewItemTemplateSettings, error) {
 // the embedded IInspectable → IUnknown chain).
 type TreeViewList struct {
 	ITreeViewList
+}
+
+// AsTreeViewList queries the instance's ITreeViewList interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewList) AsTreeViewList() (*ITreeViewList, error) {
+	return winrt.QueryInterface[ITreeViewList](unsafe.Pointer(self), &IID_ITreeViewList)
 }
 
 // AsListView queries the instance's IListView interface.
@@ -33980,6 +37159,12 @@ type TreeViewNode struct {
 	ITreeViewNode
 }
 
+// AsTreeViewNode queries the instance's ITreeViewNode interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewNode) AsTreeViewNode() (*ITreeViewNode, error) {
+	return winrt.QueryInterface[ITreeViewNode](unsafe.Pointer(self), &IID_ITreeViewNode)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -34031,11 +37216,23 @@ type TreeViewSelectionChangedEventArgs struct {
 	ITreeViewSelectionChangedEventArgs
 }
 
+// AsTreeViewSelectionChangedEventArgs queries the instance's ITreeViewSelectionChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TreeViewSelectionChangedEventArgs) AsTreeViewSelectionChangedEventArgs() (*ITreeViewSelectionChangedEventArgs, error) {
+	return winrt.QueryInterface[ITreeViewSelectionChangedEventArgs](unsafe.Pointer(self), &IID_ITreeViewSelectionChangedEventArgs)
+}
+
 // TwoPaneView is the Microsoft.UI.Xaml.Controls.TwoPaneView runtime class, surfaced through its
 // default interface ITwoPaneView. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type TwoPaneView struct {
 	ITwoPaneView
+}
+
+// AsTwoPaneView queries the instance's ITwoPaneView interface.
+// The returned reference is owned by the caller.
+func (self *TwoPaneView) AsTwoPaneView() (*ITwoPaneView, error) {
+	return winrt.QueryInterface[ITwoPaneView](unsafe.Pointer(self), &IID_ITwoPaneView)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -34179,6 +37376,12 @@ func (self *UIElementCollection) AsUIElementCollection() (*IUIElementCollection,
 	return winrt.QueryInterface[IUIElementCollection](unsafe.Pointer(self), &IID_IUIElementCollection)
 }
 
+// AsVectorOfUIElement queries the instance's IVectorOfUIElement interface.
+// The returned reference is owned by the caller.
+func (self *UIElementCollection) AsVectorOfUIElement() (*IVectorOfUIElement, error) {
+	return winrt.QueryInterface[IVectorOfUIElement](unsafe.Pointer(self), &IID_IVectorOfUIElement)
+}
+
 // AsIterableOfUIElement queries the instance's IIterableOfUIElement interface.
 // The returned reference is owned by the caller.
 func (self *UIElementCollection) AsIterableOfUIElement() (*IIterableOfUIElement, error) {
@@ -34190,6 +37393,12 @@ func (self *UIElementCollection) AsIterableOfUIElement() (*IIterableOfUIElement,
 // the embedded IInspectable → IUnknown chain).
 type UniformGridLayout struct {
 	IUniformGridLayout
+}
+
+// AsUniformGridLayout queries the instance's IUniformGridLayout interface.
+// The returned reference is owned by the caller.
+func (self *UniformGridLayout) AsUniformGridLayout() (*IUniformGridLayout, error) {
+	return winrt.QueryInterface[IUniformGridLayout](unsafe.Pointer(self), &IID_IUniformGridLayout)
 }
 
 // AsVirtualizingLayout queries the instance's IVirtualizingLayout interface.
@@ -34290,6 +37499,12 @@ func NewUniformGridLayout() (*UniformGridLayout, error) {
 // the embedded IInspectable → IUnknown chain).
 type UserControl struct {
 	IUserControl
+}
+
+// AsUserControl queries the instance's IUserControl interface.
+// The returned reference is owned by the caller.
+func (self *UserControl) AsUserControl() (*IUserControl, error) {
+	return winrt.QueryInterface[IUserControl](unsafe.Pointer(self), &IID_IUserControl)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -34438,6 +37653,12 @@ func NewVariableSizedWrapGrid() (*VariableSizedWrapGrid, error) {
 	return winrt.QueryInterface[VariableSizedWrapGrid](unsafe.Pointer(instance), &IID_IVariableSizedWrapGrid)
 }
 
+// AsVariableSizedWrapGrid queries the instance's IVariableSizedWrapGrid interface.
+// The returned reference is owned by the caller.
+func (self *VariableSizedWrapGrid) AsVariableSizedWrapGrid() (*IVariableSizedWrapGrid, error) {
+	return winrt.QueryInterface[IVariableSizedWrapGrid](unsafe.Pointer(self), &IID_IVariableSizedWrapGrid)
+}
+
 // AsPanel queries the instance's IPanel interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Panel.
 // The returned reference is owned by the caller.
@@ -34545,6 +37766,12 @@ func NewViewbox() (*Viewbox, error) {
 	return winrt.QueryInterface[Viewbox](unsafe.Pointer(instance), &IID_IViewbox)
 }
 
+// AsViewbox queries the instance's IViewbox interface.
+// The returned reference is owned by the caller.
+func (self *Viewbox) AsViewbox() (*IViewbox, error) {
+	return winrt.QueryInterface[IViewbox](unsafe.Pointer(self), &IID_IViewbox)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -34634,6 +37861,12 @@ type VirtualizingLayout struct {
 	IVirtualizingLayout
 }
 
+// AsVirtualizingLayout queries the instance's IVirtualizingLayout interface.
+// The returned reference is owned by the caller.
+func (self *VirtualizingLayout) AsVirtualizingLayout() (*IVirtualizingLayout, error) {
+	return winrt.QueryInterface[IVirtualizingLayout](unsafe.Pointer(self), &IID_IVirtualizingLayout)
+}
+
 // AsVirtualizingLayoutOverrides queries the instance's IVirtualizingLayoutOverrides interface.
 // The returned reference is owned by the caller.
 func (self *VirtualizingLayout) AsVirtualizingLayoutOverrides() (*IVirtualizingLayoutOverrides, error) {
@@ -34714,6 +37947,12 @@ type VirtualizingLayoutContext struct {
 	IVirtualizingLayoutContext
 }
 
+// AsVirtualizingLayoutContext queries the instance's IVirtualizingLayoutContext interface.
+// The returned reference is owned by the caller.
+func (self *VirtualizingLayoutContext) AsVirtualizingLayoutContext() (*IVirtualizingLayoutContext, error) {
+	return winrt.QueryInterface[IVirtualizingLayoutContext](unsafe.Pointer(self), &IID_IVirtualizingLayoutContext)
+}
+
 // AsVirtualizingLayoutContext2 queries the instance's IVirtualizingLayoutContext2 interface.
 // The returned reference is owned by the caller.
 func (self *VirtualizingLayoutContext) AsVirtualizingLayoutContext2() (*IVirtualizingLayoutContext2, error) {
@@ -34783,6 +38022,12 @@ func NewVirtualizingLayoutContext() (*VirtualizingLayoutContext, error) {
 // the embedded IInspectable → IUnknown chain).
 type VirtualizingPanel struct {
 	IVirtualizingPanel
+}
+
+// AsVirtualizingPanel queries the instance's IVirtualizingPanel interface.
+// The returned reference is owned by the caller.
+func (self *VirtualizingPanel) AsVirtualizingPanel() (*IVirtualizingPanel, error) {
+	return winrt.QueryInterface[IVirtualizingPanel](unsafe.Pointer(self), &IID_IVirtualizingPanel)
 }
 
 // AsVirtualizingPanelProtected queries the instance's IVirtualizingPanelProtected interface.
@@ -34890,6 +38135,12 @@ func NewVirtualizingStackPanel() (*VirtualizingStackPanel, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[VirtualizingStackPanel](unsafe.Pointer(instance), &IID_IVirtualizingStackPanel)
+}
+
+// AsVirtualizingStackPanel queries the instance's IVirtualizingStackPanel interface.
+// The returned reference is owned by the caller.
+func (self *VirtualizingStackPanel) AsVirtualizingStackPanel() (*IVirtualizingStackPanel, error) {
+	return winrt.QueryInterface[IVirtualizingStackPanel](unsafe.Pointer(self), &IID_IVirtualizingStackPanel)
 }
 
 // AsVirtualizingStackPanelOverrides queries the instance's IVirtualizingStackPanelOverrides interface.
@@ -35036,6 +38287,12 @@ type WebView2 struct {
 	IWebView2
 }
 
+// AsWebView2 queries the instance's IWebView2 interface.
+// The returned reference is owned by the caller.
+func (self *WebView2) AsWebView2() (*IWebView2, error) {
+	return winrt.QueryInterface[IWebView2](unsafe.Pointer(self), &IID_IWebView2)
+}
+
 // AsWebView22 queries the instance's IWebView22 interface.
 // The returned reference is owned by the caller.
 func (self *WebView2) AsWebView22() (*IWebView22, error) {
@@ -35165,6 +38422,12 @@ func NewWrapGrid() (*WrapGrid, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[WrapGrid](unsafe.Pointer(instance), &IID_IWrapGrid)
+}
+
+// AsWrapGrid queries the instance's IWrapGrid interface.
+// The returned reference is owned by the caller.
+func (self *WrapGrid) AsWrapGrid() (*IWrapGrid, error) {
+	return winrt.QueryInterface[IWrapGrid](unsafe.Pointer(self), &IID_IWrapGrid)
 }
 
 // AsOrientedVirtualizingPanel queries the instance's IOrientedVirtualizingPanel interface.
@@ -35316,6 +38579,12 @@ func NewXamlControlsResources() (*XamlControlsResources, error) {
 	return winrt.QueryInterface[XamlControlsResources](unsafe.Pointer(instance), &IID_IXamlControlsResources)
 }
 
+// AsXamlControlsResources queries the instance's IXamlControlsResources interface.
+// The returned reference is owned by the caller.
+func (self *XamlControlsResources) AsXamlControlsResources() (*IXamlControlsResources, error) {
+	return winrt.QueryInterface[IXamlControlsResources](unsafe.Pointer(self), &IID_IXamlControlsResources)
+}
+
 // AsResourceDictionary queries the instance's IResourceDictionary interface.
 // Inherited from Microsoft.UI.Xaml.ResourceDictionary.
 // The returned reference is owned by the caller.
@@ -35363,6 +38632,12 @@ type AppBarButtonTemplateSettings struct {
 	IAppBarButtonTemplateSettings
 }
 
+// AsAppBarButtonTemplateSettings queries the instance's IAppBarButtonTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *AppBarButtonTemplateSettings) AsAppBarButtonTemplateSettings() (*IAppBarButtonTemplateSettings, error) {
+	return winrt.QueryInterface[IAppBarButtonTemplateSettings](unsafe.Pointer(self), &IID_IAppBarButtonTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -35375,6 +38650,12 @@ func (self *AppBarButtonTemplateSettings) AsDependencyObject() (*IDependencyObje
 // the embedded IInspectable → IUnknown chain).
 type AppBarTemplateSettings struct {
 	IAppBarTemplateSettings
+}
+
+// AsAppBarTemplateSettings queries the instance's IAppBarTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *AppBarTemplateSettings) AsAppBarTemplateSettings() (*IAppBarTemplateSettings, error) {
+	return winrt.QueryInterface[IAppBarTemplateSettings](unsafe.Pointer(self), &IID_IAppBarTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -35391,6 +38672,12 @@ type AppBarToggleButtonTemplateSettings struct {
 	IAppBarToggleButtonTemplateSettings
 }
 
+// AsAppBarToggleButtonTemplateSettings queries the instance's IAppBarToggleButtonTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *AppBarToggleButtonTemplateSettings) AsAppBarToggleButtonTemplateSettings() (*IAppBarToggleButtonTemplateSettings, error) {
+	return winrt.QueryInterface[IAppBarToggleButtonTemplateSettings](unsafe.Pointer(self), &IID_IAppBarToggleButtonTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -35403,6 +38690,12 @@ func (self *AppBarToggleButtonTemplateSettings) AsDependencyObject() (*IDependen
 // the embedded IInspectable → IUnknown chain).
 type AutoSuggestBoxHelper struct {
 	IAutoSuggestBoxHelper
+}
+
+// AsAutoSuggestBoxHelper queries the instance's IAutoSuggestBoxHelper interface.
+// The returned reference is owned by the caller.
+func (self *AutoSuggestBoxHelper) AsAutoSuggestBoxHelper() (*IAutoSuggestBoxHelper, error) {
+	return winrt.QueryInterface[IAutoSuggestBoxHelper](unsafe.Pointer(self), &IID_IAutoSuggestBoxHelper)
 }
 
 // AutoSuggestBoxHelperStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IAutoSuggestBoxHelperStatics statics of the
@@ -35422,6 +38715,12 @@ func AutoSuggestBoxHelperStatics() (*IAutoSuggestBoxHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ButtonBase struct {
 	IButtonBase
+}
+
+// AsButtonBase queries the instance's IButtonBase interface.
+// The returned reference is owned by the caller.
+func (self *ButtonBase) AsButtonBase() (*IButtonBase, error) {
+	return winrt.QueryInterface[IButtonBase](unsafe.Pointer(self), &IID_IButtonBase)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -35584,6 +38883,12 @@ func NewCalendarPanel() (*CalendarPanel, error) {
 	return winrt.QueryInterface[CalendarPanel](unsafe.Pointer(instance), &IID_ICalendarPanel)
 }
 
+// AsCalendarPanel queries the instance's ICalendarPanel interface.
+// The returned reference is owned by the caller.
+func (self *CalendarPanel) AsCalendarPanel() (*ICalendarPanel, error) {
+	return winrt.QueryInterface[ICalendarPanel](unsafe.Pointer(self), &IID_ICalendarPanel)
+}
+
 // AsPanel queries the instance's IPanel interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Panel.
 // The returned reference is owned by the caller.
@@ -35668,6 +38973,12 @@ type CalendarViewTemplateSettings struct {
 	ICalendarViewTemplateSettings
 }
 
+// AsCalendarViewTemplateSettings queries the instance's ICalendarViewTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *CalendarViewTemplateSettings) AsCalendarViewTemplateSettings() (*ICalendarViewTemplateSettings, error) {
+	return winrt.QueryInterface[ICalendarViewTemplateSettings](unsafe.Pointer(self), &IID_ICalendarViewTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -35680,6 +38991,12 @@ func (self *CalendarViewTemplateSettings) AsDependencyObject() (*IDependencyObje
 // the embedded IInspectable → IUnknown chain).
 type CarouselPanel struct {
 	ICarouselPanel
+}
+
+// AsCarouselPanel queries the instance's ICarouselPanel interface.
+// The returned reference is owned by the caller.
+func (self *CarouselPanel) AsCarouselPanel() (*ICarouselPanel, error) {
+	return winrt.QueryInterface[ICarouselPanel](unsafe.Pointer(self), &IID_ICarouselPanel)
 }
 
 // AsScrollSnapPointsInfo queries the instance's IScrollSnapPointsInfo interface.
@@ -35816,6 +39133,12 @@ func NewCarouselPanel() (*CarouselPanel, error) {
 // the embedded IInspectable → IUnknown chain).
 type ColorPickerSlider struct {
 	IColorPickerSlider
+}
+
+// AsColorPickerSlider queries the instance's IColorPickerSlider interface.
+// The returned reference is owned by the caller.
+func (self *ColorPickerSlider) AsColorPickerSlider() (*IColorPickerSlider, error) {
+	return winrt.QueryInterface[IColorPickerSlider](unsafe.Pointer(self), &IID_IColorPickerSlider)
 }
 
 // AsSlider queries the instance's ISlider interface.
@@ -35974,6 +39297,12 @@ type ColorSpectrum struct {
 	IColorSpectrum
 }
 
+// AsColorSpectrum queries the instance's IColorSpectrum interface.
+// The returned reference is owned by the caller.
+func (self *ColorSpectrum) AsColorSpectrum() (*IColorSpectrum, error) {
+	return winrt.QueryInterface[IColorSpectrum](unsafe.Pointer(self), &IID_IColorSpectrum)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -36109,6 +39438,12 @@ type ColumnMajorUniformToLargestGridLayout struct {
 	IColumnMajorUniformToLargestGridLayout
 }
 
+// AsColumnMajorUniformToLargestGridLayout queries the instance's IColumnMajorUniformToLargestGridLayout interface.
+// The returned reference is owned by the caller.
+func (self *ColumnMajorUniformToLargestGridLayout) AsColumnMajorUniformToLargestGridLayout() (*IColumnMajorUniformToLargestGridLayout, error) {
+	return winrt.QueryInterface[IColumnMajorUniformToLargestGridLayout](unsafe.Pointer(self), &IID_IColumnMajorUniformToLargestGridLayout)
+}
+
 // AsNonVirtualizingLayout queries the instance's INonVirtualizingLayout interface.
 // Inherited from Microsoft.UI.Xaml.Controls.NonVirtualizingLayout.
 // The returned reference is owned by the caller.
@@ -36209,6 +39544,12 @@ type ComboBoxHelper struct {
 	IComboBoxHelper
 }
 
+// AsComboBoxHelper queries the instance's IComboBoxHelper interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxHelper) AsComboBoxHelper() (*IComboBoxHelper, error) {
+	return winrt.QueryInterface[IComboBoxHelper](unsafe.Pointer(self), &IID_IComboBoxHelper)
+}
+
 // ComboBoxHelperStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IComboBoxHelperStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.ComboBoxHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -36228,6 +39569,12 @@ type ComboBoxTemplateSettings struct {
 	IComboBoxTemplateSettings
 }
 
+// AsComboBoxTemplateSettings queries the instance's IComboBoxTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ComboBoxTemplateSettings) AsComboBoxTemplateSettings() (*IComboBoxTemplateSettings, error) {
+	return winrt.QueryInterface[IComboBoxTemplateSettings](unsafe.Pointer(self), &IID_IComboBoxTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -36240,6 +39587,12 @@ func (self *ComboBoxTemplateSettings) AsDependencyObject() (*IDependencyObject, 
 // the embedded IInspectable → IUnknown chain).
 type CommandBarFlyoutCommandBar struct {
 	ICommandBarFlyoutCommandBar
+}
+
+// AsCommandBarFlyoutCommandBar queries the instance's ICommandBarFlyoutCommandBar interface.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBar) AsCommandBarFlyoutCommandBar() (*ICommandBarFlyoutCommandBar, error) {
+	return winrt.QueryInterface[ICommandBarFlyoutCommandBar](unsafe.Pointer(self), &IID_ICommandBarFlyoutCommandBar)
 }
 
 // AsCommandBarFlyoutCommandBar2 queries the instance's ICommandBarFlyoutCommandBar2 interface.
@@ -36430,6 +39783,12 @@ type CommandBarFlyoutCommandBarTemplateSettings struct {
 	ICommandBarFlyoutCommandBarTemplateSettings
 }
 
+// AsCommandBarFlyoutCommandBarTemplateSettings queries the instance's ICommandBarFlyoutCommandBarTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *CommandBarFlyoutCommandBarTemplateSettings) AsCommandBarFlyoutCommandBarTemplateSettings() (*ICommandBarFlyoutCommandBarTemplateSettings, error) {
+	return winrt.QueryInterface[ICommandBarFlyoutCommandBarTemplateSettings](unsafe.Pointer(self), &IID_ICommandBarFlyoutCommandBarTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -36442,6 +39801,12 @@ func (self *CommandBarFlyoutCommandBarTemplateSettings) AsDependencyObject() (*I
 // the embedded IInspectable → IUnknown chain).
 type CommandBarTemplateSettings struct {
 	ICommandBarTemplateSettings
+}
+
+// AsCommandBarTemplateSettings queries the instance's ICommandBarTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *CommandBarTemplateSettings) AsCommandBarTemplateSettings() (*ICommandBarTemplateSettings, error) {
+	return winrt.QueryInterface[ICommandBarTemplateSettings](unsafe.Pointer(self), &IID_ICommandBarTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -36467,6 +39832,12 @@ func NewCornerRadiusFilterConverter() (*CornerRadiusFilterConverter, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[CornerRadiusFilterConverter](unsafe.Pointer(instance), &IID_ICornerRadiusFilterConverter)
+}
+
+// AsCornerRadiusFilterConverter queries the instance's ICornerRadiusFilterConverter interface.
+// The returned reference is owned by the caller.
+func (self *CornerRadiusFilterConverter) AsCornerRadiusFilterConverter() (*ICornerRadiusFilterConverter, error) {
+	return winrt.QueryInterface[ICornerRadiusFilterConverter](unsafe.Pointer(self), &IID_ICornerRadiusFilterConverter)
 }
 
 // AsValueConverter queries the instance's IValueConverter interface.
@@ -36512,6 +39883,12 @@ func NewCornerRadiusToThicknessConverter() (*CornerRadiusToThicknessConverter, e
 	return winrt.QueryInterface[CornerRadiusToThicknessConverter](unsafe.Pointer(instance), &IID_ICornerRadiusToThicknessConverter)
 }
 
+// AsCornerRadiusToThicknessConverter queries the instance's ICornerRadiusToThicknessConverter interface.
+// The returned reference is owned by the caller.
+func (self *CornerRadiusToThicknessConverter) AsCornerRadiusToThicknessConverter() (*ICornerRadiusToThicknessConverter, error) {
+	return winrt.QueryInterface[ICornerRadiusToThicknessConverter](unsafe.Pointer(self), &IID_ICornerRadiusToThicknessConverter)
+}
+
 // AsValueConverter queries the instance's IValueConverter interface.
 // The returned reference is owned by the caller.
 func (self *CornerRadiusToThicknessConverter) AsValueConverter() (*IValueConverter, error) {
@@ -36542,6 +39919,12 @@ func CornerRadiusToThicknessConverterStatics() (*ICornerRadiusToThicknessConvert
 // the embedded IInspectable → IUnknown chain).
 type DragCompletedEventArgs struct {
 	IDragCompletedEventArgs
+}
+
+// AsDragCompletedEventArgs queries the instance's IDragCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragCompletedEventArgs) AsDragCompletedEventArgs() (*IDragCompletedEventArgs, error) {
+	return winrt.QueryInterface[IDragCompletedEventArgs](unsafe.Pointer(self), &IID_IDragCompletedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -36583,6 +39966,12 @@ type DragDeltaEventArgs struct {
 	IDragDeltaEventArgs
 }
 
+// AsDragDeltaEventArgs queries the instance's IDragDeltaEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragDeltaEventArgs) AsDragDeltaEventArgs() (*IDragDeltaEventArgs, error) {
+	return winrt.QueryInterface[IDragDeltaEventArgs](unsafe.Pointer(self), &IID_IDragDeltaEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -36622,6 +40011,12 @@ type DragStartedEventArgs struct {
 	IDragStartedEventArgs
 }
 
+// AsDragStartedEventArgs queries the instance's IDragStartedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DragStartedEventArgs) AsDragStartedEventArgs() (*IDragStartedEventArgs, error) {
+	return winrt.QueryInterface[IDragStartedEventArgs](unsafe.Pointer(self), &IID_IDragStartedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -36659,6 +40054,12 @@ func NewDragStartedEventArgsWithHorizontalOffsetAndVerticalOffset(horizontalOffs
 // the embedded IInspectable → IUnknown chain).
 type FlyoutBase struct {
 	IFlyoutBase
+}
+
+// AsFlyoutBase queries the instance's IFlyoutBase interface.
+// The returned reference is owned by the caller.
+func (self *FlyoutBase) AsFlyoutBase() (*IFlyoutBase, error) {
+	return winrt.QueryInterface[IFlyoutBase](unsafe.Pointer(self), &IID_IFlyoutBase)
 }
 
 // AsFlyoutBase2 queries the instance's IFlyoutBase2 interface.
@@ -36736,11 +40137,23 @@ type FlyoutBaseClosingEventArgs struct {
 	IFlyoutBaseClosingEventArgs
 }
 
+// AsFlyoutBaseClosingEventArgs queries the instance's IFlyoutBaseClosingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FlyoutBaseClosingEventArgs) AsFlyoutBaseClosingEventArgs() (*IFlyoutBaseClosingEventArgs, error) {
+	return winrt.QueryInterface[IFlyoutBaseClosingEventArgs](unsafe.Pointer(self), &IID_IFlyoutBaseClosingEventArgs)
+}
+
 // FlyoutShowOptions is the Microsoft.UI.Xaml.Controls.Primitives.FlyoutShowOptions runtime class, surfaced through its
 // default interface IFlyoutShowOptions. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FlyoutShowOptions struct {
 	IFlyoutShowOptions
+}
+
+// AsFlyoutShowOptions queries the instance's IFlyoutShowOptions interface.
+// The returned reference is owned by the caller.
+func (self *FlyoutShowOptions) AsFlyoutShowOptions() (*IFlyoutShowOptions, error) {
+	return winrt.QueryInterface[IFlyoutShowOptions](unsafe.Pointer(self), &IID_IFlyoutShowOptions)
 }
 
 // NewFlyoutShowOptions constructs a Microsoft.UI.Xaml.Controls.Primitives.FlyoutShowOptions instance through
@@ -36775,6 +40188,12 @@ type GeneratorPositionHelper struct {
 	IGeneratorPositionHelper
 }
 
+// AsGeneratorPositionHelper queries the instance's IGeneratorPositionHelper interface.
+// The returned reference is owned by the caller.
+func (self *GeneratorPositionHelper) AsGeneratorPositionHelper() (*IGeneratorPositionHelper, error) {
+	return winrt.QueryInterface[IGeneratorPositionHelper](unsafe.Pointer(self), &IID_IGeneratorPositionHelper)
+}
+
 // GeneratorPositionHelperStatics returns the Microsoft.UI.Xaml.Controls.Primitives.IGeneratorPositionHelperStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.GeneratorPositionHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -36792,6 +40211,12 @@ func GeneratorPositionHelperStatics() (*IGeneratorPositionHelperStatics, error) 
 // the embedded IInspectable → IUnknown chain).
 type GridViewItemPresenter struct {
 	IGridViewItemPresenter
+}
+
+// AsGridViewItemPresenter queries the instance's IGridViewItemPresenter interface.
+// The returned reference is owned by the caller.
+func (self *GridViewItemPresenter) AsGridViewItemPresenter() (*IGridViewItemPresenter, error) {
+	return winrt.QueryInterface[IGridViewItemPresenter](unsafe.Pointer(self), &IID_IGridViewItemPresenter)
 }
 
 // AsContentPresenter queries the instance's IContentPresenter interface.
@@ -36922,6 +40347,12 @@ type GridViewItemTemplateSettings struct {
 	IGridViewItemTemplateSettings
 }
 
+// AsGridViewItemTemplateSettings queries the instance's IGridViewItemTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *GridViewItemTemplateSettings) AsGridViewItemTemplateSettings() (*IGridViewItemTemplateSettings, error) {
+	return winrt.QueryInterface[IGridViewItemTemplateSettings](unsafe.Pointer(self), &IID_IGridViewItemTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -36934,6 +40365,12 @@ func (self *GridViewItemTemplateSettings) AsDependencyObject() (*IDependencyObje
 // the embedded IInspectable → IUnknown chain).
 type InfoBarPanel struct {
 	IInfoBarPanel
+}
+
+// AsInfoBarPanel queries the instance's IInfoBarPanel interface.
+// The returned reference is owned by the caller.
+func (self *InfoBarPanel) AsInfoBarPanel() (*IInfoBarPanel, error) {
+	return winrt.QueryInterface[IInfoBarPanel](unsafe.Pointer(self), &IID_IInfoBarPanel)
 }
 
 // AsPanel queries the instance's IPanel interface.
@@ -37057,6 +40494,12 @@ type ItemsChangedEventArgs struct {
 	IItemsChangedEventArgs
 }
 
+// AsItemsChangedEventArgs queries the instance's IItemsChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ItemsChangedEventArgs) AsItemsChangedEventArgs() (*IItemsChangedEventArgs, error) {
+	return winrt.QueryInterface[IItemsChangedEventArgs](unsafe.Pointer(self), &IID_IItemsChangedEventArgs)
+}
+
 // JumpListItemBackgroundConverter is the Microsoft.UI.Xaml.Controls.Primitives.JumpListItemBackgroundConverter runtime class, surfaced through its
 // default interface IJumpListItemBackgroundConverter. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -37073,6 +40516,12 @@ func NewJumpListItemBackgroundConverter() (*JumpListItemBackgroundConverter, err
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[JumpListItemBackgroundConverter](unsafe.Pointer(instance), &IID_IJumpListItemBackgroundConverter)
+}
+
+// AsJumpListItemBackgroundConverter queries the instance's IJumpListItemBackgroundConverter interface.
+// The returned reference is owned by the caller.
+func (self *JumpListItemBackgroundConverter) AsJumpListItemBackgroundConverter() (*IJumpListItemBackgroundConverter, error) {
+	return winrt.QueryInterface[IJumpListItemBackgroundConverter](unsafe.Pointer(self), &IID_IJumpListItemBackgroundConverter)
 }
 
 // AsValueConverter queries the instance's IValueConverter interface.
@@ -37118,6 +40567,12 @@ func NewJumpListItemForegroundConverter() (*JumpListItemForegroundConverter, err
 	return winrt.QueryInterface[JumpListItemForegroundConverter](unsafe.Pointer(instance), &IID_IJumpListItemForegroundConverter)
 }
 
+// AsJumpListItemForegroundConverter queries the instance's IJumpListItemForegroundConverter interface.
+// The returned reference is owned by the caller.
+func (self *JumpListItemForegroundConverter) AsJumpListItemForegroundConverter() (*IJumpListItemForegroundConverter, error) {
+	return winrt.QueryInterface[IJumpListItemForegroundConverter](unsafe.Pointer(self), &IID_IJumpListItemForegroundConverter)
+}
+
 // AsValueConverter queries the instance's IValueConverter interface.
 // The returned reference is owned by the caller.
 func (self *JumpListItemForegroundConverter) AsValueConverter() (*IValueConverter, error) {
@@ -37150,6 +40605,12 @@ type LayoutInformation struct {
 	ILayoutInformation
 }
 
+// AsLayoutInformation queries the instance's ILayoutInformation interface.
+// The returned reference is owned by the caller.
+func (self *LayoutInformation) AsLayoutInformation() (*ILayoutInformation, error) {
+	return winrt.QueryInterface[ILayoutInformation](unsafe.Pointer(self), &IID_ILayoutInformation)
+}
+
 // LayoutInformationStatics returns the Microsoft.UI.Xaml.Controls.Primitives.ILayoutInformationStatics statics of the
 // Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -37167,6 +40628,12 @@ func LayoutInformationStatics() (*ILayoutInformationStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ListViewItemPresenter struct {
 	IListViewItemPresenter
+}
+
+// AsListViewItemPresenter queries the instance's IListViewItemPresenter interface.
+// The returned reference is owned by the caller.
+func (self *ListViewItemPresenter) AsListViewItemPresenter() (*IListViewItemPresenter, error) {
+	return winrt.QueryInterface[IListViewItemPresenter](unsafe.Pointer(self), &IID_IListViewItemPresenter)
 }
 
 // AsContentPresenter queries the instance's IContentPresenter interface.
@@ -37297,6 +40764,12 @@ type ListViewItemTemplateSettings struct {
 	IListViewItemTemplateSettings
 }
 
+// AsListViewItemTemplateSettings queries the instance's IListViewItemTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ListViewItemTemplateSettings) AsListViewItemTemplateSettings() (*IListViewItemTemplateSettings, error) {
+	return winrt.QueryInterface[IListViewItemTemplateSettings](unsafe.Pointer(self), &IID_IListViewItemTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -37309,6 +40782,12 @@ func (self *ListViewItemTemplateSettings) AsDependencyObject() (*IDependencyObje
 // the embedded IInspectable → IUnknown chain).
 type LoopingSelector struct {
 	ILoopingSelector
+}
+
+// AsLoopingSelector queries the instance's ILoopingSelector interface.
+// The returned reference is owned by the caller.
+func (self *LoopingSelector) AsLoopingSelector() (*ILoopingSelector, error) {
+	return winrt.QueryInterface[ILoopingSelector](unsafe.Pointer(self), &IID_ILoopingSelector)
 }
 
 // AsControl queries the instance's IControl interface.
@@ -37419,6 +40898,12 @@ func LoopingSelectorStatics() (*ILoopingSelectorStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type LoopingSelectorItem struct {
 	ILoopingSelectorItem
+}
+
+// AsLoopingSelectorItem queries the instance's ILoopingSelectorItem interface.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorItem) AsLoopingSelectorItem() (*ILoopingSelectorItem, error) {
+	return winrt.QueryInterface[ILoopingSelectorItem](unsafe.Pointer(self), &IID_ILoopingSelectorItem)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -37533,6 +41018,12 @@ type LoopingSelectorPanel struct {
 	ILoopingSelectorPanel
 }
 
+// AsLoopingSelectorPanel queries the instance's ILoopingSelectorPanel interface.
+// The returned reference is owned by the caller.
+func (self *LoopingSelectorPanel) AsLoopingSelectorPanel() (*ILoopingSelectorPanel, error) {
+	return winrt.QueryInterface[ILoopingSelectorPanel](unsafe.Pointer(self), &IID_ILoopingSelectorPanel)
+}
+
 // AsScrollSnapPointsInfo queries the instance's IScrollSnapPointsInfo interface.
 // The returned reference is owned by the caller.
 func (self *LoopingSelectorPanel) AsScrollSnapPointsInfo() (*IScrollSnapPointsInfo, error) {
@@ -37630,6 +41121,12 @@ type MenuFlyoutItemTemplateSettings struct {
 	IMenuFlyoutItemTemplateSettings
 }
 
+// AsMenuFlyoutItemTemplateSettings queries the instance's IMenuFlyoutItemTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutItemTemplateSettings) AsMenuFlyoutItemTemplateSettings() (*IMenuFlyoutItemTemplateSettings, error) {
+	return winrt.QueryInterface[IMenuFlyoutItemTemplateSettings](unsafe.Pointer(self), &IID_IMenuFlyoutItemTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -37644,6 +41141,12 @@ type MenuFlyoutPresenterTemplateSettings struct {
 	IMenuFlyoutPresenterTemplateSettings
 }
 
+// AsMenuFlyoutPresenterTemplateSettings queries the instance's IMenuFlyoutPresenterTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *MenuFlyoutPresenterTemplateSettings) AsMenuFlyoutPresenterTemplateSettings() (*IMenuFlyoutPresenterTemplateSettings, error) {
+	return winrt.QueryInterface[IMenuFlyoutPresenterTemplateSettings](unsafe.Pointer(self), &IID_IMenuFlyoutPresenterTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -37656,6 +41159,12 @@ func (self *MenuFlyoutPresenterTemplateSettings) AsDependencyObject() (*IDepende
 // the embedded IInspectable → IUnknown chain).
 type MonochromaticOverlayPresenter struct {
 	IMonochromaticOverlayPresenter
+}
+
+// AsMonochromaticOverlayPresenter queries the instance's IMonochromaticOverlayPresenter interface.
+// The returned reference is owned by the caller.
+func (self *MonochromaticOverlayPresenter) AsMonochromaticOverlayPresenter() (*IMonochromaticOverlayPresenter, error) {
+	return winrt.QueryInterface[IMonochromaticOverlayPresenter](unsafe.Pointer(self), &IID_IMonochromaticOverlayPresenter)
 }
 
 // AsGrid queries the instance's IGrid interface.
@@ -37784,6 +41293,12 @@ func NewMonochromaticOverlayPresenter() (*MonochromaticOverlayPresenter, error) 
 // the embedded IInspectable → IUnknown chain).
 type NavigationViewItemPresenter struct {
 	INavigationViewItemPresenter
+}
+
+// AsNavigationViewItemPresenter queries the instance's INavigationViewItemPresenter interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenter) AsNavigationViewItemPresenter() (*INavigationViewItemPresenter, error) {
+	return winrt.QueryInterface[INavigationViewItemPresenter](unsafe.Pointer(self), &IID_INavigationViewItemPresenter)
 }
 
 // AsNavigationViewItemPresenter2 queries the instance's INavigationViewItemPresenter2 interface.
@@ -37953,6 +41468,12 @@ type NavigationViewItemPresenterTemplateSettings struct {
 	INavigationViewItemPresenterTemplateSettings
 }
 
+// AsNavigationViewItemPresenterTemplateSettings queries the instance's INavigationViewItemPresenterTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *NavigationViewItemPresenterTemplateSettings) AsNavigationViewItemPresenterTemplateSettings() (*INavigationViewItemPresenterTemplateSettings, error) {
+	return winrt.QueryInterface[INavigationViewItemPresenterTemplateSettings](unsafe.Pointer(self), &IID_INavigationViewItemPresenterTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -38002,6 +41523,12 @@ func NewNavigationViewItemPresenterTemplateSettings() (*NavigationViewItemPresen
 // the embedded IInspectable → IUnknown chain).
 type OrientedVirtualizingPanel struct {
 	IOrientedVirtualizingPanel
+}
+
+// AsOrientedVirtualizingPanel queries the instance's IOrientedVirtualizingPanel interface.
+// The returned reference is owned by the caller.
+func (self *OrientedVirtualizingPanel) AsOrientedVirtualizingPanel() (*IOrientedVirtualizingPanel, error) {
+	return winrt.QueryInterface[IOrientedVirtualizingPanel](unsafe.Pointer(self), &IID_IOrientedVirtualizingPanel)
 }
 
 // AsScrollSnapPointsInfo queries the instance's IScrollSnapPointsInfo interface.
@@ -38121,6 +41648,12 @@ type PickerFlyoutBase struct {
 	IPickerFlyoutBase
 }
 
+// AsPickerFlyoutBase queries the instance's IPickerFlyoutBase interface.
+// The returned reference is owned by the caller.
+func (self *PickerFlyoutBase) AsPickerFlyoutBase() (*IPickerFlyoutBase, error) {
+	return winrt.QueryInterface[IPickerFlyoutBase](unsafe.Pointer(self), &IID_IPickerFlyoutBase)
+}
+
 // AsPickerFlyoutBaseOverrides queries the instance's IPickerFlyoutBaseOverrides interface.
 // The returned reference is owned by the caller.
 func (self *PickerFlyoutBase) AsPickerFlyoutBaseOverrides() (*IPickerFlyoutBaseOverrides, error) {
@@ -38197,6 +41730,12 @@ func NewPickerFlyoutBase() (*PickerFlyoutBase, error) {
 // the embedded IInspectable → IUnknown chain).
 type PivotHeaderItem struct {
 	IPivotHeaderItem
+}
+
+// AsPivotHeaderItem queries the instance's IPivotHeaderItem interface.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderItem) AsPivotHeaderItem() (*IPivotHeaderItem, error) {
+	return winrt.QueryInterface[IPivotHeaderItem](unsafe.Pointer(self), &IID_IPivotHeaderItem)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -38347,6 +41886,12 @@ func NewPivotHeaderPanel() (*PivotHeaderPanel, error) {
 	return winrt.QueryInterface[PivotHeaderPanel](unsafe.Pointer(instance), &IID_IPivotHeaderPanel)
 }
 
+// AsPivotHeaderPanel queries the instance's IPivotHeaderPanel interface.
+// The returned reference is owned by the caller.
+func (self *PivotHeaderPanel) AsPivotHeaderPanel() (*IPivotHeaderPanel, error) {
+	return winrt.QueryInterface[IPivotHeaderPanel](unsafe.Pointer(self), &IID_IPivotHeaderPanel)
+}
+
 // AsCanvas queries the instance's ICanvas interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Canvas.
 // The returned reference is owned by the caller.
@@ -38449,6 +41994,12 @@ func NewPivotPanel() (*PivotPanel, error) {
 	return winrt.QueryInterface[PivotPanel](unsafe.Pointer(instance), &IID_IPivotPanel)
 }
 
+// AsPivotPanel queries the instance's IPivotPanel interface.
+// The returned reference is owned by the caller.
+func (self *PivotPanel) AsPivotPanel() (*IPivotPanel, error) {
+	return winrt.QueryInterface[IPivotPanel](unsafe.Pointer(self), &IID_IPivotPanel)
+}
+
 // AsScrollSnapPointsInfo queries the instance's IScrollSnapPointsInfo interface.
 // The returned reference is owned by the caller.
 func (self *PivotPanel) AsScrollSnapPointsInfo() (*IScrollSnapPointsInfo, error) {
@@ -38548,6 +42099,12 @@ func NewPopup() (*Popup, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Popup](unsafe.Pointer(instance), &IID_IPopup)
+}
+
+// AsPopup queries the instance's IPopup interface.
+// The returned reference is owned by the caller.
+func (self *Popup) AsPopup() (*IPopup, error) {
+	return winrt.QueryInterface[IPopup](unsafe.Pointer(self), &IID_IPopup)
 }
 
 // AsPopup2 queries the instance's IPopup2 interface.
@@ -38673,6 +42230,12 @@ func PopupStatics3() (*IPopupStatics3, error) {
 // the embedded IInspectable → IUnknown chain).
 type RangeBase struct {
 	IRangeBase
+}
+
+// AsRangeBase queries the instance's IRangeBase interface.
+// The returned reference is owned by the caller.
+func (self *RangeBase) AsRangeBase() (*IRangeBase, error) {
+	return winrt.QueryInterface[IRangeBase](unsafe.Pointer(self), &IID_IRangeBase)
 }
 
 // AsRangeBaseOverrides queries the instance's IRangeBaseOverrides interface.
@@ -38816,6 +42379,12 @@ type RangeBaseValueChangedEventArgs struct {
 	IRangeBaseValueChangedEventArgs
 }
 
+// AsRangeBaseValueChangedEventArgs queries the instance's IRangeBaseValueChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RangeBaseValueChangedEventArgs) AsRangeBaseValueChangedEventArgs() (*IRangeBaseValueChangedEventArgs, error) {
+	return winrt.QueryInterface[IRangeBaseValueChangedEventArgs](unsafe.Pointer(self), &IID_IRangeBaseValueChangedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -38839,6 +42408,12 @@ func NewRepeatButton() (*RepeatButton, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RepeatButton](unsafe.Pointer(instance), &IID_IRepeatButton)
+}
+
+// AsRepeatButton queries the instance's IRepeatButton interface.
+// The returned reference is owned by the caller.
+func (self *RepeatButton) AsRepeatButton() (*IRepeatButton, error) {
+	return winrt.QueryInterface[IRepeatButton](unsafe.Pointer(self), &IID_IRepeatButton)
 }
 
 // AsButtonBase queries the instance's IButtonBase interface.
@@ -38972,6 +42547,12 @@ type RepeatedScrollSnapPoint struct {
 	IRepeatedScrollSnapPoint
 }
 
+// AsRepeatedScrollSnapPoint queries the instance's IRepeatedScrollSnapPoint interface.
+// The returned reference is owned by the caller.
+func (self *RepeatedScrollSnapPoint) AsRepeatedScrollSnapPoint() (*IRepeatedScrollSnapPoint, error) {
+	return winrt.QueryInterface[IRepeatedScrollSnapPoint](unsafe.Pointer(self), &IID_IRepeatedScrollSnapPoint)
+}
+
 // AsScrollSnapPointBase queries the instance's IScrollSnapPointBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase.
 // The returned reference is owned by the caller.
@@ -39016,6 +42597,12 @@ func NewRepeatedScrollSnapPoint(offset float64, interval float64, start float64,
 // the embedded IInspectable → IUnknown chain).
 type RepeatedZoomSnapPoint struct {
 	IRepeatedZoomSnapPoint
+}
+
+// AsRepeatedZoomSnapPoint queries the instance's IRepeatedZoomSnapPoint interface.
+// The returned reference is owned by the caller.
+func (self *RepeatedZoomSnapPoint) AsRepeatedZoomSnapPoint() (*IRepeatedZoomSnapPoint, error) {
+	return winrt.QueryInterface[IRepeatedZoomSnapPoint](unsafe.Pointer(self), &IID_IRepeatedZoomSnapPoint)
 }
 
 // AsZoomSnapPointBase queries the instance's IZoomSnapPointBase interface.
@@ -39073,6 +42660,12 @@ func NewScrollBar() (*ScrollBar, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ScrollBar](unsafe.Pointer(instance), &IID_IScrollBar)
+}
+
+// AsScrollBar queries the instance's IScrollBar interface.
+// The returned reference is owned by the caller.
+func (self *ScrollBar) AsScrollBar() (*IScrollBar, error) {
+	return winrt.QueryInterface[IScrollBar](unsafe.Pointer(self), &IID_IScrollBar)
 }
 
 // AsRangeBase queries the instance's IRangeBase interface.
@@ -39199,6 +42792,12 @@ type ScrollControllerAddScrollVelocityRequestedEventArgs struct {
 	IScrollControllerAddScrollVelocityRequestedEventArgs
 }
 
+// AsScrollControllerAddScrollVelocityRequestedEventArgs queries the instance's IScrollControllerAddScrollVelocityRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollControllerAddScrollVelocityRequestedEventArgs) AsScrollControllerAddScrollVelocityRequestedEventArgs() (*IScrollControllerAddScrollVelocityRequestedEventArgs, error) {
+	return winrt.QueryInterface[IScrollControllerAddScrollVelocityRequestedEventArgs](unsafe.Pointer(self), &IID_IScrollControllerAddScrollVelocityRequestedEventArgs)
+}
+
 // CreateInstanceScrollControllerAddScrollVelocityRequestedEventArgs constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerAddScrollVelocityRequestedEventArgs instance through
 // Microsoft.UI.Xaml.Controls.Primitives.IScrollControllerAddScrollVelocityRequestedEventArgsFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -39221,6 +42820,12 @@ func CreateInstanceScrollControllerAddScrollVelocityRequestedEventArgs(offsetVel
 // the embedded IInspectable → IUnknown chain).
 type ScrollControllerPanRequestedEventArgs struct {
 	IScrollControllerPanRequestedEventArgs
+}
+
+// AsScrollControllerPanRequestedEventArgs queries the instance's IScrollControllerPanRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollControllerPanRequestedEventArgs) AsScrollControllerPanRequestedEventArgs() (*IScrollControllerPanRequestedEventArgs, error) {
+	return winrt.QueryInterface[IScrollControllerPanRequestedEventArgs](unsafe.Pointer(self), &IID_IScrollControllerPanRequestedEventArgs)
 }
 
 // CreateInstanceScrollControllerPanRequestedEventArgs constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerPanRequestedEventArgs instance through
@@ -39247,6 +42852,12 @@ type ScrollControllerScrollByRequestedEventArgs struct {
 	IScrollControllerScrollByRequestedEventArgs
 }
 
+// AsScrollControllerScrollByRequestedEventArgs queries the instance's IScrollControllerScrollByRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollControllerScrollByRequestedEventArgs) AsScrollControllerScrollByRequestedEventArgs() (*IScrollControllerScrollByRequestedEventArgs, error) {
+	return winrt.QueryInterface[IScrollControllerScrollByRequestedEventArgs](unsafe.Pointer(self), &IID_IScrollControllerScrollByRequestedEventArgs)
+}
+
 // CreateInstanceScrollControllerScrollByRequestedEventArgs constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollByRequestedEventArgs instance through
 // Microsoft.UI.Xaml.Controls.Primitives.IScrollControllerScrollByRequestedEventArgsFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -39269,6 +42880,12 @@ func CreateInstanceScrollControllerScrollByRequestedEventArgs(offsetDelta float6
 // the embedded IInspectable → IUnknown chain).
 type ScrollControllerScrollToRequestedEventArgs struct {
 	IScrollControllerScrollToRequestedEventArgs
+}
+
+// AsScrollControllerScrollToRequestedEventArgs queries the instance's IScrollControllerScrollToRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollControllerScrollToRequestedEventArgs) AsScrollControllerScrollToRequestedEventArgs() (*IScrollControllerScrollToRequestedEventArgs, error) {
+	return winrt.QueryInterface[IScrollControllerScrollToRequestedEventArgs](unsafe.Pointer(self), &IID_IScrollControllerScrollToRequestedEventArgs)
 }
 
 // CreateInstanceScrollControllerScrollToRequestedEventArgs constructs a Microsoft.UI.Xaml.Controls.Primitives.ScrollControllerScrollToRequestedEventArgs instance through
@@ -39306,6 +42923,12 @@ func NewScrollEventArgs() (*ScrollEventArgs, error) {
 	return winrt.QueryInterface[ScrollEventArgs](unsafe.Pointer(instance), &IID_IScrollEventArgs)
 }
 
+// AsScrollEventArgs queries the instance's IScrollEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ScrollEventArgs) AsScrollEventArgs() (*IScrollEventArgs, error) {
+	return winrt.QueryInterface[IScrollEventArgs](unsafe.Pointer(self), &IID_IScrollEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -39318,6 +42941,12 @@ func (self *ScrollEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error) {
 // the embedded IInspectable → IUnknown chain).
 type ScrollPresenter struct {
 	IScrollPresenter
+}
+
+// AsScrollPresenter queries the instance's IScrollPresenter interface.
+// The returned reference is owned by the caller.
+func (self *ScrollPresenter) AsScrollPresenter() (*IScrollPresenter, error) {
+	return winrt.QueryInterface[IScrollPresenter](unsafe.Pointer(self), &IID_IScrollPresenter)
 }
 
 // AsScrollAnchorProvider queries the instance's IScrollAnchorProvider interface.
@@ -39440,6 +43069,12 @@ type ScrollSnapPoint struct {
 	IScrollSnapPoint
 }
 
+// AsScrollSnapPoint queries the instance's IScrollSnapPoint interface.
+// The returned reference is owned by the caller.
+func (self *ScrollSnapPoint) AsScrollSnapPoint() (*IScrollSnapPoint, error) {
+	return winrt.QueryInterface[IScrollSnapPoint](unsafe.Pointer(self), &IID_IScrollSnapPoint)
+}
+
 // AsScrollSnapPointBase queries the instance's IScrollSnapPointBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.ScrollSnapPointBase.
 // The returned reference is owned by the caller.
@@ -39486,6 +43121,12 @@ type ScrollSnapPointBase struct {
 	IScrollSnapPointBase
 }
 
+// AsScrollSnapPointBase queries the instance's IScrollSnapPointBase interface.
+// The returned reference is owned by the caller.
+func (self *ScrollSnapPointBase) AsScrollSnapPointBase() (*IScrollSnapPointBase, error) {
+	return winrt.QueryInterface[IScrollSnapPointBase](unsafe.Pointer(self), &IID_IScrollSnapPointBase)
+}
+
 // AsSnapPointBase queries the instance's ISnapPointBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
 // The returned reference is owned by the caller.
@@ -39498,6 +43139,12 @@ func (self *ScrollSnapPointBase) AsSnapPointBase() (*ISnapPointBase, error) {
 // the embedded IInspectable → IUnknown chain).
 type Selector struct {
 	ISelector
+}
+
+// AsSelector queries the instance's ISelector interface.
+// The returned reference is owned by the caller.
+func (self *Selector) AsSelector() (*ISelector, error) {
+	return winrt.QueryInterface[ISelector](unsafe.Pointer(self), &IID_ISelector)
 }
 
 // AsItemsControl queries the instance's IItemsControl interface.
@@ -39629,6 +43276,12 @@ func SelectorStatics() (*ISelectorStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type SelectorItem struct {
 	ISelectorItem
+}
+
+// AsSelectorItem queries the instance's ISelectorItem interface.
+// The returned reference is owned by the caller.
+func (self *SelectorItem) AsSelectorItem() (*ISelectorItem, error) {
+	return winrt.QueryInterface[ISelectorItem](unsafe.Pointer(self), &IID_ISelectorItem)
 }
 
 // AsContentControl queries the instance's IContentControl interface.
@@ -39780,11 +43433,23 @@ type SnapPointBase struct {
 	ISnapPointBase
 }
 
+// AsSnapPointBase queries the instance's ISnapPointBase interface.
+// The returned reference is owned by the caller.
+func (self *SnapPointBase) AsSnapPointBase() (*ISnapPointBase, error) {
+	return winrt.QueryInterface[ISnapPointBase](unsafe.Pointer(self), &IID_ISnapPointBase)
+}
+
 // SplitViewTemplateSettings is the Microsoft.UI.Xaml.Controls.Primitives.SplitViewTemplateSettings runtime class, surfaced through its
 // default interface ISplitViewTemplateSettings. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type SplitViewTemplateSettings struct {
 	ISplitViewTemplateSettings
+}
+
+// AsSplitViewTemplateSettings queries the instance's ISplitViewTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *SplitViewTemplateSettings) AsSplitViewTemplateSettings() (*ISplitViewTemplateSettings, error) {
+	return winrt.QueryInterface[ISplitViewTemplateSettings](unsafe.Pointer(self), &IID_ISplitViewTemplateSettings)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -39799,6 +43464,12 @@ func (self *SplitViewTemplateSettings) AsDependencyObject() (*IDependencyObject,
 // the embedded IInspectable → IUnknown chain).
 type TabViewListView struct {
 	ITabViewListView
+}
+
+// AsTabViewListView queries the instance's ITabViewListView interface.
+// The returned reference is owned by the caller.
+func (self *TabViewListView) AsTabViewListView() (*ITabViewListView, error) {
+	return winrt.QueryInterface[ITabViewListView](unsafe.Pointer(self), &IID_ITabViewListView)
 }
 
 // AsListView queries the instance's IListView interface.
@@ -39984,6 +43655,12 @@ func NewThumb() (*Thumb, error) {
 	return winrt.QueryInterface[Thumb](unsafe.Pointer(instance), &IID_IThumb)
 }
 
+// AsThumb queries the instance's IThumb interface.
+// The returned reference is owned by the caller.
+func (self *Thumb) AsThumb() (*IThumb, error) {
+	return winrt.QueryInterface[IThumb](unsafe.Pointer(self), &IID_IThumb)
+}
+
 // AsControl queries the instance's IControl interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Control.
 // The returned reference is owned by the caller.
@@ -40105,6 +43782,12 @@ func NewTickBar() (*TickBar, error) {
 	return winrt.QueryInterface[TickBar](unsafe.Pointer(instance), &IID_ITickBar)
 }
 
+// AsTickBar queries the instance's ITickBar interface.
+// The returned reference is owned by the caller.
+func (self *TickBar) AsTickBar() (*ITickBar, error) {
+	return winrt.QueryInterface[ITickBar](unsafe.Pointer(self), &IID_ITickBar)
+}
+
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
 // Inherited from Microsoft.UI.Xaml.FrameworkElement.
 // The returned reference is owned by the caller.
@@ -40192,6 +43875,12 @@ func TickBarStatics() (*ITickBarStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type ToggleButton struct {
 	IToggleButton
+}
+
+// AsToggleButton queries the instance's IToggleButton interface.
+// The returned reference is owned by the caller.
+func (self *ToggleButton) AsToggleButton() (*IToggleButton, error) {
+	return winrt.QueryInterface[IToggleButton](unsafe.Pointer(self), &IID_IToggleButton)
 }
 
 // AsToggleButtonOverrides queries the instance's IToggleButtonOverrides interface.
@@ -40356,6 +44045,12 @@ type ToggleSwitchTemplateSettings struct {
 	IToggleSwitchTemplateSettings
 }
 
+// AsToggleSwitchTemplateSettings queries the instance's IToggleSwitchTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ToggleSwitchTemplateSettings) AsToggleSwitchTemplateSettings() (*IToggleSwitchTemplateSettings, error) {
+	return winrt.QueryInterface[IToggleSwitchTemplateSettings](unsafe.Pointer(self), &IID_IToggleSwitchTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -40370,6 +44065,12 @@ type ToolTipTemplateSettings struct {
 	IToolTipTemplateSettings
 }
 
+// AsToolTipTemplateSettings queries the instance's IToolTipTemplateSettings interface.
+// The returned reference is owned by the caller.
+func (self *ToolTipTemplateSettings) AsToolTipTemplateSettings() (*IToolTipTemplateSettings, error) {
+	return winrt.QueryInterface[IToolTipTemplateSettings](unsafe.Pointer(self), &IID_IToolTipTemplateSettings)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -40382,6 +44083,12 @@ func (self *ToolTipTemplateSettings) AsDependencyObject() (*IDependencyObject, e
 // the embedded IInspectable → IUnknown chain).
 type ZoomSnapPoint struct {
 	IZoomSnapPoint
+}
+
+// AsZoomSnapPoint queries the instance's IZoomSnapPoint interface.
+// The returned reference is owned by the caller.
+func (self *ZoomSnapPoint) AsZoomSnapPoint() (*IZoomSnapPoint, error) {
+	return winrt.QueryInterface[IZoomSnapPoint](unsafe.Pointer(self), &IID_IZoomSnapPoint)
 }
 
 // AsZoomSnapPointBase queries the instance's IZoomSnapPointBase interface.
@@ -40430,6 +44137,12 @@ type ZoomSnapPointBase struct {
 	IZoomSnapPointBase
 }
 
+// AsZoomSnapPointBase queries the instance's IZoomSnapPointBase interface.
+// The returned reference is owned by the caller.
+func (self *ZoomSnapPointBase) AsZoomSnapPointBase() (*IZoomSnapPointBase, error) {
+	return winrt.QueryInterface[IZoomSnapPointBase](unsafe.Pointer(self), &IID_IZoomSnapPointBase)
+}
+
 // AsSnapPointBase queries the instance's ISnapPointBase interface.
 // Inherited from Microsoft.UI.Xaml.Controls.Primitives.SnapPointBase.
 // The returned reference is owned by the caller.
@@ -40442,6 +44155,12 @@ func (self *ZoomSnapPointBase) AsSnapPointBase() (*ISnapPointBase, error) {
 // the embedded IInspectable → IUnknown chain).
 type Binding struct {
 	IBinding
+}
+
+// AsBinding queries the instance's IBinding interface.
+// The returned reference is owned by the caller.
+func (self *Binding) AsBinding() (*IBinding, error) {
+	return winrt.QueryInterface[IBinding](unsafe.Pointer(self), &IID_IBinding)
 }
 
 // AsBindingBase queries the instance's IBindingBase interface.
@@ -40490,6 +44209,12 @@ type BindingBase struct {
 	IBindingBase
 }
 
+// AsBindingBase queries the instance's IBindingBase interface.
+// The returned reference is owned by the caller.
+func (self *BindingBase) AsBindingBase() (*IBindingBase, error) {
+	return winrt.QueryInterface[IBindingBase](unsafe.Pointer(self), &IID_IBindingBase)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -40529,6 +44254,12 @@ type BindingExpression struct {
 	IBindingExpression
 }
 
+// AsBindingExpression queries the instance's IBindingExpression interface.
+// The returned reference is owned by the caller.
+func (self *BindingExpression) AsBindingExpression() (*IBindingExpression, error) {
+	return winrt.QueryInterface[IBindingExpression](unsafe.Pointer(self), &IID_IBindingExpression)
+}
+
 // AsBindingExpressionBase queries the instance's IBindingExpressionBase interface.
 // Inherited from Microsoft.UI.Xaml.Data.BindingExpressionBase.
 // The returned reference is owned by the caller.
@@ -40543,11 +44274,23 @@ type BindingExpressionBase struct {
 	IBindingExpressionBase
 }
 
+// AsBindingExpressionBase queries the instance's IBindingExpressionBase interface.
+// The returned reference is owned by the caller.
+func (self *BindingExpressionBase) AsBindingExpressionBase() (*IBindingExpressionBase, error) {
+	return winrt.QueryInterface[IBindingExpressionBase](unsafe.Pointer(self), &IID_IBindingExpressionBase)
+}
+
 // BindingOperations is the Microsoft.UI.Xaml.Data.BindingOperations runtime class, surfaced through its
 // default interface IBindingOperations. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type BindingOperations struct {
 	IBindingOperations
+}
+
+// AsBindingOperations queries the instance's IBindingOperations interface.
+// The returned reference is owned by the caller.
+func (self *BindingOperations) AsBindingOperations() (*IBindingOperations, error) {
+	return winrt.QueryInterface[IBindingOperations](unsafe.Pointer(self), &IID_IBindingOperations)
 }
 
 // BindingOperationsStatics returns the Microsoft.UI.Xaml.Data.IBindingOperationsStatics statics of the
@@ -40580,6 +44323,12 @@ func NewCollectionViewSource() (*CollectionViewSource, error) {
 	return winrt.QueryInterface[CollectionViewSource](unsafe.Pointer(instance), &IID_ICollectionViewSource)
 }
 
+// AsCollectionViewSource queries the instance's ICollectionViewSource interface.
+// The returned reference is owned by the caller.
+func (self *CollectionViewSource) AsCollectionViewSource() (*ICollectionViewSource, error) {
+	return winrt.QueryInterface[ICollectionViewSource](unsafe.Pointer(self), &IID_ICollectionViewSource)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -40604,6 +44353,12 @@ func CollectionViewSourceStatics() (*ICollectionViewSourceStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type CurrentChangingEventArgs struct {
 	ICurrentChangingEventArgs
+}
+
+// AsCurrentChangingEventArgs queries the instance's ICurrentChangingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CurrentChangingEventArgs) AsCurrentChangingEventArgs() (*ICurrentChangingEventArgs, error) {
+	return winrt.QueryInterface[ICurrentChangingEventArgs](unsafe.Pointer(self), &IID_ICurrentChangingEventArgs)
 }
 
 // NewCurrentChangingEventArgs constructs a Microsoft.UI.Xaml.Data.CurrentChangingEventArgs instance through
@@ -40663,6 +44418,12 @@ type DataErrorsChangedEventArgs struct {
 	IDataErrorsChangedEventArgs
 }
 
+// AsDataErrorsChangedEventArgs queries the instance's IDataErrorsChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DataErrorsChangedEventArgs) AsDataErrorsChangedEventArgs() (*IDataErrorsChangedEventArgs, error) {
+	return winrt.QueryInterface[IDataErrorsChangedEventArgs](unsafe.Pointer(self), &IID_IDataErrorsChangedEventArgs)
+}
+
 // CreateInstanceDataErrorsChangedEventArgs constructs a Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs instance through
 // Microsoft.UI.Xaml.Data.IDataErrorsChangedEventArgsFactory.CreateInstance. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -40685,6 +44446,12 @@ func CreateInstanceDataErrorsChangedEventArgs(name string) (*DataErrorsChangedEv
 // the embedded IInspectable → IUnknown chain).
 type ItemIndexRange struct {
 	IItemIndexRange
+}
+
+// AsItemIndexRange queries the instance's IItemIndexRange interface.
+// The returned reference is owned by the caller.
+func (self *ItemIndexRange) AsItemIndexRange() (*IItemIndexRange, error) {
+	return winrt.QueryInterface[IItemIndexRange](unsafe.Pointer(self), &IID_IItemIndexRange)
 }
 
 // NewItemIndexRange constructs a Microsoft.UI.Xaml.Data.ItemIndexRange instance through
@@ -40719,6 +44486,12 @@ type PropertyChangedEventArgs struct {
 	IPropertyChangedEventArgs
 }
 
+// AsPropertyChangedEventArgs queries the instance's IPropertyChangedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PropertyChangedEventArgs) AsPropertyChangedEventArgs() (*IPropertyChangedEventArgs, error) {
+	return winrt.QueryInterface[IPropertyChangedEventArgs](unsafe.Pointer(self), &IID_IPropertyChangedEventArgs)
+}
+
 // NewPropertyChangedEventArgs constructs a Microsoft.UI.Xaml.Data.PropertyChangedEventArgs instance through
 // Microsoft.UI.Xaml.Data.IPropertyChangedEventArgsFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -40749,6 +44522,12 @@ func NewPropertyChangedEventArgs(name string) (*PropertyChangedEventArgs, error)
 // the embedded IInspectable → IUnknown chain).
 type RelativeSource struct {
 	IRelativeSource
+}
+
+// AsRelativeSource queries the instance's IRelativeSource interface.
+// The returned reference is owned by the caller.
+func (self *RelativeSource) AsRelativeSource() (*IRelativeSource, error) {
+	return winrt.QueryInterface[IRelativeSource](unsafe.Pointer(self), &IID_IRelativeSource)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -40788,6 +44567,12 @@ func NewRelativeSource() (*RelativeSource, error) {
 // the embedded IInspectable → IUnknown chain).
 type Block struct {
 	IBlock
+}
+
+// AsBlock queries the instance's IBlock interface.
+// The returned reference is owned by the caller.
+func (self *Block) AsBlock() (*IBlock, error) {
+	return winrt.QueryInterface[IBlock](unsafe.Pointer(self), &IID_IBlock)
 }
 
 // AsTextElement queries the instance's ITextElement interface.
@@ -40855,6 +44640,12 @@ type BlockCollection struct {
 	IVectorOfBlock
 }
 
+// AsVectorOfBlock queries the instance's IVectorOfBlock interface.
+// The returned reference is owned by the caller.
+func (self *BlockCollection) AsVectorOfBlock() (*IVectorOfBlock, error) {
+	return winrt.QueryInterface[IVectorOfBlock](unsafe.Pointer(self), &IID_IVectorOfBlock)
+}
+
 // AsIterableOfBlock queries the instance's IIterableOfBlock interface.
 // The returned reference is owned by the caller.
 func (self *BlockCollection) AsIterableOfBlock() (*IIterableOfBlock, error) {
@@ -40877,6 +44668,12 @@ func NewBold() (*Bold, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Bold](unsafe.Pointer(instance), &IID_IBold)
+}
+
+// AsBold queries the instance's IBold interface.
+// The returned reference is owned by the caller.
+func (self *Bold) AsBold() (*IBold, error) {
+	return winrt.QueryInterface[IBold](unsafe.Pointer(self), &IID_IBold)
 }
 
 // AsSpan queries the instance's ISpan interface.
@@ -40930,6 +44727,12 @@ func NewGlyphs() (*Glyphs, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Glyphs](unsafe.Pointer(instance), &IID_IGlyphs)
+}
+
+// AsGlyphs queries the instance's IGlyphs interface.
+// The returned reference is owned by the caller.
+func (self *Glyphs) AsGlyphs() (*IGlyphs, error) {
+	return winrt.QueryInterface[IGlyphs](unsafe.Pointer(self), &IID_IGlyphs)
 }
 
 // AsFrameworkElement queries the instance's IFrameworkElement interface.
@@ -41032,6 +44835,12 @@ func NewHyperlink() (*Hyperlink, error) {
 	return winrt.QueryInterface[Hyperlink](unsafe.Pointer(instance), &IID_IHyperlink)
 }
 
+// AsHyperlink queries the instance's IHyperlink interface.
+// The returned reference is owned by the caller.
+func (self *Hyperlink) AsHyperlink() (*IHyperlink, error) {
+	return winrt.QueryInterface[IHyperlink](unsafe.Pointer(self), &IID_IHyperlink)
+}
+
 // AsSpan queries the instance's ISpan interface.
 // Inherited from Microsoft.UI.Xaml.Documents.Span.
 // The returned reference is owned by the caller.
@@ -41086,6 +44895,12 @@ type HyperlinkClickEventArgs struct {
 	IHyperlinkClickEventArgs
 }
 
+// AsHyperlinkClickEventArgs queries the instance's IHyperlinkClickEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *HyperlinkClickEventArgs) AsHyperlinkClickEventArgs() (*IHyperlinkClickEventArgs, error) {
+	return winrt.QueryInterface[IHyperlinkClickEventArgs](unsafe.Pointer(self), &IID_IHyperlinkClickEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -41098,6 +44913,12 @@ func (self *HyperlinkClickEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, err
 // the embedded IInspectable → IUnknown chain).
 type Inline struct {
 	IInline
+}
+
+// AsInline queries the instance's IInline interface.
+// The returned reference is owned by the caller.
+func (self *Inline) AsInline() (*IInline, error) {
+	return winrt.QueryInterface[IInline](unsafe.Pointer(self), &IID_IInline)
 }
 
 // AsTextElement queries the instance's ITextElement interface.
@@ -41153,6 +44974,12 @@ type InlineCollection struct {
 	IVectorOfInline
 }
 
+// AsVectorOfInline queries the instance's IVectorOfInline interface.
+// The returned reference is owned by the caller.
+func (self *InlineCollection) AsVectorOfInline() (*IVectorOfInline, error) {
+	return winrt.QueryInterface[IVectorOfInline](unsafe.Pointer(self), &IID_IVectorOfInline)
+}
+
 // AsIterableOfInline queries the instance's IIterableOfInline interface.
 // The returned reference is owned by the caller.
 func (self *InlineCollection) AsIterableOfInline() (*IIterableOfInline, error) {
@@ -41175,6 +45002,12 @@ func NewInlineUIContainer() (*InlineUIContainer, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[InlineUIContainer](unsafe.Pointer(instance), &IID_IInlineUIContainer)
+}
+
+// AsInlineUIContainer queries the instance's IInlineUIContainer interface.
+// The returned reference is owned by the caller.
+func (self *InlineUIContainer) AsInlineUIContainer() (*IInlineUIContainer, error) {
+	return winrt.QueryInterface[IInlineUIContainer](unsafe.Pointer(self), &IID_IInlineUIContainer)
 }
 
 // AsInline queries the instance's IInline interface.
@@ -41221,6 +45054,12 @@ func NewItalic() (*Italic, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Italic](unsafe.Pointer(instance), &IID_IItalic)
+}
+
+// AsItalic queries the instance's IItalic interface.
+// The returned reference is owned by the caller.
+func (self *Italic) AsItalic() (*IItalic, error) {
+	return winrt.QueryInterface[IItalic](unsafe.Pointer(self), &IID_IItalic)
 }
 
 // AsSpan queries the instance's ISpan interface.
@@ -41276,6 +45115,12 @@ func NewLineBreak() (*LineBreak, error) {
 	return winrt.QueryInterface[LineBreak](unsafe.Pointer(instance), &IID_ILineBreak)
 }
 
+// AsLineBreak queries the instance's ILineBreak interface.
+// The returned reference is owned by the caller.
+func (self *LineBreak) AsLineBreak() (*ILineBreak, error) {
+	return winrt.QueryInterface[ILineBreak](unsafe.Pointer(self), &IID_ILineBreak)
+}
+
 // AsInline queries the instance's IInline interface.
 // Inherited from Microsoft.UI.Xaml.Documents.Inline.
 // The returned reference is owned by the caller.
@@ -41320,6 +45165,12 @@ func NewParagraph() (*Paragraph, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Paragraph](unsafe.Pointer(instance), &IID_IParagraph)
+}
+
+// AsParagraph queries the instance's IParagraph interface.
+// The returned reference is owned by the caller.
+func (self *Paragraph) AsParagraph() (*IParagraph, error) {
+	return winrt.QueryInterface[IParagraph](unsafe.Pointer(self), &IID_IParagraph)
 }
 
 // AsBlock queries the instance's IBlock interface.
@@ -41380,6 +45231,12 @@ func NewRun() (*Run, error) {
 	return winrt.QueryInterface[Run](unsafe.Pointer(instance), &IID_IRun)
 }
 
+// AsRun queries the instance's IRun interface.
+// The returned reference is owned by the caller.
+func (self *Run) AsRun() (*IRun, error) {
+	return winrt.QueryInterface[IRun](unsafe.Pointer(self), &IID_IRun)
+}
+
 // AsInline queries the instance's IInline interface.
 // Inherited from Microsoft.UI.Xaml.Documents.Inline.
 // The returned reference is owned by the caller.
@@ -41425,6 +45282,12 @@ func RunStatics() (*IRunStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type Span struct {
 	ISpan
+}
+
+// AsSpan queries the instance's ISpan interface.
+// The returned reference is owned by the caller.
+func (self *Span) AsSpan() (*ISpan, error) {
+	return winrt.QueryInterface[ISpan](unsafe.Pointer(self), &IID_ISpan)
 }
 
 // AsInline queries the instance's IInline interface.
@@ -41487,6 +45350,12 @@ type TextElement struct {
 	ITextElement
 }
 
+// AsTextElement queries the instance's ITextElement interface.
+// The returned reference is owned by the caller.
+func (self *TextElement) AsTextElement() (*ITextElement, error) {
+	return winrt.QueryInterface[ITextElement](unsafe.Pointer(self), &IID_ITextElement)
+}
+
 // AsTextElementOverrides queries the instance's ITextElementOverrides interface.
 // The returned reference is owned by the caller.
 func (self *TextElement) AsTextElementOverrides() (*ITextElementOverrides, error) {
@@ -41517,6 +45386,12 @@ func TextElementStatics() (*ITextElementStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type TextHighlighter struct {
 	ITextHighlighter
+}
+
+// AsTextHighlighter queries the instance's ITextHighlighter interface.
+// The returned reference is owned by the caller.
+func (self *TextHighlighter) AsTextHighlighter() (*ITextHighlighter, error) {
+	return winrt.QueryInterface[ITextHighlighter](unsafe.Pointer(self), &IID_ITextHighlighter)
 }
 
 // TextHighlighterStatics returns the Microsoft.UI.Xaml.Documents.ITextHighlighterStatics statics of the
@@ -41563,6 +45438,12 @@ type TextHighlighterBase struct {
 	ITextHighlighterBase
 }
 
+// AsTextHighlighterBase queries the instance's ITextHighlighterBase interface.
+// The returned reference is owned by the caller.
+func (self *TextHighlighterBase) AsTextHighlighterBase() (*ITextHighlighterBase, error) {
+	return winrt.QueryInterface[ITextHighlighterBase](unsafe.Pointer(self), &IID_ITextHighlighterBase)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -41577,11 +45458,23 @@ type TextPointer struct {
 	ITextPointer
 }
 
+// AsTextPointer queries the instance's ITextPointer interface.
+// The returned reference is owned by the caller.
+func (self *TextPointer) AsTextPointer() (*ITextPointer, error) {
+	return winrt.QueryInterface[ITextPointer](unsafe.Pointer(self), &IID_ITextPointer)
+}
+
 // Typography is the Microsoft.UI.Xaml.Documents.Typography runtime class, surfaced through its
 // default interface ITypography. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type Typography struct {
 	ITypography
+}
+
+// AsTypography queries the instance's ITypography interface.
+// The returned reference is owned by the caller.
+func (self *Typography) AsTypography() (*ITypography, error) {
+	return winrt.QueryInterface[ITypography](unsafe.Pointer(self), &IID_ITypography)
 }
 
 // TypographyStatics returns the Microsoft.UI.Xaml.Documents.ITypographyStatics statics of the
@@ -41612,6 +45505,12 @@ func NewUnderline() (*Underline, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Underline](unsafe.Pointer(instance), &IID_IUnderline)
+}
+
+// AsUnderline queries the instance's IUnderline interface.
+// The returned reference is owned by the caller.
+func (self *Underline) AsUnderline() (*IUnderline, error) {
+	return winrt.QueryInterface[IUnderline](unsafe.Pointer(self), &IID_IUnderline)
 }
 
 // AsSpan queries the instance's ISpan interface.
@@ -41667,6 +45566,12 @@ func NewAccessKeyDisplayDismissedEventArgs() (*AccessKeyDisplayDismissedEventArg
 	return winrt.QueryInterface[AccessKeyDisplayDismissedEventArgs](unsafe.Pointer(instance), &IID_IAccessKeyDisplayDismissedEventArgs)
 }
 
+// AsAccessKeyDisplayDismissedEventArgs queries the instance's IAccessKeyDisplayDismissedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AccessKeyDisplayDismissedEventArgs) AsAccessKeyDisplayDismissedEventArgs() (*IAccessKeyDisplayDismissedEventArgs, error) {
+	return winrt.QueryInterface[IAccessKeyDisplayDismissedEventArgs](unsafe.Pointer(self), &IID_IAccessKeyDisplayDismissedEventArgs)
+}
+
 // AccessKeyDisplayRequestedEventArgs is the Microsoft.UI.Xaml.Input.AccessKeyDisplayRequestedEventArgs runtime class, surfaced through its
 // default interface IAccessKeyDisplayRequestedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -41683,6 +45588,12 @@ func NewAccessKeyDisplayRequestedEventArgs() (*AccessKeyDisplayRequestedEventArg
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AccessKeyDisplayRequestedEventArgs](unsafe.Pointer(instance), &IID_IAccessKeyDisplayRequestedEventArgs)
+}
+
+// AsAccessKeyDisplayRequestedEventArgs queries the instance's IAccessKeyDisplayRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AccessKeyDisplayRequestedEventArgs) AsAccessKeyDisplayRequestedEventArgs() (*IAccessKeyDisplayRequestedEventArgs, error) {
+	return winrt.QueryInterface[IAccessKeyDisplayRequestedEventArgs](unsafe.Pointer(self), &IID_IAccessKeyDisplayRequestedEventArgs)
 }
 
 // AccessKeyInvokedEventArgs is the Microsoft.UI.Xaml.Input.AccessKeyInvokedEventArgs runtime class, surfaced through its
@@ -41703,11 +45614,23 @@ func NewAccessKeyInvokedEventArgs() (*AccessKeyInvokedEventArgs, error) {
 	return winrt.QueryInterface[AccessKeyInvokedEventArgs](unsafe.Pointer(instance), &IID_IAccessKeyInvokedEventArgs)
 }
 
+// AsAccessKeyInvokedEventArgs queries the instance's IAccessKeyInvokedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *AccessKeyInvokedEventArgs) AsAccessKeyInvokedEventArgs() (*IAccessKeyInvokedEventArgs, error) {
+	return winrt.QueryInterface[IAccessKeyInvokedEventArgs](unsafe.Pointer(self), &IID_IAccessKeyInvokedEventArgs)
+}
+
 // AccessKeyManager is the Microsoft.UI.Xaml.Input.AccessKeyManager runtime class, surfaced through its
 // default interface IAccessKeyManager. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type AccessKeyManager struct {
 	IAccessKeyManager
+}
+
+// AsAccessKeyManager queries the instance's IAccessKeyManager interface.
+// The returned reference is owned by the caller.
+func (self *AccessKeyManager) AsAccessKeyManager() (*IAccessKeyManager, error) {
+	return winrt.QueryInterface[IAccessKeyManager](unsafe.Pointer(self), &IID_IAccessKeyManager)
 }
 
 // AccessKeyManagerStatics returns the Microsoft.UI.Xaml.Input.IAccessKeyManagerStatics statics of the
@@ -41741,11 +45664,23 @@ type CanExecuteRequestedEventArgs struct {
 	ICanExecuteRequestedEventArgs
 }
 
+// AsCanExecuteRequestedEventArgs queries the instance's ICanExecuteRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CanExecuteRequestedEventArgs) AsCanExecuteRequestedEventArgs() (*ICanExecuteRequestedEventArgs, error) {
+	return winrt.QueryInterface[ICanExecuteRequestedEventArgs](unsafe.Pointer(self), &IID_ICanExecuteRequestedEventArgs)
+}
+
 // CharacterReceivedRoutedEventArgs is the Microsoft.UI.Xaml.Input.CharacterReceivedRoutedEventArgs runtime class, surfaced through its
 // default interface ICharacterReceivedRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type CharacterReceivedRoutedEventArgs struct {
 	ICharacterReceivedRoutedEventArgs
+}
+
+// AsCharacterReceivedRoutedEventArgs queries the instance's ICharacterReceivedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *CharacterReceivedRoutedEventArgs) AsCharacterReceivedRoutedEventArgs() (*ICharacterReceivedRoutedEventArgs, error) {
+	return winrt.QueryInterface[ICharacterReceivedRoutedEventArgs](unsafe.Pointer(self), &IID_ICharacterReceivedRoutedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -41773,6 +45708,12 @@ func NewContextRequestedEventArgs() (*ContextRequestedEventArgs, error) {
 	return winrt.QueryInterface[ContextRequestedEventArgs](unsafe.Pointer(instance), &IID_IContextRequestedEventArgs)
 }
 
+// AsContextRequestedEventArgs queries the instance's IContextRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ContextRequestedEventArgs) AsContextRequestedEventArgs() (*IContextRequestedEventArgs, error) {
+	return winrt.QueryInterface[IContextRequestedEventArgs](unsafe.Pointer(self), &IID_IContextRequestedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -41798,6 +45739,12 @@ func NewDoubleTappedRoutedEventArgs() (*DoubleTappedRoutedEventArgs, error) {
 	return winrt.QueryInterface[DoubleTappedRoutedEventArgs](unsafe.Pointer(instance), &IID_IDoubleTappedRoutedEventArgs)
 }
 
+// AsDoubleTappedRoutedEventArgs queries the instance's IDoubleTappedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DoubleTappedRoutedEventArgs) AsDoubleTappedRoutedEventArgs() (*IDoubleTappedRoutedEventArgs, error) {
+	return winrt.QueryInterface[IDoubleTappedRoutedEventArgs](unsafe.Pointer(self), &IID_IDoubleTappedRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -41810,6 +45757,12 @@ func (self *DoubleTappedRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs,
 // the embedded IInspectable → IUnknown chain).
 type ExecuteRequestedEventArgs struct {
 	IExecuteRequestedEventArgs
+}
+
+// AsExecuteRequestedEventArgs queries the instance's IExecuteRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ExecuteRequestedEventArgs) AsExecuteRequestedEventArgs() (*IExecuteRequestedEventArgs, error) {
+	return winrt.QueryInterface[IExecuteRequestedEventArgs](unsafe.Pointer(self), &IID_IExecuteRequestedEventArgs)
 }
 
 // FindNextElementOptions is the Microsoft.UI.Xaml.Input.FindNextElementOptions runtime class, surfaced through its
@@ -41830,11 +45783,23 @@ func NewFindNextElementOptions() (*FindNextElementOptions, error) {
 	return winrt.QueryInterface[FindNextElementOptions](unsafe.Pointer(instance), &IID_IFindNextElementOptions)
 }
 
+// AsFindNextElementOptions queries the instance's IFindNextElementOptions interface.
+// The returned reference is owned by the caller.
+func (self *FindNextElementOptions) AsFindNextElementOptions() (*IFindNextElementOptions, error) {
+	return winrt.QueryInterface[IFindNextElementOptions](unsafe.Pointer(self), &IID_IFindNextElementOptions)
+}
+
 // FocusManager is the Microsoft.UI.Xaml.Input.FocusManager runtime class, surfaced through its
 // default interface IFocusManager. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FocusManager struct {
 	IFocusManager
+}
+
+// AsFocusManager queries the instance's IFocusManager interface.
+// The returned reference is owned by the caller.
+func (self *FocusManager) AsFocusManager() (*IFocusManager, error) {
+	return winrt.QueryInterface[IFocusManager](unsafe.Pointer(self), &IID_IFocusManager)
 }
 
 // FocusManagerStatics returns the Microsoft.UI.Xaml.Input.IFocusManagerStatics statics of the
@@ -41856,11 +45821,23 @@ type FocusManagerGotFocusEventArgs struct {
 	IFocusManagerGotFocusEventArgs
 }
 
+// AsFocusManagerGotFocusEventArgs queries the instance's IFocusManagerGotFocusEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FocusManagerGotFocusEventArgs) AsFocusManagerGotFocusEventArgs() (*IFocusManagerGotFocusEventArgs, error) {
+	return winrt.QueryInterface[IFocusManagerGotFocusEventArgs](unsafe.Pointer(self), &IID_IFocusManagerGotFocusEventArgs)
+}
+
 // FocusManagerLostFocusEventArgs is the Microsoft.UI.Xaml.Input.FocusManagerLostFocusEventArgs runtime class, surfaced through its
 // default interface IFocusManagerLostFocusEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type FocusManagerLostFocusEventArgs struct {
 	IFocusManagerLostFocusEventArgs
+}
+
+// AsFocusManagerLostFocusEventArgs queries the instance's IFocusManagerLostFocusEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *FocusManagerLostFocusEventArgs) AsFocusManagerLostFocusEventArgs() (*IFocusManagerLostFocusEventArgs, error) {
+	return winrt.QueryInterface[IFocusManagerLostFocusEventArgs](unsafe.Pointer(self), &IID_IFocusManagerLostFocusEventArgs)
 }
 
 // FocusMovementResult is the Microsoft.UI.Xaml.Input.FocusMovementResult runtime class, surfaced through its
@@ -41870,11 +45847,23 @@ type FocusMovementResult struct {
 	IFocusMovementResult
 }
 
+// AsFocusMovementResult queries the instance's IFocusMovementResult interface.
+// The returned reference is owned by the caller.
+func (self *FocusMovementResult) AsFocusMovementResult() (*IFocusMovementResult, error) {
+	return winrt.QueryInterface[IFocusMovementResult](unsafe.Pointer(self), &IID_IFocusMovementResult)
+}
+
 // GettingFocusEventArgs is the Microsoft.UI.Xaml.Input.GettingFocusEventArgs runtime class, surfaced through its
 // default interface IGettingFocusEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type GettingFocusEventArgs struct {
 	IGettingFocusEventArgs
+}
+
+// AsGettingFocusEventArgs queries the instance's IGettingFocusEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *GettingFocusEventArgs) AsGettingFocusEventArgs() (*IGettingFocusEventArgs, error) {
+	return winrt.QueryInterface[IGettingFocusEventArgs](unsafe.Pointer(self), &IID_IGettingFocusEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -41902,6 +45891,12 @@ func NewHoldingRoutedEventArgs() (*HoldingRoutedEventArgs, error) {
 	return winrt.QueryInterface[HoldingRoutedEventArgs](unsafe.Pointer(instance), &IID_IHoldingRoutedEventArgs)
 }
 
+// AsHoldingRoutedEventArgs queries the instance's IHoldingRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *HoldingRoutedEventArgs) AsHoldingRoutedEventArgs() (*IHoldingRoutedEventArgs, error) {
+	return winrt.QueryInterface[IHoldingRoutedEventArgs](unsafe.Pointer(self), &IID_IHoldingRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -41916,6 +45911,12 @@ type InertiaExpansionBehavior struct {
 	IInertiaExpansionBehavior
 }
 
+// AsInertiaExpansionBehavior queries the instance's IInertiaExpansionBehavior interface.
+// The returned reference is owned by the caller.
+func (self *InertiaExpansionBehavior) AsInertiaExpansionBehavior() (*IInertiaExpansionBehavior, error) {
+	return winrt.QueryInterface[IInertiaExpansionBehavior](unsafe.Pointer(self), &IID_IInertiaExpansionBehavior)
+}
+
 // InertiaRotationBehavior is the Microsoft.UI.Xaml.Input.InertiaRotationBehavior runtime class, surfaced through its
 // default interface IInertiaRotationBehavior. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -41923,11 +45924,23 @@ type InertiaRotationBehavior struct {
 	IInertiaRotationBehavior
 }
 
+// AsInertiaRotationBehavior queries the instance's IInertiaRotationBehavior interface.
+// The returned reference is owned by the caller.
+func (self *InertiaRotationBehavior) AsInertiaRotationBehavior() (*IInertiaRotationBehavior, error) {
+	return winrt.QueryInterface[IInertiaRotationBehavior](unsafe.Pointer(self), &IID_IInertiaRotationBehavior)
+}
+
 // InertiaTranslationBehavior is the Microsoft.UI.Xaml.Input.InertiaTranslationBehavior runtime class, surfaced through its
 // default interface IInertiaTranslationBehavior. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type InertiaTranslationBehavior struct {
 	IInertiaTranslationBehavior
+}
+
+// AsInertiaTranslationBehavior queries the instance's IInertiaTranslationBehavior interface.
+// The returned reference is owned by the caller.
+func (self *InertiaTranslationBehavior) AsInertiaTranslationBehavior() (*IInertiaTranslationBehavior, error) {
+	return winrt.QueryInterface[IInertiaTranslationBehavior](unsafe.Pointer(self), &IID_IInertiaTranslationBehavior)
 }
 
 // InputScope is the Microsoft.UI.Xaml.Input.InputScope runtime class, surfaced through its
@@ -41946,6 +45959,12 @@ func NewInputScope() (*InputScope, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[InputScope](unsafe.Pointer(instance), &IID_IInputScope)
+}
+
+// AsInputScope queries the instance's IInputScope interface.
+// The returned reference is owned by the caller.
+func (self *InputScope) AsInputScope() (*IInputScope, error) {
+	return winrt.QueryInterface[IInputScope](unsafe.Pointer(self), &IID_IInputScope)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -41971,6 +45990,12 @@ func NewInputScopeName() (*InputScopeName, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[InputScopeName](unsafe.Pointer(instance), &IID_IInputScopeName)
+}
+
+// AsInputScopeName queries the instance's IInputScopeName interface.
+// The returned reference is owned by the caller.
+func (self *InputScopeName) AsInputScopeName() (*IInputScopeName, error) {
+	return winrt.QueryInterface[IInputScopeName](unsafe.Pointer(self), &IID_IInputScopeName)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -42004,6 +46029,12 @@ type KeyRoutedEventArgs struct {
 	IKeyRoutedEventArgs
 }
 
+// AsKeyRoutedEventArgs queries the instance's IKeyRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *KeyRoutedEventArgs) AsKeyRoutedEventArgs() (*IKeyRoutedEventArgs, error) {
+	return winrt.QueryInterface[IKeyRoutedEventArgs](unsafe.Pointer(self), &IID_IKeyRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -42016,6 +46047,12 @@ func (self *KeyRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error) {
 // the embedded IInspectable → IUnknown chain).
 type KeyboardAccelerator struct {
 	IKeyboardAccelerator
+}
+
+// AsKeyboardAccelerator queries the instance's IKeyboardAccelerator interface.
+// The returned reference is owned by the caller.
+func (self *KeyboardAccelerator) AsKeyboardAccelerator() (*IKeyboardAccelerator, error) {
+	return winrt.QueryInterface[IKeyboardAccelerator](unsafe.Pointer(self), &IID_IKeyboardAccelerator)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -42069,11 +46106,23 @@ type KeyboardAcceleratorInvokedEventArgs struct {
 	IKeyboardAcceleratorInvokedEventArgs
 }
 
+// AsKeyboardAcceleratorInvokedEventArgs queries the instance's IKeyboardAcceleratorInvokedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *KeyboardAcceleratorInvokedEventArgs) AsKeyboardAcceleratorInvokedEventArgs() (*IKeyboardAcceleratorInvokedEventArgs, error) {
+	return winrt.QueryInterface[IKeyboardAcceleratorInvokedEventArgs](unsafe.Pointer(self), &IID_IKeyboardAcceleratorInvokedEventArgs)
+}
+
 // LosingFocusEventArgs is the Microsoft.UI.Xaml.Input.LosingFocusEventArgs runtime class, surfaced through its
 // default interface ILosingFocusEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type LosingFocusEventArgs struct {
 	ILosingFocusEventArgs
+}
+
+// AsLosingFocusEventArgs queries the instance's ILosingFocusEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *LosingFocusEventArgs) AsLosingFocusEventArgs() (*ILosingFocusEventArgs, error) {
+	return winrt.QueryInterface[ILosingFocusEventArgs](unsafe.Pointer(self), &IID_ILosingFocusEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -42101,6 +46150,12 @@ func NewManipulationCompletedRoutedEventArgs() (*ManipulationCompletedRoutedEven
 	return winrt.QueryInterface[ManipulationCompletedRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationCompletedRoutedEventArgs)
 }
 
+// AsManipulationCompletedRoutedEventArgs queries the instance's IManipulationCompletedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationCompletedRoutedEventArgs) AsManipulationCompletedRoutedEventArgs() (*IManipulationCompletedRoutedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationCompletedRoutedEventArgs](unsafe.Pointer(self), &IID_IManipulationCompletedRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -42124,6 +46179,12 @@ func NewManipulationDeltaRoutedEventArgs() (*ManipulationDeltaRoutedEventArgs, e
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ManipulationDeltaRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationDeltaRoutedEventArgs)
+}
+
+// AsManipulationDeltaRoutedEventArgs queries the instance's IManipulationDeltaRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationDeltaRoutedEventArgs) AsManipulationDeltaRoutedEventArgs() (*IManipulationDeltaRoutedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationDeltaRoutedEventArgs](unsafe.Pointer(self), &IID_IManipulationDeltaRoutedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -42151,6 +46212,12 @@ func NewManipulationInertiaStartingRoutedEventArgs() (*ManipulationInertiaStarti
 	return winrt.QueryInterface[ManipulationInertiaStartingRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationInertiaStartingRoutedEventArgs)
 }
 
+// AsManipulationInertiaStartingRoutedEventArgs queries the instance's IManipulationInertiaStartingRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationInertiaStartingRoutedEventArgs) AsManipulationInertiaStartingRoutedEventArgs() (*IManipulationInertiaStartingRoutedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationInertiaStartingRoutedEventArgs](unsafe.Pointer(self), &IID_IManipulationInertiaStartingRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -42176,6 +46243,12 @@ func NewManipulationPivot() (*ManipulationPivot, error) {
 	return winrt.QueryInterface[ManipulationPivot](unsafe.Pointer(instance), &IID_IManipulationPivot)
 }
 
+// AsManipulationPivot queries the instance's IManipulationPivot interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationPivot) AsManipulationPivot() (*IManipulationPivot, error) {
+	return winrt.QueryInterface[IManipulationPivot](unsafe.Pointer(self), &IID_IManipulationPivot)
+}
+
 // CreateInstanceWithCenterAndRadius constructs a Microsoft.UI.Xaml.Input.ManipulationPivot instance through
 // Microsoft.UI.Xaml.Input.IManipulationPivotFactory.CreateInstanceWithCenterAndRadius. The activation factory is fetched
 // per call (a factory cache is a future optimization).
@@ -42198,6 +46271,12 @@ func CreateInstanceWithCenterAndRadius(center wrtfoundation.Point, radius float6
 // the embedded IInspectable → IUnknown chain).
 type ManipulationStartedRoutedEventArgs struct {
 	IManipulationStartedRoutedEventArgs
+}
+
+// AsManipulationStartedRoutedEventArgs queries the instance's IManipulationStartedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationStartedRoutedEventArgs) AsManipulationStartedRoutedEventArgs() (*IManipulationStartedRoutedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationStartedRoutedEventArgs](unsafe.Pointer(self), &IID_IManipulationStartedRoutedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -42250,6 +46329,12 @@ func NewManipulationStartingRoutedEventArgs() (*ManipulationStartingRoutedEventA
 	return winrt.QueryInterface[ManipulationStartingRoutedEventArgs](unsafe.Pointer(instance), &IID_IManipulationStartingRoutedEventArgs)
 }
 
+// AsManipulationStartingRoutedEventArgs queries the instance's IManipulationStartingRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ManipulationStartingRoutedEventArgs) AsManipulationStartingRoutedEventArgs() (*IManipulationStartingRoutedEventArgs, error) {
+	return winrt.QueryInterface[IManipulationStartingRoutedEventArgs](unsafe.Pointer(self), &IID_IManipulationStartingRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -42262,6 +46347,12 @@ func (self *ManipulationStartingRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEv
 // the embedded IInspectable → IUnknown chain).
 type NoFocusCandidateFoundEventArgs struct {
 	INoFocusCandidateFoundEventArgs
+}
+
+// AsNoFocusCandidateFoundEventArgs queries the instance's INoFocusCandidateFoundEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NoFocusCandidateFoundEventArgs) AsNoFocusCandidateFoundEventArgs() (*INoFocusCandidateFoundEventArgs, error) {
+	return winrt.QueryInterface[INoFocusCandidateFoundEventArgs](unsafe.Pointer(self), &IID_INoFocusCandidateFoundEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -42278,11 +46369,23 @@ type Pointer struct {
 	IPointer
 }
 
+// AsPointer queries the instance's IPointer interface.
+// The returned reference is owned by the caller.
+func (self *Pointer) AsPointer() (*IPointer, error) {
+	return winrt.QueryInterface[IPointer](unsafe.Pointer(self), &IID_IPointer)
+}
+
 // PointerRoutedEventArgs is the Microsoft.UI.Xaml.Input.PointerRoutedEventArgs runtime class, surfaced through its
 // default interface IPointerRoutedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PointerRoutedEventArgs struct {
 	IPointerRoutedEventArgs
+}
+
+// AsPointerRoutedEventArgs queries the instance's IPointerRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *PointerRoutedEventArgs) AsPointerRoutedEventArgs() (*IPointerRoutedEventArgs, error) {
+	return winrt.QueryInterface[IPointerRoutedEventArgs](unsafe.Pointer(self), &IID_IPointerRoutedEventArgs)
 }
 
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
@@ -42297,6 +46400,12 @@ func (self *PointerRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, erro
 // the embedded IInspectable → IUnknown chain).
 type ProcessKeyboardAcceleratorEventArgs struct {
 	IProcessKeyboardAcceleratorEventArgs
+}
+
+// AsProcessKeyboardAcceleratorEventArgs queries the instance's IProcessKeyboardAcceleratorEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *ProcessKeyboardAcceleratorEventArgs) AsProcessKeyboardAcceleratorEventArgs() (*IProcessKeyboardAcceleratorEventArgs, error) {
+	return winrt.QueryInterface[IProcessKeyboardAcceleratorEventArgs](unsafe.Pointer(self), &IID_IProcessKeyboardAcceleratorEventArgs)
 }
 
 // RightTappedRoutedEventArgs is the Microsoft.UI.Xaml.Input.RightTappedRoutedEventArgs runtime class, surfaced through its
@@ -42317,6 +46426,12 @@ func NewRightTappedRoutedEventArgs() (*RightTappedRoutedEventArgs, error) {
 	return winrt.QueryInterface[RightTappedRoutedEventArgs](unsafe.Pointer(instance), &IID_IRightTappedRoutedEventArgs)
 }
 
+// AsRightTappedRoutedEventArgs queries the instance's IRightTappedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RightTappedRoutedEventArgs) AsRightTappedRoutedEventArgs() (*IRightTappedRoutedEventArgs, error) {
+	return winrt.QueryInterface[IRightTappedRoutedEventArgs](unsafe.Pointer(self), &IID_IRightTappedRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -42329,6 +46444,12 @@ func (self *RightTappedRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, 
 // the embedded IInspectable → IUnknown chain).
 type StandardUICommand struct {
 	IStandardUICommand
+}
+
+// AsStandardUICommand queries the instance's IStandardUICommand interface.
+// The returned reference is owned by the caller.
+func (self *StandardUICommand) AsStandardUICommand() (*IStandardUICommand, error) {
+	return winrt.QueryInterface[IStandardUICommand](unsafe.Pointer(self), &IID_IStandardUICommand)
 }
 
 // AsXamlUICommand queries the instance's IXamlUICommand interface.
@@ -42432,6 +46553,12 @@ func NewTappedRoutedEventArgs() (*TappedRoutedEventArgs, error) {
 	return winrt.QueryInterface[TappedRoutedEventArgs](unsafe.Pointer(instance), &IID_ITappedRoutedEventArgs)
 }
 
+// AsTappedRoutedEventArgs queries the instance's ITappedRoutedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *TappedRoutedEventArgs) AsTappedRoutedEventArgs() (*ITappedRoutedEventArgs, error) {
+	return winrt.QueryInterface[ITappedRoutedEventArgs](unsafe.Pointer(self), &IID_ITappedRoutedEventArgs)
+}
+
 // AsRoutedEventArgs queries the instance's IRoutedEventArgs interface.
 // Inherited from Microsoft.UI.Xaml.RoutedEventArgs.
 // The returned reference is owned by the caller.
@@ -42444,6 +46571,12 @@ func (self *TappedRoutedEventArgs) AsRoutedEventArgs() (*IRoutedEventArgs, error
 // the embedded IInspectable → IUnknown chain).
 type XamlUICommand struct {
 	IXamlUICommand
+}
+
+// AsXamlUICommand queries the instance's IXamlUICommand interface.
+// The returned reference is owned by the caller.
+func (self *XamlUICommand) AsXamlUICommand() (*IXamlUICommand, error) {
+	return winrt.QueryInterface[IXamlUICommand](unsafe.Pointer(self), &IID_IXamlUICommand)
 }
 
 // AsCommand queries the instance's ICommand interface.
@@ -42501,6 +46634,12 @@ func NewXamlUICommand() (*XamlUICommand, error) {
 // the embedded IInspectable → IUnknown chain).
 type AcrylicBrush struct {
 	IAcrylicBrush
+}
+
+// AsAcrylicBrush queries the instance's IAcrylicBrush interface.
+// The returned reference is owned by the caller.
+func (self *AcrylicBrush) AsAcrylicBrush() (*IAcrylicBrush, error) {
+	return winrt.QueryInterface[IAcrylicBrush](unsafe.Pointer(self), &IID_IAcrylicBrush)
 }
 
 // AsAcrylicBrush2 queries the instance's IAcrylicBrush2 interface.
@@ -42625,6 +46764,12 @@ func NewArcSegment() (*ArcSegment, error) {
 	return winrt.QueryInterface[ArcSegment](unsafe.Pointer(instance), &IID_IArcSegment)
 }
 
+// AsArcSegment queries the instance's IArcSegment interface.
+// The returned reference is owned by the caller.
+func (self *ArcSegment) AsArcSegment() (*IArcSegment, error) {
+	return winrt.QueryInterface[IArcSegment](unsafe.Pointer(self), &IID_IArcSegment)
+}
+
 // AsPathSegment queries the instance's IPathSegment interface.
 // Inherited from Microsoft.UI.Xaml.Media.PathSegment.
 // The returned reference is owned by the caller.
@@ -42667,6 +46812,12 @@ func NewBezierSegment() (*BezierSegment, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BezierSegment](unsafe.Pointer(instance), &IID_IBezierSegment)
+}
+
+// AsBezierSegment queries the instance's IBezierSegment interface.
+// The returned reference is owned by the caller.
+func (self *BezierSegment) AsBezierSegment() (*IBezierSegment, error) {
+	return winrt.QueryInterface[IBezierSegment](unsafe.Pointer(self), &IID_IBezierSegment)
 }
 
 // AsPathSegment queries the instance's IPathSegment interface.
@@ -42713,6 +46864,12 @@ func NewBitmapCache() (*BitmapCache, error) {
 	return winrt.QueryInterface[BitmapCache](unsafe.Pointer(instance), &IID_IBitmapCache)
 }
 
+// AsBitmapCache queries the instance's IBitmapCache interface.
+// The returned reference is owned by the caller.
+func (self *BitmapCache) AsBitmapCache() (*IBitmapCache, error) {
+	return winrt.QueryInterface[IBitmapCache](unsafe.Pointer(self), &IID_IBitmapCache)
+}
+
 // AsCacheMode queries the instance's ICacheMode interface.
 // Inherited from Microsoft.UI.Xaml.Media.CacheMode.
 // The returned reference is owned by the caller.
@@ -42732,6 +46889,12 @@ func (self *BitmapCache) AsDependencyObject() (*IDependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type Brush struct {
 	IBrush
+}
+
+// AsBrush queries the instance's IBrush interface.
+// The returned reference is owned by the caller.
+func (self *Brush) AsBrush() (*IBrush, error) {
+	return winrt.QueryInterface[IBrush](unsafe.Pointer(self), &IID_IBrush)
 }
 
 // AsBrushOverrides queries the instance's IBrushOverrides interface.
@@ -42808,6 +46971,12 @@ func NewBrushCollection() (*BrushCollection, error) {
 	return winrt.QueryInterface[BrushCollection](unsafe.Pointer(instance), &IID_IVectorOfBrush)
 }
 
+// AsVectorOfBrush queries the instance's IVectorOfBrush interface.
+// The returned reference is owned by the caller.
+func (self *BrushCollection) AsVectorOfBrush() (*IVectorOfBrush, error) {
+	return winrt.QueryInterface[IVectorOfBrush](unsafe.Pointer(self), &IID_IVectorOfBrush)
+}
+
 // AsIterableOfBrush queries the instance's IIterableOfBrush interface.
 // The returned reference is owned by the caller.
 func (self *BrushCollection) AsIterableOfBrush() (*IIterableOfBrush, error) {
@@ -42819,6 +46988,12 @@ func (self *BrushCollection) AsIterableOfBrush() (*IIterableOfBrush, error) {
 // the embedded IInspectable → IUnknown chain).
 type CacheMode struct {
 	ICacheMode
+}
+
+// AsCacheMode queries the instance's ICacheMode interface.
+// The returned reference is owned by the caller.
+func (self *CacheMode) AsCacheMode() (*ICacheMode, error) {
+	return winrt.QueryInterface[ICacheMode](unsafe.Pointer(self), &IID_ICacheMode)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -42871,6 +47046,12 @@ func NewCompositeTransform() (*CompositeTransform, error) {
 	return winrt.QueryInterface[CompositeTransform](unsafe.Pointer(instance), &IID_ICompositeTransform)
 }
 
+// AsCompositeTransform queries the instance's ICompositeTransform interface.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform) AsCompositeTransform() (*ICompositeTransform, error) {
+	return winrt.QueryInterface[ICompositeTransform](unsafe.Pointer(self), &IID_ICompositeTransform)
+}
+
 // AsTransform queries the instance's ITransform interface.
 // Inherited from Microsoft.UI.Xaml.Media.Transform.
 // The returned reference is owned by the caller.
@@ -42918,6 +47099,12 @@ type CompositionTarget struct {
 	ICompositionTarget
 }
 
+// AsCompositionTarget queries the instance's ICompositionTarget interface.
+// The returned reference is owned by the caller.
+func (self *CompositionTarget) AsCompositionTarget() (*ICompositionTarget, error) {
+	return winrt.QueryInterface[ICompositionTarget](unsafe.Pointer(self), &IID_ICompositionTarget)
+}
+
 // CompositionTargetStatics returns the Microsoft.UI.Xaml.Media.ICompositionTargetStatics statics of the
 // Microsoft.UI.Xaml.Media.CompositionTarget runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -42935,6 +47122,12 @@ func CompositionTargetStatics() (*ICompositionTargetStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type DesktopAcrylicBackdrop struct {
 	IDesktopAcrylicBackdrop
+}
+
+// AsDesktopAcrylicBackdrop queries the instance's IDesktopAcrylicBackdrop interface.
+// The returned reference is owned by the caller.
+func (self *DesktopAcrylicBackdrop) AsDesktopAcrylicBackdrop() (*IDesktopAcrylicBackdrop, error) {
+	return winrt.QueryInterface[IDesktopAcrylicBackdrop](unsafe.Pointer(self), &IID_IDesktopAcrylicBackdrop)
 }
 
 // AsSystemBackdrop queries the instance's ISystemBackdrop interface.
@@ -43001,6 +47194,12 @@ func NewDoubleCollection() (*DoubleCollection, error) {
 	return winrt.QueryInterface[DoubleCollection](unsafe.Pointer(instance), &IID_IVectorOfDouble)
 }
 
+// AsVectorOfDouble queries the instance's IVectorOfDouble interface.
+// The returned reference is owned by the caller.
+func (self *DoubleCollection) AsVectorOfDouble() (*IVectorOfDouble, error) {
+	return winrt.QueryInterface[IVectorOfDouble](unsafe.Pointer(self), &IID_IVectorOfDouble)
+}
+
 // AsIterableOfDouble queries the instance's IIterableOfDouble interface.
 // The returned reference is owned by the caller.
 func (self *DoubleCollection) AsIterableOfDouble() (*IIterableOfDouble, error) {
@@ -43023,6 +47222,12 @@ func NewEllipseGeometry() (*EllipseGeometry, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[EllipseGeometry](unsafe.Pointer(instance), &IID_IEllipseGeometry)
+}
+
+// AsEllipseGeometry queries the instance's IEllipseGeometry interface.
+// The returned reference is owned by the caller.
+func (self *EllipseGeometry) AsEllipseGeometry() (*IEllipseGeometry, error) {
+	return winrt.QueryInterface[IEllipseGeometry](unsafe.Pointer(self), &IID_IEllipseGeometry)
 }
 
 // AsGeometry queries the instance's IGeometry interface.
@@ -43056,6 +47261,12 @@ func EllipseGeometryStatics() (*IEllipseGeometryStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type FontFamily struct {
 	IFontFamily
+}
+
+// AsFontFamily queries the instance's IFontFamily interface.
+// The returned reference is owned by the caller.
+func (self *FontFamily) AsFontFamily() (*IFontFamily, error) {
+	return winrt.QueryInterface[IFontFamily](unsafe.Pointer(self), &IID_IFontFamily)
 }
 
 // FontFamilyStatics returns the Microsoft.UI.Xaml.Media.IFontFamilyStatics statics of the
@@ -43100,6 +47311,12 @@ func NewFontFamilyWithName(familyName string) (*FontFamily, error) {
 // the embedded IInspectable → IUnknown chain).
 type GeneralTransform struct {
 	IGeneralTransform
+}
+
+// AsGeneralTransform queries the instance's IGeneralTransform interface.
+// The returned reference is owned by the caller.
+func (self *GeneralTransform) AsGeneralTransform() (*IGeneralTransform, error) {
+	return winrt.QueryInterface[IGeneralTransform](unsafe.Pointer(self), &IID_IGeneralTransform)
 }
 
 // AsGeneralTransformOverrides queries the instance's IGeneralTransformOverrides interface.
@@ -43147,6 +47364,12 @@ type Geometry struct {
 	IGeometry
 }
 
+// AsGeometry queries the instance's IGeometry interface.
+// The returned reference is owned by the caller.
+func (self *Geometry) AsGeometry() (*IGeometry, error) {
+	return winrt.QueryInterface[IGeometry](unsafe.Pointer(self), &IID_IGeometry)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -43184,6 +47407,12 @@ func NewGeometryCollection() (*GeometryCollection, error) {
 	return winrt.QueryInterface[GeometryCollection](unsafe.Pointer(instance), &IID_IVectorOfGeometry)
 }
 
+// AsVectorOfGeometry queries the instance's IVectorOfGeometry interface.
+// The returned reference is owned by the caller.
+func (self *GeometryCollection) AsVectorOfGeometry() (*IVectorOfGeometry, error) {
+	return winrt.QueryInterface[IVectorOfGeometry](unsafe.Pointer(self), &IID_IVectorOfGeometry)
+}
+
 // AsIterableOfGeometry queries the instance's IIterableOfGeometry interface.
 // The returned reference is owned by the caller.
 func (self *GeometryCollection) AsIterableOfGeometry() (*IIterableOfGeometry, error) {
@@ -43206,6 +47435,12 @@ func NewGeometryGroup() (*GeometryGroup, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[GeometryGroup](unsafe.Pointer(instance), &IID_IGeometryGroup)
+}
+
+// AsGeometryGroup queries the instance's IGeometryGroup interface.
+// The returned reference is owned by the caller.
+func (self *GeometryGroup) AsGeometryGroup() (*IGeometryGroup, error) {
+	return winrt.QueryInterface[IGeometryGroup](unsafe.Pointer(self), &IID_IGeometryGroup)
 }
 
 // AsGeometry queries the instance's IGeometry interface.
@@ -43239,6 +47474,12 @@ func GeometryGroupStatics() (*IGeometryGroupStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type GradientBrush struct {
 	IGradientBrush
+}
+
+// AsGradientBrush queries the instance's IGradientBrush interface.
+// The returned reference is owned by the caller.
+func (self *GradientBrush) AsGradientBrush() (*IGradientBrush, error) {
+	return winrt.QueryInterface[IGradientBrush](unsafe.Pointer(self), &IID_IGradientBrush)
 }
 
 // AsBrush queries the instance's IBrush interface.
@@ -43324,6 +47565,12 @@ func NewGradientStop() (*GradientStop, error) {
 	return winrt.QueryInterface[GradientStop](unsafe.Pointer(instance), &IID_IGradientStop)
 }
 
+// AsGradientStop queries the instance's IGradientStop interface.
+// The returned reference is owned by the caller.
+func (self *GradientStop) AsGradientStop() (*IGradientStop, error) {
+	return winrt.QueryInterface[IGradientStop](unsafe.Pointer(self), &IID_IGradientStop)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -43361,6 +47608,12 @@ func NewGradientStopCollection() (*GradientStopCollection, error) {
 	return winrt.QueryInterface[GradientStopCollection](unsafe.Pointer(instance), &IID_IVectorOfGradientStop)
 }
 
+// AsVectorOfGradientStop queries the instance's IVectorOfGradientStop interface.
+// The returned reference is owned by the caller.
+func (self *GradientStopCollection) AsVectorOfGradientStop() (*IVectorOfGradientStop, error) {
+	return winrt.QueryInterface[IVectorOfGradientStop](unsafe.Pointer(self), &IID_IVectorOfGradientStop)
+}
+
 // AsIterableOfGradientStop queries the instance's IIterableOfGradientStop interface.
 // The returned reference is owned by the caller.
 func (self *GradientStopCollection) AsIterableOfGradientStop() (*IIterableOfGradientStop, error) {
@@ -43383,6 +47636,12 @@ func NewImageBrush() (*ImageBrush, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ImageBrush](unsafe.Pointer(instance), &IID_IImageBrush)
+}
+
+// AsImageBrush queries the instance's IImageBrush interface.
+// The returned reference is owned by the caller.
+func (self *ImageBrush) AsImageBrush() (*IImageBrush, error) {
+	return winrt.QueryInterface[IImageBrush](unsafe.Pointer(self), &IID_IImageBrush)
 }
 
 // AsTileBrush queries the instance's ITileBrush interface.
@@ -43439,6 +47698,12 @@ type ImageSource struct {
 	IImageSource
 }
 
+// AsImageSource queries the instance's IImageSource interface.
+// The returned reference is owned by the caller.
+func (self *ImageSource) AsImageSource() (*IImageSource, error) {
+	return winrt.QueryInterface[IImageSource](unsafe.Pointer(self), &IID_IImageSource)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -43462,6 +47727,12 @@ func NewLineGeometry() (*LineGeometry, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LineGeometry](unsafe.Pointer(instance), &IID_ILineGeometry)
+}
+
+// AsLineGeometry queries the instance's ILineGeometry interface.
+// The returned reference is owned by the caller.
+func (self *LineGeometry) AsLineGeometry() (*ILineGeometry, error) {
+	return winrt.QueryInterface[ILineGeometry](unsafe.Pointer(self), &IID_ILineGeometry)
 }
 
 // AsGeometry queries the instance's IGeometry interface.
@@ -43508,6 +47779,12 @@ func NewLineSegment() (*LineSegment, error) {
 	return winrt.QueryInterface[LineSegment](unsafe.Pointer(instance), &IID_ILineSegment)
 }
 
+// AsLineSegment queries the instance's ILineSegment interface.
+// The returned reference is owned by the caller.
+func (self *LineSegment) AsLineSegment() (*ILineSegment, error) {
+	return winrt.QueryInterface[ILineSegment](unsafe.Pointer(self), &IID_ILineSegment)
+}
+
 // AsPathSegment queries the instance's IPathSegment interface.
 // Inherited from Microsoft.UI.Xaml.Media.PathSegment.
 // The returned reference is owned by the caller.
@@ -43550,6 +47827,12 @@ func NewLinearGradientBrush() (*LinearGradientBrush, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LinearGradientBrush](unsafe.Pointer(instance), &IID_ILinearGradientBrush)
+}
+
+// AsLinearGradientBrush queries the instance's ILinearGradientBrush interface.
+// The returned reference is owned by the caller.
+func (self *LinearGradientBrush) AsLinearGradientBrush() (*ILinearGradientBrush, error) {
+	return winrt.QueryInterface[ILinearGradientBrush](unsafe.Pointer(self), &IID_ILinearGradientBrush)
 }
 
 // AsGradientBrush queries the instance's IGradientBrush interface.
@@ -43623,11 +47906,23 @@ type LoadedImageSourceLoadCompletedEventArgs struct {
 	ILoadedImageSourceLoadCompletedEventArgs
 }
 
+// AsLoadedImageSourceLoadCompletedEventArgs queries the instance's ILoadedImageSourceLoadCompletedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *LoadedImageSourceLoadCompletedEventArgs) AsLoadedImageSourceLoadCompletedEventArgs() (*ILoadedImageSourceLoadCompletedEventArgs, error) {
+	return winrt.QueryInterface[ILoadedImageSourceLoadCompletedEventArgs](unsafe.Pointer(self), &IID_ILoadedImageSourceLoadCompletedEventArgs)
+}
+
 // LoadedImageSurface is the Microsoft.UI.Xaml.Media.LoadedImageSurface runtime class, surfaced through its
 // default interface ILoadedImageSurface. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type LoadedImageSurface struct {
 	ILoadedImageSurface
+}
+
+// AsLoadedImageSurface queries the instance's ILoadedImageSurface interface.
+// The returned reference is owned by the caller.
+func (self *LoadedImageSurface) AsLoadedImageSurface() (*ILoadedImageSurface, error) {
+	return winrt.QueryInterface[ILoadedImageSurface](unsafe.Pointer(self), &IID_ILoadedImageSurface)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
@@ -43672,6 +47967,12 @@ func NewMatrix3DProjection() (*Matrix3DProjection, error) {
 	return winrt.QueryInterface[Matrix3DProjection](unsafe.Pointer(instance), &IID_IMatrix3DProjection)
 }
 
+// AsMatrix3DProjection queries the instance's IMatrix3DProjection interface.
+// The returned reference is owned by the caller.
+func (self *Matrix3DProjection) AsMatrix3DProjection() (*IMatrix3DProjection, error) {
+	return winrt.QueryInterface[IMatrix3DProjection](unsafe.Pointer(self), &IID_IMatrix3DProjection)
+}
+
 // AsProjection queries the instance's IProjection interface.
 // Inherited from Microsoft.UI.Xaml.Media.Projection.
 // The returned reference is owned by the caller.
@@ -43705,6 +48006,12 @@ type MatrixHelper struct {
 	IMatrixHelper
 }
 
+// AsMatrixHelper queries the instance's IMatrixHelper interface.
+// The returned reference is owned by the caller.
+func (self *MatrixHelper) AsMatrixHelper() (*IMatrixHelper, error) {
+	return winrt.QueryInterface[IMatrixHelper](unsafe.Pointer(self), &IID_IMatrixHelper)
+}
+
 // MatrixHelperStatics returns the Microsoft.UI.Xaml.Media.IMatrixHelperStatics statics of the
 // Microsoft.UI.Xaml.Media.MatrixHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -43733,6 +48040,12 @@ func NewMatrixTransform() (*MatrixTransform, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[MatrixTransform](unsafe.Pointer(instance), &IID_IMatrixTransform)
+}
+
+// AsMatrixTransform queries the instance's IMatrixTransform interface.
+// The returned reference is owned by the caller.
+func (self *MatrixTransform) AsMatrixTransform() (*IMatrixTransform, error) {
+	return winrt.QueryInterface[IMatrixTransform](unsafe.Pointer(self), &IID_IMatrixTransform)
 }
 
 // AsTransform queries the instance's ITransform interface.
@@ -43782,11 +48095,23 @@ type MediaTransportControlsThumbnailRequestedEventArgs struct {
 	IMediaTransportControlsThumbnailRequestedEventArgs
 }
 
+// AsMediaTransportControlsThumbnailRequestedEventArgs queries the instance's IMediaTransportControlsThumbnailRequestedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *MediaTransportControlsThumbnailRequestedEventArgs) AsMediaTransportControlsThumbnailRequestedEventArgs() (*IMediaTransportControlsThumbnailRequestedEventArgs, error) {
+	return winrt.QueryInterface[IMediaTransportControlsThumbnailRequestedEventArgs](unsafe.Pointer(self), &IID_IMediaTransportControlsThumbnailRequestedEventArgs)
+}
+
 // MicaBackdrop is the Microsoft.UI.Xaml.Media.MicaBackdrop runtime class, surfaced through its
 // default interface IMicaBackdrop. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type MicaBackdrop struct {
 	IMicaBackdrop
+}
+
+// AsMicaBackdrop queries the instance's IMicaBackdrop interface.
+// The returned reference is owned by the caller.
+func (self *MicaBackdrop) AsMicaBackdrop() (*IMicaBackdrop, error) {
+	return winrt.QueryInterface[IMicaBackdrop](unsafe.Pointer(self), &IID_IMicaBackdrop)
 }
 
 // AsSystemBackdrop queries the instance's ISystemBackdrop interface.
@@ -43865,6 +48190,12 @@ func NewPathFigure() (*PathFigure, error) {
 	return winrt.QueryInterface[PathFigure](unsafe.Pointer(instance), &IID_IPathFigure)
 }
 
+// AsPathFigure queries the instance's IPathFigure interface.
+// The returned reference is owned by the caller.
+func (self *PathFigure) AsPathFigure() (*IPathFigure, error) {
+	return winrt.QueryInterface[IPathFigure](unsafe.Pointer(self), &IID_IPathFigure)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -43902,6 +48233,12 @@ func NewPathFigureCollection() (*PathFigureCollection, error) {
 	return winrt.QueryInterface[PathFigureCollection](unsafe.Pointer(instance), &IID_IVectorOfPathFigure)
 }
 
+// AsVectorOfPathFigure queries the instance's IVectorOfPathFigure interface.
+// The returned reference is owned by the caller.
+func (self *PathFigureCollection) AsVectorOfPathFigure() (*IVectorOfPathFigure, error) {
+	return winrt.QueryInterface[IVectorOfPathFigure](unsafe.Pointer(self), &IID_IVectorOfPathFigure)
+}
+
 // AsIterableOfPathFigure queries the instance's IIterableOfPathFigure interface.
 // The returned reference is owned by the caller.
 func (self *PathFigureCollection) AsIterableOfPathFigure() (*IIterableOfPathFigure, error) {
@@ -43924,6 +48261,12 @@ func NewPathGeometry() (*PathGeometry, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PathGeometry](unsafe.Pointer(instance), &IID_IPathGeometry)
+}
+
+// AsPathGeometry queries the instance's IPathGeometry interface.
+// The returned reference is owned by the caller.
+func (self *PathGeometry) AsPathGeometry() (*IPathGeometry, error) {
+	return winrt.QueryInterface[IPathGeometry](unsafe.Pointer(self), &IID_IPathGeometry)
 }
 
 // AsGeometry queries the instance's IGeometry interface.
@@ -43959,6 +48302,12 @@ type PathSegment struct {
 	IPathSegment
 }
 
+// AsPathSegment queries the instance's IPathSegment interface.
+// The returned reference is owned by the caller.
+func (self *PathSegment) AsPathSegment() (*IPathSegment, error) {
+	return winrt.QueryInterface[IPathSegment](unsafe.Pointer(self), &IID_IPathSegment)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -43984,6 +48333,12 @@ func NewPathSegmentCollection() (*PathSegmentCollection, error) {
 	return winrt.QueryInterface[PathSegmentCollection](unsafe.Pointer(instance), &IID_IVectorOfPathSegment)
 }
 
+// AsVectorOfPathSegment queries the instance's IVectorOfPathSegment interface.
+// The returned reference is owned by the caller.
+func (self *PathSegmentCollection) AsVectorOfPathSegment() (*IVectorOfPathSegment, error) {
+	return winrt.QueryInterface[IVectorOfPathSegment](unsafe.Pointer(self), &IID_IVectorOfPathSegment)
+}
+
 // AsIterableOfPathSegment queries the instance's IIterableOfPathSegment interface.
 // The returned reference is owned by the caller.
 func (self *PathSegmentCollection) AsIterableOfPathSegment() (*IIterableOfPathSegment, error) {
@@ -44006,6 +48361,12 @@ func NewPlaneProjection() (*PlaneProjection, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PlaneProjection](unsafe.Pointer(instance), &IID_IPlaneProjection)
+}
+
+// AsPlaneProjection queries the instance's IPlaneProjection interface.
+// The returned reference is owned by the caller.
+func (self *PlaneProjection) AsPlaneProjection() (*IPlaneProjection, error) {
+	return winrt.QueryInterface[IPlaneProjection](unsafe.Pointer(self), &IID_IPlaneProjection)
 }
 
 // AsProjection queries the instance's IProjection interface.
@@ -44052,6 +48413,12 @@ func NewPointCollection() (*PointCollection, error) {
 	return winrt.QueryInterface[PointCollection](unsafe.Pointer(instance), &IID_IVectorOfPoint)
 }
 
+// AsVectorOfPoint queries the instance's IVectorOfPoint interface.
+// The returned reference is owned by the caller.
+func (self *PointCollection) AsVectorOfPoint() (*IVectorOfPoint, error) {
+	return winrt.QueryInterface[IVectorOfPoint](unsafe.Pointer(self), &IID_IVectorOfPoint)
+}
+
 // AsIterableOfPoint queries the instance's IIterableOfPoint interface.
 // The returned reference is owned by the caller.
 func (self *PointCollection) AsIterableOfPoint() (*IIterableOfPoint, error) {
@@ -44074,6 +48441,12 @@ func NewPolyBezierSegment() (*PolyBezierSegment, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PolyBezierSegment](unsafe.Pointer(instance), &IID_IPolyBezierSegment)
+}
+
+// AsPolyBezierSegment queries the instance's IPolyBezierSegment interface.
+// The returned reference is owned by the caller.
+func (self *PolyBezierSegment) AsPolyBezierSegment() (*IPolyBezierSegment, error) {
+	return winrt.QueryInterface[IPolyBezierSegment](unsafe.Pointer(self), &IID_IPolyBezierSegment)
 }
 
 // AsPathSegment queries the instance's IPathSegment interface.
@@ -44120,6 +48493,12 @@ func NewPolyLineSegment() (*PolyLineSegment, error) {
 	return winrt.QueryInterface[PolyLineSegment](unsafe.Pointer(instance), &IID_IPolyLineSegment)
 }
 
+// AsPolyLineSegment queries the instance's IPolyLineSegment interface.
+// The returned reference is owned by the caller.
+func (self *PolyLineSegment) AsPolyLineSegment() (*IPolyLineSegment, error) {
+	return winrt.QueryInterface[IPolyLineSegment](unsafe.Pointer(self), &IID_IPolyLineSegment)
+}
+
 // AsPathSegment queries the instance's IPathSegment interface.
 // Inherited from Microsoft.UI.Xaml.Media.PathSegment.
 // The returned reference is owned by the caller.
@@ -44164,6 +48543,12 @@ func NewPolyQuadraticBezierSegment() (*PolyQuadraticBezierSegment, error) {
 	return winrt.QueryInterface[PolyQuadraticBezierSegment](unsafe.Pointer(instance), &IID_IPolyQuadraticBezierSegment)
 }
 
+// AsPolyQuadraticBezierSegment queries the instance's IPolyQuadraticBezierSegment interface.
+// The returned reference is owned by the caller.
+func (self *PolyQuadraticBezierSegment) AsPolyQuadraticBezierSegment() (*IPolyQuadraticBezierSegment, error) {
+	return winrt.QueryInterface[IPolyQuadraticBezierSegment](unsafe.Pointer(self), &IID_IPolyQuadraticBezierSegment)
+}
+
 // AsPathSegment queries the instance's IPathSegment interface.
 // Inherited from Microsoft.UI.Xaml.Media.PathSegment.
 // The returned reference is owned by the caller.
@@ -44195,6 +48580,12 @@ func PolyQuadraticBezierSegmentStatics() (*IPolyQuadraticBezierSegmentStatics, e
 // the embedded IInspectable → IUnknown chain).
 type Projection struct {
 	IProjection
+}
+
+// AsProjection queries the instance's IProjection interface.
+// The returned reference is owned by the caller.
+func (self *Projection) AsProjection() (*IProjection, error) {
+	return winrt.QueryInterface[IProjection](unsafe.Pointer(self), &IID_IProjection)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -44247,6 +48638,12 @@ func NewQuadraticBezierSegment() (*QuadraticBezierSegment, error) {
 	return winrt.QueryInterface[QuadraticBezierSegment](unsafe.Pointer(instance), &IID_IQuadraticBezierSegment)
 }
 
+// AsQuadraticBezierSegment queries the instance's IQuadraticBezierSegment interface.
+// The returned reference is owned by the caller.
+func (self *QuadraticBezierSegment) AsQuadraticBezierSegment() (*IQuadraticBezierSegment, error) {
+	return winrt.QueryInterface[IQuadraticBezierSegment](unsafe.Pointer(self), &IID_IQuadraticBezierSegment)
+}
+
 // AsPathSegment queries the instance's IPathSegment interface.
 // Inherited from Microsoft.UI.Xaml.Media.PathSegment.
 // The returned reference is owned by the caller.
@@ -44278,6 +48675,12 @@ func QuadraticBezierSegmentStatics() (*IQuadraticBezierSegmentStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type RadialGradientBrush struct {
 	IRadialGradientBrush
+}
+
+// AsRadialGradientBrush queries the instance's IRadialGradientBrush interface.
+// The returned reference is owned by the caller.
+func (self *RadialGradientBrush) AsRadialGradientBrush() (*IRadialGradientBrush, error) {
+	return winrt.QueryInterface[IRadialGradientBrush](unsafe.Pointer(self), &IID_IRadialGradientBrush)
 }
 
 // AsXamlCompositionBrushBase queries the instance's IXamlCompositionBrushBase interface.
@@ -44384,6 +48787,12 @@ func NewRectangleGeometry() (*RectangleGeometry, error) {
 	return winrt.QueryInterface[RectangleGeometry](unsafe.Pointer(instance), &IID_IRectangleGeometry)
 }
 
+// AsRectangleGeometry queries the instance's IRectangleGeometry interface.
+// The returned reference is owned by the caller.
+func (self *RectangleGeometry) AsRectangleGeometry() (*IRectangleGeometry, error) {
+	return winrt.QueryInterface[IRectangleGeometry](unsafe.Pointer(self), &IID_IRectangleGeometry)
+}
+
 // AsGeometry queries the instance's IGeometry interface.
 // Inherited from Microsoft.UI.Xaml.Media.Geometry.
 // The returned reference is owned by the caller.
@@ -44417,11 +48826,23 @@ type RenderedEventArgs struct {
 	IRenderedEventArgs
 }
 
+// AsRenderedEventArgs queries the instance's IRenderedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RenderedEventArgs) AsRenderedEventArgs() (*IRenderedEventArgs, error) {
+	return winrt.QueryInterface[IRenderedEventArgs](unsafe.Pointer(self), &IID_IRenderedEventArgs)
+}
+
 // RenderingEventArgs is the Microsoft.UI.Xaml.Media.RenderingEventArgs runtime class, surfaced through its
 // default interface IRenderingEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type RenderingEventArgs struct {
 	IRenderingEventArgs
+}
+
+// AsRenderingEventArgs queries the instance's IRenderingEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *RenderingEventArgs) AsRenderingEventArgs() (*IRenderingEventArgs, error) {
+	return winrt.QueryInterface[IRenderingEventArgs](unsafe.Pointer(self), &IID_IRenderingEventArgs)
 }
 
 // RotateTransform is the Microsoft.UI.Xaml.Media.RotateTransform runtime class, surfaced through its
@@ -44440,6 +48861,12 @@ func NewRotateTransform() (*RotateTransform, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RotateTransform](unsafe.Pointer(instance), &IID_IRotateTransform)
+}
+
+// AsRotateTransform queries the instance's IRotateTransform interface.
+// The returned reference is owned by the caller.
+func (self *RotateTransform) AsRotateTransform() (*IRotateTransform, error) {
+	return winrt.QueryInterface[IRotateTransform](unsafe.Pointer(self), &IID_IRotateTransform)
 }
 
 // AsTransform queries the instance's ITransform interface.
@@ -44500,6 +48927,12 @@ func NewScaleTransform() (*ScaleTransform, error) {
 	return winrt.QueryInterface[ScaleTransform](unsafe.Pointer(instance), &IID_IScaleTransform)
 }
 
+// AsScaleTransform queries the instance's IScaleTransform interface.
+// The returned reference is owned by the caller.
+func (self *ScaleTransform) AsScaleTransform() (*IScaleTransform, error) {
+	return winrt.QueryInterface[IScaleTransform](unsafe.Pointer(self), &IID_IScaleTransform)
+}
+
 // AsTransform queries the instance's ITransform interface.
 // Inherited from Microsoft.UI.Xaml.Media.Transform.
 // The returned reference is owned by the caller.
@@ -44547,6 +48980,12 @@ type Shadow struct {
 	IShadow
 }
 
+// AsShadow queries the instance's IShadow interface.
+// The returned reference is owned by the caller.
+func (self *Shadow) AsShadow() (*IShadow, error) {
+	return winrt.QueryInterface[IShadow](unsafe.Pointer(self), &IID_IShadow)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -44570,6 +49009,12 @@ func NewSkewTransform() (*SkewTransform, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SkewTransform](unsafe.Pointer(instance), &IID_ISkewTransform)
+}
+
+// AsSkewTransform queries the instance's ISkewTransform interface.
+// The returned reference is owned by the caller.
+func (self *SkewTransform) AsSkewTransform() (*ISkewTransform, error) {
+	return winrt.QueryInterface[ISkewTransform](unsafe.Pointer(self), &IID_ISkewTransform)
 }
 
 // AsTransform queries the instance's ITransform interface.
@@ -44628,6 +49073,12 @@ func NewSolidColorBrush() (*SolidColorBrush, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SolidColorBrush](unsafe.Pointer(instance), &IID_ISolidColorBrush)
+}
+
+// AsSolidColorBrush queries the instance's ISolidColorBrush interface.
+// The returned reference is owned by the caller.
+func (self *SolidColorBrush) AsSolidColorBrush() (*ISolidColorBrush, error) {
+	return winrt.QueryInterface[ISolidColorBrush](unsafe.Pointer(self), &IID_ISolidColorBrush)
 }
 
 // AsBrush queries the instance's IBrush interface.
@@ -44694,6 +49145,12 @@ type SystemBackdrop struct {
 	ISystemBackdrop
 }
 
+// AsSystemBackdrop queries the instance's ISystemBackdrop interface.
+// The returned reference is owned by the caller.
+func (self *SystemBackdrop) AsSystemBackdrop() (*ISystemBackdrop, error) {
+	return winrt.QueryInterface[ISystemBackdrop](unsafe.Pointer(self), &IID_ISystemBackdrop)
+}
+
 // AsSystemBackdropOverrides queries the instance's ISystemBackdropOverrides interface.
 // The returned reference is owned by the caller.
 func (self *SystemBackdrop) AsSystemBackdropOverrides() (*ISystemBackdropOverrides, error) {
@@ -44737,6 +49194,12 @@ func NewSystemBackdrop() (*SystemBackdrop, error) {
 // the embedded IInspectable → IUnknown chain).
 type ThemeShadow struct {
 	IThemeShadow
+}
+
+// AsThemeShadow queries the instance's IThemeShadow interface.
+// The returned reference is owned by the caller.
+func (self *ThemeShadow) AsThemeShadow() (*IThemeShadow, error) {
+	return winrt.QueryInterface[IThemeShadow](unsafe.Pointer(self), &IID_IThemeShadow)
 }
 
 // AsShadow queries the instance's IShadow interface.
@@ -44783,6 +49246,12 @@ func NewThemeShadow() (*ThemeShadow, error) {
 // the embedded IInspectable → IUnknown chain).
 type TileBrush struct {
 	ITileBrush
+}
+
+// AsTileBrush queries the instance's ITileBrush interface.
+// The returned reference is owned by the caller.
+func (self *TileBrush) AsTileBrush() (*ITileBrush, error) {
+	return winrt.QueryInterface[ITileBrush](unsafe.Pointer(self), &IID_ITileBrush)
 }
 
 // AsBrush queries the instance's IBrush interface.
@@ -44857,6 +49326,12 @@ type Transform struct {
 	ITransform
 }
 
+// AsTransform queries the instance's ITransform interface.
+// The returned reference is owned by the caller.
+func (self *Transform) AsTransform() (*ITransform, error) {
+	return winrt.QueryInterface[ITransform](unsafe.Pointer(self), &IID_ITransform)
+}
+
 // AsGeneralTransform queries the instance's IGeneralTransform interface.
 // Inherited from Microsoft.UI.Xaml.Media.GeneralTransform.
 // The returned reference is owned by the caller.
@@ -44896,6 +49371,12 @@ func NewTransformCollection() (*TransformCollection, error) {
 	return winrt.QueryInterface[TransformCollection](unsafe.Pointer(instance), &IID_IVectorOfTransform)
 }
 
+// AsVectorOfTransform queries the instance's IVectorOfTransform interface.
+// The returned reference is owned by the caller.
+func (self *TransformCollection) AsVectorOfTransform() (*IVectorOfTransform, error) {
+	return winrt.QueryInterface[IVectorOfTransform](unsafe.Pointer(self), &IID_IVectorOfTransform)
+}
+
 // AsIterableOfTransform queries the instance's IIterableOfTransform interface.
 // The returned reference is owned by the caller.
 func (self *TransformCollection) AsIterableOfTransform() (*IIterableOfTransform, error) {
@@ -44918,6 +49399,12 @@ func NewTransformGroup() (*TransformGroup, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[TransformGroup](unsafe.Pointer(instance), &IID_ITransformGroup)
+}
+
+// AsTransformGroup queries the instance's ITransformGroup interface.
+// The returned reference is owned by the caller.
+func (self *TransformGroup) AsTransformGroup() (*ITransformGroup, error) {
+	return winrt.QueryInterface[ITransformGroup](unsafe.Pointer(self), &IID_ITransformGroup)
 }
 
 // AsTransform queries the instance's ITransform interface.
@@ -44978,6 +49465,12 @@ func NewTranslateTransform() (*TranslateTransform, error) {
 	return winrt.QueryInterface[TranslateTransform](unsafe.Pointer(instance), &IID_ITranslateTransform)
 }
 
+// AsTranslateTransform queries the instance's ITranslateTransform interface.
+// The returned reference is owned by the caller.
+func (self *TranslateTransform) AsTranslateTransform() (*ITranslateTransform, error) {
+	return winrt.QueryInterface[ITranslateTransform](unsafe.Pointer(self), &IID_ITranslateTransform)
+}
+
 // AsTransform queries the instance's ITransform interface.
 // Inherited from Microsoft.UI.Xaml.Media.Transform.
 // The returned reference is owned by the caller.
@@ -45025,6 +49518,12 @@ type VisualTreeHelper struct {
 	IVisualTreeHelper
 }
 
+// AsVisualTreeHelper queries the instance's IVisualTreeHelper interface.
+// The returned reference is owned by the caller.
+func (self *VisualTreeHelper) AsVisualTreeHelper() (*IVisualTreeHelper, error) {
+	return winrt.QueryInterface[IVisualTreeHelper](unsafe.Pointer(self), &IID_IVisualTreeHelper)
+}
+
 // VisualTreeHelperStatics returns the Microsoft.UI.Xaml.Media.IVisualTreeHelperStatics statics of the
 // Microsoft.UI.Xaml.Media.VisualTreeHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -45042,6 +49541,12 @@ func VisualTreeHelperStatics() (*IVisualTreeHelperStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type XamlCompositionBrushBase struct {
 	IXamlCompositionBrushBase
+}
+
+// AsXamlCompositionBrushBase queries the instance's IXamlCompositionBrushBase interface.
+// The returned reference is owned by the caller.
+func (self *XamlCompositionBrushBase) AsXamlCompositionBrushBase() (*IXamlCompositionBrushBase, error) {
+	return winrt.QueryInterface[IXamlCompositionBrushBase](unsafe.Pointer(self), &IID_IXamlCompositionBrushBase)
 }
 
 // AsXamlCompositionBrushBaseProtected queries the instance's IXamlCompositionBrushBaseProtected interface.
@@ -45128,6 +49633,12 @@ type XamlLight struct {
 	IXamlLight
 }
 
+// AsXamlLight queries the instance's IXamlLight interface.
+// The returned reference is owned by the caller.
+func (self *XamlLight) AsXamlLight() (*IXamlLight, error) {
+	return winrt.QueryInterface[IXamlLight](unsafe.Pointer(self), &IID_IXamlLight)
+}
+
 // AsXamlLightProtected queries the instance's IXamlLightProtected interface.
 // The returned reference is owned by the caller.
 func (self *XamlLight) AsXamlLightProtected() (*IXamlLightProtected, error) {
@@ -45202,6 +49713,12 @@ func NewAddDeleteThemeTransition() (*AddDeleteThemeTransition, error) {
 	return winrt.QueryInterface[AddDeleteThemeTransition](unsafe.Pointer(instance), &IID_IAddDeleteThemeTransition)
 }
 
+// AsAddDeleteThemeTransition queries the instance's IAddDeleteThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *AddDeleteThemeTransition) AsAddDeleteThemeTransition() (*IAddDeleteThemeTransition, error) {
+	return winrt.QueryInterface[IAddDeleteThemeTransition](unsafe.Pointer(self), &IID_IAddDeleteThemeTransition)
+}
+
 // AsTransition queries the instance's ITransition interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
 // The returned reference is owned by the caller.
@@ -45232,6 +49749,12 @@ func NewBackEase() (*BackEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BackEase](unsafe.Pointer(instance), &IID_IBackEase)
+}
+
+// AsBackEase queries the instance's IBackEase interface.
+// The returned reference is owned by the caller.
+func (self *BackEase) AsBackEase() (*IBackEase, error) {
+	return winrt.QueryInterface[IBackEase](unsafe.Pointer(self), &IID_IBackEase)
 }
 
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
@@ -45265,6 +49788,12 @@ func BackEaseStatics() (*IBackEaseStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type BasicConnectedAnimationConfiguration struct {
 	IBasicConnectedAnimationConfiguration
+}
+
+// AsBasicConnectedAnimationConfiguration queries the instance's IBasicConnectedAnimationConfiguration interface.
+// The returned reference is owned by the caller.
+func (self *BasicConnectedAnimationConfiguration) AsBasicConnectedAnimationConfiguration() (*IBasicConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IBasicConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IBasicConnectedAnimationConfiguration)
 }
 
 // AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
@@ -45317,6 +49846,12 @@ func NewBeginStoryboard() (*BeginStoryboard, error) {
 	return winrt.QueryInterface[BeginStoryboard](unsafe.Pointer(instance), &IID_IBeginStoryboard)
 }
 
+// AsBeginStoryboard queries the instance's IBeginStoryboard interface.
+// The returned reference is owned by the caller.
+func (self *BeginStoryboard) AsBeginStoryboard() (*IBeginStoryboard, error) {
+	return winrt.QueryInterface[IBeginStoryboard](unsafe.Pointer(self), &IID_IBeginStoryboard)
+}
+
 // AsTriggerAction queries the instance's ITriggerAction interface.
 // Inherited from Microsoft.UI.Xaml.TriggerAction.
 // The returned reference is owned by the caller.
@@ -45359,6 +49894,12 @@ func NewBounceEase() (*BounceEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BounceEase](unsafe.Pointer(instance), &IID_IBounceEase)
+}
+
+// AsBounceEase queries the instance's IBounceEase interface.
+// The returned reference is owned by the caller.
+func (self *BounceEase) AsBounceEase() (*IBounceEase, error) {
+	return winrt.QueryInterface[IBounceEase](unsafe.Pointer(self), &IID_IBounceEase)
 }
 
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
@@ -45405,6 +49946,12 @@ func NewCircleEase() (*CircleEase, error) {
 	return winrt.QueryInterface[CircleEase](unsafe.Pointer(instance), &IID_ICircleEase)
 }
 
+// AsCircleEase queries the instance's ICircleEase interface.
+// The returned reference is owned by the caller.
+func (self *CircleEase) AsCircleEase() (*ICircleEase, error) {
+	return winrt.QueryInterface[ICircleEase](unsafe.Pointer(self), &IID_ICircleEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -45435,6 +49982,12 @@ func NewColorAnimation() (*ColorAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ColorAnimation](unsafe.Pointer(instance), &IID_IColorAnimation)
+}
+
+// AsColorAnimation queries the instance's IColorAnimation interface.
+// The returned reference is owned by the caller.
+func (self *ColorAnimation) AsColorAnimation() (*IColorAnimation, error) {
+	return winrt.QueryInterface[IColorAnimation](unsafe.Pointer(self), &IID_IColorAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -45481,6 +50034,12 @@ func NewColorAnimationUsingKeyFrames() (*ColorAnimationUsingKeyFrames, error) {
 	return winrt.QueryInterface[ColorAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IColorAnimationUsingKeyFrames)
 }
 
+// AsColorAnimationUsingKeyFrames queries the instance's IColorAnimationUsingKeyFrames interface.
+// The returned reference is owned by the caller.
+func (self *ColorAnimationUsingKeyFrames) AsColorAnimationUsingKeyFrames() (*IColorAnimationUsingKeyFrames, error) {
+	return winrt.QueryInterface[IColorAnimationUsingKeyFrames](unsafe.Pointer(self), &IID_IColorAnimationUsingKeyFrames)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -45512,6 +50071,12 @@ func ColorAnimationUsingKeyFramesStatics() (*IColorAnimationUsingKeyFramesStatic
 // the embedded IInspectable → IUnknown chain).
 type ColorKeyFrame struct {
 	IColorKeyFrame
+}
+
+// AsColorKeyFrame queries the instance's IColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *ColorKeyFrame) AsColorKeyFrame() (*IColorKeyFrame, error) {
+	return winrt.QueryInterface[IColorKeyFrame](unsafe.Pointer(self), &IID_IColorKeyFrame)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -45576,6 +50141,12 @@ func NewColorKeyFrameCollection() (*ColorKeyFrameCollection, error) {
 	return winrt.QueryInterface[ColorKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfColorKeyFrame)
 }
 
+// AsVectorOfColorKeyFrame queries the instance's IVectorOfColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *ColorKeyFrameCollection) AsVectorOfColorKeyFrame() (*IVectorOfColorKeyFrame, error) {
+	return winrt.QueryInterface[IVectorOfColorKeyFrame](unsafe.Pointer(self), &IID_IVectorOfColorKeyFrame)
+}
+
 // AsIterableOfColorKeyFrame queries the instance's IIterableOfColorKeyFrame interface.
 // The returned reference is owned by the caller.
 func (self *ColorKeyFrameCollection) AsIterableOfColorKeyFrame() (*IIterableOfColorKeyFrame, error) {
@@ -45598,6 +50169,12 @@ func NewCommonNavigationTransitionInfo() (*CommonNavigationTransitionInfo, error
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[CommonNavigationTransitionInfo](unsafe.Pointer(instance), &IID_ICommonNavigationTransitionInfo)
+}
+
+// AsCommonNavigationTransitionInfo queries the instance's ICommonNavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *CommonNavigationTransitionInfo) AsCommonNavigationTransitionInfo() (*ICommonNavigationTransitionInfo, error) {
+	return winrt.QueryInterface[ICommonNavigationTransitionInfo](unsafe.Pointer(self), &IID_ICommonNavigationTransitionInfo)
 }
 
 // AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
@@ -45640,6 +50217,12 @@ type ConnectedAnimation struct {
 	IConnectedAnimation
 }
 
+// AsConnectedAnimation queries the instance's IConnectedAnimation interface.
+// The returned reference is owned by the caller.
+func (self *ConnectedAnimation) AsConnectedAnimation() (*IConnectedAnimation, error) {
+	return winrt.QueryInterface[IConnectedAnimation](unsafe.Pointer(self), &IID_IConnectedAnimation)
+}
+
 // ConnectedAnimationConfiguration is the Microsoft.UI.Xaml.Media.Animation.ConnectedAnimationConfiguration runtime class, surfaced through its
 // default interface IConnectedAnimationConfiguration. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -45647,11 +50230,23 @@ type ConnectedAnimationConfiguration struct {
 	IConnectedAnimationConfiguration
 }
 
+// AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
+// The returned reference is owned by the caller.
+func (self *ConnectedAnimationConfiguration) AsConnectedAnimationConfiguration() (*IConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IConnectedAnimationConfiguration)
+}
+
 // ConnectedAnimationService is the Microsoft.UI.Xaml.Media.Animation.ConnectedAnimationService runtime class, surfaced through its
 // default interface IConnectedAnimationService. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type ConnectedAnimationService struct {
 	IConnectedAnimationService
+}
+
+// AsConnectedAnimationService queries the instance's IConnectedAnimationService interface.
+// The returned reference is owned by the caller.
+func (self *ConnectedAnimationService) AsConnectedAnimationService() (*IConnectedAnimationService, error) {
+	return winrt.QueryInterface[IConnectedAnimationService](unsafe.Pointer(self), &IID_IConnectedAnimationService)
 }
 
 // ConnectedAnimationServiceStatics returns the Microsoft.UI.Xaml.Media.Animation.IConnectedAnimationServiceStatics statics of the
@@ -45682,6 +50277,12 @@ func NewContentThemeTransition() (*ContentThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ContentThemeTransition](unsafe.Pointer(instance), &IID_IContentThemeTransition)
+}
+
+// AsContentThemeTransition queries the instance's IContentThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *ContentThemeTransition) AsContentThemeTransition() (*IContentThemeTransition, error) {
+	return winrt.QueryInterface[IContentThemeTransition](unsafe.Pointer(self), &IID_IContentThemeTransition)
 }
 
 // AsTransition queries the instance's ITransition interface.
@@ -45726,6 +50327,12 @@ func NewContinuumNavigationTransitionInfo() (*ContinuumNavigationTransitionInfo,
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ContinuumNavigationTransitionInfo](unsafe.Pointer(instance), &IID_IContinuumNavigationTransitionInfo)
+}
+
+// AsContinuumNavigationTransitionInfo queries the instance's IContinuumNavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *ContinuumNavigationTransitionInfo) AsContinuumNavigationTransitionInfo() (*IContinuumNavigationTransitionInfo, error) {
+	return winrt.QueryInterface[IContinuumNavigationTransitionInfo](unsafe.Pointer(self), &IID_IContinuumNavigationTransitionInfo)
 }
 
 // AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
@@ -45779,6 +50386,12 @@ func NewCubicEase() (*CubicEase, error) {
 	return winrt.QueryInterface[CubicEase](unsafe.Pointer(instance), &IID_ICubicEase)
 }
 
+// AsCubicEase queries the instance's ICubicEase interface.
+// The returned reference is owned by the caller.
+func (self *CubicEase) AsCubicEase() (*ICubicEase, error) {
+	return winrt.QueryInterface[ICubicEase](unsafe.Pointer(self), &IID_ICubicEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -45798,6 +50411,12 @@ func (self *CubicEase) AsDependencyObject() (*IDependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type DirectConnectedAnimationConfiguration struct {
 	IDirectConnectedAnimationConfiguration
+}
+
+// AsDirectConnectedAnimationConfiguration queries the instance's IDirectConnectedAnimationConfiguration interface.
+// The returned reference is owned by the caller.
+func (self *DirectConnectedAnimationConfiguration) AsDirectConnectedAnimationConfiguration() (*IDirectConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IDirectConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IDirectConnectedAnimationConfiguration)
 }
 
 // AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
@@ -45850,6 +50469,12 @@ func NewDiscreteColorKeyFrame() (*DiscreteColorKeyFrame, error) {
 	return winrt.QueryInterface[DiscreteColorKeyFrame](unsafe.Pointer(instance), &IID_IDiscreteColorKeyFrame)
 }
 
+// AsDiscreteColorKeyFrame queries the instance's IDiscreteColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DiscreteColorKeyFrame) AsDiscreteColorKeyFrame() (*IDiscreteColorKeyFrame, error) {
+	return winrt.QueryInterface[IDiscreteColorKeyFrame](unsafe.Pointer(self), &IID_IDiscreteColorKeyFrame)
+}
+
 // AsColorKeyFrame queries the instance's IColorKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
 // The returned reference is owned by the caller.
@@ -45880,6 +50505,12 @@ func NewDiscreteDoubleKeyFrame() (*DiscreteDoubleKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DiscreteDoubleKeyFrame](unsafe.Pointer(instance), &IID_IDiscreteDoubleKeyFrame)
+}
+
+// AsDiscreteDoubleKeyFrame queries the instance's IDiscreteDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DiscreteDoubleKeyFrame) AsDiscreteDoubleKeyFrame() (*IDiscreteDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IDiscreteDoubleKeyFrame](unsafe.Pointer(self), &IID_IDiscreteDoubleKeyFrame)
 }
 
 // AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
@@ -45914,6 +50545,12 @@ func NewDiscreteObjectKeyFrame() (*DiscreteObjectKeyFrame, error) {
 	return winrt.QueryInterface[DiscreteObjectKeyFrame](unsafe.Pointer(instance), &IID_IDiscreteObjectKeyFrame)
 }
 
+// AsDiscreteObjectKeyFrame queries the instance's IDiscreteObjectKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DiscreteObjectKeyFrame) AsDiscreteObjectKeyFrame() (*IDiscreteObjectKeyFrame, error) {
+	return winrt.QueryInterface[IDiscreteObjectKeyFrame](unsafe.Pointer(self), &IID_IDiscreteObjectKeyFrame)
+}
+
 // AsObjectKeyFrame queries the instance's IObjectKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.ObjectKeyFrame.
 // The returned reference is owned by the caller.
@@ -45946,6 +50583,12 @@ func NewDiscretePointKeyFrame() (*DiscretePointKeyFrame, error) {
 	return winrt.QueryInterface[DiscretePointKeyFrame](unsafe.Pointer(instance), &IID_IDiscretePointKeyFrame)
 }
 
+// AsDiscretePointKeyFrame queries the instance's IDiscretePointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DiscretePointKeyFrame) AsDiscretePointKeyFrame() (*IDiscretePointKeyFrame, error) {
+	return winrt.QueryInterface[IDiscretePointKeyFrame](unsafe.Pointer(self), &IID_IDiscretePointKeyFrame)
+}
+
 // AsPointKeyFrame queries the instance's IPointKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.PointKeyFrame.
 // The returned reference is owned by the caller.
@@ -45976,6 +50619,12 @@ func NewDoubleAnimation() (*DoubleAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DoubleAnimation](unsafe.Pointer(instance), &IID_IDoubleAnimation)
+}
+
+// AsDoubleAnimation queries the instance's IDoubleAnimation interface.
+// The returned reference is owned by the caller.
+func (self *DoubleAnimation) AsDoubleAnimation() (*IDoubleAnimation, error) {
+	return winrt.QueryInterface[IDoubleAnimation](unsafe.Pointer(self), &IID_IDoubleAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -46022,6 +50671,12 @@ func NewDoubleAnimationUsingKeyFrames() (*DoubleAnimationUsingKeyFrames, error) 
 	return winrt.QueryInterface[DoubleAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IDoubleAnimationUsingKeyFrames)
 }
 
+// AsDoubleAnimationUsingKeyFrames queries the instance's IDoubleAnimationUsingKeyFrames interface.
+// The returned reference is owned by the caller.
+func (self *DoubleAnimationUsingKeyFrames) AsDoubleAnimationUsingKeyFrames() (*IDoubleAnimationUsingKeyFrames, error) {
+	return winrt.QueryInterface[IDoubleAnimationUsingKeyFrames](unsafe.Pointer(self), &IID_IDoubleAnimationUsingKeyFrames)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -46053,6 +50708,12 @@ func DoubleAnimationUsingKeyFramesStatics() (*IDoubleAnimationUsingKeyFramesStat
 // the embedded IInspectable → IUnknown chain).
 type DoubleKeyFrame struct {
 	IDoubleKeyFrame
+}
+
+// AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DoubleKeyFrame) AsDoubleKeyFrame() (*IDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IDoubleKeyFrame](unsafe.Pointer(self), &IID_IDoubleKeyFrame)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -46117,6 +50778,12 @@ func NewDoubleKeyFrameCollection() (*DoubleKeyFrameCollection, error) {
 	return winrt.QueryInterface[DoubleKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfDoubleKeyFrame)
 }
 
+// AsVectorOfDoubleKeyFrame queries the instance's IVectorOfDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *DoubleKeyFrameCollection) AsVectorOfDoubleKeyFrame() (*IVectorOfDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IVectorOfDoubleKeyFrame](unsafe.Pointer(self), &IID_IVectorOfDoubleKeyFrame)
+}
+
 // AsIterableOfDoubleKeyFrame queries the instance's IIterableOfDoubleKeyFrame interface.
 // The returned reference is owned by the caller.
 func (self *DoubleKeyFrameCollection) AsIterableOfDoubleKeyFrame() (*IIterableOfDoubleKeyFrame, error) {
@@ -46139,6 +50806,12 @@ func NewDragItemThemeAnimation() (*DragItemThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DragItemThemeAnimation](unsafe.Pointer(instance), &IID_IDragItemThemeAnimation)
+}
+
+// AsDragItemThemeAnimation queries the instance's IDragItemThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *DragItemThemeAnimation) AsDragItemThemeAnimation() (*IDragItemThemeAnimation, error) {
+	return winrt.QueryInterface[IDragItemThemeAnimation](unsafe.Pointer(self), &IID_IDragItemThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -46185,6 +50858,12 @@ func NewDragOverThemeAnimation() (*DragOverThemeAnimation, error) {
 	return winrt.QueryInterface[DragOverThemeAnimation](unsafe.Pointer(instance), &IID_IDragOverThemeAnimation)
 }
 
+// AsDragOverThemeAnimation queries the instance's IDragOverThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *DragOverThemeAnimation) AsDragOverThemeAnimation() (*IDragOverThemeAnimation, error) {
+	return winrt.QueryInterface[IDragOverThemeAnimation](unsafe.Pointer(self), &IID_IDragOverThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -46229,6 +50908,12 @@ func NewDrillInNavigationTransitionInfo() (*DrillInNavigationTransitionInfo, err
 	return winrt.QueryInterface[DrillInNavigationTransitionInfo](unsafe.Pointer(instance), &IID_IDrillInNavigationTransitionInfo)
 }
 
+// AsDrillInNavigationTransitionInfo queries the instance's IDrillInNavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *DrillInNavigationTransitionInfo) AsDrillInNavigationTransitionInfo() (*IDrillInNavigationTransitionInfo, error) {
+	return winrt.QueryInterface[IDrillInNavigationTransitionInfo](unsafe.Pointer(self), &IID_IDrillInNavigationTransitionInfo)
+}
+
 // AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
 // The returned reference is owned by the caller.
@@ -46266,6 +50951,12 @@ func NewDrillInThemeAnimation() (*DrillInThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DrillInThemeAnimation](unsafe.Pointer(instance), &IID_IDrillInThemeAnimation)
+}
+
+// AsDrillInThemeAnimation queries the instance's IDrillInThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *DrillInThemeAnimation) AsDrillInThemeAnimation() (*IDrillInThemeAnimation, error) {
+	return winrt.QueryInterface[IDrillInThemeAnimation](unsafe.Pointer(self), &IID_IDrillInThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -46312,6 +51003,12 @@ func NewDrillOutThemeAnimation() (*DrillOutThemeAnimation, error) {
 	return winrt.QueryInterface[DrillOutThemeAnimation](unsafe.Pointer(instance), &IID_IDrillOutThemeAnimation)
 }
 
+// AsDrillOutThemeAnimation queries the instance's IDrillOutThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *DrillOutThemeAnimation) AsDrillOutThemeAnimation() (*IDrillOutThemeAnimation, error) {
+	return winrt.QueryInterface[IDrillOutThemeAnimation](unsafe.Pointer(self), &IID_IDrillOutThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -46354,6 +51051,12 @@ func NewDropTargetItemThemeAnimation() (*DropTargetItemThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[DropTargetItemThemeAnimation](unsafe.Pointer(instance), &IID_IDropTargetItemThemeAnimation)
+}
+
+// AsDropTargetItemThemeAnimation queries the instance's IDropTargetItemThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *DropTargetItemThemeAnimation) AsDropTargetItemThemeAnimation() (*IDropTargetItemThemeAnimation, error) {
+	return winrt.QueryInterface[IDropTargetItemThemeAnimation](unsafe.Pointer(self), &IID_IDropTargetItemThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -46400,6 +51103,12 @@ func NewEasingColorKeyFrame() (*EasingColorKeyFrame, error) {
 	return winrt.QueryInterface[EasingColorKeyFrame](unsafe.Pointer(instance), &IID_IEasingColorKeyFrame)
 }
 
+// AsEasingColorKeyFrame queries the instance's IEasingColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *EasingColorKeyFrame) AsEasingColorKeyFrame() (*IEasingColorKeyFrame, error) {
+	return winrt.QueryInterface[IEasingColorKeyFrame](unsafe.Pointer(self), &IID_IEasingColorKeyFrame)
+}
+
 // AsColorKeyFrame queries the instance's IColorKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
 // The returned reference is owned by the caller.
@@ -46444,6 +51153,12 @@ func NewEasingDoubleKeyFrame() (*EasingDoubleKeyFrame, error) {
 	return winrt.QueryInterface[EasingDoubleKeyFrame](unsafe.Pointer(instance), &IID_IEasingDoubleKeyFrame)
 }
 
+// AsEasingDoubleKeyFrame queries the instance's IEasingDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *EasingDoubleKeyFrame) AsEasingDoubleKeyFrame() (*IEasingDoubleKeyFrame, error) {
+	return winrt.QueryInterface[IEasingDoubleKeyFrame](unsafe.Pointer(self), &IID_IEasingDoubleKeyFrame)
+}
+
 // AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrame.
 // The returned reference is owned by the caller.
@@ -46475,6 +51190,12 @@ func EasingDoubleKeyFrameStatics() (*IEasingDoubleKeyFrameStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type EasingFunctionBase struct {
 	IEasingFunctionBase
+}
+
+// AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
+// The returned reference is owned by the caller.
+func (self *EasingFunctionBase) AsEasingFunctionBase() (*IEasingFunctionBase, error) {
+	return winrt.QueryInterface[IEasingFunctionBase](unsafe.Pointer(self), &IID_IEasingFunctionBase)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -46512,6 +51233,12 @@ func NewEasingPointKeyFrame() (*EasingPointKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[EasingPointKeyFrame](unsafe.Pointer(instance), &IID_IEasingPointKeyFrame)
+}
+
+// AsEasingPointKeyFrame queries the instance's IEasingPointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *EasingPointKeyFrame) AsEasingPointKeyFrame() (*IEasingPointKeyFrame, error) {
+	return winrt.QueryInterface[IEasingPointKeyFrame](unsafe.Pointer(self), &IID_IEasingPointKeyFrame)
 }
 
 // AsPointKeyFrame queries the instance's IPointKeyFrame interface.
@@ -46558,6 +51285,12 @@ func NewEdgeUIThemeTransition() (*EdgeUIThemeTransition, error) {
 	return winrt.QueryInterface[EdgeUIThemeTransition](unsafe.Pointer(instance), &IID_IEdgeUIThemeTransition)
 }
 
+// AsEdgeUIThemeTransition queries the instance's IEdgeUIThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *EdgeUIThemeTransition) AsEdgeUIThemeTransition() (*IEdgeUIThemeTransition, error) {
+	return winrt.QueryInterface[IEdgeUIThemeTransition](unsafe.Pointer(self), &IID_IEdgeUIThemeTransition)
+}
+
 // AsTransition queries the instance's ITransition interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
 // The returned reference is owned by the caller.
@@ -46602,6 +51335,12 @@ func NewElasticEase() (*ElasticEase, error) {
 	return winrt.QueryInterface[ElasticEase](unsafe.Pointer(instance), &IID_IElasticEase)
 }
 
+// AsElasticEase queries the instance's IElasticEase interface.
+// The returned reference is owned by the caller.
+func (self *ElasticEase) AsElasticEase() (*IElasticEase, error) {
+	return winrt.QueryInterface[IElasticEase](unsafe.Pointer(self), &IID_IElasticEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -46644,6 +51383,12 @@ func NewEntranceNavigationTransitionInfo() (*EntranceNavigationTransitionInfo, e
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[EntranceNavigationTransitionInfo](unsafe.Pointer(instance), &IID_IEntranceNavigationTransitionInfo)
+}
+
+// AsEntranceNavigationTransitionInfo queries the instance's IEntranceNavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *EntranceNavigationTransitionInfo) AsEntranceNavigationTransitionInfo() (*IEntranceNavigationTransitionInfo, error) {
+	return winrt.QueryInterface[IEntranceNavigationTransitionInfo](unsafe.Pointer(self), &IID_IEntranceNavigationTransitionInfo)
 }
 
 // AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
@@ -46697,6 +51442,12 @@ func NewEntranceThemeTransition() (*EntranceThemeTransition, error) {
 	return winrt.QueryInterface[EntranceThemeTransition](unsafe.Pointer(instance), &IID_IEntranceThemeTransition)
 }
 
+// AsEntranceThemeTransition queries the instance's IEntranceThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *EntranceThemeTransition) AsEntranceThemeTransition() (*IEntranceThemeTransition, error) {
+	return winrt.QueryInterface[IEntranceThemeTransition](unsafe.Pointer(self), &IID_IEntranceThemeTransition)
+}
+
 // AsTransition queries the instance's ITransition interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
 // The returned reference is owned by the caller.
@@ -46739,6 +51490,12 @@ func NewExponentialEase() (*ExponentialEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[ExponentialEase](unsafe.Pointer(instance), &IID_IExponentialEase)
+}
+
+// AsExponentialEase queries the instance's IExponentialEase interface.
+// The returned reference is owned by the caller.
+func (self *ExponentialEase) AsExponentialEase() (*IExponentialEase, error) {
+	return winrt.QueryInterface[IExponentialEase](unsafe.Pointer(self), &IID_IExponentialEase)
 }
 
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
@@ -46785,6 +51542,12 @@ func NewFadeInThemeAnimation() (*FadeInThemeAnimation, error) {
 	return winrt.QueryInterface[FadeInThemeAnimation](unsafe.Pointer(instance), &IID_IFadeInThemeAnimation)
 }
 
+// AsFadeInThemeAnimation queries the instance's IFadeInThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *FadeInThemeAnimation) AsFadeInThemeAnimation() (*IFadeInThemeAnimation, error) {
+	return winrt.QueryInterface[IFadeInThemeAnimation](unsafe.Pointer(self), &IID_IFadeInThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -46829,6 +51592,12 @@ func NewFadeOutThemeAnimation() (*FadeOutThemeAnimation, error) {
 	return winrt.QueryInterface[FadeOutThemeAnimation](unsafe.Pointer(instance), &IID_IFadeOutThemeAnimation)
 }
 
+// AsFadeOutThemeAnimation queries the instance's IFadeOutThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *FadeOutThemeAnimation) AsFadeOutThemeAnimation() (*IFadeOutThemeAnimation, error) {
+	return winrt.QueryInterface[IFadeOutThemeAnimation](unsafe.Pointer(self), &IID_IFadeOutThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -46860,6 +51629,12 @@ func FadeOutThemeAnimationStatics() (*IFadeOutThemeAnimationStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type GravityConnectedAnimationConfiguration struct {
 	IGravityConnectedAnimationConfiguration
+}
+
+// AsGravityConnectedAnimationConfiguration queries the instance's IGravityConnectedAnimationConfiguration interface.
+// The returned reference is owned by the caller.
+func (self *GravityConnectedAnimationConfiguration) AsGravityConnectedAnimationConfiguration() (*IGravityConnectedAnimationConfiguration, error) {
+	return winrt.QueryInterface[IGravityConnectedAnimationConfiguration](unsafe.Pointer(self), &IID_IGravityConnectedAnimationConfiguration)
 }
 
 // AsConnectedAnimationConfiguration queries the instance's IConnectedAnimationConfiguration interface.
@@ -46912,6 +51687,12 @@ func NewKeySpline() (*KeySpline, error) {
 	return winrt.QueryInterface[KeySpline](unsafe.Pointer(instance), &IID_IKeySpline)
 }
 
+// AsKeySpline queries the instance's IKeySpline interface.
+// The returned reference is owned by the caller.
+func (self *KeySpline) AsKeySpline() (*IKeySpline, error) {
+	return winrt.QueryInterface[IKeySpline](unsafe.Pointer(self), &IID_IKeySpline)
+}
+
 // AsDependencyObject queries the instance's IDependencyObject interface.
 // Inherited from Microsoft.UI.Xaml.DependencyObject.
 // The returned reference is owned by the caller.
@@ -46924,6 +51705,12 @@ func (self *KeySpline) AsDependencyObject() (*IDependencyObject, error) {
 // the embedded IInspectable → IUnknown chain).
 type KeyTimeHelper struct {
 	IKeyTimeHelper
+}
+
+// AsKeyTimeHelper queries the instance's IKeyTimeHelper interface.
+// The returned reference is owned by the caller.
+func (self *KeyTimeHelper) AsKeyTimeHelper() (*IKeyTimeHelper, error) {
+	return winrt.QueryInterface[IKeyTimeHelper](unsafe.Pointer(self), &IID_IKeyTimeHelper)
 }
 
 // KeyTimeHelperStatics returns the Microsoft.UI.Xaml.Media.Animation.IKeyTimeHelperStatics statics of the
@@ -46954,6 +51741,12 @@ func NewLinearColorKeyFrame() (*LinearColorKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LinearColorKeyFrame](unsafe.Pointer(instance), &IID_ILinearColorKeyFrame)
+}
+
+// AsLinearColorKeyFrame queries the instance's ILinearColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *LinearColorKeyFrame) AsLinearColorKeyFrame() (*ILinearColorKeyFrame, error) {
+	return winrt.QueryInterface[ILinearColorKeyFrame](unsafe.Pointer(self), &IID_ILinearColorKeyFrame)
 }
 
 // AsColorKeyFrame queries the instance's IColorKeyFrame interface.
@@ -46988,6 +51781,12 @@ func NewLinearDoubleKeyFrame() (*LinearDoubleKeyFrame, error) {
 	return winrt.QueryInterface[LinearDoubleKeyFrame](unsafe.Pointer(instance), &IID_ILinearDoubleKeyFrame)
 }
 
+// AsLinearDoubleKeyFrame queries the instance's ILinearDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *LinearDoubleKeyFrame) AsLinearDoubleKeyFrame() (*ILinearDoubleKeyFrame, error) {
+	return winrt.QueryInterface[ILinearDoubleKeyFrame](unsafe.Pointer(self), &IID_ILinearDoubleKeyFrame)
+}
+
 // AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.DoubleKeyFrame.
 // The returned reference is owned by the caller.
@@ -47018,6 +51817,12 @@ func NewLinearPointKeyFrame() (*LinearPointKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[LinearPointKeyFrame](unsafe.Pointer(instance), &IID_ILinearPointKeyFrame)
+}
+
+// AsLinearPointKeyFrame queries the instance's ILinearPointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *LinearPointKeyFrame) AsLinearPointKeyFrame() (*ILinearPointKeyFrame, error) {
+	return winrt.QueryInterface[ILinearPointKeyFrame](unsafe.Pointer(self), &IID_ILinearPointKeyFrame)
 }
 
 // AsPointKeyFrame queries the instance's IPointKeyFrame interface.
@@ -47052,6 +51857,12 @@ func NewNavigationThemeTransition() (*NavigationThemeTransition, error) {
 	return winrt.QueryInterface[NavigationThemeTransition](unsafe.Pointer(instance), &IID_INavigationThemeTransition)
 }
 
+// AsNavigationThemeTransition queries the instance's INavigationThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *NavigationThemeTransition) AsNavigationThemeTransition() (*INavigationThemeTransition, error) {
+	return winrt.QueryInterface[INavigationThemeTransition](unsafe.Pointer(self), &IID_INavigationThemeTransition)
+}
+
 // AsTransition queries the instance's ITransition interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
 // The returned reference is owned by the caller.
@@ -47083,6 +51894,12 @@ func NavigationThemeTransitionStatics() (*INavigationThemeTransitionStatics, err
 // the embedded IInspectable → IUnknown chain).
 type NavigationTransitionInfo struct {
 	INavigationTransitionInfo
+}
+
+// AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *NavigationTransitionInfo) AsNavigationTransitionInfo() (*INavigationTransitionInfo, error) {
+	return winrt.QueryInterface[INavigationTransitionInfo](unsafe.Pointer(self), &IID_INavigationTransitionInfo)
 }
 
 // AsNavigationTransitionInfoOverrides queries the instance's INavigationTransitionInfoOverrides interface.
@@ -47141,6 +51958,12 @@ func NewObjectAnimationUsingKeyFrames() (*ObjectAnimationUsingKeyFrames, error) 
 	return winrt.QueryInterface[ObjectAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IObjectAnimationUsingKeyFrames)
 }
 
+// AsObjectAnimationUsingKeyFrames queries the instance's IObjectAnimationUsingKeyFrames interface.
+// The returned reference is owned by the caller.
+func (self *ObjectAnimationUsingKeyFrames) AsObjectAnimationUsingKeyFrames() (*IObjectAnimationUsingKeyFrames, error) {
+	return winrt.QueryInterface[IObjectAnimationUsingKeyFrames](unsafe.Pointer(self), &IID_IObjectAnimationUsingKeyFrames)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -47172,6 +51995,12 @@ func ObjectAnimationUsingKeyFramesStatics() (*IObjectAnimationUsingKeyFramesStat
 // the embedded IInspectable → IUnknown chain).
 type ObjectKeyFrame struct {
 	IObjectKeyFrame
+}
+
+// AsObjectKeyFrame queries the instance's IObjectKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *ObjectKeyFrame) AsObjectKeyFrame() (*IObjectKeyFrame, error) {
+	return winrt.QueryInterface[IObjectKeyFrame](unsafe.Pointer(self), &IID_IObjectKeyFrame)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -47236,6 +52065,12 @@ func NewObjectKeyFrameCollection() (*ObjectKeyFrameCollection, error) {
 	return winrt.QueryInterface[ObjectKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfObjectKeyFrame)
 }
 
+// AsVectorOfObjectKeyFrame queries the instance's IVectorOfObjectKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *ObjectKeyFrameCollection) AsVectorOfObjectKeyFrame() (*IVectorOfObjectKeyFrame, error) {
+	return winrt.QueryInterface[IVectorOfObjectKeyFrame](unsafe.Pointer(self), &IID_IVectorOfObjectKeyFrame)
+}
+
 // AsIterableOfObjectKeyFrame queries the instance's IIterableOfObjectKeyFrame interface.
 // The returned reference is owned by the caller.
 func (self *ObjectKeyFrameCollection) AsIterableOfObjectKeyFrame() (*IIterableOfObjectKeyFrame, error) {
@@ -47258,6 +52093,12 @@ func NewPaneThemeTransition() (*PaneThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PaneThemeTransition](unsafe.Pointer(instance), &IID_IPaneThemeTransition)
+}
+
+// AsPaneThemeTransition queries the instance's IPaneThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *PaneThemeTransition) AsPaneThemeTransition() (*IPaneThemeTransition, error) {
+	return winrt.QueryInterface[IPaneThemeTransition](unsafe.Pointer(self), &IID_IPaneThemeTransition)
 }
 
 // AsTransition queries the instance's ITransition interface.
@@ -47304,6 +52145,12 @@ func NewPointAnimation() (*PointAnimation, error) {
 	return winrt.QueryInterface[PointAnimation](unsafe.Pointer(instance), &IID_IPointAnimation)
 }
 
+// AsPointAnimation queries the instance's IPointAnimation interface.
+// The returned reference is owned by the caller.
+func (self *PointAnimation) AsPointAnimation() (*IPointAnimation, error) {
+	return winrt.QueryInterface[IPointAnimation](unsafe.Pointer(self), &IID_IPointAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -47348,6 +52195,12 @@ func NewPointAnimationUsingKeyFrames() (*PointAnimationUsingKeyFrames, error) {
 	return winrt.QueryInterface[PointAnimationUsingKeyFrames](unsafe.Pointer(instance), &IID_IPointAnimationUsingKeyFrames)
 }
 
+// AsPointAnimationUsingKeyFrames queries the instance's IPointAnimationUsingKeyFrames interface.
+// The returned reference is owned by the caller.
+func (self *PointAnimationUsingKeyFrames) AsPointAnimationUsingKeyFrames() (*IPointAnimationUsingKeyFrames, error) {
+	return winrt.QueryInterface[IPointAnimationUsingKeyFrames](unsafe.Pointer(self), &IID_IPointAnimationUsingKeyFrames)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -47379,6 +52232,12 @@ func PointAnimationUsingKeyFramesStatics() (*IPointAnimationUsingKeyFramesStatic
 // the embedded IInspectable → IUnknown chain).
 type PointKeyFrame struct {
 	IPointKeyFrame
+}
+
+// AsPointKeyFrame queries the instance's IPointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *PointKeyFrame) AsPointKeyFrame() (*IPointKeyFrame, error) {
+	return winrt.QueryInterface[IPointKeyFrame](unsafe.Pointer(self), &IID_IPointKeyFrame)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -47443,6 +52302,12 @@ func NewPointKeyFrameCollection() (*PointKeyFrameCollection, error) {
 	return winrt.QueryInterface[PointKeyFrameCollection](unsafe.Pointer(instance), &IID_IVectorOfPointKeyFrame)
 }
 
+// AsVectorOfPointKeyFrame queries the instance's IVectorOfPointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *PointKeyFrameCollection) AsVectorOfPointKeyFrame() (*IVectorOfPointKeyFrame, error) {
+	return winrt.QueryInterface[IVectorOfPointKeyFrame](unsafe.Pointer(self), &IID_IVectorOfPointKeyFrame)
+}
+
 // AsIterableOfPointKeyFrame queries the instance's IIterableOfPointKeyFrame interface.
 // The returned reference is owned by the caller.
 func (self *PointKeyFrameCollection) AsIterableOfPointKeyFrame() (*IIterableOfPointKeyFrame, error) {
@@ -47465,6 +52330,12 @@ func NewPointerDownThemeAnimation() (*PointerDownThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PointerDownThemeAnimation](unsafe.Pointer(instance), &IID_IPointerDownThemeAnimation)
+}
+
+// AsPointerDownThemeAnimation queries the instance's IPointerDownThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *PointerDownThemeAnimation) AsPointerDownThemeAnimation() (*IPointerDownThemeAnimation, error) {
+	return winrt.QueryInterface[IPointerDownThemeAnimation](unsafe.Pointer(self), &IID_IPointerDownThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -47511,6 +52382,12 @@ func NewPointerUpThemeAnimation() (*PointerUpThemeAnimation, error) {
 	return winrt.QueryInterface[PointerUpThemeAnimation](unsafe.Pointer(instance), &IID_IPointerUpThemeAnimation)
 }
 
+// AsPointerUpThemeAnimation queries the instance's IPointerUpThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *PointerUpThemeAnimation) AsPointerUpThemeAnimation() (*IPointerUpThemeAnimation, error) {
+	return winrt.QueryInterface[IPointerUpThemeAnimation](unsafe.Pointer(self), &IID_IPointerUpThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -47553,6 +52430,12 @@ func NewPopInThemeAnimation() (*PopInThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PopInThemeAnimation](unsafe.Pointer(instance), &IID_IPopInThemeAnimation)
+}
+
+// AsPopInThemeAnimation queries the instance's IPopInThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *PopInThemeAnimation) AsPopInThemeAnimation() (*IPopInThemeAnimation, error) {
+	return winrt.QueryInterface[IPopInThemeAnimation](unsafe.Pointer(self), &IID_IPopInThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -47599,6 +52482,12 @@ func NewPopOutThemeAnimation() (*PopOutThemeAnimation, error) {
 	return winrt.QueryInterface[PopOutThemeAnimation](unsafe.Pointer(instance), &IID_IPopOutThemeAnimation)
 }
 
+// AsPopOutThemeAnimation queries the instance's IPopOutThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *PopOutThemeAnimation) AsPopOutThemeAnimation() (*IPopOutThemeAnimation, error) {
+	return winrt.QueryInterface[IPopOutThemeAnimation](unsafe.Pointer(self), &IID_IPopOutThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -47641,6 +52530,12 @@ func NewPopupThemeTransition() (*PopupThemeTransition, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PopupThemeTransition](unsafe.Pointer(instance), &IID_IPopupThemeTransition)
+}
+
+// AsPopupThemeTransition queries the instance's IPopupThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *PopupThemeTransition) AsPopupThemeTransition() (*IPopupThemeTransition, error) {
+	return winrt.QueryInterface[IPopupThemeTransition](unsafe.Pointer(self), &IID_IPopupThemeTransition)
 }
 
 // AsTransition queries the instance's ITransition interface.
@@ -47687,6 +52582,12 @@ func NewPowerEase() (*PowerEase, error) {
 	return winrt.QueryInterface[PowerEase](unsafe.Pointer(instance), &IID_IPowerEase)
 }
 
+// AsPowerEase queries the instance's IPowerEase interface.
+// The returned reference is owned by the caller.
+func (self *PowerEase) AsPowerEase() (*IPowerEase, error) {
+	return winrt.QueryInterface[IPowerEase](unsafe.Pointer(self), &IID_IPowerEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -47731,6 +52632,12 @@ func NewQuadraticEase() (*QuadraticEase, error) {
 	return winrt.QueryInterface[QuadraticEase](unsafe.Pointer(instance), &IID_IQuadraticEase)
 }
 
+// AsQuadraticEase queries the instance's IQuadraticEase interface.
+// The returned reference is owned by the caller.
+func (self *QuadraticEase) AsQuadraticEase() (*IQuadraticEase, error) {
+	return winrt.QueryInterface[IQuadraticEase](unsafe.Pointer(self), &IID_IQuadraticEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -47761,6 +52668,12 @@ func NewQuarticEase() (*QuarticEase, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[QuarticEase](unsafe.Pointer(instance), &IID_IQuarticEase)
+}
+
+// AsQuarticEase queries the instance's IQuarticEase interface.
+// The returned reference is owned by the caller.
+func (self *QuarticEase) AsQuarticEase() (*IQuarticEase, error) {
+	return winrt.QueryInterface[IQuarticEase](unsafe.Pointer(self), &IID_IQuarticEase)
 }
 
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
@@ -47795,6 +52708,12 @@ func NewQuinticEase() (*QuinticEase, error) {
 	return winrt.QueryInterface[QuinticEase](unsafe.Pointer(instance), &IID_IQuinticEase)
 }
 
+// AsQuinticEase queries the instance's IQuinticEase interface.
+// The returned reference is owned by the caller.
+func (self *QuinticEase) AsQuinticEase() (*IQuinticEase, error) {
+	return winrt.QueryInterface[IQuinticEase](unsafe.Pointer(self), &IID_IQuinticEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -47827,6 +52746,12 @@ func NewReorderThemeTransition() (*ReorderThemeTransition, error) {
 	return winrt.QueryInterface[ReorderThemeTransition](unsafe.Pointer(instance), &IID_IReorderThemeTransition)
 }
 
+// AsReorderThemeTransition queries the instance's IReorderThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *ReorderThemeTransition) AsReorderThemeTransition() (*IReorderThemeTransition, error) {
+	return winrt.QueryInterface[IReorderThemeTransition](unsafe.Pointer(self), &IID_IReorderThemeTransition)
+}
+
 // AsTransition queries the instance's ITransition interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
 // The returned reference is owned by the caller.
@@ -47846,6 +52771,12 @@ func (self *ReorderThemeTransition) AsDependencyObject() (*IDependencyObject, er
 // the embedded IInspectable → IUnknown chain).
 type RepeatBehaviorHelper struct {
 	IRepeatBehaviorHelper
+}
+
+// AsRepeatBehaviorHelper queries the instance's IRepeatBehaviorHelper interface.
+// The returned reference is owned by the caller.
+func (self *RepeatBehaviorHelper) AsRepeatBehaviorHelper() (*IRepeatBehaviorHelper, error) {
+	return winrt.QueryInterface[IRepeatBehaviorHelper](unsafe.Pointer(self), &IID_IRepeatBehaviorHelper)
 }
 
 // RepeatBehaviorHelperStatics returns the Microsoft.UI.Xaml.Media.Animation.IRepeatBehaviorHelperStatics statics of the
@@ -47876,6 +52807,12 @@ func NewRepositionThemeAnimation() (*RepositionThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RepositionThemeAnimation](unsafe.Pointer(instance), &IID_IRepositionThemeAnimation)
+}
+
+// AsRepositionThemeAnimation queries the instance's IRepositionThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *RepositionThemeAnimation) AsRepositionThemeAnimation() (*IRepositionThemeAnimation, error) {
+	return winrt.QueryInterface[IRepositionThemeAnimation](unsafe.Pointer(self), &IID_IRepositionThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -47922,6 +52859,12 @@ func NewRepositionThemeTransition() (*RepositionThemeTransition, error) {
 	return winrt.QueryInterface[RepositionThemeTransition](unsafe.Pointer(instance), &IID_IRepositionThemeTransition)
 }
 
+// AsRepositionThemeTransition queries the instance's IRepositionThemeTransition interface.
+// The returned reference is owned by the caller.
+func (self *RepositionThemeTransition) AsRepositionThemeTransition() (*IRepositionThemeTransition, error) {
+	return winrt.QueryInterface[IRepositionThemeTransition](unsafe.Pointer(self), &IID_IRepositionThemeTransition)
+}
+
 // AsTransition queries the instance's ITransition interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Transition.
 // The returned reference is owned by the caller.
@@ -47966,6 +52909,12 @@ func NewSineEase() (*SineEase, error) {
 	return winrt.QueryInterface[SineEase](unsafe.Pointer(instance), &IID_ISineEase)
 }
 
+// AsSineEase queries the instance's ISineEase interface.
+// The returned reference is owned by the caller.
+func (self *SineEase) AsSineEase() (*ISineEase, error) {
+	return winrt.QueryInterface[ISineEase](unsafe.Pointer(self), &IID_ISineEase)
+}
+
 // AsEasingFunctionBase queries the instance's IEasingFunctionBase interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.EasingFunctionBase.
 // The returned reference is owned by the caller.
@@ -47996,6 +52945,12 @@ func NewSlideNavigationTransitionInfo() (*SlideNavigationTransitionInfo, error) 
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SlideNavigationTransitionInfo](unsafe.Pointer(instance), &IID_ISlideNavigationTransitionInfo)
+}
+
+// AsSlideNavigationTransitionInfo queries the instance's ISlideNavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *SlideNavigationTransitionInfo) AsSlideNavigationTransitionInfo() (*ISlideNavigationTransitionInfo, error) {
+	return winrt.QueryInterface[ISlideNavigationTransitionInfo](unsafe.Pointer(self), &IID_ISlideNavigationTransitionInfo)
 }
 
 // AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
@@ -48049,6 +53004,12 @@ func NewSplineColorKeyFrame() (*SplineColorKeyFrame, error) {
 	return winrt.QueryInterface[SplineColorKeyFrame](unsafe.Pointer(instance), &IID_ISplineColorKeyFrame)
 }
 
+// AsSplineColorKeyFrame queries the instance's ISplineColorKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *SplineColorKeyFrame) AsSplineColorKeyFrame() (*ISplineColorKeyFrame, error) {
+	return winrt.QueryInterface[ISplineColorKeyFrame](unsafe.Pointer(self), &IID_ISplineColorKeyFrame)
+}
+
 // AsColorKeyFrame queries the instance's IColorKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.ColorKeyFrame.
 // The returned reference is owned by the caller.
@@ -48091,6 +53052,12 @@ func NewSplineDoubleKeyFrame() (*SplineDoubleKeyFrame, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SplineDoubleKeyFrame](unsafe.Pointer(instance), &IID_ISplineDoubleKeyFrame)
+}
+
+// AsSplineDoubleKeyFrame queries the instance's ISplineDoubleKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *SplineDoubleKeyFrame) AsSplineDoubleKeyFrame() (*ISplineDoubleKeyFrame, error) {
+	return winrt.QueryInterface[ISplineDoubleKeyFrame](unsafe.Pointer(self), &IID_ISplineDoubleKeyFrame)
 }
 
 // AsDoubleKeyFrame queries the instance's IDoubleKeyFrame interface.
@@ -48137,6 +53104,12 @@ func NewSplinePointKeyFrame() (*SplinePointKeyFrame, error) {
 	return winrt.QueryInterface[SplinePointKeyFrame](unsafe.Pointer(instance), &IID_ISplinePointKeyFrame)
 }
 
+// AsSplinePointKeyFrame queries the instance's ISplinePointKeyFrame interface.
+// The returned reference is owned by the caller.
+func (self *SplinePointKeyFrame) AsSplinePointKeyFrame() (*ISplinePointKeyFrame, error) {
+	return winrt.QueryInterface[ISplinePointKeyFrame](unsafe.Pointer(self), &IID_ISplinePointKeyFrame)
+}
+
 // AsPointKeyFrame queries the instance's IPointKeyFrame interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.PointKeyFrame.
 // The returned reference is owned by the caller.
@@ -48179,6 +53152,12 @@ func NewSplitCloseThemeAnimation() (*SplitCloseThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SplitCloseThemeAnimation](unsafe.Pointer(instance), &IID_ISplitCloseThemeAnimation)
+}
+
+// AsSplitCloseThemeAnimation queries the instance's ISplitCloseThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SplitCloseThemeAnimation) AsSplitCloseThemeAnimation() (*ISplitCloseThemeAnimation, error) {
+	return winrt.QueryInterface[ISplitCloseThemeAnimation](unsafe.Pointer(self), &IID_ISplitCloseThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -48225,6 +53204,12 @@ func NewSplitOpenThemeAnimation() (*SplitOpenThemeAnimation, error) {
 	return winrt.QueryInterface[SplitOpenThemeAnimation](unsafe.Pointer(instance), &IID_ISplitOpenThemeAnimation)
 }
 
+// AsSplitOpenThemeAnimation queries the instance's ISplitOpenThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SplitOpenThemeAnimation) AsSplitOpenThemeAnimation() (*ISplitOpenThemeAnimation, error) {
+	return winrt.QueryInterface[ISplitOpenThemeAnimation](unsafe.Pointer(self), &IID_ISplitOpenThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -48267,6 +53252,12 @@ func NewStoryboard() (*Storyboard, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[Storyboard](unsafe.Pointer(instance), &IID_IStoryboard)
+}
+
+// AsStoryboard queries the instance's IStoryboard interface.
+// The returned reference is owned by the caller.
+func (self *Storyboard) AsStoryboard() (*IStoryboard, error) {
+	return winrt.QueryInterface[IStoryboard](unsafe.Pointer(self), &IID_IStoryboard)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -48313,6 +53304,12 @@ func NewSuppressNavigationTransitionInfo() (*SuppressNavigationTransitionInfo, e
 	return winrt.QueryInterface[SuppressNavigationTransitionInfo](unsafe.Pointer(instance), &IID_ISuppressNavigationTransitionInfo)
 }
 
+// AsSuppressNavigationTransitionInfo queries the instance's ISuppressNavigationTransitionInfo interface.
+// The returned reference is owned by the caller.
+func (self *SuppressNavigationTransitionInfo) AsSuppressNavigationTransitionInfo() (*ISuppressNavigationTransitionInfo, error) {
+	return winrt.QueryInterface[ISuppressNavigationTransitionInfo](unsafe.Pointer(self), &IID_ISuppressNavigationTransitionInfo)
+}
+
 // AsNavigationTransitionInfo queries the instance's INavigationTransitionInfo interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo.
 // The returned reference is owned by the caller.
@@ -48350,6 +53347,12 @@ func NewSwipeBackThemeAnimation() (*SwipeBackThemeAnimation, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[SwipeBackThemeAnimation](unsafe.Pointer(instance), &IID_ISwipeBackThemeAnimation)
+}
+
+// AsSwipeBackThemeAnimation queries the instance's ISwipeBackThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SwipeBackThemeAnimation) AsSwipeBackThemeAnimation() (*ISwipeBackThemeAnimation, error) {
+	return winrt.QueryInterface[ISwipeBackThemeAnimation](unsafe.Pointer(self), &IID_ISwipeBackThemeAnimation)
 }
 
 // AsTimeline queries the instance's ITimeline interface.
@@ -48396,6 +53399,12 @@ func NewSwipeHintThemeAnimation() (*SwipeHintThemeAnimation, error) {
 	return winrt.QueryInterface[SwipeHintThemeAnimation](unsafe.Pointer(instance), &IID_ISwipeHintThemeAnimation)
 }
 
+// AsSwipeHintThemeAnimation queries the instance's ISwipeHintThemeAnimation interface.
+// The returned reference is owned by the caller.
+func (self *SwipeHintThemeAnimation) AsSwipeHintThemeAnimation() (*ISwipeHintThemeAnimation, error) {
+	return winrt.QueryInterface[ISwipeHintThemeAnimation](unsafe.Pointer(self), &IID_ISwipeHintThemeAnimation)
+}
+
 // AsTimeline queries the instance's ITimeline interface.
 // Inherited from Microsoft.UI.Xaml.Media.Animation.Timeline.
 // The returned reference is owned by the caller.
@@ -48427,6 +53436,12 @@ func SwipeHintThemeAnimationStatics() (*ISwipeHintThemeAnimationStatics, error) 
 // the embedded IInspectable → IUnknown chain).
 type Timeline struct {
 	ITimeline
+}
+
+// AsTimeline queries the instance's ITimeline interface.
+// The returned reference is owned by the caller.
+func (self *Timeline) AsTimeline() (*ITimeline, error) {
+	return winrt.QueryInterface[ITimeline](unsafe.Pointer(self), &IID_ITimeline)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -48491,6 +53506,12 @@ func NewTimelineCollection() (*TimelineCollection, error) {
 	return winrt.QueryInterface[TimelineCollection](unsafe.Pointer(instance), &IID_IVectorOfTimeline)
 }
 
+// AsVectorOfTimeline queries the instance's IVectorOfTimeline interface.
+// The returned reference is owned by the caller.
+func (self *TimelineCollection) AsVectorOfTimeline() (*IVectorOfTimeline, error) {
+	return winrt.QueryInterface[IVectorOfTimeline](unsafe.Pointer(self), &IID_IVectorOfTimeline)
+}
+
 // AsIterableOfTimeline queries the instance's IIterableOfTimeline interface.
 // The returned reference is owned by the caller.
 func (self *TimelineCollection) AsIterableOfTimeline() (*IIterableOfTimeline, error) {
@@ -48502,6 +53523,12 @@ func (self *TimelineCollection) AsIterableOfTimeline() (*IIterableOfTimeline, er
 // the embedded IInspectable → IUnknown chain).
 type Transition struct {
 	ITransition
+}
+
+// AsTransition queries the instance's ITransition interface.
+// The returned reference is owned by the caller.
+func (self *Transition) AsTransition() (*ITransition, error) {
+	return winrt.QueryInterface[ITransition](unsafe.Pointer(self), &IID_ITransition)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -48529,6 +53556,12 @@ func NewTransitionCollection() (*TransitionCollection, error) {
 	return winrt.QueryInterface[TransitionCollection](unsafe.Pointer(instance), &IID_IVectorOfTransition)
 }
 
+// AsVectorOfTransition queries the instance's IVectorOfTransition interface.
+// The returned reference is owned by the caller.
+func (self *TransitionCollection) AsVectorOfTransition() (*IVectorOfTransition, error) {
+	return winrt.QueryInterface[IVectorOfTransition](unsafe.Pointer(self), &IID_IVectorOfTransition)
+}
+
 // AsIterableOfTransition queries the instance's IIterableOfTransition interface.
 // The returned reference is owned by the caller.
 func (self *TransitionCollection) AsIterableOfTransition() (*IIterableOfTransition, error) {
@@ -48551,6 +53584,12 @@ func NewBitmapImage() (*BitmapImage, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[BitmapImage](unsafe.Pointer(instance), &IID_IBitmapImage)
+}
+
+// AsBitmapImage queries the instance's IBitmapImage interface.
+// The returned reference is owned by the caller.
+func (self *BitmapImage) AsBitmapImage() (*IBitmapImage, error) {
+	return winrt.QueryInterface[IBitmapImage](unsafe.Pointer(self), &IID_IBitmapImage)
 }
 
 // AsBitmapSource queries the instance's IBitmapSource interface.
@@ -48608,6 +53647,12 @@ func CreateInstanceWithUriSource(uriSource *wrtfoundation.IUriRuntimeClass) (*Bi
 // the embedded IInspectable → IUnknown chain).
 type BitmapSource struct {
 	IBitmapSource
+}
+
+// AsBitmapSource queries the instance's IBitmapSource interface.
+// The returned reference is owned by the caller.
+func (self *BitmapSource) AsBitmapSource() (*IBitmapSource, error) {
+	return winrt.QueryInterface[IBitmapSource](unsafe.Pointer(self), &IID_IBitmapSource)
 }
 
 // AsImageSource queries the instance's IImageSource interface.
@@ -48668,6 +53713,12 @@ type DownloadProgressEventArgs struct {
 	IDownloadProgressEventArgs
 }
 
+// AsDownloadProgressEventArgs queries the instance's IDownloadProgressEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *DownloadProgressEventArgs) AsDownloadProgressEventArgs() (*IDownloadProgressEventArgs, error) {
+	return winrt.QueryInterface[IDownloadProgressEventArgs](unsafe.Pointer(self), &IID_IDownloadProgressEventArgs)
+}
+
 // RenderTargetBitmap is the Microsoft.UI.Xaml.Media.Imaging.RenderTargetBitmap runtime class, surfaced through its
 // default interface IRenderTargetBitmap. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -48684,6 +53735,12 @@ func NewRenderTargetBitmap() (*RenderTargetBitmap, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[RenderTargetBitmap](unsafe.Pointer(instance), &IID_IRenderTargetBitmap)
+}
+
+// AsRenderTargetBitmap queries the instance's IRenderTargetBitmap interface.
+// The returned reference is owned by the caller.
+func (self *RenderTargetBitmap) AsRenderTargetBitmap() (*IRenderTargetBitmap, error) {
+	return winrt.QueryInterface[IRenderTargetBitmap](unsafe.Pointer(self), &IID_IRenderTargetBitmap)
 }
 
 // AsImageSource queries the instance's IImageSource interface.
@@ -48730,6 +53787,12 @@ func NewSoftwareBitmapSource() (*SoftwareBitmapSource, error) {
 	return winrt.QueryInterface[SoftwareBitmapSource](unsafe.Pointer(instance), &IID_ISoftwareBitmapSource)
 }
 
+// AsSoftwareBitmapSource queries the instance's ISoftwareBitmapSource interface.
+// The returned reference is owned by the caller.
+func (self *SoftwareBitmapSource) AsSoftwareBitmapSource() (*ISoftwareBitmapSource, error) {
+	return winrt.QueryInterface[ISoftwareBitmapSource](unsafe.Pointer(self), &IID_ISoftwareBitmapSource)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *SoftwareBitmapSource) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -48755,6 +53818,12 @@ func (self *SoftwareBitmapSource) AsDependencyObject() (*IDependencyObject, erro
 // the embedded IInspectable → IUnknown chain).
 type SurfaceImageSource struct {
 	ISurfaceImageSource
+}
+
+// AsSurfaceImageSource queries the instance's ISurfaceImageSource interface.
+// The returned reference is owned by the caller.
+func (self *SurfaceImageSource) AsSurfaceImageSource() (*ISurfaceImageSource, error) {
+	return winrt.QueryInterface[ISurfaceImageSource](unsafe.Pointer(self), &IID_ISurfaceImageSource)
 }
 
 // AsImageSource queries the instance's IImageSource interface.
@@ -48826,6 +53895,12 @@ func NewSurfaceImageSourceWithDimensionsAndOpacity(pixelWidth int32, pixelHeight
 // the embedded IInspectable → IUnknown chain).
 type SvgImageSource struct {
 	ISvgImageSource
+}
+
+// AsSvgImageSource queries the instance's ISvgImageSource interface.
+// The returned reference is owned by the caller.
+func (self *SvgImageSource) AsSvgImageSource() (*ISvgImageSource, error) {
+	return winrt.QueryInterface[ISvgImageSource](unsafe.Pointer(self), &IID_ISvgImageSource)
 }
 
 // AsImageSource queries the instance's IImageSource interface.
@@ -48911,6 +53986,12 @@ type SvgImageSourceFailedEventArgs struct {
 	ISvgImageSourceFailedEventArgs
 }
 
+// AsSvgImageSourceFailedEventArgs queries the instance's ISvgImageSourceFailedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SvgImageSourceFailedEventArgs) AsSvgImageSourceFailedEventArgs() (*ISvgImageSourceFailedEventArgs, error) {
+	return winrt.QueryInterface[ISvgImageSourceFailedEventArgs](unsafe.Pointer(self), &IID_ISvgImageSourceFailedEventArgs)
+}
+
 // SvgImageSourceOpenedEventArgs is the Microsoft.UI.Xaml.Media.Imaging.SvgImageSourceOpenedEventArgs runtime class, surfaced through its
 // default interface ISvgImageSourceOpenedEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
@@ -48918,11 +53999,23 @@ type SvgImageSourceOpenedEventArgs struct {
 	ISvgImageSourceOpenedEventArgs
 }
 
+// AsSvgImageSourceOpenedEventArgs queries the instance's ISvgImageSourceOpenedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *SvgImageSourceOpenedEventArgs) AsSvgImageSourceOpenedEventArgs() (*ISvgImageSourceOpenedEventArgs, error) {
+	return winrt.QueryInterface[ISvgImageSourceOpenedEventArgs](unsafe.Pointer(self), &IID_ISvgImageSourceOpenedEventArgs)
+}
+
 // VirtualSurfaceImageSource is the Microsoft.UI.Xaml.Media.Imaging.VirtualSurfaceImageSource runtime class, surfaced through its
 // default interface IVirtualSurfaceImageSource. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type VirtualSurfaceImageSource struct {
 	IVirtualSurfaceImageSource
+}
+
+// AsVirtualSurfaceImageSource queries the instance's IVirtualSurfaceImageSource interface.
+// The returned reference is owned by the caller.
+func (self *VirtualSurfaceImageSource) AsVirtualSurfaceImageSource() (*IVirtualSurfaceImageSource, error) {
+	return winrt.QueryInterface[IVirtualSurfaceImageSource](unsafe.Pointer(self), &IID_IVirtualSurfaceImageSource)
 }
 
 // AsSurfaceImageSource queries the instance's ISurfaceImageSource interface.
@@ -48987,6 +54080,12 @@ type WriteableBitmap struct {
 	IWriteableBitmap
 }
 
+// AsWriteableBitmap queries the instance's IWriteableBitmap interface.
+// The returned reference is owned by the caller.
+func (self *WriteableBitmap) AsWriteableBitmap() (*IWriteableBitmap, error) {
+	return winrt.QueryInterface[IWriteableBitmap](unsafe.Pointer(self), &IID_IWriteableBitmap)
+}
+
 // AsBitmapSource queries the instance's IBitmapSource interface.
 // Inherited from Microsoft.UI.Xaml.Media.Imaging.BitmapSource.
 // The returned reference is owned by the caller.
@@ -49030,6 +54129,12 @@ func CreateInstanceWithDimensionsWriteableBitmap(pixelWidth int32, pixelHeight i
 // the embedded IInspectable → IUnknown chain).
 type XamlRenderingBackgroundTask struct {
 	IXamlRenderingBackgroundTask
+}
+
+// AsXamlRenderingBackgroundTask queries the instance's IXamlRenderingBackgroundTask interface.
+// The returned reference is owned by the caller.
+func (self *XamlRenderingBackgroundTask) AsXamlRenderingBackgroundTask() (*IXamlRenderingBackgroundTask, error) {
+	return winrt.QueryInterface[IXamlRenderingBackgroundTask](unsafe.Pointer(self), &IID_IXamlRenderingBackgroundTask)
 }
 
 // AsXamlRenderingBackgroundTaskOverrides queries the instance's IXamlRenderingBackgroundTaskOverrides interface.
@@ -49081,6 +54186,12 @@ func NewCompositeTransform3D() (*CompositeTransform3D, error) {
 	return winrt.QueryInterface[CompositeTransform3D](unsafe.Pointer(instance), &IID_ICompositeTransform3D)
 }
 
+// AsCompositeTransform3D queries the instance's ICompositeTransform3D interface.
+// The returned reference is owned by the caller.
+func (self *CompositeTransform3D) AsCompositeTransform3D() (*ICompositeTransform3D, error) {
+	return winrt.QueryInterface[ICompositeTransform3D](unsafe.Pointer(self), &IID_ICompositeTransform3D)
+}
+
 // AsTransform3D queries the instance's ITransform3D interface.
 // Inherited from Microsoft.UI.Xaml.Media.Media3D.Transform3D.
 // The returned reference is owned by the caller.
@@ -49114,6 +54225,12 @@ type Matrix3DHelper struct {
 	IMatrix3DHelper
 }
 
+// AsMatrix3DHelper queries the instance's IMatrix3DHelper interface.
+// The returned reference is owned by the caller.
+func (self *Matrix3DHelper) AsMatrix3DHelper() (*IMatrix3DHelper, error) {
+	return winrt.QueryInterface[IMatrix3DHelper](unsafe.Pointer(self), &IID_IMatrix3DHelper)
+}
+
 // Matrix3DHelperStatics returns the Microsoft.UI.Xaml.Media.Media3D.IMatrix3DHelperStatics statics of the
 // Microsoft.UI.Xaml.Media.Media3D.Matrix3DHelper runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -49142,6 +54259,12 @@ func NewPerspectiveTransform3D() (*PerspectiveTransform3D, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[PerspectiveTransform3D](unsafe.Pointer(instance), &IID_IPerspectiveTransform3D)
+}
+
+// AsPerspectiveTransform3D queries the instance's IPerspectiveTransform3D interface.
+// The returned reference is owned by the caller.
+func (self *PerspectiveTransform3D) AsPerspectiveTransform3D() (*IPerspectiveTransform3D, error) {
+	return winrt.QueryInterface[IPerspectiveTransform3D](unsafe.Pointer(self), &IID_IPerspectiveTransform3D)
 }
 
 // AsTransform3D queries the instance's ITransform3D interface.
@@ -49175,6 +54298,12 @@ func PerspectiveTransform3DStatics() (*IPerspectiveTransform3DStatics, error) {
 // the embedded IInspectable → IUnknown chain).
 type Transform3D struct {
 	ITransform3D
+}
+
+// AsTransform3D queries the instance's ITransform3D interface.
+// The returned reference is owned by the caller.
+func (self *Transform3D) AsTransform3D() (*ITransform3D, error) {
+	return winrt.QueryInterface[ITransform3D](unsafe.Pointer(self), &IID_ITransform3D)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.
@@ -49216,6 +54345,12 @@ type FrameNavigationOptions struct {
 	IFrameNavigationOptions
 }
 
+// AsFrameNavigationOptions queries the instance's IFrameNavigationOptions interface.
+// The returned reference is owned by the caller.
+func (self *FrameNavigationOptions) AsFrameNavigationOptions() (*IFrameNavigationOptions, error) {
+	return winrt.QueryInterface[IFrameNavigationOptions](unsafe.Pointer(self), &IID_IFrameNavigationOptions)
+}
+
 // NewFrameNavigationOptions constructs a Microsoft.UI.Xaml.Navigation.FrameNavigationOptions instance through
 // Microsoft.UI.Xaml.Navigation.IFrameNavigationOptionsFactory.CreateInstance with a NULL controlling outer: the
 // class is created as itself, not derived from (instantiate-only
@@ -49248,11 +54383,23 @@ type NavigatingCancelEventArgs struct {
 	INavigatingCancelEventArgs
 }
 
+// AsNavigatingCancelEventArgs queries the instance's INavigatingCancelEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigatingCancelEventArgs) AsNavigatingCancelEventArgs() (*INavigatingCancelEventArgs, error) {
+	return winrt.QueryInterface[INavigatingCancelEventArgs](unsafe.Pointer(self), &IID_INavigatingCancelEventArgs)
+}
+
 // NavigationEventArgs is the Microsoft.UI.Xaml.Navigation.NavigationEventArgs runtime class, surfaced through its
 // default interface INavigationEventArgs. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type NavigationEventArgs struct {
 	INavigationEventArgs
+}
+
+// AsNavigationEventArgs queries the instance's INavigationEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationEventArgs) AsNavigationEventArgs() (*INavigationEventArgs, error) {
+	return winrt.QueryInterface[INavigationEventArgs](unsafe.Pointer(self), &IID_INavigationEventArgs)
 }
 
 // NavigationFailedEventArgs is the Microsoft.UI.Xaml.Navigation.NavigationFailedEventArgs runtime class, surfaced through its
@@ -49262,11 +54409,23 @@ type NavigationFailedEventArgs struct {
 	INavigationFailedEventArgs
 }
 
+// AsNavigationFailedEventArgs queries the instance's INavigationFailedEventArgs interface.
+// The returned reference is owned by the caller.
+func (self *NavigationFailedEventArgs) AsNavigationFailedEventArgs() (*INavigationFailedEventArgs, error) {
+	return winrt.QueryInterface[INavigationFailedEventArgs](unsafe.Pointer(self), &IID_INavigationFailedEventArgs)
+}
+
 // PageStackEntry is the Microsoft.UI.Xaml.Navigation.PageStackEntry runtime class, surfaced through its
 // default interface IPageStackEntry. Release when done (promoted from
 // the embedded IInspectable → IUnknown chain).
 type PageStackEntry struct {
 	IPageStackEntry
+}
+
+// AsPageStackEntry queries the instance's IPageStackEntry interface.
+// The returned reference is owned by the caller.
+func (self *PageStackEntry) AsPageStackEntry() (*IPageStackEntry, error) {
+	return winrt.QueryInterface[IPageStackEntry](unsafe.Pointer(self), &IID_IPageStackEntry)
 }
 
 // AsDependencyObject queries the instance's IDependencyObject interface.

@@ -18,6 +18,12 @@ type ApplicationData struct {
 	IApplicationData
 }
 
+// AsApplicationData queries the instance's IApplicationData interface.
+// The returned reference is owned by the caller.
+func (self *ApplicationData) AsApplicationData() (*IApplicationData, error) {
+	return winrt.QueryInterface[IApplicationData](unsafe.Pointer(self), &IID_IApplicationData)
+}
+
 // AsClosable queries the instance's wrtfoundation.IClosable interface.
 // The returned reference is owned by the caller.
 func (self *ApplicationData) AsClosable() (*wrtfoundation.IClosable, error) {
@@ -53,6 +59,12 @@ func ApplicationDataStatics2() (*IApplicationDataStatics2, error) {
 // the embedded IInspectable → IUnknown chain).
 type ApplicationDataContainer struct {
 	IApplicationDataContainer
+}
+
+// AsApplicationDataContainer queries the instance's IApplicationDataContainer interface.
+// The returned reference is owned by the caller.
+func (self *ApplicationDataContainer) AsApplicationDataContainer() (*IApplicationDataContainer, error) {
+	return winrt.QueryInterface[IApplicationDataContainer](unsafe.Pointer(self), &IID_IApplicationDataContainer)
 }
 
 // AsClosable queries the instance's wrtfoundation.IClosable interface.

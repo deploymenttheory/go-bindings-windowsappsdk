@@ -29,6 +29,12 @@ func NewAnimatedAcceptVisualSource() (*AnimatedAcceptVisualSource, error) {
 	return winrt.QueryInterface[AnimatedAcceptVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedAcceptVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
+}
+
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
 func (self *AnimatedAcceptVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
@@ -51,6 +57,12 @@ func NewAnimatedBackVisualSource() (*AnimatedBackVisualSource, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AnimatedBackVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
+}
+
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedBackVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
 }
 
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
@@ -77,6 +89,12 @@ func NewAnimatedChevronDownSmallVisualSource() (*AnimatedChevronDownSmallVisualS
 	return winrt.QueryInterface[AnimatedChevronDownSmallVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedChevronDownSmallVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
+}
+
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
 func (self *AnimatedChevronDownSmallVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
@@ -99,6 +117,12 @@ func NewAnimatedChevronRightDownSmallVisualSource() (*AnimatedChevronRightDownSm
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AnimatedChevronRightDownSmallVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
+}
+
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedChevronRightDownSmallVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
 }
 
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
@@ -125,6 +149,12 @@ func NewAnimatedChevronUpDownSmallVisualSource() (*AnimatedChevronUpDownSmallVis
 	return winrt.QueryInterface[AnimatedChevronUpDownSmallVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedChevronUpDownSmallVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
+}
+
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
 func (self *AnimatedChevronUpDownSmallVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
@@ -147,6 +177,12 @@ func NewAnimatedFindVisualSource() (*AnimatedFindVisualSource, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AnimatedFindVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
+}
+
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedFindVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
 }
 
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
@@ -173,6 +209,12 @@ func NewAnimatedGlobalNavigationButtonVisualSource() (*AnimatedGlobalNavigationB
 	return winrt.QueryInterface[AnimatedGlobalNavigationButtonVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
 }
 
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedGlobalNavigationButtonVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
+}
+
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.
 // The returned reference is owned by the caller.
 func (self *AnimatedGlobalNavigationButtonVisualSource) AsAnimatedVisualSource2() (*uixaml.IAnimatedVisualSource2, error) {
@@ -195,6 +237,12 @@ func NewAnimatedSettingsVisualSource() (*AnimatedSettingsVisualSource, error) {
 	}
 	defer instance.Release()
 	return winrt.QueryInterface[AnimatedSettingsVisualSource](unsafe.Pointer(instance), &uixaml.IID_IAnimatedVisualSource)
+}
+
+// AsAnimatedVisualSource queries the instance's uixaml.IAnimatedVisualSource interface.
+// The returned reference is owned by the caller.
+func (self *AnimatedSettingsVisualSource) AsAnimatedVisualSource() (*uixaml.IAnimatedVisualSource, error) {
+	return winrt.QueryInterface[uixaml.IAnimatedVisualSource](unsafe.Pointer(self), &uixaml.IID_IAnimatedVisualSource)
 }
 
 // AsAnimatedVisualSource2 queries the instance's uixaml.IAnimatedVisualSource2 interface.

@@ -17,6 +17,12 @@ type FontWeights struct {
 	IFontWeights
 }
 
+// AsFontWeights queries the instance's IFontWeights interface.
+// The returned reference is owned by the caller.
+func (self *FontWeights) AsFontWeights() (*IFontWeights, error) {
+	return winrt.QueryInterface[IFontWeights](unsafe.Pointer(self), &IID_IFontWeights)
+}
+
 // FontWeightsStatics returns the Microsoft.UI.Text.IFontWeightsStatics statics of the
 // Microsoft.UI.Text.FontWeights runtime class. The activation factory is queried for
 // the statics IID directly, so the returned reference (owned by the caller;
@@ -36,6 +42,12 @@ type RichEditTextDocument struct {
 	ITextDocument
 }
 
+// AsTextDocument queries the instance's ITextDocument interface.
+// The returned reference is owned by the caller.
+func (self *RichEditTextDocument) AsTextDocument() (*ITextDocument, error) {
+	return winrt.QueryInterface[ITextDocument](unsafe.Pointer(self), &IID_ITextDocument)
+}
+
 // AsTextDocument2 queries the instance's ITextDocument2 interface.
 // The returned reference is owned by the caller.
 func (self *RichEditTextDocument) AsTextDocument2() (*ITextDocument2, error) {
@@ -47,6 +59,12 @@ func (self *RichEditTextDocument) AsTextDocument2() (*ITextDocument2, error) {
 // the embedded IInspectable → IUnknown chain).
 type RichEditTextRange struct {
 	ITextRange
+}
+
+// AsTextRange queries the instance's ITextRange interface.
+// The returned reference is owned by the caller.
+func (self *RichEditTextRange) AsTextRange() (*ITextRange, error) {
+	return winrt.QueryInterface[ITextRange](unsafe.Pointer(self), &IID_ITextRange)
 }
 
 // TextConstantsStatics returns the Microsoft.UI.Text.ITextConstantsStatics statics of the

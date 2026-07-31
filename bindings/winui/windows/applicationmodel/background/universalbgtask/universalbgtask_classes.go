@@ -29,6 +29,12 @@ func NewTask() (*Task, error) {
 	return winrt.QueryInterface[Task](unsafe.Pointer(instance), &IID_ITask)
 }
 
+// AsTask queries the instance's ITask interface.
+// The returned reference is owned by the caller.
+func (self *Task) AsTask() (*ITask, error) {
+	return winrt.QueryInterface[ITask](unsafe.Pointer(self), &IID_ITask)
+}
+
 // AsBackgroundTask queries the instance's wrtapplicationmodelbackground.IBackgroundTask interface.
 // The returned reference is owned by the caller.
 func (self *Task) AsBackgroundTask() (*wrtapplicationmodelbackground.IBackgroundTask, error) {
