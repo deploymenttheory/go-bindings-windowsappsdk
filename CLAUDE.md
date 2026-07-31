@@ -705,5 +705,16 @@ CI checks the build tags rather than cross-compiling, because a wildcard
   activation factory, apartment, `[Composable]`, controlling outer and inner
    — over invented shorthand, so the documentation can be read alongside
   Microsoft's. Say what a thing does before why it does it.
+- **A merged branch is finished.** Further work starts from a fresh branch cut from a
+  freshly-pulled `main`, and every push gets its own PR. Pushing more commits to a branch
+  whose PR is already merged strands them: they are on the remote, on no PR, and not on
+  `main`.
+
+  Worth knowing because the symptom misleads. `git merge-base --is-ancestor` and a file
+  check both say "not on main", which looks exactly like a merge having dropped commits —
+  and that is the wrong conclusion twice over. Compare the merge commit's timestamp with
+  the commits' own: if the merge came first, nothing was dropped and the branch was simply
+  pushed to afterwards.
+
 - Conventional commits, release-please, SHA-pinned GitHub Actions,
   LF-normalised text (`.gitattributes`), `*.winmd` and `*.dll` marked binary.
