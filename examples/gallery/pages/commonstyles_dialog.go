@@ -138,5 +138,13 @@ func showDialog(ready *app.Ready, status *uixaml.TextBlock) error {
 	}
 	// Neither the handler nor the operation is released here: the framework holds both
 	// until the dialog closes and the completion has run.
-	return operation.SetCompleted(handler)
+	if err := operation.SetCompleted(handler); err != nil {
+		return err
+	}
+	// Reported so the open is observable. A ContentDialog is NOT enumerated by
+	// VisualTreeHelper.GetOpenPopupsForXamlRoot — twelve dispatcher turns after
+	// ShowAsync it still reports none — so a test cannot see the dialog by counting
+	// popups, and neither can app.CloseOpenPopups reach one. What is observable is that
+	// ShowAsync was accepted, which is what this says.
+	return status.SetText("Dialog shown; waiting for a button.")
 }
