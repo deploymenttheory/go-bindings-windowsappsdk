@@ -61,6 +61,9 @@ func TestMain(m *testing.M) {
 	if page := os.Getenv(galleryPageEnv); page != "" {
 		os.Exit(runGalleryPage(page))
 	}
+	if os.Getenv(goLayoutSubprocessEnv) != "" {
+		os.Exit(runGoLayoutCase())
+	}
 	os.Exit(m.Run())
 }
 

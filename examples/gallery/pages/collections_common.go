@@ -31,6 +31,9 @@ var xamlCollectionIIDs = winrt.CollectionIIDs{
 	Vector:     uixaml.IID_IVectorOfObject,
 }
 
+// XamlCollectionIIDs exposes them for tests that build a source of their own.
+func XamlCollectionIIDs() winrt.CollectionIIDs { return xamlCollectionIIDs }
+
 // itemsSource is app.NewStringItemsSource with this package's IIDs already supplied.
 func itemsSource(values []string) (*app.ItemsSource, error) {
 	return app.NewStringItemsSource(values, xamlCollectionIIDs)
