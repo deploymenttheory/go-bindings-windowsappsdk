@@ -30,7 +30,6 @@ package app
 
 import (
 	"fmt"
-	"unsafe"
 
 	win32 "github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
@@ -78,26 +77,20 @@ func NewReference[T any, V any](value V, iid *win32.GUID, runtimeClass string) (
 
 	// Slot 6 is get_Value: one out parameter, the address to write the value to.
 	//
-	// `go vet` reports "possible misuse of unsafe.Pointer" on the write below, and it
-	// is the same false positive CLAUDE.md already records for the generated delegate
-	// adapters: the word IS a native address, supplied by the caller, and there is no
-	// Go pointer it could have come from. This is the first HAND-WRITTEN code here to
-	// do it, so the note lives at the site rather than only in the conventions.
+	// winrt.InParam is the sanctioned conversion for an address native code supplied —
+	// the inbound counterpart of winrt.OutParam, added in go-bindings-winrt v0.6.0 for
+	// exactly this case. It keeps the "this is a native address, not a Go pointer"
+	// justification in one documented place instead of once per call site, and keeps
+	// `go vet` clean here.
 	//
-	// It is the inbound counterpart of winrt.OutParam, which handles the outbound
-	// direction — a pointer Go gives native code to write through, forced onto the heap
-	// so a stack move cannot invalidate it. There is no inbound equivalent because
-	// nothing before this implemented a WinRT method with an out parameter in Go. If
-	// more of these appear, that helper belongs in go-bindings-winrt beside OutParam,
-	// not copied per call site.
-	//
-	// The stack-move hazard does not apply in this direction: the address belongs to
-	// the caller, not to a Go stack, and nothing here hands a Go pointer outwards.
+	// The null check is not optional. A caller passing null for an out-parameter is a
+	// caller bug, and the documented answer is E_POINTER rather than the access
+	// violation that writing through it would give.
 	getValue := func(args []uintptr) uintptr {
 		if len(args) < 1 || args[0] == 0 {
 			return ePointer
 		}
-		*(*V)(unsafe.Pointer(args[0])) = reference.value
+		*(*V)(winrt.InParam(args[0])) = reference.value
 		return 0
 	}
 

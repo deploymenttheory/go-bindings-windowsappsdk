@@ -61,6 +61,12 @@ func TestMain(m *testing.M) {
 	if page := os.Getenv(galleryPageEnv); page != "" {
 		os.Exit(runGalleryPage(page))
 	}
+	if os.Getenv(goLayoutSubprocessEnv) != "" {
+		os.Exit(runGoLayoutCase())
+	}
+	if os.Getenv(popupLeakSubprocessEnv) != "" {
+		os.Exit(runPopupLeakCase())
+	}
 	os.Exit(m.Run())
 }
 

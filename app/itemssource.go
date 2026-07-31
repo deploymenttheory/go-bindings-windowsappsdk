@@ -115,3 +115,30 @@ func (s *ItemsSource) Close() {
 	}
 	s.boxed = nil
 }
+
+// NewObjectItemsSource is NewItemsSource for items that are already WinRT objects —
+// UIElements, view models, anything with an IInspectable.
+//
+// The difference from NewItemsSource is that nothing is boxed. Box turns a Go VALUE into
+// a PropertyValue; an object is already an IInspectable and boxing one would either fail
+// or, worse, wrap a pointer as a number and hand the control something it cannot render.
+// ItemsRepeater supports UIElements as items directly — no ItemTemplate needed, the
+// element IS the realized element — and that path needs this constructor.
+//
+// The collection retains each object, so the caller keeps its own references and should
+// release them when done. Close releases only what this side added.
+func NewObjectItemsSource(objects []*syswinrt.IInspectable, iids winrt.CollectionIIDs) (*ItemsSource, error) {
+	items := make([]any, 0, len(objects))
+	for index, object := range objects {
+		if object == nil {
+			return nil, fmt.Errorf("app: item %d is nil", index)
+		}
+		// The payload element is the pointer as a uintptr — CodecInterface's form,
+		// which retains and releases the word directly. See NewItemsSource.
+		items = append(items, uintptr(unsafe.Pointer(object)))
+	}
+	return &ItemsSource{
+		vector: winrt.NewVectorObject(
+			"Windows.Foundation.Collections.IVector`1<Object>", iids, winrt.CodecInterface, items),
+	}, nil
+}
