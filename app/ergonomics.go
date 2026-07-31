@@ -98,22 +98,33 @@ func With[T Releaser](get func() (T, error), fn func(T) error) error {
 // On grounds a delegate and registers it as an event handler.
 //
 // add is a generated Add<Event> method value and ground is the generated New<Handler>
-// constructor, which together pin the handler type and the argument type — so this one
-// function covers every two-argument event in the metadata, which is nearly all of
-// them:
+// constructor, which together pin the handler type, the SENDER type and the argument
+// type — so this one function covers every two-argument event in the metadata:
 //
 //	_, err := app.On(base.AddClick, uixaml.NewRoutedEventHandler,
 //		func(sender *syswinrt.IInspectable, args *uixaml.IRoutedEventArgs) {
 //			// on the UI thread
 //		})
 //
+//	_, err := app.On(view.AddViewChanged, uixaml.NewTypedEventHandlerOfScrollViewAndObject,
+//		func(sender *uixaml.IScrollView, args *syswinrt.IInspectable) {
+//			// same call, typed sender
+//		})
+//
+// The sender was fixed at IInspectable until the scrolling batch, which is where the
+// limit showed. A RoutedEventHandler does have an IInspectable sender, and so does
+// every event the earlier examples used — but TypedEventHandler<TSender, TArgs> is
+// generic in BOTH, and the whole ScrollView and ScrollPresenter surface uses it that
+// way. Nothing about the body depended on the sender's type; only the signature did.
+// Existing callers are unaffected, since S infers to IInspectable from their handler.
+//
 // The handler is NOT closed. It stays registered, and the runtime holds a reference to
 // it, until the returned token is passed to the matching Remove<Event> — closing it
 // here would unregister the callback the caller just asked for.
-func On[H Handler, A any](
+func On[H Handler, S any, A any](
 	add func(H) (syswinrt.EventRegistrationToken, error),
-	ground func(func(*syswinrt.IInspectable, *A)) (H, error),
-	fn func(sender *syswinrt.IInspectable, args *A),
+	ground func(func(*S, *A)) (H, error),
+	fn func(sender *S, args *A),
 ) (syswinrt.EventRegistrationToken, error) {
 	handler, err := ground(fn)
 	if err != nil {
