@@ -37,6 +37,16 @@ import (
 // without it fails to parse, and the error says nothing useful about why.
 const PresentationNamespace = `xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"`
 
+// XamlNamespace is the x: namespace, which carries the directives rather than the types:
+// x:Name, x:Key, x:Bind, x:Class.
+//
+// It is added alongside the presentation namespace because a fragment needing it is not
+// unusual — it is most of them. A ControlTemplate names its parts with x:Name so the
+// control can find them, a ResourceDictionary keys its entries with x:Key, and without
+// this the parser fails with HRESULT 0x802B000A, which says only that something in the
+// markup was wrong.
+const XamlNamespace = `xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"`
+
 // LoadMarkup parses a XAML fragment and returns it as T.
 //
 // The caller owns the result and must Release it. The fragment must carry the
@@ -70,11 +80,11 @@ func LoadMarkup[T any](xaml string, iid *win32.GUID) (*T, error) {
 	return value, nil
 }
 
-// Markup adds the presentation namespace to a fragment's root element.
+// Markup adds the presentation and x: namespaces to a fragment's root element.
 //
-// Every fragment needs it and repeating it inline makes the markup harder to read than
-// the tree it describes. The insertion is at the first tag's name only, which is where
-// the parser wants it.
+// Every fragment needs the first and most need the second; repeating both inline makes
+// the markup harder to read than the tree it describes. The insertion is at the first
+// tag's name only, which is where the parser wants it.
 func Markup(fragment string) string {
 	for i := 0; i < len(fragment); i++ {
 		if fragment[i] != '<' {
@@ -83,7 +93,7 @@ func Markup(fragment string) string {
 		// Past the tag name: the namespace goes after it, before any attributes.
 		for j := i + 1; j < len(fragment); j++ {
 			if c := fragment[j]; c == ' ' || c == '>' || c == '/' {
-				return fragment[:j] + " " + PresentationNamespace + fragment[j:]
+				return fragment[:j] + " " + PresentationNamespace + " " + XamlNamespace + fragment[j:]
 			}
 		}
 		break

@@ -21,6 +21,7 @@ package acceptance
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -86,8 +87,13 @@ func runGalleryPage(key string) int {
 
 	switch {
 	case runErr != nil:
+		// Printed, not swallowed. Without this a page that fails to build reports only
+		// "exit status 2" to the parent, which says nothing about why — and the whole
+		// point of a conformance suite is that the failure names itself.
+		fmt.Fprintln(os.Stderr, "gallery:", key, "failed to build:", runErr)
 		return 2
 	case !laidOut:
+		fmt.Fprintln(os.Stderr, "gallery:", key, "built but never fired Loaded")
 		return 4
 	}
 	return 0
