@@ -13,10 +13,14 @@ package pages
 
 import (
 	"fmt"
+	"strings"
+	"time"
 	"unsafe"
 
+	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
+	uixamlanimatedvisuals "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml/controls/animatedvisuals"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	wrtui "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/ui"
@@ -65,106 +69,454 @@ func init() {
 			"App SDK; a WinUI 3 application has a Microsoft.UI.Xaml.Window over an HWND"})
 }
 
-// AnimatedIconPage: the icon, and the fallback it uses when no animation is supplied.
+// AnimatedIconPage: the icon, animating, with its markers read from the source.
 //
-// AnimatedIcon's Source is an IAnimatedVisualSource2, which is what the Lottie codegen
-// tool produces — a generated C# or C++ class per animation, not a file loaded at run
-// time. There is no such generator for Go, so the page shows the control with its
-// FallbackIconSource, which is the path every AnimatedIcon takes when its animation
-// cannot be loaded.
+// This page took three goes and each mistake is worth keeping, because none of them
+// produced an error — the icon simply sat there.
+//
+// FIRST: the animation was said to be out of reach, because a Lottie source is what the
+// codegen tool emits as a generated class and there is no such generator for Go. True,
+// and beside the point: WinUI SHIPS eight of those generated classes in
+// Microsoft.UI.Xaml.Controls.AnimatedVisuals, as ordinary activatable runtime classes.
+//
+// SECOND: the AnimatedIconStatics were fetched once and released with a defer, then used
+// from handlers that outlive the builder. A use-after-free, which panicked on a nil
+// vtable inside a COM callback.
+//
+// THIRD: hovering did nothing, for two separate reasons at once —
+//
+//   - An AnimatedIcon has no background, and an element with no background is not
+//     hit-testable over its transparent parts. PointerEntered never fired. The fix is a
+//     Border with a TRANSPARENT background rather than none: transparent is painted and
+//     therefore hit-tested, null is not painted and is not.
+//   - The state names are not a fixed vocabulary. Each source declares its own MARKERS,
+//     and AnimatedIcon plays between them by looking for "<from>To<to>_Start" and
+//     "_End". Guessing "Normal" and "PointerOver" happens to be right for some sources
+//     and wrong for others.
+//
+// So the states are READ from the source rather than assumed, which is also what makes
+// this page useful as reference: it lists what each animation actually defines.
 func buildAnimatedIconPage(ready *app.Ready) (*uixaml.IUIElement, error) {
-	icon, err := uixaml.NewAnimatedIcon()
+	settings, err := uixamlanimatedvisuals.NewAnimatedSettingsVisualSource()
+	if err != nil {
+		return nil, err
+	}
+	defer settings.Release()
+	settingsSource, err := settings.AsAnimatedVisualSource2()
+	if err != nil {
+		return nil, err
+	}
+	defer settingsSource.Release()
+
+	navigation, err := uixamlanimatedvisuals.NewAnimatedGlobalNavigationButtonVisualSource()
+	if err != nil {
+		return nil, err
+	}
+	defer navigation.Release()
+	navigationSource, err := navigation.AsAnimatedVisualSource2()
+	if err != nil {
+		return nil, err
+	}
+	defer navigationSource.Release()
+
+	buttonDriven, buttonNote, err := animatedIconWithButtons(
+		"AnimatedSettingsVisualSource", settingsSource)
+	if err != nil {
+		return nil, err
+	}
+	hoverDriven, hoverNote, err := animatedIconWithHover(
+		"AnimatedGlobalNavigationButtonVisualSource", navigationSource)
 	if err != nil {
 		return nil, err
 	}
 
-	fallback, err := uixaml.NewFontIconSource()
+	panel, err := stack(10, buttonNote, buttonDriven, hoverNote, hoverDriven)
 	if err != nil {
 		return nil, err
 	}
-	defer fallback.Release()
-	if err := app.All(
-		fallback.SetGlyph(""),
-		fallback.SetFontSize(28),
-	); err != nil {
-		return nil, err
-	}
-	source, err := fallback.AsIconSource()
-	if err != nil {
-		return nil, err
-	}
-	defer source.Release()
-	if err := icon.SetFallbackIconSource(source); err != nil {
-		return nil, err
-	}
-	if err := app.With(icon.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
-		return app.All(frame.SetWidth(48), frame.SetHeight(48))
-	}); err != nil {
-		return nil, err
-	}
-
-	note, err := label("AnimatedIcon showing its FallbackIconSource.\n\n" +
-		"Source is an IAnimatedVisualSource2, which the Lottie codegen tool emits as a " +
-		"generated class per animation. There is no such generator for Go, so the " +
-		"animation itself is out of reach — but the fallback is the path every " +
-		"AnimatedIcon takes when one cannot be loaded, so it is the honest thing to show.")
-	if err != nil {
-		return nil, err
-	}
-	panel, err := stack(8, note.AsUIElement, icon.AsUIElement)
-	if err != nil {
-		return nil, err
-	}
-	return panel.AsUIElement()
+	return scrolled(panel.AsUIElement)
 }
 
-// AnimatedVisualPlayerPage: the player with no source, reporting what it knows.
+// iconStates reads a source's markers and returns the state names it animates between.
 //
-// Same constraint as AnimatedIcon and the same honest answer: the player's properties are
-// readable and its FallbackContent renders, which is what an application sees when the
-// animation is missing.
+// A marker is named "<from>To<to>_Start" or "<from>To<to>_End", so the state names are
+// the two halves of each transition. Reading them is the only reliable way to know what
+// a given animation supports — they differ per source, and setting an unknown state is
+// silently ignored.
+func iconStates(source *uixaml.IAnimatedVisualSource2) ([]string, []string, error) {
+	markers, err := source.Markers()
+	if err != nil {
+		return nil, nil, err
+	}
+	defer markers.Release()
+
+	iterable, err := markers.AsIterableOfIKeyValuePairOfStringAndDouble()
+	if err != nil {
+		return nil, nil, err
+	}
+	defer iterable.Release()
+	iterator, err := iterable.First()
+	if err != nil {
+		return nil, nil, err
+	}
+	defer iterator.Release()
+
+	var names []string
+	seen := map[string]bool{}
+	var states []string
+	for {
+		has, err := iterator.HasCurrent()
+		if err != nil || !has {
+			break
+		}
+		pair, err := iterator.Current()
+		if err != nil {
+			break
+		}
+		key, keyErr := pair.Key()
+		pair.Release()
+		if keyErr == nil {
+			names = append(names, key)
+			for _, state := range statesFromMarker(key) {
+				if !seen[state] {
+					seen[state] = true
+					states = append(states, state)
+				}
+			}
+		}
+		if _, err := iterator.MoveNext(); err != nil {
+			break
+		}
+	}
+	return states, names, nil
+}
+
+// statesFromMarker splits "NormalToPointerOver_Start" into its two state names.
+func statesFromMarker(marker string) []string {
+	name := marker
+	for _, suffix := range []string{"_Start", "_End"} {
+		name = strings.TrimSuffix(name, suffix)
+	}
+	from, to, found := strings.Cut(name, "To")
+	if !found || from == "" || to == "" {
+		return nil
+	}
+	return []string{from, to}
+}
+
+// newAnimatedIcon builds a hit-testable AnimatedIcon over the given source.
+//
+// The Border is not decoration. An AnimatedIcon draws no background, and an element with
+// no background is not hit-tested over its transparent parts — so PointerEntered never
+// fires on the icon itself. A background of Transparent IS painted, and therefore is hit
+// tested; a background of null is not.
+func newAnimatedIcon(source *uixaml.IAnimatedVisualSource2) (*uixaml.AnimatedIcon, *uixaml.Border, error) {
+	icon, err := uixaml.NewAnimatedIcon()
+	if err != nil {
+		return nil, nil, err
+	}
+	if err := app.All(
+		icon.SetSource(source),
+		app.With(icon.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
+			// 140, not the 48 a real toolbar would use. These are 150ms micro-
+			// transitions designed to be barely noticed in a nav button; at 48px they
+			// read as nothing happening at all, which is exactly how this page was
+			// first reported as broken.
+			return app.All(frame.SetWidth(140), frame.SetHeight(140))
+		}),
+	); err != nil {
+		return nil, nil, err
+	}
+
+	border, err := uixaml.NewBorder()
+	if err != nil {
+		return nil, nil, err
+	}
+	transparent, err := solidBrush(wrtui.Color{A: 0, R: 0, G: 0, B: 0})
+	if err != nil {
+		return nil, nil, err
+	}
+	err = border.SetBackground(transparent)
+	transparent.Release()
+	if err != nil {
+		return nil, nil, err
+	}
+	if err := app.All(
+		border.SetPadding(uixaml.Thickness{Left: 8, Top: 8, Right: 8, Bottom: 8}),
+		app.With(icon.AsUIElement, border.SetChild),
+		app.With(border.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
+			return app.All(
+				frame.SetWidth(160), frame.SetHeight(160),
+				frame.SetHorizontalAlignment(uixaml.HorizontalAlignmentLeft),
+			)
+		}),
+	); err != nil {
+		return nil, nil, err
+	}
+	return icon, border, nil
+}
+
+// setIconState is the whole of driving an AnimatedIcon.
+//
+// The statics are fetched per call rather than held, because a handler outlives the
+// function that registered it and a released statics pointer is a use-after-free — which
+// is exactly what the earlier version of this page did.
+func setIconState(icon *uixaml.AnimatedIcon, state string) error {
+	statics, err := uixaml.AnimatedIconStatics()
+	if err != nil {
+		return err
+	}
+	defer statics.Release()
+	return app.With(icon.AsDependencyObject, func(object *uixaml.IDependencyObject) error {
+		return statics.SetState(object, state)
+	})
+}
+
+// animatedIconWithButtons builds an icon with one button per state the source declares.
+func animatedIconWithButtons(name string, source *uixaml.IAnimatedVisualSource2,
+) (func() (*uixaml.IUIElement, error), func() (*uixaml.IUIElement, error), error) {
+	icon, border, err := newAnimatedIcon(source)
+	if err != nil {
+		return nil, nil, err
+	}
+	states, markers, err := iconStates(source)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	status, err := label("")
+	if err != nil {
+		return nil, nil, err
+	}
+	set := func(state string) {
+		if err := setIconState(icon, state); err != nil {
+			_ = status.SetText("SetState failed: " + err.Error())
+			return
+		}
+		_ = status.SetText("State: " + state)
+	}
+	if len(states) > 0 {
+		set(states[0])
+	}
+
+	var makers []func() (*uixaml.Button, error)
+	for _, state := range states {
+		value := state
+		makers = append(makers, func() (*uixaml.Button, error) {
+			return button(value, func() { set(value) })
+		})
+	}
+	row, err := buttonRow(makers...)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	note, err := label(fmt.Sprintf(
+		"%s\n  states: %s\n  markers: %s\n\n"+
+			"Each transition is a fraction of the whole animation — the marker values "+
+			"above are its start and end, in the range 0 to 1. NormalToPointerOver is "+
+			"about 150ms. At an icon's real size that is deliberately hard to notice; "+
+			"these are drawn large so it can be seen at all.",
+		name, strings.Join(states, ", "), strings.Join(markers, ", ")))
+	if err != nil {
+		return nil, nil, err
+	}
+
+	group, err := stack(6, status.AsUIElement, row.AsUIElement, border.AsUIElement)
+	if err != nil {
+		return nil, nil, err
+	}
+	return group.AsUIElement, note.AsUIElement, nil
+}
+
+// animatedIconWithHover builds the same thing driven by the pointer, which is how an
+// AnimatedIcon is meant to be used.
+func animatedIconWithHover(name string, source *uixaml.IAnimatedVisualSource2,
+) (func() (*uixaml.IUIElement, error), func() (*uixaml.IUIElement, error), error) {
+	icon, border, err := newAnimatedIcon(source)
+	if err != nil {
+		return nil, nil, err
+	}
+	states, markers, err := iconStates(source)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// The resting state and the hovered state, taken from what the source declares
+	// rather than assumed. "Normal" and "PointerOver" are the usual pair and are not
+	// universal.
+	resting, hovered := "", ""
+	for _, state := range states {
+		switch state {
+		case "Normal":
+			resting = state
+		case "PointerOver":
+			hovered = state
+		}
+	}
+	if resting == "" && len(states) > 0 {
+		resting = states[0]
+	}
+	if hovered == "" && len(states) > 1 {
+		hovered = states[1]
+	}
+
+	status, err := label("Hover the icon below.")
+	if err != nil {
+		return nil, nil, err
+	}
+	if resting != "" {
+		_ = setIconState(icon, resting)
+	}
+
+	// Registered on the BORDER, which is the hit-testable element. Registering on the
+	// icon is what did not work.
+	if err := app.With(border.AsUIElement, func(element *uixaml.IUIElement) error {
+		if _, err := app.On(element.AddPointerEntered, uixaml.NewPointerEventHandler,
+			func(_ *syswinrt.IInspectable, _ *uixaml.IPointerRoutedEventArgs) {
+				if err := setIconState(icon, hovered); err != nil {
+					_ = status.SetText("SetState failed: " + err.Error())
+					return
+				}
+				_ = status.SetText("State: " + hovered)
+			}); err != nil {
+			return err
+		}
+		_, err := app.On(element.AddPointerExited, uixaml.NewPointerEventHandler,
+			func(_ *syswinrt.IInspectable, _ *uixaml.IPointerRoutedEventArgs) {
+				if err := setIconState(icon, resting); err != nil {
+					return
+				}
+				_ = status.SetText("State: " + resting)
+			})
+		return err
+	}); err != nil {
+		return nil, nil, err
+	}
+
+	note, err := label(fmt.Sprintf(
+		"%s, driven by the pointer (%s <-> %s)\n  markers: %s",
+		name, resting, hovered, strings.Join(markers, ", ")))
+	if err != nil {
+		return nil, nil, err
+	}
+	group, err := stack(6, status.AsUIElement, border.AsUIElement)
+	if err != nil {
+		return nil, nil, err
+	}
+	return group.AsUIElement, note.AsUIElement, nil
+}
+
+// AnimatedVisualPlayerPage: the player, playing.
+//
+// Unlike AnimatedIcon the player runs the whole animation, so AutoPlay is enough to see
+// it move. PlayAsync, Pause and Stop drive it by hand; Duration and IsAnimatedVisualLoaded
+// report what it loaded, which are the properties the source page checks.
 func buildAnimatedVisualPlayerPage(ready *app.Ready) (*uixaml.IUIElement, error) {
 	player, err := uixaml.NewAnimatedVisualPlayer()
 	if err != nil {
 		return nil, err
 	}
+
+	source, err := uixamlanimatedvisuals.NewAnimatedChevronUpDownSmallVisualSource()
+	if err != nil {
+		return nil, err
+	}
+	defer source.Release()
+	first, err := source.AsAnimatedVisualSource()
+	if err != nil {
+		return nil, err
+	}
+	defer first.Release()
+
 	if err := app.All(
+		player.SetSource(first),
 		player.SetAutoPlay(true),
 		app.With(player.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
-			return app.All(frame.SetWidth(200), frame.SetHeight(200))
+			return app.All(frame.SetWidth(240), frame.SetHeight(240))
 		}),
 	); err != nil {
 		return nil, err
 	}
 
-	fallback, err := dataTemplate(
-		`<DataTemplate><Border Background="#33888888" CornerRadius="8">` +
-			`<TextBlock Text="FallbackContent" HorizontalAlignment="Center" ` +
-			`VerticalAlignment="Center"/></Border></DataTemplate>`)
+	status, err := label("Loading...")
 	if err != nil {
 		return nil, err
 	}
-	defer fallback.Release()
-	if err := player.SetFallbackContent(fallback); err != nil {
+	refresh := func() {
+		loaded, err := player.IsAnimatedVisualLoaded()
+		if err != nil {
+			_ = status.SetText("IsAnimatedVisualLoaded failed: " + err.Error())
+			return
+		}
+		duration, err := player.Duration()
+		if err != nil {
+			return
+		}
+		playing, err := player.IsPlaying()
+		if err != nil {
+			return
+		}
+		_ = status.SetText(fmt.Sprintf(
+			"IsAnimatedVisualLoaded=%v, IsPlaying=%v, Duration=%v",
+			loaded, playing, time.Duration(duration.Duration*100)))
+	}
+	// Read after load: the properties mean nothing before the source has been realized,
+	// which is what the source page timing works around.
+	if err := app.With(player.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
+		_, addErr := app.On(frame.AddLoaded, uixaml.NewRoutedEventHandler,
+			func(_ *syswinrt.IInspectable, _ *uixaml.IRoutedEventArgs) { refresh() })
+		return addErr
+	}); err != nil {
 		return nil, err
 	}
 
-	loaded, err := player.IsAnimatedVisualLoaded()
-	if err != nil {
-		return nil, err
+	play := func(loop bool) func() {
+		return func() {
+			// PlayAsync returns an IAsyncAction and is NOT awaited, for the reason
+			// ContentDialogPage records: the completion arrives on this same thread.
+			operation, err := player.PlayAsync(0, 1, loop)
+			if err != nil {
+				_ = status.SetText("PlayAsync failed: " + err.Error())
+				return
+			}
+			operation.Release()
+			refresh()
+		}
 	}
-	duration, err := player.Duration()
-	if err != nil {
-		return nil, err
-	}
-	status, err := label(fmt.Sprintf(
-		"IsAnimatedVisualLoaded=%v, Duration=%v — no Source is set, so the "+
-			"FallbackContent is what renders.", loaded, duration.Duration))
+	row, err := buttonRow(
+		func() (*uixaml.Button, error) { return button("Play once", play(false)) },
+		func() (*uixaml.Button, error) { return button("Play looping", play(true)) },
+		func() (*uixaml.Button, error) {
+			return button("Pause", func() {
+				if err := player.Pause(); err != nil {
+					_ = status.SetText("Pause failed: " + err.Error())
+					return
+				}
+				refresh()
+			})
+		},
+		func() (*uixaml.Button, error) {
+			return button("Stop", func() {
+				if err := player.Stop(); err != nil {
+					_ = status.SetText("Stop failed: " + err.Error())
+					return
+				}
+				refresh()
+			})
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
 
-	panel, err := stack(8, status.AsUIElement, player.AsUIElement)
+	note, err := label("AnimatedChevronUpDownSmallVisualSource, one of the eight " +
+		"animations the SDK ships in Microsoft.UI.Xaml.Controls.AnimatedVisuals.")
+	if err != nil {
+		return nil, err
+	}
+	panel, err := stack(10, note.AsUIElement, status.AsUIElement, row.AsUIElement,
+		player.AsUIElement)
 	if err != nil {
 		return nil, err
 	}
