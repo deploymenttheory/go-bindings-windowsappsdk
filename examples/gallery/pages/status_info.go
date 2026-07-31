@@ -243,45 +243,86 @@ func buildProgressRingStoryboardAnimationPage(ready *app.Ready) (*uixaml.IUIElem
 	return panel.AsUIElement()
 }
 
-// ProgressRingCustomLottieSourcePage: the ring with a Lottie animation in place of its
-// template's own.
+// ProgressRingCustomLottieSourcePage: the ring showing an animation other than its own.
 //
-// Same limit as AnimatedIcon and AnimatedVisualPlayer in the previous batch:
-// IAnimatedVisualSource is what the Lottie codegen tool emits as a generated class per
-// animation, and there is no such generator for Go. What ports is the property and the
-// ring's behaviour without one.
+// ProgressRing has no Source property — its template holds an AnimatedVisualPlayer, and
+// the source page swaps in a template whose player carries a different animation. So this
+// is a retemplate, and the animation comes from one of the eight sources the SDK ships in
+// Microsoft.UI.Xaml.Controls.AnimatedVisuals.
+//
+// An earlier version of this page claimed the animation was out of reach because the
+// Lottie codegen tool emits a generated class per animation and there is no such generator
+// for Go. The first half is true; the conclusion was wrong, because those generated
+// classes are already IN the SDK as ordinary activatable runtime classes. The same
+// mistake was in AnimatedIconPage and AnimatedVisualPlayerPage, and all three are fixed.
+//
+// The xmlns:av declaration is the part worth noting: app.Markup adds the presentation and
+// x: namespaces, and anything else — a using: namespace for a specific CLR-style
+// namespace — has to be declared in the fragment, which is what "using:" is for.
 func buildProgressRingCustomLottieSourcePage(ready *app.Ready) (*uixaml.IUIElement, error) {
-	ring, err := uixaml.NewProgressRing()
+	template, err := app.LoadMarkup[uixaml.IControlTemplate](app.Markup(
+		`<ControlTemplate TargetType="ProgressRing"
+			xmlns:av="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals">
+			<AnimatedVisualPlayer AutoPlay="True" Width="80" Height="80">
+				<av:AnimatedFindVisualSource/>
+			</AnimatedVisualPlayer>
+		</ControlTemplate>`), &uixaml.IID_IControlTemplate)
+	if err != nil {
+		return nil, fmt.Errorf("parsing the retemplate: %w", err)
+	}
+	defer template.Release()
+
+	custom, err := uixaml.NewProgressRing()
 	if err != nil {
 		return nil, err
 	}
-	if err := app.All(ring.SetIsActive(true), ring.SetIsIndeterminate(true)); err != nil {
-		return nil, err
-	}
-	if err := app.With(ring.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
-		return app.All(frame.SetWidth(120), frame.SetHeight(120))
-	}); err != nil {
+	if err := app.All(
+		custom.SetIsActive(true),
+		custom.SetIsIndeterminate(true),
+		app.With(custom.AsControl, func(control *uixaml.IControl) error {
+			return control.SetTemplate(template)
+		}),
+		app.With(custom.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
+			return app.All(frame.SetWidth(96), frame.SetHeight(96))
+		}),
+	); err != nil {
 		return nil, err
 	}
 
-	// TemplateSettings is how the template reaches the ring's animation, and it is
-	// readable whether or not a custom source has been supplied.
-	settings, err := ring.TemplateSettings()
-	state := "TemplateSettings is nil"
-	if err == nil && settings != nil {
-		settings.Release()
-		state = "TemplateSettings is readable"
-	}
-
-	note, err := label("ProgressRing at its default animation — " + state + ".\n\n" +
-		"The source replaces it with a Lottie animation through an IAnimatedVisualSource, " +
-		"which the Lottie codegen tool emits as a generated class per animation. There is " +
-		"no such generator for Go, the same limit AnimatedIcon and AnimatedVisualPlayer " +
-		"hit, so what is shown is the ring driving its own.")
+	// The stock ring beside it, so the substitution is visible rather than asserted.
+	stock, err := uixaml.NewProgressRing()
 	if err != nil {
 		return nil, err
 	}
-	panel, err := stack(8, note.AsUIElement, ring.AsUIElement)
+	if err := app.All(
+		stock.SetIsActive(true),
+		stock.SetIsIndeterminate(true),
+		app.With(stock.AsFrameworkElement, func(frame *uixaml.IFrameworkElement) error {
+			return app.All(frame.SetWidth(96), frame.SetHeight(96))
+		}),
+	); err != nil {
+		return nil, err
+	}
+
+	row, err := uixaml.NewStackPanel()
+	if err != nil {
+		return nil, err
+	}
+	if err := app.All(
+		row.SetOrientation(uixaml.OrientationHorizontal),
+		row.SetSpacing(24),
+		app.Append(row.AsPanel, custom.AsUIElement, stock.AsUIElement),
+	); err != nil {
+		return nil, err
+	}
+
+	note, err := label("A retemplated ProgressRing playing AnimatedFindVisualSource, " +
+		"beside the stock ring. ProgressRing has no Source property — its template holds " +
+		"an AnimatedVisualPlayer, so replacing the animation means replacing the template.")
+	if err != nil {
+		return nil, err
+	}
+	panel, err := stack(10, note.AsUIElement, row.AsUIElement)
 	if err != nil {
 		return nil, err
 	}
