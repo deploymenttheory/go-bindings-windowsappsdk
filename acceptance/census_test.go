@@ -30,10 +30,15 @@ package acceptance
 //
 // # RUNNING IT
 //
-//	go test ./acceptance -run TestPageCensus -timeout 60m       (writes metadata/census.json)
+//	WASDK_CENSUS=1 go test ./acceptance -run TestPageCensus -timeout 90m
 //
 // Opt-in because it builds 202 pages in 202 subprocesses. It is a measurement, not a
 // gate; the gate it feeds is the per-page Behaviour contract.
+//
+// Its output, metadata/census.json, is GITIGNORED on purpose: it is a snapshot of one
+// run on one machine — control counts move with the Windows App SDK version and with
+// what the framework realizes — so committing it would invite reading a stale file as
+// a fact about the repository. Regenerate it with the command above.
 
 import (
 	"context"
