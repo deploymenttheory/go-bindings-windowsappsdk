@@ -316,6 +316,24 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		// The one ParallaxView page with controls of its own. The rest of the family
+		// demonstrates an effect that follows SCROLLING rather than any control, and
+		// is marked Inert; this one exposes VerticalShift through buttons, so it can
+		// be driven and is.
+		name: "a ParallaxView reports the vertical shift a button sets",
+		page: "ParallaxView/DynamicPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			// "Shift 0" rather than "Shift +100": the +100 button INCREMENTS, so what
+			// it reports depends on where the page started — it read 200, not 100, on
+			// the first attempt. Setting an absolute value is the assertion that does
+			// not depend on the page's initial state.
+			if failure := invokeNamed(root, "Shift 0"); failure != "" {
+				return failure
+			}
+			return expectStatus(root, "the layer no longer moves")
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {

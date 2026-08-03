@@ -64,6 +64,25 @@ type Page struct {
 const axeReason = "an accessibility-scanner fixture: the source page is walked by a " +
 	"checker rather than driven, and wires no handlers of its own"
 
+// materialReason is why the brush pages have no behaviour to assert.
+//
+// Their subject is a BRUSH — what a surface looks like once acrylic or a radial gradient
+// paints it. The source pages set brush properties and show the result; there is nothing
+// to press, and the thing being demonstrated is not expressible through any automation
+// pattern. Verified rather than assumed: the census finds zero live controls on every one
+// of them.
+const materialReason = "a brush page: its subject is how a surface is painted, which no " +
+	"automation pattern can express, and the source wires nothing to drive"
+
+// parallaxReason is why most ParallaxView pages have no behaviour to assert.
+//
+// A ParallaxView moves its layer in response to SCROLLING its source, so the effect is a
+// consequence of scrolling rather than of any control. The pages that merely show that are
+// inert; ParallaxViewDynamicPage, which exposes VerticalShift through buttons, is asserted
+// by the behaviour suite instead.
+const parallaxReason = "the parallax effect follows scrolling rather than any control, " +
+	"and this page wires none — see ParallaxView/DynamicPage, which is asserted"
+
 // pages is the registry, keyed by "Control/Name".
 var pages = map[string]Page{}
 
