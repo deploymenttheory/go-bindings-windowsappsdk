@@ -543,9 +543,17 @@ func newTeachingTip(title, subtitle string, target *uixaml.IFrameworkElement,
 
 // TeachingTipPage: a targeted tip and an untargeted one.
 //
-// A tip WITH a Target points at that element and follows it; one without is centred on
-// the window. Both are popups, which is why they must be in the tree to open — a tip that
-// is never added to a parent silently does nothing.
+// A tip WITH a Target points at that element and follows it; one without opens against
+// the bottom edge of the window, horizontally centred. Both are popups, which is why they
+// must be in the tree to open — a tip that is never added to a parent silently does
+// nothing.
+//
+// WHERE they are parented matters as much as THAT they are. Both tips were originally
+// appended to the page's StackPanel, which is the obvious place and the wrong one: a tip
+// in a stack occupies a layout slot and is positioned from it, so both rendered visibly
+// out of place. Neither the conformance suite nor an automation peer can see that — a
+// misplaced tip has the same tree as a correct one — and it was found by looking at the
+// running page.
 func buildTeachingTipPage(ready *app.Ready) (*uixaml.IUIElement, error) {
 	anchor, err := uixaml.NewButton()
 	if err != nil {
@@ -564,7 +572,13 @@ func buildTeachingTipPage(ready *app.Ready) (*uixaml.IUIElement, error) {
 	if err != nil {
 		return nil, err
 	}
-	untargeted, err := newTeachingTip("Untargeted", "This one is centred on the window.", nil)
+	// "at the bottom", not "centred": an untargeted TeachingTip opens against the
+	// BOTTOM edge of the XamlRoot, horizontally centred — it does not float in the
+	// middle of the window. The subtitle used to say centred, and a reference page
+	// that describes behaviour the framework does not have is worse than one that
+	// says nothing, because a reader takes it on trust.
+	untargeted, err := newTeachingTip("Untargeted",
+		"This one has no Target, so it opens centred against the bottom of the window.", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -581,14 +595,29 @@ func buildTeachingTipPage(ready *app.Ready) (*uixaml.IUIElement, error) {
 		return nil, err
 	}
 
-	// The tips are children of the page. They are popups and draw outside it, but they
-	// still need a parent in the tree.
-	panel, err := stack(10, anchor.AsUIElement, row.AsUIElement,
-		targeted.AsUIElement, untargeted.AsUIElement)
+	panel, err := stack(10, anchor.AsUIElement, row.AsUIElement)
 	if err != nil {
 		return nil, err
 	}
-	return panel.AsUIElement()
+
+	// The tips are parented in a GRID, overlaying the content, not stacked after it.
+	//
+	// A TeachingTip needs a parent in the tree to open at all, and the obvious place —
+	// the end of the StackPanel holding the page — is wrong: a tip in a stack still
+	// takes a layout slot in that stack, and it is measured and positioned from that
+	// slot. Both tips rendered, and both rendered in the wrong place, which is a
+	// defect no automation peer can see. A Grid cell overlays instead of consuming
+	// space, so the targeted tip anchors on its Target and the untargeted one centres
+	// on the window, which is what each is for.
+	root, err := gridOf([]uixaml.GridLength{star(1)}, nil)
+	if err != nil {
+		return nil, err
+	}
+	if err := app.Append(root.AsPanel,
+		panel.AsUIElement, targeted.AsUIElement, untargeted.AsUIElement); err != nil {
+		return nil, err
+	}
+	return root.AsUIElement()
 }
 
 // TeachingTipInXamlPage: the tip declared in markup, which is how most applications write
@@ -691,11 +720,21 @@ func buildTeachingTipFocusPage(ready *app.Ready) (*uixaml.IUIElement, error) {
 		return nil, err
 	}
 	panel, err := stack(10, status.AsUIElement, before.AsUIElement, row.AsUIElement,
-		after.AsUIElement, tip.AsUIElement)
+		after.AsUIElement)
 	if err != nil {
 		return nil, err
 	}
-	return panel.AsUIElement()
+	// Overlaid, not stacked — see buildTeachingTipPage. A tip added to the end of a
+	// StackPanel takes a layout slot there and is positioned from it, which put the
+	// tips on TeachingTipPage in visibly wrong places.
+	root, err := gridOf([]uixaml.GridLength{star(1)}, nil)
+	if err != nil {
+		return nil, err
+	}
+	if err := app.Append(root.AsPanel, panel.AsUIElement, tip.AsUIElement); err != nil {
+		return nil, err
+	}
+	return root.AsUIElement()
 }
 
 // RatingControlPage: the control in each of the states the source varies.
