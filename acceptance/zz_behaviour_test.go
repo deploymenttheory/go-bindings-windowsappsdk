@@ -51,6 +51,7 @@ import (
 
 	win32 "github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uidispatching "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/dispatching"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
@@ -80,6 +81,14 @@ type scenario struct {
 	// the thing never happening — the same shape of error as measuring a Button at 0x0
 	// before layout.
 	check func(ready *app.Ready, root *uixaml.IUIElement) string
+
+	// settleInRealTime waits an interval rather than a count of dispatcher turns
+	// before running check.
+	//
+	// Needed by anything ANIMATED. Turns are not time: enqueued hops all run in the
+	// same instant, so a view-change animation has not advanced when they finish, and
+	// the assertion measures the moment before the thing happens.
+	settleInRealTime bool
 }
 
 // scenarios are ordered by what they protect. The first four are the pages whose
@@ -177,24 +186,22 @@ var scenarios = []scenario{
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
 			return invokeNamed(root, "Bring 10 into view")
 		},
-		// Asserts that the page REPORTS an offset, not that the offset moved.
-		//
-		// The three buttons used to say nothing at all, so a dropped request and a
-		// working one looked identical — which is why the census scored all three
-		// dead. The readout is the fix for that, and this is the test of it.
-		//
-		// Whether StartBringIntoView actually scrolls is DELIBERATELY not asserted
-		// here, because this harness cannot yet tell. settleTurns counts dispatcher
-		// turns, and enqueued turns all run in the same instant — the whole check
-		// completes in under a second — while the ScrollView answers the request by
-		// ANIMATING, which needs wall-clock time the queue never yields. Asserting a
-		// non-zero offset would fail for a page that works, which is the same class
-		// of mistake as measuring a Button at 0x0 before layout.
-		//
-		// Settling in real time needs a DispatcherQueueTimer; until then this is what
-		// is honestly established.
+		// Settled in real time, because the ScrollView answers the request by
+		// ANIMATING. An earlier version of this test waited on dispatcher turns and
+		// saw "Offset 0, 0" at any number of them — turns all run in the same
+		// instant, so the assertion landed before the animation had advanced, which
+		// reads exactly like the request being dropped.
+		settleInRealTime: true,
 		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
-			return expectStatus(root, "Offset")
+			if failure := expectStatus(root, "Offset"); failure != "" {
+				return failure
+			}
+			// Target 10 sits far down a 1600-unit stack, so an offset still at zero
+			// once the animation has had its time means the request went nowhere.
+			if strings.Contains(allStatus(root), "Offset 0, 0") {
+				return "the view never moved: " + allStatus(root)
+			}
+			return ""
 		},
 	},
 	{
@@ -284,11 +291,16 @@ func runBehaviourScenario(name string) int {
 				// Queued rather than called: the assertion has to run after the
 				// framework has had a turn. TryEnqueue puts it at the back of the same
 				// thread's queue, which is exactly one turn later.
-				if err := enqueueAfter(element, settleTurns, func() {
+				assert := func() {
 					result <- chosen.check(ready, element)
 					element.Release()
 					_ = ready.Application.Exit()
-				}); err != nil {
+				}
+				settle := func() error { return enqueueAfter(element, settleTurns, assert) }
+				if chosen.settleInRealTime {
+					settle = func() error { return settleAfter(element, settleFor, assert) }
+				}
+				if err := settle(); err != nil {
 					result <- "enqueueing the check: " + err.Error()
 					element.Release()
 					_ = ready.Application.Exit()
@@ -322,13 +334,72 @@ func runBehaviourScenario(name string) int {
 // settleTurns is how many dispatcher turns a check waits before asserting.
 const settleTurns = 12
 
+// settleFor is how long a check waits when the effect it asserts takes TIME rather
+// than turns. 700ms covers WinUI's default view-change animation with margin.
+const settleFor = 700 * time.Millisecond
+
 // enqueueAfter runs fn after n turns, each queued from the last.
+//
+// TURNS ARE NOT TIME. Each hop runs as soon as the queue reaches it, so twelve of them
+// and ninety of them both complete within the same millisecond. That is the right
+// instrument for an effect that is merely deferred — a popup that appears on the next
+// turn — and the WRONG one for anything animated: a ScrollView answers ScrollTo and
+// StartBringIntoView by animating, and an assertion made after any number of turns
+// measures the moment before the animation has run. See settleAfter.
 func enqueueAfter(element *uixaml.IUIElement, n int, fn func()) error {
 	if n <= 0 {
 		fn()
 		return nil
 	}
 	return enqueue(element, func() { _ = enqueueAfter(element, n-1, fn) })
+}
+
+// settleAfter runs fn on the UI thread once a real interval has elapsed.
+//
+// A DispatcherQueueTimer rather than a sleep, because the thread must keep pumping for
+// the animation to advance at all: blocking it would stop the very thing being waited
+// for and then report that it never happened.
+func settleAfter(element *uixaml.IUIElement, delay time.Duration, fn func()) error {
+	object, err := winrt.QueryInterface[uixaml.IDependencyObject](
+		unsafe.Pointer(element), &uixaml.IID_IDependencyObject)
+	if err != nil {
+		return err
+	}
+	defer object.Release()
+	queue, err := object.DispatcherQueue()
+	if err != nil {
+		return err
+	}
+	defer queue.Release()
+
+	timer, err := queue.CreateTimer()
+	if err != nil {
+		return err
+	}
+	if err := timer.SetInterval(wrtfoundation.TimeSpan{Duration: delay.Nanoseconds() / 100}); err != nil {
+		timer.Release()
+		return err
+	}
+	if err := timer.SetIsRepeating(false); err != nil {
+		timer.Release()
+		return err
+	}
+	handler, err := uidispatching.NewTypedEventHandlerOfDispatcherQueueTimerAndObject(
+		func(sender *uidispatching.IDispatcherQueueTimer, _ *syswinrt.IInspectable) {
+			_ = sender.Stop()
+			fn()
+		})
+	if err != nil {
+		timer.Release()
+		return err
+	}
+	// Neither closed nor released: the queue owns the timer until it has ticked, and
+	// dropping either here would cancel the wait it exists to perform.
+	if _, err := timer.AddTick(handler); err != nil {
+		timer.Release()
+		return err
+	}
+	return timer.Start()
 }
 
 // enqueue runs fn on a later turn of the UI thread's dispatcher queue.
