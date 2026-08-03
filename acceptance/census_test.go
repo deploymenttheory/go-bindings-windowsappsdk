@@ -80,11 +80,18 @@ type control struct {
 	// Driven is the pattern that was exercised.
 	Driven string `json:"driven,omitempty"`
 	// SelfChanged is whether the pattern's own state read back differently
-	// afterwards. Invoke has no state to read, so it is always false there and
-	// Reported is the only available signal.
+	// afterwards. Invoke has no state to read, so it is always false there.
 	SelfChanged bool `json:"selfChanged"`
 	// Reported records whether any TextBlock in the page changed afterwards.
 	Reported bool `json:"reported"`
+	// OpenedPopup records whether the interaction put something in the popup root.
+	//
+	// The third observable, and without it a whole class of working button scores
+	// as dead: "Show the targeted tip", "Open the menu" and a DropDownButton's
+	// "Sort by" all do their job by opening a flyout, tip or menu, which is
+	// parented to the XamlRoot rather than to the page — so neither the button's
+	// own state nor any TextBlock moves.
+	OpenedPopup bool `json:"openedPopup"`
 	// Failure is why driving it did not happen or did not work.
 	Failure string `json:"failure,omitempty"`
 }
@@ -101,6 +108,8 @@ type pageCensus struct {
 	// SelfChanged is how many moved their OWN state — the control worked, whether
 	// or not the page mentioned it.
 	SelfChanged int `json:"selfChanged"`
+	// Opened is how many put something in the popup root.
+	Opened int `json:"opened"`
 	// Dead is how many accepted the interaction and changed nothing either way.
 	// This is the number the remediation is actually chasing.
 	Dead     int       `json:"dead"`
@@ -373,7 +382,7 @@ func runPageCensus(key string) int {
 		// offer the patterns its template gives it.
 		loaded, err := uixaml.NewRoutedEventHandler(
 			func(_ *syswinrt.IInspectable, _ *uixaml.IRoutedEventArgs) {
-				censusTree(root, &result)
+				censusTree(ready, root, &result)
 				_ = ready.Application.Exit()
 			})
 		if err != nil {
@@ -414,9 +423,82 @@ func runPageCensus(key string) int {
 	return 0
 }
 
+// walkOwned visits the elements the PAGE put there, and stops at the boundary of any
+// control's template.
+//
+// The visual tree is the wrong unit for this question. VisualTreeHelper descends into
+// every control's template, so a page built as scrolled(stack(...)) — which is most of
+// them — yields the ScrollViewer's own scrollbars as "controls", and a scrollbar that
+// will not take a value because its content does not scroll is not a defect in the
+// page. Counting those inflated the dead tally with template parts nobody wrote.
+//
+// The logical tree has no walker in the projection, so it is followed here through the
+// three properties the gallery's own helpers build with — Panel.Children (stack, gridOf),
+// ContentControl.Content (scrolled, and every ContentControl page host) and Border.Child.
+// Reaching a leaf control ends that branch: whatever is inside a Button is its template.
+//
+// Known limit, stated rather than hidden: items realized from a DataTemplate by an
+// ItemsControl are NOT reached, because they hang off the generated container rather
+// than off Items. Pages whose subject is a list therefore report their list control and
+// not its rows, which is the right unit for "does this page's control work" and the
+// wrong one for "does every row work".
+func walkOwned(element *uixaml.IUIElement, depth int, visit func(*uixaml.IUIElement)) {
+	if element == nil || depth > 32 {
+		return
+	}
+	visit(element)
+
+	// A Panel's children are authored content; recurse.
+	if panel, err := winrt.QueryInterface[uixaml.IPanel](
+		unsafe.Pointer(element), &uixaml.IID_IPanel); err == nil {
+		defer panel.Release()
+		if children, err := panel.Children(); err == nil {
+			defer children.Release()
+			if size, err := children.Size(); err == nil {
+				for index := uint32(0); index < size; index++ {
+					child, err := children.GetAt(index)
+					if err != nil {
+						continue
+					}
+					walkOwned(child, depth+1, visit)
+					child.Release()
+				}
+			}
+		}
+		return
+	}
+
+	if border, err := winrt.QueryInterface[uixaml.IBorder](
+		unsafe.Pointer(element), &uixaml.IID_IBorder); err == nil {
+		defer border.Release()
+		if child, err := border.Child(); err == nil && child != nil {
+			walkOwned(child, depth+1, visit)
+			child.Release()
+		}
+		return
+	}
+
+	// A ContentControl's Content is authored ONLY when it is an element. A string or a
+	// boxed value is the control's own content, not a child, and stops the walk.
+	if host, err := winrt.QueryInterface[uixaml.IContentControl](
+		unsafe.Pointer(element), &uixaml.IID_IContentControl); err == nil {
+		defer host.Release()
+		content, err := host.Content()
+		if err != nil || content == nil {
+			return
+		}
+		defer content.Release()
+		if child, err := winrt.QueryInterface[uixaml.IUIElement](
+			unsafe.Pointer(content), &uixaml.IID_IUIElement); err == nil {
+			walkOwned(child, depth+1, visit)
+			child.Release()
+		}
+	}
+}
+
 // censusTree walks the page once, driving each element's first drivable pattern and
 // recording whether the page's own status text changed as a result.
-func censusTree(root *uixaml.IUIElement, result *pageCensus) {
+func censusTree(ready *app.Ready, root *uixaml.IUIElement, result *pageCensus) {
 	// Collect OWNED references before driving anything.
 	//
 	// walk hands the callback a borrowed pointer and releases it when the callback
@@ -428,14 +510,13 @@ func censusTree(root *uixaml.IUIElement, result *pageCensus) {
 	// Two passes rather than driving inside the walk, because driving a control
 	// mutates the tree the walk is in the middle of.
 	var elements []*uixaml.IUIElement
-	walk(root, func(element *uixaml.IUIElement) bool {
+	walkOwned(root, 0, func(element *uixaml.IUIElement) {
 		result.Elements++
 		owned, err := winrt.QueryInterface[uixaml.IUIElement](
 			unsafe.Pointer(element), &uixaml.IID_IUIElement)
 		if err == nil {
 			elements = append(elements, owned)
 		}
-		return true
 	})
 	defer func() {
 		for _, element := range elements {
@@ -474,6 +555,7 @@ func censusTree(root *uixaml.IUIElement, result *pageCensus) {
 		// makes one rule work across all of them; the control's own state is what
 		// distinguishes a broken control from a silent page.
 		beforeText := allStatus(root)
+		popupsBefore := app.OpenPopupCount(ready)
 		for _, candidate := range drivable {
 			if candidate.name != entry.Patterns[0] {
 				continue
@@ -496,7 +578,14 @@ func censusTree(root *uixaml.IUIElement, result *pageCensus) {
 			entry.Reported = true
 			result.Responsive++
 		}
-		if entry.Failure == "" && !entry.SelfChanged && !entry.Reported {
+		if entry.Failure == "" && app.OpenPopupCount(ready) != popupsBefore {
+			entry.OpenedPopup = true
+			result.Opened++
+		}
+		// Close whatever opened before moving on: a flyout left up is modal to the
+		// next interaction, which would then be recorded as that control failing.
+		app.CloseOpenPopups(ready)
+		if entry.Failure == "" && !entry.SelfChanged && !entry.Reported && !entry.OpenedPopup {
 			result.Dead++
 		}
 		result.Controls = append(result.Controls, entry)
