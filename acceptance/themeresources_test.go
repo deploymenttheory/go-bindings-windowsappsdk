@@ -73,6 +73,9 @@ func TestMain(m *testing.M) {
 	if page := os.Getenv(censusSubprocessEnv); page != "" {
 		os.Exit(runPageCensus(page))
 	}
+	if sequence := os.Getenv(crashSeqEnv); sequence != "" {
+		os.Exit(runCrashSequence(sequence))
+	}
 	os.Exit(m.Run())
 }
 

@@ -237,6 +237,45 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		// Both zooms survive together — which is what this asserts, and it is the
+		// half of a live process-death investigation that can be pinned down.
+		//
+		// Driving EVERY button on ScrollPresenterDynamicPage in one run kills the
+		// process at "ZoomTo ×1 (centred)" with 0xC0000005 and no Go stack, because
+		// the fault is in native code. Two explanations were tested and both are
+		// WRONG:
+		//
+		//   - that the centred zoom is itself at fault. It is presenter.ZoomTo(1,
+		//     nil), it allocates nothing, and it survives alone.
+		//   - that the preceding button's Go-implemented IReference for the zoom
+		//     centre was closed while the zoom still animated. Keeping it alive for
+		//     the life of the page did not stop the crash, and this scenario shows
+		//     both zooms — the one that uses that reference and the one that dies —
+		//     surviving back to back.
+		//
+		// What is left is the requests that precede them in a full sweep:
+		// ScrollTo, ScrollBy and above all AddScrollVelocity, which leaves INERTIA
+		// running. A zoom requested while inertia is in flight is the remaining
+		// suspect, and it is not reproduced here because reproducing it reliably
+		// needs the velocity request and a wait, which would make this scenario a
+		// crash test rather than a behaviour test.
+		//
+		// Recorded rather than fixed: the repro is exact (drive the page's five
+		// view-change buttons in order) and the cause is not yet established.
+		name: "both zooms survive back to back on ScrollPresenterDynamicPage",
+		page: "ScrollPresenter/ScrollPresenterDynamicPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			if failure := invokeNamed(root, "ZoomTo ×2 about"); failure != "" {
+				return failure
+			}
+			return invokeNamed(root, "ZoomTo ×1 (centred)")
+		},
+		settleInRealTime: true,
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return expectStatus(root, "ZoomTo")
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {

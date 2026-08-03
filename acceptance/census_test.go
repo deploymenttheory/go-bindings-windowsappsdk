@@ -82,6 +82,11 @@ const censusSubprocessEnv = "WASDK_CENSUS_PAGE"
 // else the framework writes to stdout.
 const censusMarker = "CENSUS-JSON: "
 
+// censusTraceEnv, when set, makes the child name each control on stderr before driving
+// it. A page that fail-fasts kills the process without flushing anything, so this is how
+// the offending control is identified: it is the last line written.
+const censusTraceEnv = "WASDK_CENSUS_TRACE"
+
 // control is one element that offered at least one pattern.
 //
 // Two separate questions are recorded, because conflating them mis-ranks the work.
@@ -626,6 +631,13 @@ func drive(ready *app.Ready, root *uixaml.IUIElement, element *uixaml.IUIElement
 	for _, candidate := range drivable {
 		if candidate.name != entry.Patterns[0] {
 			continue
+		}
+		// A page that fail-fasts takes the process with it and flushes nothing, so
+		// the only way to name the control that did it is to say so BEFORE driving.
+		// os.Stderr is unbuffered, which is what makes the last line printed the
+		// culprit rather than merely the last one that survived.
+		if os.Getenv(censusTraceEnv) != "" {
+			fmt.Fprintf(os.Stderr, "CENSUS-DRIVE: %s %q\n", candidate.name, entry.Name)
 		}
 		entry.Driven = candidate.name
 		beforeState, readable := "", false
