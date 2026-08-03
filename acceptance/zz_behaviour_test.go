@@ -172,6 +172,32 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		name: "a ScrollView reports the offset StartBringIntoView scrolled to",
+		page: "ScrollView/ScrollViewBringIntoViewPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return invokeNamed(root, "Bring 10 into view")
+		},
+		// Asserts that the page REPORTS an offset, not that the offset moved.
+		//
+		// The three buttons used to say nothing at all, so a dropped request and a
+		// working one looked identical — which is why the census scored all three
+		// dead. The readout is the fix for that, and this is the test of it.
+		//
+		// Whether StartBringIntoView actually scrolls is DELIBERATELY not asserted
+		// here, because this harness cannot yet tell. settleTurns counts dispatcher
+		// turns, and enqueued turns all run in the same instant — the whole check
+		// completes in under a second — while the ScrollView answers the request by
+		// ANIMATING, which needs wall-clock time the queue never yields. Asserting a
+		// non-zero offset would fail for a page that works, which is the same class
+		// of mistake as measuring a Button at 0x0 before layout.
+		//
+		// Settling in real time needs a DispatcherQueueTimer; until then this is what
+		// is honestly established.
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return expectStatus(root, "Offset")
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
