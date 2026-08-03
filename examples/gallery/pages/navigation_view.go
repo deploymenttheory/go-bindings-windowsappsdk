@@ -37,7 +37,7 @@ func init() {
 	register(Page{Control: "NavigationView", Name: "NavigationViewPage", Build: buildNavigationViewPage})
 	register(Page{Control: "NavigationView", Name: "NavigationViewMinimalPage", Build: buildNavigationViewMinimalPage})
 	register(Page{Control: "NavigationView", Name: "NavigationViewInitPage", Build: buildNavigationViewInitPage})
-	register(Page{Control: "NavigationView", Name: "NavigationViewAxeTestPage", Build: buildNavigationViewAxeTestPage})
+	register(Page{Control: "NavigationView", Name: "NavigationViewAxeTestPage", Build: buildNavigationViewAxeTestPage, Inert: axeReason})
 	register(Page{Control: "NavigationView", Name: "NavigationViewTopNavPage", Build: buildNavigationViewTopNavPage})
 	register(Page{Control: "NavigationView", Name: "NavigationViewTopNavOnlyPage", Build: buildNavigationViewTopNavOnlyPage})
 	register(Page{Control: "NavigationView", Name: "NavigationViewTopNavOverflowButtonPage", Build: buildNavigationViewTopNavOverflowButtonPage})

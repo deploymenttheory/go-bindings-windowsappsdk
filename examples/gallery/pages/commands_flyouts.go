@@ -34,7 +34,7 @@ func init() {
 	register(Page{Control: "RadioMenuFlyoutItem", Name: "RadioMenuFlyoutItemPage", Build: buildRadioMenuFlyoutItemPage})
 
 	register(Page{Control: "NumberBox", Name: "NumberBoxPage", Build: buildNumberBoxPage})
-	register(Page{Control: "NumberBox", Name: "NumberBoxAxeTestPage", Build: buildNumberBoxAxeTestPage})
+	register(Page{Control: "NumberBox", Name: "NumberBoxAxeTestPage", Build: buildNumberBoxAxeTestPage, Inert: axeReason})
 
 	register(Page{Control: "MenuBar", Name: "MenuBarPage", Build: buildMenuBarPage})
 
