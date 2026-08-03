@@ -276,6 +276,46 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		// A TeachingTip is NOT enumerated by GetOpenPopupsForXamlRoot, the same way a
+		// ContentDialog is not, so app.OpenPopupCount cannot see one — which is why
+		// the census scores all three TeachingTip pages' buttons as dead and always
+		// will. IsOpen is what can be asserted, and it is the property the button
+		// sets.
+		//
+		// What this does NOT cover is where the tip is DRAWN. Both tips on this page
+		// rendered in the wrong place while opening perfectly, because they were
+		// parented in the page's StackPanel and a tip in a stack takes a layout slot
+		// and is positioned from it. No automation peer can see that — a misplaced
+		// tip has the same tree as a correct one — and it was caught by eye. The
+		// fix parents them in a Grid cell so they overlay.
+		name: "a TeachingTip opens when its button is invoked",
+		page: "TeachingTip/TeachingTipPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return invokeNamed(root, "Show the targeted tip")
+		},
+		settleInRealTime: true,
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			open := false
+			walk(root, func(element *uixaml.IUIElement) bool {
+				tip, err := winrt.QueryInterface[uixaml.ITeachingTip](
+					unsafe.Pointer(element), &uixaml.IID_ITeachingTip)
+				if err != nil {
+					return true
+				}
+				defer tip.Release()
+				if isOpen, err := tip.IsOpen(); err == nil && isOpen {
+					open = true
+					return false
+				}
+				return true
+			})
+			if !open {
+				return "no TeachingTip in the tree reports IsOpen"
+			}
+			return ""
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
