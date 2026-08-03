@@ -619,6 +619,36 @@ func buildScrollPresenterZoomSnapPointsPage(ready *app.Ready) (*uixaml.IUIElemen
 		}
 	}
 
+	// The zoom the request settled on, which is the whole point of a snap point and
+	// was previously not shown anywhere: the button asked for 1.7, the presenter
+	// settles on 2, and the page said neither. Without this a working snap point and
+	// a dropped request look the same.
+	readout, err := newViewReadout()
+	if err != nil {
+		return nil, err
+	}
+	if _, err := app.On(presenter.AddViewChanged, uixaml.NewTypedEventHandlerOfScrollPresenterAndObject,
+		func(sender *uixaml.IScrollPresenter, _ *syswinrt.IInspectable) {
+			horizontal, err := sender.HorizontalOffset()
+			if err != nil {
+				readout.fail(err)
+				return
+			}
+			vertical, err := sender.VerticalOffset()
+			if err != nil {
+				readout.fail(err)
+				return
+			}
+			zoom, err := sender.ZoomFactor()
+			if err != nil {
+				readout.fail(err)
+				return
+			}
+			readout.set(horizontal, vertical, zoom)
+		}); err != nil {
+		return nil, err
+	}
+
 	row, err := buttonRow(func() (*uixaml.Button, error) {
 		return button("ZoomTo ×1.7 — settles on ×2", func() {
 			_, _ = presenter.ZoomTo(1.7, nil)
@@ -631,7 +661,7 @@ func buildScrollPresenterZoomSnapPointsPage(ready *app.Ready) (*uixaml.IUIElemen
 	if err != nil {
 		return nil, err
 	}
-	panel, err := stack(8, note.AsUIElement, row.AsUIElement, presenter.AsUIElement)
+	panel, err := stack(8, note.AsUIElement, row.AsUIElement, readout.element, presenter.AsUIElement)
 	if err != nil {
 		return nil, err
 	}
