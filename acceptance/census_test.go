@@ -63,13 +63,23 @@ const censusSubprocessEnv = "WASDK_CENSUS_PAGE"
 const censusMarker = "CENSUS-JSON: "
 
 // control is one element that offered at least one pattern.
+//
+// Two separate questions are recorded, because conflating them mis-ranks the work.
+// SelfChanged asks whether the CONTROL moved — a CheckBox whose ToggleState flipped
+// did its job whatever the page did. Reported asks whether the PAGE said so. A
+// control that moved and was not reported is a fidelity question about the page; a
+// control that did not move at all is a defect.
 type control struct {
 	Name     string   `json:"name"`
 	Patterns []string `json:"patterns"`
 	// Driven is the pattern that was exercised.
 	Driven string `json:"driven,omitempty"`
-	// Responded records whether any TextBlock in the page changed afterwards.
-	Responded bool `json:"responded"`
+	// SelfChanged is whether the pattern's own state read back differently
+	// afterwards. Invoke has no state to read, so it is always false there and
+	// Reported is the only available signal.
+	SelfChanged bool `json:"selfChanged"`
+	// Reported records whether any TextBlock in the page changed afterwards.
+	Reported bool `json:"reported"`
 	// Failure is why driving it did not happen or did not work.
 	Failure string `json:"failure,omitempty"`
 }
@@ -81,9 +91,15 @@ type pageCensus struct {
 	Elements int `json:"elements"`
 	// Live is the count of controls offering a drivable pattern.
 	Live int `json:"live"`
-	// Responsive is how many of those changed something when driven.
-	Responsive int       `json:"responsive"`
-	Controls   []control `json:"controls,omitempty"`
+	// Responsive is how many of those made the PAGE report something.
+	Responsive int `json:"responsive"`
+	// SelfChanged is how many moved their OWN state — the control worked, whether
+	// or not the page mentioned it.
+	SelfChanged int `json:"selfChanged"`
+	// Dead is how many accepted the interaction and changed nothing either way.
+	// This is the number the remediation is actually chasing.
+	Dead     int       `json:"dead"`
+	Controls []control `json:"controls,omitempty"`
 	Build      string    `json:"buildError,omitempty"`
 	Crashed    bool      `json:"crashed,omitempty"`
 }
@@ -99,6 +115,9 @@ var drivable = []struct {
 	kind uixaml.PatternInterface
 	// drive returns "" when the pattern was exercised, or why it was not.
 	drive func(peer *uixaml.IAutomationPeer) string
+	// read returns the pattern's own state, for comparison either side of drive.
+	// Nil where the pattern has no state — Invoke is an action, not a value.
+	read func(peer *uixaml.IAutomationPeer) (string, bool)
 }{
 	{"Invoke", uixaml.PatternInterfaceInvoke, func(peer *uixaml.IAutomationPeer) string {
 		provider, err := patternOf[uixaml.IInvokeProvider](
@@ -111,7 +130,7 @@ var drivable = []struct {
 			return err.Error()
 		}
 		return ""
-	}},
+	}, nil},
 	{"Toggle", uixaml.PatternInterfaceToggle, func(peer *uixaml.IAutomationPeer) string {
 		provider, err := patternOf[uixaml.IToggleProvider](
 			peer, uixaml.PatternInterfaceToggle, &uixaml.IID_IToggleProvider)
@@ -123,6 +142,18 @@ var drivable = []struct {
 			return err.Error()
 		}
 		return ""
+	}, func(peer *uixaml.IAutomationPeer) (string, bool) {
+		provider, err := patternOf[uixaml.IToggleProvider](
+			peer, uixaml.PatternInterfaceToggle, &uixaml.IID_IToggleProvider)
+		if err != nil {
+			return "", false
+		}
+		defer provider.Release()
+		state, err := provider.ToggleState()
+		if err != nil {
+			return "", false
+		}
+		return fmt.Sprintf("%d", state), true
 	}},
 	{"ExpandCollapse", uixaml.PatternInterfaceExpandCollapse, func(peer *uixaml.IAutomationPeer) string {
 		provider, err := patternOf[uixaml.IExpandCollapseProvider](
@@ -136,8 +167,21 @@ var drivable = []struct {
 		}
 		// Leave the tree as it was found: an open flyout swallows the next
 		// element's interaction, which would be recorded as that element failing.
-		_ = provider.Collapse()
+		// The state is read BEFORE this collapse by the caller's second read, so
+		// collapsing here would hide the change — it is deliberately not done.
 		return ""
+	}, func(peer *uixaml.IAutomationPeer) (string, bool) {
+		provider, err := patternOf[uixaml.IExpandCollapseProvider](
+			peer, uixaml.PatternInterfaceExpandCollapse, &uixaml.IID_IExpandCollapseProvider)
+		if err != nil {
+			return "", false
+		}
+		defer provider.Release()
+		state, err := provider.ExpandCollapseState()
+		if err != nil {
+			return "", false
+		}
+		return fmt.Sprintf("%d", state), true
 	}},
 	{"SelectionItem", uixaml.PatternInterfaceSelectionItem, func(peer *uixaml.IAutomationPeer) string {
 		provider, err := patternOf[uixaml.ISelectionItemProvider](
@@ -150,6 +194,18 @@ var drivable = []struct {
 			return err.Error()
 		}
 		return ""
+	}, func(peer *uixaml.IAutomationPeer) (string, bool) {
+		provider, err := patternOf[uixaml.ISelectionItemProvider](
+			peer, uixaml.PatternInterfaceSelectionItem, &uixaml.IID_ISelectionItemProvider)
+		if err != nil {
+			return "", false
+		}
+		defer provider.Release()
+		selected, err := provider.IsSelected()
+		if err != nil {
+			return "", false
+		}
+		return fmt.Sprintf("%t", selected), true
 	}},
 	{"RangeValue", uixaml.PatternInterfaceRangeValue, func(peer *uixaml.IAutomationPeer) string {
 		provider, err := patternOf[uixaml.IRangeValueProvider](
@@ -173,6 +229,18 @@ var drivable = []struct {
 			return err.Error()
 		}
 		return ""
+	}, func(peer *uixaml.IAutomationPeer) (string, bool) {
+		provider, err := patternOf[uixaml.IRangeValueProvider](
+			peer, uixaml.PatternInterfaceRangeValue, &uixaml.IID_IRangeValueProvider)
+		if err != nil {
+			return "", false
+		}
+		defer provider.Release()
+		value, err := provider.Value()
+		if err != nil {
+			return "", false
+		}
+		return fmt.Sprintf("%g", value), true
 	}},
 	{"Value", uixaml.PatternInterfaceValue, func(peer *uixaml.IAutomationPeer) string {
 		provider, err := patternOf[uixaml.IValueProvider](
@@ -185,6 +253,18 @@ var drivable = []struct {
 			return err.Error()
 		}
 		return ""
+	}, func(peer *uixaml.IAutomationPeer) (string, bool) {
+		provider, err := patternOf[uixaml.IValueProvider](
+			peer, uixaml.PatternInterfaceValue, &uixaml.IID_IValueProvider)
+		if err != nil {
+			return "", false
+		}
+		defer provider.Release()
+		value, err := provider.Value()
+		if err != nil {
+			return "", false
+		}
+		return value, true
 	}},
 }
 
@@ -216,7 +296,8 @@ func TestPageCensus(t *testing.T) {
 			continue
 		}
 		results = append(results, result)
-		t.Logf("%-62s elements=%-4d live=%-3d responsive=%-3d", key, result.Elements, result.Live, result.Responsive)
+		t.Logf("%-58s live=%-3d selfChanged=%-3d reported=%-3d dead=%-3d",
+			key, result.Live, result.SelfChanged, result.Responsive, result.Dead)
 	}
 
 	sort.Slice(results, func(i, j int) bool { return results[i].Page < results[j].Page })
@@ -229,19 +310,24 @@ func TestPageCensus(t *testing.T) {
 		t.Fatalf("writing %s: %v", path, err)
 	}
 
-	var live, responsive, inert, crashed int
+	var live, reported, selfChanged, dead, silent, crashed int
 	for _, r := range results {
 		live += r.Live
-		responsive += r.Responsive
+		reported += r.Responsive
+		selfChanged += r.SelfChanged
+		dead += r.Dead
 		if r.Crashed {
 			crashed++
 		}
-		if r.Live > 0 && r.Responsive == 0 {
-			inert++
+		// The control worked and the page never said so: a fidelity question
+		// about the page, not a broken control.
+		if r.SelfChanged > 0 && r.Responsive == 0 {
+			silent++
 		}
 	}
-	t.Logf("%d pages: %d live controls, %d responded, %d pages wholly inert, %d crashed → %s",
-		len(results), live, responsive, inert, crashed, path)
+	t.Logf("%d pages, %d live controls: %d moved their own state, %d made the page report, "+
+		"%d did nothing at all; %d pages work silently, %d crashed → %s",
+		len(results), live, selfChanged, reported, dead, silent, crashed, path)
 }
 
 func decodeCensus(output []byte) (pageCensus, error) {
@@ -377,21 +463,36 @@ func censusTree(root *uixaml.IUIElement, result *pageCensus) {
 		}
 		result.Live++
 
-		// Drive the first pattern offered, comparing the page's status text either
-		// side. Text is the observable every page in this gallery already produces,
-		// which is what makes one rule work across all of them.
-		before := allStatus(root)
+		// Drive the first pattern offered, and ask both questions either side of it:
+		// did the control's own state move, and did the page say anything. Page
+		// text is the observable every page here already produces, which is what
+		// makes one rule work across all of them; the control's own state is what
+		// distinguishes a broken control from a silent page.
+		beforeText := allStatus(root)
 		for _, candidate := range drivable {
 			if candidate.name != entry.Patterns[0] {
 				continue
 			}
 			entry.Driven = candidate.name
+			beforeState, readable := "", false
+			if candidate.read != nil {
+				beforeState, readable = candidate.read(peer)
+			}
 			entry.Failure = candidate.drive(peer)
+			if entry.Failure == "" && readable {
+				if afterState, ok := candidate.read(peer); ok && afterState != beforeState {
+					entry.SelfChanged = true
+					result.SelfChanged++
+				}
+			}
 			break
 		}
-		if entry.Failure == "" && allStatus(root) != before {
-			entry.Responded = true
+		if entry.Failure == "" && allStatus(root) != beforeText {
+			entry.Reported = true
 			result.Responsive++
+		}
+		if entry.Failure == "" && !entry.SelfChanged && !entry.Reported {
+			result.Dead++
 		}
 		result.Controls = append(result.Controls, entry)
 		peer.Release()
