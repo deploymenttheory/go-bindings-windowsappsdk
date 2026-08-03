@@ -70,6 +70,9 @@ func TestMain(m *testing.M) {
 	if name := os.Getenv(behaviourSubprocessEnv); name != "" {
 		os.Exit(runBehaviourScenario(name))
 	}
+	if page := os.Getenv(censusSubprocessEnv); page != "" {
+		os.Exit(runPageCensus(page))
+	}
 	os.Exit(m.Run())
 }
 

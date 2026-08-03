@@ -44,3 +44,10 @@ coverage.html
 # Fetched, not committed: the bootstrapper DLL and the SDK headers the version
 # constants are read from.
 /metadata/bootstrap/
+
+# Measured, not committed: acceptance/census_test.go writes this by driving every
+# control on every page. It is a snapshot of one run on one machine, not a fact
+# about the repository, and regenerating it is one command:
+#
+#	WASDK_CENSUS=1 go test ./acceptance -run TestPageCensus -timeout 90m
+/metadata/census.json

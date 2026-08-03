@@ -129,6 +129,15 @@ var pinnedSlots = []struct {
 	{"Microsoft.UI.Xaml.IApplication", "get_DebugSettings", 8},
 	{"Microsoft.UI.Xaml.IApplication", "Exit", 17},
 
+	// The binding-failure diagnostic app.watchBindings subscribes to. A binding
+	// that cannot resolve its path is otherwise SILENT — the framework logs it
+	// and leaves the target at its default — so this event is the only way a
+	// test can see one. Dispatching through the wrong slot here would report no
+	// failures rather than fail loudly, which is the worst way to be wrong.
+	{"Microsoft.UI.Xaml.IDebugSettings", "put_IsBindingTracingEnabled", 9},
+	{"Microsoft.UI.Xaml.IDebugSettings", "add_BindingFailed", 14},
+	{"Microsoft.UI.Xaml.IBindingFailedEventArgs", "get_Message", 6},
+
 	// The metadata provider's last slot; the first two are overloads, covered by
 	// TestXamlMetadataProviderIsOverloaded.
 	{"Microsoft.UI.Xaml.Markup.IXamlMetadataProvider", "GetXmlnsDefinitions", 8},

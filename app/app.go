@@ -43,6 +43,21 @@ type Options struct {
 	// ignores it, which is the right default for a caller who cannot act on it,
 	// and a diagnostic build can supply one.
 	OnControlsResourcesError func(error)
+
+	// OnBindingFailed observes every binding the framework could not resolve.
+	//
+	// A binding that fails is SILENT: XAML logs it and leaves the target at its
+	// default, so the only visible symptom is a control that renders empty while
+	// every structural check passes. This hook is the one way to see it. A test
+	// that wants "no binding may fail" asserts on it; a diagnostic build prints it.
+	OnBindingFailed func(message string)
+
+	// TraceBindings asks the framework to report binding failures it would
+	// otherwise keep to itself.
+	//
+	// Tracing alone only reaches an attached debugger's output; pair it with
+	// OnBindingFailed to make what it surfaces observable from Go.
+	TraceBindings bool
 }
 
 // Ready is what Run hands the caller once startup is complete: an application, and
@@ -166,6 +181,14 @@ func initialize(statics *uixaml.IApplicationStatics, onReady func(*Ready) error,
 	}
 	if application == nil {
 		return ErrNoApplication
+	}
+
+	// Before the first Window, because a binding cannot fail before there is
+	// content to bind — so subscribing here cannot miss one. A failure to
+	// subscribe is fatal on purpose: a caller who asked to observe binding
+	// failures and silently observed none would draw the wrong conclusion.
+	if err := watchBindings(application, options); err != nil {
+		return err
 	}
 	// Current is a borrowed reference from the application's own lifetime, not a new
 	// one to release: releasing it here would drop the application's count.
