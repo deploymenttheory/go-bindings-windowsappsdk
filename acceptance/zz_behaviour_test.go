@@ -205,6 +205,38 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		name: "a ScrollPresenter raises BringingIntoView with the offset it will go to",
+		page: "ScrollPresenter/ScrollPresenterBringIntoViewPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return invokeNamed(root, "Bring 12 into view")
+		},
+		// The page already wired BringingIntoView and the census still scored its
+		// three buttons dead, which left two readings open: the event does not fire,
+		// or it fires later than the same-turn read. Settled in real time, this says
+		// which.
+		settleInRealTime: true,
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return expectStatus(root, "BringingIntoView")
+		},
+	},
+	{
+		name: "a ScrollPresenter settles a zoom request on its snap point",
+		page: "ScrollPresenter/ScrollPresenterZoomSnapPointsPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return invokeNamed(root, "ZoomTo")
+		},
+		// ZoomTo asks for 1.7 and the snap points are 0.5, 1, 2 and 4, so a working
+		// presenter lands on 2 — which is the point of the page and was reported
+		// nowhere until this readout was added.
+		settleInRealTime: true,
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			if failure := expectStatus(root, "zoom 2.00"); failure != "" {
+				return failure
+			}
+			return ""
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {

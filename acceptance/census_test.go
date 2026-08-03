@@ -35,6 +35,21 @@ package acceptance
 // Opt-in because it builds 202 pages in 202 subprocesses. It is a measurement, not a
 // gate; the gate it feeds is the per-page Behaviour contract.
 //
+// # "DEAD" IS A SHORTLIST, NOT A VERDICT
+//
+// Every observation here is made SYNCHRONOUSLY, on the turn the control was driven, so
+// an effect that is animated or deferred cannot be seen however correct it is. Three
+// scrolling pages proved this: ScrollView and ScrollPresenter answer StartBringIntoView
+// by animating, and a ScrollPresenter settles ZoomTo on a snap point over time. All four
+// controls score dead here and all four are demonstrably correct — zz_behaviour_test.go
+// asserts them, settling in real time on a DispatcherQueueTimer.
+//
+// Settling in real time per control is not an option at this scale: 1,500-odd controls
+// at ~700ms each is hours, and the census is meant to be a cheap sweep. So the division
+// of labour is deliberate — the census produces a SHORTLIST cheaply, and a Behaviour
+// scenario adjudicates each entry properly. Anything animated will sit on that shortlist
+// permanently, and that is a limitation of the sweep rather than a fault in the page.
+//
 // Its output, metadata/census.json, is GITIGNORED on purpose: it is a snapshot of one
 // run on one machine — control counts move with the Windows App SDK version and with
 // what the framework realizes — so committing it would invite reading a stale file as
