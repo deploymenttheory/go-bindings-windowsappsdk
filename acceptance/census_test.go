@@ -524,17 +524,74 @@ func censusTree(ready *app.Ready, root *uixaml.IUIElement, result *pageCensus) {
 		}
 	}()
 
-	for _, element := range elements {
-		peer, err := peerOf(element)
-		if err != nil || peer == nil {
+	// Two passes, the second in reverse.
+	//
+	// A control driven from a state where it has nothing to do looks identical to a
+	// broken one. InfoBarPage opens its bar as Informational, so "Informational" and
+	// "Reopen" set the state it is already in; AnimatedIconPage starts in Normal, so
+	// "Normal" does nothing. All four scored dead and all four work.
+	//
+	// Driving everything once changes the page, so a second pass reaches each control
+	// from a different state. Reverse order because the last control driven is the one
+	// least likely to have set the state the first control wants.
+	entries := make([]*control, len(elements))
+	for pass := range 2 {
+		for i := range elements {
+			// Reverse on the second pass: the control driven last is the one least
+			// likely to have set the state the first control wants.
+			index := i
+			if pass == 1 {
+				index = len(elements) - 1 - i
+			}
+			if pass == 1 && (entries[index] == nil || answered(entries[index])) {
+				continue
+			}
+			drive(ready, root, elements[index], &entries[index])
+		}
+	}
+
+	for _, entry := range entries {
+		if entry == nil {
 			continue
 		}
-		entry := control{}
-		name, err := peer.GetName()
-		if err == nil {
+		result.Live++
+		// Each observable is counted independently — a control can move its own
+		// state AND be reported — while Dead is the absence of all three.
+		if entry.SelfChanged {
+			result.SelfChanged++
+		}
+		if entry.Reported {
+			result.Responsive++
+		}
+		if entry.OpenedPopup {
+			result.Opened++
+		}
+		if entry.Failure == "" && !answered(entry) {
+			result.Dead++
+		}
+		result.Controls = append(result.Controls, *entry)
+	}
+}
+
+// answered reports whether a control has already shown it does something.
+func answered(entry *control) bool {
+	return entry.SelfChanged || entry.Reported || entry.OpenedPopup || entry.Failure != ""
+}
+
+// drive exercises one element's first drivable pattern, recording all three observables.
+func drive(ready *app.Ready, root *uixaml.IUIElement, element *uixaml.IUIElement, into **control) {
+	peer, err := peerOf(element)
+	if err != nil || peer == nil {
+		return
+	}
+	defer peer.Release()
+
+	entry := *into
+	if entry == nil {
+		entry = &control{}
+		if name, err := peer.GetName(); err == nil {
 			entry.Name = name
 		}
-
 		for _, candidate := range drivable {
 			pattern, err := peer.GetPattern(candidate.kind)
 			if err != nil || pattern == nil {
@@ -544,51 +601,37 @@ func censusTree(ready *app.Ready, root *uixaml.IUIElement, result *pageCensus) {
 			entry.Patterns = append(entry.Patterns, candidate.name)
 		}
 		if len(entry.Patterns) == 0 {
-			peer.Release()
+			return
+		}
+		*into = entry
+	}
+
+	beforeText := allStatus(root)
+	popupsBefore := app.OpenPopupCount(ready)
+	for _, candidate := range drivable {
+		if candidate.name != entry.Patterns[0] {
 			continue
 		}
-		result.Live++
-
-		// Drive the first pattern offered, and ask both questions either side of it:
-		// did the control's own state move, and did the page say anything. Page
-		// text is the observable every page here already produces, which is what
-		// makes one rule work across all of them; the control's own state is what
-		// distinguishes a broken control from a silent page.
-		beforeText := allStatus(root)
-		popupsBefore := app.OpenPopupCount(ready)
-		for _, candidate := range drivable {
-			if candidate.name != entry.Patterns[0] {
-				continue
+		entry.Driven = candidate.name
+		beforeState, readable := "", false
+		if candidate.read != nil {
+			beforeState, readable = candidate.read(peer)
+		}
+		entry.Failure = candidate.drive(peer)
+		if entry.Failure == "" && readable {
+			if afterState, ok := candidate.read(peer); ok && afterState != beforeState {
+				entry.SelfChanged = true
 			}
-			entry.Driven = candidate.name
-			beforeState, readable := "", false
-			if candidate.read != nil {
-				beforeState, readable = candidate.read(peer)
-			}
-			entry.Failure = candidate.drive(peer)
-			if entry.Failure == "" && readable {
-				if afterState, ok := candidate.read(peer); ok && afterState != beforeState {
-					entry.SelfChanged = true
-					result.SelfChanged++
-				}
-			}
-			break
 		}
-		if entry.Failure == "" && allStatus(root) != beforeText {
-			entry.Reported = true
-			result.Responsive++
-		}
-		if entry.Failure == "" && app.OpenPopupCount(ready) != popupsBefore {
-			entry.OpenedPopup = true
-			result.Opened++
-		}
-		// Close whatever opened before moving on: a flyout left up is modal to the
-		// next interaction, which would then be recorded as that control failing.
-		app.CloseOpenPopups(ready)
-		if entry.Failure == "" && !entry.SelfChanged && !entry.Reported && !entry.OpenedPopup {
-			result.Dead++
-		}
-		result.Controls = append(result.Controls, entry)
-		peer.Release()
+		break
 	}
+	if entry.Failure == "" && allStatus(root) != beforeText {
+		entry.Reported = true
+	}
+	if entry.Failure == "" && app.OpenPopupCount(ready) != popupsBefore {
+		entry.OpenedPopup = true
+	}
+	// Close whatever opened before moving on: a flyout left up is modal to the next
+	// interaction, which would then be recorded as that control failing.
+	app.CloseOpenPopups(ready)
 }

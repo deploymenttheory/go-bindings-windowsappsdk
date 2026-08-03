@@ -366,6 +366,38 @@ func buildScrollViewBringIntoViewPage(ready *app.Ready) (*uixaml.IUIElement, err
 		return nil, err
 	}
 
+	// The offset the request produced, which is the only evidence the page gives that
+	// anything happened. Without it the buttons scroll the view and report nothing —
+	// so a test driving them cannot tell a working request from a dropped one, and
+	// the census scored all three as dead. Every other page in this family already
+	// carries this readout; this one was missing it.
+	readout, err := newViewReadout()
+	if err != nil {
+		return nil, err
+	}
+	if _, err := app.On(view.AddViewChanged,
+		uixaml.NewTypedEventHandlerOfScrollViewAndObject,
+		func(sender *uixaml.IScrollView, _ *syswinrt.IInspectable) {
+			horizontal, err := sender.HorizontalOffset()
+			if err != nil {
+				readout.fail(err)
+				return
+			}
+			vertical, err := sender.VerticalOffset()
+			if err != nil {
+				readout.fail(err)
+				return
+			}
+			zoom, err := sender.ZoomFactor()
+			if err != nil {
+				readout.fail(err)
+				return
+			}
+			readout.set(horizontal, vertical, zoom)
+		}); err != nil {
+		return nil, err
+	}
+
 	bring := func(index int) func() (*uixaml.Button, error) {
 		return func() (*uixaml.Button, error) {
 			return button(fmt.Sprintf("Bring %d into view", index+1), func() {
@@ -380,7 +412,7 @@ func buildScrollViewBringIntoViewPage(ready *app.Ready) (*uixaml.IUIElement, err
 		return nil, err
 	}
 
-	panel, err := stack(8, row.AsUIElement, view.AsUIElement)
+	panel, err := stack(8, row.AsUIElement, readout.element, view.AsUIElement)
 	if err != nil {
 		return nil, err
 	}
