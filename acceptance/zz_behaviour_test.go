@@ -334,6 +334,58 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		name: "a NavigationView opens and closes its pane",
+		page: "NavigationView/NavigationViewIsPaneOpenPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			// Closed first, then opened: the page starts with the pane open, so
+			// "Open the pane" alone would set the state it is already in and prove
+			// nothing — the trap that made four controls look dead in the census.
+			if failure := invokeNamed(root, "Close the pane"); failure != "" {
+				return failure
+			}
+			if failure := expectStatus(root, "IsPaneOpen: false"); failure != "" {
+				return failure
+			}
+			if failure := invokeNamed(root, "Open the pane"); failure != "" {
+				return failure
+			}
+			return expectStatus(root, "IsPaneOpen: true")
+		},
+	},
+	{
+		name: "an ItemsView reports how many items a selection command selected",
+		page: "ItemsView/ItemsViewIntegrationPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			if failure := invokeNamed(root, "Select 0, 2, 4"); failure != "" {
+				return failure
+			}
+			return expectStatus(root, "3 selected")
+		},
+	},
+	{
+		name: "an ItemsRepeater rebinds when its collection is sorted and filtered",
+		page: "Repeater/SortingAndFilteringPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			// Filtering changes the count, which is what the page reports — sorting
+			// alone reorders and leaves the count identical, so it would not
+			// distinguish a rebind from nothing happening.
+			if failure := invokeNamed(root, "Filter to those with"); failure != "" {
+				return failure
+			}
+			return expectStatus(root, "items, filtered")
+		},
+	},
+	{
+		name: "a NavigationView cycles its display mode",
+		page: "NavigationView/NavigationViewAnimationPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return invokeNamed(root, "Next display mode")
+		},
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return expectStatus(root, "PaneDisplayMode")
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
