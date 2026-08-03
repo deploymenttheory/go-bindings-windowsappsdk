@@ -13,7 +13,9 @@ import (
 )
 
 func init() {
-	register(Page{Control: "CommonStyles", Name: "BlankPage", Build: buildBlankPage})
+	register(Page{Control: "CommonStyles", Name: "BlankPage", Build: buildBlankPage,
+		Inert: "the source page is empty by design — it exists so a test can navigate " +
+			"somewhere that costs nothing, so there is nothing here to drive"})
 	register(Page{Control: "CommonStyles", Name: "ScrollBarPage", Build: buildScrollBarPage})
 	register(Page{Control: "CommonStyles", Name: "ToolTipPage", Build: buildToolTipPage})
 	register(Page{Control: "CommonStyles", Name: "ImagePage", Build: buildImagePage})

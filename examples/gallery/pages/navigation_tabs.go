@@ -24,17 +24,17 @@ import (
 
 func init() {
 	register(Page{Control: "TabView", Name: "TabViewPage", Build: buildTabViewPage})
-	register(Page{Control: "TabView", Name: "TabViewAxeTestPage", Build: buildTabViewAxeTestPage})
+	register(Page{Control: "TabView", Name: "TabViewAxeTestPage", Build: buildTabViewAxeTestPage, Inert: axeReason})
 	register(Page{Control: "TabView", Name: "TabViewSizingPage", Build: buildTabViewSizingPage})
 	register(Page{Control: "TabView", Name: "TabViewTabClosingBehaviorPage", Build: buildTabViewTabClosingBehaviorPage})
 	register(Page{Control: "TabView", Name: "TabViewTabItemsSourcePage", Build: buildTabViewTabItemsSourcePage})
 	register(Page{Control: "TabView", Name: "MultipleTabViewPage", Build: buildMultipleTabViewPage})
 
 	register(Page{Control: "Breadcrumb", Name: "BreadcrumbBarPage", Build: buildBreadcrumbBarPage})
-	register(Page{Control: "Breadcrumb", Name: "BreadcrumbBarAxeTestPage", Build: buildBreadcrumbBarAxeTestPage})
+	register(Page{Control: "Breadcrumb", Name: "BreadcrumbBarAxeTestPage", Build: buildBreadcrumbBarAxeTestPage, Inert: axeReason})
 
 	register(Page{Control: "PipsPager", Name: "PipsPagerPage", Build: buildPipsPagerPage})
-	register(Page{Control: "PipsPager", Name: "PipsPagerAxeTestPage", Build: buildPipsPagerAxeTestPage})
+	register(Page{Control: "PipsPager", Name: "PipsPagerAxeTestPage", Build: buildPipsPagerAxeTestPage, Inert: axeReason})
 
 	register(Page{Control: "SelectorBar", Name: "SelectorBarPage", Build: buildSelectorBarPage})
 	register(Page{Control: "SelectorBar", Name: "SelectorBarSamplePage", Build: buildSelectorBarSamplePage})

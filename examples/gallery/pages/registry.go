@@ -39,7 +39,30 @@ type Page struct {
 	// Recorded rather than omitted: a page missing from the registry looks like one
 	// nobody has reached yet, which is a different thing from one that cannot be done.
 	Unmappable string
+
+	// Inert, when set, says why this page has no behaviour worth asserting.
+	//
+	// The bar for this corpus is FIDELITY TO ITS SOURCE: a page wires the handlers its
+	// upstream TestUI page wires, no more and no fewer. Where the source has no
+	// interaction — a styling fixture, an accessibility-scanner target, a page whose
+	// whole subject is how something LOOKS — the port should have none either, and
+	// adding one would make the port less faithful rather than more.
+	//
+	// Recorded rather than left blank, for the same reason Unmappable is: a page with
+	// no assertion looks exactly like a page nobody has got to yet, and those need
+	// different work. acceptance/coverage_test.go counts the pages that are neither
+	// asserted nor excused, and that count may only fall.
+	Inert string
 }
+
+// axeReason is why the *AxeTestPage ports have no behaviour to assert.
+//
+// Their upstream purpose is to be SCANNED, not driven: an accessibility checker walks the
+// tree and reports on names, roles and contrast. The source pages wire no handlers, so a
+// port that wired some would be less faithful, not more — and asserting an interaction
+// here would be asserting something WinUI never claimed.
+const axeReason = "an accessibility-scanner fixture: the source page is walked by a " +
+	"checker rather than driven, and wires no handlers of its own"
 
 // pages is the registry, keyed by "Control/Name".
 var pages = map[string]Page{}

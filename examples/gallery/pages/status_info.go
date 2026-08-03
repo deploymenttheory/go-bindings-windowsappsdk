@@ -24,11 +24,11 @@ import (
 
 func init() {
 	register(Page{Control: "ProgressRing", Name: "ProgressRingPage", Build: buildProgressRingPage})
-	register(Page{Control: "ProgressRing", Name: "ProgressRingAxeTestPage", Build: buildProgressRingAxeTestPage})
+	register(Page{Control: "ProgressRing", Name: "ProgressRingAxeTestPage", Build: buildProgressRingAxeTestPage, Inert: axeReason})
 	register(Page{Control: "ProgressRing", Name: "ProgressRingStoryboardAnimationPage", Build: buildProgressRingStoryboardAnimationPage})
 	register(Page{Control: "ProgressRing", Name: "ProgressRingCustomLottieSourcePage", Build: buildProgressRingCustomLottieSourcePage})
 
-	register(Page{Control: "ProgressBar", Name: "ProgressBarAxeTestPage", Build: buildProgressBarAxeTestPage})
+	register(Page{Control: "ProgressBar", Name: "ProgressBarAxeTestPage", Build: buildProgressBarAxeTestPage, Inert: axeReason})
 	register(Page{Control: "ProgressBar", Name: "ProgressBarReTemplatePage", Build: buildProgressBarReTemplatePage})
 
 	register(Page{Control: "InfoBadge", Name: "InfoBadgePage", Build: buildInfoBadgePage})
