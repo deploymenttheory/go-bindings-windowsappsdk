@@ -35,8 +35,27 @@ import (
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
 )
 
+// bindingFailurePrefix marks a binding failure on stderr so a sweep can pick the
+// lines out without parsing anything else the gallery says.
+const bindingFailurePrefix = "BINDING-FAILED: "
+
 func main() {
-	if err := app.Run(build, app.Options{}); err != nil {
+	// A binding that cannot resolve its path renders nothing and reports nothing:
+	// the page still builds, still lays out, and still passes the conformance
+	// suite. Printing every failure is what makes the difference between a page
+	// that works and one that merely appears in the tree observable from outside.
+	// Announce the diagnostic on the same channel the failures use. Without it a
+	// silent log is ambiguous — it could mean no binding failed, or that nothing
+	// this process writes to stderr is being captured at all — and those two
+	// call for opposite conclusions.
+	fmt.Fprintln(os.Stderr, "gallery: binding diagnostics active")
+	options := app.Options{
+		TraceBindings: true,
+		OnBindingFailed: func(message string) {
+			fmt.Fprintln(os.Stderr, bindingFailurePrefix+message)
+		},
+	}
+	if err := app.Run(build, options); err != nil {
 		fmt.Fprintln(os.Stderr, "gallery:", err)
 		os.Exit(1)
 	}
