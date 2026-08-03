@@ -20,15 +20,15 @@ import (
 )
 
 func init() {
-	register(Page{Control: "ParallaxView", Name: "ParallaxViewPage", Build: buildParallaxViewPage})
-	register(Page{Control: "ParallaxView", Name: "SimpleRectanglePage", Build: buildParallaxSimpleRectanglePage})
-	register(Page{Control: "ParallaxView", Name: "TextPage", Build: buildParallaxTextPage})
+	register(Page{Control: "ParallaxView", Name: "ParallaxViewPage", Build: buildParallaxViewPage, Inert: parallaxReason})
+	register(Page{Control: "ParallaxView", Name: "SimpleRectanglePage", Build: buildParallaxSimpleRectanglePage, Inert: parallaxReason})
+	register(Page{Control: "ParallaxView", Name: "TextPage", Build: buildParallaxTextPage, Inert: parallaxReason})
 	register(Page{Control: "ParallaxView", Name: "DynamicPage", Build: buildParallaxDynamicPage})
-	register(Page{Control: "ParallaxView", Name: "ParallaxViewStackPanelPage", Build: buildParallaxStackPanelPage})
-	register(Page{Control: "ParallaxView", Name: "VirtualizingStackPanelPage", Build: buildParallaxVirtualizingStackPanelPage})
-	register(Page{Control: "ParallaxView", Name: "ListViewBackgroundPage", Build: buildParallaxListViewBackgroundPage})
-	register(Page{Control: "ParallaxView", Name: "ListViewHeaderPage", Build: buildParallaxListViewHeaderPage})
-	register(Page{Control: "ParallaxView", Name: "ListViewItemPage", Build: buildParallaxListViewItemPage})
+	register(Page{Control: "ParallaxView", Name: "ParallaxViewStackPanelPage", Build: buildParallaxStackPanelPage, Inert: parallaxReason})
+	register(Page{Control: "ParallaxView", Name: "VirtualizingStackPanelPage", Build: buildParallaxVirtualizingStackPanelPage, Inert: parallaxReason})
+	register(Page{Control: "ParallaxView", Name: "ListViewBackgroundPage", Build: buildParallaxListViewBackgroundPage, Inert: parallaxReason})
+	register(Page{Control: "ParallaxView", Name: "ListViewHeaderPage", Build: buildParallaxListViewHeaderPage, Inert: parallaxReason})
+	register(Page{Control: "ParallaxView", Name: "ListViewItemPage", Build: buildParallaxListViewItemPage, Inert: parallaxReason})
 
 	register(Page{Control: "PullToRefresh", Name: "PullToRefreshPage", Build: buildPullToRefreshPage})
 	register(Page{Control: "PullToRefresh", Name: "PTRPage", Build: buildPTRPage})

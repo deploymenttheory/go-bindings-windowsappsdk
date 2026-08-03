@@ -30,16 +30,16 @@ func init() {
 	register(Page{Control: "AnimatedIcon", Name: "AnimatedIconPage", Build: buildAnimatedIconPage})
 	register(Page{Control: "AnimatedVisualPlayer", Name: "AnimatedVisualPlayerPage", Build: buildAnimatedVisualPlayerPage})
 	register(Page{Control: "ImageIcon", Name: "ImageIconPage", Build: buildImageIconPage})
-	register(Page{Control: "RadialGradientBrush", Name: "RadialGradientBrushPage", Build: buildRadialGradientBrushPage})
+	register(Page{Control: "RadialGradientBrush", Name: "RadialGradientBrushPage", Build: buildRadialGradientBrushPage, Inert: materialReason})
 	register(Page{Control: "MonochromaticOverlayPresenter", Name: "MonochromaticOverlayPresenterPage", Build: buildMonochromaticOverlayPresenterPage})
 
-	register(Page{Control: "Materials", Name: "AcrylicPage", Build: buildAcrylicPage})
-	register(Page{Control: "Materials", Name: "AcrylicBrushPage", Build: buildAcrylicBrushPage})
-	register(Page{Control: "Materials", Name: "AcrylicBrushBasicPage", Build: buildAcrylicBrushBasicPage})
-	register(Page{Control: "Materials", Name: "AcrylicBrushLuminosityTestPage", Build: buildAcrylicBrushLuminosityTestPage})
-	register(Page{Control: "Materials", Name: "AcrylicColorPage", Build: buildAcrylicColorPage})
-	register(Page{Control: "Materials", Name: "AcrylicMarkupPage", Build: buildAcrylicMarkupPage})
-	register(Page{Control: "Materials", Name: "AcrylicRenderingPage", Build: buildAcrylicRenderingPage})
+	register(Page{Control: "Materials", Name: "AcrylicPage", Build: buildAcrylicPage, Inert: materialReason})
+	register(Page{Control: "Materials", Name: "AcrylicBrushPage", Build: buildAcrylicBrushPage, Inert: materialReason})
+	register(Page{Control: "Materials", Name: "AcrylicBrushBasicPage", Build: buildAcrylicBrushBasicPage, Inert: materialReason})
+	register(Page{Control: "Materials", Name: "AcrylicBrushLuminosityTestPage", Build: buildAcrylicBrushLuminosityTestPage, Inert: materialReason})
+	register(Page{Control: "Materials", Name: "AcrylicColorPage", Build: buildAcrylicColorPage, Inert: materialReason})
+	register(Page{Control: "Materials", Name: "AcrylicMarkupPage", Build: buildAcrylicMarkupPage, Inert: materialReason})
+	register(Page{Control: "Materials", Name: "AcrylicRenderingPage", Build: buildAcrylicRenderingPage, Inert: materialReason})
 
 	// Reveal is ABSENT from the Windows App SDK winmds:
 	//

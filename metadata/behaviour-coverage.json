@@ -1,4 +1,4 @@
 {
-  "uncovered": 181,
+  "uncovered": 164,
   "note": "Buildable pages with neither a behaviour scenario nor a Page.Inert reason. This number may only fall: lower it in the same commit that covers or excuses a page. See acceptance/coverage_test.go."
 }
