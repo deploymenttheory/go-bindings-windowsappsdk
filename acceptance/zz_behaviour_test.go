@@ -386,6 +386,55 @@ var scenarios = []scenario{
 		},
 	},
 	{
+		// Reachable here and NOT by the census, which is the point of writing it.
+		//
+		// A TreeView's nodes are realized into generated containers. The census walks
+		// the logical tree and stops at the TreeView itself, so it reports the page
+		// as having no live controls — unmeasured, not uninteractive. This suite's
+		// walk is the VISUAL tree, which descends into those containers, so the node
+		// can be expanded and the page's report checked.
+		name: "a TreeView reports the node being expanded",
+		page: "TreeView/TreeViewPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			// Collapsed first: this page's roots start EXPANDED, so expanding one
+			// raises no Expanding event and the page rightly reports nothing.
+			if failure := collapseFirst(root); failure != "" {
+				return failure
+			}
+			if failure := expandFirst(root); failure != "" {
+				return failure
+			}
+			return expectStatus(root, "Expanding:")
+		},
+	},
+	{
+		name: "a TreeView bound to an items source expands a node",
+		page: "TreeView/TreeViewItemsSourceTestPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			if failure := collapseFirst(root); failure != "" {
+				return failure
+			}
+			return expandFirst(root)
+		},
+	},
+	{
+		// Asserts the LATE ARRIVAL, not an expand.
+		//
+		// Expanding was the obvious scenario and it failed with "nothing supports
+		// ExpandCollapse" — correctly, because at Loaded this page has no nodes at
+		// all. That is the page's entire subject: the tree starts empty and is
+		// filled afterwards, on a button. So the scenario presses the button and
+		// asserts the roots arrived, which is what the page demonstrates.
+		name: "a TreeView accepts roots added after it has loaded",
+		page: "TreeView/TreeViewLateDataInitTestPage",
+		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return invokeNamed(root, "Add a root now")
+		},
+		check: func(_ *app.Ready, root *uixaml.IUIElement) string {
+			return expectStatus(root, "added after load")
+		},
+	},
+	{
 		name: "a MenuBar item's click reports which entry was chosen",
 		page: "MenuBar/MenuBarPage",
 		act: func(_ *app.Ready, root *uixaml.IUIElement) string {
@@ -693,6 +742,37 @@ func expandNamed(root *uixaml.IUIElement, want string) string {
 		return fmt.Sprintf("expanding %q: %v", want, err)
 	}
 	return ""
+}
+
+// collapseFirst collapses the first element in the tree that supports the pattern.
+//
+// It exists so a scenario can put an expander into a known state before expanding it.
+// Driving a control from the state it is already in is the single most common way to
+// write a test that proves nothing: an already-expanded node raises no Expanding, an
+// already-open pane raises no change, and an InfoBar already Informational does not move
+// when told to be Informational. All three were met while writing this suite.
+func collapseFirst(root *uixaml.IUIElement) string {
+	failure := "nothing in the tree supports the ExpandCollapse pattern"
+	walk(root, func(element *uixaml.IUIElement) bool {
+		peer, err := peerOf(element)
+		if err != nil || peer == nil {
+			return true
+		}
+		defer peer.Release()
+		provider, err := patternOf[uixaml.IExpandCollapseProvider](
+			peer, uixaml.PatternInterfaceExpandCollapse, &uixaml.IID_IExpandCollapseProvider)
+		if err != nil {
+			return true
+		}
+		defer provider.Release()
+		if err := provider.Collapse(); err != nil {
+			failure = fmt.Sprintf("collapsing: %v", err)
+			return false
+		}
+		failure = ""
+		return false
+	})
+	return failure
 }
 
 // expandFirst expands the first element in the tree that supports the pattern.
