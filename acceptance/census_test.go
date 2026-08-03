@@ -80,11 +80,18 @@ type control struct {
 	// Driven is the pattern that was exercised.
 	Driven string `json:"driven,omitempty"`
 	// SelfChanged is whether the pattern's own state read back differently
-	// afterwards. Invoke has no state to read, so it is always false there and
-	// Reported is the only available signal.
+	// afterwards. Invoke has no state to read, so it is always false there.
 	SelfChanged bool `json:"selfChanged"`
 	// Reported records whether any TextBlock in the page changed afterwards.
 	Reported bool `json:"reported"`
+	// OpenedPopup records whether the interaction put something in the popup root.
+	//
+	// The third observable, and without it a whole class of working button scores
+	// as dead: "Show the targeted tip", "Open the menu" and a DropDownButton's
+	// "Sort by" all do their job by opening a flyout, tip or menu, which is
+	// parented to the XamlRoot rather than to the page — so neither the button's
+	// own state nor any TextBlock moves.
+	OpenedPopup bool `json:"openedPopup"`
 	// Failure is why driving it did not happen or did not work.
 	Failure string `json:"failure,omitempty"`
 }
@@ -101,6 +108,8 @@ type pageCensus struct {
 	// SelfChanged is how many moved their OWN state — the control worked, whether
 	// or not the page mentioned it.
 	SelfChanged int `json:"selfChanged"`
+	// Opened is how many put something in the popup root.
+	Opened int `json:"opened"`
 	// Dead is how many accepted the interaction and changed nothing either way.
 	// This is the number the remediation is actually chasing.
 	Dead     int       `json:"dead"`
@@ -373,7 +382,7 @@ func runPageCensus(key string) int {
 		// offer the patterns its template gives it.
 		loaded, err := uixaml.NewRoutedEventHandler(
 			func(_ *syswinrt.IInspectable, _ *uixaml.IRoutedEventArgs) {
-				censusTree(root, &result)
+				censusTree(ready, root, &result)
 				_ = ready.Application.Exit()
 			})
 		if err != nil {
@@ -489,7 +498,7 @@ func walkOwned(element *uixaml.IUIElement, depth int, visit func(*uixaml.IUIElem
 
 // censusTree walks the page once, driving each element's first drivable pattern and
 // recording whether the page's own status text changed as a result.
-func censusTree(root *uixaml.IUIElement, result *pageCensus) {
+func censusTree(ready *app.Ready, root *uixaml.IUIElement, result *pageCensus) {
 	// Collect OWNED references before driving anything.
 	//
 	// walk hands the callback a borrowed pointer and releases it when the callback
@@ -546,6 +555,7 @@ func censusTree(root *uixaml.IUIElement, result *pageCensus) {
 		// makes one rule work across all of them; the control's own state is what
 		// distinguishes a broken control from a silent page.
 		beforeText := allStatus(root)
+		popupsBefore := app.OpenPopupCount(ready)
 		for _, candidate := range drivable {
 			if candidate.name != entry.Patterns[0] {
 				continue
@@ -568,7 +578,14 @@ func censusTree(root *uixaml.IUIElement, result *pageCensus) {
 			entry.Reported = true
 			result.Responsive++
 		}
-		if entry.Failure == "" && !entry.SelfChanged && !entry.Reported {
+		if entry.Failure == "" && app.OpenPopupCount(ready) != popupsBefore {
+			entry.OpenedPopup = true
+			result.Opened++
+		}
+		// Close whatever opened before moving on: a flyout left up is modal to the
+		// next interaction, which would then be recorded as that control failing.
+		app.CloseOpenPopups(ready)
+		if entry.Failure == "" && !entry.SelfChanged && !entry.Reported && !entry.OpenedPopup {
 			result.Dead++
 		}
 		result.Controls = append(result.Controls, entry)
