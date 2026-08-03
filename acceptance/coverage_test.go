@@ -22,6 +22,19 @@ package acceptance
 //
 // The ratchet is the point. The number of pages with NEITHER may only fall. That converts
 // "we should cover more of this" from an intention into something a build fails over.
+//
+// # DO NOT SOURCE Inert REASONS FROM THE CENSUS
+//
+// The census reports zero live controls for every NavigationView, Repeater and ItemsView
+// page in the corpus, and NONE of them is inert: a NavigationView's menu items and a
+// repeater's rows are realized into generated containers, and the census walks the LOGICAL
+// tree, which deliberately stops at a control rather than descending into what it
+// generates. Those pages are unmeasured, not uninteractive.
+//
+// Writing "zero live controls, therefore Inert" over that batch would have excused 37
+// pages in one commit and enshrined a limitation of the harness as a claim about the port.
+// An Inert reason has to say why the SOURCE page has no interaction — which is a question
+// about the upstream XAML, not about what an automation peer happened to reach.
 
 import (
 	"encoding/json"
