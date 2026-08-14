@@ -22,7 +22,7 @@ import (
 	"sort"
 	"strings"
 
-	winmd "github.com/deploymenttheory/go-winmd"
+	winmd "github.com/deploymenttheory/go-winmd/pkg/winmd"
 )
 
 func main() {

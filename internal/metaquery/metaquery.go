@@ -14,7 +14,7 @@ import (
 	"sort"
 	"strings"
 
-	winmd "github.com/deploymenttheory/go-winmd"
+	winmd "github.com/deploymenttheory/go-winmd/pkg/winmd"
 )
 
 // Kind classifies a TypeDef the way a WinRT projection has to.

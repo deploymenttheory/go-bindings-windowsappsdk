@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/wasdkmeta"
-	winmd "github.com/deploymenttheory/go-winmd"
+	winmd "github.com/deploymenttheory/go-winmd/pkg/winmd"
 )
 
 // fileProjector projects one winmd's TypeDefs, resolving TypeRef targets
