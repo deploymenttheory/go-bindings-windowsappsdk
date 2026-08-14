@@ -134,8 +134,8 @@ type pageCensus struct {
 	// This is the number the remediation is actually chasing.
 	Dead     int       `json:"dead"`
 	Controls []control `json:"controls,omitempty"`
-	Build      string    `json:"buildError,omitempty"`
-	Crashed    bool      `json:"crashed,omitempty"`
+	Build    string    `json:"buildError,omitempty"`
+	Crashed  bool      `json:"crashed,omitempty"`
 }
 
 // drivable is every pattern the census exercises, in the order it prefers them.

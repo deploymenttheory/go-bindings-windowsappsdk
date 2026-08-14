@@ -51,12 +51,12 @@ import (
 
 	win32 "github.com/deploymenttheory/go-bindings-win32/bindings/runtime/win32"
 	syswinrt "github.com/deploymenttheory/go-bindings-win32/bindings/win32/system/winrt"
-	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/app"
 	uidispatching "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/dispatching"
 	uixaml "github.com/deploymenttheory/go-bindings-windowsappsdk/bindings/winui/ui/xaml"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/examples/gallery/pages"
 	"github.com/deploymenttheory/go-bindings-winrt/bindings/runtime/winrt"
+	wrtfoundation "github.com/deploymenttheory/go-bindings-winrt/bindings/winrt/foundation"
 )
 
 const behaviourSubprocessEnv = "WASDK_ACCEPTANCE_BEHAVIOUR"
