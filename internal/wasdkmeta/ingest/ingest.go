@@ -29,7 +29,7 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/wasdkmeta"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/wasdkmeta/external"
-	winmd "github.com/deploymenttheory/go-winmd"
+	winmd "github.com/deploymenttheory/go-winmd/pkg/winmd"
 )
 
 // Source is one winmd to ingest.

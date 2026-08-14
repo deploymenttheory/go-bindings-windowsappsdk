@@ -7,8 +7,8 @@ import (
 
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/wasdkmeta"
 	"github.com/deploymenttheory/go-bindings-windowsappsdk/internal/wasdkmeta/external"
-	winmd "github.com/deploymenttheory/go-winmd"
-	"github.com/deploymenttheory/go-winmd/nuget"
+	winmd "github.com/deploymenttheory/go-winmd/pkg/winmd"
+	"github.com/deploymenttheory/go-winmd/pkg/nuget"
 )
 
 const winmdDir = "../../../metadata/winmd"

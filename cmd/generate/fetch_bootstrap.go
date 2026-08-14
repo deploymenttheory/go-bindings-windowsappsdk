@@ -25,7 +25,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/deploymenttheory/go-winmd/nuget"
+	"github.com/deploymenttheory/go-winmd/pkg/nuget"
 )
 
 const (
