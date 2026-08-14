@@ -5,7 +5,7 @@
 [![Go Version](https://img.shields.io/github/go-mod/go-version/deploymenttheory/go-bindings-windowsappsdk)](https://go.dev/)
 [![Release](https://img.shields.io/github/v/release/deploymenttheory/go-bindings-windowsappsdk)](https://github.com/deploymenttheory/go-bindings-windowsappsdk/releases)
 [![codecov](https://codecov.io/gh/deploymenttheory/go-bindings-windowsappsdk/graph/badge.svg)](https://codecov.io/gh/deploymenttheory/go-bindings-windowsappsdk)
-![Status: alpha](https://img.shields.io/badge/status-alpha-orange)
+![Status: experimental](https://img.shields.io/badge/status-experimental-yellow)
 
 Go bindings for **WinUI 3** and the rest of the [Windows App
 SDK](https://learn.microsoft.com/windows/apps/windows-app-sdk/) — the
