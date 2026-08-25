@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/deploymenttheory/go-bindings-windowsappsdk/compare/v0.1.0...v0.1.1) (2026-08-25)
+
+
+### Bug Fixes
+
+* restore import ordering after the go-winmd path change ([2d90fc1](https://github.com/deploymenttheory/go-bindings-windowsappsdk/commit/2d90fc1602ad688f789a43dbb7ab8b97feab996c))
+
 ## 0.1.0 (2026-08-03)
 
 
